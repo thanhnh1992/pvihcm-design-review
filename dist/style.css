@@ -72,3 +72,10 @@ header .brand{display:inline-block;min-height:0;padding:11px 0;line-height:1.2}
 .footer-contact a{min-height:var(--tap,44px)}
 
 .hero .kicker,.hero-copy .kicker{font-size:13px}
+
+.brand{display:inline-flex;align-items:center;gap:10px;min-height:44px;font-size:20px;font-weight:600;color:var(--ink)}
+.brand img{width:auto;height:34px;display:block;flex:0 0 auto}
+
+.brand{flex-wrap:nowrap;white-space:nowrap}
+
+header .brand{display:inline-flex;align-items:center;gap:10px;padding:0;flex-wrap:nowrap;white-space:nowrap}
