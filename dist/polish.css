@@ -72,3 +72,154 @@ header{max-width:var(--content);padding:0 28px;height:72px;gap:24px}.brand{font-
 .hero{position:relative}
 #hero-field{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0}
 .hero-copy,.hero-stage{position:relative;z-index:1}
+
+/* ═══════════════════════════════════════════════════════════════════
+   TẦNG NÂNG CẤP — Taste Skill lever 1 (typography) + 3 (hiệu chỉnh)
+   Sàn cỡ chữ: nội dung có nghĩa ≥16px, nhãn phụ ≥13px, không còn 11-12px.
+   Thang bo góc có luật: nút = viên thuốc, thẻ/ảnh = 16px, chip nhỏ = 10px.
+   ═══════════════════════════════════════════════════════════════════ */
+:root{
+  --r-pill:999px;   /* mọi thứ bấm được */
+  --r-card:16px;    /* thẻ, ảnh, khối */
+  --r-chip:10px;    /* nhãn nhỏ, ô nhập */
+  --tap:44px;       /* vùng bấm tối thiểu */
+}
+
+/* — sàn cỡ chữ — */
+body{font-size:16px;line-height:1.6}
+nav{font-size:15px}
+.phone{font-size:15px;min-height:var(--tap);display:inline-flex;align-items:center}
+.preview{font-size:13px;padding:9px 12px;line-height:1.5}
+.kicker{font-size:13px;letter-spacing:.1em}
+.primary,.solution-copy>a,.text-link,.secondary-link{font-size:16px;min-height:var(--tap)}
+.micro-info,.micro-info li{font-size:16px;line-height:1.6}
+.process p,.process h3{font-size:16px}
+.process h3{font-weight:700}
+.claims-steps p,.claims-steps h3,.claims-footer p{font-size:16px;line-height:1.65}
+.solution-copy p,.hero-copy>p:not(.kicker){font-size:16px}
+.hero-tile:after{font-size:13px}
+.partner-track,.partner-card small{font-size:15px}
+.partner-card strong{font-size:16px}
+footer,.site-footer,.site-footer p,.site-footer address,.footer-contact a{font-size:15px;line-height:1.7}
+.proof-points dt{font-size:13px;line-height:1.5}
+.source-note,.entity-description,figcaption{font-size:15px;line-height:1.6}
+
+/* — thang bo góc thống nhất — */
+.primary,.solution-copy>a,.phone,.text-link,.secondary-link,.pill,.marquee-pause{border-radius:var(--r-pill)}
+.hero-tile,.visual,.partner-card,.claims-visual,.claims-visual img{border-radius:var(--r-card)}
+.hero-tile:after,.proof-points>div{border-radius:var(--r-chip)}
+
+/* — vùng bấm và focus — */
+a,button{-webkit-tap-highlight-color:transparent}
+.primary,.solution-copy>a,.text-link,.secondary-link,.phone,.marquee-pause{
+  display:inline-flex;align-items:center;justify-content:center;
+}
+:focus-visible{outline:3px solid var(--blue,#063d79);outline-offset:3px;border-radius:4px}
+
+/* ═══════════════════════════════════════════════════════════════════
+   LỚP CHIỀU SÂU HERO — CSS 3D thật, không phải ảnh phẳng nghiêng.
+   Ba mặt cong đặt ở ba độ sâu translateZ khác nhau trong không gian
+   preserve-3d của .hero-stage. Perspective có sẵn 900px lo phần chiếu,
+   nên các lớp tự giãn cách theo luật phối cảnh, và parallax giữa chúng
+   là parallax thật chứ không phải dịch chuyển giả.
+   ═══════════════════════════════════════════════════════════════════ */
+.hero-depth{position:absolute;inset:-18% -12%;z-index:0;pointer-events:none;transform-style:preserve-3d}
+.hero-depth span{
+  position:absolute;display:block;border-radius:50%;
+  will-change:transform;
+  transform:translateZ(var(--z)) translate3d(var(--px,0),var(--py,0),0);
+  transition:transform .55s cubic-bezier(.16,1,.3,1);
+}
+/* lớp xa: rộng, nhạt, gần như sương */
+.hero-depth .d1{--z:-260px;inset:6% 22% 30% 8%;
+  background:radial-gradient(circle at 42% 40%,#cfe6fb 0,#e6f2fd 42%,transparent 70%);opacity:.72}
+/* lớp giữa: rõ hơn, hơi lệch phải, đúng chỗ vầng sáng cũ 78%/35% */
+.hero-depth .d2{--z:-140px;inset:2% 4% 34% 34%;
+  background:radial-gradient(circle at 55% 42%,#bcdcf8 0,#dcedfc 46%,transparent 72%);opacity:.66}
+/* lớp gần: nhỏ, đậm nhất, tạo điểm tựa sáng dưới cụm thẻ */
+.hero-depth .d3{--z:-60px;inset:40% 12% 4% 30%;
+  background:radial-gradient(circle at 48% 52%,#a9d2f5 0,#d3e9fb 44%,transparent 70%);opacity:.5}
+
+/* nền tĩnh thay thế khi WebGL không chạy: chính ba lớp trên đã là nền tĩnh */
+#hero-field{opacity:.85}
+
+/* Chữ và CTA phải nằm trên vùng nền yên — không lớp nào chạy dưới cột chữ */
+.hero-copy{position:relative;z-index:2}
+.hero-stage{position:relative;z-index:1}
+
+/* ── Tương tác thẻ: siết đúng biên độ brief (tilt 4-6°, nâng 16-24px, zoom 1.03-1.05) ── */
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .hero-tile.is-tilting{
+    transform:perspective(900px)
+      rotateY(var(--pointer-x,0deg)) rotateX(var(--pointer-y,0deg))
+      translateY(-20px) translateZ(24px) scale(1.04);
+    box-shadow:0 26px 48px #14355526;
+    z-index:10;
+  }
+}
+
+/* ── Marquee: 50s/vòng theo brief, dừng khi hover/focus hoặc khi bấm tạm dừng ── */
+.partner-track{animation-duration:50s}
+.partner-marquee:focus-within .partner-track{animation-play-state:paused}
+.partner-track[data-paused="true"]{animation-play-state:paused}
+.marquee-pause{
+  display:inline-flex;align-items:center;gap:8px;
+  min-height:var(--tap);padding:10px 18px;margin:0 0 14px;
+  background:#fff;border:1px solid #d3dde6;color:var(--ink,#071f43);
+  font:inherit;font-size:15px;font-weight:600;cursor:pointer;
+}
+.marquee-pause:hover{border-color:#9db6cc}
+
+/* ── Phá thế lặp: 4 khối sản phẩm đang giống hệt nhau, đảo chiều khối thứ 2 ── */
+@media(min-width:821px){
+  .solution.alt{direction:rtl}
+  .solution.alt>*{direction:ltr}
+}
+
+/* ── Reduced motion: mọi thứ đứng yên, giữ nguyên bố cục ── */
+@media(prefers-reduced-motion:reduce){
+  .hero-depth span{transition:none!important;transform:translateZ(var(--z))!important}
+  .partner-track{animation:none!important}
+  #hero-field{display:none}
+}
+
+/* ── Mobile: bỏ lớp chiều sâu cho nhẹ, bốn lựa chọn phải rõ và không chồng ── */
+@media(max-width:820px){
+  .hero-depth,#hero-field{display:none}
+  .marquee-pause{margin-left:22px}
+}
+
+/* ── Parallax theo cuộn, làm bằng nền tảng thay vì JS nghe sự kiện scroll ── */
+@supports (animation-timeline: view()){
+  @media (min-width:821px) and (prefers-reduced-motion:no-preference){
+    .hero-tile{animation:tile-drift linear both;animation-timeline:view();animation-range:entry 0% exit 100%}
+    .t1{--drift:12px}.t2{--drift:-12px}.t3{--drift:24px}.t4{--drift:-24px}
+    @keyframes tile-drift{from{translate:0 calc(var(--drift) * -1)}to{translate:0 var(--drift)}}
+  }
+}
+
+/* ── Hiệu chỉnh sàn chữ: hai chỗ có luật đặc hiệu cao hơn hoặc !important ── */
+.cargo-utility .solution-copy p,.solution .solution-copy p{font-size:16px;line-height:1.65}
+.entity-description{font-size:15px!important;line-height:1.6}
+.source-note{font-size:14px;line-height:1.55}
+
+/* ── Vùng bấm 44px cho điều hướng và các link nhỏ ── */
+nav a{display:inline-flex;align-items:center;min-height:var(--tap,44px)}
+header .brand{display:inline-flex;align-items:center;min-height:var(--tap,44px)}
+.footer-contact a,.site-footer a{display:inline-flex;align-items:center;min-height:36px}
+.skip:focus{min-height:var(--tap,44px);display:inline-flex;align-items:center}
+.partner-card{display:flex;min-height:var(--tap,44px)}
+
+/* ── Sàn chữ, lượt cuối: bốn luật cũ dùng !important hoặc đặc hiệu cao hơn ── */
+.trust-copy .entity-description{font-size:15px!important;line-height:1.6!important}
+.source-note,.trust-block .source-note{font-size:14px!important;line-height:1.6!important}
+.claims-visual figcaption{font-size:14px;line-height:1.55}
+.partners-heading>p:not(.kicker){font-size:15px;line-height:1.65}
+
+/* ── Sửa lỗi do tầng nâng cấp gây ra: inline-flex nuốt dấu cách trong logo ── */
+header .brand{display:inline-block;min-height:0;padding:11px 0;line-height:1.2}
+.skip{min-height:var(--tap,44px)}
+.footer-contact a{min-height:var(--tap,44px)}
+
+/* eyebrow hero còn 12px do luật đặc hiệu cũ, kéo về 13px cho khớp sàn */
+.hero .kicker,.hero-copy .kicker{font-size:13px}
