@@ -25,69 +25,47 @@
 
   const vert = `
 precision mediump float;
-attribute vec3 aSphere;
-attribute vec2 aSeed;
+attribute vec3 aPos;      // x: trải ngang, y: nhiễu, z: chiều sâu — đều là ngẫu nhiên đều
+attribute vec2 aSeed;     // x: vị trí dọc (trải đều), y: nhiễu riêng
 uniform float uScroll;
 uniform float uTime;
 uniform vec2  uPointer;
 uniform float uAspect;
 uniform float uScale;
 uniform float uOffsetX;
-uniform float uWide;
 varying float vDepth;
 varying float vAlpha;
 const float TAU = 6.28318;
-const float CAM = 3.80;
 
 void main(){
-  // ── hình 1: khối cầu tụ ở hero ──
-  vec3 sph = aSphere;
-
-  // ── hình 2: xoáy mở loe, chiếm nửa phải màn hình ──
-  // Bán kính lớn nhất 2.66 so với camera 3.80 nên mặt gần và mặt xa của xoáy
-  // chênh nhau khoảng 8 lần chiều sâu: đủ để mắt đọc ra khối, không phải nét phẳng.
-  // Toạ độ dọc đặt theo MÀN HÌNH rồi nhân ngược z, nên sau phép chia phối cảnh
-  // hạt trải đều từ đỉnh xuống đáy, không dồn cục giữa và không hở hai đầu.
+  // Một đám mây hạt duy nhất. Không xoắn ốc, không biến hình, không xoay.
+  // Hạt trôi xuống rất chậm: một vòng đi hết chiều cao mất khoảng 100 giây.
   float t = aSeed.x;
-  float flow = fract(t + uTime * 0.05 + uScroll * 1.35);
+  float drift = fract(t + uTime * 0.010 + uScroll * 0.40);
+  float targetY = mix(1.20, -1.20, drift);
 
-  float openness = mix(0.38, 1.0, pow(flow, 0.85));
-  float thick = 0.86 + aSeed.y * 0.28;
-  float rad = 3.00 * openness * thick;
+  // Chiều sâu thật: hạt gần to đậm, hạt xa nhỏ nhạt.
+  float zf = aPos.z * 1.90 + 3.90;
 
-  float ang = flow * TAU * 5.2 + uTime * 0.12 + aSeed.y * 0.9;
-  float sn = sin(ang);
-  float zf = sn * rad + CAM;
-  float targetY = mix(1.06, -1.06, flow);
-  vec3 col = vec3(cos(ang) * rad, targetY * zf, sn * rad);
+  // Trải ngang gần hết bề rộng trang, dao động rất nhẹ để không chết cứng.
+  float x = aPos.x * 2.80 + sin(uTime * 0.07 + aSeed.y * TAU) * 0.12;
+  float y = targetY * zf + aPos.y * 0.10 * zf;
 
-  // ── chuyển hình theo cuộn: cầu tan ra rồi đổ xuống xoáy ──
-  float k = smoothstep(0.015, 0.19, uScroll);
-  vec3 p = mix(sph, col, k);
+  // Parallax theo chuột, lớp gần dịch nhiều hơn lớp xa.
+  x += uPointer.x * (0.34 - aPos.z * 0.12);
 
-  // xoay mạnh lúc còn là cầu, gần như đứng yên khi đã thành xoáy
-  float spin = mix(1.0, 0.05, k);
-  float ay = (uTime * 0.16 + uPointer.x * 0.35) * spin;
-  float ax = (-0.22 + uPointer.y * 0.18) * spin;
-  float cy = cos(ay), sy = sin(ay);
-  vec3 r1 = vec3(p.x * cy + p.z * sy, p.y, -p.x * sy + p.z * cy);
-  float cx = cos(ax), sx = sin(ax);
-  vec3 r2 = vec3(r1.x, r1.y * cx - r1.z * sx, r1.y * sx + r1.z * cx);
+  float z = zf;
+  if (z < 0.40) z = 0.40;
+  vec2 proj = vec2(x, y) / z;
+  gl_Position = vec4(proj.x / uAspect + uOffsetX, proj.y + uPointer.y * 0.04, 0.0, 1.0);
+  gl_PointSize = clamp(uScale / z, 0.7, 5.2);
 
-  float z = r2.z + CAM;
-  if (z < 0.30) z = 0.30;
-  vec2 proj = r2.xy / z;
-  // Chỉ xoáy mới kéo giãn ngang; khối cầu ở hero giữ nguyên hình tròn.
-  float wide = mix(1.0, uWide, k);
-  float off  = uOffsetX - 0.32 * k;
-  gl_Position = vec4(proj.x * wide / uAspect + off, proj.y, 0.0, 1.0);
-  gl_PointSize = clamp(uScale / z, 0.7, 7.0);
+  vDepth = clamp((z - 2.00) / 3.80, 0.0, 1.0);
 
-  vDepth = clamp((z - 1.14) / 5.32, 0.0, 1.0);
-
-  float seam = smoothstep(0.0, 0.10, flow) * (1.0 - smoothstep(0.88, 1.0, flow));
-  float edge = 1.0 - smoothstep(0.95, 1.30, length(proj));
-  vAlpha = mix(1.0, seam, k) * edge;
+  // Hai đầu fade để chỗ lặp của fract() không bao giờ lộ thành vệt đứt.
+  float seam = smoothstep(0.0, 0.12, drift) * (1.0 - smoothstep(0.86, 1.0, drift));
+  float edge = 1.0 - smoothstep(0.92, 1.28, length(proj));
+  vAlpha = seam * edge;
 }
 `;
 
@@ -115,17 +93,16 @@ void main(){
   if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
   gl.useProgram(prog);
 
-  const sphere = new Float32Array(COUNT * 3);
+  const pos = new Float32Array(COUNT * 3);
   const seed = new Float32Array(COUNT * 2);
   for (let i = 0; i < COUNT; i += 1) {
-    const u = Math.random() * 2 - 1, th = Math.random() * Math.PI * 2, rr = Math.sqrt(1 - u * u);
-    sphere[i * 3] = rr * Math.cos(th) * 1.95;
-    sphere[i * 3 + 1] = rr * Math.sin(th) * 1.95;
-    sphere[i * 3 + 2] = u * 1.95;
-    seed[i * 2] = i / COUNT;          // trải đều dọc dòng -> mật độ liên tục
+    pos[i * 3]     = Math.random() * 2 - 1;                 // trải ngang
+    pos[i * 3 + 1] = Math.random() * 2 - 1;                 // nhiễu dọc
+    pos[i * 3 + 2] = Math.random() * 2 - 1;                 // chiều sâu
+    seed[i * 2]     = i / COUNT;                            // trải đều dọc -> mật độ liên tục
     seed[i * 2 + 1] = Math.random();
   }
-  for (const [name, data, size] of [['aSphere', sphere, 3], ['aSeed', seed, 2]]) {
+  for (const [name, data, size] of [['aPos', pos, 3], ['aSeed', seed, 2]]) {
     gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
     gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
     const loc = gl.getAttribLocation(prog, name);
@@ -135,7 +112,7 @@ void main(){
 
   const U = n => gl.getUniformLocation(prog, n);
   const uScroll = U('uScroll'), uTime = U('uTime'), uPointer = U('uPointer');
-  const uAspect = U('uAspect'), uScale = U('uScale'), uOffsetX = U('uOffsetX'), uWide = U('uWide');
+  const uAspect = U('uAspect'), uScale = U('uScale'), uOffsetX = U('uOffsetX');
 
   gl.disable(gl.DEPTH_TEST);
   gl.enable(gl.BLEND);
@@ -148,10 +125,9 @@ void main(){
     canvas.height = Math.round(innerHeight * dpr);
     gl.viewport(0, 0, canvas.width, canvas.height);
     gl.uniform1f(uAspect, innerWidth / innerHeight);
-    gl.uniform1f(uScale, 7.4 * dpr);
+    gl.uniform1f(uScale, 6.2 * dpr);
     // dòng nằm lệch phải, tránh cột chữ bên trái
-    gl.uniform1f(uOffsetX, innerWidth > 1180 ? 0.56 : 0.44);
-    gl.uniform1f(uWide, innerWidth > 1180 ? 1.52 : 1.20);
+    gl.uniform1f(uOffsetX, 0.06);
   };
   size();
 
