@@ -21,7 +21,7 @@
   const gl = canvas.getContext('webgl', { alpha: true, antialias: true, depth: false, powerPreference: 'low-power' });
   if (!gl) return;
 
-  const COUNT = 30000;
+  const COUNT = 15000;
 
   const vert = `
 precision mediump float;
@@ -51,11 +51,11 @@ void main(){
   float t = aSeed.x;
   float flow = fract(t + uTime * 0.05 + uScroll * 1.35);
 
-  float openness = mix(0.20, 1.0, pow(flow, 0.85));
+  float openness = mix(0.38, 1.0, pow(flow, 0.85));
   float thick = 0.86 + aSeed.y * 0.28;
   float rad = 3.00 * openness * thick;
 
-  float ang = flow * TAU * 2.2 + uTime * 0.12 + aSeed.y * 0.9;
+  float ang = flow * TAU * 5.2 + uTime * 0.12 + aSeed.y * 0.9;
   float sn = sin(ang);
   float zf = sn * rad + CAM;
   float targetY = mix(1.06, -1.06, flow);
@@ -99,7 +99,7 @@ void main(){
   vec2 c = gl_PointCoord - 0.5;
   if (dot(c, c) > 0.25) discard;
   vec3 col = mix(vec3(0.035, 0.180, 0.365), vec3(0.482, 0.706, 0.855), vDepth);
-  float a = mix(0.44, 0.04, vDepth) * vAlpha;
+  float a = mix(0.30, 0.03, vDepth) * vAlpha;
   gl_FragColor = vec4(col * a, a);
 }`;
 
