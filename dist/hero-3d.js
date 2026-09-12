@@ -21,7 +21,7 @@
   const gl = canvas.getContext('webgl', { alpha: true, antialias: true, depth: false, powerPreference: 'low-power' });
   if (!gl) return;
 
-  const COUNT = 22000;
+  const COUNT = 30000;
 
   const vert = `
 precision mediump float;
@@ -33,6 +33,7 @@ uniform vec2  uPointer;
 uniform float uAspect;
 uniform float uScale;
 uniform float uOffsetX;
+uniform float uWide;
 varying float vDepth;
 varying float vAlpha;
 const float TAU = 6.28318;
@@ -76,7 +77,10 @@ void main(){
   float z = r2.z + CAM;
   if (z < 0.30) z = 0.30;
   vec2 proj = r2.xy / z;
-  gl_Position = vec4(proj.x / uAspect + uOffsetX, proj.y, 0.0, 1.0);
+  // Chỉ xoáy mới kéo giãn ngang; khối cầu ở hero giữ nguyên hình tròn.
+  float wide = mix(1.0, uWide, k);
+  float off  = uOffsetX - 0.32 * k;
+  gl_Position = vec4(proj.x * wide / uAspect + off, proj.y, 0.0, 1.0);
   gl_PointSize = clamp(uScale / z, 0.7, 7.0);
 
   vDepth = clamp((z - 1.14) / 5.32, 0.0, 1.0);
@@ -131,7 +135,7 @@ void main(){
 
   const U = n => gl.getUniformLocation(prog, n);
   const uScroll = U('uScroll'), uTime = U('uTime'), uPointer = U('uPointer');
-  const uAspect = U('uAspect'), uScale = U('uScale'), uOffsetX = U('uOffsetX');
+  const uAspect = U('uAspect'), uScale = U('uScale'), uOffsetX = U('uOffsetX'), uWide = U('uWide');
 
   gl.disable(gl.DEPTH_TEST);
   gl.enable(gl.BLEND);
@@ -147,6 +151,7 @@ void main(){
     gl.uniform1f(uScale, 7.4 * dpr);
     // dòng nằm lệch phải, tránh cột chữ bên trái
     gl.uniform1f(uOffsetX, innerWidth > 1180 ? 0.56 : 0.44);
+    gl.uniform1f(uWide, innerWidth > 1180 ? 1.52 : 1.20);
   };
   size();
 
