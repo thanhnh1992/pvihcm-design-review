@@ -47,7 +47,7 @@ void main(){
 
   // nở dần khi rơi xuống -> dáng phễu
   float spread = mix(0.62, 1.25, drift);
-  float rx = aPos.x * 2.80 * spread;
+  float rx = aPos.x * 3.45 * spread;
   float rz = aPos.z * 1.90 * spread;
 
   // xoáy vi sai quanh trục dọc
@@ -134,7 +134,7 @@ void main(){
     gl.uniform1f(uAspect, innerWidth / innerHeight);
     gl.uniform1f(uScale, 6.2 * dpr);
     // dòng nằm lệch phải, tránh cột chữ bên trái
-    gl.uniform1f(uOffsetX, 0.06);
+    gl.uniform1f(uOffsetX, 0.14);
   };
   size();
 
