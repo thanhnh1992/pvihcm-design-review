@@ -25,8 +25,8 @@
 
   const vert = `
 precision mediump float;
-attribute vec3 aPos;      // x: trải ngang, y: nhiễu, z: chiều sâu — đều là ngẫu nhiên đều
-attribute vec2 aSeed;     // x: vị trí dọc (trải đều), y: nhiễu riêng
+attribute vec3 aPos;      // ngẫu nhiên đều: x trải ngang, y nhiễu dọc, z chiều sâu
+attribute vec2 aSeed;     // x: vị trí dọc trải đều, y: nhiễu riêng
 uniform float uScroll;
 uniform float uTime;
 uniform vec2  uPointer;
@@ -38,20 +38,28 @@ varying float vAlpha;
 const float TAU = 6.28318;
 
 void main(){
-  // Một đám mây hạt duy nhất. Không xoắn ốc, không biến hình, không xoay.
-  // Hạt trôi xuống rất chậm: một vòng đi hết chiều cao mất khoảng 100 giây.
+  // Hạt vẫn rải NGẪU NHIÊN ĐỀU, không nằm trên đường xoắn nào, nên không bao giờ
+  // hiện ra vệt ribbon có cạnh. Chất xoáy đến từ việc CẢ KHỐI cùng quay quanh
+  // trục dọc, và quay vi sai: càng gần tâm quay càng nhanh, giống xoáy nước thật.
   float t = aSeed.x;
   float drift = fract(t + uTime * 0.010 + uScroll * 0.40);
   float targetY = mix(1.20, -1.20, drift);
 
-  // Chiều sâu thật: hạt gần to đậm, hạt xa nhỏ nhạt.
-  float zf = aPos.z * 1.90 + 3.90;
+  // nở dần khi rơi xuống -> dáng phễu
+  float spread = mix(0.62, 1.25, drift);
+  float rx = aPos.x * 2.80 * spread;
+  float rz = aPos.z * 1.90 * spread;
 
-  // Trải ngang gần hết bề rộng trang, dao động rất nhẹ để không chết cứng.
-  float x = aPos.x * 2.80 + sin(uTime * 0.07 + aSeed.y * TAU) * 0.12;
-  float y = targetY * zf + aPos.y * 0.10 * zf;
+  // xoáy vi sai quanh trục dọc
+  float r = length(vec2(rx, rz)) * 0.34;
+  float swirl = uTime * 0.075 / (0.50 + r) + drift * 2.1;
+  float ca = cos(swirl), sa = sin(swirl);
+  float x  = rx * ca - rz * sa;
+  float zz = (rx * sa + rz * ca) * 0.55;   // nén chiều sâu để hạt không văng ra sau camera
 
-  // Parallax theo chuột, lớp gần dịch nhiều hơn lớp xa.
+  float zf = zz + 3.90;
+  float y  = targetY * zf + aPos.y * 0.10 * zf;
+
   x += uPointer.x * (0.34 - aPos.z * 0.12);
 
   float z = zf;
@@ -60,9 +68,8 @@ void main(){
   gl_Position = vec4(proj.x / uAspect + uOffsetX, proj.y + uPointer.y * 0.04, 0.0, 1.0);
   gl_PointSize = clamp(uScale / z, 0.7, 5.2);
 
-  vDepth = clamp((z - 2.00) / 3.80, 0.0, 1.0);
+  vDepth = clamp((z - 1.97) / 3.86, 0.0, 1.0);
 
-  // Hai đầu fade để chỗ lặp của fract() không bao giờ lộ thành vệt đứt.
   float seam = smoothstep(0.0, 0.12, drift) * (1.0 - smoothstep(0.86, 1.0, drift));
   float edge = 1.0 - smoothstep(0.92, 1.28, length(proj));
   vAlpha = seam * edge;
