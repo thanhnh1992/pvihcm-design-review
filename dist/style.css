@@ -79,3 +79,5 @@ header .brand{display:inline-block;min-height:0;padding:11px 0;line-height:1.2}
 .brand{flex-wrap:nowrap;white-space:nowrap}
 
 header .brand{display:inline-flex;align-items:center;gap:10px;padding:0;flex-wrap:nowrap;white-space:nowrap}
+
+.solution-copy>a{margin:14px 20px 0 0}

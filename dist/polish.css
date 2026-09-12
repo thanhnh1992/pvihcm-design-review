@@ -348,3 +348,6 @@ body>.preview,body>header,body>main,body>footer,body>.skip{position:relative;z-i
   content:"";position:absolute;inset:-22px -30px;z-index:-1;pointer-events:none;
   background:radial-gradient(closest-side,rgba(255,255,255,.94) 0,rgba(255,255,255,.80) 58%,rgba(255,255,255,0) 100%);
 }
+
+/* Hai nút CTA trong khối sản phẩm đang dính sát nhau (cách 0px) nên nhìn như đè lên nhau. */
+.solution-copy>a{margin:14px 20px 0 0}
