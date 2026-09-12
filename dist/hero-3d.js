@@ -26,8 +26,8 @@
   const vert = `
 precision mediump float;
 attribute vec3 aSphere;
-attribute vec2 aSeed;        // x: vị trí dọc trong dòng, y: nhiễu riêng
-uniform float uScroll;       // 0..1 tiến độ cuộn cả trang
+attribute vec2 aSeed;
+uniform float uScroll;
 uniform float uTime;
 uniform vec2  uPointer;
 uniform float uAspect;
@@ -36,25 +36,36 @@ uniform float uOffsetX;
 varying float vDepth;
 varying float vAlpha;
 const float TAU = 6.28318;
+const float CAM = 3.80;
 
 void main(){
-  // ── hình 1: khối cầu ở hero ──
+  // ── hình 1: khối cầu tụ ở hero ──
   vec3 sph = aSphere;
 
-  // ── hình 2: dòng dọc xoắn, chảy xuống không ngừng ──
+  // ── hình 2: xoáy mở loe, chiếm nửa phải màn hình ──
+  // Bán kính lớn nhất 2.66 so với camera 3.80 nên mặt gần và mặt xa của xoáy
+  // chênh nhau khoảng 8 lần chiều sâu: đủ để mắt đọc ra khối, không phải nét phẳng.
+  // Toạ độ dọc đặt theo MÀN HÌNH rồi nhân ngược z, nên sau phép chia phối cảnh
+  // hạt trải đều từ đỉnh xuống đáy, không dồn cục giữa và không hở hai đầu.
   float t = aSeed.x;
-  float flow = fract(t + uTime * 0.055 + uScroll * 1.45);   // cuộn đẩy dòng chảy nhanh hơn
-  float y = mix(1.55, -1.55, flow);
-  float ang = t * 46.0 + uTime * 0.22 + uScroll * 3.0;
-  float rad = 0.17 + 0.085 * sin(t * 19.0 + aSeed.y * TAU);
-  vec3 col = vec3(cos(ang) * rad, y, sin(ang) * rad);
+  float flow = fract(t + uTime * 0.05 + uScroll * 1.35);
 
-  // ── chuyển hình theo cuộn: cầu tan ra rồi đổ xuống dòng ──
+  float openness = mix(0.20, 1.0, pow(flow, 0.85));
+  float thick = 0.86 + aSeed.y * 0.28;
+  float rad = 3.00 * openness * thick;
+
+  float ang = flow * TAU * 2.2 + uTime * 0.12 + aSeed.y * 0.9;
+  float sn = sin(ang);
+  float zf = sn * rad + CAM;
+  float targetY = mix(1.06, -1.06, flow);
+  vec3 col = vec3(cos(ang) * rad, targetY * zf, sn * rad);
+
+  // ── chuyển hình theo cuộn: cầu tan ra rồi đổ xuống xoáy ──
   float k = smoothstep(0.015, 0.19, uScroll);
   vec3 p = mix(sph, col, k);
 
-  // xoay: mạnh lúc còn là khối cầu, dịu đi khi đã thành dòng
-  float spin = mix(1.0, 0.22, k);
+  // xoay mạnh lúc còn là cầu, gần như đứng yên khi đã thành xoáy
+  float spin = mix(1.0, 0.05, k);
   float ay = (uTime * 0.16 + uPointer.x * 0.35) * spin;
   float ax = (-0.22 + uPointer.y * 0.18) * spin;
   float cy = cos(ay), sy = sin(ay);
@@ -62,19 +73,19 @@ void main(){
   float cx = cos(ax), sx = sin(ax);
   vec3 r2 = vec3(r1.x, r1.y * cx - r1.z * sx, r1.y * sx + r1.z * cx);
 
-  float z = r2.z + 2.72;
-  if (z < 0.25) z = 0.25;
+  float z = r2.z + CAM;
+  if (z < 0.30) z = 0.30;
   vec2 proj = r2.xy / z;
   gl_Position = vec4(proj.x / uAspect + uOffsetX, proj.y, 0.0, 1.0);
-  gl_PointSize = clamp(uScale / z, 0.6, 6.0);
+  gl_PointSize = clamp(uScale / z, 0.7, 7.0);
 
-  vDepth = clamp((z - 1.75) / 2.2, 0.0, 1.0);
+  vDepth = clamp((z - 1.14) / 5.32, 0.0, 1.0);
 
-  // hai đầu dòng mờ dần -> chỗ lặp của fract() không bao giờ lộ
   float seam = smoothstep(0.0, 0.10, flow) * (1.0 - smoothstep(0.88, 1.0, flow));
-  float edge = 1.0 - smoothstep(0.80, 1.12, length(proj));
+  float edge = 1.0 - smoothstep(0.95, 1.30, length(proj));
   vAlpha = mix(1.0, seam, k) * edge;
-}`;
+}
+`;
 
   const frag = `
 precision mediump float;
@@ -84,7 +95,7 @@ void main(){
   vec2 c = gl_PointCoord - 0.5;
   if (dot(c, c) > 0.25) discard;
   vec3 col = mix(vec3(0.035, 0.180, 0.365), vec3(0.482, 0.706, 0.855), vDepth);
-  float a = mix(0.55, 0.05, vDepth) * vAlpha;
+  float a = mix(0.44, 0.04, vDepth) * vAlpha;
   gl_FragColor = vec4(col * a, a);
 }`;
 
@@ -104,9 +115,9 @@ void main(){
   const seed = new Float32Array(COUNT * 2);
   for (let i = 0; i < COUNT; i += 1) {
     const u = Math.random() * 2 - 1, th = Math.random() * Math.PI * 2, rr = Math.sqrt(1 - u * u);
-    sphere[i * 3] = rr * Math.cos(th) * 1.12;
-    sphere[i * 3 + 1] = rr * Math.sin(th) * 1.12;
-    sphere[i * 3 + 2] = u * 1.12;
+    sphere[i * 3] = rr * Math.cos(th) * 1.95;
+    sphere[i * 3 + 1] = rr * Math.sin(th) * 1.95;
+    sphere[i * 3 + 2] = u * 1.95;
     seed[i * 2] = i / COUNT;          // trải đều dọc dòng -> mật độ liên tục
     seed[i * 2 + 1] = Math.random();
   }
@@ -133,9 +144,9 @@ void main(){
     canvas.height = Math.round(innerHeight * dpr);
     gl.viewport(0, 0, canvas.width, canvas.height);
     gl.uniform1f(uAspect, innerWidth / innerHeight);
-    gl.uniform1f(uScale, 5.0 * dpr);
+    gl.uniform1f(uScale, 7.4 * dpr);
     // dòng nằm lệch phải, tránh cột chữ bên trái
-    gl.uniform1f(uOffsetX, innerWidth > 1180 ? 0.46 : 0.34);
+    gl.uniform1f(uOffsetX, innerWidth > 1180 ? 0.56 : 0.44);
   };
   size();
 
