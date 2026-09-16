@@ -237,3 +237,21 @@
 
 /* Chip gợi ý cao 38px, dưới chuẩn vùng bấm 44px. */
 .fire-chips button{min-height:var(--tap,44px);padding:0 14px}
+
+/* ═══ Mào đầu bản sáng: nền trắng ngả xanh băng, ảnh mờ dần vào nền ═══
+   Nền navy đặc trước đó đâm màu và tách rời khỏi phần còn lại của trang.
+   Chuyển sang nền sáng cùng tông với trang chủ, ảnh hoà mép trái vào nền. */
+.fire-hero{background:radial-gradient(90% 120% at 78% 30%,#e3f1fc 0,#f3f9fe 45%,#fff 80%);color:var(--ink);padding:56px 0 64px;border-bottom:1px solid var(--rail)}
+.fire-hero .fire-wrap{align-items:center;gap:36px}
+.fire-hero h1{color:var(--ink)}
+.fire-hero h1 em{color:#165a9c}
+.fire-hero p{color:var(--muted)}
+.fire-hero .fire-eyebrow{color:#7d93ab}
+.fire-hero-copy{padding-bottom:0}
+.fire-hero-art img{border-radius:var(--r-card,16px);max-height:400px;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 26%);mask-image:linear-gradient(to right,transparent 0,#000 26%);
+  box-shadow:none}
+.fire-btn-line{color:var(--ink);border-color:#c9d6e3;background:#fff}
+.fire-btn-line:hover{border-color:var(--ink);color:var(--ink)}
+@media(max-width:1000px){.fire-hero{padding:40px 0 44px}}
+.fire-hero h1{text-wrap:balance;max-width:15ch}
