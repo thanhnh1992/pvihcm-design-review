@@ -81,3 +81,32 @@ header .brand{display:inline-block;min-height:0;padding:11px 0;line-height:1.2}
 header .brand{display:inline-flex;align-items:center;gap:10px;padding:0;flex-wrap:nowrap;white-space:nowrap}
 
 .solution-copy>a{margin:14px 20px 0 0}
+
+/* ═══ Nút liên hệ nổi: gọi điện và nhắn Zalo, có trên mọi trang ═══
+   Desktop: hai viên thuốc xếp dọc góc phải dưới.
+   Mobile: thanh hai nút sát đáy màn hình, body chừa chỗ để không che nội dung. */
+.contact-dock{position:fixed;right:22px;bottom:22px;z-index:40;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.contact-dock a{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px 0 8px;
+  border-radius:999px;font-size:16px;font-weight:700;text-decoration:none;
+  box-shadow:0 10px 26px rgba(7,31,67,.18);transition:transform .2s ease,box-shadow .2s ease}
+.contact-dock a:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(7,31,67,.24)}
+.contact-dock a:focus-visible{outline:3px solid #063d79;outline-offset:3px}
+.contact-dock-call{background:#e3262e;color:#fff}
+.contact-dock-zalo{background:#fff;color:#071f43;border:1px solid #d5e2ee}
+.contact-dock-ic{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:999px;
+  font-size:13px;font-weight:800;letter-spacing:-.01em;flex:0 0 auto}
+.contact-dock-call .contact-dock-ic{background:rgba(255,255,255,.18)}
+.contact-dock-zalo .contact-dock-ic{background:#0068ff;color:#fff}
+.contact-dock-ic svg{width:18px;height:18px;fill:currentColor}
+@media(max-width:820px){
+  body{padding-bottom:76px}
+  .contact-dock{left:0;right:0;bottom:0;flex-direction:row;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+    background:rgba(255,255,255,.96);border-top:1px solid #e1eaf1;box-shadow:0 -6px 20px rgba(7,31,67,.08)}
+  .contact-dock a{flex:1;justify-content:center;padding:0 12px;box-shadow:none;font-size:15px}
+  .contact-dock a:hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce){.contact-dock a{transition:none}.contact-dock a:hover{transform:none}}
+@media print{.contact-dock{display:none}}
+.contact-dock .dock-sm{display:none}
+.contact-dock a{white-space:nowrap}
+@media(max-width:820px){.contact-dock .dock-lg{display:none}.contact-dock .dock-sm{display:inline}.contact-dock .contact-dock-ic{width:30px;height:30px}}
