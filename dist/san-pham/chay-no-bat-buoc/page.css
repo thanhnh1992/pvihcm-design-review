@@ -1,0 +1,239 @@
+/* ═══════════════════════════════════════════════════════════════════
+   BẢO HIỂM CHÁY NỔ BẮT BUỘC
+   Trang này là công cụ tra cứu, không phải trang quảng cáo. Nên bố cục đi
+   theo lối tài liệu tham chiếu: bảng kẻ chỉ, số căn phải, tiêu đề cột chữ
+   nhỏ in hoa, chú thích nguồn dưới mỗi bảng. Màu đỏ chỉ xuất hiện đúng hai
+   chỗ: nút hành động chính và vạch cảnh báo.
+   ═══════════════════════════════════════════════════════════════════ */
+.fire{--rail:#e3e9f0;--rail-soft:#eef2f7;--paper:#fbfcfe}
+
+/* ── Khung chung ── */
+.fire-wrap{width:min(1240px,calc(100% - 48px));margin-inline:auto}
+.fire section{scroll-margin-top:24px}
+.fire h2{font-size:clamp(26px,2.8vw,36px);line-height:1.2;letter-spacing:-.03em;color:var(--ink);margin:0}
+.fire h3{font-size:19px;line-height:1.35;letter-spacing:-.01em;color:var(--ink);margin:0}
+.fire p{color:var(--muted);line-height:1.7;margin:0}
+.fire-lede{font-size:17px;max-width:64ch}
+.fire-eyebrow{display:block;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#7d93ab;margin-bottom:12px}
+
+/* ── Mào đầu: nền đậm, chữ căn trái, ảnh thật bên phải ── */
+.fire-hero{background:linear-gradient(160deg,#0a2444 0,#071f43 52%,#05182f 100%);color:#fff;padding:52px 0 0}
+.fire-hero .fire-wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:44px;align-items:end}
+.fire-hero h1{font-size:clamp(34px,4.4vw,54px);line-height:1.08;letter-spacing:-.035em;margin:14px 0 18px;color:#fff;font-weight:700}
+.fire-hero h1 em{font-style:normal;color:#8ec5f5}
+.fire-hero p{color:#b9cde3;font-size:17px;max-width:52ch}
+.fire-hero .fire-eyebrow{color:#7fa8d4}
+.fire-hero-copy{padding-bottom:52px}
+.fire-hero-art{position:relative;align-self:end}
+.fire-hero-art img{border-radius:var(--r-card,16px) var(--r-card,16px) 0 0;display:block;width:100%}
+
+.fire-actions{display:flex;flex-wrap:wrap;gap:12px 18px;margin-top:26px}
+
+/* ── Vạch dữ liệu pháp lý: kẻ ngang, không phải ba thẻ bằng nhau ── */
+.fire-anchor{border-top:1px solid rgba(255,255,255,.14);margin-top:34px}
+.fire-anchor .fire-wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+.fire-anchor div{padding:20px 26px 22px;border-left:1px solid rgba(255,255,255,.12)}
+.fire-anchor div:first-child{border-left:0;padding-left:0}
+.fire-anchor dt{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#7fa8d4;margin-bottom:6px}
+.fire-anchor dd{margin:0;font-size:16px;color:#e4edf7;line-height:1.5}
+.fire-anchor b{color:#fff;font-variant-numeric:tabular-nums}
+
+/* ── Công cụ tra cứu: thanh chỉ mục bên trái, bảng tính bên phải ── */
+.fire-tool{padding:64px 0 12px;background:var(--paper)}
+.fire-tool-grid{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1fr);gap:34px;margin-top:30px;align-items:start}
+.fire-panel{background:#fff;border:1px solid var(--rail);border-radius:var(--r-card,16px)}
+.fire-panel-head{padding:18px 20px;border-bottom:1px solid var(--rail)}
+.fire-panel-head h3{font-size:17px}
+.fire-panel-head p{font-size:15px;margin-top:5px}
+
+.fire-search{padding:14px 20px;border-bottom:1px solid var(--rail-soft)}
+.fire-search input{width:100%;min-height:var(--tap,44px);padding:0 14px;font:inherit;font-size:16px;
+  border:1px solid var(--rail);border-radius:var(--r-chip,10px);color:var(--ink);background:#fff}
+.fire-search input:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.fire-chips{display:flex;flex-wrap:wrap;gap:7px;padding:0 20px 14px}
+.fire-chips button{font:inherit;font-size:14px;padding:7px 12px;background:var(--ice);border:1px solid #d5e6f5;
+  border-radius:var(--r-pill,999px);color:var(--blue);cursor:pointer}
+.fire-chips button:hover{background:#e0efff}
+
+.fire-index{max-height:520px;overflow-y:auto}
+.fire-group{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#7d93ab;
+  padding:16px 20px 8px;position:sticky;top:0;background:#fff;border-bottom:1px solid var(--rail-soft)}
+.fire-row{display:grid;grid-template-columns:58px minmax(0,1fr) auto;gap:12px;align-items:baseline;
+  width:100%;text-align:left;padding:12px 20px;font:inherit;background:none;border:0;
+  border-bottom:1px solid var(--rail-soft);cursor:pointer}
+.fire-row:hover{background:var(--ice)}
+.fire-row[aria-pressed="true"]{background:#e8f3ff}
+.fire-row code{font-size:14px;font-weight:700;color:var(--blue);font-variant-numeric:tabular-nums}
+.fire-row .nm{font-size:15px;color:var(--ink);line-height:1.45}
+.fire-row .nm small{display:block;color:var(--muted);font-size:14px;margin-top:3px}
+.fire-row .rt{font-size:15px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.fire-empty{padding:26px 20px;color:var(--muted);font-size:15px}
+
+/* ── Bảng tính: dáng chứng từ, số căn phải ── */
+.fire-sheet table{width:100%;border-collapse:collapse}
+.fire-sheet th{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#7d93ab;font-weight:700;
+  text-align:left;padding:12px 14px;border-bottom:1px solid var(--rail)}
+.fire-sheet th.num,.fire-sheet td.num{text-align:right;font-variant-numeric:tabular-nums}
+.fire-sheet td{padding:13px 14px;border-bottom:1px solid var(--rail-soft);font-size:15px;color:var(--ink);vertical-align:top}
+.fire-sheet td .code{font-weight:700;color:var(--blue)}
+.fire-sheet td .nm{display:block;color:var(--muted);font-size:14px;margin-top:3px;line-height:1.45}
+.fire-sheet input[type="number"]{width:118px;min-height:40px;padding:0 10px;font:inherit;font-size:15px;
+  text-align:right;border:1px solid var(--rail);border-radius:var(--r-chip,10px);
+  font-variant-numeric:tabular-nums;color:var(--ink)}
+.fire-sheet input:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.fire-del{font:inherit;font-size:14px;background:none;border:0;color:var(--muted);cursor:pointer;padding:6px;line-height:1}
+.fire-del:hover{color:var(--red)}
+.fire-kt{display:inline-block;font-size:13px;font-weight:700;padding:3px 8px;border-radius:var(--r-chip,10px);
+  background:var(--ice);color:var(--blue);border:1px solid #d5e6f5}
+.fire-sheet-empty{padding:40px 20px;text-align:center;color:var(--muted);font-size:15px}
+
+/* ── Khối tổng: dính mép khi cuộn ── */
+.fire-total{position:sticky;top:16px;margin-top:18px;background:#fff;border:1px solid var(--rail);
+  border-radius:var(--r-card,16px);overflow:hidden}
+.fire-total-rows{padding:16px 20px}
+.fire-total-rows div{display:flex;justify-content:space-between;gap:16px;padding:7px 0;font-size:15px;color:var(--muted)}
+.fire-total-rows b{color:var(--ink);font-variant-numeric:tabular-nums;font-weight:600}
+.fire-total-sum{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  padding:16px 20px;border-top:1px solid var(--rail);background:var(--ice)}
+.fire-total-sum span{font-size:15px;color:var(--ink);font-weight:600}
+.fire-total-sum strong{font-size:28px;letter-spacing:-.02em;color:var(--blue);font-variant-numeric:tabular-nums}
+.fire-total-foot{padding:14px 20px;border-top:1px solid var(--rail);display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center}
+
+/* ── Chú thích nguồn: dáng cước chú tài liệu ── */
+.fire-note{font-size:14px;line-height:1.65;color:var(--muted);border-left:2px solid var(--rail);padding-left:14px;margin-top:18px}
+.fire-note b{color:var(--ink)}
+
+/* ── Bảng so sánh ba lớp: bảng, không phải ba thẻ ── */
+.fire-compare{padding:64px 0}
+.fire-compare table{width:100%;border-collapse:collapse;margin-top:26px}
+.fire-compare th,.fire-compare td{padding:16px 18px;border-bottom:1px solid var(--rail);vertical-align:top;font-size:16px}
+.fire-compare thead th{border-bottom:2px solid var(--ink);color:var(--ink);font-size:17px;letter-spacing:-.01em}
+.fire-compare thead th span{display:block;font-size:13px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:#7d93ab;margin-bottom:6px}
+.fire-compare tbody th{text-align:left;font-weight:600;color:var(--ink);width:180px;background:var(--paper)}
+.fire-compare td{color:var(--muted);line-height:1.6}
+.fire-compare .yes{color:var(--ink);font-weight:600}
+.fire-compare .no{color:#9aa9b9}
+
+/* ── Biểu phí tham khảo ── */
+.fire-tables{padding:8px 0 64px;background:var(--paper)}
+.fire-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0}
+.fire-tabs button{font:inherit;font-size:15px;font-weight:600;min-height:var(--tap,44px);padding:0 16px;
+  background:#fff;border:1px solid var(--rail);border-radius:var(--r-pill,999px);color:var(--muted);cursor:pointer}
+.fire-tabs button[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.fire-ref{margin-top:18px;background:#fff;border:1px solid var(--rail);border-radius:var(--r-card,16px);overflow:hidden}
+.fire-ref table{width:100%;border-collapse:collapse}
+.fire-ref th{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#7d93ab;text-align:left;
+  padding:13px 16px;border-bottom:1px solid var(--rail);font-weight:700}
+.fire-ref td{padding:13px 16px;border-bottom:1px solid var(--rail-soft);font-size:15px;color:var(--ink);line-height:1.5}
+.fire-ref tr:last-child td{border-bottom:0}
+.fire-ref .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.fire-ref .code{font-weight:700;color:var(--blue);font-variant-numeric:tabular-nums}
+
+/* ── Bộ chứng từ: hai cột theo mục đích, gạch chỉ ── */
+.fire-docs{padding:64px 0}
+.fire-docs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:34px;margin-top:28px}
+.fire-docs h3{padding-bottom:12px;border-bottom:2px solid var(--ink)}
+.fire-docs ol{list-style:none;margin:0;padding:0;counter-reset:d}
+.fire-docs li{counter-increment:d;display:grid;grid-template-columns:30px minmax(0,1fr);gap:14px;
+  padding:15px 0;border-bottom:1px solid var(--rail-soft)}
+.fire-docs li::before{content:counter(d,decimal-leading-zero);font-size:14px;font-weight:700;
+  color:#9fb3c8;font-variant-numeric:tabular-nums;padding-top:2px}
+.fire-docs li b{display:block;color:var(--ink);font-size:16px;font-weight:600;margin-bottom:4px}
+.fire-docs li span{color:var(--muted);font-size:15px;line-height:1.6}
+
+/* ── Tin tức: hàng biên tập, không phải thẻ ── */
+.fire-news{padding:64px 0;background:var(--paper)}
+.fire-news ul{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid var(--rail)}
+.fire-news li{border-bottom:1px solid var(--rail)}
+.fire-news a{display:grid;grid-template-columns:132px minmax(0,1fr) 28px;gap:22px;align-items:baseline;padding:22px 4px}
+.fire-news a:hover{background:#fff}
+.fire-news time{font-size:14px;color:#7d93ab;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.fire-news b{display:block;font-size:19px;font-weight:600;color:var(--ink);letter-spacing:-.01em;line-height:1.35;margin-bottom:6px}
+.fire-news span{color:var(--muted);font-size:15px;line-height:1.6}
+.fire-news i{font-style:normal;color:var(--blue);font-size:18px;justify-self:end}
+
+/* ── Bồi thường: bốn bước kẻ dọc ── */
+.fire-claim{padding:64px 0}
+.fire-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0;margin-top:30px;border-top:2px solid var(--ink)}
+.fire-steps article{padding:22px 24px 24px;border-left:1px solid var(--rail)}
+.fire-steps article:first-child{border-left:0;padding-left:0}
+.fire-steps b{display:block;font-size:14px;font-weight:700;color:var(--red);letter-spacing:.08em;
+  margin-bottom:10px;font-variant-numeric:tabular-nums}
+.fire-steps h3{font-size:17px;margin-bottom:8px}
+.fire-steps p{font-size:15px}
+.fire-hotline{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-top:34px;
+  padding:22px 26px;background:var(--ink);border-radius:var(--r-card,16px);color:#fff}
+.fire-hotline p{color:#b9cde3;font-size:15px;margin:0}
+.fire-hotline strong{font-size:15px;color:#fff;display:block;margin-bottom:3px}
+.fire-hotline a{margin-left:auto;background:#fff;color:var(--ink);font-weight:700;font-size:18px;
+  padding:0 24px;min-height:var(--tap,44px);display:inline-flex;align-items:center;
+  border-radius:var(--r-pill,999px);font-variant-numeric:tabular-nums;letter-spacing:.01em}
+
+/* ── Câu hỏi: dùng details của trình duyệt, không tự chế accordion ── */
+.fire-faq{padding:64px 0;background:var(--paper)}
+.fire-faq .qa{margin:26px 0 0;border-top:1px solid var(--rail)}
+.fire-faq details{border-bottom:1px solid var(--rail)}
+.fire-faq summary{cursor:pointer;list-style:none;padding:20px 40px 20px 0;position:relative;
+  font-size:18px;font-weight:600;color:var(--ink);line-height:1.4}
+.fire-faq summary::-webkit-details-marker{display:none}
+.fire-faq summary::after{content:"+";position:absolute;right:8px;top:18px;font-size:24px;font-weight:400;color:var(--blue)}
+.fire-faq details[open] summary::after{content:"\2212"}
+.fire-faq summary:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.fire-faq .ans{padding:0 48px 22px 0;color:var(--muted);font-size:16px;line-height:1.75}
+
+/* ── Cảnh báo: vạch đỏ, xuất hiện đúng một lần ── */
+.fire-alert{border-left:3px solid var(--red);background:#fff;padding:20px 24px;margin-top:30px;
+  border-radius:0 var(--r-chip,10px) var(--r-chip,10px) 0}
+.fire-alert b{display:block;color:var(--ink);font-size:16px;margin-bottom:6px}
+.fire-alert p{font-size:15px}
+
+/* ── Nút ── */
+.fire-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:var(--tap,44px);
+  padding:0 24px;border-radius:var(--r-pill,999px);font:inherit;font-size:16px;font-weight:700;border:0;cursor:pointer}
+.fire-btn-red{background:var(--red);color:#fff}
+.fire-btn-red:hover{background:#c8202a}
+.fire-btn-line{background:transparent;color:#cfe0f2;border:1px solid rgba(255,255,255,.3)}
+.fire-btn-line:hover{border-color:#fff;color:#fff}
+.fire-btn-dark{background:var(--ink);color:#fff}
+
+/* ── Màn hẹp ── */
+@media(max-width:1000px){
+  .fire-hero .fire-wrap{grid-template-columns:1fr;gap:0}
+  .fire-hero-copy{padding-bottom:30px}
+  .fire-hero-art{display:none}
+  .fire-tool-grid{grid-template-columns:1fr}
+  .fire-total{position:static}
+  .fire-compare tbody th{width:130px}
+}
+@media(max-width:760px){
+  .fire-wrap{width:calc(100% - 40px)}
+  .fire-anchor .fire-wrap{grid-template-columns:1fr}
+  .fire-anchor div{border-left:0;border-top:1px solid rgba(255,255,255,.12);padding:16px 0}
+  .fire-anchor div:first-child{border-top:0}
+  .fire-steps{grid-template-columns:1fr}
+  .fire-steps article{border-left:0;border-top:1px solid var(--rail);padding:20px 0}
+  .fire-steps article:first-child{border-top:0}
+  .fire-news a{grid-template-columns:minmax(0,1fr) 24px;gap:6px 16px}
+  .fire-news time{grid-column:1/-1;margin-bottom:2px}
+  .fire-hotline a{margin-left:0;width:100%}
+  .fire-compare{overflow-x:auto}
+  .fire-compare table{min-width:620px}
+  .fire-tool,.fire-compare,.fire-docs,.fire-news,.fire-claim,.fire-faq{padding:44px 0}
+}
+
+/* Nhãn phân loại trong danh sách tin: dùng nhãn chủ đề, không bịa ngày đăng. */
+.fire-news .cat{font-size:14px;color:#7d93ab;letter-spacing:.02em}
+
+/* Thẻ img có thuộc tính height="853"; style.css chỉ đặt width:100% nên trình duyệt
+   lấy luôn 853px làm chiều cao, đội hero lên 1105px. Phải trả lại height:auto. */
+.fire img{height:auto}
+.fire-hero-art img{max-height:430px;object-fit:cover;object-position:60% 50%}
+.fire-hero-copy{padding-bottom:40px}
+
+/* <b> và <span> là hai ô lưới riêng nên <span> rớt xuống hàng hai, đúng cột 30px
+   và bị ép còn một chữ mỗi dòng. Ghim nó về cột nội dung. */
+.fire-docs li b,.fire-docs li span{grid-column:2}
+
+/* Chip gợi ý cao 38px, dưới chuẩn vùng bấm 44px. */
+.fire-chips button{min-height:var(--tap,44px);padding:0 14px}
