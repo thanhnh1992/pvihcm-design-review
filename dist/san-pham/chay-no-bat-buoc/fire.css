@@ -1,0 +1,164 @@
+/* ═══════════════════════════════════════════════════════════════════
+   CHÁY NỔ BẮT BUỘC: bố cục theo mẫu duyệt (hero ảnh, dải ba lớp, căn cứ
+   pháp lý, công cụ ba bước kèm cột tư vấn).
+   Muốn trang trông như một website bảo hiểm thật, không như mẫu dựng sẵn:
+   - bo góc nhỏ (6–8px), bóng rất nhẹ, kẻ chỉ thay cho thẻ nổi;
+   - không dùng biểu tượng trong vòng tròn, không dùng nhãn viên thuốc;
+   - ảnh thật tràn mép, không khung, không chữ đè lên ảnh;
+   - đỏ chỉ ở nút hành động chính và nhãn "Bắt buộc theo luật".
+   ═══════════════════════════════════════════════════════════════════ */
+.fire{--line:#d9e2e9;--line-soft:#e9eef3;--paper:#f5f7f9;--r:8px}
+
+/* ── Điều hướng trong trang, dính mép trên khi cuộn ── */
+.fx-local{position:sticky;top:0;z-index:30;background:#fff;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line)}
+.fx-local .fire-wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.fx-local .fire-wrap::-webkit-scrollbar{display:none}
+.fx-local a{flex:none;display:inline-flex;align-items:center;min-height:48px;padding:0 14px;font-size:15px;font-weight:600;color:#36485b;
+  border-bottom:2px solid transparent;white-space:nowrap}
+.fx-local a:first-child{padding-left:0}
+.fx-local a:hover{color:var(--blue)}
+.fx-local a.is-active{color:var(--blue);border-bottom-color:var(--blue)}
+.fire section{scroll-margin-top:64px}
+
+/* ── Mào đầu ── */
+.fx-hero{position:relative;background:#fff;border-bottom:1px solid var(--line);overflow:hidden}
+.fx-hero .fire-wrap{position:relative;z-index:1;min-height:440px;display:flex;align-items:center}
+.fx-hero-copy{width:min(560px,50%);padding:56px 0 60px}
+.fx-kicker{margin:0 0 14px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#586574}
+.fx-hero h1{margin:0;font-size:clamp(36px,4.2vw,56px);line-height:1.08;letter-spacing:-.035em;color:var(--ink);font-weight:800;max-width:11em}
+.fx-sub{margin:16px 0 0!important;font-size:20px!important;line-height:1.45!important;font-weight:700;color:var(--ink)!important}
+.fx-lead{margin:12px 0 0!important;font-size:17px!important;line-height:1.7!important;max-width:52ch}
+.fx-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.fx-hero-photo{position:absolute;inset:0 0 0 auto;width:52%;margin:0}
+.fx-hero-photo img{width:100%;height:100%;object-fit:cover;object-position:62% 45%;display:block;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 22%);mask-image:linear-gradient(to right,transparent 0,#000 22%)}
+
+/* ── Nút: chữ nhật bo nhẹ ── */
+.fx-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:var(--r);
+  font:inherit;font-size:16px;font-weight:700;line-height:1.2;text-align:center;border:1px solid transparent;cursor:pointer;transition:background-color .15s,border-color .15s,color .15s}
+.fx-btn-primary{background:var(--red);color:#fff}
+.fx-btn-primary:hover{background:#a91e27}
+.fx-btn-ghost{background:#fff;color:var(--blue);border-color:#9fb6cc}
+.fx-btn-ghost:hover{border-color:var(--blue);background:#f3f7fb}
+.fx-block{display:flex;width:100%}
+
+/* ── Dải ba lớp bảo vệ ── */
+.fx-layers{background:#fff;border-bottom:1px solid var(--line)}
+.fx-layers-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.fx-layer{display:flex;flex-direction:column;gap:5px;padding:26px 28px 28px;border-left:1px solid var(--line);color:var(--ink)}
+.fx-layer:first-child{border-left:0;padding-left:0}
+.fx-layer:hover b{color:var(--blue);text-decoration:underline;text-underline-offset:4px}
+.fx-layer-tag{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#586574}
+.fx-tag-req{color:var(--red)}
+.fx-layer b{font-size:20px;line-height:1.3;letter-spacing:-.01em;margin-top:2px}
+.fx-layer span:not(.fx-layer-tag){font-size:15px;line-height:1.55;color:var(--muted)}
+.fx-layer em{font-style:normal;font-size:15px;line-height:1.5;font-weight:600;color:var(--blue);margin-top:6px}
+
+/* ── Căn cứ pháp lý ── */
+.fx-legal{background:var(--paper);border-bottom:1px solid var(--line)}
+.fx-legal .fire-wrap{display:flex;align-items:center;justify-content:space-between;gap:12px 28px;padding:14px 0;flex-wrap:wrap}
+.fx-legal p{margin:0;font-size:15px;line-height:1.6;color:#36485b;max-width:88ch}
+.fx-legal b{color:var(--ink)}
+.fx-legal a{display:inline-flex;align-items:center;min-height:44px;font-size:15px;font-weight:700;color:var(--blue);text-decoration:underline;text-underline-offset:4px;white-space:nowrap}
+
+/* ── Công cụ ── */
+.fx-tool{padding:56px 0 24px;background:#fff}
+.fx-tool h2{margin:0}
+.fx-tool .fire-lede{margin-top:10px}
+.fx-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;margin-top:28px;align-items:start}
+.fx-main{min-width:0;display:grid;gap:18px}
+
+.fx-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:var(--r);overflow:hidden;counter-reset:none}
+.fx-steps li{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--paper);border-left:1px solid var(--line);color:#586574}
+.fx-steps li:first-child{border-left:0}
+.fx-steps b{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1.5px solid #9fb0c2;font-size:15px;color:#586574;background:#fff}
+.fx-steps span{display:flex;flex-direction:column;font-size:16px;font-weight:700;line-height:1.3;color:#36485b}
+.fx-steps small{font-size:14px;font-weight:400;color:#586574;margin-top:2px}
+.fx-steps li[aria-current="step"]{background:#fff;box-shadow:inset 0 -3px 0 var(--blue)}
+.fx-steps li[aria-current="step"] b{background:var(--blue);border-color:var(--blue);color:#fff}
+.fx-steps li[aria-current="step"] span{color:var(--ink)}
+.fx-steps li.is-done b{background:#e8f0f7;border-color:#e8f0f7;color:var(--blue)}
+
+.fx-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.fx-card>.fx-label{display:block;padding:18px 20px 0;font-size:15px;font-weight:700;color:var(--ink)}
+.fx-card .fire-search{padding:10px 20px 12px;border:0}
+.fx-card .fire-search input{min-height:48px;border-color:#b9c7d5;border-radius:6px;padding:0 14px}
+.fx-quick{display:flex;align-items:center;gap:6px 12px;flex-wrap:wrap;padding:0 20px 16px}
+.fx-quick>span{font-size:14px;color:#586574}
+.fx-quick .fire-chips{padding:0;gap:8px}
+.fx-quick .fire-chips button{border-radius:6px;background:#fff;border:1px solid #c9d6e3;color:#233447;font-size:15px}
+.fx-quick .fire-chips button:hover{border-color:var(--blue);color:var(--blue)}
+
+.fx-index-head,.fx-card .fire-row{display:grid;grid-template-columns:64px minmax(0,1fr) 88px 84px;gap:12px;align-items:baseline}
+.fx-index-head{padding:10px 20px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper);
+  font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#586574}
+.fx-index-head span:nth-child(3){text-align:right}
+.fx-index-head span:nth-child(4){text-align:center}
+.fx-card .fire-index{max-height:520px}
+.fx-card .fire-group{top:0;padding:14px 20px 8px;background:#fff;color:#586574;font-size:13px}
+.fx-card .fire-row{padding:12px 20px}
+.fx-card .fire-row .rt{text-align:right}
+.fx-card .fire-row .kt{justify-self:center;font-size:14px;font-weight:700;min-width:30px;text-align:center;padding:2px 8px;border-radius:4px;border:1px solid #d6dfe8;color:#36485b;background:#fff}
+.fx-card .fire-row .kt.n{border-color:#f0c9a8;color:#8a4a12;background:#fff8f1}
+.fx-card .fire-row[aria-pressed="true"]{background:#eef4fa;box-shadow:inset 3px 0 0 var(--blue)}
+.fx-card .fire-row[aria-pressed="true"] .nm::after{content:" · đã chọn";color:var(--blue);font-weight:700;font-size:14px}
+
+.fx-card-head{padding:16px 20px;border-bottom:1px solid var(--line)}
+.fx-card-head h3{font-size:18px}
+.fx-card-head p{font-size:15px;margin-top:4px}
+.fx-total{position:static;margin-top:0;border-radius:var(--r)}
+.fx-total .fire-total-sum{background:#f3f7fb}
+.fx-tool .fire-note{margin-top:4px}
+
+/* ── Cột tư vấn ── */
+.fx-side{position:sticky;top:68px;display:grid;gap:18px}
+.fx-side-card{border:1px solid var(--line);border-radius:var(--r);padding:22px 22px 20px;background:#fff}
+.fx-side-card h3{font-size:19px;margin-bottom:8px}
+.fx-side-card>p{font-size:15px;line-height:1.6;margin-bottom:16px}
+.fx-side-card .fx-btn+.fx-btn{margin-top:10px}
+.fx-small{font-size:14px!important;line-height:1.55!important;margin:14px 0 0!important}
+.fx-small a{color:var(--blue);font-weight:700;white-space:nowrap}
+.fx-links{list-style:none;margin:4px 0 0;padding:0}
+.fx-links li+li{border-top:1px solid var(--line-soft)}
+.fx-links a{display:grid;grid-template-columns:minmax(0,1fr) 18px;gap:2px 10px;padding:12px 0;font-size:15px;font-weight:600;color:var(--ink);line-height:1.4}
+.fx-links small{grid-column:1;font-size:14px;font-weight:400;color:#586574}
+.fx-links i{grid-column:2;grid-row:1/3;align-self:center;font-style:normal;color:var(--blue)}
+.fx-links a:hover{color:var(--blue)}
+
+/* Các khối phía dưới: đồng bộ bo góc và nền với phần trên */
+.fire .fire-ref,.fire .fire-panel,.fire .fire-hotline{border-radius:var(--r)}
+.fire .fire-tabs button{border-radius:6px}
+.fire .fire-tabs button[aria-selected="true"]{background:var(--blue);border-color:var(--blue)}
+
+/* ── Màn hẹp ── */
+@media(max-width:1060px){
+  .fx-layout{grid-template-columns:1fr}
+  .fx-side{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:900px){
+  .fx-hero .fire-wrap{min-height:0}
+  .fx-hero-copy{width:100%;padding:36px 0 28px}
+  .fx-hero-photo{position:relative;inset:auto;width:100%;aspect-ratio:16/9}
+  .fx-hero-photo img{-webkit-mask-image:none;mask-image:none}
+  .fx-layers-grid{grid-template-columns:1fr}
+  .fx-layer{border-left:0;border-top:1px solid var(--line);padding:20px 0}
+  .fx-layer:first-child{border-top:0}
+}
+@media(max-width:760px){
+  .fx-tool{padding:40px 0 16px}
+  .fx-side{grid-template-columns:1fr}
+  .fx-steps{grid-template-columns:1fr}
+  .fx-steps li{border-left:0;border-top:1px solid var(--line);padding:12px 14px}
+  .fx-steps li:first-child{border-top:0}
+  .fx-index-head{display:none}
+  .fx-card .fire-row{grid-template-columns:52px minmax(0,1fr) auto;row-gap:6px;padding:12px 16px}
+  .fx-card .fire-row .kt{grid-column:3;justify-self:end}
+  .fx-card>.fx-label,.fx-card .fire-search,.fx-quick{padding-left:16px;padding-right:16px}
+  .fx-sub{font-size:18px!important}
+  .fx-actions .fx-btn{width:100%}
+  .fx-legal a{min-height:40px}
+}
+@media(max-width:560px){.fx-local a{padding:0 10px;font-size:14px}}
+
+/* style.css ẩn mọi thẻ <nav> ở màn <=820px (dành cho menu cũ); thanh trong trang vẫn phải hiện. */
+.fire nav.fx-local{display:block}

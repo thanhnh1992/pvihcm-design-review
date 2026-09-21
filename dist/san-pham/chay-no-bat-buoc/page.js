@@ -50,7 +50,8 @@
         html += `<button type="button" class="fire-row" data-code="${esc(it.code)}" aria-pressed="${chosen.has(it.code)}">`
           + `<code>${esc(it.code)}</code>`
           + `<span class="nm">${esc(it.ten)}${it.nguong ? `<small>${esc(it.nguong)}</small>` : ''}</span>`
-          + `<span class="rt">${rateText(it.rate)}</span></button>`;
+          + `<span class="rt">${rateText(it.rate)}</span>`
+          + `<span class="kt ${it.kt === 'N' ? 'n' : 'm'}" title="Khấu trừ loại ${esc(it.kt)}">${esc(it.kt)}</span></button>`;
       }
     }
     elIndex.innerHTML = html;
@@ -94,6 +95,18 @@
     elTotal.hidden = false;
   }
 
+  const stepEls = [...document.querySelectorAll('#fx-steps li')];
+  function setStep() {
+    let fee = 0;
+    for (const r of chosen.values()) fee += r.stbh;
+    const step = !chosen.size ? 1 : fee > 0 ? 3 : 2;
+    stepEls.forEach((li) => {
+      const n = Number(li.dataset.step);
+      if (n === step) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current');
+      li.classList.toggle('is-done', n < step);
+    });
+  }
+
   function toggle(code) {
     if (chosen.has(code)) chosen.delete(code);
     else {
@@ -103,6 +116,7 @@
     }
     drawIndex();
     drawSheet();
+    setStep();
   }
 
   elIndex.addEventListener('click', (e) => {
@@ -134,6 +148,7 @@
     $('fire-vat').textContent = vnd(fee * 0.1);
     $('fire-sum').textContent = vnd(fee * 1.1);
     const cell = inp.closest('tr').lastElementChild.previousElementSibling;
+    setStep();
     cell.innerHTML = rec.stbh > 0 ? vnd(rec.stbh * 1e6 * rec.item.rate / 100) : '<span style="color:#9aa9b9">chưa nhập</span>';
   });
 
@@ -190,4 +205,17 @@
 
   drawIndex();
   drawSheet();
+
+  /* Thanh điều hướng trong trang: tô đậm mục đang đọc. */
+  const localLinks = [...document.querySelectorAll('.fx-local a')];
+  const targets = localLinks.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if ('IntersectionObserver' in window && targets.length) {
+    const seen = new Map();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => seen.set(e.target.id, e.isIntersecting));
+      const current = targets.find((t) => seen.get(t.id));
+      localLinks.forEach((a) => a.classList.toggle('is-active', !!current && a.getAttribute('href') === '#' + current.id));
+    }, { rootMargin: '-80px 0px -55% 0px' });
+    targets.forEach((t) => io.observe(t));
+  }
 })();
