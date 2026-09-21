@@ -1,114 +1,56 @@
-/* Widget "Tư vấn & báo giá" — chép nguyên cấu hình của baohiempvi-vn.
-   Đỏ chỉ dùng cho đúng một chỗ: hotline bồi thường. */
-.adv-launcher{align-items:center;background:linear-gradient(135deg,#0b57b6,#1262df 55%,#0797bd);
-  border:1px solid rgba(255,255,255,.38);border-radius:999px;bottom:calc(20px + env(safe-area-inset-bottom));
-  box-shadow:0 14px 30px rgba(7,50,110,.28);color:#fff;display:inline-flex;font-size:15px;font-weight:700;line-height:1.2;font-family:inherit;
-  gap:10px;min-height:52px;padding:0 20px 0 16px;position:fixed;right:clamp(16px,2vw,28px);cursor:pointer;
-  transition:transform .18s ease,box-shadow .18s ease,opacity .2s ease,visibility .2s ease;z-index:160}
-.adv-launcher:hover{box-shadow:0 18px 36px rgba(7,50,110,.34);transform:translateY(-2px)}
-.adv-launcher:active{transform:translateY(0) scale(.98)}
-.adv-launcher:focus-visible{outline:3px solid #ffd166;outline-offset:4px;box-shadow:0 0 0 6px rgba(255,209,102,.24)}
-.adv-launcher svg{height:22px;width:22px}
-.adv-hidden{opacity:0;pointer-events:none;visibility:hidden}
-.adv-short{display:none}
+/* Cụm ba nút liên hệ, cùng bố cục với baohiempvi-vn.
+   Chữ nhãn nâng lên 14px (bản gốc 10–11px, dưới sàn cỡ chữ). */
+.consult-stack{align-items:center;display:flex;flex-direction:column;gap:13px;position:fixed;right:clamp(16px,2vw,32px);top:50%;
+  transform:translateY(-50%);z-index:140;transition:opacity .28s ease,visibility .28s}
+.consult-stack.is-at-footer{opacity:0;pointer-events:none;visibility:hidden}
 
-.adv-backdrop{align-items:flex-end;background:rgba(7,26,56,.22);display:flex;inset:0;justify-content:flex-end;padding:16px;position:fixed;z-index:170}
-.adv-panel{background:#fff;border-radius:20px;box-shadow:0 28px 70px rgba(7,26,56,.3);display:flex;flex-direction:column;
-  max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow:hidden;width:min(412px,100%);font-family:inherit}
-.adv-panel button{font-family:inherit;cursor:pointer}
+.consult-action{align-items:center;border:1px solid rgba(255,255,255,.94);border-radius:50%;box-shadow:0 12px 28px rgba(2,32,66,.19);
+  display:flex;height:52px;justify-content:center;position:relative;text-decoration:none;width:52px;
+  transition:box-shadow .24s ease,filter .24s ease,transform .24s ease}
+.consult-action svg{height:25px;width:25px}
+.consult-zalo{background:linear-gradient(145deg,#1496ff,#0866e8);color:#fff}
+.consult-zalo-mark{align-items:center;background:#fff;border-radius:11px;color:#0879ef;display:flex;font:900 24px/1 Arial,sans-serif;
+  height:28px;justify-content:center;letter-spacing:-.1em;padding-right:2px;width:29px}
+.consult-phone{background:linear-gradient(145deg,#fff,#e9f6ff);color:#075d9a}
 
-.adv-header{background:linear-gradient(135deg,#071a38 0%,#0c2b5a 45%,#0b57b6 100%);color:#fff;flex:none;padding:16px 18px 18px}
-.adv-header-top{align-items:center;display:flex;gap:12px;justify-content:space-between}
-.adv-brand{align-items:center;color:#cfe9ff;display:flex;font-size:13px;font-weight:800;line-height:1;gap:10px;letter-spacing:.08em}
-/* Logo gốc chữ xanh đậm: đặt trên ô nền trắng để giữ đúng độ tương phản, không đổi màu logo. */
-.adv-brand-logo{align-items:center;background:#fff;border-radius:8px;display:flex;padding:4px 8px}
-.adv-brand-logo img{display:block;height:20px;width:auto}
-.adv-close{align-items:center;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:12px;color:#fff;
-  display:flex;flex:none;height:44px;justify-content:center;transition:background-color .18s ease;width:44px}
-.adv-close:hover{background:rgba(255,255,255,.26)}
-.adv-close:focus-visible{outline:3px solid #ffd166;outline-offset:3px}
-.adv-close svg{height:18px;width:18px}
-.adv-title{font-size:20px;font-weight:700;line-height:1.25;letter-spacing:-.01em;margin:14px 0 6px;color:#fff}
-.adv-lead{color:rgba(234,247,255,.86);font-size:15px;line-height:1.5;margin:0}
+.consult-tip,.consult-advisor-label{background:#082f5a;border-radius:8px;box-shadow:0 10px 22px rgba(1,26,54,.2);color:#fff;
+  font-size:14px;font-weight:700;line-height:1.2;opacity:0;padding:8px 11px;pointer-events:none;position:absolute;
+  right:calc(100% + 12px);top:50%;transform:translate(6px,-50%);transition:opacity .18s ease,transform .18s ease;white-space:nowrap}
+.consult-action:hover,.consult-action:focus-visible{box-shadow:0 17px 32px rgba(2,32,66,.27);filter:saturate(1.13);transform:scale(1.05)}
+.consult-action:hover .consult-tip,.consult-action:focus-visible .consult-tip,
+.consult-advisor:hover .consult-advisor-label,.consult-advisor:focus-visible .consult-advisor-label{opacity:1;transform:translate(0,-50%)}
 
-.adv-body{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:16px 18px 18px}
-.adv-nav{display:grid;gap:10px;margin-bottom:14px}
-.adv-back{align-items:center;background:#fff;border:1px solid #d5e4f1;border-radius:10px;color:#0b57b6;display:inline-flex;
-  font-size:14px;font-weight:700;line-height:1;gap:6px;justify-self:start;min-height:44px;padding:0 14px 0 10px;
-  transition:border-color .15s ease,background-color .15s ease}
-.adv-back:hover{background:#f4f9ff;border-color:#1262df}
-.adv-back:focus-visible{outline:3px solid #1262df;outline-offset:2px}
-.adv-back svg{height:16px;width:16px}
-.adv-trail{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
-.adv-trail li{background:#eaf7ff;border-radius:999px;color:#35597c;font-size:13px;font-weight:600;line-height:1.4;padding:5px 11px}
-.adv-trail li[aria-current="step"]{background:#0b57b6;color:#fff}
+.consult-advisor-motion{animation:consultFloat 5.2s ease-in-out infinite;display:block;position:relative}
+.consult-advisor-motion::after{animation:consultPing 4.7s ease-out infinite;border:2px solid #e21a36;border-radius:50%;content:"";
+  inset:-4px;pointer-events:none;position:absolute}
+.consult-advisor{background:linear-gradient(145deg,#fff,#f5f7fa);border:2px solid #e21a36;border-radius:50%;
+  box-shadow:0 14px 30px rgba(134,10,36,.25),0 0 0 4px rgba(226,26,54,.09);display:block;height:68px;padding:3px;position:relative;
+  transition:box-shadow .24s ease,transform .24s ease;width:68px;z-index:1}
+.consult-advisor-photo{background:linear-gradient(150deg,#e7f7ff,#a9d9ed);border-radius:50%;display:block;height:100%;overflow:hidden;
+  position:relative;width:100%}
+.consult-advisor-photo img{bottom:-1px;display:block;height:122%;left:-11%;max-width:none;object-fit:contain;object-position:center bottom;
+  position:absolute;width:122%}
+.consult-advisor-label{display:grid;gap:3px;text-align:left;background:#fff;color:#082f5a;border:1px solid rgba(226,26,54,.26)}
+.consult-advisor-label small{color:#b8102a;font-size:13px;font-weight:700}
+.consult-advisor:hover,.consult-advisor:focus-visible{box-shadow:0 18px 34px rgba(134,10,36,.32),0 0 0 6px rgba(226,26,54,.13);transform:scale(1.065)}
+.consult-advisor-motion:hover,.consult-advisor-motion:focus-within{animation-play-state:paused}
+.consult-action:focus-visible,.consult-advisor:focus-visible{outline:3px solid #ffd166;outline-offset:4px}
+.consult-action:active,.consult-advisor:active{transform:scale(.97)}
+@keyframes consultFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes consultPing{0%,76%,100%{opacity:.78;transform:scale(1)}84%{opacity:1;transform:scale(1.04)}92%{opacity:0;transform:scale(1.1)}}
 
-.adv-step{color:#071a38;font-size:17px;font-weight:700;line-height:1.32;margin:0 0 8px}
-.adv-text{color:#43617d;font-size:15px;line-height:1.55;margin:0 0 14px}
-
-.adv-options{display:grid;gap:10px}
-.adv-option{align-items:center;background:#fff;border:1px solid #d5e4f1;border-radius:14px;color:#071a38;display:flex;gap:12px;
-  justify-content:space-between;min-height:60px;padding:12px 14px;text-align:left;width:100%;
-  transition:border-color .15s ease,background-color .15s ease,box-shadow .15s ease}
-.adv-option:hover{background:#f4f9ff;border-color:#1262df;box-shadow:0 8px 20px rgba(18,98,223,.12)}
-.adv-option:focus-visible{outline:3px solid #1262df;outline-offset:2px}
-.adv-option[aria-current="true"]{background:#eef6ff;border-color:#1262df}
-.adv-option b{display:block;font-size:16px;font-weight:700;line-height:1.3}
-.adv-option small{color:#43617d;display:block;font-size:14px;line-height:1.45;margin-top:3px}
-.adv-option svg{color:#1262df;flex:none;height:18px;width:18px}
-.adv-group{color:#43617d;font-size:13px;font-weight:700;line-height:1.4;letter-spacing:.06em;margin:18px 0 8px;text-transform:uppercase}
-.adv-compact{min-height:52px}
-.adv-compact b{font-size:15px}
-
-.adv-hint{background:#f4f9ff;border:1px dashed #b9d3ec;border-radius:12px;margin:0 0 14px;padding:12px 14px}
-.adv-hint-label{color:#43617d;font-size:13px;font-weight:700;line-height:1.4;letter-spacing:.05em;margin:0;text-transform:uppercase}
-.adv-hint-text{color:#071a38;font-size:15px;line-height:1.5;margin:6px 0 10px}
-.adv-copy{align-items:center;background:#fff;border:1px solid #b9d3ec;border-radius:10px;color:#0b57b6;display:inline-flex;
-  font-size:14px;font-weight:700;line-height:1;gap:8px;min-height:44px;padding:0 14px}
-.adv-copy svg{height:16px;width:16px}
-.adv-copy:hover{border-color:#1262df}
-.adv-copy:focus-visible{outline:3px solid #1262df;outline-offset:2px}
-.adv-copied{color:#0a6b46;font-size:14px;margin:8px 0 0}
-
-.adv-warning{background:#fff4f4;border:1px solid #f0c2c7;border-radius:12px;color:#7a1020;font-size:15px;line-height:1.5;margin:0 0 14px;padding:12px 14px}
-
-.adv-actions{display:grid;gap:10px}
-.adv-action{align-items:center;border-radius:14px;display:flex;gap:12px;justify-content:space-between;min-height:52px;padding:10px 16px;
-  text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,background-color .15s ease}
-.adv-action:hover{transform:translateY(-2px)}
-.adv-action:focus-visible{outline:3px solid #1262df;outline-offset:2px}
-.adv-action svg{flex:none;height:18px;width:18px}
-.adv-a-label{font-size:15px;font-weight:700;line-height:1.3}
-.adv-a-detail{display:block;font-size:14px;font-weight:600;line-height:1.4;font-variant-numeric:tabular-nums;margin-top:2px;opacity:.92}
-.adv-a-primary{background:linear-gradient(135deg,#0b57b6,#1262df);box-shadow:0 10px 22px rgba(18,98,223,.25);color:#fff}
-.adv-a-secondary{background:#fff;border:1px solid #b9d3ec;color:#0b57b6}
-.adv-a-secondary:hover{border-color:#1262df}
-.adv-a-contact{background:#eaf7ff;border:1px solid #cfe6f7;color:#071a38}
-.adv-a-contact:hover{border-color:#1262df}
-.adv-a-claims{background:linear-gradient(135deg,#a8102a,#c8102e);box-shadow:0 10px 22px rgba(168,16,42,.24);color:#fff}
-
-.adv-privacy{background:#f7fbff;border-top:1px solid #e3eef7;color:#43617d;flex:none;font-size:13px;line-height:1.45;margin:0;
-  padding:12px 18px calc(12px + env(safe-area-inset-bottom))}
-.adv-sr{clip:rect(0 0 0 0);clip-path:inset(50%);height:1px;overflow:hidden;position:absolute;white-space:nowrap;width:1px}
-
-@media (max-width:680px){
-  .adv-launcher{bottom:calc(12px + env(safe-area-inset-bottom));font-size:15px;min-height:48px;padding:0 16px 0 12px;right:12px}
-  .adv-long{display:none}
-  .adv-short{display:inline}
-  .adv-backdrop{justify-content:stretch;padding:0}
-  .adv-panel{border-radius:20px 20px 0 0;max-height:92vh;max-height:92dvh;width:100%}
-  .adv-header{padding:14px 16px 16px}
-  .adv-title{font-size:19px}
-  .adv-body{padding:14px 16px 16px}
-  .adv-privacy{padding-inline:16px}
+/* Điện thoại: neo góc phải dưới, ba nút thẳng mép phải. */
+@media(max-width:680px){
+  .consult-stack{align-items:flex-end;bottom:calc(12px + env(safe-area-inset-bottom));gap:10px;right:12px;top:auto;transform:none}
+  .consult-action{height:46px;width:46px}
+  .consult-action svg{height:23px;width:23px}
+  .consult-zalo-mark{font-size:21px;height:25px;width:26px}
+  .consult-advisor{height:56px;width:56px}
+  .consult-advisor-motion{margin-right:4px}
+  .consult-tip,.consult-advisor-label{display:none}
 }
-@media (prefers-reduced-motion:reduce){
-  .adv-launcher,.adv-option,.adv-action,.adv-back,.adv-close{transition:none}
-  .adv-launcher:hover,.adv-action:hover{transform:none}
+@media(prefers-reduced-motion:reduce){
+  .consult-action,.consult-advisor,.consult-tip,.consult-advisor-label{transition:none}
+  .consult-advisor-motion,.consult-advisor-motion::after{animation:none}
 }
-@media print{.adv-launcher,.adv-backdrop{display:none}}
-
-/* style.css của site đặt header{display:flex;height:78px;padding:0 48px} cho mọi thẻ <header>,
-   dính luôn vào phần đầu widget và ép tiêu đề sang cạnh logo. Trả lại bố cục khối. */
-.adv-panel .adv-header{display:block;height:auto;max-width:none;margin:0;gap:0;padding:16px 18px 18px}
-@media (max-width:820px){.adv-panel .adv-header{height:auto;padding:14px 16px 16px}}
+@media print{.consult-stack{display:none}}
