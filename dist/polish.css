@@ -192,7 +192,7 @@ nav a{display:inline-flex;align-items:center;min-height:var(--tap,44px)}
 header .brand{display:inline-flex;align-items:center;min-height:var(--tap,44px)}
 .footer-contact a,.site-footer a{display:inline-flex;align-items:center;min-height:36px}
 .skip:focus{min-height:var(--tap,44px);display:inline-flex;align-items:center}
-.partner-card{display:flex;min-height:var(--tap,44px)}
+.partner-card{display:block;min-height:var(--tap,44px)}
 
 /* ── Sàn chữ, lượt cuối: bốn luật cũ dùng !important hoặc đặc hiệu cao hơn ── */
 .trust-copy .entity-description{font-size:15px!important;line-height:1.6!important}
