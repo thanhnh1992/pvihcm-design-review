@@ -366,3 +366,6 @@
 }
 /* Tin tức trên điện thoại: nhãn chủ đề chiếm trọn hàng đầu, nội dung không bị ép vào cột mũi tên 24px. */
 @media(max-width:760px){.fire-news .cat{grid-column:1/-1;margin-bottom:2px}}
+
+/* Cột nhãn của bảng thông tin không bẻ dòng từng chữ ("Tên / đơn vị"). */
+.pd-card .pd-table tbody th{white-space:nowrap;width:1%}

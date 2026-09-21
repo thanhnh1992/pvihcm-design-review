@@ -140,3 +140,55 @@ ${faqBlock(faqs, 'Hiểu rõ rồi hãy quyết định')}`;
 `);
   console.log('wrote tai-nan-doanh-nghiep/page.js');
 }
+
+/* ── /gioi-thieu/ ── (thay cho /about-us của site cũ; nội dung đã được chủ site duyệt ngày 21/09/2026) */
+{
+  const P = '/gioi-thieu/';
+  const products = [
+    ['/san-pham/bao-hiem-bat-buoc/', 'Bảo hiểm bắt buộc', 'TNDS chủ xe ô tô theo biểu phí quy định, bảo hiểm cho người lao động thi công trên công trường.'],
+    ['/san-pham/bao-hiem-tai-nan/', 'Bảo hiểm tai nạn 24/24', 'Cho cá nhân, nhóm nhân sự doanh nghiệp và nhà thầu, phí theo gói và quy mô nhóm.'],
+    ['/san-pham/chay-no-bat-buoc/', 'Bảo hiểm cháy nổ bắt buộc', 'Tra cứu loại cơ sở theo Phụ lục VI Nghị định 105/2025/NĐ-CP và ước tính phí theo hạng mục tài sản.'],
+    ['/san-pham/hang-hoa-xuat-nhap-khau/', 'Bảo hiểm hàng hóa xuất nhập khẩu', 'Theo từng chuyến, hợp đồng bao hoặc chuỗi logistics, rà soát theo chứng từ lô hàng.'],
+  ];
+  const main = `
+<section class="fire-hero"><div class="fire-wrap"><div class="fire-hero-copy">
+<span class="fire-eyebrow">Giới thiệu</span>
+<h1>Công ty Bảo hiểm <em>PVI Thành Đô</em></h1>
+<p>Công ty Bảo hiểm PVI Thành Đô là đơn vị thành viên của Tổng Công ty Bảo hiểm PVI, trụ sở tại 473 Điện Biên Phủ, TP.HCM. Chúng tôi tư vấn và phát hành các sản phẩm bảo hiểm phi nhân thọ cho cá nhân và doanh nghiệp.</p>
+<div class="fire-actions"><a class="fire-btn fire-btn-red" href="tel:0938072236">Gọi tư vấn 0938 072 236</a><a class="fire-btn fire-btn-line" href="#san-pham">Sản phẩm phụ trách</a></div>
+</div>
+<div class="pd-card"><table class="pd-table"><caption style="padding:16px 18px 0">Thông tin đơn vị</caption><tbody>
+<tr><th scope="row">Tên đơn vị</th><td>CÔNG TY BẢO HIỂM PVI THÀNH ĐÔ, thuộc TỔNG CÔNG TY BẢO HIỂM PVI</td></tr>
+<tr><th scope="row">Mã số thuế</th><td class="strong" style="color:var(--ink)">0105402531-041</td></tr>
+<tr><th scope="row">Trụ sở</th><td>Tầng 12A, Tòa nhà 194 Golden Building, số 473 Điện Biên Phủ, Phường Thạnh Mỹ Tây, TP.HCM</td></tr>
+<tr><th scope="row">Tư vấn</th><td><a href="tel:0938072236" style="color:var(--blue);font-weight:700">0938 072 236</a> · <a href="tel:0918981869" style="color:var(--blue);font-weight:700">0918 981 869</a><br><a href="mailto:giadinhpvi@gmail.com" style="color:var(--blue)">giadinhpvi@gmail.com</a></td></tr>
+<tr><th scope="row">Bồi thường</th><td><a href="tel:1900545458" style="color:var(--blue);font-weight:700">1900 54 54 58</a></td></tr>
+</tbody></table></div>
+</div></section>
+
+<section class="pd-section" id="san-pham"><div class="fire-wrap">
+<h2>Sản phẩm phụ trách</h2>
+<p class="fire-lede" style="margin-top:12px">Trọng tâm là bảo hiểm bắt buộc TNDS xe cơ giới, bảo hiểm cho người lao động thi công, tai nạn 24/24, cháy nổ bắt buộc và hàng hóa xuất nhập khẩu.</p>
+<div class="pd-rows">${products.map(([href, name, text], i) => `<article class="pd-row" style="grid-template-columns:80px minmax(0,1fr) 180px"><div><span class="flag">${String(i + 1).padStart(2, '0')}</span></div><div><h3>${name}</h3><p>${text}</p></div><div class="price"><a class="fire-btn fire-btn-line" style="color:var(--ink);border:1px solid #c9d6e3;background:#fff" href="${href}">Xem chi tiết</a></div></article>`).join('')}</div>
+</div></section>
+
+<section class="fire-claim pd-paper"><div class="fire-wrap">
+<span class="fire-eyebrow">Cách chúng tôi làm việc</span>
+<h2>Có căn cứ trước khi báo phí</h2>
+<div class="fire-steps">
+<article><b>01</b><h3>Gửi thông tin</h3><p>Anh/chị gửi nhu cầu và hồ sơ cơ bản qua Zalo, điện thoại hoặc email.</p></article>
+<article><b>02</b><h3>Nhận phương án có căn cứ</h3><p>Mỗi phương án được đối chiếu với hồ sơ thực tế trước khi báo phí.</p></article>
+<article><b>03</b><h3>Phát hành</h3><p>Hợp đồng và giấy chứng nhận do Bảo hiểm PVI phát hành sau khi anh/chị xác nhận phương án.</p></article>
+</div>
+${hotline}
+<div class="fire-alert"><b>Về thông tin trên website</b><p>Phí trên website là phí tham khảo theo biểu quy định. Phạm vi, điều kiện và phí chính thức theo quy tắc và hợp đồng Bảo hiểm PVI phát hành.</p></div>
+</div></section>`;
+  write('gioi-thieu/index.html', page({
+    path: P,
+    title: 'Giới thiệu Công ty Bảo hiểm PVI Thành Đô | Bảo hiểm PVI tại TP.HCM',
+    description: 'Công ty Bảo hiểm PVI Thành Đô, đơn vị thành viên của Tổng Công ty Bảo hiểm PVI, trụ sở 473 Điện Biên Phủ, TP.HCM. Tư vấn và phát hành bảo hiểm bắt buộc, tai nạn, cháy nổ và hàng hóa.',
+    image: '/assets/section-bat-buoc.webp',
+    head: breadcrumbJsonLd(P, 'Giới thiệu') + `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'AboutPage', url: 'https://pvihcm.com/gioi-thieu/', name: 'Giới thiệu Công ty Bảo hiểm PVI Thành Đô', about: { '@type': 'InsuranceAgency', name: 'Công ty Bảo hiểm PVI Thành Đô', legalName: 'CÔNG TY BẢO HIỂM PVI THÀNH ĐÔ', taxID: '0105402531-041', url: 'https://pvihcm.com/', telephone: '+84938072236', email: 'giadinhpvi@gmail.com', address: { '@type': 'PostalAddress', streetAddress: 'Tầng 12A, Tòa nhà 194 Golden Building, số 473 Điện Biên Phủ', addressLocality: 'Phường Thạnh Mỹ Tây', addressRegion: 'Thành phố Hồ Chí Minh', addressCountry: 'VN' }, parentOrganization: { '@type': 'Organization', name: 'Tổng Công ty Bảo hiểm PVI' } } })}</script>`,
+    main,
+  }));
+}

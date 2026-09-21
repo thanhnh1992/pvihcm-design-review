@@ -6,10 +6,11 @@ export const clean = (s) => String(s).replace(/\s+—\s+/g, ', ').replace(/—/g
 export const t = (s) => esc(clean(s));
 
 export const NAV = [
-  ['/san-pham/bao-hiem-bat-buoc/', 'Bảo hiểm bắt buộc'],
+  ['/gioi-thieu/', 'Giới thiệu'],
+  ['/san-pham/bao-hiem-bat-buoc/', 'Bắt buộc'],
   ['/san-pham/bao-hiem-tai-nan/', 'Tai nạn'],
   ['/san-pham/chay-no-bat-buoc/', 'Cháy nổ'],
-  ['/san-pham/hang-hoa-xuat-nhap-khau/', 'Hàng hóa XNK'],
+  ['/san-pham/hang-hoa-xuat-nhap-khau/', 'Hàng hóa'],
   ['/huong-dan/', 'Hướng dẫn'],
   ['/#boi-thuong', 'Bồi thường'],
 ];
@@ -23,7 +24,7 @@ export function header(path) {
 }
 
 export function footer() {
-  return `<footer id="lien-he" class="site-footer"><span id="dong-hanh" class="anchor-alias" aria-hidden="true"></span><div class="footer-identity"><strong class="footer-label">Đơn vị</strong><a class="brand" href="/"><img src="/assets/pvi-logo.svg" width="132" height="48" alt="Bảo hiểm PVI"><span>Thành Đô</span></a><p>Đơn vị thuộc hệ thống Bảo hiểm PVI<br>TỔNG CÔNG TY BẢO HIỂM PVI<br><strong>CÔNG TY BẢO HIỂM PVI THÀNH ĐÔ</strong></p><p>Mã số thuế: 0105402531-041</p></div><address><strong>Trụ sở</strong><br>Tầng 12A, Tòa nhà 194 Golden Building<br>Số 473 Điện Biên Phủ, Phường Thạnh Mỹ Tây<br>Thành phố Hồ Chí Minh</address><div class="footer-links"><strong>Sản phẩm</strong><a href="/san-pham/bao-hiem-bat-buoc/">Bảo hiểm bắt buộc</a><a href="/san-pham/bao-hiem-tai-nan/">Bảo hiểm tai nạn</a><a href="/san-pham/chay-no-bat-buoc/">Cháy nổ bắt buộc</a><a href="/san-pham/hang-hoa-xuat-nhap-khau/">Hàng hóa xuất nhập khẩu</a></div><div class="footer-contact"><strong>Liên hệ tư vấn</strong><a href="tel:0938072236">0938 072 236</a><a href="tel:0918981869">0918 981 869</a><a href="mailto:giadinhpvi@gmail.com">giadinhpvi@gmail.com</a><a href="tel:1900545458">Bồi thường 1900 54 54 58</a></div><div class="footer-bottom"><p>Thông tin trên website để tham khảo. Phạm vi, điều kiện và phí chính thức theo quy tắc và hợp đồng Bảo hiểm PVI phát hành.</p><p>© 2026 Công ty Bảo hiểm PVI Thành Đô</p></div></footer>`;
+  return `<footer id="lien-he" class="site-footer"><span id="dong-hanh" class="anchor-alias" aria-hidden="true"></span><div class="footer-identity"><strong class="footer-label">Đơn vị</strong><a class="brand" href="/"><img src="/assets/pvi-logo.svg" width="132" height="48" alt="Bảo hiểm PVI"><span>Thành Đô</span></a><p>Đơn vị thuộc hệ thống Bảo hiểm PVI<br>TỔNG CÔNG TY BẢO HIỂM PVI<br><strong>CÔNG TY BẢO HIỂM PVI THÀNH ĐÔ</strong></p><p>Mã số thuế: 0105402531-041</p><p><a href="/gioi-thieu/" style="color:#165a9c;font-weight:700">Giới thiệu đơn vị</a></p></div><address><strong>Trụ sở</strong><br>Tầng 12A, Tòa nhà 194 Golden Building<br>Số 473 Điện Biên Phủ, Phường Thạnh Mỹ Tây<br>Thành phố Hồ Chí Minh</address><div class="footer-links"><strong>Sản phẩm</strong><a href="/san-pham/bao-hiem-bat-buoc/">Bảo hiểm bắt buộc</a><a href="/san-pham/bao-hiem-tai-nan/">Bảo hiểm tai nạn</a><a href="/san-pham/chay-no-bat-buoc/">Cháy nổ bắt buộc</a><a href="/san-pham/hang-hoa-xuat-nhap-khau/">Hàng hóa xuất nhập khẩu</a></div><div class="footer-contact"><strong>Liên hệ tư vấn</strong><a href="tel:0938072236">0938 072 236</a><a href="tel:0918981869">0918 981 869</a><a href="mailto:giadinhpvi@gmail.com">giadinhpvi@gmail.com</a><a href="tel:1900545458">Bồi thường 1900 54 54 58</a></div><div class="footer-bottom"><p>Thông tin trên website để tham khảo. Phạm vi, điều kiện và phí chính thức theo quy tắc và hợp đồng Bảo hiểm PVI phát hành.</p><p>© 2026 Công ty Bảo hiểm PVI Thành Đô</p></div></footer>`;
 }
 
 export function seo({ path, title, description, image = '/assets/section-bat-buoc.webp' }) {

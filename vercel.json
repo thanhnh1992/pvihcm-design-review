@@ -24,5 +24,162 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/about-us",
+      "destination": "/gioi-thieu/",
+      "statusCode": 301
+    },
+    {
+      "source": "/about-us/",
+      "destination": "/gioi-thieu/",
+      "statusCode": 301
+    },
+    {
+      "source": "/lien-he",
+      "destination": "/#lien-he",
+      "statusCode": 301
+    },
+    {
+      "source": "/lien-he/",
+      "destination": "/#lien-he",
+      "statusCode": 301
+    },
+    {
+      "source": "/pvi-care",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/pvi-care/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/6",
+      "destination": "/san-pham/bao-hiem-bat-buoc/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/7",
+      "destination": "/san-pham/bao-hiem-bat-buoc/#vat-chat",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/4",
+      "destination": "/san-pham/bao-hiem-tai-nan/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/37",
+      "destination": "/san-pham/chay-no-bat-buoc/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/16",
+      "destination": "/san-pham/hang-hoa-xuat-nhap-khau/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/details/:id",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/:id",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/44",
+      "destination": "/san-pham/bao-hiem-tai-nan/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/45",
+      "destination": "/san-pham/bao-hiem-tai-nan/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/46",
+      "destination": "/san-pham/bao-hiem-tai-nan/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/47",
+      "destination": "/san-pham/bao-hiem-tai-nan/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/43",
+      "destination": "/san-pham/bao-hiem-bat-buoc/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/42",
+      "destination": "/san-pham/bao-hiem-bat-buoc/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/41",
+      "destination": "/san-pham/bao-hiem-bat-buoc/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/38",
+      "destination": "/san-pham/bao-hiem-bat-buoc/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/37",
+      "destination": "/san-pham/bao-hiem-bat-buoc/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/23",
+      "destination": "/san-pham/bao-hiem-bat-buoc/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/21",
+      "destination": "/san-pham/bao-hiem-bat-buoc/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/19",
+      "destination": "/san-pham/bao-hiem-bat-buoc/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/5",
+      "destination": "/san-pham/bao-hiem-bat-buoc/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/:id",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/display-feed",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/display-feed/",
+      "destination": "/",
+      "statusCode": 301
+    }
   ]
 }
