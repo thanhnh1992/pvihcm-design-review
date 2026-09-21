@@ -23,6 +23,11 @@
 
   const gl = canvas.getContext('webgl', { alpha: true, antialias: true, depth: false, powerPreference: 'low-power' });
   if (!gl) return;
+  // Máy không có tăng tốc đồ họa (trình vẽ phần mềm) thì bỏ hiệu ứng: 15.000 hạt vẽ bằng CPU
+  // làm trang giật và chặn thao tác, lợi bất cập hại.
+  const dbg = gl.getExtension('WEBGL_debug_renderer_info');
+  const renderer = dbg ? String(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL)) : '';
+  if (/swiftshader|llvmpipe|software|basic render/i.test(renderer)) return;
 
   const COUNT = 15000;
 
