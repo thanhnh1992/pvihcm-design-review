@@ -14,7 +14,10 @@
   let booted = false;
   const boot = () => { if (booted || !gate.matches) return; booted = true; start(); };
   gate.addEventListener('change', boot);
-  boot();
+  // Chờ trang tải xong và trình duyệt rảnh mới dựng WebGL: khởi tạo 15.000 hạt
+  // tốn ~0,5s luồng chính, nếu chạy ngay sẽ chặn thao tác đầu tiên (TBT).
+  const later = () => (window.requestIdleCallback ? requestIdleCallback(boot, { timeout: 2500 }) : setTimeout(boot, 1200));
+  if (document.readyState === 'complete') later(); else addEventListener('load', later, { once: true });
 
   function start(){
 

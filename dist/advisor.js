@@ -13,7 +13,7 @@
   stack.innerHTML =
     `<a class="consult-action consult-zalo" href="${ZALO_PHONE}" target="_blank" rel="noopener" aria-label="Nhắn Zalo 0938 072 236"><span class="consult-zalo-mark" aria-hidden="true">Z</span><span class="consult-tip">Zalo 0938 072 236</span></a>` +
     `<a class="consult-action consult-phone" href="tel:0938072236" aria-label="Gọi tư vấn 0938 072 236">${HEADSET}<span class="consult-tip">Gọi 0938 072 236</span></a>` +
-    `<span class="consult-advisor-motion"><a class="consult-advisor" href="${ZALO_OA}" target="_blank" rel="noopener" aria-label="Chat với chuyên viên tư vấn qua Zalo"><span class="consult-advisor-photo"><img src="/assets/pvi-support-advisor.webp" alt="" width="68" height="68"></span><span class="consult-advisor-label"><b>Chuyên viên tư vấn</b><small>Chat ngay qua Zalo</small></span></a></span>`;
+    `<span class="consult-advisor-motion"><a class="consult-advisor" href="${ZALO_OA}" target="_blank" rel="noopener" aria-label="Chat với chuyên viên tư vấn qua Zalo"><span class="consult-advisor-photo"><img src="/assets/pvi-support-advisor-168.webp" alt="" width="68" height="68"></span><span class="consult-advisor-label"><b>Chuyên viên tư vấn</b><small>Chat ngay qua Zalo</small></span></a></span>`;
   document.body.appendChild(stack);
 
   // Tới chân trang thì ẩn: chân trang đã có đủ kênh liên hệ, cụm nút chỉ che mất địa chỉ.
