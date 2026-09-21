@@ -17,6 +17,7 @@ dist/
   san-pham/bao-hiem-tai-nan/     tai nạn 24/24, tính phí theo gói/số người/thời hạn (page.js)
   san-pham/chay-no-bat-buoc/     tra cứu Phụ lục VI NĐ 105/2025 + tính phí (page.js, tariff-data.js)
   san-pham/hang-hoa-xuat-nhap-khau/
+  gioi-thieu/                    giới thiệu đơn vị (thay /about-us của site cũ)
   huong-dan/                     checklist cho HR
   tai-nan-doanh-nghiep/          gom nhu cầu thành bản tóm tắt gửi Zalo (page.js), không lưu/gửi dữ liệu
   style.css   CSS nền chung (có @font-face Be Vietnam Pro tự lưu trữ + phông dự phòng chỉnh số đo)
@@ -35,10 +36,11 @@ Ba trang sản phẩm, `/huong-dan/` và `/tai-nan-doanh-nghiep/` **được sin
 ```
 node tools/load-data.mjs      # chỉ khi dữ liệu bên baohiempvi-vn đổi (cần typescript trong project đó)
 node tools/gen-products.mjs   # bắt buộc, tai nạn, hàng hóa
-node tools/gen-others.mjs     # huong-dan, tai-nan-doanh-nghiep
+node tools/gen-others.mjs     # huong-dan, tai-nan-doanh-nghiep, gioi-thieu
+node tools/patch-static.mjs   # áp header/menu/chân trang mới cho index.html và trang cháy nổ
 node tools/srcset.mjs         # PHẢI chạy sau cùng: gắn srcset cho ảnh
 ```
-- `tools/chrome.mjs`: header, menu, chân trang, thẻ SEO dùng chung. Đổi thông tin liên hệ thì sửa ở đây **và** trong `dist/index.html` + `dist/san-pham/chay-no-bat-buoc/index.html`, hai trang này không được sinh bằng script.
+- `tools/chrome.mjs`: header, menu, chân trang, thẻ SEO dùng chung. Hai trang `dist/index.html` và `dist/san-pham/chay-no-bat-buoc/index.html` sửa tay; header và chân trang của chúng lấy từ chrome.mjs qua `tools/patch-static.mjs`. JSON-LD của trang chủ thì sửa tay.
 - `tools/data/*.mjs`: dữ liệu đã duyệt, chuyển nguyên văn từ `product-data.ts`, `tnds-data.ts`, `accident-data.ts` của baohiempvi-vn. **Không gõ lại số liệu bằng tay.**
 
 Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist/`.
@@ -88,7 +90,9 @@ Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist
 
 ## Việc đang mở
 - Trỏ domain pvihcm.com sang Vercel. Chỉ sửa bản ghi A/CNAME, không đụng MX.
-- Trang `/gioi-thieu/` và redirect 301 từ URL cũ (`/about-us`, `/pvi-care`, `/product/{id}`, `/news/{id}`): chờ chủ site duyệt.
+- Đã có: trang `/gioi-thieu/` và redirect 301 từ URL cũ trong `vercel.json` (mỗi luật có 2 biến thể có và không có dấu / cuối, vì trailingSlash chạy trước). Thêm URL cũ thì thêm cả 2 biến thể, luật cụ thể đặt trước luật `:id`.
+- Sau khi trỏ domain: chủ site gửi sitemap trong Google Search Console.
+- Trang chủ khối #ve-pvi: dòng `source-note` đang hiện công khai câu "cần bổ sung tài liệu nguồn... trước khi công bố". Chờ chủ site cung cấp nguồn số liệu 2025.
 - Biểu phí TNDS đang theo NĐ 67/2023 (đối chiếu 08/05/2026). Cần xác nhận còn đúng sau NĐ 220/2026 (hiệu lực 01/07/2026).
 - Nội dung PVI Care / sức khỏe từ site cũ: chưa quyết định có đưa lên không.
 - `FINAL-POLISH.md` và `design-qa.md` là ghi chú của giai đoạn trước, đã cũ. File này mới là nguồn đúng.
