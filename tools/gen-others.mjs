@@ -66,7 +66,7 @@ const write = (rel, html) => { fs.writeFileSync(path.join(DIST, rel), html); con
 
 <section class="fire-compare"><div class="fire-wrap">
 <h2>Cùng là công nhân. Nhu cầu có thể khác.</h2>
-<table><thead><tr><th scope="col"></th><th scope="col"><span>Tự nguyện</span>Chăm lo thêm cho nhân viên</th><th scope="col"><span>Theo yêu cầu dự án</span>Đáp ứng hồ sơ công trường</th></tr></thead><tbody>
+<table><thead><tr><th scope="col"><span class="sr-only">Tiêu chí</span></th><th scope="col"><span>Tự nguyện</span>Chăm lo thêm cho nhân viên</th><th scope="col"><span>Theo yêu cầu dự án</span>Đáp ứng hồ sơ công trường</th></tr></thead><tbody>
 <tr><th scope="row">Bắt đầu từ</th><td>Nhu cầu bảo hiểm tai nạn tự nguyện và phạm vi bảo vệ mong muốn.</td><td>Kiểm tra riêng yêu cầu bảo hiểm người lao động công trường. Không mặc định một gói tai nạn tự nguyện đáp ứng yêu cầu này.</td></tr>
 <tr><th scope="row">Xem tiếp</th><td><a href="/san-pham/bao-hiem-tai-nan/#bang-phi" style="color:var(--blue);text-decoration:underline">Bảng phí theo gói và số người</a></td><td><a href="/san-pham/bao-hiem-tai-nan/#nha-thau" style="color:var(--blue);text-decoration:underline">Bảo hiểm cho nhà thầu thi công</a></td></tr>
 </tbody></table>

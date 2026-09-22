@@ -74,7 +74,7 @@ ${feeTables}
 <section class="fire-compare" id="vat-chat"><div class="fire-wrap">
 <h2>TNDS và bảo hiểm vật chất xe là hai thứ khác nhau</h2>
 <p class="fire-lede" style="margin-top:12px">${t(tn.tndsFaqs[2].answer)}</p>
-<table><thead><tr><th scope="col"></th><th scope="col"><span>Bắt buộc</span>TNDS chủ xe</th><th scope="col"><span>Tự nguyện</span>${t(tn.vehicleDamageFacts.title)}</th></tr></thead><tbody>
+<table><thead><tr><th scope="col"><span class="sr-only">Tiêu chí</span></th><th scope="col"><span>Bắt buộc</span>TNDS chủ xe</th><th scope="col"><span>Tự nguyện</span>${t(tn.vehicleDamageFacts.title)}</th></tr></thead><tbody>
 <tr><th scope="row">Bảo vệ</th><td>${t(car.coverage[0])}</td><td>${t(tn.vehicleDamageFacts.summary)}</td></tr>
 <tr><th scope="row">Căn cứ phí</th><td>${t(ref.legalBasis)}, theo loại xe và mục đích sử dụng</td><td>${tn.vehicleDamageFacts.considerations.map(t).join('<br>')}</td></tr>
 <tr><th scope="row">Tính phí trên web</th><td class="yes">Có, theo biểu phí phía trên</td><td>${t(car.faqs[1].answer)}</td></tr>
@@ -261,7 +261,7 @@ ${matrix}
 <section class="fire-compare" id="so-sanh"><div class="fire-wrap">
 <h2>Khác gì chế độ tai nạn lao động của BHXH</h2>
 <p class="fire-lede" style="margin-top:12px">${t(ac.faqs[1].answer)}</p>
-<div class="pd-scroll"><table><thead><tr><th scope="col"></th><th scope="col"><span>Bắt buộc theo luật lao động</span>BHXH tai nạn lao động</th><th scope="col"><span>Bảo hiểm thương mại</span>Tai nạn 24/24</th></tr></thead><tbody>${ac.comparisonRows.map((r) => `<tr><th scope="row">${t(r.aspect)}</th><td>${t(r.social)}</td><td class="yes">${t(r.accident)}</td></tr>`).join('')}</tbody></table></div>
+<div class="pd-scroll"><table><thead><tr><th scope="col"><span class="sr-only">Tiêu chí</span></th><th scope="col"><span>Bắt buộc theo luật lao động</span>BHXH tai nạn lao động</th><th scope="col"><span>Bảo hiểm thương mại</span>Tai nạn 24/24</th></tr></thead><tbody>${ac.comparisonRows.map((r) => `<tr><th scope="row">${t(r.aspect)}</th><td>${t(r.social)}</td><td class="yes">${t(r.accident)}</td></tr>`).join('')}</tbody></table></div>
 </div></section>
 
 <section class="fire-docs pd-paper" id="loai-tru"><div class="fire-wrap">
@@ -349,12 +349,12 @@ ${faqBlock(ac.faqs)}`;
 <div>${g.intro.map((p, i) => `<p class="fire-lede"${i ? ' style="margin-top:16px"' : ''}>${t(p)}</p>`).join('')}</div>
 <div class="pd-card"><table class="pd-table"><caption style="padding:16px 18px 0">Phí và phạm vi căn cứ vào</caption><tbody>${g.metrics.map((m) => `<tr><th scope="row">${t(m.value)}</th><td>${t(m.label)}</td></tr>`).join('')}</tbody></table></div>
 </div>
-<div class="pd-rows" style="margin-top:44px">${g.benefits.map((b, i) => `<article class="pd-row" style="grid-template-columns:80px minmax(0,1fr)"><div><span class="flag">${String(i + 1).padStart(2, '0')}</span></div><div><h3>${t(b.title)}</h3><p>${t(b.text)}</p></div></article>`).join('')}</div>
+<h2 class="sr-only">Điểm chính của sản phẩm</h2><div class="pd-rows" style="margin-top:44px">${g.benefits.map((b, i) => `<article class="pd-row" style="grid-template-columns:80px minmax(0,1fr)"><div><span class="flag">${String(i + 1).padStart(2, '0')}</span></div><div><h3>${t(b.title)}</h3><p>${t(b.text)}</p></div></article>`).join('')}</div>
 </div></section>
 
 <section class="fire-compare pd-paper" id="phuong-an"><div class="fire-wrap">
 <h2>Ba cách mua, chọn theo nhịp xuất nhập khẩu</h2>
-<div class="pd-scroll"><table><thead><tr><th scope="col"></th>${plans.map((p) => `<th scope="col">${p.featured ? '<span>Hay dùng nhất</span>' : '<span>&nbsp;</span>'}${t(p.name)}</th>`).join('')}</tr></thead><tbody>
+<div class="pd-scroll"><table><thead><tr><th scope="col"><span class="sr-only">Tiêu chí</span></th>${plans.map((p) => `<th scope="col">${p.featured ? '<span>Hay dùng nhất</span>' : '<span>&nbsp;</span>'}${t(p.name)}</th>`).join('')}</tr></thead><tbody>
 <tr><th scope="row">Phù hợp với</th>${plans.map((p) => `<td class="yes">${t(p.forWhom)}</td>`).join('')}</tr>
 <tr><th scope="row">Nội dung</th>${plans.map((p) => `<td>${p.items.map(t).join('<br>')}</td>`).join('')}</tr>
 <tr><th scope="row">Điều kiện</th>${plans.map((p) => `<td>${t(p.note)}</td>`).join('')}</tr>

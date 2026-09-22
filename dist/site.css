@@ -241,3 +241,8 @@ a[href^="#"]:hover i[aria-hidden],a[href^="#"]:focus-visible i[aria-hidden]{tran
   .site-nav a[aria-current="page"]{color:var(--blue);background:#eaf2fb;border-color:var(--blue);box-shadow:none}
   .site-nav a[aria-current="page"]:hover{background:#dde9f7}
 }
+
+/* Chữ chỉ dành cho máy đọc màn hình */
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+/* Khung bảng nhận focus: viền rõ khi dùng bàn phím */
+[data-a11y-scroll]:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
