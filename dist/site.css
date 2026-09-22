@@ -87,3 +87,31 @@ body>header.site-header{position:relative;z-index:40;max-width:var(--content);ma
 .partners-heading h2,.partners-heading p{white-space:normal}
 /* Số liệu phụ trong khối tin cậy xuống 12px, dưới sàn cỡ chữ. */
 .proof-points dd span{font-size:14px}
+
+/* ═══ Lề trên điện thoại: một lề duy nhất 20px cho header, nội dung, chân trang ═══
+   Trước đây header 16px, trang chủ 22px, trang sản phẩm 20–24px: mép chữ lệch
+   nhau khi cuộn. Mọi khối giờ bám chung --gutter. */
+:root{--gutter:20px}
+@media(max-width:820px){
+  body>header.site-header{padding-left:var(--gutter);padding-right:var(--gutter)}
+  .site-nav{left:var(--gutter);right:var(--gutter)}
+  .fire-wrap{width:calc(100% - 2*var(--gutter))}
+  body:not(.fire) main>section{padding-left:var(--gutter);padding-right:var(--gutter)}
+  body:not(.fire) main>section .partners-heading{padding-left:0;padding-right:0}
+  .site-footer{padding-left:var(--gutter);padding-right:var(--gutter)}
+  .consult-stack{right:var(--gutter)}
+}
+/* Khung lưới 1 cột phải cho phép co dưới bề rộng nội dung, nếu không ô chọn
+   có tên dài (bộ tính phí TNDS) đẩy cả khung tràn khỏi mép phải. */
+@media(max-width:1000px){.pd-grid{grid-template-columns:minmax(0,1fr)}}
+.pd-form select{max-width:100%;min-width:0;text-overflow:ellipsis}
+/* Bảng rộng trong khung thẻ: cuộn ngang được thay vì bị cắt cột. */
+.pd-scroll.pd-card{overflow-x:auto}
+/* Bảng thông tin trong thẻ (mức trách nhiệm, thông tin đơn vị): trên màn hẹp cho
+   nhãn và số xuống dòng, thu lề ô, để bảng nằm gọn trong khung thay vì bị cắt. */
+@media(max-width:560px){
+  .pd-card .pd-table tbody th{white-space:normal;width:auto}
+  .pd-card .pd-table th,.pd-card .pd-table td{padding:12px 14px}
+  .pd-card .pd-table td.num{white-space:normal}
+  .pd-card .pd-table caption{padding-left:14px!important;padding-right:14px!important}
+}
