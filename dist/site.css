@@ -198,3 +198,33 @@ a[href^="#"]:hover i[aria-hidden],a[href^="#"]:focus-visible i[aria-hidden]{tran
   .site-nav a{transition:color .2s ease,background-color .2s ease}
   .site-nav a:hover,.site-nav a:focus-visible{padding-left:14px}
 }
+
+/* ═══ Nút hành động: nổi lên 3D + đổi màu khi rê chuột (không gạch chân) ═══
+   Nút nhô về phía người xem (perspective + translateZ), bóng đổ theo màu xanh
+   thương hiệu đậm dần; bấm xuống thì lún lại. Link chữ đổi màu và phóng nhẹ. */
+.primary,.solution-copy>a,.fire-btn,.fx-btn,.text-link,.secondary-link{
+  transform:perspective(600px) translateZ(0);
+  transition:transform .35s var(--ease-out),box-shadow .35s var(--ease-out),background-color .25s ease,color .25s ease,border-color .25s ease}
+.primary:hover,.primary:focus-visible,
+.solution-copy>a:not(.secondary-link):hover,.solution-copy>a:not(.secondary-link):focus-visible,
+.fire-btn:hover,.fire-btn:focus-visible,.fx-btn:hover,.fx-btn:focus-visible{
+  transform:perspective(600px) translateZ(22px) translateY(-2px);
+  box-shadow:0 16px 28px -12px rgba(22,79,135,.55),0 4px 10px -4px rgba(23,33,46,.25)}
+.primary:active,.solution-copy>a:not(.secondary-link):active,.fire-btn:active,.fx-btn:active{
+  transform:perspective(600px) translateZ(-6px);box-shadow:0 4px 10px -6px rgba(23,33,46,.35);transition-duration:.12s}
+/* Đổi màu nền theo loại nút */
+.solution-copy>a:not(.secondary-link):hover,.solution-copy>a:not(.secondary-link):focus-visible,
+.fire-btn-dark:hover,.fire-btn-dark:focus-visible{background:var(--blue);color:#fff}
+.primary:hover,.primary:focus-visible,
+.featured .solution-copy>a:not(.secondary-link):hover,.featured .solution-copy>a:not(.secondary-link):focus-visible{background:#a91e27;color:#fff}
+.fire-btn-line:hover,.fire-btn-line:focus-visible{border-color:var(--blue);color:var(--blue)}
+/* Link chữ: đổi màu + phóng nhẹ, bỏ gạch chân */
+.text-link:hover,.text-link:focus-visible,.secondary-link:hover,.secondary-link:focus-visible,
+.solution-copy>a.secondary-link:hover,.cargo-utility .solution-copy>a:hover{
+  color:var(--red);text-decoration:none;transform:perspective(600px) translateZ(16px);box-shadow:none;background:none}
+@media(prefers-reduced-motion:reduce){
+  .primary,.solution-copy>a,.fire-btn,.fx-btn,.text-link,.secondary-link{transform:none!important;transition:background-color .2s ease,color .2s ease,box-shadow .2s ease}
+}
+/* Mũi tên trong nút có nền giữ màu chữ của nút (đỏ trên nền xanh/đỏ sẽ khó đọc). */
+.primary:hover span[aria-hidden],.primary:focus-visible span[aria-hidden],.fire-btn:hover [aria-hidden],.fx-btn:hover [aria-hidden],
+.solution-copy>a:not(.secondary-link):hover span[aria-hidden],.solution-copy>a:not(.secondary-link):focus-visible span[aria-hidden]{color:inherit}
