@@ -180,3 +180,28 @@ a[href^="#"]:hover i[aria-hidden],a[href^="#"]:focus-visible i[aria-hidden]{tran
 .proof-points.is-counting>div::after{transform:scaleX(1)}
 /* Luật cũ ".proof-points dd span" (dành cho đơn vị %, tỷ đồng) không được thu nhỏ chữ số. */
 .proof-points dd .odo,.proof-points dd .odo span{font-size:inherit;letter-spacing:inherit}
+
+/* ═══ Menu header: rê chuột thì chữ chuyển xanh, vạch gạch chân chạy từ trái sang ═══
+   Mục đang ở trang hiện tại giữ vạch cố định. Trên điện thoại (menu thả xuống)
+   thay vạch bằng nền nhạt và chữ nhích sang phải. */
+.site-nav a{position:relative;transition:color .2s ease}
+.site-nav a::after{content:"";position:absolute;left:0;right:0;bottom:8px;height:2px;border-radius:2px;background:var(--blue);
+  transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease-out)}
+.site-nav a:hover,.site-nav a:focus-visible{color:var(--blue)}
+.site-nav a:hover::after,.site-nav a:focus-visible::after{transform:scaleX(1);transform-origin:left}
+.site-nav a[aria-current="page"]{box-shadow:none}
+.site-nav a[aria-current="page"]::after{transform:scaleX(1)}
+/* Thanh điều hướng trong trang (trang cháy nổ): cùng một kiểu phản hồi */
+.fx-local a{transition:color .2s ease,border-color .25s ease}
+.fx-local a:hover{border-bottom-color:#9fb6cc}
+@media(max-width:1180px){
+  .site-nav a::after{display:none}
+  .site-nav a{transition:color .2s ease,background-color .2s ease,padding-left .25s var(--ease-out)}
+  .site-nav a:hover,.site-nav a:focus-visible{background:#f3f7fb;padding-left:20px}
+  .site-nav a[aria-current="page"]{box-shadow:inset 3px 0 0 var(--blue)}
+}
+@media(prefers-reduced-motion:reduce){
+  .site-nav a::after{transition:none}
+  .site-nav a{transition:color .2s ease,background-color .2s ease}
+  .site-nav a:hover,.site-nav a:focus-visible{padding-left:14px}
+}
