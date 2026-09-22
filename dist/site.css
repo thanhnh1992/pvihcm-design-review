@@ -115,3 +115,68 @@ body>header.site-header{position:relative;z-index:40;max-width:var(--content);ma
   .pd-card .pd-table td.num{white-space:normal}
   .pd-card .pd-table caption{padding-left:14px!important;padding-right:14px!important}
 }
+
+/* ═══ Icon bấm được: đổi màu + nhích theo hướng mũi tên khi rê chuột ═══
+   Hướng suy ra từ loại link: ↗ link ngoài (target=_blank) nhích chéo lên,
+   ↓ link trong trang (#...) nhích xuống, → link sang trang khác nhích phải.
+   Bàn phím (focus-visible) nhận đúng hiệu ứng như chuột. */
+:root{--ease-out:cubic-bezier(.16,1,.3,1)}
+a i[aria-hidden],a span[aria-hidden]{display:inline-block;transition:color .2s ease,transform .35s var(--ease-out)}
+a:hover i[aria-hidden],a:focus-visible i[aria-hidden],a:hover span[aria-hidden],a:focus-visible span[aria-hidden]{color:var(--red);transform:translateX(4px)}
+a[target="_blank"]:hover i[aria-hidden],a[target="_blank"]:focus-visible i[aria-hidden],
+a[target="_blank"]:hover span[aria-hidden],a[target="_blank"]:focus-visible span[aria-hidden]{transform:translate(3px,-3px)}
+a[href^="#"]:hover i[aria-hidden],a[href^="#"]:focus-visible i[aria-hidden]{transform:translateY(3px)}
+/* Cả hàng tài liệu/tin tức đổi màu tiêu đề cùng lúc với mũi tên */
+.pd-docs a b,.fire-news a b,.fx-links a{transition:color .2s ease}
+.pd-docs a:hover b,.fire-news a:hover b{color:var(--blue)}
+
+/* Nút gọi trên header: nền chuyển xanh thương hiệu, ống nghe rung nhẹ như chuông reo */
+.site-header .phone{transition:background-color .2s ease,transform .15s ease}
+.site-header .phone:hover,.site-header .phone:focus-visible{background:var(--blue)}
+.site-header .phone:hover svg,.site-header .phone:focus-visible svg{animation:phone-ring .6s ease-in-out}
+.site-header .phone:active{transform:translateY(1px)}
+@keyframes phone-ring{0%,100%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(12deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(4deg)}}
+.menu-toggle{transition:border-color .2s ease,color .2s ease,background-color .2s ease}
+.menu-toggle:hover{border-color:var(--blue);color:var(--blue);background:#f3f7fb}
+
+/* Cụm nút nổi: đảo màu khi rê, giữ nguyên hình dạng và vị trí */
+.consult-zalo,.consult-phone,.consult-zalo-mark{transition:background .25s ease,color .25s ease,box-shadow .24s ease,transform .24s ease,filter .24s ease}
+.consult-zalo:hover,.consult-zalo:focus-visible{background:#fff;color:#0866e8}
+.consult-zalo:hover .consult-zalo-mark,.consult-zalo:focus-visible .consult-zalo-mark{background:#0866e8;color:#fff}
+.consult-phone:hover,.consult-phone:focus-visible{background:var(--blue);color:#fff}
+.consult-advisor{transition:box-shadow .24s ease,transform .24s ease,border-color .24s ease}
+.consult-advisor:hover,.consult-advisor:focus-visible{border-color:var(--blue)}
+
+@media(prefers-reduced-motion:reduce){
+  a i[aria-hidden],a span[aria-hidden]{transition:color .2s ease}
+  a:hover i[aria-hidden],a:focus-visible i[aria-hidden],a:hover span[aria-hidden],a:focus-visible span[aria-hidden]{transform:none!important}
+  .site-header .phone:hover svg,.site-header .phone:focus-visible svg{animation:none}
+}
+
+/* ═══ Số chạy kiểu đồng hồ số: khối "Niềm tin cần bằng chứng rõ ràng" ═══
+   counters.js tách từng chữ số thành một cột 0-9 x3; khi khối vào màn hình
+   mỗi cột quay đến đúng chữ số, cột sau dừng muộn hơn cột trước một nhịp.
+   Chiều cao cột = line-height của dd nên không xô bố cục. */
+.odo{display:inline-flex;align-items:flex-end;color:var(--ink);transition:color .6s ease}
+.is-counting .odo{color:var(--blue)}
+.is-done .odo{color:var(--ink)}
+.odo-col{display:inline-block;height:1.25em;vertical-align:bottom;width:var(--w,auto);
+  /* chỉ cắt theo chiều dọc; chữ số rộng hơn cột vẫn thấy trọn khi lướt qua */
+  clip-path:inset(0 -.35em)}
+/* Lúc đang quay: mép trên/dưới mờ dần, chữ số lướt qua như bánh xe đồng hồ số */
+.odo-ready .odo-col{-webkit-mask-image:linear-gradient(transparent 0,#000 14%,#000 86%,transparent 100%);mask-image:linear-gradient(transparent 0,#000 14%,#000 86%,transparent 100%)}
+.is-done .odo-col{-webkit-mask-image:none;mask-image:none}
+.odo-strip{display:flex;flex-direction:column;transform:translateY(0);will-change:transform;
+  transition:transform calc(1.5s + var(--i)*.12s) var(--ease-out);transition-delay:calc(var(--k)*.18s + var(--i)*.06s)}
+.odo-strip span{display:block;height:1.25em;line-height:1.25em;text-align:center}
+.is-counting .odo-strip{transform:translateY(calc(-1.25em*(20 + var(--d))))}
+.odo-unit{display:inline-block;opacity:0;transform:translateY(.35em);transition:opacity .45s ease,transform .45s var(--ease-out);
+  transition-delay:calc(var(--k)*.18s + 1.35s)}
+.is-counting .odo-unit{opacity:1;transform:none}
+.odo-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+.proof-points>div{position:relative}
+.proof-points.odo-ready>div::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--blue);
+  transform:scaleX(0);transform-origin:left;transition:transform calc(1.7s) var(--ease-out);transition-delay:calc(var(--k,0)*.18s)}
+.proof-points.is-counting>div::after{transform:scaleX(1)}
+/* Luật cũ ".proof-points dd span" (dành cho đơn vị %, tỷ đồng) không được thu nhỏ chữ số. */
+.proof-points dd .odo,.proof-points dd .odo span{font-size:inherit;letter-spacing:inherit}
