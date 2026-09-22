@@ -228,3 +228,16 @@ a[href^="#"]:hover i[aria-hidden],a[href^="#"]:focus-visible i[aria-hidden]{tran
 /* Mũi tên trong nút có nền giữ màu chữ của nút (đỏ trên nền xanh/đỏ sẽ khó đọc). */
 .primary:hover span[aria-hidden],.primary:focus-visible span[aria-hidden],.fire-btn:hover [aria-hidden],.fx-btn:hover [aria-hidden],
 .solution-copy>a:not(.secondary-link):hover span[aria-hidden],.solution-copy>a:not(.secondary-link):focus-visible span[aria-hidden]{color:inherit}
+
+/* ═══ Menu header (máy tính): rê chuột hiện khung viền + nền xanh nhạt ═══
+   Chỉ đổi chữ từ #17212E sang #164F87 thì gần như không thấy khác (hai màu
+   cùng đậm). Mục được rê có khung viền bo tròn, nền xanh nhạt, chữ xanh;
+   mục của trang đang xem dùng khung đó ở dạng đậm hơn. */
+@media(min-width:1181px){
+  .site-nav{gap:2px}
+  .site-nav a{min-height:40px;padding:0 12px;border:1px solid transparent;border-radius:999px;
+    transition:color .2s ease,background-color .2s ease,border-color .2s ease}
+  .site-nav a:hover,.site-nav a:focus-visible{color:var(--blue);background:#eaf2fb;border-color:#b9d0e8}
+  .site-nav a[aria-current="page"]{color:var(--blue);background:#eaf2fb;border-color:var(--blue);box-shadow:none}
+  .site-nav a[aria-current="page"]:hover{background:#dde9f7}
+}
