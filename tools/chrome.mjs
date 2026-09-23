@@ -2,7 +2,18 @@
 export const SITE = 'https://pvihcm.com';
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 // Luật chống giọng máy: không dùng gạch dài. Chỉ đổi dấu câu, không đổi nội dung.
-export const clean = (s) => String(s).replace(/\s+—\s+/g, ', ').replace(/—/g, ', ').replace(/trong trong/g, 'trong');
+// Chuẩn hóa chữ hiển thị: bỏ gạch ngang dài, đưa khoảng số về dấu nối,
+// thống nhất kiểu bỏ dấu tiếng Việt (hoá -> hóa), sửa lỗi lặp từ của dữ liệu nguồn.
+const SPELL = [[/hoá/g, 'hóa'], [/Hoá/g, 'Hóa'], [/thoả/g, 'thỏa'], [/Thoả/g, 'Thỏa'], [/hoạ/g, 'họa'], [/Hoạ/g, 'Họa'],
+  [/tuý/g, 'túy'], [/huỷ/g, 'hủy'], [/khoẻ/g, 'khỏe'], [/toà/g, 'tòa'], [/hoà/g, 'hòa'], [/xoá/g, 'xóa'],
+  [/luỹ/g, 'lũy'], [/thuỷ/g, 'thủy'], [/nguỵ/g, 'ngụy']];
+export const clean = (s) => {
+  let t = String(s).replace(/\s+—\s+/g, ', ').replace(/—/g, ', ')
+    .replace(/(\d)\s*–\s*(\d)/g, '$1-$2').replace(/–/g, '-')
+    .replace(/trong trong/g, 'trong');
+  for (const [re, to] of SPELL) t = t.replace(re, to);
+  return t;
+};
 export const t = (s) => esc(clean(s));
 
 export const NAV = [

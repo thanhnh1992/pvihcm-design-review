@@ -73,7 +73,7 @@ ${feeTables}
 
 <section class="fire-compare" id="vat-chat"><div class="fire-wrap">
 <h2>TNDS và bảo hiểm vật chất xe là hai thứ khác nhau</h2>
-<p class="fire-lede" style="margin-top:12px">${t(tn.tndsFaqs[2].answer)}</p>
+<p class="fire-lede" style="margin-top:12px"><b>${t(tn.tndsFaqs[2].question)}</b> ${t(tn.tndsFaqs[2].answer)}</p>
 <table><thead><tr><th scope="col"><span class="sr-only">Tiêu chí</span></th><th scope="col"><span>Bắt buộc</span>TNDS chủ xe</th><th scope="col"><span>Tự nguyện</span>${t(tn.vehicleDamageFacts.title)}</th></tr></thead><tbody>
 <tr><th scope="row">Bảo vệ</th><td>${t(car.coverage[0])}</td><td>${t(tn.vehicleDamageFacts.summary)}</td></tr>
 <tr><th scope="row">Căn cứ phí</th><td>${t(ref.legalBasis)}, theo loại xe và mục đích sử dụng</td><td>${tn.vehicleDamageFacts.considerations.map(t).join('<br>')}</td></tr>
@@ -85,7 +85,7 @@ ${feeTables}
 <span class="fire-eyebrow">${esc(contractor.flag)} · ${esc(contractor.eyebrow.toLowerCase().replace(/^./, (c) => c.toUpperCase()))}</span>
 <h2>Người lao động thi công trên công trường</h2>
 <p class="fire-lede" style="margin-top:12px">${t(contractor.summary)}</p>
-<div class="fire-alert"><b>${t(ac.legalReference.current)} · ${t(ac.legalReference.effective)}</b><p>${t(ac.legalReference.replaces)}. ${t(ac.faqs[3].answer)}</p></div>
+<div class="fire-alert"><b>${t(ac.legalReference.current)} · ${t(ac.legalReference.effective)}</b><p>${t(ac.legalReference.replaces)}. <b>${t(ac.faqs[3].question)}</b> ${t(ac.faqs[3].answer)}</p></div>
 <div class="pd-cta"><a class="fire-btn fire-btn-dark" href="/san-pham/bao-hiem-tai-nan/#doi-tuong">Xem phí cho nhà thầu</a><a class="fire-btn fire-btn-line" href="${ac.legalReference.href}" target="_blank" rel="noopener">Đọc Nghị định 220/2026/NĐ-CP</a></div>
 </div></section>
 
@@ -95,7 +95,7 @@ ${feeTables}
 <div><h3>Hồ sơ</h3><ol>${car.documents.map((d) => `<li><b>${t(d)}</b></li>`).join('')}</ol></div>
 <div><h3>Các bước</h3><ol>${car.buySteps.map((s) => `<li><b>${t(s.title)}</b><span>${t(s.text)}</span></li>`).join('')}</ol></div>
 </div>
-<p class="fire-note">${t(car.faqs[2].answer)}</p>
+<p class="fire-note"><b>${t(car.faqs[2].question)}</b> ${t(car.faqs[2].answer)}</p>
 </div></section>
 
 <section class="fire-news" id="tai-lieu" style="background:#fff"><div class="fire-wrap">
@@ -119,8 +119,8 @@ ${faqBlock([...tn.tndsFaqs, car.faqs[2]])}`;
   const faqs = [...tn.tndsFaqs, car.faqs[2]];
   const html = page({
     path: P,
-    title: 'Bảo hiểm TNDS ô tô bắt buộc | Biểu phí và tính phí theo loại xe | PVI Thành Đô',
-    description: 'Tính phí bảo hiểm TNDS ô tô bắt buộc theo Nghị định 67/2023/NĐ-CP, biểu phí đầy đủ từng loại xe kèm VAT, mức trách nhiệm, hồ sơ và bồi thường. Bảo hiểm người lao động công trường.',
+    title: 'Bảo hiểm TNDS ô tô bắt buộc: biểu phí và tính phí | PVI',
+    description: 'Tính phí TNDS ô tô bắt buộc theo Nghị định 67/2023/NĐ-CP: biểu phí từng loại xe kèm VAT, mức trách nhiệm, hồ sơ và quy trình bồi thường.',
     image: '/assets/section-bat-buoc.webp',
     head: faqJsonLd(faqs) + breadcrumbJsonLd(P, 'Bảo hiểm bắt buộc'),
     main,
@@ -201,7 +201,7 @@ ${faqBlock([...tn.tndsFaqs, car.faqs[2]])}`;
   const plans = ac.accidentPlans, tiers = ac.groupTiers;
   const planOpts = plans.map((p, i) => `<option value="${p.id}"${p.id === '100' ? ' selected' : ''}>Gói ${esc(p.label)}, phí gốc ${vnd(p.basePremium)}/người/năm</option>`).join('');
   const termOpts = ac.termOptions.map((o) => `<option value="${o.months}">${esc(o.label)}</option>`).join('');
-  const matrix = `<div class="pd-scroll pd-card"><table class="pd-table"><thead><tr><th scope="col">Gói (số tiền bảo hiểm)</th>${tiers.map((x) => `<th scope="col" class="num">${esc(x.shortLabel)} người${x.discount ? `<br>giảm ${Math.round(x.discount * 100)}%` : '<br>phí gốc'}</th>`).join('')}</tr></thead><tbody>${plans.map((p) => `<tr><th scope="row">${esc(p.label)}</th>${tiers.map((x, i) => `<td class="num${i === 0 ? ' strong' : ''}">${vnd(ac.premiumFor(p, i, 12))}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  const matrix = `<div class="pd-scroll pd-card"><table class="pd-table"><thead><tr><th scope="col">Gói (số tiền bảo hiểm)</th>${tiers.map((x) => `<th scope="col" class="num">${t(x.shortLabel)} người${x.discount ? `<br>giảm ${Math.round(x.discount * 100)}%` : '<br>phí gốc'}</th>`).join('')}</tr></thead><tbody>${plans.map((p) => `<tr><th scope="row">${t(p.label)}</th>${tiers.map((x, i) => `<td class="num${i === 0 ? ' strong' : ''}">${vnd(ac.premiumFor(p, i, 12))}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 
   const audience = ac.audienceCards.map((c) => {
     const plan = plans.find((p) => p.id === c.planId);
@@ -232,7 +232,7 @@ ${faqBlock([...tn.tndsFaqs, car.faqs[2]])}`;
 </form></div>
 <div>
 <div class="fire-total pd-result">
-<div class="fire-total-rows"><div><span>Phí mỗi người</span><b id="acc-per">200.000 đ</b></div><div><span>Bậc giảm phí</span><b id="acc-tier">20 – 100 người, giảm 20%</b></div><div><span>Số người</span><b id="acc-count">50 người</b></div></div>
+<div class="fire-total-rows"><div><span>Phí mỗi người</span><b id="acc-per">200.000 đ</b></div><div><span>Bậc giảm phí</span><b id="acc-tier">20-100 người, giảm 20%</b></div><div><span>Số người</span><b id="acc-count">50 người</b></div></div>
 <div class="fire-total-sum"><span>Tổng phí tham chiếu</span><strong id="acc-total">10.000.000 đ</strong></div>
 <div class="fire-total-foot"><a class="fire-btn fire-btn-red" href="tel:0938072236">Gọi báo phí 0938 072 236</a><a class="fire-btn fire-btn-line" href="${ZALO}" target="_blank" rel="noopener" style="color:var(--ink);border:1px solid #c9d6e3;background:#fff">Gửi danh sách qua Zalo</a></div>
 </div>
@@ -249,7 +249,7 @@ ${matrix}
 <section class="pd-section" id="doi-tuong"><div class="fire-wrap">
 <h2>Ai thường mua, mua để làm gì</h2>
 <div class="pd-rows">${audience}</div>
-<div class="fire-alert"><b>${t(ac.legalReference.current)} · ${t(ac.legalReference.effective)}</b><p>${t(ac.legalReference.replaces)}. ${t(ac.faqs[2].answer)} <a href="${ac.legalReference.href}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">Đọc văn bản</a></p></div>
+<div class="fire-alert"><b>${t(ac.legalReference.current)} · ${t(ac.legalReference.effective)}</b><p>${t(ac.legalReference.replaces)}. <b>${t(ac.faqs[2].question)}</b> ${t(ac.faqs[2].answer)} <a href="${ac.legalReference.href}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">Đọc văn bản</a></p></div>
 </div></section>
 
 <section class="fire-compare pd-paper" id="quyen-loi"><div class="fire-wrap">
@@ -288,8 +288,8 @@ ${faqBlock(ac.faqs)}`;
 
   const html = page({
     path: P,
-    title: 'Bảo hiểm tai nạn 24/24 | Bảng phí theo gói và số người | PVI Thành Đô',
-    description: 'Bảo hiểm tai nạn 24/24 cho cá nhân, doanh nghiệp và nhà thầu công trường: phí gốc từ 50.000đ/người/năm, giảm đến 55% theo quy mô nhóm, quyền lợi, loại trừ, hồ sơ bồi thường.',
+    title: 'Bảo hiểm tai nạn 24/24: bảng phí theo nhóm | PVI Thành Đô',
+    description: 'Bảo hiểm tai nạn 24/24 cho cá nhân, doanh nghiệp và nhà thầu: phí gốc từ 50.000đ/người/năm, giảm tới 55% theo quy mô nhóm, quyền lợi và hồ sơ.',
     image: '/assets/section-tai-nan.webp',
     head: faqJsonLd(ac.faqs) + breadcrumbJsonLd(P, 'Bảo hiểm tai nạn'),
     main,
@@ -301,7 +301,7 @@ ${faqBlock(ac.faqs)}`;
    phí = phí gốc × (1 − giảm theo bậc) × tỷ lệ ngắn hạn, làm tròn theo đồng. */
 (() => {
   const PLANS = ${JSON.stringify(plans)};
-  const TIERS = ${JSON.stringify(tiers)};
+  const TIERS = ${JSON.stringify(tiers.map((x) => ({ ...x, label: clean(x.label), shortLabel: clean(x.shortLabel) })))};
   const SHORT = ${JSON.stringify(ac.shortTermRates)};
   const fmt = (n) => Math.round(n).toLocaleString('vi-VN') + ' đ';
   const $ = (id) => document.getElementById(id);
@@ -395,8 +395,8 @@ ${faqBlock(g.faqs)}`;
 
   const html = page({
     path: P,
-    title: 'Bảo hiểm hàng hóa xuất nhập khẩu | Theo chuyến, hợp đồng bao | PVI Thành Đô',
-    description: 'Bảo hiểm hàng hóa xuất nhập khẩu của Bảo hiểm PVI: phương án từng chuyến, hợp đồng bao và chuỗi logistics; chứng từ cần gửi, phạm vi, loại trừ và các bước khi có tổn thất.',
+    title: 'Bảo hiểm hàng hóa xuất nhập khẩu | PVI Thành Đô',
+    description: 'Bảo hiểm hàng hóa xuất nhập khẩu PVI: phương án từng chuyến, hợp đồng bao, chuỗi logistics; chứng từ cần gửi, phạm vi và các bước khi có tổn thất.',
     image: '/assets/section-hang-hoa.webp',
     head: faqJsonLd(g.faqs) + breadcrumbJsonLd(P, 'Bảo hiểm hàng hóa xuất nhập khẩu'),
     main,

@@ -40,7 +40,7 @@ const write = (rel, html) => { fs.writeFileSync(path.join(DIST, rel), html); con
 </div></section>`;
   write('huong-dan/index.html', page({
     path: P,
-    title: 'Checklist chuẩn bị hồ sơ bảo hiểm nhân viên cho HR | PVI Thành Đô',
+    title: 'Checklist hồ sơ bảo hiểm nhân viên cho HR | PVI Thành Đô',
     description: 'Bốn nhóm thông tin HR cần chuẩn bị trước khi hỏi báo phí bảo hiểm cho nhân viên: mục tiêu mua, số người, nhóm công việc và ngày cần hiệu lực.',
     image: '/assets/section-tai-nan.webp',
     head: breadcrumbJsonLd(P, 'Checklist cho HR'),
@@ -185,8 +185,8 @@ ${hotline}
 </div></section>`;
   write('gioi-thieu/index.html', page({
     path: P,
-    title: 'Giới thiệu Công ty Bảo hiểm PVI Thành Đô | Bảo hiểm PVI tại TP.HCM',
-    description: 'Công ty Bảo hiểm PVI Thành Đô, đơn vị thành viên của Tổng Công ty Bảo hiểm PVI, trụ sở 473 Điện Biên Phủ, TP.HCM. Tư vấn và phát hành bảo hiểm bắt buộc, tai nạn, cháy nổ và hàng hóa.',
+    title: 'Giới thiệu Công ty Bảo hiểm PVI Thành Đô',
+    description: 'Công ty Bảo hiểm PVI Thành Đô, đơn vị thành viên của Tổng Công ty Bảo hiểm PVI, trụ sở 473 Điện Biên Phủ, TP.HCM. Tư vấn bảo hiểm bắt buộc, tai nạn, cháy nổ, hàng hóa.',
     image: '/assets/section-bat-buoc.webp',
     head: breadcrumbJsonLd(P, 'Giới thiệu') + `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'AboutPage', url: 'https://pvihcm.com/gioi-thieu/', name: 'Giới thiệu Công ty Bảo hiểm PVI Thành Đô', about: { '@type': 'InsuranceAgency', name: 'Công ty Bảo hiểm PVI Thành Đô', legalName: 'CÔNG TY BẢO HIỂM PVI THÀNH ĐÔ', taxID: '0105402531-041', url: 'https://pvihcm.com/', telephone: '+84938072236', email: 'giadinhpvi@gmail.com', address: { '@type': 'PostalAddress', streetAddress: 'Tầng 12A, Tòa nhà 194 Golden Building, số 473 Điện Biên Phủ', addressLocality: 'Phường Thạnh Mỹ Tây', addressRegion: 'Thành phố Hồ Chí Minh', addressCountry: 'VN' }, parentOrganization: { '@type': 'Organization', name: 'Tổng Công ty Bảo hiểm PVI' } } })}</script>`,
     main,
