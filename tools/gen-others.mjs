@@ -186,7 +186,7 @@ ${hotline}
   write('gioi-thieu/index.html', page({
     path: P,
     title: 'Giới thiệu Công ty Bảo hiểm PVI Thành Đô',
-    description: 'Công ty Bảo hiểm PVI Thành Đô, đơn vị thành viên của Tổng Công ty Bảo hiểm PVI, trụ sở 473 Điện Biên Phủ, TP.HCM. Tư vấn bảo hiểm bắt buộc, tai nạn, cháy nổ, hàng hóa.',
+    description: 'Công ty Bảo hiểm PVI Thành Đô, đơn vị thành viên của Tổng Công ty Bảo hiểm PVI, trụ sở 473 Điện Biên Phủ, TP.HCM. Bảo hiểm bắt buộc, tai nạn, cháy nổ, hàng hóa.',
     image: '/assets/section-bat-buoc.webp',
     head: breadcrumbJsonLd(P, 'Giới thiệu') + `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'AboutPage', url: 'https://pvihcm.com/gioi-thieu/', name: 'Giới thiệu Công ty Bảo hiểm PVI Thành Đô', about: { '@type': 'InsuranceAgency', name: 'Công ty Bảo hiểm PVI Thành Đô', legalName: 'CÔNG TY BẢO HIỂM PVI THÀNH ĐÔ', taxID: '0105402531-041', url: 'https://pvihcm.com/', telephone: '+84938072236', email: 'giadinhpvi@gmail.com', address: { '@type': 'PostalAddress', streetAddress: 'Tầng 12A, Tòa nhà 194 Golden Building, số 473 Điện Biên Phủ', addressLocality: 'Phường Thạnh Mỹ Tây', addressRegion: 'Thành phố Hồ Chí Minh', addressCountry: 'VN' }, parentOrganization: { '@type': 'Organization', name: 'Tổng Công ty Bảo hiểm PVI' } } })}</script>`,
     main,
