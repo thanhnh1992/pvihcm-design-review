@@ -87,6 +87,13 @@
     track.style.justifyContent = fits ? 'center' : '';
     // CSS đặt display cho nút nên thuộc tính hidden không đủ, phải đặt thẳng style.
     if (toggle) { toggle.hidden = fits; toggle.style.display = fits ? 'none' : ''; }
+    // Bản nhân bản của thẻ chỉ để nhìn: bỏ khỏi thứ tự Tab và khỏi máy đọc màn hình.
+    const cards = [...track.children];
+    cards.slice(Math.ceil(cards.length / 2)).forEach((el) => {
+      el.setAttribute('aria-hidden', 'true');
+      if (el.matches('a, button')) el.setAttribute('tabindex', '-1');
+      el.querySelectorAll('a, button, [tabindex]').forEach((n) => n.setAttribute('tabindex', '-1'));
+    });
   };
   apply();
   let t = 0;

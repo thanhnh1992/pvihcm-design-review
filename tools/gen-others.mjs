@@ -180,7 +180,6 @@ ${faqBlock(faqs, 'Hiểu rõ rồi hãy quyết định')}`;
 <article><b>02</b><h3>Nhận phương án có căn cứ</h3><p>Mỗi phương án được đối chiếu với hồ sơ thực tế trước khi báo phí.</p></article>
 <article><b>03</b><h3>Phát hành</h3><p>Hợp đồng và giấy chứng nhận do Bảo hiểm PVI phát hành sau khi anh/chị xác nhận phương án.</p></article>
 </div>
-${hotline}
 <div class="fire-alert"><b>Về thông tin trên website</b><p>Phí trên website là phí tham khảo theo biểu quy định. Phạm vi, điều kiện và phí chính thức theo quy tắc và hợp đồng Bảo hiểm PVI phát hành.</p></div>
 </div></section>`;
   write('gioi-thieu/index.html', page({

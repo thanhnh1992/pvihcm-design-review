@@ -243,7 +243,6 @@ ${faqBlock([...tn.tndsFaqs, car.faqs[2]])}`;
 <span class="fire-eyebrow">Giảm phí theo quy mô, áp dụng từ ${esc(ac.DISCOUNT_EFFECTIVE_FROM)}</span>
 <h2>Phí mỗi người một năm theo gói và số người</h2>
 ${matrix}
-<p class="fire-note">${t(ac.faqs[8].answer)}</p>
 </div></section>
 
 <section class="pd-section" id="doi-tuong"><div class="fire-wrap">
@@ -260,7 +259,6 @@ ${matrix}
 
 <section class="fire-compare" id="so-sanh"><div class="fire-wrap">
 <h2>Khác gì chế độ tai nạn lao động của BHXH</h2>
-<p class="fire-lede" style="margin-top:12px">${t(ac.faqs[1].answer)}</p>
 <div class="pd-scroll"><table><thead><tr><th scope="col"><span class="sr-only">Tiêu chí</span></th><th scope="col"><span>Bắt buộc theo luật lao động</span>BHXH tai nạn lao động</th><th scope="col"><span>Bảo hiểm thương mại</span>Tai nạn 24/24</th></tr></thead><tbody>${ac.comparisonRows.map((r) => `<tr><th scope="row">${t(r.aspect)}</th><td>${t(r.social)}</td><td class="yes">${t(r.accident)}</td></tr>`).join('')}</tbody></table></div>
 </div></section>
 
@@ -272,7 +270,7 @@ ${matrix}
 <section class="fire-docs" id="chung-tu"><div class="fire-wrap">
 <h2>Mua theo danh sách, ba bước</h2>
 ${steps(ac.buySteps)}
-${ctaRow('Gọi báo phí 0938 072 236')}
+${ctaRow('Gọi tư vấn 0938 072 236')}
 </div></section>
 
 <section class="fire-claim pd-paper" id="boi-thuong"><div class="fire-wrap">

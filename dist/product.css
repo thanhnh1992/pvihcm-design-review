@@ -135,12 +135,12 @@
 .fire-docs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:34px;margin-top:28px}
 .fire-docs h3{padding-bottom:12px;border-bottom:2px solid var(--ink)}
 .fire-docs ol{list-style:none;margin:0;padding:0;counter-reset:d}
-.fire-docs li{counter-increment:d;display:grid;grid-template-columns:30px minmax(0,1fr);gap:14px;
+.fire-docs ol li{counter-increment:d;display:grid;grid-template-columns:30px minmax(0,1fr);gap:14px;
   padding:15px 0;border-bottom:1px solid var(--rail-soft)}
-.fire-docs li::before{content:counter(d,decimal-leading-zero);font-size:14px;font-weight:700;
+.fire-docs ol li::before{content:counter(d,decimal-leading-zero);font-size:14px;font-weight:700;
   color:#5b6f86;font-variant-numeric:tabular-nums;padding-top:2px}
-.fire-docs li b{display:block;color:var(--ink);font-size:16px;font-weight:600;margin-bottom:4px}
-.fire-docs li span{color:var(--muted);font-size:15px;line-height:1.6}
+.fire-docs ol li b{display:block;color:var(--ink);font-size:16px;font-weight:600;margin-bottom:4px}
+.fire-docs ol li span{color:var(--muted);font-size:15px;line-height:1.6}
 
 /* ── Tin tức: hàng biên tập, không phải thẻ ── */
 .fire-news{padding:64px 0;background:var(--paper)}
@@ -233,7 +233,7 @@
 
 /* <b> và <span> là hai ô lưới riêng nên <span> rớt xuống hàng hai, đúng cột 30px
    và bị ép còn một chữ mỗi dòng. Ghim nó về cột nội dung. */
-.fire-docs li b,.fire-docs li span{grid-column:2}
+.fire-docs ol li b,.fire-docs ol li span{grid-column:2}
 
 /* Chip gợi ý cao 38px, dưới chuẩn vùng bấm 44px. */
 .fire-chips button{min-height:var(--tap,44px);padding:0 14px}
@@ -369,3 +369,7 @@
 
 /* Cột nhãn của bảng thông tin không bẻ dòng từng chữ ("Tên / đơn vị"). */
 .pd-card .pd-table tbody th{white-space:nowrap;width:1%}
+
+/* Danh sách gạch đầu dòng nằm trong khối fire-docs từng bị luật lưới của danh sách
+   đánh số ép vào cột 30px, mỗi chữ rơi một dòng. Trả lại bố cục thường. */
+.fire-docs .pd-list li{display:block;grid-template-columns:none;counter-increment:none;padding:14px 0 14px 26px}
