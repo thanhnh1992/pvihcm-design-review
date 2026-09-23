@@ -4,9 +4,12 @@
    Dòng chảy dùng fract() nên lặp vô tận; hai đầu được làm mờ dần để chỗ nối
    không bao giờ lộ ra -> mắt đọc thành một dải liền mạch, không ngắt quãng.
    Canvas fixed toàn màn hình, nằm dưới toàn bộ nội dung, không bắt chuột.
-   Tắt hẳn ở mobile, khi máy xin giảm chuyển động, khi cuộn khuất hoặc tab ẩn. */
+   Điện thoại chạy bản nhẹ (ít hạt hơn, độ phân giải thấp hơn). Tắt hẳn khi máy
+   xin giảm chuyển động, khi tab ẩn, hoặc khi máy không có tăng tốc đồ họa. */
 (() => {
-  const gate = matchMedia('(min-width:821px) and (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)');
+  const gate = matchMedia('(prefers-reduced-motion:no-preference)');
+  // Máy nhỏ hoặc điều khiển bằng ngón tay: bản nhẹ, đỡ tốn pin và không làm nóng máy.
+  const small = matchMedia('(max-width:820px), (pointer:coarse)');
   const canvas = document.querySelector('#hero-cloud');
   if (!canvas) return;
 
@@ -29,7 +32,7 @@
   const renderer = dbg ? String(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL)) : '';
   if (/swiftshader|llvmpipe|software|basic render/i.test(renderer)) return;
 
-  const COUNT = 15000;
+  const COUNT = small.matches ? 5000 : 15000;
 
   const vert = `
 precision mediump float;
@@ -135,7 +138,7 @@ void main(){
   gl.clearColor(0, 0, 0, 0);
 
   const size = () => {
-    const dpr = Math.min(devicePixelRatio || 1, 1.5);
+    const dpr = Math.min(devicePixelRatio || 1, small.matches ? 1 : 1.5);
     canvas.width = Math.round(innerWidth * dpr);
     canvas.height = Math.round(innerHeight * dpr);
     gl.viewport(0, 0, canvas.width, canvas.height);
@@ -170,7 +173,14 @@ void main(){
   const schedule = () => { if (!raf && visible && !document.hidden && gate.matches) raf = requestAnimationFrame(draw); };
   const stop = () => { if (raf) cancelAnimationFrame(raf); raf = 0; last = 0; };
 
-  addEventListener('resize', size, { passive: true });
+  // Trên điện thoại, thanh địa chỉ trượt lên xuống khi cuộn làm đổi innerHeight liên tục.
+  // Chỉ dựng lại canvas khi bề ngang đổi, hoặc chiều cao đổi nhiều hơn 140px.
+  let lastW = innerWidth, lastH = innerHeight;
+  addEventListener('resize', () => {
+    if (innerWidth === lastW && Math.abs(innerHeight - lastH) < 140) return;
+    lastW = innerWidth; lastH = innerHeight;
+    size();
+  }, { passive: true });
   addEventListener('pointermove', (e) => {
     if (e.pointerType !== 'mouse') return;
     tx = e.clientX / innerWidth - 0.5;
