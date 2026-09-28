@@ -1,9 +1,56 @@
-/* Liên hệ luôn hiện bằng chữ, không dùng avatar hay hiệu ứng nảy. */
-.consult-stack{position:fixed;right:20px;bottom:20px;z-index:140;display:flex;gap:8px;transition:opacity .2s ease,visibility .2s ease}
-.consult-stack.is-at-footer{opacity:0;visibility:hidden;pointer-events:none}
-.consult-stack a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:9px 16px;border:1px solid #164f87;border-radius:8px;background:#fff;color:#164f87;font:600 14px/1.4 "Be Vietnam Pro",sans-serif;text-decoration:none;box-shadow:0 4px 14px #17212e18}
-.consult-stack a:first-child{background:#164f87;color:#fff}
-.consult-stack a:hover{box-shadow:0 6px 18px #17212e28;text-decoration:underline;text-underline-offset:3px}
-.consult-stack a:focus-visible{outline:3px solid #cb2530;outline-offset:3px}
-@media(max-width:680px){.consult-stack{right:12px;bottom:calc(12px + env(safe-area-inset-bottom))}.consult-stack a{padding:9px 11px;font-size:13px}}
+/* Cụm ba nút liên hệ, cùng bố cục với baohiempvi-vn.
+   Chữ nhãn nâng lên 14px (bản gốc 10–11px, dưới sàn cỡ chữ). */
+.consult-stack{align-items:center;display:flex;flex-direction:column;gap:13px;position:fixed;right:clamp(16px,2vw,32px);top:50%;
+  transform:translateY(-50%);z-index:140;transition:opacity .28s ease,visibility .28s}
+.consult-stack.is-at-footer{opacity:0;pointer-events:none;visibility:hidden}
+
+.consult-action{align-items:center;border:1px solid rgba(255,255,255,.94);border-radius:50%;box-shadow:0 12px 28px rgba(2,32,66,.19);
+  display:flex;height:52px;justify-content:center;position:relative;text-decoration:none;width:52px;
+  transition:box-shadow .24s ease,filter .24s ease,transform .24s ease}
+.consult-action svg{height:25px;width:25px}
+.consult-zalo{background:linear-gradient(145deg,#1496ff,#0866e8);color:#fff}
+.consult-zalo-mark{align-items:center;background:#fff;border-radius:11px;color:#0879ef;display:flex;font:900 24px/1 Arial,sans-serif;
+  height:28px;justify-content:center;letter-spacing:-.1em;padding-right:2px;width:29px}
+.consult-phone{background:linear-gradient(145deg,#fff,#e9f6ff);color:#075d9a}
+
+.consult-tip,.consult-advisor-label{background:#082f5a;border-radius:8px;box-shadow:0 10px 22px rgba(1,26,54,.2);color:#fff;
+  font-size:14px;font-weight:700;line-height:1.2;opacity:0;padding:8px 11px;pointer-events:none;position:absolute;
+  right:calc(100% + 12px);top:50%;transform:translate(6px,-50%);transition:opacity .18s ease,transform .18s ease;white-space:nowrap}
+.consult-action:hover,.consult-action:focus-visible{box-shadow:0 17px 32px rgba(2,32,66,.27);filter:saturate(1.13);transform:scale(1.05)}
+.consult-action:hover .consult-tip,.consult-action:focus-visible .consult-tip,
+.consult-advisor:hover .consult-advisor-label,.consult-advisor:focus-visible .consult-advisor-label{opacity:1;transform:translate(0,-50%)}
+
+.consult-advisor-motion{animation:consultFloat 5.2s ease-in-out infinite;display:block;position:relative}
+.consult-advisor-motion::after{animation:consultPing 4.7s ease-out infinite;border:2px solid #e21a36;border-radius:50%;content:"";
+  inset:-4px;pointer-events:none;position:absolute}
+.consult-advisor{background:linear-gradient(145deg,#fff,#f5f7fa);border:2px solid #e21a36;border-radius:50%;
+  box-shadow:0 14px 30px rgba(134,10,36,.25),0 0 0 4px rgba(226,26,54,.09);display:block;height:68px;padding:3px;position:relative;
+  transition:box-shadow .24s ease,transform .24s ease;width:68px;z-index:1}
+.consult-advisor-photo{background:linear-gradient(150deg,#e7f7ff,#a9d9ed);border-radius:50%;display:block;height:100%;overflow:hidden;
+  position:relative;width:100%}
+.consult-advisor-photo img{bottom:-1px;display:block;height:122%;left:-11%;max-width:none;object-fit:contain;object-position:center bottom;
+  position:absolute;width:122%}
+.consult-advisor-label{display:grid;gap:3px;text-align:left;background:#fff;color:#082f5a;border:1px solid rgba(226,26,54,.26)}
+.consult-advisor-label small{color:#b8102a;font-size:13px;font-weight:700}
+.consult-advisor:hover,.consult-advisor:focus-visible{box-shadow:0 18px 34px rgba(134,10,36,.32),0 0 0 6px rgba(226,26,54,.13);transform:scale(1.065)}
+.consult-advisor-motion:hover,.consult-advisor-motion:focus-within{animation-play-state:paused}
+.consult-action:focus-visible,.consult-advisor:focus-visible{outline:3px solid #ffd166;outline-offset:4px}
+.consult-action:active,.consult-advisor:active{transform:scale(.97)}
+@keyframes consultFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes consultPing{0%,76%,100%{opacity:.78;transform:scale(1)}84%{opacity:1;transform:scale(1.04)}92%{opacity:0;transform:scale(1.1)}}
+
+/* Điện thoại: neo góc phải dưới, ba nút thẳng mép phải. */
+@media(max-width:680px){
+  .consult-stack{align-items:flex-end;bottom:calc(12px + env(safe-area-inset-bottom));gap:10px;right:12px;top:auto;transform:none}
+  .consult-action{height:46px;width:46px}
+  .consult-action svg{height:23px;width:23px}
+  .consult-zalo-mark{font-size:21px;height:25px;width:26px}
+  .consult-advisor{height:56px;width:56px}
+  .consult-advisor-motion{margin-right:4px}
+  .consult-tip,.consult-advisor-label{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .consult-action,.consult-advisor,.consult-tip,.consult-advisor-label{transition:none}
+  .consult-advisor-motion,.consult-advisor-motion::after{animation:none}
+}
 @media print{.consult-stack{display:none}}

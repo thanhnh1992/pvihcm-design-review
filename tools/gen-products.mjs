@@ -36,10 +36,10 @@ const write = (rel, html) => { const f = path.join(DIST, rel); fs.mkdirSync(path
   const main = `
 <section class="fire-hero"><div class="fire-wrap"><div class="fire-hero-copy">
 <span class="fire-eyebrow">Bảo hiểm bắt buộc · Xe cơ giới và công trường</span>
-<h1>Tra phí TNDS ô tô theo loại xe</h1>
+<h1>TNDS ô tô bắt buộc, <em>tra phí đúng loại xe.</em></h1>
 <p>${t(tn.tndsAssistantFacts.definition)} Biểu phí theo ${t(ref.legalBasis)}, tách phí cơ bản và ${t(ref.vat)}.</p>
 <div class="fire-actions"><a class="fire-btn fire-btn-red" href="#tinh-phi">Tính phí xe của tôi</a><a class="fire-btn fire-btn-line" href="#cong-truong">Người lao động công trường</a></div>
-</div></div></section>
+</div><figure class="fire-hero-art"><img src="/assets/section-bat-buoc.webp" width="1280" height="853" alt="Chủ xe trao đổi hồ sơ bảo hiểm bắt buộc với tư vấn viên"></figure></div></section>
 
 <section class="fire-tool" id="tinh-phi"><div class="fire-wrap">
 <h2>Tính phí TNDS theo loại xe</h2>
@@ -214,10 +214,10 @@ ${faqBlock([...tn.tndsFaqs, car.faqs[2]])}`;
   const main = `
 <section class="fire-hero"><div class="fire-wrap"><div class="fire-hero-copy">
 <span class="fire-eyebrow">Bảo hiểm tai nạn 24/24 · Cá nhân và doanh nghiệp</span>
-<h1>Tra phí tai nạn 24/24 cho cá nhân và nhóm</h1>
+<h1>Tai nạn 24/24, <em>phí theo gói và quy mô nhóm.</em></h1>
 <p>${t(ac.comparisonRows[1].accident)}. ${t(ac.comparisonRows[3].accident)}. Từ 20 người trở lên được giảm phí theo quy mô, cao nhất ${esc(ac.MAX_DISCOUNT_LABEL)}.</p>
 <div class="fire-actions"><a class="fire-btn fire-btn-red" href="#tinh-phi">Tính phí cho nhóm</a><a class="fire-btn fire-btn-line" href="#doi-tuong">Nhà thầu công trường</a></div>
-</div></div></section>
+</div><figure class="fire-hero-art"><img src="/assets/section-tai-nan.webp" width="1280" height="853" alt="Nhân sự doanh nghiệp trao đổi phương án bảo hiểm tai nạn"></figure></div></section>
 
 <section class="fire-tool" id="tinh-phi"><div class="fire-wrap">
 <h2>Tính phí theo gói, số người và thời hạn</h2>
@@ -246,7 +246,7 @@ ${matrix}
 </div></section>
 
 <section class="pd-section" id="doi-tuong"><div class="fire-wrap">
-<h2>Nhóm người tham gia và mục đích mua</h2>
+<h2>Ai thường mua, mua để làm gì</h2>
 <div class="pd-rows">${audience}</div>
 <div class="fire-alert"><b>${t(ac.legalReference.current)} · ${t(ac.legalReference.effective)}</b><p>${t(ac.legalReference.replaces)}. <b>${t(ac.faqs[2].question)}</b> ${t(ac.faqs[2].answer)} <a href="${ac.legalReference.href}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">Đọc văn bản</a></p></div>
 </div></section>
@@ -337,10 +337,10 @@ ${faqBlock(ac.faqs)}`;
   const main = `
 <section class="fire-hero"><div class="fire-wrap"><div class="fire-hero-copy">
 <span class="fire-eyebrow">${t(g.category)} · ${t(g.tag)}</span>
-<h1>Bảo hiểm hàng hóa theo chuyến hoặc hợp đồng bao</h1>
+<h1>Bảo hiểm hàng hóa, <em>chốt trước khi hàng rời cảng.</em></h1>
 <p>${t(g.summary)}</p>
 <div class="fire-actions"><a class="fire-btn fire-btn-red" href="#chung-tu">Gửi thông tin lô hàng</a><a class="fire-btn fire-btn-line" href="#phuong-an">So sánh ba phương án</a></div>
-</div></div></section>
+</div><figure class="fire-hero-art"><img src="/assets/section-hang-hoa.webp" width="1280" height="853" alt="Container hàng hóa xuất nhập khẩu tại cảng"></figure></div></section>
 
 <section class="pd-section"><div class="fire-wrap">
 <div class="pd-grid" style="margin-top:0">
@@ -351,7 +351,7 @@ ${faqBlock(ac.faqs)}`;
 </div></section>
 
 <section class="fire-compare pd-paper" id="phuong-an"><div class="fire-wrap">
-<h2>Chọn cách mua theo từng lô hàng</h2>
+<h2>Ba cách mua, chọn theo nhịp xuất nhập khẩu</h2>
 <div class="pd-scroll"><table><thead><tr><th scope="col"><span class="sr-only">Tiêu chí</span></th>${plans.map((p) => `<th scope="col">${p.featured ? '<span>Hay dùng nhất</span>' : '<span>&nbsp;</span>'}${t(p.name)}</th>`).join('')}</tr></thead><tbody>
 <tr><th scope="row">Phù hợp với</th>${plans.map((p) => `<td class="yes">${t(p.forWhom)}</td>`).join('')}</tr>
 <tr><th scope="row">Nội dung</th>${plans.map((p) => `<td>${p.items.map(t).join('<br>')}</td>`).join('')}</tr>
