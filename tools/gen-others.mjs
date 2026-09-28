@@ -23,7 +23,7 @@ const write = (rel, html) => { fs.writeFileSync(path.join(DIST, rel), html); con
 <h1>Trước khi hỏi báo phí, <em>HR cần chuẩn bị gì?</em></h1>
 <p>Bốn nhóm thông tin giúp cuộc trao đổi đầu tiên đi đúng trọng tâm. Chưa cần gửi dữ liệu cá nhân của từng nhân viên.</p>
 <div class="fire-actions"><a class="fire-btn fire-btn-red" href="#checklist">Xem checklist</a><button class="fire-btn fire-btn-line" id="print-button" type="button">In checklist</button></div>
-</div><figure class="fire-hero-art"><img src="/assets/section-tai-nan.webp" width="1280" height="853" alt="Nhân sự doanh nghiệp chuẩn bị hồ sơ bảo hiểm cho nhân viên"></figure></div></section>
+</div></div></section>
 
 <section class="pd-section" id="checklist"><div class="fire-wrap">
 <h2>Bắt đầu với số liệu tổng hợp</h2>
@@ -34,7 +34,7 @@ const write = (rel, html) => { fs.writeFileSync(path.join(DIST, rel), html); con
 
 <section class="fire-docs pd-paper"><div class="fire-wrap">
 <span class="fire-eyebrow">Đã có thông tin cơ bản?</span>
-<h2>Chuyển checklist thành bước tiếp theo</h2>
+<h2>Đã có đủ thông tin? Xem phí hoặc liên hệ tư vấn</h2>
 <p class="fire-lede" style="margin-top:12px">Xem bảng phí theo gói và số người, hoặc gửi thông tin qua Zalo để nhận phương án cho nhân viên.</p>
 <div class="pd-cta"><a class="fire-btn fire-btn-red" href="/san-pham/bao-hiem-tai-nan/#tinh-phi">Tính phí tai nạn cho nhóm</a><a class="fire-btn fire-btn-line" href="/tai-nan-doanh-nghiep/#bao-gia">Gửi nhu cầu cho tư vấn viên</a></div>
 </div></section>`;
@@ -59,10 +59,10 @@ const write = (rel, html) => { fs.writeFileSync(path.join(DIST, rel), html); con
   const main = `
 <section class="fire-hero"><div class="fire-wrap"><div class="fire-hero-copy">
 <span class="fire-eyebrow">Dành cho HR và doanh nghiệp</span>
-<h1>Chăm lo đội ngũ. <em>Bắt đầu từ đúng nhu cầu.</em></h1>
+<h1>Bảo hiểm tai nạn cho nhân viên theo danh sách</h1>
 <p>Phương án tai nạn cho nhân viên theo danh sách. Làm rõ công việc, phạm vi và hồ sơ trước khi nhận báo phí.</p>
 <div class="fire-actions"><a class="fire-btn fire-btn-red" href="#bao-gia">Nhận phương án cho nhân viên</a><a class="fire-btn fire-btn-line" href="/huong-dan/">Xem hồ sơ cần chuẩn bị</a></div>
-</div><figure class="fire-hero-art"><img src="/assets/section-tai-nan.webp" width="1280" height="853" alt="Nhóm nhân sự doanh nghiệp trao đổi phương án bảo hiểm tai nạn"></figure></div></section>
+</div></div></section>
 
 <section class="fire-compare"><div class="fire-wrap">
 <h2>Cùng là công nhân. Nhu cầu có thể khác.</h2>
@@ -83,7 +83,7 @@ const write = (rel, html) => { fs.writeFileSync(path.join(DIST, rel), html); con
 </div></section>
 
 <section class="fire-tool" id="bao-gia" style="background:#fff"><div class="fire-wrap">
-<h2>Đội ngũ của bạn. Phương án phù hợp.</h2>
+<h2>Gửi thông tin để nhận báo phí</h2>
 <p class="fire-lede" style="margin-top:12px">Điền bốn ý dưới đây, trang sẽ gom thành một đoạn tóm tắt để anh/chị gửi qua Zalo hoặc đọc khi gọi. Chưa cần gửi danh sách nhân viên hoặc giấy tờ cá nhân ở bước này.</p>
 <div class="pd-grid">
 <div class="fire-panel"><form class="pd-form" id="need-form" novalidate>
@@ -151,7 +151,7 @@ ${faqBlock(faqs, 'Hiểu rõ rồi hãy quyết định')}`;
     ['/san-pham/hang-hoa-xuat-nhap-khau/', 'Bảo hiểm hàng hóa xuất nhập khẩu', 'Theo từng chuyến, hợp đồng bao hoặc chuỗi logistics, rà soát theo chứng từ lô hàng.'],
   ];
   const main = `
-<section class="fire-hero"><div class="fire-wrap"><div class="fire-hero-copy">
+<section class="fire-hero has-fact-sheet"><div class="fire-wrap"><div class="fire-hero-copy">
 <span class="fire-eyebrow">Giới thiệu</span>
 <h1>Công ty Bảo hiểm <em>PVI Thành Đô</em></h1>
 <p>Công ty Bảo hiểm PVI Thành Đô là đơn vị thành viên của Tổng Công ty Bảo hiểm PVI, trụ sở tại 473 Điện Biên Phủ, TP.HCM. Chúng tôi tư vấn và phát hành các sản phẩm bảo hiểm phi nhân thọ cho cá nhân và doanh nghiệp.</p>
@@ -174,13 +174,13 @@ ${faqBlock(faqs, 'Hiểu rõ rồi hãy quyết định')}`;
 
 <section class="fire-claim pd-paper"><div class="fire-wrap">
 <span class="fire-eyebrow">Cách chúng tôi làm việc</span>
-<h2>Có căn cứ trước khi báo phí</h2>
+<h2>Chúng tôi kiểm tra gì trước khi báo phí?</h2>
 <div class="fire-steps">
 <article><b>01</b><h3>Gửi thông tin</h3><p>Anh/chị gửi nhu cầu và hồ sơ cơ bản qua Zalo, điện thoại hoặc email.</p></article>
 <article><b>02</b><h3>Nhận phương án có căn cứ</h3><p>Mỗi phương án được đối chiếu với hồ sơ thực tế trước khi báo phí.</p></article>
 <article><b>03</b><h3>Phát hành</h3><p>Hợp đồng và giấy chứng nhận do Bảo hiểm PVI phát hành sau khi anh/chị xác nhận phương án.</p></article>
 </div>
-<div class="fire-alert"><b>Về thông tin trên website</b><p>Phí trên website là phí tham khảo theo biểu quy định. Phạm vi, điều kiện và phí chính thức theo quy tắc và hợp đồng Bảo hiểm PVI phát hành.</p></div>
+<div class="fire-alert"><b>Về thông tin trên website</b><p>Phí trên website là phí tham khảo theo biểu quy định. Phạm vi, điều kiện và phí chính thức theo quy tắc và hợp đồng Bảo hiểm PVI phát hành.</p><a class="source-article-link" href="https://www.baohiempvi-vn.com/don-vi-thanh-vien-pvi" target="_blank" rel="noopener">Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026 <span aria-hidden="true">↗</span></a></div>
 </div></section>`;
   write('gioi-thieu/index.html', page({
     path: P,
