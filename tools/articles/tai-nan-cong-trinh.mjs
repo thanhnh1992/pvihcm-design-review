@@ -17,6 +17,13 @@ export const post = {
   readMin: 9,
 };
 
+export const crumb = 'Kiến thức công trình';
+export const hero = { name: 'section-tai-nan', w: 1280, h: 853, caption: 'Hình ảnh minh họa.' };
+export const seo = {
+  title: 'Bảo hiểm tai nạn công trình PVI: quyền lợi, hồ sơ, báo giá',
+  description: 'Bảo hiểm tai nạn công trình PVI cho chủ đầu tư, nhà thầu: phần bắt buộc với người lao động, quyền lợi tai nạn và mọi rủi ro xây dựng, hồ sơ báo giá và bồi thường.',
+};
+
 const SRC = {
   car: 'https://www.pvi.com.vn/vi/products/business/construction-all-risk',
   pa: 'https://www.pvi.com.vn/vi/products/personal/personal-accident',

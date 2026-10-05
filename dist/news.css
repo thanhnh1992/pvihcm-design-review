@@ -251,7 +251,7 @@
 .kb-meta>*+*::before{content:"";display:inline-block;width:3px;height:3px;border-radius:50%;background:#9fb0c2;margin:0 12px;vertical-align:middle}
 .kb-meta span:first-child{font-weight:600;color:var(--ink)}
 .kb-hero{width:min(1160px,calc(100% - 2*var(--gutter,24px)));margin:0 auto}
-.kb-hero img{aspect-ratio:21/9;object-fit:cover;object-position:50% 40%;border-radius:16px}
+.kb-hero img{aspect-ratio:21/9;object-fit:cover;object-position:var(--pos,50% 40%);border-radius:16px}
 .kb figcaption{margin-top:10px;font-size:14px;line-height:1.55;color:#5b6f86}
 
 /* Lưới mục lục + nội dung */
@@ -389,6 +389,45 @@
 .kb .kb-disclaimer{margin:22px 0 0;font-size:14px;line-height:1.6;color:#5b6f86}
 .kb .art-sources{max-width:none}
 
+/* Đọc giấy chứng nhận thật: ảnh tài liệu dọc + chú giải đánh số */
+.kb-gcn{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:40px;align-items:start;padding:34px;border-radius:16px;background:var(--tint)}
+.kb-gcn-doc{margin:0;position:sticky;top:24px}
+.kb-gcn-doc a{display:block;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 1px 0 rgba(7,31,67,.06),0 18px 36px -24px rgba(22,79,135,.45);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.kb-gcn-doc a:hover{transform:translateY(-2px);box-shadow:0 1px 0 rgba(7,31,67,.06),0 24px 44px -24px rgba(22,79,135,.55)}
+.kb-gcn-doc img{height:auto}
+.kb .kb-gcn h2{margin:0 0 12px}
+.kb .kb-gcn-read>p{margin:0 0 20px;font-size:16px;line-height:1.7;color:#33475c}
+.kb-gcn-read ol{margin:0;padding:0;list-style:none;counter-reset:gcn}
+.kb-gcn-read li{position:relative;counter-increment:gcn;padding:16px 0 16px 46px;border-top:1px solid rgba(7,31,67,.1)}
+.kb-gcn-read li::before{content:counter(gcn);position:absolute;left:0;top:15px;width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:700}
+.kb-gcn-read b{display:block;font-size:17px;color:var(--ink);margin-bottom:4px}
+.kb-gcn-read span{display:block;font-size:16px;line-height:1.65;color:#33475c}
+
+/* Lợi ích: 1 thẻ nổi bật + lưới 2 x 2 */
+.kb-benefits{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:0;list-style:none;counter-reset:bn}
+.kb-benefits li{counter-increment:bn;padding:22px 24px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+.kb-benefits li:first-child{grid-column:1/-1;background:var(--ink);box-shadow:none}
+.kb-benefits li::before{content:counter(bn,decimal-leading-zero);display:block;margin-bottom:10px;font-size:14px;font-weight:700;color:var(--brand);font-variant-numeric:tabular-nums}
+.kb-benefits b{display:block;font-size:18px;line-height:1.35;color:var(--ink);margin-bottom:6px}
+.kb-benefits span{display:block;font-size:16px;line-height:1.65;color:#33475c}
+.kb-benefits li:first-child::before{color:#8fb4da}
+.kb-benefits li:first-child b{font-size:clamp(20px,2.2vw,24px);color:#fff}
+.kb-benefits li:first-child span{color:#c4d5e8;max-width:60ch}
+
+/* Dòng tổng đài sau các bước */
+.kb-col>p.kb-hotline{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding:14px 18px;border-radius:12px;background:var(--tint);font-size:16px;color:var(--ink)}
+.kb-hotline a{font-size:20px;font-weight:800;color:#b8232c;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* Danh sách có dấu tick, 2 cột */
+.kb-ticks{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;margin:18px 0 8px;padding:0;list-style:none}
+.kb-ticks li{position:relative;padding:12px 0 12px 34px;border-top:1px solid var(--line);font-size:16px;line-height:1.6;color:#33475c}
+.kb-ticks li::before{content:"";position:absolute;left:0;top:14px;width:22px;height:22px;border-radius:50%;background:var(--brand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/14px no-repeat}
+
+/* Ảnh tài liệu trong khối rà soát: giữ nguyên tỷ lệ, không cắt */
+.kb-fee{margin:0}
+.kb-review-head .kb-fee img{aspect-ratio:auto;height:auto;object-fit:contain;background:#fff;border-radius:10px;box-shadow:0 14px 30px -22px rgba(22,79,135,.5)}
+.kb-fee a{display:block}
+
 /* Link về sản phẩm chính */
 .kb-link{color:var(--brand);font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;transition:color .2s var(--ease)}
 .kb-link:hover{color:var(--ink)}
@@ -409,6 +448,10 @@
 
 @media(max-width:900px){
   .kb-products{grid-template-columns:1fr}
+  .kb-gcn{grid-template-columns:1fr;gap:22px;padding:22px 18px}
+  .kb-gcn-doc{position:static}
+  .kb-benefits{grid-template-columns:1fr}
+  .kb-ticks{grid-template-columns:1fr}
   .kb-products a{grid-template-columns:76px minmax(0,1fr) 16px;gap:12px}
   .kb-products img{width:76px;height:76px}
   .kb-head{padding:28px 0 22px}

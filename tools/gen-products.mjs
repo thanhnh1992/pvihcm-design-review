@@ -257,6 +257,7 @@ ${matrix}
 <h2>Quyền lợi và cách tính tiền chi trả</h2>
 <div class="pd-scroll"><table><thead><tr><th scope="col">Quyền lợi</th><th scope="col">Căn cứ</th><th scope="col">Mức chi trả</th></tr></thead><tbody>${ac.benefitRows.map((b) => `<tr><th scope="row" style="width:34%">${t(b.group)}</th><td>${t(b.basis)}</td><td class="yes">${t(b.payout)}</td></tr>`).join('')}</tbody></table></div>
 <div class="pd-cases">${cases}</div>
+<p class="fire-note">Đọc thêm: <a href="/tin-tuc/loi-ich-bao-hiem-tai-nan-ca-nhan/">Lợi ích của bảo hiểm tai nạn cá nhân và cách đọc giấy chứng nhận</a></p>
 </div></section>
 
 <section class="fire-compare" id="so-sanh"><div class="fire-wrap">

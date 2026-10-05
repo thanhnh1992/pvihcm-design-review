@@ -5,6 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { page, t, esc, ctaRow, faqJsonLd, SITE } from './chrome.mjs';
 import * as kbCongTrinh from './articles/tai-nan-cong-trinh.mjs';
+import * as kbTaiNanCaNhan from './articles/loi-ich-tai-nan-ca-nhan.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.resolve(HERE, '../dist');
@@ -26,6 +27,7 @@ const write = (rel, html) => {
 
 /* ── Danh sách bài, mới nhất lên đầu ── */
 export const posts = [
+  kbTaiNanCaNhan.post,
   kbCongTrinh.post,
   {
     slug: 'cong-bo-quyet-dinh-bo-nhiem-giam-doc-pho-giam-doc-pvi-thanh-do',
@@ -309,36 +311,39 @@ ${feedbackBlock(p)}
   }));
 }
 
-/* ── Bài kiến thức: Bảo hiểm tai nạn công trình PVI ──
-   Bố cục bài đọc dài (lớp .kb-*): mục lục bám theo khi cuộn trên máy tính, cột chữ 700px,
-   các khối rộng (quyền lợi hai lớp, hồ sơ báo giá, checklist bồi thường, rà soát) xen giữa. */
-{
-  const A = kbCongTrinh;
+/* ── Bài kiến thức dài (lớp .kb-*), dùng chung cho mọi bài trong tools/articles/ ──
+   Mục lục bám theo khi cuộn trên máy tính, cột chữ 700px, khối rộng xen giữa.
+   Mỗi module bài khai báo: post, seo, crumb, hero, toc, body(ctx), related, faqs, sources. */
+const pic = (name, { w = 1280, h = 853, alt = '', sizes = '100vw', eager = false } = {}) =>
+  `<img src="/assets/${name}.webp" srcset="/assets/${name}-480.webp 480w, /assets/${name}-800.webp 800w, /assets/${name}.webp ${w}w" sizes="${sizes}" width="${w}" height="${h}" alt="${esc(alt)}"${eager ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"'}>`;
+const img = (name, alt, sizes, eager = false) => pic(name, { alt, sizes, eager });
+
+function renderKb(A) {
   const p = A.post;
   const P = `/tin-tuc/${p.slug}/`;
-  const img = (name, alt, sizes, eager = false) => `<img src="/assets/${name}.webp" srcset="/assets/${name}-480.webp 480w, /assets/${name}-800.webp 800w, /assets/${name}.webp 1280w" sizes="${sizes}" width="1280" height="853" alt="${esc(alt)}"${eager ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"'}>`;
+  const H = A.hero;
   const tocList = `<ol>${A.toc.map(([id, label]) => `<li><a href="#${id}">${t(label)}</a></li>`).join('')}</ol>`;
   const faq = `<h2 id="cau-hoi">Câu hỏi thường gặp</h2><div class="kb-faq">${A.faqs.map((f) => `<details><summary>${t(f.question)}</summary><p>${t(f.answer)}</p></details>`).join('')}</div>`;
   const main = `
 <article class="kb">
 <div class="kb-head"><div class="kb-shell">
-<p class="kb-crumb"><a href="/tin-tuc/">Tin tức</a><span aria-hidden="true">/</span><span>Kiến thức công trình</span></p>
+<p class="kb-crumb"><a href="/tin-tuc/">Tin tức</a><span aria-hidden="true">/</span><span>${t(A.crumb)}</span></p>
 <h1>${t(p.title)}</h1>
 <p class="kb-lead">${t(p.lead)}</p>
 <p class="kb-meta"><span>Công ty Bảo hiểm PVI Thành Đô</span><time datetime="${p.date}">${esc(p.dateText)}</time><span>${p.readMin} phút đọc</span></p>
 </div></div>
 
-<figure class="kb-hero">${img('section-tai-nan', p.alt, '(max-width:820px) 100vw, 1160px', true)}
-<figcaption>Hình ảnh minh họa.</figcaption></figure>
+<figure class="kb-hero"${H.position ? ` style="--pos:${H.position}"` : ''}>${pic(H.name, { w: H.w, h: H.h, alt: p.alt, sizes: '(max-width:820px) 100vw, 1160px', eager: true })}
+<figcaption>${t(H.caption)}</figcaption></figure>
 
 <div class="kb-shell kb-layout">
 <div class="kb-toc" role="navigation" aria-label="Mục lục bài viết"><details><summary>Trong bài này <span>${A.toc.length} mục</span></summary>${tocList}</details></div>
 <script>(function(){var d=document.querySelector('.kb-toc details');if(d&&window.matchMedia('(min-width:901px)').matches)d.open=true;})();</script>
 <div class="kb-main">
 <div class="kb-col">
-${A.body({ img, ctaRow })}
+${A.body({ img, pic, ctaRow })}
 <h2 id="san-pham">Sản phẩm liên quan</h2>
-<ul class="kb-products">${A.related.map((r) => `<li><a href="${r.href}">${img(r.img, '', '(max-width:900px) 40vw, 200px')}<span><em>${t(r.k)}</em><b>${t(r.title)}</b><small>${t(r.text)}</small></span><i aria-hidden="true">&rarr;</i></a></li>`).join('')}</ul>
+<ul class="kb-products">${A.related.map((r) => `<li><a href="${r.href}">${pic(r.img, { w: r.w, h: r.h, sizes: '(max-width:900px) 40vw, 200px' })}<span><em>${t(r.k)}</em><b>${t(r.title)}</b><small>${t(r.text)}</small></span><i aria-hidden="true">&rarr;</i></a></li>`).join('')}</ul>
 ${faq}
 <h2 id="nguon">Nguồn tham chiếu</h2>
 <ul class="art-sources">${A.sources.map(([name, href, org]) => href.startsWith('/') ? `<li><a href="${href}"><b>${esc(name)}</b><span>${esc(org)}</span><i aria-hidden="true">&rarr;</i></a></li>` : `<li><p class="src"><b>${esc(name)}</b><span>${esc(org)}</span></p></li>`).join('')}</ul>
@@ -351,8 +356,8 @@ ${feedbackBlock(p)}
 
   write(`tin-tuc/${p.slug}/index.html`, page({
     path: P,
-    title: 'Bảo hiểm tai nạn công trình PVI: quyền lợi, hồ sơ, báo giá',
-    description: 'Bảo hiểm tai nạn công trình PVI cho chủ đầu tư, nhà thầu: phần bắt buộc với người lao động, quyền lợi tai nạn và mọi rủi ro xây dựng, hồ sơ báo giá và bồi thường.',
+    title: A.seo.title,
+    description: A.seo.description,
     image: p.image,
     head: `<script type="application/ld+json">${JSON.stringify({
       '@context': 'https://schema.org', '@type': 'Article',
@@ -372,3 +377,6 @@ ${feedbackBlock(p)}
     extraCss: '<link rel="stylesheet" href="/news.css">',
   }));
 }
+
+renderKb(kbCongTrinh);
+renderKb(kbTaiNanCaNhan);
