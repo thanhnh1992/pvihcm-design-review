@@ -3,7 +3,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { page, t, esc, ctaRow, SITE } from './chrome.mjs';
+import { page, t, esc, ctaRow, faqJsonLd, SITE } from './chrome.mjs';
+import * as kbCongTrinh from './articles/tai-nan-cong-trinh.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.resolve(HERE, '../dist');
@@ -16,6 +17,7 @@ const write = (rel, html) => {
 
 /* ── Danh sách bài, mới nhất lên đầu ── */
 export const posts = [
+  kbCongTrinh.post,
   {
     slug: 'cong-bo-quyet-dinh-bo-nhiem-giam-doc-pho-giam-doc-pvi-thanh-do',
     date: '2026-10-05',
@@ -293,6 +295,70 @@ ${feedbackBlock(p)}
         { '@type': 'ListItem', position: 2, name: 'Tin tức', item: SITE + '/tin-tuc/' },
         { '@type': 'ListItem', position: 3, name: p.title, item: SITE + P }],
     })}</script>`,
+    main,
+    scripts: feedbackScript(),
+    extraCss: '<link rel="stylesheet" href="/news.css">',
+  }));
+}
+
+/* ── Bài kiến thức: Bảo hiểm tai nạn công trình PVI ──
+   Bố cục bài đọc dài (lớp .kb-*): mục lục bám theo khi cuộn trên máy tính, cột chữ 700px,
+   các khối rộng (quyền lợi hai lớp, hồ sơ báo giá, checklist bồi thường, rà soát) xen giữa. */
+{
+  const A = kbCongTrinh;
+  const p = A.post;
+  const P = `/tin-tuc/${p.slug}/`;
+  const img = (name, alt, sizes, eager = false) => `<img src="/assets/${name}.webp" srcset="/assets/${name}-480.webp 480w, /assets/${name}-800.webp 800w, /assets/${name}.webp 1280w" sizes="${sizes}" width="1280" height="853" alt="${esc(alt)}"${eager ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"'}>`;
+  const tocList = `<ol>${A.toc.map(([id, label]) => `<li><a href="#${id}">${t(label)}</a></li>`).join('')}</ol>`;
+  const faq = `<h2 id="cau-hoi">Câu hỏi thường gặp</h2><div class="kb-faq">${A.faqs.map((f) => `<details><summary>${t(f.question)}</summary><p>${t(f.answer)}</p></details>`).join('')}</div>`;
+  const main = `
+<article class="kb">
+<div class="kb-head"><div class="kb-shell">
+<p class="kb-crumb"><a href="/tin-tuc/">Tin tức</a><span aria-hidden="true">/</span><span>Kiến thức công trình</span></p>
+<h1>${t(p.title)}</h1>
+<p class="kb-lead">${t(p.lead)}</p>
+<p class="kb-meta"><span>Công ty Bảo hiểm PVI Thành Đô</span><time datetime="${p.date}">${esc(p.dateText)}</time><span>${p.readMin} phút đọc</span></p>
+</div></div>
+
+<figure class="kb-hero">${img('section-tai-nan', p.alt, '(max-width:820px) 100vw, 1160px', true)}
+<figcaption>Hình ảnh minh họa.</figcaption></figure>
+
+<div class="kb-shell kb-layout">
+<div class="kb-toc" role="navigation" aria-label="Mục lục bài viết"><details><summary>Trong bài này <span>${A.toc.length} mục</span></summary>${tocList}</details></div>
+<script>(function(){var d=document.querySelector('.kb-toc details');if(d&&window.matchMedia('(min-width:901px)').matches)d.open=true;})();</script>
+<div class="kb-main">
+<div class="kb-col">
+${A.body({ img, ctaRow })}
+<h2 id="san-pham">Sản phẩm liên quan</h2>
+<ul class="kb-products">${A.related.map((r) => `<li><a href="${r.href}">${img(r.img, '', '(max-width:900px) 40vw, 200px')}<span><em>${t(r.k)}</em><b>${t(r.title)}</b><small>${t(r.text)}</small></span><i aria-hidden="true">&rarr;</i></a></li>`).join('')}</ul>
+${faq}
+<h2 id="nguon">Nguồn tham chiếu</h2>
+<ul class="art-sources">${A.sources.map(([name, href, org]) => `<li><a href="${href}"${href.startsWith('http') ? ' target="_blank" rel="noopener"' : ''}><b>${esc(name)}</b><span>${esc(org)}</span><i aria-hidden="true">${href.startsWith('http') ? '&#8599;' : '&rarr;'}</i></a></li>`).join('')}</ul>
+<p class="kb-disclaimer">Bài viết để tham khảo. Phạm vi, điều kiện, quyền lợi và phí chính thức theo quy tắc và hợp đồng Bảo hiểm PVI phát hành.</p>
+${feedbackBlock(p)}
+</div>
+</div>
+</div>
+</article>`;
+
+  write(`tin-tuc/${p.slug}/index.html`, page({
+    path: P,
+    title: 'Bảo hiểm tai nạn công trình PVI: quyền lợi, hồ sơ, báo giá',
+    description: 'Bảo hiểm tai nạn công trình PVI cho chủ đầu tư, nhà thầu: phần bắt buộc với người lao động, quyền lợi tai nạn và mọi rủi ro xây dựng, hồ sơ báo giá và bồi thường.',
+    image: p.image,
+    head: `<script type="application/ld+json">${JSON.stringify({
+      '@context': 'https://schema.org', '@type': 'Article',
+      headline: p.title, datePublished: p.date, dateModified: p.date,
+      image: [SITE + p.image], mainEntityOfPage: SITE + P,
+      author: { '@type': 'Organization', name: 'Công ty Bảo hiểm PVI Thành Đô' },
+      publisher: { '@type': 'Organization', name: 'Công ty Bảo hiểm PVI Thành Đô', logo: { '@type': 'ImageObject', url: SITE + '/assets/pvi-logo.svg' } },
+      description: p.lead,
+    }).replace(/</g, '\\u003c')}</script><script type="application/ld+json">${JSON.stringify({
+      '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: SITE + '/' },
+        { '@type': 'ListItem', position: 2, name: 'Tin tức', item: SITE + '/tin-tuc/' },
+        { '@type': 'ListItem', position: 3, name: p.title, item: SITE + P }],
+    })}</script>${faqJsonLd(A.faqs)}`,
     main,
     scripts: feedbackScript(),
     extraCss: '<link rel="stylesheet" href="/news.css">',

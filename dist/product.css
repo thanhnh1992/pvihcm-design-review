@@ -102,6 +102,7 @@
 /* ── Chú thích nguồn: dáng cước chú tài liệu ── */
 .fire-note{font-size:14px;line-height:1.65;color:var(--muted);border-left:2px solid var(--rail);padding-left:14px;margin-top:18px}
 .fire-note b{color:var(--ink)}
+.fire-note a{color:var(--blue);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 
 /* ── Bảng so sánh ba lớp: bảng, không phải ba thẻ ── */
 .fire-compare{padding:64px 0}

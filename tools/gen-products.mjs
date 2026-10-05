@@ -87,6 +87,7 @@ ${feeTables}
 <p class="fire-lede" style="margin-top:12px">${t(contractor.summary)}</p>
 <div class="fire-alert"><b>${t(ac.legalReference.current)} · ${t(ac.legalReference.effective)}</b><p>${t(ac.legalReference.replaces)}. <b>${t(ac.faqs[3].question)}</b> ${t(ac.faqs[3].answer)}</p></div>
 <div class="pd-cta"><a class="fire-btn fire-btn-dark" href="/san-pham/bao-hiem-tai-nan/#doi-tuong">Xem phí cho nhà thầu</a><a class="fire-btn fire-btn-line" href="${ac.legalReference.href}" target="_blank" rel="noopener">Đọc Nghị định 220/2026/NĐ-CP</a></div>
+<p class="fire-note">Đọc thêm: <a href="/tin-tuc/bao-hiem-tai-nan-cong-trinh-pvi/">Bảo hiểm tai nạn công trình PVI: phần bắt buộc, quyền lợi, hồ sơ báo giá và bồi thường</a></p>
 </div></section>
 
 <section class="fire-docs pd-paper" id="chung-tu"><div class="fire-wrap">
@@ -249,6 +250,7 @@ ${matrix}
 <h2>Ai thường mua, mua để làm gì</h2>
 <div class="pd-rows">${audience}</div>
 <div class="fire-alert"><b>${t(ac.legalReference.current)} · ${t(ac.legalReference.effective)}</b><p>${t(ac.legalReference.replaces)}. <b>${t(ac.faqs[2].question)}</b> ${t(ac.faqs[2].answer)} <a href="${ac.legalReference.href}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">Đọc văn bản</a></p></div>
+<p class="fire-note">Đọc thêm: <a href="/tin-tuc/bao-hiem-tai-nan-cong-trinh-pvi/">Bảo hiểm tai nạn công trình PVI: phần bắt buộc, quyền lợi, hồ sơ báo giá và bồi thường</a></p>
 </div></section>
 
 <section class="fire-compare pd-paper" id="quyen-loi"><div class="fire-wrap">
