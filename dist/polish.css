@@ -361,7 +361,8 @@ body>.preview,body>header,body>main,body>footer,body>.skip{position:relative;z-i
 .pg-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px}
 .pg-list li{border-top:1px solid #edf1f4}
 .pg-list li:nth-child(-n+2){border-top:0}
-.pg-list a{display:block;position:relative;min-height:var(--tap,44px);padding:14px 28px 14px 0}
+.pg-list a,.pg-item{display:block;position:relative;min-height:var(--tap,44px);padding:14px 28px 14px 0}
+.pg-item em{font-style:normal;color:#4f5d6c}
 .pg-list strong{display:block;font-size:16px;line-height:1.4;color:var(--ink);transition:color .2s}
 .pg-list span{display:block;margin-top:3px;font-size:15px;line-height:1.55;color:var(--muted)}
 .pg-list a::after{content:"↗";position:absolute;right:4px;top:14px;font-size:15px;color:#8a9bad;transition:transform .2s,color .2s}
