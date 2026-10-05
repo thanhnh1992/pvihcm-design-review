@@ -216,6 +216,9 @@
 .fb .fb-who{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin:0 0 6px;font-size:15px;color:#5b6f86}
 .fb .fb-who b{font-size:16px;font-weight:600;color:var(--ink)}
 .fb .fb-who time{font-variant-numeric:tabular-nums}
+.fb .fb-del{margin-left:auto;min-height:36px;padding:0 14px;border:1px solid #e3b4b4;border-radius:var(--r-pill,999px);background:#fff;color:#b42318;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.fb .fb-del:hover{background:#fdf1f1}
+.fb .fb-del:disabled{opacity:.5}
 .fb .fb-text{margin:0;font-size:16px;line-height:1.7;color:#33475c;white-space:pre-line;overflow-wrap:anywhere}
 
 @media(max-width:820px){

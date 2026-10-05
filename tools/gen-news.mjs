@@ -39,14 +39,14 @@ export const posts = [
 ];
 
 /* ── Nhận xét, đánh giá của bạn đọc (mọi bài) ──
-   Lưu ở Google Sheet qua Apps Script: tools/apps-script-nhan-xet.gs (cách cài ghi đầu file).
-   Dán đường dẫn web app (.../exec) vào FEEDBACK_ENDPOINT rồi chạy lại script này.
-   Để trống thì khối nhận xét bị ẩn (hidden) và không nạp feedback.js. */
-const FEEDBACK_ENDPOINT = '';
+   Lưu ở Vercel Blob qua api/nhan-xet.js; gửi là hiện ngay, chủ site xóa nếu không phù hợp.
+   Khối in ra ở trạng thái hidden; feedback.js chỉ hiện khi API trả về dữ liệu (đã kết nối Blob store).
+   Để trống FEEDBACK_ENDPOINT thì không nạp feedback.js. */
+const FEEDBACK_ENDPOINT = '/api/nhan-xet';
 const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>';
 const feedbackScript = () => (FEEDBACK_ENDPOINT ? '<script src="/feedback.js" defer></script>' : '');
 const feedbackBlock = (p) => `
-<section class="fb" data-feedback data-endpoint="${esc(FEEDBACK_ENDPOINT)}" data-slug="${p.slug}" data-title="${esc(p.title)}" aria-labelledby="fb-h"${FEEDBACK_ENDPOINT ? '' : ' hidden'}>
+<section class="fb" data-feedback data-endpoint="${esc(FEEDBACK_ENDPOINT)}" data-slug="${p.slug}" data-title="${esc(p.title)}" aria-labelledby="fb-h" hidden>
 <div class="fb-top"><h2 id="fb-h">Nhận xét của bạn đọc</h2>
 <p class="fb-summary" hidden><b class="fb-avg"></b><span class="fb-rate" role="img"><i></i></span><span class="fb-total"></span></p></div>
 <form class="fb-form" novalidate>
@@ -58,11 +58,11 @@ const feedbackBlock = (p) => `
 <label class="fb-label" for="fb-name">Tên hiển thị <span>(không bắt buộc)</span></label>
 <input id="fb-name" name="name" maxlength="60" autocomplete="nickname">
 <p class="fb-honey" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></p>
-<p class="fb-note">Không ghi số điện thoại, số hợp đồng hay thông tin cá nhân. Nhận xét hiển thị sau khi được duyệt.</p>
+<p class="fb-note">Nhận xét hiển thị công khai ngay sau khi gửi. Không ghi số điện thoại, số hợp đồng hay thông tin cá nhân.</p>
 <div class="fb-actions"><button type="submit" class="fb-btn">Gửi nhận xét</button><span class="fb-count" aria-hidden="true">0/1000</span></div>
 <p class="fb-msg" role="status" aria-live="polite"></p>
 </form>
-<div class="fb-done" role="status" hidden><b>Cảm ơn bạn đã góp ý.</b><p>Nhận xét sẽ hiển thị sau khi được duyệt.</p></div>
+<div class="fb-done" role="status" hidden><b>Cảm ơn bạn đã góp ý.</b><p>Nhận xét của bạn đã được đăng bên dưới.</p></div>
 <ul class="fb-list" hidden></ul>
 </section>`;
 

@@ -89,7 +89,7 @@ Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist
 - Trước khi push, kéo về (`git pull --rebase`) vì có nhiều agent cùng làm.
 
 ## Việc đang mở
-- Nhận xét, đánh giá bạn đọc cuối mọi bài Tin tức (`feedbackBlock` trong `tools/gen-news.mjs`, `dist/feedback.js`, CSS `.fb` trong `news.css`). Lưu ở Google Sheet qua `tools/apps-script-nhan-xet.gs`; chỉ dòng đã tick "Duyệt" mới hiện. Khối đang ẩn tới khi chủ site cài Apps Script và gửi đường dẫn `/exec` để dán vào `FEEDBACK_ENDPOINT`. Không gắn schema Review/AggregateRating cho các đánh giá này.
+- Nhận xét, đánh giá bạn đọc cuối mọi bài Tin tức (`feedbackBlock` trong `tools/gen-news.mjs`, `dist/feedback.js`, CSS `.fb` trong `news.css`, hàm `api/nhan-xet.js`). Lưu ở Vercel Blob, gửi là hiện ngay (chủ site chốt 05/10/2026: không duyệt trước, thấy không phù hợp thì xóa). Cần trên Vercel: Blob store kết nối project (biến `BLOB_READ_WRITE_TOKEN`) và biến `ADMIN_KEY` để xóa qua web (mở bài với `?quantri`). Vì có `/api` cần thư viện `@vercel/blob`, `vercel.json` dùng `installCommand: npm ci`. Không gắn schema Review/AggregateRating cho các đánh giá này.
 - Trỏ domain pvihcm.com sang Vercel. Chỉ sửa bản ghi A/CNAME, không đụng MX.
 - Đã có: trang `/gioi-thieu/` và redirect 301 từ URL cũ trong `vercel.json` (mỗi luật có 2 biến thể có và không có dấu / cuối, vì trailingSlash chạy trước). Thêm URL cũ thì thêm cả 2 biến thể, luật cụ thể đặt trước luật `:id`.
 - Sau khi trỏ domain: chủ site gửi sitemap trong Google Search Console.

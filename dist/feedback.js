@@ -1,7 +1,7 @@
 /* Nhận xét, đánh giá của bạn đọc cuối mỗi bài Tin tức.
-   Dữ liệu lưu ở Google Sheet qua Apps Script (tools/apps-script-nhan-xet.gs).
-   Chỉ nhận xét đã được duyệt trong Sheet mới hiện ở đây. Nội dung người dùng
-   luôn gán bằng textContent, không bao giờ chèn HTML. */
+   Dữ liệu lưu ở Vercel Blob qua /api/nhan-xet (api/nhan-xet.js); gửi là hiện ngay.
+   Chế độ quản trị: mở bài với ?quantri, nhập ADMIN_KEY một lần, mỗi nhận xét có nút Xóa.
+   Nội dung người dùng luôn gán bằng textContent, không bao giờ chèn HTML. */
 (function () {
   var box = document.querySelector('[data-feedback]');
   if (!box) return;
@@ -22,6 +22,15 @@
   var HINTS = ['', 'Chưa hữu ích', 'Ít hữu ích', 'Tạm được', 'Hữu ích', 'Rất hữu ích'];
   var started = Date.now();
   var sentKey = 'pvi-fb-' + slug;
+  var adminKey = '';
+  try {
+    if (/[?&]quantri\b/.test(location.search)) {
+      var k = window.prompt('Nhập mã quản trị để hiện nút Xóa nhận xét (để trống để thoát):', localStorage.getItem('pvi-fb-admin') || '');
+      if (k) localStorage.setItem('pvi-fb-admin', k); else localStorage.removeItem('pvi-fb-admin');
+    }
+    adminKey = localStorage.getItem('pvi-fb-admin') || '';
+  } catch (e) { /* trình duyệt chặn lưu trữ */ }
+  var all = { count: 0, sum: 0 };
 
   function paint(v) { stars.setAttribute('data-v', v || 0); hint.textContent = HINTS[v] || 'Chọn số sao'; }
   function chosen() { var c = form.querySelector('input[name=rating]:checked'); return c ? Number(c.value) : 0; }
@@ -48,6 +57,7 @@
     btn.disabled = true; btn.textContent = 'Đang gửi…'; say('');
     fetch(url, {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         slug: slug, title: title, rating: rating,
         name: form.elements.name.value, comment: area.value, website: form.elements.website.value,
@@ -55,6 +65,10 @@
     }).then(function (r) { return r.json(); }).then(function (res) {
       if (!res || !res.ok) throw new Error((res && res.error) || '');
       try { localStorage.setItem(sentKey, '1'); } catch (e) { /* bỏ qua */ }
+      if (res.review) {
+        all.count += 1; all.sum += res.review.rating; showSummary();
+        if (res.review.comment) { list.insertBefore(item(res.review), list.firstChild); list.hidden = false; }
+      }
       done();
     }).catch(function (err) {
       say(err && err.message ? err.message : 'Chưa gửi được. Kiểm tra kết nối mạng rồi thử lại.', 'err');
@@ -70,29 +84,51 @@
     return s;
   }
   function viDate(iso) { var p = String(iso).split('-'); return p.length === 3 ? p[2] + '/' + p[1] + '/' + p[0] : ''; }
+  function showSummary() {
+    if (!all.count) { summary.hidden = true; return; }
+    var avg = Math.round((all.sum / all.count) * 10) / 10;
+    summary.querySelector('.fb-avg').textContent = avg.toFixed(1).replace('.', ',');
+    var avgStars = summary.querySelector('.fb-rate');
+    rate(avgStars, avg);
+    avgStars.setAttribute('aria-label', 'Trung bình ' + avg.toFixed(1).replace('.', ',') + ' trên 5 sao');
+    summary.querySelector('.fb-total').textContent = all.count + ' đánh giá';
+    summary.hidden = false;
+  }
+  function item(r) {
+    var li = document.createElement('li');
+    var head = document.createElement('p'); head.className = 'fb-who';
+    var b = document.createElement('b'); b.textContent = r.name || 'Bạn đọc';
+    var t = document.createElement('time'); t.textContent = viDate(r.date); t.setAttribute('datetime', r.date);
+    head.appendChild(b); head.appendChild(starRow(r.rating)); head.appendChild(t);
+    if (adminKey && r.id) {
+      var x = document.createElement('button'); x.type = 'button'; x.className = 'fb-del'; x.textContent = 'Xóa';
+      x.addEventListener('click', function () {
+        if (!window.confirm('Xóa nhận xét này khỏi website?')) return;
+        x.disabled = true;
+        fetch(url + '?id=' + encodeURIComponent(r.id), { method: 'DELETE', headers: { 'x-admin-key': adminKey } })
+          .then(function (res) { return res.json(); })
+          .then(function (d) {
+            if (!d.ok) throw new Error(d.error || '');
+            all.count -= 1; all.sum -= r.rating; showSummary();
+            li.remove(); list.hidden = !list.children.length;
+          })
+          .catch(function (err) { x.disabled = false; window.alert(err.message || 'Chưa xóa được.'); });
+      });
+      head.appendChild(x);
+    }
+    var body = document.createElement('p'); body.className = 'fb-text'; body.textContent = r.comment;
+    li.appendChild(head); li.appendChild(body);
+    return li;
+  }
 
-  fetch(url + (url.indexOf('?') < 0 ? '?' : '&') + 'slug=' + encodeURIComponent(slug))
+  fetch(url + (url.indexOf('?') < 0 ? '?' : '&') + 'slug=' + encodeURIComponent(slug), adminKey ? { cache: 'no-store' } : undefined)
     .then(function (r) { return r.json(); })
     .then(function (d) {
-      if (!d || !d.ok) return;
-      if (d.count > 0) {
-        summary.querySelector('.fb-avg').textContent = String(d.average.toFixed(1)).replace('.', ',');
-        var avgStars = summary.querySelector('.fb-rate');
-        rate(avgStars, d.average);
-        avgStars.setAttribute('aria-label', 'Trung bình ' + String(d.average).replace('.', ',') + ' trên 5 sao');
-        summary.querySelector('.fb-total').textContent = d.count + ' đánh giá';
-        summary.hidden = false;
-      }
-      (d.reviews || []).forEach(function (r) {
-        var li = document.createElement('li');
-        var head = document.createElement('p'); head.className = 'fb-who';
-        var b = document.createElement('b'); b.textContent = r.name || 'Bạn đọc';
-        var t = document.createElement('time'); t.textContent = viDate(r.date); t.setAttribute('datetime', r.date);
-        head.appendChild(b); head.appendChild(starRow(r.rating)); head.appendChild(t);
-        var body = document.createElement('p'); body.className = 'fb-text'; body.textContent = r.comment;
-        li.appendChild(head); li.appendChild(body); list.appendChild(li);
-      });
+      if (!d || !d.ok || d.disabled) return;
+      box.hidden = false;
+      all.count = d.count; all.sum = d.average * d.count; showSummary();
+      (d.reviews || []).forEach(function (r) { list.appendChild(item(r)); });
       list.hidden = !list.children.length;
     })
-    .catch(function () { /* không tải được thì chỉ ẩn danh sách, vẫn gửi được nhận xét */ });
+    .catch(function () { /* API lỗi hoặc chưa bật: giữ khối nhận xét ẩn */ });
 })();
