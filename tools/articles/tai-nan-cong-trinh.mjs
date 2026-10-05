@@ -12,13 +12,13 @@ export const post = {
   cat: 'Kiến thức · Công trình',
   title: 'Bảo hiểm tai nạn công trình PVI',
   lead: 'Giải pháp cho chủ đầu tư, nhà thầu và đơn vị thi công chủ động chuẩn bị tài chính khi xảy ra tai nạn lao động hoặc sự cố tại công trường, có thể kết hợp với bảo hiểm công trình và bảo hiểm tai nạn cá nhân.',
-  image: '/assets/section-tai-nan.webp',
-  alt: 'Hình ảnh minh họa: cán bộ nhân sự trao đổi danh sách người lao động với công nhân đội mũ bảo hộ tại công trường',
+  image: '/assets/cong-truong-thi-cong.webp',
+  alt: 'Hình ảnh minh họa: công trường đang thi công với cần cẩu, giàn giáo và công nhân đội mũ bảo hộ',
   readMin: 9,
 };
 
 export const crumb = 'Kiến thức công trình';
-export const hero = { name: 'section-tai-nan', w: 1280, h: 853, caption: 'Hình ảnh minh họa.' };
+export const hero = { name: 'cong-truong-thi-cong', w: 1280, h: 853, position: '50% 55%', caption: 'Hình ảnh minh họa: công trường đang thi công, công nhân mặc áo phản quang, đội mũ bảo hộ.' };
 export const seo = {
   title: 'Bảo hiểm tai nạn công trình PVI: quyền lợi, hồ sơ, báo giá',
   description: 'Bảo hiểm tai nạn công trình PVI cho chủ đầu tư, nhà thầu: phần bắt buộc với người lao động, quyền lợi tai nạn và mọi rủi ro xây dựng, hồ sơ báo giá và bồi thường.',
@@ -73,7 +73,7 @@ export const toc = [
   ['cau-hoi', 'Câu hỏi thường gặp'],
 ];
 
-export function body({ img, ctaRow }) {
+export function body({ img, pic, ctaRow }) {
   return `
 <p class="kb-first">Một công trình đang thi công luôn có nhiều rủi ro cùng lúc: tai nạn lao động, thiệt hại vật tư, sự cố máy móc, ảnh hưởng đến người và tài sản xung quanh. Gói bảo hiểm tai nạn công trình PVI giúp chủ đầu tư, nhà thầu và đơn vị thi công chủ động chuẩn bị phương án tài chính khi phát sinh sự cố, đồng thời có thể kết hợp với bảo hiểm công trình và <a class="kb-link" href="/san-pham/bao-hiem-tai-nan/">bảo hiểm tai nạn cá nhân</a> tùy nhu cầu thực tế. Đây là giải pháp phù hợp cho các dự án xây dựng dân dụng, công nghiệp, hạ tầng và lắp đặt cần quản trị rủi ro bài bản ngay từ đầu.</p>
 
@@ -148,6 +148,7 @@ export function body({ img, ctaRow }) {
 </ol>
 
 <div class="kb-col">
+<figure class="kb-photo">${pic('tu-van-cong-truong', { alt: 'Hình ảnh minh họa: chuyên viên tư vấn bảo hiểm cùng kỹ sư công trường xem hồ sơ thi công', sizes: '(max-width:900px) 92vw, 700px' })}<figcaption>Hình ảnh minh họa: rà hồ sơ thi công cùng kỹ sư công trường trước khi lập phương án bảo hiểm.</figcaption></figure>
 <p>Cách chuẩn bị này giúp tránh tình trạng mua thiếu, mua trùng hoặc mua không đúng đối tượng. Ví dụ, nếu hợp đồng thầu yêu cầu bảo hiểm công trình nhưng doanh nghiệp chỉ mua bảo hiểm tai nạn cho công nhân, phần thiệt hại vật chất của công trình có thể chưa được bảo vệ như mong muốn. Ngược lại, nếu đã có bảo hiểm công trình nhưng chưa có lớp bảo vệ tai nạn cá nhân cho đội thi công, doanh nghiệp vẫn có thể gặp áp lực lớn khi người lao động bị thương trong quá trình làm việc.</p>
 
 <h2 id="nhan-tho">Bảo hiểm tai nạn công trình khác bảo hiểm nhân thọ</h2>
@@ -217,7 +218,8 @@ export function body({ img, ctaRow }) {
 <div class="kb-review-head">
 <h2 id="ra-soat">Thông số cần chốt trước khi phát hành hợp đồng</h2>
 <p>Sai tên công trình, thiếu người được bảo hiểm, nhầm thời hạn hoặc chọn sai phạm vi đều có thể tạo ra khoảng trống bảo vệ. Rà theo ba nhóm sau trước khi mua.</p>
-${img('tai-nan', 'Hình ảnh minh họa: mũ bảo hộ, danh sách kiểm tra và nhóm người lao động thu nhỏ', '(max-width:820px) 92vw, 420px')}
+<figure class="kb-fee"><a href="/assets/gcn-cong-trinh-tai-nan.webp" aria-label="Mở ảnh giấy chứng nhận cỡ lớn">${pic('gcn-cong-trinh-tai-nan', { w: 1200, h: 829, alt: 'Trang đầu giấy chứng nhận bảo hiểm tai nạn cá nhân PVI cho doanh nghiệp xây dựng, 20 người được bảo hiểm, thời hạn 28/09/2026 đến 27/09/2027; tên, địa chỉ bên mua và số giấy chứng nhận đã được che', sizes: '(max-width:820px) 92vw, 420px' })}</a>
+<figcaption>Ảnh thực tế: giấy chứng nhận bảo hiểm tai nạn cá nhân cấp cho một doanh nghiệp xây dựng tại TP.HCM, 20 người được bảo hiểm, thời hạn 28/09/2026 đến 27/09/2027; đã che tên, địa chỉ bên mua và số giấy chứng nhận · Nguồn: PVI Thành Đô</figcaption></figure>
 </div>
 <div class="kb-review-groups">
 <div><h3>Các bên và công trình</h3><ul>
@@ -264,6 +266,6 @@ ${ctaRow('Gọi tư vấn 0938 072 236')}
 }
 
 export const related = [
-  { href: '/san-pham/bao-hiem-tai-nan/', img: 'section-tai-nan', k: 'Sản phẩm chính', title: 'Bảo hiểm tai nạn 24/24', text: 'Tính phí theo gói và số người, quyền lợi tai nạn, hồ sơ cho nhóm và nhà thầu.' },
-  { href: '/san-pham/bao-hiem-bat-buoc/#cong-truong', img: 'tai-nan', k: 'Bắt buộc', title: 'Người lao động thi công trên công trường', text: 'Căn cứ Nghị định 220/2026/NĐ-CP, chứng từ cần có khi vào công trường.' },
+  { href: '/san-pham/bao-hiem-tai-nan/', img: 'tu-van-van-phong', k: 'Sản phẩm chính', title: 'Bảo hiểm tai nạn 24/24', text: 'Tính phí theo gói và số người, quyền lợi tai nạn, hồ sơ cho nhóm và nhà thầu.' },
+  { href: '/san-pham/bao-hiem-bat-buoc/#cong-truong', img: 'tu-van-cong-truong', k: 'Bắt buộc', title: 'Người lao động thi công trên công trường', text: 'Căn cứ Nghị định 220/2026/NĐ-CP, chứng từ cần có khi vào công trường.' },
 ];

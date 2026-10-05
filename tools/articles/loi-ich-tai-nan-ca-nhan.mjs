@@ -11,13 +11,13 @@ export const post = {
   cat: 'Kiến thức · Tai nạn',
   title: 'Lợi ích của bảo hiểm tai nạn cá nhân',
   lead: 'Bảo hiểm tai nạn cá nhân hỗ trợ tài chính khi gặp tai nạn bất ngờ gây thương tật, chi phí y tế hoặc tử vong, giúp cá nhân và gia đình giảm áp lực chi trả khi rủi ro xảy ra ngoài dự tính.',
-  image: '/assets/tai-nan-ca-nhan.webp',
-  alt: 'Hình ảnh minh họa: bàn tay được băng bó sau tai nạn',
+  image: '/assets/di-lam-xe-may.webp',
+  alt: 'Hình ảnh minh họa: người đi xe máy đi làm buổi chiều trên đường ven sông Sài Gòn',
   readMin: 7,
 };
 
 export const crumb = 'Kiến thức tai nạn';
-export const hero = { name: 'tai-nan-ca-nhan', w: 1280, h: 420, position: '72% 45%', caption: 'Hình ảnh minh họa.' };
+export const hero = { name: 'di-lam-xe-may', w: 1280, h: 853, position: '50% 62%', caption: 'Hình ảnh minh họa: giờ tan tầm trên đường ven sông Sài Gòn, TP.HCM.' };
 export const seo = {
   title: 'Lợi ích của bảo hiểm tai nạn cá nhân và cách chọn gói | PVI',
   description: 'Bảo hiểm tai nạn cá nhân là gì, lợi ích thực tế, bảo hiểm tai nạn 24/24 hoạt động thế nào, khác bảo hiểm toàn diện ra sao và cách đọc giấy chứng nhận, chọn gói phù hợp.',
@@ -64,8 +64,8 @@ export const sources = [
 ];
 
 export const related = [
-  { href: PRODUCT, img: 'section-tai-nan', k: 'Sản phẩm chính', title: 'Bảo hiểm tai nạn 24/24', text: 'Tính phí theo gói và số người, quyền lợi tai nạn, hồ sơ cho cá nhân, nhóm và nhà thầu.' },
-  { href: '/tin-tuc/bao-hiem-tai-nan-cong-trinh-pvi/', img: 'tai-nan', k: 'Bài liên quan', title: 'Bảo hiểm tai nạn công trình PVI', text: 'Phần bắt buộc với người lao động công trường, hồ sơ báo giá và bồi thường.' },
+  { href: PRODUCT, img: 'tu-van-van-phong', k: 'Sản phẩm chính', title: 'Bảo hiểm tai nạn 24/24', text: 'Tính phí theo gói và số người, quyền lợi tai nạn, hồ sơ cho cá nhân, nhóm và nhà thầu.' },
+  { href: '/tin-tuc/bao-hiem-tai-nan-cong-trinh-pvi/', img: 'cong-truong-thi-cong', k: 'Bài liên quan', title: 'Bảo hiểm tai nạn công trình PVI', text: 'Phần bắt buộc với người lao động công trường, hồ sơ báo giá và bồi thường.' },
 ];
 
 export function body({ pic }) {
@@ -88,10 +88,13 @@ export function body({ pic }) {
 </div>
 
 <section class="kb-gcn kb-wide" aria-labelledby="giay-chung-nhan">
-<figure class="kb-gcn-doc">
+<div class="kb-gcn-doc"><figure>
 <a href="/assets/${GCN}.webp" aria-label="Mở ảnh giấy chứng nhận cỡ lớn">${pic(GCN, { w: 1200, h: 1563, alt: 'Giấy chứng nhận bảo hiểm tai nạn cá nhân PVI cho nhóm 8 người: phạm vi bảo hiểm, quyền lợi 150 triệu đồng mỗi người và quy tắc áp dụng; tên, địa chỉ bên mua và số giấy chứng nhận đã được che', sizes: '(max-width:900px) 92vw, 380px' })}</a>
 <figcaption>Ảnh thực tế: trang đầu giấy chứng nhận bảo hiểm tai nạn cá nhân PVI Thành Đô cấp tháng 10/2026 cho nhóm 8 người lao động; đã che tên, địa chỉ bên mua và số giấy chứng nhận · Nguồn: PVI Thành Đô</figcaption>
 </figure>
+<div class="kb-gcn-fee"><figure class="kb-fee"><a href="/assets/${GCN_FEE}.webp" aria-label="Mở ảnh phần tổng phí cỡ lớn">${pic(GCN_FEE, { w: 1200, h: 452, alt: 'Phần tổng phí, thời hạn thanh toán và đơn vị cấp trên giấy chứng nhận bảo hiểm tai nạn cá nhân PVI Thành Đô', sizes: '(max-width:900px) 92vw, 380px' })}</a>
+<figcaption>Ảnh thực tế: phần tổng phí, thời hạn thanh toán và đơn vị cấp trên cùng giấy chứng nhận · Nguồn: PVI Thành Đô</figcaption></figure></div>
+</div>
 <div class="kb-gcn-read">
 <h2 id="giay-chung-nhan">Đọc một giấy chứng nhận thật</h2>
 <p>Những đặc điểm ở trên đều nằm trên giấy chứng nhận. Đây là các mục nên đọc kỹ, lấy ví dụ từ một giấy chứng nhận PVI Thành Đô vừa cấp.</p>
@@ -173,8 +176,7 @@ export function body({ pic }) {
 <div class="kb-review-head">
 <h2 id="chon-goi">Cách chọn gói bảo hiểm phù hợp</h2>
 <p>Một gói bảo hiểm tốt không nhất thiết là gói có nhiều quyền lợi nhất, mà là gói phù hợp với nhu cầu, ngân sách và mức độ rủi ro của người tham gia. Trước khi quyết định, hãy xác định mình cần bảo vệ cho cá nhân hay cả gia đình, thường gặp rủi ro trong bối cảnh nào và có sẵn quỹ dự phòng bao nhiêu.</p>
-<figure class="kb-fee"><a href="/assets/${GCN_FEE}.webp" aria-label="Mở ảnh phần tổng phí cỡ lớn">${pic(GCN_FEE, { w: 1200, h: 452, alt: 'Phần tổng phí, thời hạn thanh toán và đơn vị cấp trên giấy chứng nhận bảo hiểm tai nạn cá nhân PVI Thành Đô', sizes: '(max-width:900px) 92vw, 420px' })}</a>
-<figcaption>Ảnh thực tế: phần tổng phí, thời hạn thanh toán và đơn vị cấp trên cùng giấy chứng nhận · Nguồn: PVI Thành Đô</figcaption></figure>
+<figure class="kb-photo kb-photo-tight">${pic('tu-van-van-phong', { alt: 'Hình ảnh minh họa: chuyên viên tư vấn chỉ vào bảng quyền lợi bảo hiểm cho khách tại bàn làm việc', sizes: '(max-width:900px) 92vw, 420px' })}<figcaption>Hình ảnh minh họa: đọc bảng quyền lợi cùng chuyên viên trước khi chọn gói.</figcaption></figure>
 </div>
 <div class="kb-review-groups">
 <div><h3>Phạm vi và quyền lợi</h3><ul>
