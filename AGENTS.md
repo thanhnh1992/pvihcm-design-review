@@ -74,6 +74,12 @@ Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist
 - Không dựng 3 thẻ bằng nhau; ưu tiên bảng kẻ chỉ.
 - Không bịa số liệu, ngày tháng, đánh giá, FPS.
 
+**Link ra ngoài (chủ site chốt 05/10/2026, bắt buộc)**
+- Bài viết (mục Tin tức và mọi bài nội dung) **TUYỆT ĐỐI không có link ra ngoài**, đặc biệt không bao giờ link hay nhắc tên website của công ty bảo hiểm khác (đối thủ). Chỉ được: link nội bộ pvihcm.com, `tel:`, `mailto:` và Zalo OA của đơn vị.
+- Nguồn tham chiếu ghi bằng chữ (tên tài liệu + đơn vị phát hành), không gắn link, không để URL trong HTML.
+- `checkNoOutbound` trong `tools/gen-news.mjs` dừng sinh trang nếu phát hiện link ra ngoài. Không được tắt hay nới chốt này.
+- Trang sản phẩm và trang chủ hiện còn link sang pvi.com.vn và cổng văn bản Chính phủ: giữ nguyên tới khi chủ site quyết định.
+
 **Trang và URL**
 - Trang hoặc bài mới: hỏi chủ site gắn ở đâu (URL, mục, link từ đâu) rồi mới push.
 - Không tự đổi URL, xóa trang hay tạo redirect khi chưa được đồng ý.

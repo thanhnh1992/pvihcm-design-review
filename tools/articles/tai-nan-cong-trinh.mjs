@@ -22,7 +22,8 @@ const SRC = {
   pa: 'https://www.pvi.com.vn/vi/products/personal/personal-accident',
   claim: 'https://adminweb.pvi.com.vn/wp-content/uploads/2025/04/Huong-dan-thu-tuc-va-quy-trinh-boi-thuong.pdf',
 };
-const cite = (key, label = 'pvi.com.vn') => `<a class="kb-cite" href="${SRC[key]}" target="_blank" rel="noopener" aria-label="Nguồn: ${label}">${label}</a>`;
+// Không link ra ngoài (chủ site chốt 05/10/2026): ghi tên nguồn dạng chữ, đường dẫn chỉ lưu trong code để đối chiếu.
+const cite = (key, label = 'pvi.com.vn') => `<span class="kb-cite" title="Nguồn: ${label}">Nguồn: ${label}</span>`;
 
 export const faqs = [
   {

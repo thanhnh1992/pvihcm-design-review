@@ -8,7 +8,16 @@ import * as kbCongTrinh from './articles/tai-nan-cong-trinh.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.resolve(HERE, '../dist');
+// Chủ site chốt 05/10/2026: bài viết TUYỆT ĐỐI không có link ra ngoài (nhất là đối thủ).
+// Chỉ cho phép link nội bộ, tel:, mailto: và Zalo OA của đơn vị. Vi phạm thì dừng sinh trang.
+const OWN_ZALO = 'https://zalo.me/2076363329232219188?src=qr&f=1';
+const checkNoOutbound = (rel, html) => {
+  const main = html.slice(html.indexOf('<main'), html.indexOf('</main>'));
+  const bad = [...main.matchAll(/<a\s[^>]*href="(https?:)?\/\/[^"]*"/gi)].map((m) => m[0]).filter((tag) => !tag.includes(`href="${OWN_ZALO.replace(/&/g, '&amp;')}"`) && !tag.includes(`href="${OWN_ZALO}"`));
+  if (bad.length) throw new Error(`[${rel}] có link ra ngoài, không được phép:\n` + bad.join('\n'));
+};
 const write = (rel, html) => {
+  checkNoOutbound(rel, html);
   const f = path.join(DIST, rel);
   fs.mkdirSync(path.dirname(f), { recursive: true });
   fs.writeFileSync(f, html);
@@ -108,7 +117,6 @@ const dateline = (p) => `<p class="art-meta"><span>${esc(p.cat)}</span><time dat
     ['Nghị định 105/2025/NĐ-CP (văn bản bị sửa đổi)', 'https://vanban.chinhphu.vn/?pageid=27160&docid=213702', 'Cổng thông tin điện tử Chính phủ'],
     ['Quy định mới về bảo hiểm cháy, nổ bắt buộc có hiệu lực từ 15/9', 'https://tienphong.vn/quy-dinh-moi-ve-bao-hiem-chay-no-bat-buoc-co-hieu-luc-tu-159-post1876423.tpo', 'Báo Tiền Phong'],
     ['Một số điểm mới của Nghị định 347/2026/NĐ-CP trong lĩnh vực PCCC và CNCH', 'https://baohatinh.vn/mot-so-diem-moi-cua-nghi-dinh-so-3472026nd-cp-trong-linh-vuc-pccc-va-cnch-post317660.html', 'Báo Hà Tĩnh'],
-    ['Quy định mới về bảo hiểm cháy, nổ bắt buộc có hiệu lực từ 15/9', 'https://www.pjico.com.vn/quy-dinh-moi-ve-bao-hiem-chay-no-bat-buoc-co-hieu-luc-tu-159.html', 'Bảo hiểm PJICO'],
   ];
   const changes = [
     ['Nghiệm thu phòng cháy chữa cháy', 'Cơ quan Công an kiểm tra công tác nghiệm thu và cấp văn bản chấp thuận.', 'Chủ đầu tư tự tổ chức nghiệm thu, chịu trách nhiệm pháp lý về kết quả và khai báo trên cơ sở dữ liệu trước khi đưa công trình vào sử dụng.'],
@@ -165,7 +173,7 @@ ${dateline(p)}
 ${ctaRow('Gọi rà soát 0938 072 236')}
 
 <h2>Nguồn tham chiếu</h2>
-<ul class="art-sources">${sources.map(([name, href, org]) => `<li><a href="${href}" target="_blank" rel="noopener"><b>${esc(name)}</b><span>${esc(org)}</span><i aria-hidden="true">&#8599;</i></a></li>`).join('')}</ul>
+<ul class="art-sources">${sources.map(([name, , org]) => `<li><p class="src"><b>${esc(name)}</b><span>${esc(org)}</span></p></li>`).join('')}</ul>
 ${feedbackBlock(p)}
 
 </div></div>
@@ -333,7 +341,7 @@ ${A.body({ img, ctaRow })}
 <ul class="kb-products">${A.related.map((r) => `<li><a href="${r.href}">${img(r.img, '', '(max-width:900px) 40vw, 200px')}<span><em>${t(r.k)}</em><b>${t(r.title)}</b><small>${t(r.text)}</small></span><i aria-hidden="true">&rarr;</i></a></li>`).join('')}</ul>
 ${faq}
 <h2 id="nguon">Nguồn tham chiếu</h2>
-<ul class="art-sources">${A.sources.map(([name, href, org]) => `<li><a href="${href}"${href.startsWith('http') ? ' target="_blank" rel="noopener"' : ''}><b>${esc(name)}</b><span>${esc(org)}</span><i aria-hidden="true">${href.startsWith('http') ? '&#8599;' : '&rarr;'}</i></a></li>`).join('')}</ul>
+<ul class="art-sources">${A.sources.map(([name, href, org]) => href.startsWith('/') ? `<li><a href="${href}"><b>${esc(name)}</b><span>${esc(org)}</span><i aria-hidden="true">&rarr;</i></a></li>` : `<li><p class="src"><b>${esc(name)}</b><span>${esc(org)}</span></p></li>`).join('')}</ul>
 <p class="kb-disclaimer">Bài viết để tham khảo. Phạm vi, điều kiện, quyền lợi và phí chính thức theo quy tắc và hợp đồng Bảo hiểm PVI phát hành.</p>
 ${feedbackBlock(p)}
 </div>
