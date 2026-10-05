@@ -76,3 +76,10 @@
 /* Trang danh sách: mở đầu và danh sách sát nhau hơn, bớt mảng trống giữa trang. */
 .art-head+.pd-section{padding-top:4px}
 .art-head .art-lead{margin-bottom:10px!important}
+
+/* Ảnh trong thân bài: theo cột chữ, không cắt khung */
+.art-body .art-photo{width:100%;max-width:72ch;margin:22px 0 28px}
+.art-body .art-photo img{max-height:none}
+.art-body p a{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+.art-cite{margin:12px 0 0;padding-left:20px;max-width:70ch}
+.art-cite li{font-size:16px;line-height:1.65;color:#36485b;margin:0 0 8px}

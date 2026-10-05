@@ -17,6 +17,16 @@ const write = (rel, html) => {
 /* ── Danh sách bài, mới nhất lên đầu ── */
 export const posts = [
   {
+    slug: 'cong-bo-quyet-dinh-bo-nhiem-giam-doc-pho-giam-doc-pvi-thanh-do',
+    date: '2026-10-05',
+    dateText: '05/10/2026',
+    cat: 'Thông báo · PVI Thành Đô',
+    title: 'Công bố quyết định bổ nhiệm Giám đốc và Phó Giám đốc Công ty Bảo hiểm PVI Thành Đô',
+    lead: 'Ngày 05/10/2026, tại TP. Hồ Chí Minh, Tổng công ty Bảo hiểm PVI công bố quyết định bổ nhiệm ông Hồ Vũ Bình giữ chức vụ Giám đốc và bà Trần Thị Thanh Thương giữ chức vụ Phó Giám đốc Công ty Bảo hiểm PVI Thành Đô.',
+    image: '/assets/bo-nhiem-thanh-do-tap-the.webp',
+    alt: 'Lãnh đạo Tổng công ty Bảo hiểm PVI và cán bộ PVI Thành Đô chụp ảnh lưu niệm cùng tân Giám đốc và tân Phó Giám đốc',
+  },
+  {
     slug: 'nghi-dinh-347-2026-bao-hiem-chay-no',
     date: '2026-09-25',
     dateText: '25/09/2026',
@@ -62,7 +72,7 @@ const dateline = (p) => `<p class="art-meta"><span>${esc(p.cat)}</span><time dat
 
 /* ── Bài 1: Nghị định 347/2026/NĐ-CP ── */
 {
-  const p = posts[0];
+  const p = posts.find((x) => x.slug === 'nghi-dinh-347-2026-bao-hiem-chay-no');
   const P = `/tin-tuc/${p.slug}/`;
   const sources = [
     ['Nghị định 105/2025/NĐ-CP (văn bản bị sửa đổi)', 'https://vanban.chinhphu.vn/?pageid=27160&docid=213702', 'Cổng thông tin điện tử Chính phủ'],
@@ -139,6 +149,84 @@ ${ctaRow('Gọi rà soát 0938 072 236')}
       '@context': 'https://schema.org', '@type': 'NewsArticle',
       headline: p.title, datePublished: p.date, dateModified: p.date,
       image: [SITE + p.image], mainEntityOfPage: SITE + P,
+      author: { '@type': 'Organization', name: 'Công ty Bảo hiểm PVI Thành Đô' },
+      publisher: { '@type': 'Organization', name: 'Công ty Bảo hiểm PVI Thành Đô', logo: { '@type': 'ImageObject', url: SITE + '/assets/pvi-logo.svg' } },
+      description: p.lead,
+    }).replace(/</g, '\\u003c')}</script><script type="application/ld+json">${JSON.stringify({
+      '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: SITE + '/' },
+        { '@type': 'ListItem', position: 2, name: 'Tin tức', item: SITE + '/tin-tuc/' },
+        { '@type': 'ListItem', position: 3, name: p.title, item: SITE + P }],
+    })}</script>`,
+    main,
+    extraCss: '<link rel="stylesheet" href="/news.css">',
+  }));
+}
+
+/* ── Bài 2: Công bố quyết định bổ nhiệm Giám đốc, Phó Giám đốc PVI Thành Đô ──
+   Nội dung lấy nguyên văn từ Quyết định 1045/QĐ-PVIBH và 1051/QĐ-PVIBH do chủ site cung cấp.
+   Không đăng ảnh chụp quyết định (có con dấu, chữ ký); chỉ dẫn số hiệu. */
+{
+  const p = posts.find((x) => x.slug === 'cong-bo-quyet-dinh-bo-nhiem-giam-doc-pho-giam-doc-pvi-thanh-do');
+  const P = `/tin-tuc/${p.slug}/`;
+  const photo = (name, alt, caption, lead = false) => `<figure class="art-photo"><img src="/assets/${name}.webp" srcset="/assets/${name}-480.webp 480w, /assets/${name}-800.webp 800w, /assets/${name}.webp 1280w" sizes="(max-width:820px) 92vw, ${lead ? '1240px' : '640px'}" width="1280" height="853" alt="${esc(alt)}"${lead ? ' fetchpriority="high"' : ' loading="lazy"'}><figcaption>${t(caption)}</figcaption></figure>`;
+  const decisions = [
+    'Quyết định số 1045/QĐ-PVIBH ngày 29/9/2026 của Hội đồng thành viên Tổng công ty Bảo hiểm PVI về việc công tác cán bộ.',
+    'Quyết định số 1051/QĐ-PVIBH ngày 01/10/2026 của Tổng giám đốc Tổng công ty Bảo hiểm PVI về việc công tác cán bộ.',
+  ];
+  const main = `
+<article class="art">
+<section class="art-head"><div class="fire-wrap">
+${dateline(p)}
+<h1>${t(p.title)}</h1>
+<p class="art-lead">${t(p.lead)}</p>
+</div></section>
+
+${photo('bo-nhiem-thanh-do-tap-the', p.alt, 'Lãnh đạo Tổng công ty Bảo hiểm PVI và cán bộ Công ty Bảo hiểm PVI Thành Đô chụp ảnh lưu niệm cùng ông Hồ Vũ Bình và bà Trần Thị Thanh Thương tại Lễ công bố quyết định bổ nhiệm, TP. Hồ Chí Minh, ngày 05/10/2026.', true)}
+
+<div class="art-body"><div class="fire-wrap">
+
+<div class="art-key">
+<b>Tóm tắt nhanh</b>
+<ul>
+<li>${t('Ông Hồ Vũ Bình giữ chức vụ Giám đốc Công ty Bảo hiểm PVI Thành Đô theo Quyết định số 1045/QĐ-PVIBH, thời hạn 01 năm, hiệu lực từ ngày 01/10/2026.')}</li>
+<li>${t('Bà Trần Thị Thanh Thương giữ chức vụ Phó Giám đốc Công ty Bảo hiểm PVI Thành Đô theo Quyết định số 1051/QĐ-PVIBH, thời hạn 01 năm, kiêm Trưởng phòng Quản lý nghiệp vụ và Bồi thường trong 06 tháng.')}</li>
+<li>${t('Lễ công bố tổ chức ngày 05/10/2026 tại TP. Hồ Chí Minh, trước sự chứng kiến của toàn thể cán bộ, nhân viên PVI Thành Đô.')}</li>
+</ul>
+</div>
+
+<p>${t('Tham dự buổi lễ có Tổng giám đốc Tổng công ty Bảo hiểm PVI Phạm Anh Đức, Phó Tổng giám đốc Tổng công ty Bảo hiểm PVI Phạm Thành Vinh, Trưởng Ban Tổ chức nhân sự Tổng công ty Bảo hiểm PVI Trần Việt Hải, cùng toàn thể cán bộ, nhân viên Công ty Bảo hiểm PVI Thành Đô.')}</p>
+<p>${t('Tại buổi lễ, các quyết định của Tổng công ty Bảo hiểm PVI về công tác cán bộ đối với Công ty Bảo hiểm PVI Thành Đô đã được công bố như sau.')}</p>
+
+<h2>${t('Ông Hồ Vũ Bình giữ chức vụ Giám đốc')}</h2>
+<p>${t('Theo Quyết định số 1045/QĐ-PVIBH ngày 29/9/2026 của Hội đồng thành viên Tổng công ty Bảo hiểm PVI, ông Hồ Vũ Bình, Phó Giám đốc Công ty Bảo hiểm PVI Thành Đô, được bổ nhiệm giữ chức vụ Giám đốc Công ty Bảo hiểm PVI Thành Đô thuộc Tổng công ty Bảo hiểm PVI, thời hạn 01 năm. Quyết định có hiệu lực kể từ ngày 01/10/2026.')}</p>
+${photo('bo-nhiem-thanh-do-giam-doc', 'Lãnh đạo Tổng công ty Bảo hiểm PVI trao quyết định bổ nhiệm và tặng hoa chúc mừng ông Hồ Vũ Bình', 'Lãnh đạo Tổng công ty Bảo hiểm PVI trao quyết định bổ nhiệm và tặng hoa chúc mừng ông Hồ Vũ Bình, Giám đốc Công ty Bảo hiểm PVI Thành Đô.')}
+
+<h2>${t('Bà Trần Thị Thanh Thương giữ chức vụ Phó Giám đốc')}</h2>
+<p>${t('Theo Quyết định số 1051/QĐ-PVIBH ngày 01/10/2026 của Tổng giám đốc Tổng công ty Bảo hiểm PVI, bà Trần Thị Thanh Thương, Trưởng phòng Quản lý nghiệp vụ và Bồi thường, Công ty Bảo hiểm PVI Thành Đô, được bổ nhiệm giữ chức vụ Phó Giám đốc Công ty Bảo hiểm PVI Thành Đô, thời hạn 01 năm. Đồng thời, bà Trần Thị Thanh Thương kiêm nhiệm chức vụ Trưởng phòng Quản lý nghiệp vụ và Bồi thường, Công ty Bảo hiểm PVI Thành Đô trong thời gian 06 tháng. Quyết định có hiệu lực kể từ ngày ký.')}</p>
+${photo('bo-nhiem-thanh-do-pho-giam-doc', 'Lãnh đạo Tổng công ty Bảo hiểm PVI trao quyết định bổ nhiệm và tặng hoa chúc mừng bà Trần Thị Thanh Thương', 'Lãnh đạo Tổng công ty Bảo hiểm PVI trao quyết định bổ nhiệm và tặng hoa chúc mừng bà Trần Thị Thanh Thương, Phó Giám đốc Công ty Bảo hiểm PVI Thành Đô.')}
+
+<h2>${t('Trao quyết định trước toàn thể cán bộ, nhân viên')}</h2>
+<p>${t('Trước sự chứng kiến của toàn thể cán bộ, nhân viên Công ty Bảo hiểm PVI Thành Đô, Tổng giám đốc Phạm Anh Đức, Phó Tổng giám đốc Phạm Thành Vinh và Trưởng Ban Tổ chức nhân sự Trần Việt Hải đã trao quyết định và tặng hoa chúc mừng ông Hồ Vũ Bình và bà Trần Thị Thanh Thương.')}</p>
+<p>${t('Lễ công bố diễn ra trong năm Tổng công ty Bảo hiểm PVI kỷ niệm 30 năm thành lập. Việc công bố các quyết định trên góp phần kiện toàn bộ máy lãnh đạo của Công ty Bảo hiểm PVI Thành Đô. Buổi lễ khép lại trong không khí trang trọng, với lời chúc mừng của lãnh đạo Tổng công ty cùng toàn thể cán bộ, nhân viên PVI Thành Đô dành cho ông Hồ Vũ Bình và bà Trần Thị Thanh Thương trên cương vị mới.')}</p>
+<p>Thông tin về đơn vị, trụ sở và đầu mối liên hệ xem tại trang <a href="/gioi-thieu/">Giới thiệu Công ty Bảo hiểm PVI Thành Đô</a>.</p>
+
+<h2>Căn cứ</h2>
+<ul class="art-cite">${decisions.map((d) => `<li>${t(d)}</li>`).join('')}</ul>
+
+</div></div>
+</article>`;
+
+  write(`tin-tuc/${p.slug}/index.html`, page({
+    path: P,
+    title: 'Bổ nhiệm Giám đốc, Phó Giám đốc PVI Thành Đô | PVI',
+    description: 'Ngày 05/10/2026, Tổng công ty Bảo hiểm PVI công bố quyết định bổ nhiệm ông Hồ Vũ Bình làm Giám đốc và bà Trần Thị Thanh Thương làm Phó Giám đốc PVI Thành Đô.',
+    image: p.image,
+    head: `<script type="application/ld+json">${JSON.stringify({
+      '@context': 'https://schema.org', '@type': 'NewsArticle',
+      headline: p.title, datePublished: p.date, dateModified: p.date,
+      image: ['bo-nhiem-thanh-do-tap-the', 'bo-nhiem-thanh-do-giam-doc', 'bo-nhiem-thanh-do-pho-giam-doc'].map((n) => `${SITE}/assets/${n}.webp`),
+      mainEntityOfPage: SITE + P,
       author: { '@type': 'Organization', name: 'Công ty Bảo hiểm PVI Thành Đô' },
       publisher: { '@type': 'Organization', name: 'Công ty Bảo hiểm PVI Thành Đô', logo: { '@type': 'ImageObject', url: SITE + '/assets/pvi-logo.svg' } },
       description: p.lead,
