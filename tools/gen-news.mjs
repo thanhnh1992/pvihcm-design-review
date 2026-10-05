@@ -38,6 +38,34 @@ export const posts = [
   },
 ];
 
+/* ── Nhận xét, đánh giá của bạn đọc (mọi bài) ──
+   Lưu ở Google Sheet qua Apps Script: tools/apps-script-nhan-xet.gs (cách cài ghi đầu file).
+   Dán đường dẫn web app (.../exec) vào FEEDBACK_ENDPOINT rồi chạy lại script này.
+   Để trống thì khối nhận xét bị ẩn (hidden) và không nạp feedback.js. */
+const FEEDBACK_ENDPOINT = '';
+const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>';
+const feedbackScript = () => (FEEDBACK_ENDPOINT ? '<script src="/feedback.js" defer></script>' : '');
+const feedbackBlock = (p) => `
+<section class="fb" data-feedback data-endpoint="${esc(FEEDBACK_ENDPOINT)}" data-slug="${p.slug}" data-title="${esc(p.title)}" aria-labelledby="fb-h"${FEEDBACK_ENDPOINT ? '' : ' hidden'}>
+<div class="fb-top"><h2 id="fb-h">Nhận xét của bạn đọc</h2>
+<p class="fb-summary" hidden><b class="fb-avg"></b><span class="fb-rate" role="img"><i></i></span><span class="fb-total"></span></p></div>
+<form class="fb-form" novalidate>
+<fieldset class="fb-field"><legend>Bài viết này có hữu ích với bạn không?</legend>
+<div class="fb-pick"><div class="fb-stars" data-v="0">${[1, 2, 3, 4, 5].map((n) => `<label data-n="${n}"><input type="radio" name="rating" value="${n}">${STAR}<span class="fb-sr">${n} sao</span></label>`).join('')}</div><span class="fb-hint" aria-live="polite">Chọn số sao</span></div>
+</fieldset>
+<label class="fb-label" for="fb-comment">Nhận xét <span>(không bắt buộc)</span></label>
+<textarea id="fb-comment" name="comment" rows="4" maxlength="1000" placeholder="Phần nào trong bài hữu ích với bạn, hoặc bạn cần thêm thông tin gì?"></textarea>
+<label class="fb-label" for="fb-name">Tên hiển thị <span>(không bắt buộc)</span></label>
+<input id="fb-name" name="name" maxlength="60" autocomplete="nickname">
+<p class="fb-honey" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></p>
+<p class="fb-note">Không ghi số điện thoại, số hợp đồng hay thông tin cá nhân. Nhận xét hiển thị sau khi được duyệt.</p>
+<div class="fb-actions"><button type="submit" class="fb-btn">Gửi nhận xét</button><span class="fb-count" aria-hidden="true">0/1000</span></div>
+<p class="fb-msg" role="status" aria-live="polite"></p>
+</form>
+<div class="fb-done" role="status" hidden><b>Cảm ơn bạn đã góp ý.</b><p>Nhận xét sẽ hiển thị sau khi được duyệt.</p></div>
+<ul class="fb-list" hidden></ul>
+</section>`;
+
 const dateline = (p) => `<p class="art-meta"><span>${esc(p.cat)}</span><time datetime="${p.date}">${esc(p.dateText)}</time></p>`;
 
 /* ── Trang danh sách ── */
@@ -136,6 +164,7 @@ ${ctaRow('Gọi rà soát 0938 072 236')}
 
 <h2>Nguồn tham chiếu</h2>
 <ul class="art-sources">${sources.map(([name, href, org]) => `<li><a href="${href}" target="_blank" rel="noopener"><b>${esc(name)}</b><span>${esc(org)}</span><i aria-hidden="true">&#8599;</i></a></li>`).join('')}</ul>
+${feedbackBlock(p)}
 
 </div></div>
 </article>`;
@@ -159,6 +188,7 @@ ${ctaRow('Gọi rà soát 0938 072 236')}
         { '@type': 'ListItem', position: 3, name: p.title, item: SITE + P }],
     })}</script>`,
     main,
+    scripts: feedbackScript(),
     extraCss: '<link rel="stylesheet" href="/news.css">',
   }));
 }
@@ -238,6 +268,7 @@ ${ctaRow('Gọi rà soát 0938 072 236')}
 <h2 id="ann-cite-h">Căn cứ</h2>
 <ul>${decisions.map((d) => `<li>${t(d)}</li>`).join('')}</ul>
 </aside>
+${feedbackBlock(p)}
 
 <p class="ann-foot"><a href="/tin-tuc/">&larr; Tất cả tin tức</a><a href="/gioi-thieu/">Giới thiệu PVI Thành Đô &rarr;</a></p>
 </div></div>
@@ -263,6 +294,7 @@ ${ctaRow('Gọi rà soát 0938 072 236')}
         { '@type': 'ListItem', position: 3, name: p.title, item: SITE + P }],
     })}</script>`,
     main,
+    scripts: feedbackScript(),
     extraCss: '<link rel="stylesheet" href="/news.css">',
   }));
 }
