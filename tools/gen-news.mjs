@@ -165,55 +165,81 @@ ${ctaRow('Gọi rà soát 0938 072 236')}
 
 /* ── Bài 2: Công bố quyết định bổ nhiệm Giám đốc, Phó Giám đốc PVI Thành Đô ──
    Nội dung lấy nguyên văn từ Quyết định 1045/QĐ-PVIBH và 1051/QĐ-PVIBH do chủ site cung cấp.
-   Không đăng ảnh chụp quyết định (có con dấu, chữ ký); chỉ dẫn số hiệu. */
+   Không đăng ảnh chụp quyết định (có con dấu, chữ ký); chỉ dẫn số hiệu.
+   Bố cục thông cáo (lớp .ann-*): một cột đọc giữa trang, ảnh lớn, khối nhân sự hai cột. */
 {
   const p = posts.find((x) => x.slug === 'cong-bo-quyet-dinh-bo-nhiem-giam-doc-pho-giam-doc-pvi-thanh-do');
   const P = `/tin-tuc/${p.slug}/`;
-  const photo = (name, alt, caption, lead = false) => `<figure class="art-photo"><img src="/assets/${name}.webp" srcset="/assets/${name}-480.webp 480w, /assets/${name}-800.webp 800w, /assets/${name}.webp 1280w" sizes="(max-width:820px) 92vw, ${lead ? '1240px' : '640px'}" width="1280" height="853" alt="${esc(alt)}"${lead ? ' fetchpriority="high"' : ' loading="lazy"'}><figcaption>${t(caption)}</figcaption></figure>`;
+  const img = (name, alt, sizes, eager = false) => `<img src="/assets/${name}.webp" srcset="/assets/${name}-480.webp 480w, /assets/${name}-800.webp 800w, /assets/${name}.webp 1280w" sizes="${sizes}" width="1280" height="853" alt="${esc(alt)}"${eager ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"'}>`;
+  const people = [
+    {
+      role: 'Giám đốc', name: 'Ông Hồ Vũ Bình',
+      rows: [
+        ['Trước khi bổ nhiệm', 'Phó Giám đốc Công ty Bảo hiểm PVI Thành Đô'],
+        ['Quyết định', 'Số 1045/QĐ-PVIBH ngày 29/9/2026 của Hội đồng thành viên Tổng công ty Bảo hiểm PVI'],
+        ['Thời hạn', '01 năm, hiệu lực từ ngày 01/10/2026'],
+      ],
+    },
+    {
+      role: 'Phó Giám đốc', name: 'Bà Trần Thị Thanh Thương',
+      rows: [
+        ['Trước khi bổ nhiệm', 'Trưởng phòng Quản lý nghiệp vụ và Bồi thường'],
+        ['Quyết định', 'Số 1051/QĐ-PVIBH ngày 01/10/2026 của Tổng giám đốc Tổng công ty Bảo hiểm PVI'],
+        ['Thời hạn', '01 năm, hiệu lực từ ngày ký'],
+        ['Kiêm nhiệm', 'Trưởng phòng Quản lý nghiệp vụ và Bồi thường trong 06 tháng'],
+      ],
+    },
+  ];
   const decisions = [
     'Quyết định số 1045/QĐ-PVIBH ngày 29/9/2026 của Hội đồng thành viên Tổng công ty Bảo hiểm PVI về việc công tác cán bộ.',
     'Quyết định số 1051/QĐ-PVIBH ngày 01/10/2026 của Tổng giám đốc Tổng công ty Bảo hiểm PVI về việc công tác cán bộ.',
   ];
   const main = `
-<article class="art">
-<section class="art-head"><div class="fire-wrap">
-${dateline(p)}
+<article class="ann">
+<div class="ann-head"><div class="ann-col">
+<p class="ann-crumb"><a href="/tin-tuc/">Tin tức</a><span aria-hidden="true">/</span><span>Thông báo</span></p>
 <h1>${t(p.title)}</h1>
-<p class="art-lead">${t(p.lead)}</p>
+<p class="ann-lead">${t(p.lead)}</p>
+<p class="ann-meta"><time datetime="${p.date}">${esc(p.dateText)}</time><span>TP. Hồ Chí Minh</span></p>
+</div></div>
+
+<figure class="ann-hero">${img('bo-nhiem-thanh-do-tap-the', p.alt, '(max-width:820px) 100vw, 1120px', true)}
+<figcaption>${t('Lãnh đạo Tổng công ty Bảo hiểm PVI và cán bộ PVI Thành Đô chụp ảnh lưu niệm cùng ông Hồ Vũ Bình và bà Trần Thị Thanh Thương tại lễ công bố.')}</figcaption></figure>
+
+<section class="ann-people" aria-labelledby="ann-people-h"><div class="ann-wide">
+<h2 id="ann-people-h">Nhân sự được bổ nhiệm</h2>
+<div class="ann-grid">${people.map((x) => `
+<div class="ann-person"><p class="ann-role">${t(x.role)}</p><p class="ann-name">${t(x.name)}</p>
+<dl>${x.rows.map(([k, v]) => `<div><dt>${t(k)}</dt><dd>${t(v)}</dd></div>`).join('')}</dl></div>`).join('')}
+</div>
 </div></section>
 
-${photo('bo-nhiem-thanh-do-tap-the', p.alt, 'Lãnh đạo Tổng công ty Bảo hiểm PVI và cán bộ Công ty Bảo hiểm PVI Thành Đô chụp ảnh lưu niệm cùng ông Hồ Vũ Bình và bà Trần Thị Thanh Thương tại Lễ công bố quyết định bổ nhiệm, TP. Hồ Chí Minh, ngày 05/10/2026.', true)}
-
-<div class="art-body"><div class="fire-wrap">
-
-<div class="art-key">
-<b>Tóm tắt nhanh</b>
-<ul>
-<li>${t('Ông Hồ Vũ Bình giữ chức vụ Giám đốc Công ty Bảo hiểm PVI Thành Đô theo Quyết định số 1045/QĐ-PVIBH, thời hạn 01 năm, hiệu lực từ ngày 01/10/2026.')}</li>
-<li>${t('Bà Trần Thị Thanh Thương giữ chức vụ Phó Giám đốc Công ty Bảo hiểm PVI Thành Đô theo Quyết định số 1051/QĐ-PVIBH, thời hạn 01 năm, kiêm Trưởng phòng Quản lý nghiệp vụ và Bồi thường trong 06 tháng.')}</li>
-<li>${t('Lễ công bố tổ chức ngày 05/10/2026 tại TP. Hồ Chí Minh, trước sự chứng kiến của toàn thể cán bộ, nhân viên PVI Thành Đô.')}</li>
-</ul>
-</div>
-
-<p>${t('Tham dự buổi lễ có Tổng giám đốc Tổng công ty Bảo hiểm PVI Phạm Anh Đức, Phó Tổng giám đốc Tổng công ty Bảo hiểm PVI Phạm Thành Vinh, Trưởng Ban Tổ chức nhân sự Tổng công ty Bảo hiểm PVI Trần Việt Hải, cùng toàn thể cán bộ, nhân viên Công ty Bảo hiểm PVI Thành Đô.')}</p>
-<p>${t('Tại buổi lễ, các quyết định của Tổng công ty Bảo hiểm PVI về công tác cán bộ đối với Công ty Bảo hiểm PVI Thành Đô đã được công bố như sau.')}</p>
+<div class="ann-body"><div class="ann-col">
+<p class="ann-first">${t('Tham dự buổi lễ có Tổng giám đốc Tổng công ty Bảo hiểm PVI Phạm Anh Đức, Phó Tổng giám đốc Tổng công ty Bảo hiểm PVI Phạm Thành Vinh, Trưởng Ban Tổ chức nhân sự Tổng công ty Bảo hiểm PVI Trần Việt Hải, cùng toàn thể cán bộ, nhân viên Công ty Bảo hiểm PVI Thành Đô. Tại buổi lễ, các quyết định của Tổng công ty Bảo hiểm PVI về công tác cán bộ đối với Công ty Bảo hiểm PVI Thành Đô đã được công bố.')}</p>
 
 <h2>${t('Ông Hồ Vũ Bình giữ chức vụ Giám đốc')}</h2>
 <p>${t('Theo Quyết định số 1045/QĐ-PVIBH ngày 29/9/2026 của Hội đồng thành viên Tổng công ty Bảo hiểm PVI, ông Hồ Vũ Bình, Phó Giám đốc Công ty Bảo hiểm PVI Thành Đô, được bổ nhiệm giữ chức vụ Giám đốc Công ty Bảo hiểm PVI Thành Đô thuộc Tổng công ty Bảo hiểm PVI, thời hạn 01 năm. Quyết định có hiệu lực kể từ ngày 01/10/2026.')}</p>
-${photo('bo-nhiem-thanh-do-giam-doc', 'Lãnh đạo Tổng công ty Bảo hiểm PVI trao quyết định bổ nhiệm và tặng hoa chúc mừng ông Hồ Vũ Bình', 'Lãnh đạo Tổng công ty Bảo hiểm PVI trao quyết định bổ nhiệm và tặng hoa chúc mừng ông Hồ Vũ Bình, Giám đốc Công ty Bảo hiểm PVI Thành Đô.')}
 
 <h2>${t('Bà Trần Thị Thanh Thương giữ chức vụ Phó Giám đốc')}</h2>
 <p>${t('Theo Quyết định số 1051/QĐ-PVIBH ngày 01/10/2026 của Tổng giám đốc Tổng công ty Bảo hiểm PVI, bà Trần Thị Thanh Thương, Trưởng phòng Quản lý nghiệp vụ và Bồi thường, Công ty Bảo hiểm PVI Thành Đô, được bổ nhiệm giữ chức vụ Phó Giám đốc Công ty Bảo hiểm PVI Thành Đô, thời hạn 01 năm. Đồng thời, bà Trần Thị Thanh Thương kiêm nhiệm chức vụ Trưởng phòng Quản lý nghiệp vụ và Bồi thường, Công ty Bảo hiểm PVI Thành Đô trong thời gian 06 tháng. Quyết định có hiệu lực kể từ ngày ký.')}</p>
-${photo('bo-nhiem-thanh-do-pho-giam-doc', 'Lãnh đạo Tổng công ty Bảo hiểm PVI trao quyết định bổ nhiệm và tặng hoa chúc mừng bà Trần Thị Thanh Thương', 'Lãnh đạo Tổng công ty Bảo hiểm PVI trao quyết định bổ nhiệm và tặng hoa chúc mừng bà Trần Thị Thanh Thương, Phó Giám đốc Công ty Bảo hiểm PVI Thành Đô.')}
+</div>
 
+<div class="ann-pair ann-wide">
+<figure>${img('bo-nhiem-thanh-do-giam-doc', 'Lãnh đạo Tổng công ty Bảo hiểm PVI trao quyết định bổ nhiệm và tặng hoa chúc mừng ông Hồ Vũ Bình', '(max-width:820px) 100vw, 548px')}<figcaption>${t('Trao quyết định bổ nhiệm ông Hồ Vũ Bình, Giám đốc Công ty Bảo hiểm PVI Thành Đô.')}</figcaption></figure>
+<figure>${img('bo-nhiem-thanh-do-pho-giam-doc', 'Lãnh đạo Tổng công ty Bảo hiểm PVI trao quyết định bổ nhiệm và tặng hoa chúc mừng bà Trần Thị Thanh Thương', '(max-width:820px) 100vw, 548px')}<figcaption>${t('Trao quyết định bổ nhiệm bà Trần Thị Thanh Thương, Phó Giám đốc Công ty Bảo hiểm PVI Thành Đô.')}</figcaption></figure>
+</div>
+
+<div class="ann-col">
 <h2>${t('Trao quyết định trước toàn thể cán bộ, nhân viên')}</h2>
 <p>${t('Trước sự chứng kiến của toàn thể cán bộ, nhân viên Công ty Bảo hiểm PVI Thành Đô, Tổng giám đốc Phạm Anh Đức, Phó Tổng giám đốc Phạm Thành Vinh và Trưởng Ban Tổ chức nhân sự Trần Việt Hải đã trao quyết định và tặng hoa chúc mừng ông Hồ Vũ Bình và bà Trần Thị Thanh Thương.')}</p>
 <p>${t('Lễ công bố diễn ra trong năm Tổng công ty Bảo hiểm PVI kỷ niệm 30 năm thành lập. Việc công bố các quyết định trên góp phần kiện toàn bộ máy lãnh đạo của Công ty Bảo hiểm PVI Thành Đô. Buổi lễ khép lại trong không khí trang trọng, với lời chúc mừng của lãnh đạo Tổng công ty cùng toàn thể cán bộ, nhân viên PVI Thành Đô dành cho ông Hồ Vũ Bình và bà Trần Thị Thanh Thương trên cương vị mới.')}</p>
-<p>Thông tin về đơn vị, trụ sở và đầu mối liên hệ xem tại trang <a href="/gioi-thieu/">Giới thiệu Công ty Bảo hiểm PVI Thành Đô</a>.</p>
 
-<h2>Căn cứ</h2>
-<ul class="art-cite">${decisions.map((d) => `<li>${t(d)}</li>`).join('')}</ul>
+<aside class="ann-cite" aria-labelledby="ann-cite-h">
+<h2 id="ann-cite-h">Căn cứ</h2>
+<ul>${decisions.map((d) => `<li>${t(d)}</li>`).join('')}</ul>
+</aside>
 
+<p class="ann-foot"><a href="/tin-tuc/">&larr; Tất cả tin tức</a><a href="/gioi-thieu/">Giới thiệu PVI Thành Đô &rarr;</a></p>
 </div></div>
 </article>`;
 
