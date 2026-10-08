@@ -67,7 +67,6 @@
 .fx-legal-facts>div+div{padding-left:20px;border-left:1px solid var(--line)}
 .fx-legal-facts dt{font-size:13px;color:#586574}
 .fx-legal-facts dd{margin:4px 0 0;font-size:17px;font-weight:700;color:var(--ink);line-height:1.4}
-.fx-legal-facts dd a{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
 .fx-legal-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;margin-top:32px}
 .fx-legal h3{margin:0 0 10px;font-size:17px;color:var(--ink)}
 .fx-legal-table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.55}
