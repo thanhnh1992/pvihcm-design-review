@@ -55,11 +55,33 @@
 .fx-layer em{font-style:normal;font-size:15px;line-height:1.5;font-weight:600;color:var(--blue);margin-top:6px}
 
 /* ── Căn cứ pháp lý ── */
-.fx-legal{background:var(--paper);border-bottom:1px solid var(--line)}
-.fx-legal .fire-wrap{display:flex;align-items:center;justify-content:space-between;gap:12px 28px;padding:14px 0;flex-wrap:wrap}
-.fx-legal p{margin:0;font-size:15px;line-height:1.6;color:#36485b;max-width:88ch}
+/* ── Căn cứ pháp lý NĐ 105/2025: kẻ chỉ, không thẻ nổi ── */
+.fx-legal{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);scroll-margin-top:56px}
+.fx-legal .fire-wrap{padding:44px 0 40px}
+.fx-legal-kicker{display:block;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+.fx-legal h2{margin:8px 0 12px;font-size:clamp(22px,2.6vw,30px);line-height:1.25;color:var(--ink)}
+.fx-legal-lede{margin:0;max-width:72ch;font-size:16px;line-height:1.65;color:#36485b}
 .fx-legal b{color:var(--ink)}
-.fx-legal a{display:inline-flex;align-items:center;min-height:44px;font-size:15px;font-weight:700;color:var(--blue);text-decoration:underline;text-underline-offset:4px;white-space:nowrap}
+.fx-legal-facts{display:flex;flex-wrap:wrap;margin:24px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fx-legal-facts>div{flex:1 1 180px;padding:14px 20px 14px 0;margin-right:20px}
+.fx-legal-facts>div+div{padding-left:20px;border-left:1px solid var(--line)}
+.fx-legal-facts dt{font-size:13px;color:#586574}
+.fx-legal-facts dd{margin:4px 0 0;font-size:17px;font-weight:700;color:var(--ink);line-height:1.4}
+.fx-legal-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;margin-top:32px}
+.fx-legal h3{margin:0 0 10px;font-size:17px;color:var(--ink)}
+.fx-legal-table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.55}
+.fx-legal-table th,.fx-legal-table td{padding:11px 12px 11px 0;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+.fx-legal-table tbody tr:last-child>*{border-bottom:1px solid var(--line)}
+.fx-legal-table tbody th{width:34%;font-weight:700;color:var(--ink)}
+.fx-legal-table td{color:#36485b}
+.fx-legal-table thead th{font-size:13px;font-weight:600;color:#586574;border-top:0;padding-top:0}
+.fx-legal-thr td:last-child{width:3.5em;padding-right:0;text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
+.fx-legal-thr thead th:last-child{text-align:right;padding-right:0}
+.fx-legal-note{margin:12px 0 0;font-size:14px;line-height:1.6;color:#586574}
+.fx-legal-src{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:12px 32px;margin-top:32px;padding-top:20px;border-top:1px solid var(--line)}
+.fx-legal-src p{margin:0;flex:1 1 320px;max-width:60ch;font-size:14px;line-height:1.6;color:#586574}
+.fx-legal-src ul{display:flex;flex-wrap:wrap;gap:0 24px;margin:0;padding:0;list-style:none}
+.fx-legal-src a{display:inline-flex;align-items:center;min-height:44px;font-size:15px;font-weight:700;color:var(--blue);text-decoration:underline;text-underline-offset:4px}
 
 /* ── Công cụ ── */
 .fx-tool{padding:56px 0 24px;background:#fff}
@@ -156,7 +178,11 @@
   .fx-card>.fx-label,.fx-card .fire-search,.fx-quick{padding-left:16px;padding-right:16px}
   .fx-sub{font-size:18px!important}
   .fx-actions .fx-btn{width:100%}
-  .fx-legal a{min-height:40px}
+  .fx-legal .fire-wrap{padding:32px 0 28px}
+  .fx-legal-grid{grid-template-columns:1fr;gap:28px}
+  .fx-legal-facts>div,.fx-legal-facts>div+div{flex-basis:100%;margin:0;padding:12px 0;border-left:0}
+  .fx-legal-facts>div+div{border-top:1px solid var(--line)}
+  .fx-legal-src ul{flex-direction:column}
 }
 @media(max-width:560px){.fx-local a{padding:0 10px;font-size:14px}}
 
