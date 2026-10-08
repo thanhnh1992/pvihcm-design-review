@@ -44,7 +44,7 @@ export const posts = [
     date: '2026-09-25',
     dateText: '25/09/2026',
     cat: 'Pháp lý · Cháy nổ bắt buộc',
-    title: 'Nghị định 347/2026/NĐ-CP: bảo hiểm cháy nổ bắt buộc thay đổi gì từ 15/9/2026',
+    title: 'Nghị định 347/2026/NĐ-CP: cháy nổ bắt buộc thay đổi gì từ 15/9/2026',
     lead: 'Nghị định bỏ thủ tục nghiệm thu phòng cháy chữa cháy của cơ quan Công an, thêm trường hợp không phải mua bảo hiểm và cho tính phí riêng từng hạng mục. Doanh nghiệp cần rà lại danh mục tài sản trước khi tái tục.',
     image: '/assets/section-chay-no.webp',
     alt: 'Chuyên viên khảo sát tủ báo cháy và đường ống chữa cháy trong kho hàng',
@@ -183,7 +183,7 @@ ${feedbackBlock(p)}
 
   write(`tin-tuc/${p.slug}/index.html`, page({
     path: P,
-    title: 'Nghị định 347/2026: bảo hiểm cháy nổ đổi gì từ 15/9 | PVI',
+    title: 'Nghị định 347/2026: cháy nổ bắt buộc đổi gì từ 15/9 | PVI',
     description: 'Từ 15/9/2026, Nghị định 347/2026/NĐ-CP bỏ thủ tục nghiệm thu PCCC của Công an, thêm trường hợp loại trừ và cho tính phí riêng từng hạng mục theo Phụ lục VI.',
     image: p.image,
     head: `<script type="application/ld+json">${JSON.stringify({
