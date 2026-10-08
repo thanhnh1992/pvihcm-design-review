@@ -40,7 +40,7 @@ export const posts = [
     alt: 'Lãnh đạo Tổng công ty Bảo hiểm PVI và cán bộ PVI Thành Đô chụp ảnh lưu niệm cùng tân Giám đốc và tân Phó Giám đốc',
   },
   {
-    slug: 'nghi-dinh-347-2026-bao-hiem-chay-no',
+    slug: 'nghi-dinh-347-2026-chay-no-bat-buoc',
     date: '2026-09-25',
     dateText: '25/09/2026',
     cat: 'Pháp lý · Cháy nổ bắt buộc',
@@ -113,7 +113,7 @@ const dateline = (p) => `<p class="art-meta"><span>${esc(p.cat)}</span><time dat
 
 /* ── Bài 1: Nghị định 347/2026/NĐ-CP ── */
 {
-  const p = posts.find((x) => x.slug === 'nghi-dinh-347-2026-bao-hiem-chay-no');
+  const p = posts.find((x) => x.slug === 'nghi-dinh-347-2026-chay-no-bat-buoc');
   const P = `/tin-tuc/${p.slug}/`;
   const sources = [
     ['Nghị định 105/2025/NĐ-CP (văn bản bị sửa đổi)', 'https://vanban.chinhphu.vn/?pageid=27160&docid=213702', 'Cổng thông tin điện tử Chính phủ'],

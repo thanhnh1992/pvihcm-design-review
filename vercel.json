@@ -27,6 +27,16 @@
   ],
   "redirects": [
     {
+      "source": "/tin-tuc/nghi-dinh-347-2026-bao-hiem-chay-no",
+      "destination": "/tin-tuc/nghi-dinh-347-2026-chay-no-bat-buoc/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tin-tuc/nghi-dinh-347-2026-bao-hiem-chay-no/",
+      "destination": "/tin-tuc/nghi-dinh-347-2026-chay-no-bat-buoc/",
+      "statusCode": 301
+    },
+    {
       "source": "/about-us",
       "destination": "/gioi-thieu/",
       "statusCode": 301

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://pvihcm.com/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <image:image><image:loc>https://pvihcm.com/assets/section-bat-buoc.webp</image:loc></image:image>
   </url>
   <url>
@@ -17,33 +17,38 @@
   </url>
   <url>
     <loc>https://pvihcm.com/san-pham/chay-no-bat-buoc/</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <image:image><image:loc>https://pvihcm.com/assets/section-chay-no.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://pvihcm.com/san-pham/hang-hoa-xuat-nhap-khau/</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <image:image><image:loc>https://pvihcm.com/assets/section-hang-hoa.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://pvihcm.com/gioi-thieu/</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <image:image><image:loc>https://pvihcm.com/assets/section-bat-buoc.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://pvihcm.com/huong-dan/</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <image:image><image:loc>https://pvihcm.com/assets/section-tai-nan.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://pvihcm.com/tai-nan-doanh-nghiep/</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <image:image><image:loc>https://pvihcm.com/assets/section-tai-nan.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://pvihcm.com/tin-tuc/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <image:image><image:loc>https://pvihcm.com/assets/di-lam-xe-may.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://pvihcm.com/tin-tuc/nghi-dinh-347-2026-chay-no-bat-buoc/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <image:image><image:loc>https://pvihcm.com/assets/section-chay-no.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://pvihcm.com/tin-tuc/bao-hiem-tai-nan-cong-trinh-pvi/</loc>
@@ -59,10 +64,5 @@
     <loc>https://pvihcm.com/tin-tuc/loi-ich-bao-hiem-tai-nan-ca-nhan/</loc>
     <lastmod>2026-10-05</lastmod>
     <image:image><image:loc>https://pvihcm.com/assets/di-lam-xe-may.webp</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://pvihcm.com/tin-tuc/nghi-dinh-347-2026-bao-hiem-chay-no/</loc>
-    <lastmod>2026-10-05</lastmod>
-    <image:image><image:loc>https://pvihcm.com/assets/section-chay-no.webp</image:loc></image:image>
   </url>
 </urlset>
