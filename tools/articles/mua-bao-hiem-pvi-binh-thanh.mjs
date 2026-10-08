@@ -11,13 +11,13 @@ export const post = {
   cat: 'Kiến thức · Mua bảo hiểm',
   title: 'Mua bảo hiểm PVI tại Bình Thạnh: địa chỉ, tư vấn và cách mua nhanh',
   lead: 'Khách hàng ở khu vực Bình Thạnh có thể liên hệ Công ty Bảo hiểm PVI Thành Đô trên trục Điện Biên Phủ để được tư vấn, báo phí và chuẩn bị hồ sơ bảo hiểm ô tô, tai nạn, cháy nổ trước khi đến văn phòng.',
-  image: '/assets/di-lam-xe-may.webp',
-  alt: 'Hình ảnh minh họa: người đi xe máy trên đường ven sông Sài Gòn, TP.HCM',
+  image: '/assets/duong-pho-dien-bien-phu.webp',
+  alt: 'Hình ảnh minh họa: chuyên viên tư vấn cầm hồ sơ đứng trước tòa nhà văn phòng trên một tuyến đường lớn ở TP.HCM',
   readMin: 6,
 };
 
 export const crumb = 'Kiến thức mua bảo hiểm';
-export const hero = { name: 'di-lam-xe-may', w: 1280, h: 853, position: '50% 60%', caption: 'Hình ảnh minh họa: giờ tan tầm trên đường ven sông Sài Gòn, TP.HCM.' };
+export const hero = { name: 'duong-pho-dien-bien-phu', w: 1280, h: 853, position: '60% 45%', caption: 'Hình ảnh minh họa: chuyên viên tư vấn trước tòa nhà văn phòng trên tuyến đường lớn ở TP.HCM.' };
 export const seo = {
   title: 'Mua bảo hiểm PVI tại Bình Thạnh: địa chỉ, tư vấn, mua nhanh | PVI',
   description: 'Mua bảo hiểm PVI tại khu vực Bình Thạnh: địa chỉ PVI Thành Đô 473 Điện Biên Phủ, tư vấn bảo hiểm ô tô, tai nạn, cháy nổ, hồ sơ cần chuẩn bị và cách nhận báo phí.',
@@ -141,6 +141,7 @@ export function body({ pic, ctaRow }) {
 <h2 id="den-truc-tiep">Mua bảo hiểm PVI ở Bình Thạnh có cần đến trực tiếp văn phòng không?</h2>
 <p><b>Không nhất thiết.</b> Với nhiều sản phẩm, khách hàng có thể gửi thông tin từ xa để nhân viên kiểm tra hồ sơ, báo phí và hướng dẫn quy trình phát hành. Đối với những sản phẩm cần thẩm định trực tiếp, nhân viên sẽ hướng dẫn thêm tùy hồ sơ.</p>
 <p>Riêng bảo hiểm vật chất ô tô, một số trường hợp có thể cần hình ảnh hoặc kiểm tra hiện trạng xe trước khi phát hành.</p>
+<figure class="kb-photo">${pic('tu-van-xe-o-to', { alt: 'Hình ảnh minh họa: chuyên viên tư vấn trao đổi hồ sơ bảo hiểm với chủ xe bên cạnh chiếc ô tô màu trắng', sizes: '(max-width:900px) 92vw, 700px' })}<figcaption>Hình ảnh minh họa: trao đổi hồ sơ bảo hiểm cùng chủ xe ngay bên xe.</figcaption></figure>
 
 <h2 id="vi-sao">Vì sao người ở Bình Thạnh có thể làm hồ sơ qua PVI Thành Đô?</h2>
 <p>PVI Thành Đô là một đơn vị trong hệ thống Bảo hiểm PVI tại TP.HCM và có văn phòng tại trục Điện Biên Phủ, thuận tiện cho khách hàng ở khu vực Bình Thạnh và các khu vực lân cận. Điều quan trọng khi chọn nơi mua bảo hiểm không chỉ là địa chỉ gần, mà còn là khả năng:</p>
@@ -158,7 +159,7 @@ export function body({ pic, ctaRow }) {
 <div class="kb-review-head">
 <h2 id="chuan-bi">Mua bảo hiểm PVI tại Bình Thạnh cần chuẩn bị gì?</h2>
 <p>Chuẩn bị sẵn thông tin theo từng loại giúp báo phí nhanh và sát hơn. Với vật chất xe, nhân viên sẽ kiểm tra thêm giá trị xe, lịch sử bảo hiểm và tình trạng xe.</p>
-${pic('tu-van-van-phong', { alt: 'Hình ảnh minh họa: chuyên viên tư vấn chỉ vào bảng quyền lợi bảo hiểm cho khách', sizes: '(max-width:820px) 92vw, 420px' })}
+<figure class="kb-photo kb-photo-tight">${pic('tu-van-doanh-nghiep', { alt: 'Hình ảnh minh họa: chuyên viên tư vấn và khách hàng doanh nghiệp xem bản vẽ, hồ sơ tài sản trong phòng làm việc nhìn ra thành phố', sizes: '(max-width:820px) 92vw, 420px' })}<figcaption>Hình ảnh minh họa: rà hồ sơ tài sản và bản vẽ cùng khách hàng doanh nghiệp.</figcaption></figure>
 </div>
 <div class="kb-review-groups">
 <div><h3>Bảo hiểm ô tô</h3><ul>
