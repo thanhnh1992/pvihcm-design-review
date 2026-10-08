@@ -38,7 +38,9 @@ node tools/load-data.mjs      # chỉ khi dữ liệu bên baohiempvi-vn đổi 
 node tools/gen-products.mjs   # bắt buộc, tai nạn, hàng hóa
 node tools/gen-others.mjs     # huong-dan, tai-nan-doanh-nghiep, gioi-thieu
 node tools/patch-static.mjs   # áp header/menu/chân trang mới cho index.html và trang cháy nổ
-node tools/srcset.mjs         # PHẢI chạy sau cùng: gắn srcset cho ảnh
+node tools/srcset.mjs         # gắn srcset cho ảnh
+node tools/gen-news.mjs       # mục Tin tức và các bài
+node tools/gen-sitemap.mjs    # PHẢI chạy sau cùng: sinh lại dist/sitemap.xml (không sửa tay file này)
 ```
 - `tools/chrome.mjs`: header, menu, chân trang, thẻ SEO dùng chung. Hai trang `dist/index.html` và `dist/san-pham/chay-no-bat-buoc/index.html` sửa tay; header và chân trang của chúng lấy từ chrome.mjs qua `tools/patch-static.mjs`. JSON-LD của trang chủ thì sửa tay.
 - `tools/data/*.mjs`: dữ liệu đã duyệt, chuyển nguyên văn từ `product-data.ts`, `tnds-data.ts`, `accident-data.ts` của baohiempvi-vn. **Không gõ lại số liệu bằng tay.**
