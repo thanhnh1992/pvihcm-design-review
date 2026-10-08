@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { page, t, esc, ctaRow, faqJsonLd, SITE } from './chrome.mjs';
 import * as kbCongTrinh from './articles/tai-nan-cong-trinh.mjs';
 import * as kbTaiNanCaNhan from './articles/loi-ich-tai-nan-ca-nhan.mjs';
+import * as kbBinhDuong from './articles/mua-bao-hiem-pvi-binh-duong.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.resolve(HERE, '../dist');
@@ -27,6 +28,7 @@ const write = (rel, html) => {
 
 /* ── Danh sách bài, mới nhất lên đầu ── */
 export const posts = [
+  kbBinhDuong.post,
   kbTaiNanCaNhan.post,
   kbCongTrinh.post,
   {
@@ -380,3 +382,4 @@ ${feedbackBlock(p)}
 
 renderKb(kbCongTrinh);
 renderKb(kbTaiNanCaNhan);
+renderKb(kbBinhDuong);
