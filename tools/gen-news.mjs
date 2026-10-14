@@ -85,31 +85,59 @@ const feedbackBlock = (p) => `
 
 const dateline = (p) => `<p class="art-meta"><span>${esc(p.cat)}</span><time datetime="${p.date}">${esc(p.dateText)}</time></p>`;
 
+/* ── Hai mục của trang Tin tức (chủ site chốt 14/10/2026) ──
+   'san-pham': bài gắn với một sản phẩm bảo hiểm; 'chung': tin đơn vị, khu vực, thông báo.
+   Bài mới phải được xếp vào một mục ở đây, thiếu thì dừng sinh trang. */
+const GROUPS = [
+  { id: 'tin-san-pham', key: 'san-pham', name: 'Tin sản phẩm', lead: 'Quy định mới, quyền lợi và lưu ý theo từng loại bảo hiểm.' },
+  { id: 'tin-chung', key: 'chung', name: 'Tin tức chung', lead: 'Hoạt động, thông báo của PVI Thành Đô và thông tin mua bảo hiểm theo khu vực.' },
+];
+const POST_GROUP = {
+  'nghi-dinh-347-2026-chay-no-bat-buoc': 'san-pham',
+  'loi-ich-bao-hiem-tai-nan-ca-nhan': 'san-pham',
+  'bao-hiem-tai-nan-cong-trinh-pvi': 'san-pham',
+  'cong-bo-quyet-dinh-bo-nhiem-giam-doc-pho-giam-doc-pvi-thanh-do': 'chung',
+  'mua-bao-hiem-pvi-binh-duong': 'chung',
+  'mua-bao-hiem-pvi-binh-thanh': 'chung',
+};
+for (const p of posts) {
+  if (!GROUPS.some((g) => g.key === POST_GROUP[p.slug])) throw new Error(`Bài ${p.slug} chưa được xếp vào mục Tin sản phẩm hoặc Tin tức chung (POST_GROUP trong gen-news.mjs)`);
+}
+
 /* ── Trang danh sách ── */
 {
   const P = '/tin-tuc/';
+  const card = (p) => `<li><a href="/tin-tuc/${p.slug}/">
+<figure><img src="${p.image}" width="1280" height="853" alt="${esc(p.alt)}" loading="lazy"></figure>
+<div><span class="cat">${esc(p.cat)} · <time datetime="${p.date}">${esc(p.dateText)}</time></span>
+<b>${t(p.title)}</b><span class="d">${t(p.lead)}</span></div>
+<i aria-hidden="true">&rarr;</i></a></li>`;
+  const groups = GROUPS.map((g) => ({ ...g, items: posts.filter((p) => POST_GROUP[p.slug] === g.key) }));
   const main = `
 <section class="art-head"><div class="fire-wrap">
 <p class="fx-kicker">Tin tức</p>
 <h1>Tin tức và cập nhật pháp lý</h1>
-<p class="art-lead">Thay đổi về quy định bảo hiểm bắt buộc và thông báo của PVI Thành Đô. Mỗi bài ghi rõ căn cứ và nguồn tham chiếu ở cuối trang.</p>
+<p class="art-lead">Hai mục: tin theo từng sản phẩm bảo hiểm và tin chung của PVI Thành Đô. Mỗi bài ghi rõ căn cứ và nguồn tham chiếu ở cuối trang.</p>
+<nav class="art-groups" aria-label="Các mục tin tức">${groups.map((g) => `<a href="#${g.id}">${esc(g.name)} <span>${g.items.length} bài</span></a>`).join('')}</nav>
 </div></section>
-
-<section class="pd-section"><div class="fire-wrap">
-<ul class="art-list">${posts.map((p) => `<li><a href="/tin-tuc/${p.slug}/">
-<figure><img src="${p.image}" width="1280" height="853" alt="${esc(p.alt)}" loading="lazy"></figure>
-<div><span class="cat">${esc(p.cat)} · <time datetime="${p.date}">${esc(p.dateText)}</time></span>
-<b>${t(p.title)}</b><span class="d">${t(p.lead)}</span></div>
-<i aria-hidden="true">&rarr;</i></a></li>`).join('')}</ul>
-</div></section>`;
+${groups.map((g) => `
+<section class="pd-section art-group" id="${g.id}" aria-labelledby="${g.id}-h"><div class="fire-wrap">
+<h2 id="${g.id}-h">${esc(g.name)}</h2>
+<p class="art-group-lead">${esc(g.lead)}</p>
+<ul class="art-list">${g.items.map(card).join('')}</ul>
+</div></section>`).join('')}`;
   write('tin-tuc/index.html', page({
     path: P,
     title: 'Tin tức và cập nhật pháp lý | PVI Thành Đô',
-    description: 'Cập nhật quy định mới về bảo hiểm bắt buộc và thông báo của Công ty Bảo hiểm PVI Thành Đô, kèm nguồn tham chiếu chính thức.',
+    description: 'Tin theo từng sản phẩm bảo hiểm và tin chung của Công ty Bảo hiểm PVI Thành Đô: quy định mới, thông báo, thông tin mua bảo hiểm theo khu vực.',
     image: posts[0].image,
     head: `<script type="application/ld+json">${JSON.stringify({
       '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Tin tức PVI Thành Đô', url: SITE + P,
-    })}</script>`,
+      hasPart: groups.map((g) => ({
+        '@type': 'ItemList', name: g.name, url: SITE + P + '#' + g.id, numberOfItems: g.items.length,
+        itemListElement: g.items.map((p, i) => ({ '@type': 'ListItem', position: i + 1, name: p.title, url: SITE + '/tin-tuc/' + p.slug + '/' })),
+      })),
+    }).replace(/</g, '\\u003c')}</script>`,
     main,
     extraCss: '<link rel="stylesheet" href="/news.css">',
   }));
