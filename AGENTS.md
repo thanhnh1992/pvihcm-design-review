@@ -76,6 +76,11 @@ Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist
 - Không dựng 3 thẻ bằng nhau; ưu tiên bảng kẻ chỉ.
 - Không bịa số liệu, ngày tháng, đánh giá, FPS.
 
+**Quy tắc viết bài Tin tức / Kiến thức (chủ site chốt 14/10/2026, bắt buộc)**
+- Đọc `QUY-TAC-VIET-BAI.md` trước khi viết bài. File này giống hệt bản trong repo baohiempvi-vnwebsite; sửa bên nào thì chép sang bên kia.
+- Kiến thức chung và cập nhật pháp lý: bản chuẩn ở baohiempvi-vn.com. Tin tức đơn vị và bài theo khu vực: bản chuẩn ở pvihcm.com.
+- Đăng lại bài đã có bản chuẩn ở site khác: thêm `canonical: 'https://...'` vào `post` của module bài. `renderKb()` in canonical đó, `gen-sitemap.mjs` tự bỏ trang khỏi sitemap.
+
 **Link ra ngoài (chủ site chốt 05/10/2026, bắt buộc)**
 - Bài viết (mục Tin tức và mọi bài nội dung) **TUYỆT ĐỐI không có link ra ngoài**, đặc biệt không bao giờ link hay nhắc tên website của công ty bảo hiểm khác (đối thủ). Chỉ được: link nội bộ pvihcm.com, `tel:`, `mailto:` và Zalo OA của đơn vị.
 - Nguồn tham chiếu ghi bằng chữ (tên tài liệu + đơn vị phát hành), không gắn link, không để URL trong HTML.

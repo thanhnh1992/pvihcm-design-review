@@ -363,10 +363,11 @@ ${feedbackBlock(p)}
     title: A.seo.title,
     description: A.seo.description,
     image: p.image,
+    canonical: p.canonical,
     head: `<script type="application/ld+json">${JSON.stringify({
       '@context': 'https://schema.org', '@type': 'Article',
       headline: p.title, datePublished: p.date, dateModified: p.date,
-      image: [SITE + p.image], mainEntityOfPage: SITE + P,
+      image: [SITE + p.image], mainEntityOfPage: p.canonical || SITE + P,
       author: { '@type': 'Organization', name: 'Công ty Bảo hiểm PVI Thành Đô' },
       publisher: { '@type': 'Organization', name: 'Công ty Bảo hiểm PVI Thành Đô', logo: { '@type': 'ImageObject', url: SITE + '/assets/pvi-logo.svg' } },
       description: p.lead,
