@@ -60,15 +60,96 @@
 .art-list .d{display:block;font-size:16px;line-height:1.6;color:#36485b}
 .art-list i{font-style:normal;color:var(--blue);font-size:19px;justify-self:end}
 .art-list a:hover{background:var(--ice,#f5f9fd)}
-/* Hai mục của trang Tin tức: ô chuyển nhanh dưới tiêu đề + tiêu đề từng mục */
-.art-groups{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 28px}
-.art-groups a{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:8px 16px;border:1px solid var(--rail,#d9e2e9);border-radius:999px;font-size:16px;font-weight:650;color:var(--ink);background:#fff}
-.art-groups a span{font-size:14px;font-weight:500;color:#5b6f86}
-.art-groups a:hover{border-color:var(--blue);color:var(--blue)}
-.art-group{scroll-margin-top:84px}
-.art-group + .art-group{padding-top:0}
-.art-group h2{margin:0;font-size:clamp(24px,2.6vw,32px);line-height:1.25;letter-spacing:-.02em;color:var(--ink)}
-.art-group-lead{margin:8px 0 18px!important;font-size:16px;line-height:1.6;color:#586574;max-width:62ch}
+/* ── Trang danh sách /tin-tuc/: bố cục theo thư viện kiến thức baohiempvi-vn, màu và font pvihcm ── */
+.nl-hero{padding-bottom:8px}
+.nl-streams{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:4px 0 8px;max-width:820px}
+.nl-tile{display:grid;grid-template-columns:58px 1fr;gap:6px;padding:22px 24px;background:#fff;border:1px solid #d9e2e9;border-radius:20px;box-shadow:0 18px 40px rgba(7,31,67,.08);color:var(--ink);transition:border-color .2s,box-shadow .2s,transform .2s}
+.nl-tile:hover{border-color:#8fb3d6;box-shadow:0 22px 46px rgba(7,31,67,.14);transform:translateY(-3px)}
+.nl-idx{grid-row:span 3;font-size:34px;font-weight:800;line-height:1;letter-spacing:-.04em;color:#165a9c}
+.nl-tile strong{font-size:19px;font-weight:800;line-height:1.25;letter-spacing:-.02em}
+.nl-hint{font-size:15px;color:#586574}
+.nl-count{display:flex;align-items:center;gap:8px;margin-top:4px;font-size:14px;font-weight:700;color:#165a9c}
+.nl-count i{font-style:normal;transition:transform .2s}
+.nl-tile:hover .nl-count i{transform:translateY(3px)}
+
+.nl-section{padding-top:72px;scroll-margin-top:84px}
+.nl-section:last-of-type{padding-bottom:8px}
+.nl-head{max-width:720px;margin-bottom:28px}
+.nl-kicker{display:block;font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#165a9c}
+.nl-head h2{margin:10px 0 12px;font-size:clamp(28px,3.2vw,40px);line-height:1.12;letter-spacing:-.04em;color:var(--ink);text-wrap:balance}
+.nl-head p{margin:0;font-size:16px;line-height:1.65;color:#586574}
+.nl-label{display:block;font-size:13px;font-weight:800;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:#165a9c}
+.nl-date{font-size:14px;color:#586574}
+.nl-meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 14px;margin-top:auto;padding-top:16px}
+.nl-meta b{display:inline-flex;align-items:center;gap:6px;margin-left:auto;font-size:15px;font-weight:700;color:#165a9c}
+.nl-meta b i{font-style:normal;transition:transform .2s}
+.nl-feature:hover .nl-meta b i,.nl-latest:hover .nl-meta b i{transform:translateX(4px)}
+
+/* 01 Tin sản phẩm: thẻ ảnh lớn + thẻ ảnh nhỏ */
+.nl-bento{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px}
+.nl-feature{position:relative;display:flex;min-height:460px;overflow:hidden;border-radius:20px;color:#fff}
+.nl-feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.72,.24,1)}
+.nl-feature:hover img{transform:scale(1.04)}
+.nl-feature::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,31,67,.05) 18%,rgba(7,31,67,.9) 78%)}
+.nl-feature-copy{position:relative;z-index:1;align-self:flex-end;display:flex;flex-direction:column;padding:28px}
+.nl-feature .nl-label{color:#bfe3ff}
+.nl-feature h3{margin:10px 0;font-size:clamp(22px,2.3vw,30px);line-height:1.2;letter-spacing:-.03em;color:#fff;text-wrap:balance}
+.nl-feature p{margin:0;font-size:16px;line-height:1.6;color:rgba(235,245,255,.92)}
+.nl-feature .nl-date{color:rgba(225,239,255,.88)}
+.nl-feature .nl-meta b{color:#fff}
+.nl-photos{display:grid;grid-template-columns:1fr;gap:16px;list-style:none;margin:0;padding:0}
+.nl-card{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);height:100%;overflow:hidden;background:#fff;border:1px solid #dfe7ee;border-radius:16px;color:var(--ink);transition:box-shadow .2s,transform .2s}
+.nl-card:hover{box-shadow:0 16px 34px rgba(7,31,67,.1);transform:translateY(-2px)}
+.nl-photo{display:block;overflow:hidden;background:#eef3f7}
+.nl-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.72,.24,1)}
+.nl-card .nl-photo{min-height:200px}
+.nl-card:hover .nl-photo img,.nl-latest:hover .nl-photo img{transform:scale(1.05)}
+.nl-card-copy{display:flex;flex-direction:column;gap:8px;padding:18px 20px}
+.nl-card-copy h3{margin:0;font-size:17px;font-weight:700;line-height:1.38;letter-spacing:-.015em}
+.nl-card-copy .nl-date{margin-top:auto}
+
+/* 02 Tin tức chung: thẻ mới nhất + dòng thời gian */
+.nl-news{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:28px;align-items:start}
+.nl-latest{display:flex;flex-direction:column;overflow:hidden;background:#f5f7f9;border:1px solid #d9e2e9;border-radius:20px;color:var(--ink);transition:border-color .2s,box-shadow .2s}
+.nl-latest:hover{border-color:#8fb3d6;box-shadow:0 16px 34px rgba(7,31,67,.1)}
+.nl-latest .nl-photo{aspect-ratio:16/9}
+.nl-latest-copy{display:flex;flex-direction:column;padding:24px 28px 26px}
+.nl-badge{align-self:flex-start;margin-bottom:14px;padding:5px 12px;border-radius:999px;background:var(--blue);color:#fff;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.nl-latest h3{margin:10px 0 12px;font-size:clamp(22px,2.2vw,28px);line-height:1.22;letter-spacing:-.03em;text-wrap:balance}
+.nl-latest p{margin:0;font-size:16px;line-height:1.65;color:#586574}
+.nl-timeline{display:grid;gap:4px;list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid #d9e2e9}
+.nl-timeline li{position:relative;padding:4px 0 18px}
+.nl-timeline li::before{content:"";position:absolute;left:-30px;top:8px;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid #165a9c}
+.nl-timeline .nl-date{display:block;margin-bottom:4px;font-weight:700}
+.nl-timeline a{display:block;color:var(--ink)}
+.nl-timeline h3{margin:6px 0;font-size:18px;font-weight:700;line-height:1.4;letter-spacing:-.015em;transition:color .2s}
+.nl-timeline a:hover h3{color:#165a9c;text-decoration:underline;text-underline-offset:3px}
+.nl-timeline p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin:0;font-size:15px;line-height:1.6;color:#586574}
+.nl-total{margin:56px 0 64px!important;font-size:14px;line-height:1.6;color:#586574}
+
+.nl-tile:focus-visible,.nl-feature:focus-visible,.nl-card:focus-visible,.nl-latest:focus-visible,.nl-timeline a:focus-visible{outline:3px solid rgba(22,90,156,.45);outline-offset:3px}
+
+@media (max-width:1024px){
+  .nl-bento,.nl-news{grid-template-columns:1fr}
+  .nl-feature{min-height:400px}
+}
+@media (max-width:760px){
+  .nl-streams{grid-template-columns:1fr;gap:10px}
+  .nl-tile{grid-template-columns:40px 1fr auto;align-items:center;column-gap:12px;padding:15px 18px}
+  .nl-idx{grid-row:auto;font-size:24px}
+  .nl-tile strong{font-size:17px}
+  .nl-hint{display:none}
+  .nl-count{margin-top:0;white-space:nowrap}
+  .nl-section{padding-top:52px}
+  .nl-feature{min-height:420px}
+  .nl-feature-copy,.nl-latest-copy{padding:22px}
+  .nl-card{grid-template-columns:1fr}
+  .nl-card .nl-photo{min-height:0;aspect-ratio:16/9}
+}
+@media (prefers-reduced-motion:reduce){
+  .nl-tile,.nl-card,.nl-feature img,.nl-photo img,.nl-meta b i,.nl-count i{transition:none}
+  .nl-tile:hover,.nl-card:hover{transform:none}
+}
 .art-list a:hover b{color:var(--blue)}
 
 @media(max-width:820px){
