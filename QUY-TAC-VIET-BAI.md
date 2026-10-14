@@ -3,6 +3,8 @@
 Chủ site chốt ngày 14/10/2026. Áp dụng cho mọi người và mọi agent (Claude, Codex…) viết bài trên
 hai repo `pvihcm-design-review` (pvihcm.com) và `baohiempvi-vnwebsite` (baohiempvi-vn.com).
 Bản này giống nhau ở cả hai repo; sửa một bên thì chép sang bên kia.
+File này bổ sung, không thay thế AGENTS.md của từng repo. Chỗ nào AGENTS.md của repo quy định chặt hơn
+(ví dụ baohiempvi-vn: 6 trụ AI visibility mục 11, ảnh thực tế mục 12 đến 14) thì theo AGENTS.md.
 
 ---
 
@@ -31,6 +33,8 @@ Chọn **một** trong hai cách, không đăng hai bản giống nhau:
    sitemap của site bản phụ.
    - pvihcm.com: thêm `canonical: 'https://www.baohiempvi-vn.com/...'` vào `post` của module bài trong
      `tools/articles/`. `renderKb()` tự in canonical đó, `tools/gen-sitemap.mjs` tự bỏ trang khỏi sitemap.
+   - baohiempvi-vn.com: code hiện chỉ in canonical tự trỏ (`alternates.canonical`). Muốn đăng lại bài có bản
+     chuẩn ở pvihcm.com thì hỏi chủ site trước; mặc định dùng cách 1.
 
 Link giữa hai site:
 - **pvihcm.com không link ra ngoài, kể cả sang baohiempvi-vn** (chủ site chốt 05/10/2026, có chốt chặn
@@ -63,7 +67,7 @@ Mục tiêu: một đoạn bất kỳ cắt ra vẫn tự đứng được, đú
 ### 3.3 Số liệu và nguồn
 - **Không bịa** phí, quyền lợi, tỷ lệ, điều khoản, căn cứ pháp lý. Thiếu nguồn thì để trống và hỏi chủ site.
 - Mỗi con số cần có **nguồn ghi ngay cạnh** (tên văn bản hoặc trang, đơn vị phát hành, ngày hoặc phiên bản).
-  pvihcm.com ghi nguồn bằng chữ, không gắn link.
+  pvihcm.com ghi nguồn bằng chữ, không gắn link. baohiempvi-vn.com được gắn link nguồn chính thức (văn bản luật, trang PVI).
 - Văn bản pháp luật ghi đủ số hiệu, ngày ban hành, ngày hiệu lực.
 - Ví dụ từ hồ sơ thật ghi rõ là ví dụ ("trên giấy chứng nhận này…"), không biến thành cam kết chung.
 - Tình huống giả định ghi rõ "Tình huống giả định".
@@ -86,7 +90,8 @@ Mục tiêu: một đoạn bất kỳ cắt ra vẫn tự đứng được, đú
 ### 3.6 Ảnh
 - Ảnh đầu bài và ít nhất một ảnh trong thân bài; WebP, có `width`/`height`, có bản nhỏ cho điện thoại.
 - Ảnh chụp thật: chú thích `Ảnh thực tế: <cảnh> · Nguồn: <đơn vị>`. Ảnh không phải chụp sự việc thật:
-  chú thích bắt đầu bằng `Hình ảnh minh họa:` và chỉ tả cảnh.
+  chú thích chỉ tả cảnh và bắt đầu bằng `Hình ảnh minh họa:` (pvihcm.com) hoặc `Hình ảnh mô phỏng` (baohiempvi-vn.com,
+  cả alt, theo AGENTS.md mục 12 của repo đó).
 - **Không nhắc tới AI** ở bất kỳ đâu (nội dung, chú thích, alt, tên file, metadata). Xóa EXIF/GPS trước khi dùng.
 - Che tên khách, địa chỉ, số hợp đồng hoặc giấy chứng nhận, biển số, CCCD, chữ ký, QR trước khi đăng.
 - Không dùng logo tự vẽ hoặc logo trong ảnh có thể do máy vẽ lại.
