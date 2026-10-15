@@ -2,6 +2,8 @@
 
 Hướng dẫn chung cho mọi agent làm việc trên repo này (Codex, Claude Code…). Đọc hết file trước khi sửa.
 
+> **ĐỌC MỤC "Tên miền gốc" TRƯỚC TIÊN:** nghiêm cấm đổi tên miền gốc `https://pvihcm.com`; mọi thay đổi dù nhỏ nhất trên tên miền gốc phải qua 2 bước **Cảnh báo → Phê duyệt** của chủ site. Chạy `node tools/check-domain.mjs` trước mỗi lần push.
+
 ## Dự án
 - Website **pvihcm.com** của **Công ty Bảo hiểm PVI Thành Đô** (thuộc Tổng Công ty Bảo hiểm PVI).
 - Site **tĩnh, không có bước build**: HTML/CSS/JS thuần nằm sẵn trong `dist/`. Vite chỉ dùng làm máy chủ xem thử.
@@ -101,9 +103,26 @@ Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist
 - Không force-push `main`.
 - Trước khi push, kéo về (`git pull --rebase`) vì có nhiều agent cùng làm.
 
+## Tên miền gốc: nghiêm cấm đổi, mọi thay đổi phải qua 2 bước
+**Chủ site chốt ngày 15/10/2026, có hiệu lực cho đến khi chủ site yêu cầu thay đổi. Mục này cao hơn mọi mục khác.** Áp dụng giống mục 16 của repo baohiempvi-vnwebsite.
+
+Tên miền gốc: **`https://pvihcm.com`** (không có www).
+
+**Nghiêm cấm, không có ngoại lệ**
+- Không đổi tên miền gốc sang tên miền khác (kể cả thêm/bỏ `www`), không trỏ canonical, sitemap, robots.txt hay schema sang tên miền khác. Ngoại lệ duy nhất đã có: bài đăng lại có bản chuẩn ở `https://www.baohiempvi-vn.com` theo `QUY-TAC-VIET-BAI.md`.
+- Site khác phải là repo riêng; không gắn tên miền khác vào project Vercel của repo này.
+
+**Mọi thay đổi dù nhỏ nhất trên tên miền gốc phải qua 2 bước**
+Phạm vi: đổi tên, xóa, gộp trang/đường dẫn đang có; thêm, sửa, xóa chuyển hướng trong `vercel.json`; `trailingSlash`, `www`/https, canonical, robots.txt, sitemap; file xác minh Search Console; cấu hình tên miền/DNS trên Vercel hoặc nơi quản lý tên miền (kể cả việc "trỏ domain pvihcm.com sang Vercel" trong mục Việc đang mở).
+1. **Bước 1, CẢNH BÁO:** agent gửi chủ site tin bắt đầu bằng `⚠️ CẢNH BÁO THAY ĐỔI TRÊN TÊN MIỀN GỐC`, ghi rõ đổi gì (cũ → mới), ảnh hưởng tới quảng cáo, SEO, link đã chia sẻ, cách hoàn tác. Chưa sửa gì ở bước này.
+2. **Bước 2, PHÊ DUYỆT:** chỉ làm khi chủ site trả lời đúng cụm `DUYỆT THAY ĐỔI TÊN MIỀN` cho đúng cảnh báo đó. "ok", "làm đi", "đẩy lên", "sửa luôn" **không** tính là phê duyệt. Mỗi lần duyệt chỉ cho đúng thay đổi đã cảnh báo.
+3. Khi đã duyệt: cập nhật `tools/domain-lock.json` cho đúng thay đổi đó; commit ghi `Đã qua 2 bước: cảnh báo <ngày> · phê duyệt <ngày>`.
+
+**Chốt tự động:** `node tools/check-domain.mjs` so với bản khóa `tools/domain-lock.json` (tên miền, 56 chuyển hướng, `trailingSlash`, 15 trang đang có, file xác minh Search Console, canonical, sitemap, robots). Trang mới thêm vào thì không bị chặn; xóa/đổi trang cũ hay sửa chuyển hướng thì hỏng. **Không sửa script hay bản khóa để cho qua** khi chưa có phê duyệt.
+
 ## Việc đang mở
 - Nhận xét, đánh giá bạn đọc cuối mọi bài Tin tức (`feedbackBlock` trong `tools/gen-news.mjs`, `dist/feedback.js`, CSS `.fb` trong `news.css`, hàm `api/nhan-xet.js`). Lưu ở Vercel Blob, gửi là hiện ngay (chủ site chốt 05/10/2026: không duyệt trước, thấy không phù hợp thì xóa). Cần trên Vercel: Blob store kết nối project (biến `BLOB_READ_WRITE_TOKEN`) và biến `ADMIN_KEY` để xóa qua web (mở bài với `?quantri`). Vì có `/api` cần thư viện `@vercel/blob`, `vercel.json` dùng `installCommand: npm ci`. Không gắn schema Review/AggregateRating cho các đánh giá này.
-- Trỏ domain pvihcm.com sang Vercel. Chỉ sửa bản ghi A/CNAME, không đụng MX.
+- Trỏ domain pvihcm.com sang Vercel. Chỉ sửa bản ghi A/CNAME, không đụng MX. **Phải qua 2 bước Cảnh báo → Phê duyệt (mục Tên miền gốc) trước khi làm.**
 - Đã có: trang `/gioi-thieu/` và redirect 301 từ URL cũ trong `vercel.json` (mỗi luật có 2 biến thể có và không có dấu / cuối, vì trailingSlash chạy trước). Thêm URL cũ thì thêm cả 2 biến thể, luật cụ thể đặt trước luật `:id`.
 - Sau khi trỏ domain: chủ site gửi sitemap trong Google Search Console.
 - Xác minh Google Search Console bằng file `dist/google7d40bd15f458ed73.html` (thêm 07/10/2026). **Không xóa, không đổi tên, không sửa nội dung file này**, nếu không Search Console sẽ mất quyền xác minh.
