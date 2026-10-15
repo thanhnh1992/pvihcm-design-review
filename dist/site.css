@@ -295,3 +295,12 @@ a[href^="#"]:hover i[aria-hidden],a[href^="#"]:focus-visible i[aria-hidden]{tran
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
 /* Khung bảng nhận focus: viền rõ khi dùng bàn phím */
 [data-a11y-scroll]:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+
+/* ── Bản đồ trụ sở + huy hiệu Bộ Công Thương: hàng 2, cột 3–4 (cạnh khối Liên hệ tư vấn) ── */
+.footer-map{grid-column:3/span 2;display:flex;flex-direction:column;gap:14px}
+.footer-map-frame{position:relative;overflow:hidden;height:230px;border:1px solid #d8e7f5;border-radius:16px;background:#eef3f7;box-shadow:0 12px 30px rgba(6,61,121,.08)}
+.footer-map-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.footer-bct{display:inline-flex;align-self:flex-start}
+.footer-bct img{width:180px;height:auto}
+@media(max-width:1000px){.footer-map{grid-column:1/-1}}
+@media(max-width:820px){.footer-map-frame{height:220px}}
