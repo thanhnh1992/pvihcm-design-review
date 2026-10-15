@@ -85,51 +85,84 @@ const feedbackBlock = (p) => `
 
 const dateline = (p) => `<p class="art-meta"><span>${esc(p.cat)}</span><time datetime="${p.date}">${esc(p.dateText)}</time></p>`;
 
-/* ── Hai mục của trang Tin tức (chủ site chốt 14/10/2026) ──
-   'san-pham': bài gắn với một sản phẩm bảo hiểm; 'chung': tin đơn vị, khu vực, thông báo.
+/* ── Ba mục của trang Tin tức (chủ site chốt 15/10/2026) ──
+   'san-pham': bài gắn với một sản phẩm; 'phap-ly': văn bản pháp lý mới; 'chung': tin đơn vị, khu vực, thông báo.
    Bài mới phải được xếp vào một mục ở đây, thiếu thì dừng sinh trang. */
 const GROUPS = [
-  { id: 'tin-san-pham', key: 'san-pham', name: 'Tin sản phẩm', lead: 'Quy định mới, quyền lợi và lưu ý theo từng loại bảo hiểm.' },
-  { id: 'tin-chung', key: 'chung', name: 'Tin tức chung', lead: 'Hoạt động, thông báo của PVI Thành Đô và thông tin mua bảo hiểm theo khu vực.' },
+  { id: 'tin-san-pham', key: 'san-pham', name: 'Tin sản phẩm', hint: 'Theo từng loại bảo hiểm', title: 'Quyền lợi và lưu ý theo từng sản phẩm', lead: 'Bảo hiểm tai nạn, công trình và các sản phẩm PVI Thành Đô đang tư vấn: ai nên mua, được chi trả gì, cần chuẩn bị gì.' },
+  { id: 'phap-ly-moi', key: 'phap-ly', name: 'Pháp lý mới', hint: 'Quy định và hiệu lực mới', title: 'Văn bản mới về bảo hiểm bắt buộc', lead: 'Nghị định, thông tư và ngày hiệu lực, kèm những việc doanh nghiệp cần làm trước khi tái tục.' },
+  { id: 'tin-chung', key: 'chung', name: 'Tin tức chung', hint: 'PVI Thành Đô và khu vực', title: 'Hoạt động của PVI Thành Đô', lead: 'Thông báo của đơn vị và thông tin mua bảo hiểm PVI theo từng khu vực tại TP.HCM.' },
 ];
 const POST_GROUP = {
-  'nghi-dinh-347-2026-chay-no-bat-buoc': 'san-pham',
   'loi-ich-bao-hiem-tai-nan-ca-nhan': 'san-pham',
   'bao-hiem-tai-nan-cong-trinh-pvi': 'san-pham',
+  'nghi-dinh-347-2026-chay-no-bat-buoc': 'phap-ly',
   'cong-bo-quyet-dinh-bo-nhiem-giam-doc-pho-giam-doc-pvi-thanh-do': 'chung',
   'mua-bao-hiem-pvi-binh-duong': 'chung',
   'mua-bao-hiem-pvi-binh-thanh': 'chung',
 };
 for (const p of posts) {
-  if (!GROUPS.some((g) => g.key === POST_GROUP[p.slug])) throw new Error(`Bài ${p.slug} chưa được xếp vào mục Tin sản phẩm hoặc Tin tức chung (POST_GROUP trong gen-news.mjs)`);
+  if (!GROUPS.some((g) => g.key === POST_GROUP[p.slug])) throw new Error(`Bài ${p.slug} chưa được xếp vào mục nào (POST_GROUP trong gen-news.mjs)`);
 }
 
-/* ── Trang danh sách ── */
+/* ── Trang danh sách ──
+   Bố cục theo thư viện kiến thức của baohiempvi-vn (chủ site chốt 14/10/2026), giữ màu và font pvihcm:
+   dải đầu trang xanh, ba ô chọn mục nổi trên mép dưới; Tin sản phẩm = thẻ ảnh lớn + thẻ ảnh nhỏ;
+   Pháp lý mới và Tin tức chung = thẻ mới nhất + dòng thời gian. */
 {
   const P = '/tin-tuc/';
-  const card = (p) => `<li><a href="/tin-tuc/${p.slug}/">
-<figure><img src="${p.image}" width="1280" height="853" alt="${esc(p.alt)}" loading="lazy"></figure>
-<div><span class="cat">${esc(p.cat)} · <time datetime="${p.date}">${esc(p.dateText)}</time></span>
-<b>${t(p.title)}</b><span class="d">${t(p.lead)}</span></div>
-<i aria-hidden="true">&rarr;</i></a></li>`;
   const groups = GROUPS.map((g) => ({ ...g, items: posts.filter((p) => POST_GROUP[p.slug] === g.key) }));
+  // Ảnh bài có sẵn bản -480/-800 trong /assets (xem AGENTS.md mục Hiệu năng).
+  const cover = (p, sizes) => {
+    const base = p.image.replace(/\.webp$/, '');
+    return `<img src="${p.image}" srcset="${base}-480.webp 480w, ${base}-800.webp 800w, ${p.image} 1280w" sizes="${sizes}" width="1280" height="853" alt="${esc(p.alt)}" loading="lazy" decoding="async">`;
+  };
+  const time = (p) => `<time class="nl-date" datetime="${p.date}">${esc(p.dateText)}</time>`;
+  const head = (g, i) => `<div class="nl-head">
+<span class="nl-kicker">${String(i + 1).padStart(2, '0')} · ${esc(g.name)}</span>
+<h2 id="${g.id}-h">${esc(g.title)}</h2>
+<p>${esc(g.lead)}</p>
+</div>`;
+  const productSection = (g, i) => {
+    const [first, ...rest] = g.items;
+    return `
+<section class="nl-section" id="${g.id}" aria-labelledby="${g.id}-h"><div class="fire-wrap">
+${head(g, i)}
+<div class="nl-bento${rest.length ? '' : ' nl-solo'}">
+<a class="nl-feature" href="/tin-tuc/${first.slug}/">${cover(first, '(max-width:900px) 100vw, 640px')}
+<span class="nl-feature-copy"><span class="nl-label">${esc(first.cat)}</span><h3>${t(first.title)}</h3><p>${t(first.lead)}</p>
+<span class="nl-meta">${time(first)}<b>Đọc bài <i aria-hidden="true">&rarr;</i></b></span></span></a>
+<ul class="nl-photos">${rest.map((p) => `<li><a class="nl-card" href="/tin-tuc/${p.slug}/"><span class="nl-photo">${cover(p, '(max-width:760px) 100vw, 300px')}</span>
+<span class="nl-card-copy"><span class="nl-label">${esc(p.cat)}</span><h3>${t(p.title)}</h3>${time(p)}</span></a></li>`).join('')}</ul>
+</div>
+</div></section>`;
+  };
+  const generalSection = (g, i) => {
+    const [first, ...rest] = g.items;
+    return `
+<section class="nl-section" id="${g.id}" aria-labelledby="${g.id}-h"><div class="fire-wrap">
+${head(g, i)}
+<div class="nl-news${rest.length ? '' : ' nl-solo'}">
+<a class="nl-latest" href="/tin-tuc/${first.slug}/"><span class="nl-photo">${cover(first, '(max-width:900px) 100vw, 520px')}</span>
+<span class="nl-latest-copy"><span class="nl-badge">Mới nhất</span><span class="nl-label">${esc(first.cat)}</span><h3>${t(first.title)}</h3><p>${t(first.lead)}</p>
+<span class="nl-meta">${time(first)}<b>Đọc bài <i aria-hidden="true">&rarr;</i></b></span></span></a>
+${rest.length ? `<ol class="nl-timeline">${rest.map((p) => `<li>${time(p)}<a href="/tin-tuc/${p.slug}/"><span class="nl-label">${esc(p.cat)}</span><h3>${t(p.title)}</h3><p>${t(p.lead)}</p></a></li>`).join('')}</ol>` : ''}
+</div>
+</div></section>`;
+  };
   const main = `
-<section class="art-head"><div class="fire-wrap">
-<p class="fx-kicker">Tin tức</p>
-<h1>Tin tức và cập nhật pháp lý</h1>
-<p class="art-lead">Hai mục: tin theo từng sản phẩm bảo hiểm và tin chung của PVI Thành Đô. Mỗi bài ghi rõ căn cứ và nguồn tham chiếu ở cuối trang.</p>
-<nav class="art-groups" aria-label="Các mục tin tức">${groups.map((g) => `<a href="#${g.id}">${esc(g.name)} <span>${g.items.length} bài</span></a>`).join('')}</nav>
+<section class="nl-hero"><div class="nl-hero-grid" aria-hidden="true"></div><div class="fire-wrap">
+<p class="nl-eyebrow">Tin tức PVI Thành Đô</p>
+<h1>Tin mới về bảo hiểm.<br><em>Rõ căn cứ, rõ ngày hiệu lực.</em></h1>
+<p>Ba mục ở một nơi: tin theo từng sản phẩm, văn bản pháp lý mới và hoạt động của PVI Thành Đô. Mỗi bài ghi rõ nguồn tham chiếu ở cuối trang.</p>
 </div></section>
-${groups.map((g) => `
-<section class="pd-section art-group" id="${g.id}" aria-labelledby="${g.id}-h"><div class="fire-wrap">
-<h2 id="${g.id}-h">${esc(g.name)}</h2>
-<p class="art-group-lead">${esc(g.lead)}</p>
-<ul class="art-list">${g.items.map(card).join('')}</ul>
-</div></section>`).join('')}`;
+<nav class="fire-wrap nl-streams" aria-label="Ba mục tin tức">${groups.map((g, i) => `<a class="nl-tile" href="#${g.id}"><span class="nl-idx">${String(i + 1).padStart(2, '0')}</span><strong>${esc(g.name)}</strong><span class="nl-hint">${esc(g.hint)}</span><span class="nl-count">${g.items.length} bài <i aria-hidden="true">&darr;</i></span></a>`).join('')}</nav>
+${groups.map((g, i) => (g.key === 'san-pham' ? productSection(g, i) : generalSection(g, i))).join('')}
+<div class="fire-wrap"><p class="nl-total">Mục Tin tức đang có ${posts.length} bài. Nội dung là thông tin tham khảo chung, không thay thế tư vấn theo hồ sơ cụ thể.</p></div>`;
   write('tin-tuc/index.html', page({
     path: P,
     title: 'Tin tức và cập nhật pháp lý | PVI Thành Đô',
-    description: 'Tin theo từng sản phẩm bảo hiểm và tin chung của Công ty Bảo hiểm PVI Thành Đô: quy định mới, thông báo, thông tin mua bảo hiểm theo khu vực.',
+    description: 'Tin theo từng sản phẩm bảo hiểm, văn bản pháp lý mới và hoạt động của Công ty Bảo hiểm PVI Thành Đô, kèm nguồn tham chiếu và ngày hiệu lực.',
     image: posts[0].image,
     head: `<script type="application/ld+json">${JSON.stringify({
       '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Tin tức PVI Thành Đô', url: SITE + P,
