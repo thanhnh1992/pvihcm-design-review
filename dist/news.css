@@ -61,14 +61,23 @@
 .art-list i{font-style:normal;color:var(--blue);font-size:19px;justify-self:end}
 .art-list a:hover{background:var(--ice,#f5f9fd)}
 /* ── Trang danh sách /tin-tuc/: bố cục theo thư viện kiến thức baohiempvi-vn, màu và font pvihcm ── */
-.nl-hero{padding-bottom:8px}
-.nl-streams{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:4px 0 8px;max-width:820px}
-.nl-tile{display:grid;grid-template-columns:58px 1fr;gap:6px;padding:22px 24px;background:#fff;border:1px solid #d9e2e9;border-radius:20px;box-shadow:0 18px 40px rgba(7,31,67,.08);color:var(--ink);transition:border-color .2s,box-shadow .2s,transform .2s}
-.nl-tile:hover{border-color:#8fb3d6;box-shadow:0 22px 46px rgba(7,31,67,.14);transform:translateY(-3px)}
-.nl-idx{grid-row:span 3;font-size:34px;font-weight:800;line-height:1;letter-spacing:-.04em;color:#165a9c}
-.nl-tile strong{font-size:19px;font-weight:800;line-height:1.25;letter-spacing:-.02em}
+.nl-hero{position:relative;isolation:isolate;overflow:hidden;padding:76px 0 132px;color:#fff;
+  background:radial-gradient(circle at 80% 14%,rgba(92,200,255,.34),transparent 30%),radial-gradient(circle at 8% 110%,rgba(203,37,48,.16),transparent 34%),linear-gradient(132deg,#052c57 0%,#063d79 52%,#0b62a8 100%)}
+.nl-hero-grid{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.7;
+  background-image:linear-gradient(rgba(178,226,255,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(178,226,255,.11) 1px,transparent 1px);background-size:62px 62px;
+  -webkit-mask-image:linear-gradient(90deg,#000,transparent 88%);mask-image:linear-gradient(90deg,#000,transparent 88%)}
+.nl-hero .fire-wrap{position:relative}
+.nl-eyebrow{margin:0!important;font-size:13px!important;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#8fdcff!important}
+.nl-hero h1{margin:16px 0 18px;max-width:20ch;font-size:clamp(34px,5vw,60px);line-height:1.04;letter-spacing:-.05em;color:#fff}
+.nl-hero h1 em{font-style:normal;color:#7fd3f7}
+.nl-hero p:not(.nl-eyebrow){margin:0!important;max-width:640px;font-size:17px!important;line-height:1.7!important;color:rgba(229,244,255,.88)!important}
+.nl-streams{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:-92px!important}
+.nl-tile{display:grid;grid-template-columns:58px 1fr;gap:6px;padding:24px 24px;background:linear-gradient(180deg,#fff 0%,#fff 62%,#f4f9fe 100%);border:1px solid #d8e7f5;border-radius:20px;box-shadow:0 18px 40px rgba(6,61,121,.13);color:var(--ink);transition:border-color .2s,box-shadow .2s,transform .2s}
+.nl-tile:hover{border-color:#7fb4e6;box-shadow:0 24px 50px rgba(6,61,121,.2);transform:translateY(-3px)}
+.nl-idx{grid-row:span 3;font-size:36px;font-weight:800;line-height:1;letter-spacing:-.05em;background:linear-gradient(135deg,#0b62a8,#063d79);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nl-tile strong{font-size:20px;font-weight:800;line-height:1.25;letter-spacing:-.02em;color:#063d79}
 .nl-hint{font-size:15px;color:#586574}
-.nl-count{display:flex;align-items:center;gap:8px;margin-top:4px;font-size:14px;font-weight:700;color:#165a9c}
+.nl-count{display:flex;align-items:center;gap:8px;margin-top:4px;font-size:15px;font-weight:700;color:#0b62a8}
 .nl-count i{font-style:normal;transition:transform .2s}
 .nl-tile:hover .nl-count i{transform:translateY(3px)}
 
@@ -129,17 +138,28 @@
 
 .nl-tile:focus-visible,.nl-feature:focus-visible,.nl-card:focus-visible,.nl-latest:focus-visible,.nl-timeline a:focus-visible{outline:3px solid rgba(22,90,156,.45);outline-offset:3px}
 
+/* Mục chỉ có một bài: thẻ chiếm trọn chiều ngang, ảnh và chữ nằm cạnh nhau */
+.nl-solo{grid-template-columns:1fr}
+.nl-news.nl-solo .nl-latest{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.nl-news.nl-solo .nl-latest .nl-photo{aspect-ratio:auto;min-height:320px}
 @media (max-width:1024px){
+  .nl-streams{grid-template-columns:1fr}
+  .nl-tile{grid-template-columns:48px 1fr auto;align-items:center;column-gap:14px;padding:18px 22px}
+  .nl-idx{grid-row:auto;font-size:28px}
+  .nl-hint{display:none}
+  .nl-count{margin-top:0;white-space:nowrap}
   .nl-bento,.nl-news{grid-template-columns:1fr}
+  .nl-news.nl-solo .nl-latest{display:flex}
+  .nl-news.nl-solo .nl-latest .nl-photo{min-height:0;aspect-ratio:16/9}
   .nl-feature{min-height:400px}
 }
 @media (max-width:760px){
-  .nl-streams{grid-template-columns:1fr;gap:10px}
-  .nl-tile{grid-template-columns:40px 1fr auto;align-items:center;column-gap:12px;padding:15px 18px}
-  .nl-idx{grid-row:auto;font-size:24px}
+  .nl-hero{padding:52px 0 112px}
+  .nl-hero p:not(.nl-eyebrow){font-size:16px!important}
+  .nl-streams{gap:10px;margin-top:-84px!important}
+  .nl-tile{grid-template-columns:40px 1fr auto;column-gap:12px;padding:15px 18px}
+  .nl-idx{font-size:24px}
   .nl-tile strong{font-size:17px}
-  .nl-hint{display:none}
-  .nl-count{margin-top:0;white-space:nowrap}
   .nl-section{padding-top:52px}
   .nl-feature{min-height:420px}
   .nl-feature-copy,.nl-latest-copy{padding:22px}
