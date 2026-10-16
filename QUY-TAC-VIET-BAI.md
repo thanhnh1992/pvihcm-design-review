@@ -16,8 +16,12 @@ Mỗi chủ đề chỉ có **một bản chuẩn** (bản gốc để Google x�
 |---|---|---|
 | **Kiến thức chung**: sản phẩm, quyền lợi, loại trừ, hồ sơ, bồi thường, giải thích pháp lý | **baohiempvi-vn.com** (`/kien-thuc/...` hoặc bài SEO) | Bảo hiểm tai nạn 24/24 có chi trả khi té xe không; thủy kích là gì; hồ sơ bồi thường cháy nổ |
 | **Tin tức đơn vị**: nhân sự, sự kiện, thông báo của PVI Thành Đô | **pvihcm.com** (`/tin-tuc/...`) | Công bố quyết định bổ nhiệm; lịch làm việc dịp lễ |
-| **Bài theo khu vực**: mua bảo hiểm PVI ở một quận, tỉnh | **pvihcm.com** (`/tin-tuc/...`) | Mua bảo hiểm PVI tại Bình Thạnh, Bình Dương |
+| **Bài theo khu vực**: mua bảo hiểm PVI ở một quận, tỉnh | **baohiempvi-vn.com** (`/kien-thuc/mua-bao-hiem-pvi-...`); pvihcm.com đăng lại với canonical về bản chuẩn (chủ site chốt 15/10/2026) | Loạt 24 bài quận, huyện TP.HCM, Bình Dương, Vũng Tàu, Đồng Nai |
 | **Cập nhật pháp lý** (nghị định, thông tư mới) | **baohiempvi-vn.com** | Nghị định 347/2026 thay đổi gì |
+
+Loạt bài khu vực dùng chung một file dữ liệu: `app/area-articles.json` (baohiempvi-vnwebsite) chép sang
+`tools/data/khu-vuc.json` (pvihcm-design-review); sửa bên nào thì chép sang bên kia. Hai bài Bình Thạnh, Bình Dương
+đăng trên pvihcm.com trước ngày 15/10/2026 giữ nguyên tới khi chủ site quyết định.
 
 Bài kiến thức đã đăng trên pvihcm.com trước ngày 14/10/2026 (tai nạn công trình, lợi ích tai nạn cá nhân,
 Nghị định 347) giữ nguyên URL; khi baohiempvi-vn có bài cùng chủ đề thì xử lý theo mục 2.

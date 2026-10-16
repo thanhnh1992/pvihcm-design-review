@@ -1,0 +1,3080 @@
+[
+ {
+  "slug": "mua-bao-hiem-pvi-quan-1",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-quan-1",
+  "ten": "Quận 1",
+  "nhan": "Quận 1 cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Quận 1: văn phòng, phường mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Quận 1: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách phường mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Quận 1, bảo hiểm PVI Quận 1, văn phòng PVI Quận 1, Quận 1 cũ gồm những phường nào, bảo hiểm ô tô PVI Quận 1, bảo hiểm tai nạn PVI Quận 1, bảo hiểm cháy nổ Quận 1",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Quận 1.",
+  "lead": "Khách hàng ở Quận 1 cũ (nay là phường Sài Gòn, Tân Định, Bến Thành và Cầu Ông Lãnh) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Quận 1",
+   "paragraphs": [
+    "Quận 1 cũ là khu trung tâm với mật độ văn phòng, khách sạn, trung tâm thương mại và cửa hàng cao. Nhu cầu hỏi nhiều nhất là bảo hiểm cháy nổ bắt buộc cho tòa nhà, khách sạn, nhà hàng và bảo hiểm tai nạn, sức khỏe cho nhân viên văn phòng.",
+    "Chủ xe ô tô cá nhân thường hỏi về bảo hiểm vật chất xe vì xe đỗ ở hầm tòa nhà, bãi xe đông và hay va quệt nhỏ trong phố."
+   ],
+   "items": [
+    "Cháy nổ bắt buộc: khách sạn, nhà hàng, tòa nhà văn phòng thuộc danh mục cơ sở phải mua.",
+    "Tai nạn 24/24 và sức khỏe: doanh nghiệp mua theo danh sách nhân viên.",
+    "Ô tô: TNDS bắt buộc và vật chất xe cho xe đi lại trong khu trung tâm."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Quận 1 từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Trên địa bàn Quận 1 cũ còn có Công ty Bảo hiểm PVI Sài Gòn, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Sài Gòn",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Quận 1 cũ nay gồm những phường nào?",
+   "answer": "Từ 01/07/2025, địa bàn Quận 1 cũ được sắp xếp thành 4 phường: Sài Gòn, Tân Định, Bến Thành và Cầu Ông Lãnh, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM.",
+   "tableCaption": "Quận 1 cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "Phường cũ bị chia cho nhiều phường mới thì ranh giới cụ thể theo nghị quyết và bản đồ của UBND phường; khi làm hồ sơ nên ghi địa chỉ theo giấy tờ mới nhất.",
+   "rows": [
+    {
+     "ten": "Phường Sài Gòn",
+     "tu": "Bến Nghé, một phần Đa Kao, một phần Nguyễn Thái Bình"
+    },
+    {
+     "ten": "Phường Tân Định",
+     "tu": "Tân Định, phần còn lại của Đa Kao"
+    },
+    {
+     "ten": "Phường Bến Thành",
+     "tu": "Bến Thành, Phạm Ngũ Lão, một phần Cầu Ông Lãnh, phần còn lại của Nguyễn Thái Bình"
+    },
+    {
+     "ten": "Phường Cầu Ông Lãnh",
+     "tu": "Nguyễn Cư Trinh, Cầu Kho, Cô Giang, phần còn lại của Cầu Ông Lãnh"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Quận 1 cũ nay gồm những phường nào?",
+    "a": "Từ 01/07/2025, địa bàn Quận 1 cũ được sắp xếp thành 4 phường: Sài Gòn, Tân Định, Bến Thành và Cầu Ông Lãnh, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Quận 1 mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Quận 1 có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Trên địa bàn Quận 1 cũ còn có Công ty Bảo hiểm PVI Sài Gòn tại Tầng 7, Tòa nhà Capital Place, Số 6 Thái Văn Lung."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ Quận 1 cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Khách sạn, nhà hàng ở Quận 1 có phải mua bảo hiểm cháy nổ bắt buộc không?",
+    "a": "Tùy cơ sở có thuộc danh mục cơ sở phải mua bảo hiểm cháy, nổ bắt buộc theo Nghị định 105/2025/NĐ-CP hay không, thường dựa vào quy mô và loại hình. Chủ cơ sở gửi địa chỉ, ngành nghề, số tầng, khối tích và giá trị tài sản để PVI Thành Đô kiểm tra trước khi báo phí."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-quan-3",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-quan-3",
+  "ten": "Quận 3",
+  "nhan": "Quận 3 cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Quận 3: văn phòng, phường mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Quận 3: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách phường mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Quận 3, bảo hiểm PVI Quận 3, văn phòng PVI Quận 3, Quận 3 cũ gồm những phường nào, bảo hiểm ô tô PVI Quận 3, bảo hiểm tai nạn PVI Quận 3, bảo hiểm cháy nổ Quận 3",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Quận 3.",
+  "lead": "Khách hàng ở Quận 3 cũ (nay là phường Bàn Cờ, Xuân Hòa và Nhiêu Lộc) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Quận 3",
+   "paragraphs": [
+    "Quận 3 cũ có nhiều nhà phố kinh doanh, văn phòng nhỏ, phòng khám và trường học. Hộ kinh doanh, cửa hàng thường hỏi bảo hiểm cháy nổ cho cửa hàng; doanh nghiệp nhỏ hỏi bảo hiểm tai nạn và sức khỏe cho nhân viên.",
+    "Văn phòng PVI Thành Đô ở 473 Điện Biên Phủ nằm trên trục đường nối Quận 3 cũ với Bình Thạnh, thuận tiện cho khách muốn đến làm việc trực tiếp."
+   ],
+   "items": [
+    "Cháy nổ cho cửa hàng, hộ kinh doanh và nhà phố cho thuê.",
+    "Tai nạn 24/24, sức khỏe cho nhân viên văn phòng, phòng khám.",
+    "Ô tô: TNDS bắt buộc, vật chất xe."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Quận 3 từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Trên địa bàn Quận 3 cũ còn có Công ty Bảo hiểm PVI Thống Nhất, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Thống Nhất",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Quận 3 cũ nay gồm những phường nào?",
+   "answer": "Từ 01/07/2025, địa bàn Quận 3 cũ được sắp xếp thành 3 phường: Bàn Cờ, Xuân Hòa và Nhiêu Lộc, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM.",
+   "tableCaption": "Quận 3 cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "Phường cũ bị chia cho nhiều phường mới thì ranh giới cụ thể theo nghị quyết và bản đồ của UBND phường; khi làm hồ sơ nên ghi địa chỉ theo giấy tờ mới nhất.",
+   "rows": [
+    {
+     "ten": "Phường Bàn Cờ",
+     "tu": "P1, P2, P3, P5, một phần P4 (Q3)"
+    },
+    {
+     "ten": "Phường Xuân Hòa",
+     "tu": "Võ Thị Sáu, phần còn lại của P4 (Q3)"
+    },
+    {
+     "ten": "Phường Nhiêu Lộc",
+     "tu": "P9, P11, P12, P14 (Q3)"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Quận 3 cũ nay gồm những phường nào?",
+    "a": "Từ 01/07/2025, địa bàn Quận 3 cũ được sắp xếp thành 3 phường: Bàn Cờ, Xuân Hòa và Nhiêu Lộc, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Quận 3 mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Quận 3 có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Trên địa bàn Quận 3 cũ còn có Công ty Bảo hiểm PVI Thống Nhất tại Lầu 9, Tòa nhà Phượng Long, Số 506 Nguyễn Đình Chiểu."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ Quận 3 cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Cửa hàng nhỏ ở Quận 3 có nên mua bảo hiểm cháy nổ không?",
+    "a": "Cửa hàng không thuộc diện bắt buộc vẫn có thể mua bảo hiểm cháy nổ tự nguyện cho hàng hóa, trang thiết bị. Chủ cửa hàng gửi địa chỉ, ngành hàng và giá trị tài sản muốn bảo hiểm để PVI Thành Đô báo phí theo chương trình bảo hiểm cửa hàng, hộ kinh doanh đang áp dụng."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-quan-4",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-quan-4",
+  "ten": "Quận 4",
+  "nhan": "Quận 4 cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Quận 4: văn phòng, phường mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Quận 4: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách phường mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Quận 4, bảo hiểm PVI Quận 4, văn phòng PVI Quận 4, Quận 4 cũ gồm những phường nào, bảo hiểm ô tô PVI Quận 4, bảo hiểm tai nạn PVI Quận 4, bảo hiểm cháy nổ Quận 4",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Quận 4.",
+  "lead": "Khách hàng ở Quận 4 cũ (nay là phường Xóm Chiếu, Khánh Hội và Vĩnh Hội) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Quận 4",
+   "paragraphs": [
+    "Quận 4 cũ nằm giữa sông Sài Gòn và các kênh, có nhiều chung cư, khu dân cư đông và khu vực cảng. Nhu cầu phổ biến là bảo hiểm nhà ở, căn hộ chung cư, xe máy, ô tô gia đình và bảo hiểm tai nạn cá nhân.",
+    "Chung cư có ban quản trị thường hỏi bảo hiểm cháy nổ bắt buộc cho phần sở hữu chung; chủ căn hộ hỏi bảo hiểm nhà cho phần sở hữu riêng và tài sản bên trong."
+   ],
+   "items": [
+    "Bảo hiểm nhà, căn hộ chung cư và tài sản bên trong.",
+    "Tai nạn cá nhân cho người đi làm, người lao động.",
+    "Ô tô: TNDS bắt buộc, vật chất xe."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Quận 4 từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Trên địa bàn Quận 4 cũ còn có Công ty Bảo hiểm PVI Nam Sài Gòn, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Nam Sài Gòn",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Quận 4 cũ nay gồm những phường nào?",
+   "answer": "Từ 01/07/2025, địa bàn Quận 4 cũ được sắp xếp thành 3 phường: Xóm Chiếu, Khánh Hội và Vĩnh Hội, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM.",
+   "tableCaption": "Quận 4 cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "Phường cũ bị chia cho nhiều phường mới thì ranh giới cụ thể theo nghị quyết và bản đồ của UBND phường; khi làm hồ sơ nên ghi địa chỉ theo giấy tờ mới nhất.",
+   "rows": [
+    {
+     "ten": "Phường Xóm Chiếu",
+     "tu": "P13, P16, P18, một phần P15 (Q4)"
+    },
+    {
+     "ten": "Phường Khánh Hội",
+     "tu": "P8, P9, một phần P2 và P4, phần còn lại của P15 (Q4)"
+    },
+    {
+     "ten": "Phường Vĩnh Hội",
+     "tu": "P1, P3, phần còn lại của P2 và P4 (Q4)"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Quận 4 cũ nay gồm những phường nào?",
+    "a": "Từ 01/07/2025, địa bàn Quận 4 cũ được sắp xếp thành 3 phường: Xóm Chiếu, Khánh Hội và Vĩnh Hội, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Quận 4 mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Quận 4 có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Trên địa bàn Quận 4 cũ còn có Công ty Bảo hiểm PVI Nam Sài Gòn tại Tầng 5, Cao ốc Văn phòng Phượng Long 2, Số 16 Nguyễn Trường Tộ."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ Quận 4 cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Căn hộ chung cư ở Quận 4 nên mua bảo hiểm gì?",
+    "a": "Chủ căn hộ có thể mua bảo hiểm nhà cho phần xây dựng thuộc sở hữu riêng và tài sản bên trong căn hộ. Phần sở hữu chung của tòa nhà do ban quản trị mua bảo hiểm cháy nổ bắt buộc. Gửi diện tích, giá trị căn hộ và tài sản để được báo phí."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-quan-5",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-quan-5",
+  "ten": "Quận 5",
+  "nhan": "Quận 5 cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Quận 5: văn phòng, phường mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Quận 5: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách phường mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Quận 5, bảo hiểm PVI Quận 5, văn phòng PVI Quận 5, Quận 5 cũ gồm những phường nào, bảo hiểm ô tô PVI Quận 5, bảo hiểm tai nạn PVI Quận 5, bảo hiểm cháy nổ Quận 5",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Quận 5.",
+  "lead": "Khách hàng ở Quận 5 cũ (nay là phường Chợ Quán, An Đông và Chợ Lớn) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Quận 5",
+   "paragraphs": [
+    "Quận 5 cũ là khu Chợ Lớn với nhiều hộ kinh doanh, cửa hàng, kho hàng nhỏ và các bệnh viện lớn. Nhu cầu hỏi nhiều là bảo hiểm cháy nổ cho cửa hàng, kho hàng và bảo hiểm sức khỏe cho gia đình.",
+    "Hộ kinh doanh có hàng hóa giá trị lớn nên kê khai rõ giá trị hàng tồn để số tiền bảo hiểm sát thực tế."
+   ],
+   "items": [
+    "Cháy nổ cho cửa hàng, kho hàng, hộ kinh doanh.",
+    "Sức khỏe, tai nạn cho gia đình và nhân viên.",
+    "Ô tô, xe tải giao hàng: TNDS bắt buộc, vật chất xe."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Quận 5 từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Nam Sài Gòn, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Nam Sài Gòn",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Quận 5 cũ nay gồm những phường nào?",
+   "answer": "Từ 01/07/2025, địa bàn Quận 5 cũ được sắp xếp thành 3 phường: Chợ Quán, An Đông và Chợ Lớn, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM.",
+   "tableCaption": "Quận 5 cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "",
+   "rows": [
+    {
+     "ten": "Phường Chợ Quán",
+     "tu": "P1, P2, P4 (Q5)"
+    },
+    {
+     "ten": "Phường An Đông",
+     "tu": "P5, P7, P9 (Q5)"
+    },
+    {
+     "ten": "Phường Chợ Lớn",
+     "tu": "P11, P12, P13, P14 (Q5)"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Quận 5 cũ nay gồm những phường nào?",
+    "a": "Từ 01/07/2025, địa bàn Quận 5 cũ được sắp xếp thành 3 phường: Chợ Quán, An Đông và Chợ Lớn, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Quận 5 mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Quận 5 có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Nam Sài Gòn tại Tầng 5, Cao ốc Văn phòng Phượng Long 2, Số 16 Nguyễn Trường Tộ."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ Quận 5 cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Kho hàng của hộ kinh doanh ở Quận 5 cần chuẩn bị gì để mua bảo hiểm cháy nổ?",
+    "a": "Chuẩn bị địa chỉ kho, loại hàng lưu trữ, giá trị hàng tồn bình quân, kết cấu nhà kho và trang thiết bị phòng cháy chữa cháy đang có. Thông tin càng sát thực tế, báo phí càng chính xác và khi có tổn thất việc xác định giá trị bồi thường cũng rõ ràng hơn."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-quan-6",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-quan-6",
+  "ten": "Quận 6",
+  "nhan": "Quận 6 cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Quận 6: văn phòng, phường mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Quận 6: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách phường mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Quận 6, bảo hiểm PVI Quận 6, văn phòng PVI Quận 6, Quận 6 cũ gồm những phường nào, bảo hiểm ô tô PVI Quận 6, bảo hiểm tai nạn PVI Quận 6, bảo hiểm cháy nổ Quận 6",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Quận 6.",
+  "lead": "Khách hàng ở Quận 6 cũ (nay là phường Bình Tây, Bình Tiên, Bình Phú và Phú Lâm) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Quận 6",
+   "paragraphs": [
+    "Quận 6 cũ có chợ đầu mối, nhiều tiểu thương, kho hàng và cơ sở sản xuất nhỏ. Nhu cầu chính là bảo hiểm cháy nổ cho kho, cửa hàng và bảo hiểm cho xe tải, ô tô chở hàng.",
+    "Doanh nghiệp có công nhân, người bốc xếp thường mua bảo hiểm tai nạn 24/24 theo danh sách để có quyền lợi ngoài chế độ bảo hiểm xã hội."
+   ],
+   "items": [
+    "Cháy nổ cho kho hàng, cửa hàng, xưởng nhỏ.",
+    "Xe tải, ô tô chở hàng: TNDS bắt buộc, vật chất xe, hàng hóa trên xe.",
+    "Tai nạn 24/24 cho người lao động."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Quận 6 từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Nam Sài Gòn, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Nam Sài Gòn",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Quận 6 cũ nay gồm những phường nào?",
+   "answer": "Từ 01/07/2025, địa bàn Quận 6 cũ được sắp xếp thành 4 phường: Bình Tây, Bình Tiên, Bình Phú và Phú Lâm, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM.",
+   "tableCaption": "Quận 6 cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "Phường cũ bị chia cho nhiều phường mới thì ranh giới cụ thể theo nghị quyết và bản đồ của UBND phường; khi làm hồ sơ nên ghi địa chỉ theo giấy tờ mới nhất.",
+   "rows": [
+    {
+     "ten": "Phường Bình Tây",
+     "tu": "P2, P9 (Q6)"
+    },
+    {
+     "ten": "Phường Bình Tiên",
+     "tu": "P1, P7, P8 (Q6)"
+    },
+    {
+     "ten": "Phường Bình Phú",
+     "tu": "P10, P11 (Q6), một phần P16 (Q8)"
+    },
+    {
+     "ten": "Phường Phú Lâm",
+     "tu": "P12, P13, P14 (Q6)"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Quận 6 cũ nay gồm những phường nào?",
+    "a": "Từ 01/07/2025, địa bàn Quận 6 cũ được sắp xếp thành 4 phường: Bình Tây, Bình Tiên, Bình Phú và Phú Lâm, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Quận 6 mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Quận 6 có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Nam Sài Gòn tại Tầng 5, Cao ốc Văn phòng Phượng Long 2, Số 16 Nguyễn Trường Tộ."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ Quận 6 cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Xe tải chở hàng ở Quận 6 cần mua những bảo hiểm nào?",
+    "a": "Bắt buộc có bảo hiểm trách nhiệm dân sự của chủ xe. Chủ xe nên cân nhắc thêm bảo hiểm vật chất xe và bảo hiểm tai nạn lái phụ xe. Gửi đăng ký xe, tải trọng và mục đích sử dụng để PVI Thành Đô báo phí."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-quan-7",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-quan-7",
+  "ten": "Quận 7",
+  "nhan": "Quận 7 cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Quận 7: văn phòng, phường mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Quận 7: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách phường mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Quận 7, bảo hiểm PVI Quận 7, văn phòng PVI Quận 7, Quận 7 cũ gồm những phường nào, bảo hiểm ô tô PVI Quận 7, bảo hiểm tai nạn PVI Quận 7, bảo hiểm cháy nổ Quận 7",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Quận 7.",
+  "lead": "Khách hàng ở Quận 7 cũ (nay là phường Tân Thuận, Phú Thuận, Tân Mỹ và Tân Hưng) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Quận 7",
+   "paragraphs": [
+    "Quận 7 cũ có khu đô thị Phú Mỹ Hưng, nhiều chung cư, trường học quốc tế và khu chế xuất Tân Thuận. Hộ gia đình thường hỏi bảo hiểm ô tô, sức khỏe; doanh nghiệp trong khu chế xuất hỏi bảo hiểm cháy nổ nhà xưởng, tai nạn cho công nhân và hàng hóa xuất nhập khẩu.",
+    "Một số tuyến đường trong khu vực có thể ngập khi triều cường kết hợp mưa lớn, nên chủ xe ô tô hay hỏi về quyền lợi khi xe bị ngập nước."
+   ],
+   "items": [
+    "Ô tô gia đình: TNDS bắt buộc, vật chất xe, điều khoản thiệt hại động cơ do nước.",
+    "Doanh nghiệp: cháy nổ nhà xưởng, tai nạn công nhân, hàng hóa xuất nhập khẩu.",
+    "Sức khỏe cho gia đình, chung cư: bảo hiểm nhà."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Quận 7 từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Nam Sài Gòn, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Nam Sài Gòn",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Quận 7 cũ nay gồm những phường nào?",
+   "answer": "Từ 01/07/2025, địa bàn Quận 7 cũ được sắp xếp thành 4 phường: Tân Thuận, Phú Thuận, Tân Mỹ và Tân Hưng, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM.",
+   "tableCaption": "Quận 7 cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "Phường cũ bị chia cho nhiều phường mới thì ranh giới cụ thể theo nghị quyết và bản đồ của UBND phường; khi làm hồ sơ nên ghi địa chỉ theo giấy tờ mới nhất.",
+   "rows": [
+    {
+     "ten": "Phường Tân Thuận",
+     "tu": "Bình Thuận, Tân Thuận Đông, Tân Thuận Tây"
+    },
+    {
+     "ten": "Phường Phú Thuận",
+     "tu": "Phú Thuận, một phần Phú Mỹ (Q7)"
+    },
+    {
+     "ten": "Phường Tân Mỹ",
+     "tu": "Tân Phú (Q7), phần còn lại của Phú Mỹ"
+    },
+    {
+     "ten": "Phường Tân Hưng",
+     "tu": "Tân Phong, Tân Quy, Tân Kiểng, Tân Hưng"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Quận 7 cũ nay gồm những phường nào?",
+    "a": "Từ 01/07/2025, địa bàn Quận 7 cũ được sắp xếp thành 4 phường: Tân Thuận, Phú Thuận, Tân Mỹ và Tân Hưng, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Quận 7 mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Quận 7 có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Nam Sài Gòn tại Tầng 5, Cao ốc Văn phòng Phượng Long 2, Số 16 Nguyễn Trường Tộ."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ Quận 7 cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Xe ô tô ở Quận 7 bị ngập nước có được bảo hiểm chi trả không?",
+    "a": "Tùy hợp đồng của xe. Bảo hiểm TNDS bắt buộc không chi trả thiệt hại cho chính xe của bạn. Với bảo hiểm vật chất xe, thiệt hại động cơ do nước thường chỉ được chi trả khi hợp đồng có điều khoản bổ sung tương ứng. Khi xe ngập, không đề máy lại và báo bảo hiểm ngay."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-quan-8",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-quan-8",
+  "ten": "Quận 8",
+  "nhan": "Quận 8 cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Quận 8: văn phòng, phường mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Quận 8: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách phường mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Quận 8, bảo hiểm PVI Quận 8, văn phòng PVI Quận 8, Quận 8 cũ gồm những phường nào, bảo hiểm ô tô PVI Quận 8, bảo hiểm tai nạn PVI Quận 8, bảo hiểm cháy nổ Quận 8",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Quận 8.",
+  "lead": "Khách hàng ở Quận 8 cũ (nay là phường Chánh Hưng, Phú Định và Bình Đông) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Quận 8",
+   "paragraphs": [
+    "Quận 8 cũ có nhiều kênh rạch, khu dân cư đông, cơ sở sản xuất và kho bãi nhỏ. Người dân hay hỏi bảo hiểm xe khi đường ngập, bảo hiểm tai nạn cá nhân và bảo hiểm cháy nổ cho xưởng, kho.",
+    "Với ô tô thường đi qua tuyến đường hay ngập, nên hỏi kỹ điều khoản thiệt hại động cơ do nước trước khi mua bảo hiểm vật chất xe."
+   ],
+   "items": [
+    "Ô tô: vật chất xe kèm điều khoản thiệt hại động cơ do nước.",
+    "Cháy nổ cho xưởng sản xuất, kho bãi.",
+    "Tai nạn 24/24 cho cá nhân và người lao động."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Quận 8 từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Nam Sài Gòn, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Nam Sài Gòn",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Quận 8 cũ nay gồm những phường nào?",
+   "answer": "Từ 01/07/2025, địa bàn Quận 8 cũ được sắp xếp thành 3 phường: Chánh Hưng, Phú Định và Bình Đông, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM.",
+   "tableCaption": "Quận 8 cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "Phường cũ bị chia cho nhiều phường mới thì ranh giới cụ thể theo nghị quyết và bản đồ của UBND phường; khi làm hồ sơ nên ghi địa chỉ theo giấy tờ mới nhất.",
+   "rows": [
+    {
+     "ten": "Phường Chánh Hưng",
+     "tu": "P4 (Q8), Rạch Ông, Hưng Phú, một phần P5 (Q8)"
+    },
+    {
+     "ten": "Phường Phú Định",
+     "tu": "P14, P15, Xóm Củi, một phần P16 (Q8)"
+    },
+    {
+     "ten": "Phường Bình Đông",
+     "tu": "P6, một phần P5 và P7 (Q8), một phần xã An Phú Tây (Bình Chánh)"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Quận 8 cũ nay gồm những phường nào?",
+    "a": "Từ 01/07/2025, địa bàn Quận 8 cũ được sắp xếp thành 3 phường: Chánh Hưng, Phú Định và Bình Đông, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Quận 8 mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Quận 8 có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Nam Sài Gòn tại Tầng 5, Cao ốc Văn phòng Phượng Long 2, Số 16 Nguyễn Trường Tộ."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ Quận 8 cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Mua bảo hiểm vật chất xe ở Quận 8 có cần thêm điều khoản thủy kích không?",
+    "a": "Nên hỏi kỹ nếu xe thường đi qua đường ngập. Với PVI, thiệt hại động cơ do nước thuộc điều khoản bổ sung, không mặc định có trong mọi hợp đồng vật chất xe. Khi nhận báo phí, kiểm tra hợp đồng có điều khoản này, mức khấu trừ và điều kiện áp dụng."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-quan-10",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-quan-10",
+  "ten": "Quận 10",
+  "nhan": "Quận 10 cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Quận 10: văn phòng, phường mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Quận 10: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách phường mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Quận 10, bảo hiểm PVI Quận 10, văn phòng PVI Quận 10, Quận 10 cũ gồm những phường nào, bảo hiểm ô tô PVI Quận 10, bảo hiểm tai nạn PVI Quận 10, bảo hiểm cháy nổ Quận 10",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Quận 10.",
+  "lead": "Khách hàng ở Quận 10 cũ (nay là phường Diên Hồng, Vườn Lài và Hòa Hưng) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Quận 10",
+   "paragraphs": [
+    "Quận 10 cũ có nhiều bệnh viện, trường đại học, chung cư và nhà phố kinh doanh. Nhu cầu phổ biến là bảo hiểm sức khỏe, tai nạn cho gia đình và nhân viên, bảo hiểm cháy nổ cho chung cư, cửa hàng.",
+    "Doanh nghiệp, phòng khám nhỏ thường mua bảo hiểm sức khỏe nhóm cho nhân viên và cần báo phí theo danh sách, độ tuổi."
+   ],
+   "items": [
+    "Sức khỏe, tai nạn cho gia đình và nhóm nhân viên.",
+    "Cháy nổ cho chung cư, cửa hàng, nhà phố cho thuê.",
+    "Ô tô: TNDS bắt buộc, vật chất xe."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Quận 10 từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Thống Nhất, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Thống Nhất",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Quận 10 cũ nay gồm những phường nào?",
+   "answer": "Từ 01/07/2025, địa bàn Quận 10 cũ được sắp xếp thành 3 phường: Diên Hồng, Vườn Lài và Hòa Hưng, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM.",
+   "tableCaption": "Quận 10 cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "Phường cũ bị chia cho nhiều phường mới thì ranh giới cụ thể theo nghị quyết và bản đồ của UBND phường; khi làm hồ sơ nên ghi địa chỉ theo giấy tờ mới nhất.",
+   "rows": [
+    {
+     "ten": "Phường Diên Hồng",
+     "tu": "P6, P8, một phần P14 (Q10)"
+    },
+    {
+     "ten": "Phường Vườn Lài",
+     "tu": "P1, P2, P4, P9, P10 (Q10)"
+    },
+    {
+     "ten": "Phường Hòa Hưng",
+     "tu": "P12, P13, P15, phần còn lại của P14 (Q10)"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Quận 10 cũ nay gồm những phường nào?",
+    "a": "Từ 01/07/2025, địa bàn Quận 10 cũ được sắp xếp thành 3 phường: Diên Hồng, Vườn Lài và Hòa Hưng, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Quận 10 mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Quận 10 có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Thống Nhất tại Lầu 9, Tòa nhà Phượng Long, Số 506 Nguyễn Đình Chiểu."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ Quận 10 cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Doanh nghiệp nhỏ ở Quận 10 mua bảo hiểm sức khỏe cho nhân viên cần gì?",
+    "a": "Chuẩn bị danh sách nhân viên gồm họ tên, ngày sinh, giới tính và mức quyền lợi mong muốn (nội trú, ngoại trú, thai sản nếu có). PVI Thành Đô kiểm tra điều kiện tham gia theo độ tuổi, tình trạng sức khỏe rồi báo phí theo chương trình phù hợp."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-quan-11",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-quan-11",
+  "ten": "Quận 11",
+  "nhan": "Quận 11 cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Quận 11: văn phòng, phường mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Quận 11: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách phường mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Quận 11, bảo hiểm PVI Quận 11, văn phòng PVI Quận 11, Quận 11 cũ gồm những phường nào, bảo hiểm ô tô PVI Quận 11, bảo hiểm tai nạn PVI Quận 11, bảo hiểm cháy nổ Quận 11",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Quận 11.",
+  "lead": "Khách hàng ở Quận 11 cũ (nay là phường Minh Phụng, Bình Thới, Hòa Bình và Phú Thọ) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Quận 11",
+   "paragraphs": [
+    "Quận 11 cũ có nhiều hộ kinh doanh, xưởng sản xuất nhỏ trong khu dân cư và các tuyến phố chuyên doanh. Nhu cầu chính là bảo hiểm cháy nổ cho cửa hàng, xưởng và bảo hiểm tai nạn cho người lao động.",
+    "Xưởng sản xuất trong nhà phố cần kê khai đúng ngành nghề để xác định có thuộc diện bảo hiểm cháy nổ bắt buộc hay không."
+   ],
+   "items": [
+    "Cháy nổ cho cửa hàng, xưởng nhỏ, hộ kinh doanh.",
+    "Tai nạn 24/24 cho người lao động.",
+    "Ô tô, xe tải nhỏ: TNDS bắt buộc, vật chất xe."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Quận 11 từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Bến Thành, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Bến Thành",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Quận 11 cũ nay gồm những phường nào?",
+   "answer": "Từ 01/07/2025, địa bàn Quận 11 cũ được sắp xếp thành 4 phường: Minh Phụng, Bình Thới, Hòa Bình và Phú Thọ, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM.",
+   "tableCaption": "Quận 11 cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "Phường cũ bị chia cho nhiều phường mới thì ranh giới cụ thể theo nghị quyết và bản đồ của UBND phường; khi làm hồ sơ nên ghi địa chỉ theo giấy tờ mới nhất.",
+   "rows": [
+    {
+     "ten": "Phường Minh Phụng",
+     "tu": "P1, P7, P16 (Q11)"
+    },
+    {
+     "ten": "Phường Bình Thới",
+     "tu": "P3, P10, một phần P8 (Q11)"
+    },
+    {
+     "ten": "Phường Hòa Bình",
+     "tu": "P5, P14 (Q11)"
+    },
+    {
+     "ten": "Phường Phú Thọ",
+     "tu": "P11, P15, phần còn lại của P8 (Q11)"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Quận 11 cũ nay gồm những phường nào?",
+    "a": "Từ 01/07/2025, địa bàn Quận 11 cũ được sắp xếp thành 4 phường: Minh Phụng, Bình Thới, Hòa Bình và Phú Thọ, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Quận 11 mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Quận 11 có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Bến Thành tại Tầng 4 và Tầng 5, Tòa nhà văn phòng, Số 06-10 Cửu Long."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ Quận 11 cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Xưởng nhỏ trong nhà phố ở Quận 11 có phải mua bảo hiểm cháy nổ bắt buộc không?",
+    "a": "Không phải mọi xưởng đều bắt buộc. Nghĩa vụ phụ thuộc cơ sở có nằm trong danh mục cơ sở phải mua theo quy định hiện hành hay không, dựa vào ngành nghề và quy mô. Gửi địa chỉ, ngành nghề, diện tích và giá trị tài sản để PVI Thành Đô kiểm tra."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-quan-12",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-quan-12",
+  "ten": "Quận 12",
+  "nhan": "Quận 12 cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Quận 12: văn phòng, phường mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Quận 12: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách phường mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Quận 12, bảo hiểm PVI Quận 12, văn phòng PVI Quận 12, Quận 12 cũ gồm những phường nào, bảo hiểm ô tô PVI Quận 12, bảo hiểm tai nạn PVI Quận 12, bảo hiểm cháy nổ Quận 12",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Quận 12.",
+  "lead": "Khách hàng ở Quận 12 cũ (nay gồm 5 phường thuộc TP.HCM) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Quận 12",
+   "paragraphs": [
+    "Quận 12 cũ có nhiều xưởng sản xuất, kho bãi, khu dân cư mới và công trình nhà ở đang xây dựng. Nhu cầu phổ biến là bảo hiểm cháy nổ nhà xưởng, bảo hiểm tai nạn cho công nhân và bảo hiểm công trình xây dựng.",
+    "Chủ nhà xây mới có thể mua bảo hiểm công trình trong thời gian thi công và bảo hiểm tai nạn cho người làm trên công trình."
+   ],
+   "items": [
+    "Cháy nổ nhà xưởng, kho bãi.",
+    "Tai nạn 24/24 cho công nhân, người làm công trình.",
+    "Bảo hiểm công trình xây dựng nhà ở, nhà xưởng."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Quận 12 từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Bến Thành, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Bến Thành",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Quận 12 cũ nay gồm những phường nào?",
+   "answer": "Từ 01/07/2025, địa bàn Quận 12 cũ được sắp xếp thành 5 phường: Đông Hưng Thuận, Trung Mỹ Tây, Tân Thới Hiệp, Thới An và An Phú Đông, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM.",
+   "tableCaption": "Quận 12 cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "",
+   "rows": [
+    {
+     "ten": "Phường Đông Hưng Thuận",
+     "tu": "Tân Thới Nhất, Tân Hưng Thuận, Đông Hưng Thuận"
+    },
+    {
+     "ten": "Phường Trung Mỹ Tây",
+     "tu": "Tân Chánh Hiệp, Trung Mỹ Tây"
+    },
+    {
+     "ten": "Phường Tân Thới Hiệp",
+     "tu": "Hiệp Thành, Tân Thới Hiệp"
+    },
+    {
+     "ten": "Phường Thới An",
+     "tu": "Thới An, Thạnh Xuân"
+    },
+    {
+     "ten": "Phường An Phú Đông",
+     "tu": "An Phú Đông, Thạnh Lộc"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Quận 12 cũ nay gồm những phường nào?",
+    "a": "Từ 01/07/2025, địa bàn Quận 12 cũ được sắp xếp thành 5 phường: Đông Hưng Thuận, Trung Mỹ Tây, Tân Thới Hiệp, Thới An và An Phú Đông, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Quận 12 mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Quận 12 có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Bến Thành tại Tầng 4 và Tầng 5, Tòa nhà văn phòng, Số 06-10 Cửu Long."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ Quận 12 cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Xây nhà ở Quận 12 có cần mua bảo hiểm công trình không?",
+    "a": "Bảo hiểm công trình bắt buộc với một số loại công trình theo quy định về xây dựng; nhà ở riêng lẻ thường không bắt buộc nhưng chủ nhà vẫn có thể mua tự nguyện. Gửi giấy phép xây dựng, giá trị công trình và thời gian thi công để PVI Thành Đô tư vấn phương án."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-binh-tan",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-binh-tan",
+  "ten": "Bình Tân",
+  "nhan": "Quận Bình Tân cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Bình Tân: văn phòng, phường mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Bình Tân: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách phường mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Bình Tân, bảo hiểm PVI Bình Tân, văn phòng PVI Bình Tân, Quận Bình Tân cũ gồm những phường nào, bảo hiểm ô tô PVI Bình Tân, bảo hiểm tai nạn PVI Bình Tân, bảo hiểm cháy nổ Bình Tân",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Bình Tân.",
+  "lead": "Khách hàng ở Quận Bình Tân cũ (nay gồm 5 phường thuộc TP.HCM) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Bình Tân",
+   "paragraphs": [
+    "Quận Bình Tân cũ có khu công nghiệp Tân Tạo, nhiều nhà xưởng, kho bãi và khu dân cư đông người lao động. Doanh nghiệp hỏi nhiều về bảo hiểm cháy nổ nhà xưởng, tai nạn cho công nhân; hộ gia đình hỏi bảo hiểm xe và tai nạn cá nhân.",
+    "Doanh nghiệp mua bảo hiểm tai nạn cho công nhân nên chuẩn bị danh sách theo nhóm nghề để được báo phí đúng mức rủi ro."
+   ],
+   "items": [
+    "Cháy nổ nhà xưởng, kho hàng trong và ngoài khu công nghiệp.",
+    "Tai nạn 24/24 cho công nhân theo danh sách.",
+    "Ô tô, xe tải: TNDS bắt buộc, vật chất xe."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Bình Tân từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Bến Thành, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Bến Thành",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Quận Bình Tân cũ nay gồm những phường nào?",
+   "answer": "Từ 01/07/2025, địa bàn Quận Bình Tân cũ được sắp xếp thành 5 phường: Bình Hưng Hòa, Bình Tân, Bình Trị Đông, An Lạc và Tân Tạo, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM.",
+   "tableCaption": "Quận Bình Tân cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "Phường cũ bị chia cho nhiều phường mới thì ranh giới cụ thể theo nghị quyết và bản đồ của UBND phường; khi làm hồ sơ nên ghi địa chỉ theo giấy tờ mới nhất.",
+   "rows": [
+    {
+     "ten": "Phường Bình Hưng Hòa",
+     "tu": "Bình Hưng Hòa, một phần Bình Hưng Hòa A, một phần Sơn Kỳ (Tân Phú)"
+    },
+    {
+     "ten": "Phường Bình Tân",
+     "tu": "Bình Hưng Hòa B, một phần Bình Trị Đông A, một phần Tân Tạo"
+    },
+    {
+     "ten": "Phường Bình Trị Đông",
+     "tu": "Bình Trị Đông, phần còn lại của Bình Trị Đông A, phần còn lại của Bình Hưng Hòa A"
+    },
+    {
+     "ten": "Phường An Lạc",
+     "tu": "An Lạc, An Lạc A, Bình Trị Đông B"
+    },
+    {
+     "ten": "Phường Tân Tạo",
+     "tu": "Tân Tạo, một phần Tân Tạo A và phần lân cận"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Quận Bình Tân cũ nay gồm những phường nào?",
+    "a": "Từ 01/07/2025, địa bàn Quận Bình Tân cũ được sắp xếp thành 5 phường: Bình Hưng Hòa, Bình Tân, Bình Trị Đông, An Lạc và Tân Tạo, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Bình Tân mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Bình Tân có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Bến Thành tại Tầng 4 và Tầng 5, Tòa nhà văn phòng, Số 06-10 Cửu Long."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ Quận Bình Tân cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Doanh nghiệp ở Bình Tân mua bảo hiểm tai nạn cho công nhân thế nào?",
+    "a": "Doanh nghiệp gửi danh sách người lao động gồm họ tên, ngày sinh, nhóm nghề và mức trách nhiệm mong muốn. PVI Thành Đô báo phí theo nhóm nghề, quy mô danh sách và thời hạn. Bảo hiểm tai nạn 24/24 là hợp đồng thương mại, không thay thế chế độ tai nạn lao động của bảo hiểm xã hội."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-go-vap",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-go-vap",
+  "ten": "Gò Vấp",
+  "nhan": "Quận Gò Vấp cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Gò Vấp: văn phòng, phường mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Gò Vấp: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách phường mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Gò Vấp, bảo hiểm PVI Gò Vấp, văn phòng PVI Gò Vấp, Quận Gò Vấp cũ gồm những phường nào, bảo hiểm ô tô PVI Gò Vấp, bảo hiểm tai nạn PVI Gò Vấp, bảo hiểm cháy nổ Gò Vấp",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Gò Vấp.",
+  "lead": "Khách hàng ở Quận Gò Vấp cũ (nay gồm 6 phường thuộc TP.HCM) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Gò Vấp",
+   "paragraphs": [
+    "Quận Gò Vấp cũ là khu dân cư đông với nhiều hộ kinh doanh, nhà trọ và người đi làm bằng xe máy. Nhu cầu phổ biến là bảo hiểm tai nạn cá nhân, bảo hiểm ô tô gia đình và bảo hiểm cháy nổ cho cửa hàng, nhà trọ.",
+    "Chủ nhà cho thuê, nhà trọ thường hỏi bảo hiểm cháy nổ cho tài sản và trách nhiệm khi xảy ra sự cố."
+   ],
+   "items": [
+    "Tai nạn 24/24 cho cá nhân, gia đình.",
+    "Cháy nổ cho cửa hàng, nhà cho thuê, nhà trọ.",
+    "Ô tô: TNDS bắt buộc, vật chất xe."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Gò Vấp từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Bến Thành, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Bến Thành",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Quận Gò Vấp cũ nay gồm những phường nào?",
+   "answer": "Từ 01/07/2025, địa bàn Quận Gò Vấp cũ được sắp xếp thành 6 phường: Hạnh Thông, An Nhơn, Gò Vấp, Thông Tây Hội, An Hội Tây và An Hội Đông, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM.",
+   "tableCaption": "Quận Gò Vấp cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "",
+   "rows": [
+    {
+     "ten": "Phường Hạnh Thông",
+     "tu": "P1, P3 (Gò Vấp)"
+    },
+    {
+     "ten": "Phường An Nhơn",
+     "tu": "P5, P6"
+    },
+    {
+     "ten": "Phường Gò Vấp",
+     "tu": "P10, P17"
+    },
+    {
+     "ten": "Phường Thông Tây Hội",
+     "tu": "P8, P11"
+    },
+    {
+     "ten": "Phường An Hội Tây",
+     "tu": "P12, P14"
+    },
+    {
+     "ten": "Phường An Hội Đông",
+     "tu": "P15, P16"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Quận Gò Vấp cũ nay gồm những phường nào?",
+    "a": "Từ 01/07/2025, địa bàn Quận Gò Vấp cũ được sắp xếp thành 6 phường: Hạnh Thông, An Nhơn, Gò Vấp, Thông Tây Hội, An Hội Tây và An Hội Đông, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Gò Vấp mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Gò Vấp có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Bến Thành tại Tầng 4 và Tầng 5, Tòa nhà văn phòng, Số 06-10 Cửu Long."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ Quận Gò Vấp cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Bảo hiểm tai nạn 24/24 có chi trả khi té xe máy trên đường đi làm không?",
+    "a": "Tai nạn giao thông khi đi làm thường thuộc phạm vi bảo hiểm tai nạn 24/24, trừ các trường hợp loại trừ ghi trong quy tắc như vi phạm nghiêm trọng luật giao thông, điều khiển xe khi có nồng độ cồn vượt mức hoặc không có giấy phép lái xe. Mức chi trả theo hợp đồng và bảng tỷ lệ thương tật."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-phu-nhuan",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-phu-nhuan",
+  "ten": "Phú Nhuận",
+  "nhan": "Quận Phú Nhuận cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Phú Nhuận: văn phòng, phường mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Phú Nhuận: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách phường mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Phú Nhuận, bảo hiểm PVI Phú Nhuận, văn phòng PVI Phú Nhuận, Quận Phú Nhuận cũ gồm những phường nào, bảo hiểm ô tô PVI Phú Nhuận, bảo hiểm tai nạn PVI Phú Nhuận, bảo hiểm cháy nổ Phú Nhuận",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Phú Nhuận.",
+  "lead": "Khách hàng ở Quận Phú Nhuận cũ (nay là phường Đức Nhuận, Cầu Kiệu và Phú Nhuận) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Phú Nhuận",
+   "paragraphs": [
+    "Quận Phú Nhuận cũ có nhiều nhà phố, văn phòng nhỏ, cửa hàng và nằm gần sân bay Tân Sơn Nhất. Nhu cầu phổ biến là bảo hiểm ô tô, bảo hiểm sức khỏe, tai nạn cho gia đình và nhân viên văn phòng.",
+    "Phú Nhuận cũ giáp Bình Thạnh và Quận 3 cũ, nên khách hàng có thể đến văn phòng PVI Thành Đô ở 473 Điện Biên Phủ khá thuận tiện."
+   ],
+   "items": [
+    "Ô tô: TNDS bắt buộc, vật chất xe.",
+    "Sức khỏe, tai nạn cho gia đình và nhân viên.",
+    "Cháy nổ cho cửa hàng, nhà phố cho thuê."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Phú Nhuận từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI TP. Hồ Chí Minh, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI TP. Hồ Chí Minh",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Quận Phú Nhuận cũ nay gồm những phường nào?",
+   "answer": "Từ 01/07/2025, địa bàn Quận Phú Nhuận cũ được sắp xếp thành 3 phường: Đức Nhuận, Cầu Kiệu và Phú Nhuận, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM.",
+   "tableCaption": "Quận Phú Nhuận cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "Phường cũ bị chia cho nhiều phường mới thì ranh giới cụ thể theo nghị quyết và bản đồ của UBND phường; khi làm hồ sơ nên ghi địa chỉ theo giấy tờ mới nhất.",
+   "rows": [
+    {
+     "ten": "Phường Đức Nhuận",
+     "tu": "P4, P5, P9 (Phú Nhuận)"
+    },
+    {
+     "ten": "Phường Cầu Kiệu",
+     "tu": "P1, P2, P7, một phần P15"
+    },
+    {
+     "ten": "Phường Phú Nhuận",
+     "tu": "P8, P10, P11, P13, phần còn lại của P15"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Quận Phú Nhuận cũ nay gồm những phường nào?",
+    "a": "Từ 01/07/2025, địa bàn Quận Phú Nhuận cũ được sắp xếp thành 3 phường: Đức Nhuận, Cầu Kiệu và Phú Nhuận, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Phú Nhuận mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Phú Nhuận có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI TP. Hồ Chí Minh tại Tầng 3A và Tầng 5, Tòa nhà TMS, Số 172 Hai Bà Trưng."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ Quận Phú Nhuận cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Mua bảo hiểm ô tô ở Phú Nhuận cần gửi giấy tờ gì?",
+    "a": "Gửi ảnh đăng ký xe hoặc giấy hẹn đăng ký, thông tin chủ xe, mục đích sử dụng và giấy chứng nhận bảo hiểm cũ nếu đang tái tục. Với bảo hiểm vật chất xe, nhân viên có thể yêu cầu thêm ảnh hiện trạng xe trước khi phát hành."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-tan-binh",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-tan-binh",
+  "ten": "Tân Bình",
+  "nhan": "Quận Tân Bình cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Tân Bình: văn phòng, phường mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Tân Bình: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách phường mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Tân Bình, bảo hiểm PVI Tân Bình, văn phòng PVI Tân Bình, Quận Tân Bình cũ gồm những phường nào, bảo hiểm ô tô PVI Tân Bình, bảo hiểm tai nạn PVI Tân Bình, bảo hiểm cháy nổ Tân Bình",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Tân Bình.",
+  "lead": "Khách hàng ở Quận Tân Bình cũ (nay gồm 6 phường thuộc TP.HCM) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Tân Bình",
+   "paragraphs": [
+    "Quận Tân Bình cũ có sân bay Tân Sơn Nhất, khu công nghiệp Tân Bình, nhiều doanh nghiệp, kho hàng và khu dân cư đông. Doanh nghiệp hỏi nhiều về bảo hiểm cháy nổ, hàng hóa vận chuyển và tai nạn cho nhân viên; gia đình hỏi bảo hiểm ô tô và sức khỏe.",
+    "Doanh nghiệp xuất nhập khẩu có thể mua bảo hiểm hàng hóa theo từng chuyến hoặc hợp đồng bao cho nhiều lô hàng."
+   ],
+   "items": [
+    "Hàng hóa xuất nhập khẩu, vận chuyển nội địa.",
+    "Cháy nổ kho hàng, nhà xưởng, văn phòng.",
+    "Tai nạn, sức khỏe cho nhân viên; ô tô gia đình."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Tân Bình từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Trên địa bàn Quận Tân Bình cũ còn có Công ty Bảo hiểm PVI Bến Thành, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Bến Thành",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Quận Tân Bình cũ nay gồm những phường nào?",
+   "answer": "Từ 01/07/2025, địa bàn Quận Tân Bình cũ được sắp xếp thành 6 phường: Tân Sơn Hòa, Tân Sơn Nhất, Tân Hòa, Bảy Hiền, Tân Bình và Tân Sơn, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM.",
+   "tableCaption": "Quận Tân Bình cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "Phường cũ bị chia cho nhiều phường mới thì ranh giới cụ thể theo nghị quyết và bản đồ của UBND phường; khi làm hồ sơ nên ghi địa chỉ theo giấy tờ mới nhất.",
+   "rows": [
+    {
+     "ten": "Phường Tân Sơn Hòa",
+     "tu": "P1, P2, P3 (Tân Bình)"
+    },
+    {
+     "ten": "Phường Tân Sơn Nhất",
+     "tu": "P4, P5, P7"
+    },
+    {
+     "ten": "Phường Tân Hòa",
+     "tu": "P6, P8, P9"
+    },
+    {
+     "ten": "Phường Bảy Hiền",
+     "tu": "P10, P11, P12"
+    },
+    {
+     "ten": "Phường Tân Bình",
+     "tu": "P13, P14, một phần P15"
+    },
+    {
+     "ten": "Phường Tân Sơn",
+     "tu": "Phần còn lại của P15"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Quận Tân Bình cũ nay gồm những phường nào?",
+    "a": "Từ 01/07/2025, địa bàn Quận Tân Bình cũ được sắp xếp thành 6 phường: Tân Sơn Hòa, Tân Sơn Nhất, Tân Hòa, Bảy Hiền, Tân Bình và Tân Sơn, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Tân Bình mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Tân Bình có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Trên địa bàn Quận Tân Bình cũ còn có Công ty Bảo hiểm PVI Bến Thành tại Tầng 4 và Tầng 5, Tòa nhà văn phòng, Số 06-10 Cửu Long."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ Quận Tân Bình cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Doanh nghiệp ở Tân Bình mua bảo hiểm hàng hóa xuất nhập khẩu thế nào?",
+    "a": "Gửi thông tin lô hàng gồm loại hàng, giá trị, điều kiện giao hàng, hành trình và phương thức vận chuyển. Doanh nghiệp có nhiều lô trong năm có thể dùng hợp đồng bao. Nên mua trước khi hàng khởi hành để quyền lợi được xác lập ngay từ đầu."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-tan-phu",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-tan-phu",
+  "ten": "Tân Phú",
+  "nhan": "Quận Tân Phú cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Tân Phú: văn phòng, phường mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Tân Phú: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách phường mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Tân Phú, bảo hiểm PVI Tân Phú, văn phòng PVI Tân Phú, Quận Tân Phú cũ gồm những phường nào, bảo hiểm ô tô PVI Tân Phú, bảo hiểm tai nạn PVI Tân Phú, bảo hiểm cháy nổ Tân Phú",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Tân Phú.",
+  "lead": "Khách hàng ở Quận Tân Phú cũ (nay gồm 5 phường thuộc TP.HCM) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Tân Phú",
+   "paragraphs": [
+    "Quận Tân Phú cũ có nhiều cơ sở sản xuất nhỏ, xưởng may, hộ kinh doanh và khu dân cư đông. Nhu cầu chính là bảo hiểm cháy nổ cho xưởng, kho và bảo hiểm tai nạn cho người lao động.",
+    "Xưởng có nhiều nguyên liệu dễ cháy như vải, bao bì nên kê khai đầy đủ trang thiết bị phòng cháy chữa cháy để được thẩm định đúng."
+   ],
+   "items": [
+    "Cháy nổ cho xưởng may, kho nguyên liệu, cửa hàng.",
+    "Tai nạn 24/24 cho người lao động.",
+    "Ô tô, xe tải nhỏ: TNDS bắt buộc, vật chất xe."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Tân Phú từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Bến Thành, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Bến Thành",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Quận Tân Phú cũ nay gồm những phường nào?",
+   "answer": "Từ 01/07/2025, địa bàn Quận Tân Phú cũ được sắp xếp thành 5 phường: Tây Thạnh, Tân Sơn Nhì, Phú Thọ Hòa, Tân Phú và Phú Thạnh, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM.",
+   "tableCaption": "Quận Tân Phú cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "Phường cũ bị chia cho nhiều phường mới thì ranh giới cụ thể theo nghị quyết và bản đồ của UBND phường; khi làm hồ sơ nên ghi địa chỉ theo giấy tờ mới nhất.",
+   "rows": [
+    {
+     "ten": "Phường Tây Thạnh",
+     "tu": "Tây Thạnh, một phần Sơn Kỳ"
+    },
+    {
+     "ten": "Phường Tân Sơn Nhì",
+     "tu": "Tân Sơn Nhì, phần còn lại của Sơn Kỳ, một phần Tân Quý, một phần Tân Thành"
+    },
+    {
+     "ten": "Phường Phú Thọ Hòa",
+     "tu": "Phú Thọ Hòa, một phần Tân Thành, phần còn lại của Tân Quý"
+    },
+    {
+     "ten": "Phường Tân Phú",
+     "tu": "Phú Trung, Hòa Thạnh, một phần Tân Thới Hòa, phần còn lại của Tân Thành"
+    },
+    {
+     "ten": "Phường Phú Thạnh",
+     "tu": "Hiệp Tân, Phú Thạnh, phần còn lại của Tân Thới Hòa"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Quận Tân Phú cũ nay gồm những phường nào?",
+    "a": "Từ 01/07/2025, địa bàn Quận Tân Phú cũ được sắp xếp thành 5 phường: Tây Thạnh, Tân Sơn Nhì, Phú Thọ Hòa, Tân Phú và Phú Thạnh, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Tân Phú mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Tân Phú có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Bến Thành tại Tầng 4 và Tầng 5, Tòa nhà văn phòng, Số 06-10 Cửu Long."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ Quận Tân Phú cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Xưởng may ở Tân Phú mua bảo hiểm cháy nổ cần chuẩn bị gì?",
+    "a": "Chuẩn bị địa chỉ xưởng, diện tích, kết cấu nhà xưởng, giá trị máy móc, nguyên liệu và thành phẩm lưu kho, cùng danh sách trang thiết bị phòng cháy chữa cháy. PVI Thành Đô dựa vào đó để xác định đối tượng bắt buộc hay tự nguyện và báo phí."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-thu-duc",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-thu-duc",
+  "ten": "Thủ Đức",
+  "nhan": "TP Thủ Đức cũ (Quận 2, Quận 9, quận Thủ Đức)",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Thủ Đức: văn phòng, phường mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Thủ Đức: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách phường mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Thủ Đức, bảo hiểm PVI Thủ Đức, văn phòng PVI Thủ Đức, TP Thủ Đức cũ (Quận 2, Quận 9, quận Thủ Đức) gồm những phường nào, bảo hiểm ô tô PVI Thủ Đức, bảo hiểm tai nạn PVI Thủ Đức, bảo hiểm cháy nổ Thủ Đức",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Thủ Đức.",
+  "lead": "Khách hàng ở TP Thủ Đức cũ (Quận 2, Quận 9, quận Thủ Đức) (nay gồm 12 phường thuộc TP.HCM) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Thủ Đức",
+   "paragraphs": [
+    "TP Thủ Đức cũ gồm địa bàn Quận 2, Quận 9 và quận Thủ Đức trước đây, có Khu công nghệ cao, khu công nghiệp, cảng Cát Lái, khu đô thị Thủ Thiêm và nhiều công trình đang xây dựng. Nhu cầu đa dạng: bảo hiểm công trình, cháy nổ nhà xưởng, hàng hóa xuất nhập khẩu, tai nạn cho công nhân.",
+    "Hộ gia đình ở các khu đô thị mới hỏi nhiều về bảo hiểm ô tô, sức khỏe và bảo hiểm căn hộ chung cư."
+   ],
+   "items": [
+    "Công trình xây dựng, lắp đặt và tai nạn người thi công.",
+    "Cháy nổ nhà xưởng, hàng hóa xuất nhập khẩu qua cảng.",
+    "Ô tô, sức khỏe, căn hộ cho hộ gia đình."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Thủ Đức từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Trên địa bàn TP Thủ Đức cũ (Quận 2, Quận 9, quận Thủ Đức) còn có Công ty Bảo hiểm PVI Thủ Đức, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Thủ Đức",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "TP Thủ Đức cũ (Quận 2, Quận 9, quận Thủ Đức) nay gồm những phường nào?",
+   "answer": "Từ 01/07/2025, địa bàn TP Thủ Đức cũ (Quận 2, Quận 9, quận Thủ Đức) được sắp xếp thành 12 phường: Hiệp Bình, Thủ Đức, Tam Bình, Linh Xuân, Tăng Nhơn Phú, Long Bình, Long Phước, Long Trường, Cát Lái, Bình Trưng, Phước Long và An Khánh, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM.",
+   "tableCaption": "TP Thủ Đức cũ (Quận 2, Quận 9, quận Thủ Đức): đơn vị hành chính mới từ 01/07/2025",
+   "note": "Phường cũ bị chia cho nhiều phường mới thì ranh giới cụ thể theo nghị quyết và bản đồ của UBND phường; khi làm hồ sơ nên ghi địa chỉ theo giấy tờ mới nhất.",
+   "rows": [
+    {
+     "ten": "Phường Hiệp Bình",
+     "tu": "Hiệp Bình Chánh, Hiệp Bình Phước, một phần Linh Đông"
+    },
+    {
+     "ten": "Phường Thủ Đức",
+     "tu": "Linh Chiểu, Bình Thọ, Trường Thọ, phần còn lại Linh Đông, một phần Linh Tây"
+    },
+    {
+     "ten": "Phường Tam Bình",
+     "tu": "Bình Chiểu, Tam Phú, Tam Bình"
+    },
+    {
+     "ten": "Phường Linh Xuân",
+     "tu": "Linh Trung, Linh Xuân, phần còn lại Linh Tây"
+    },
+    {
+     "ten": "Phường Tăng Nhơn Phú",
+     "tu": "Tân Phú (TP Thủ Đức), Hiệp Phú, Tăng Nhơn Phú A, Tăng Nhơn Phú B, một phần Long Thạnh Mỹ"
+    },
+    {
+     "ten": "Phường Long Bình",
+     "tu": "Long Bình, phần còn lại Long Thạnh Mỹ"
+    },
+    {
+     "ten": "Phường Long Phước",
+     "tu": "Trường Thạnh, Long Phước"
+    },
+    {
+     "ten": "Phường Long Trường",
+     "tu": "Phú Hữu, Long Trường"
+    },
+    {
+     "ten": "Phường Cát Lái",
+     "tu": "Thạnh Mỹ Lợi, Cát Lái"
+    },
+    {
+     "ten": "Phường Bình Trưng",
+     "tu": "Bình Trưng Đông, Bình Trưng Tây, một phần An Phú"
+    },
+    {
+     "ten": "Phường Phước Long",
+     "tu": "Phước Bình, Phước Long A, Phước Long B"
+    },
+    {
+     "ten": "Phường An Khánh",
+     "tu": "Thủ Thiêm, An Lợi Đông, Thảo Điền, An Khánh, phần còn lại An Phú"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "TP Thủ Đức cũ (Quận 2, Quận 9, quận Thủ Đức) nay gồm những phường nào?",
+    "a": "Từ 01/07/2025, địa bàn TP Thủ Đức cũ (Quận 2, Quận 9, quận Thủ Đức) được sắp xếp thành 12 phường: Hiệp Bình, Thủ Đức, Tam Bình, Linh Xuân, Tăng Nhơn Phú, Long Bình, Long Phước, Long Trường, Cát Lái, Bình Trưng, Phước Long và An Khánh, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các phường trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Thủ Đức mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Thủ Đức có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Trên địa bàn TP Thủ Đức cũ (Quận 2, Quận 9, quận Thủ Đức) còn có Công ty Bảo hiểm PVI Thủ Đức tại Tầng 3, Tòa nhà Sophie Building, Số 277B Đỗ Xuân Hợp."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ TP Thủ Đức cũ (Quận 2, Quận 9, quận Thủ Đức) còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Nhà thầu ở Thủ Đức cần mua bảo hiểm gì cho công trình?",
+    "a": "Tùy loại công trình và hợp đồng thi công, thường gồm bảo hiểm công trình trong thời gian xây dựng, bảo hiểm tai nạn cho người lao động thi công và trách nhiệm dân sự với bên thứ ba. Gửi hợp đồng, giá trị công trình và tiến độ để PVI Thành Đô tư vấn."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-binh-chanh",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-binh-chanh",
+  "ten": "Bình Chánh",
+  "nhan": "Huyện Bình Chánh cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Bình Chánh: văn phòng, xã mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Bình Chánh: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách xã mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Bình Chánh, bảo hiểm PVI Bình Chánh, văn phòng PVI Bình Chánh, Huyện Bình Chánh cũ gồm những phường nào, bảo hiểm ô tô PVI Bình Chánh, bảo hiểm tai nạn PVI Bình Chánh, bảo hiểm cháy nổ Bình Chánh",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Bình Chánh.",
+  "lead": "Khách hàng ở Huyện Bình Chánh cũ (nay gồm 7 xã thuộc TP.HCM) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Bình Chánh",
+   "paragraphs": [
+    "Huyện Bình Chánh cũ có các khu công nghiệp Lê Minh Xuân, Vĩnh Lộc, nhiều nhà xưởng, kho bãi và khu dân cư mới. Nhu cầu phổ biến là bảo hiểm cháy nổ nhà xưởng, tai nạn cho công nhân, bảo hiểm xe tải và công trình xây dựng.",
+    "Từ 01/07/2025, địa bàn Bình Chánh cũ được tổ chức thành các xã trực thuộc TP.HCM; khi làm hồ sơ bảo hiểm nên ghi địa chỉ theo tên xã mới."
+   ],
+   "items": [
+    "Cháy nổ nhà xưởng, kho bãi.",
+    "Tai nạn 24/24 cho công nhân.",
+    "Xe tải, ô tô: TNDS bắt buộc, vật chất xe; công trình xây dựng."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Bình Chánh từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Nam Sài Gòn, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Nam Sài Gòn",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Huyện Bình Chánh cũ nay gồm những xã nào?",
+   "answer": "Từ 01/07/2025, địa bàn Huyện Bình Chánh cũ được sắp xếp thành 7 xã: Vĩnh Lộc, Tân Vĩnh Lộc, Bình Lợi, Tân Nhựt, Bình Chánh, Hưng Long và Bình Hưng, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các xã trực thuộc TP.HCM.",
+   "tableCaption": "Huyện Bình Chánh cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "Phường cũ bị chia cho nhiều phường mới thì ranh giới cụ thể theo nghị quyết và bản đồ của UBND phường; khi làm hồ sơ nên ghi địa chỉ theo giấy tờ mới nhất. HĐND TP.HCM ngày 27/08/2026 đã tán thành đề án chuyển nguyên trạng 29 xã thành phường (giữ nguyên địa giới). Khi Ủy ban Thường vụ Quốc hội quyết định, một số xã trong bảng có thể đổi tên gọi từ \"xã\" sang \"phường\"; địa bàn không thay đổi.",
+   "rows": [
+    {
+     "ten": "Xã Vĩnh Lộc",
+     "tu": "Vĩnh Lộc A, một phần Phạm Văn Hai"
+    },
+    {
+     "ten": "Xã Tân Vĩnh Lộc",
+     "tu": "Vĩnh Lộc B, phần còn lại Phạm Văn Hai và phần lân cận"
+    },
+    {
+     "ten": "Xã Bình Lợi",
+     "tu": "Lê Minh Xuân, Bình Lợi"
+    },
+    {
+     "ten": "Xã Tân Nhựt",
+     "tu": "TT Tân Túc, Tân Nhựt, Tân Kiên, phần còn lại P. Tân Tạo A (Bình Tân), phần còn lại P16 (Q8)"
+    },
+    {
+     "ten": "Xã Bình Chánh",
+     "tu": "Tân Quý Tây, Bình Chánh, phần còn lại An Phú Tây"
+    },
+    {
+     "ten": "Xã Hưng Long",
+     "tu": "Đa Phước, Qui Đức, Hưng Long"
+    },
+    {
+     "ten": "Xã Bình Hưng",
+     "tu": "Phong Phú, Bình Hưng, phần còn lại P7 (Q8)"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Huyện Bình Chánh cũ nay gồm những xã nào?",
+    "a": "Từ 01/07/2025, địa bàn Huyện Bình Chánh cũ được sắp xếp thành 7 xã: Vĩnh Lộc, Tân Vĩnh Lộc, Bình Lợi, Tân Nhựt, Bình Chánh, Hưng Long và Bình Hưng, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các xã trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Bình Chánh mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Bình Chánh có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Nam Sài Gòn tại Tầng 5, Cao ốc Văn phòng Phượng Long 2, Số 16 Nguyễn Trường Tộ."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ Huyện Bình Chánh cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Nhà xưởng ở Bình Chánh cũ mua bảo hiểm cháy nổ thế nào?",
+    "a": "Gửi địa chỉ nhà xưởng, ngành nghề sản xuất, diện tích, giá trị nhà xưởng, máy móc, hàng hóa và hồ sơ phòng cháy chữa cháy. PVI Thành Đô kiểm tra cơ sở có thuộc diện bắt buộc không, đề xuất phần bắt buộc và phần mở rộng nếu doanh nghiệp cần."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "https://tuoitre.vn/hdnd-tphcm-chinh-thuc-tan-thanh-thanh-lap-them-29-phuong-10026082712000196.htm",
+    "label": "HĐND TP.HCM tán thành đề án thành lập 29 phường trên cơ sở nguyên trạng 29 xã (27/08/2026)",
+    "org": "Báo Tuổi Trẻ"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-can-gio",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-can-gio",
+  "ten": "Cần Giờ",
+  "nhan": "Huyện Cần Giờ cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Cần Giờ: văn phòng, xã mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Cần Giờ: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách xã mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Cần Giờ, bảo hiểm PVI Cần Giờ, văn phòng PVI Cần Giờ, Huyện Cần Giờ cũ gồm những phường nào, bảo hiểm ô tô PVI Cần Giờ, bảo hiểm tai nạn PVI Cần Giờ, bảo hiểm cháy nổ Cần Giờ",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Cần Giờ.",
+  "lead": "Khách hàng ở Huyện Cần Giờ cũ (nay là xã Bình Khánh, An Thới Đông, Cần Giờ và Thạnh An) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Cần Giờ",
+   "paragraphs": [
+    "Huyện Cần Giờ cũ là vùng ven biển với rừng ngập mặn, du lịch biển và nuôi trồng thủy sản. Nhu cầu chính là bảo hiểm tai nạn cho người đi du lịch, người lao động, bảo hiểm xe và bảo hiểm cho cơ sở lưu trú.",
+    "Cơ sở lưu trú, nhà hàng phục vụ du lịch nên kiểm tra nghĩa vụ bảo hiểm cháy nổ bắt buộc theo quy mô của cơ sở."
+   ],
+   "items": [
+    "Tai nạn cho khách du lịch, người lao động.",
+    "Cháy nổ cho nhà nghỉ, khách sạn, nhà hàng.",
+    "Ô tô: TNDS bắt buộc, vật chất xe."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Cần Giờ từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Nam Sài Gòn, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Nam Sài Gòn",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Huyện Cần Giờ cũ nay gồm những xã nào?",
+   "answer": "Từ 01/07/2025, địa bàn Huyện Cần Giờ cũ được sắp xếp thành 4 xã: Bình Khánh, An Thới Đông, Cần Giờ và Thạnh An, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các xã trực thuộc TP.HCM.",
+   "tableCaption": "Huyện Cần Giờ cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "Phường cũ bị chia cho nhiều phường mới thì ranh giới cụ thể theo nghị quyết và bản đồ của UBND phường; khi làm hồ sơ nên ghi địa chỉ theo giấy tờ mới nhất. HĐND TP.HCM ngày 27/08/2026 đã tán thành đề án chuyển nguyên trạng 29 xã thành phường (giữ nguyên địa giới). Khi Ủy ban Thường vụ Quốc hội quyết định, một số xã trong bảng có thể đổi tên gọi từ \"xã\" sang \"phường\"; địa bàn không thay đổi.",
+   "rows": [
+    {
+     "ten": "Xã Bình Khánh",
+     "tu": "Tam Thôn Hiệp, Bình Khánh, một phần An Thới Đông"
+    },
+    {
+     "ten": "Xã An Thới Đông",
+     "tu": "Lý Nhơn, phần còn lại An Thới Đông"
+    },
+    {
+     "ten": "Xã Cần Giờ",
+     "tu": "TT Cần Thạnh, Long Hòa"
+    },
+    {
+     "ten": "Xã Thạnh An",
+     "tu": "Giữ nguyên, không sắp xếp"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Huyện Cần Giờ cũ nay gồm những xã nào?",
+    "a": "Từ 01/07/2025, địa bàn Huyện Cần Giờ cũ được sắp xếp thành 4 xã: Bình Khánh, An Thới Đông, Cần Giờ và Thạnh An, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các xã trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Cần Giờ mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Cần Giờ có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Nam Sài Gòn tại Tầng 5, Cao ốc Văn phòng Phượng Long 2, Số 16 Nguyễn Trường Tộ."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ Huyện Cần Giờ cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Đoàn khách đi du lịch Cần Giờ có mua bảo hiểm tai nạn theo đoàn được không?",
+    "a": "Có thể mua bảo hiểm tai nạn theo danh sách đoàn cho thời gian chuyến đi. Đơn vị tổ chức gửi danh sách gồm họ tên, ngày sinh, thời gian và lịch trình để PVI Thành Đô báo phí. Nên mua trước ngày khởi hành để quyền lợi có hiệu lực ngay từ đầu chuyến đi."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "https://tuoitre.vn/hdnd-tphcm-chinh-thuc-tan-thanh-thanh-lap-them-29-phuong-10026082712000196.htm",
+    "label": "HĐND TP.HCM tán thành đề án thành lập 29 phường trên cơ sở nguyên trạng 29 xã (27/08/2026)",
+    "org": "Báo Tuổi Trẻ"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-cu-chi",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-cu-chi",
+  "ten": "Củ Chi",
+  "nhan": "Huyện Củ Chi cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Củ Chi: văn phòng, xã mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Củ Chi: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách xã mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Củ Chi, bảo hiểm PVI Củ Chi, văn phòng PVI Củ Chi, Huyện Củ Chi cũ gồm những phường nào, bảo hiểm ô tô PVI Củ Chi, bảo hiểm tai nạn PVI Củ Chi, bảo hiểm cháy nổ Củ Chi",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Củ Chi.",
+  "lead": "Khách hàng ở Huyện Củ Chi cũ (nay gồm 7 xã thuộc TP.HCM) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Củ Chi",
+   "paragraphs": [
+    "Huyện Củ Chi cũ có khu công nghiệp Tây Bắc Củ Chi, nhiều trang trại, cơ sở chế biến và khu dân cư nông thôn. Nhu cầu phổ biến là bảo hiểm cháy nổ nhà xưởng, kho nông sản, tai nạn cho công nhân và bảo hiểm xe tải.",
+    "Từ 01/07/2025, Củ Chi cũ gồm các xã trực thuộc TP.HCM; ghi đúng tên xã mới giúp hồ sơ bảo hiểm khớp với giấy tờ đất, nhà xưởng."
+   ],
+   "items": [
+    "Cháy nổ nhà xưởng, kho nông sản.",
+    "Tai nạn 24/24 cho công nhân.",
+    "Xe tải, ô tô: TNDS bắt buộc, vật chất xe."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Củ Chi từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Bến Thành, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Bến Thành",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Huyện Củ Chi cũ nay gồm những xã nào?",
+   "answer": "Từ 01/07/2025, địa bàn Huyện Củ Chi cũ được sắp xếp thành 7 xã: Củ Chi, Tân An Hội, Thái Mỹ, An Nhơn Tây, Nhuận Đức, Phú Hòa Đông và Bình Mỹ, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các xã trực thuộc TP.HCM.",
+   "tableCaption": "Huyện Củ Chi cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "HĐND TP.HCM ngày 27/08/2026 đã tán thành đề án chuyển nguyên trạng 29 xã thành phường (giữ nguyên địa giới). Khi Ủy ban Thường vụ Quốc hội quyết định, một số xã trong bảng có thể đổi tên gọi từ \"xã\" sang \"phường\"; địa bàn không thay đổi.",
+   "rows": [
+    {
+     "ten": "Xã Củ Chi",
+     "tu": "Tân Phú Trung, Tân Thông Hội, Phước Vĩnh An"
+    },
+    {
+     "ten": "Xã Tân An Hội",
+     "tu": "TT Củ Chi, Phước Hiệp, Tân An Hội"
+    },
+    {
+     "ten": "Xã Thái Mỹ",
+     "tu": "Trung Lập Thượng, Phước Thạnh, Thái Mỹ"
+    },
+    {
+     "ten": "Xã An Nhơn Tây",
+     "tu": "Phú Mỹ Hưng, An Phú, An Nhơn Tây"
+    },
+    {
+     "ten": "Xã Nhuận Đức",
+     "tu": "Phạm Văn Cội, Trung Lập Hạ, Nhuận Đức"
+    },
+    {
+     "ten": "Xã Phú Hòa Đông",
+     "tu": "Tân Thạnh Tây, Tân Thạnh Đông, Phú Hòa Đông"
+    },
+    {
+     "ten": "Xã Bình Mỹ",
+     "tu": "Hòa Phú, Trung An, Bình Mỹ"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Huyện Củ Chi cũ nay gồm những xã nào?",
+    "a": "Từ 01/07/2025, địa bàn Huyện Củ Chi cũ được sắp xếp thành 7 xã: Củ Chi, Tân An Hội, Thái Mỹ, An Nhơn Tây, Nhuận Đức, Phú Hòa Đông và Bình Mỹ, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các xã trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Củ Chi mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Củ Chi có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Bến Thành tại Tầng 4 và Tầng 5, Tòa nhà văn phòng, Số 06-10 Cửu Long."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ Huyện Củ Chi cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Kho nông sản ở Củ Chi có mua bảo hiểm cháy nổ được không?",
+    "a": "Được. Chủ kho gửi địa chỉ, loại hàng, giá trị hàng tồn, kết cấu kho và thiết bị phòng cháy để PVI Thành Đô kiểm tra. Nếu kho thuộc danh mục cơ sở phải mua bảo hiểm cháy nổ bắt buộc thì phát hành phần bắt buộc, có thể mở rộng thêm rủi ro khác."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "https://tuoitre.vn/hdnd-tphcm-chinh-thuc-tan-thanh-thanh-lap-them-29-phuong-10026082712000196.htm",
+    "label": "HĐND TP.HCM tán thành đề án thành lập 29 phường trên cơ sở nguyên trạng 29 xã (27/08/2026)",
+    "org": "Báo Tuổi Trẻ"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-hoc-mon",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-hoc-mon",
+  "ten": "Hóc Môn",
+  "nhan": "Huyện Hóc Môn cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Hóc Môn: văn phòng, xã mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Hóc Môn: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách xã mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Hóc Môn, bảo hiểm PVI Hóc Môn, văn phòng PVI Hóc Môn, Huyện Hóc Môn cũ gồm những phường nào, bảo hiểm ô tô PVI Hóc Môn, bảo hiểm tai nạn PVI Hóc Môn, bảo hiểm cháy nổ Hóc Môn",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Hóc Môn.",
+  "lead": "Khách hàng ở Huyện Hóc Môn cũ (nay là xã Hóc Môn, Bà Điểm, Xuân Thới Sơn và Đông Thạnh) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Hóc Môn",
+   "paragraphs": [
+    "Huyện Hóc Môn cũ có nhiều xưởng sản xuất, kho bãi, chợ đầu mối và khu dân cư mới. Nhu cầu chính là bảo hiểm cháy nổ cho xưởng, kho, bảo hiểm tai nạn cho người lao động và bảo hiểm xe tải chở hàng.",
+    "Hộ kinh doanh, xưởng nhỏ nên kê khai đầy đủ giá trị máy móc, hàng hóa để số tiền bảo hiểm sát thực tế."
+   ],
+   "items": [
+    "Cháy nổ cho xưởng, kho bãi, cửa hàng.",
+    "Tai nạn 24/24 cho người lao động.",
+    "Xe tải, ô tô: TNDS bắt buộc, vật chất xe."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Hóc Môn từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Bến Thành, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Bến Thành",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Huyện Hóc Môn cũ nay gồm những xã nào?",
+   "answer": "Từ 01/07/2025, địa bàn Huyện Hóc Môn cũ được sắp xếp thành 4 xã: Hóc Môn, Bà Điểm, Xuân Thới Sơn và Đông Thạnh, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các xã trực thuộc TP.HCM.",
+   "tableCaption": "Huyện Hóc Môn cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "HĐND TP.HCM ngày 27/08/2026 đã tán thành đề án chuyển nguyên trạng 29 xã thành phường (giữ nguyên địa giới). Khi Ủy ban Thường vụ Quốc hội quyết định, một số xã trong bảng có thể đổi tên gọi từ \"xã\" sang \"phường\"; địa bàn không thay đổi.",
+   "rows": [
+    {
+     "ten": "Xã Hóc Môn",
+     "tu": "TT Hóc Môn, Tân Hiệp (Hóc Môn), Tân Xuân"
+    },
+    {
+     "ten": "Xã Bà Điểm",
+     "tu": "Xuân Thới Thượng, Trung Chánh, Bà Điểm"
+    },
+    {
+     "ten": "Xã Xuân Thới Sơn",
+     "tu": "Tân Thới Nhì, Xuân Thới Đông, Xuân Thới Sơn"
+    },
+    {
+     "ten": "Xã Đông Thạnh",
+     "tu": "Thới Tam Thôn, Nhị Bình, Đông Thạnh"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Huyện Hóc Môn cũ nay gồm những xã nào?",
+    "a": "Từ 01/07/2025, địa bàn Huyện Hóc Môn cũ được sắp xếp thành 4 xã: Hóc Môn, Bà Điểm, Xuân Thới Sơn và Đông Thạnh, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các xã trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Hóc Môn mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Hóc Môn có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Bến Thành tại Tầng 4 và Tầng 5, Tòa nhà văn phòng, Số 06-10 Cửu Long."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ Huyện Hóc Môn cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Xe tải nhỏ chở hàng ở Hóc Môn có mua bảo hiểm online được không?",
+    "a": "Bảo hiểm TNDS bắt buộc cho xe tải có thể làm từ xa: gửi ảnh đăng ký xe, tải trọng và mục đích sử dụng qua Zalo 0938 072 236 để nhận báo phí và giấy chứng nhận. Bảo hiểm vật chất xe cần thêm ảnh hiện trạng xe trước khi phát hành."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "https://tuoitre.vn/hdnd-tphcm-chinh-thuc-tan-thanh-thanh-lap-them-29-phuong-10026082712000196.htm",
+    "label": "HĐND TP.HCM tán thành đề án thành lập 29 phường trên cơ sở nguyên trạng 29 xã (27/08/2026)",
+    "org": "Báo Tuổi Trẻ"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-nha-be",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-nha-be",
+  "ten": "Nhà Bè",
+  "nhan": "Huyện Nhà Bè cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Nhà Bè: văn phòng, xã mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Nhà Bè: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách xã mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Nhà Bè, bảo hiểm PVI Nhà Bè, văn phòng PVI Nhà Bè, Huyện Nhà Bè cũ gồm những phường nào, bảo hiểm ô tô PVI Nhà Bè, bảo hiểm tai nạn PVI Nhà Bè, bảo hiểm cháy nổ Nhà Bè",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Nhà Bè.",
+  "lead": "Khách hàng ở Huyện Nhà Bè cũ (nay là xã Nhà Bè và Hiệp Phước) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Nhà Bè",
+   "paragraphs": [
+    "Huyện Nhà Bè cũ có khu công nghiệp Hiệp Phước, hệ thống cảng, kho bãi ven sông và nhiều khu dân cư mới. Nhu cầu phổ biến là bảo hiểm cháy nổ kho bãi, hàng hóa vận chuyển, tai nạn cho công nhân và bảo hiểm ô tô.",
+    "Một số khu vực trũng thấp có thể ngập khi triều cường, nên chủ xe ô tô hay hỏi về quyền lợi khi xe bị ngập nước."
+   ],
+   "items": [
+    "Cháy nổ kho bãi, nhà xưởng trong khu công nghiệp.",
+    "Hàng hóa xuất nhập khẩu, vận chuyển.",
+    "Ô tô: vật chất xe kèm điều khoản thiệt hại động cơ do nước; tai nạn cho công nhân."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Nhà Bè từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Nam Sài Gòn, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Nam Sài Gòn",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Huyện Nhà Bè cũ nay gồm những xã nào?",
+   "answer": "Từ 01/07/2025, địa bàn Huyện Nhà Bè cũ được sắp xếp thành 2 xã: Nhà Bè và Hiệp Phước, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các xã trực thuộc TP.HCM.",
+   "tableCaption": "Huyện Nhà Bè cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "HĐND TP.HCM ngày 27/08/2026 đã tán thành đề án chuyển nguyên trạng 29 xã thành phường (giữ nguyên địa giới). Khi Ủy ban Thường vụ Quốc hội quyết định, một số xã trong bảng có thể đổi tên gọi từ \"xã\" sang \"phường\"; địa bàn không thay đổi.",
+   "rows": [
+    {
+     "ten": "Xã Nhà Bè",
+     "tu": "TT Nhà Bè, Phú Xuân, Phước Kiển, Phước Lộc"
+    },
+    {
+     "ten": "Xã Hiệp Phước",
+     "tu": "Nhơn Đức, Long Thới, Hiệp Phước"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Huyện Nhà Bè cũ nay gồm những xã nào?",
+    "a": "Từ 01/07/2025, địa bàn Huyện Nhà Bè cũ được sắp xếp thành 2 xã: Nhà Bè và Hiệp Phước, theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Cấp quận, huyện không còn; các xã trực thuộc TP.HCM."
+   },
+   {
+    "q": "Khách hàng ở Nhà Bè mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Nhà Bè có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Tại khu vực TP.HCM còn có Công ty Bảo hiểm PVI Nam Sài Gòn tại Tầng 5, Cao ốc Văn phòng Phượng Long 2, Số 16 Nguyễn Trường Tộ."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ Huyện Nhà Bè cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Kho bãi ven sông ở Nhà Bè có được bảo hiểm khi ngập nước không?",
+    "a": "Bảo hiểm cháy nổ bắt buộc chỉ bảo vệ rủi ro cháy, nổ. Muốn được bảo vệ khi ngập lụt cần mua thêm phạm vi rủi ro đặc biệt hoặc bảo hiểm mọi rủi ro tài sản, tùy điều kiện chấp nhận của PVI. Gửi địa chỉ kho và giá trị tài sản để được tư vấn."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "https://tuoitre.vn/hdnd-tphcm-chinh-thuc-tan-thanh-thanh-lap-them-29-phuong-10026082712000196.htm",
+    "label": "HĐND TP.HCM tán thành đề án thành lập 29 phường trên cơ sở nguyên trạng 29 xã (27/08/2026)",
+    "org": "Báo Tuổi Trẻ"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-binh-duong",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-binh-duong",
+  "ten": "Bình Dương",
+  "nhan": "tỉnh Bình Dương cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Bình Dương: văn phòng, phường xã mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Bình Dương: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách phường, xã mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Bình Dương, bảo hiểm PVI Bình Dương, văn phòng PVI Bình Dương, tỉnh Bình Dương cũ gồm những phường nào, bảo hiểm ô tô PVI Bình Dương, bảo hiểm tai nạn PVI Bình Dương, bảo hiểm cháy nổ Bình Dương",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Bình Dương.",
+  "lead": "Khách hàng ở tỉnh Bình Dương cũ (nay là 36 phường, xã thuộc TP. Hồ Chí Minh) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Bình Dương",
+   "paragraphs": [
+    "Bình Dương cũ có mật độ khu công nghiệp cao, nhiều nhà máy, kho bãi và hàng trăm nghìn công nhân. Doanh nghiệp hỏi nhiều nhất về bảo hiểm cháy nổ nhà xưởng, tai nạn cho công nhân, hàng hóa xuất nhập khẩu và công trình xây dựng nhà xưởng.",
+    "Từ 01/07/2025, tỉnh Bình Dương hợp nhất vào TP.HCM theo Nghị quyết 202/2025/QH15. Hợp đồng bảo hiểm của doanh nghiệp ở đây nên cập nhật địa chỉ theo tên phường, xã mới khi tái tục."
+   ],
+   "items": [
+    "Cháy nổ nhà xưởng, kho hàng trong khu công nghiệp.",
+    "Tai nạn 24/24 cho công nhân theo danh sách.",
+    "Hàng hóa xuất nhập khẩu; công trình xây dựng, lắp đặt nhà xưởng."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Bình Dương từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Trên địa bàn tỉnh Bình Dương cũ còn có Công ty Bảo hiểm PVI Đông Sài Gòn, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Đông Sài Gòn",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Tỉnh Bình Dương cũ nay gồm những phường, xã nào?",
+   "answer": "Từ 01/07/2025, tỉnh Bình Dương cũ hợp nhất vào TP.HCM (Nghị quyết 202/2025/QH15) và được sắp xếp thành 36 phường, xã theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Bảng kèm theo ghi từng đơn vị mới, nhóm theo thành phố, huyện cũ.",
+   "tableCaption": "Tỉnh Bình Dương cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "Phường cũ bị chia cho nhiều phường mới thì ranh giới cụ thể theo nghị quyết và bản đồ của UBND phường; khi làm hồ sơ nên ghi địa chỉ theo giấy tờ mới nhất. HĐND TP.HCM ngày 27/08/2026 đã tán thành đề án chuyển nguyên trạng 29 xã thành phường (giữ nguyên địa giới). Khi Ủy ban Thường vụ Quốc hội quyết định, một số xã trong bảng có thể đổi tên gọi từ \"xã\" sang \"phường\"; địa bàn không thay đổi.",
+   "rows": [
+    {
+     "ten": "Phường Thủ Dầu Một",
+     "tu": "Phú Cường, Phú Thọ, Chánh Nghĩa, một phần Hiệp Thành, một phần Chánh Mỹ",
+     "nhom": "TP Thủ Dầu Một cũ"
+    },
+    {
+     "ten": "Phường Phú Lợi",
+     "tu": "Phú Hòa, Phú Lợi, phần còn lại Hiệp Thành",
+     "nhom": "TP Thủ Dầu Một cũ"
+    },
+    {
+     "ten": "Phường Chánh Hiệp",
+     "tu": "Định Hòa, Tương Bình Hiệp, một phần Hiệp An, phần còn lại Chánh Mỹ",
+     "nhom": "TP Thủ Dầu Một cũ"
+    },
+    {
+     "ten": "Phường Bình Dương",
+     "tu": "Phú Mỹ, Hòa Phú, Phú Tân (Thủ Dầu Một), Phú Chánh (Tân Uyên)",
+     "nhom": "TP Thủ Dầu Một cũ"
+    },
+    {
+     "ten": "Phường Phú An",
+     "tu": "Tân An, xã Phú An (Bến Cát), phần còn lại Hiệp An",
+     "nhom": "TP Thủ Dầu Một cũ"
+    },
+    {
+     "ten": "Phường An Phú",
+     "tu": "An Phú, một phần Bình Chuẩn",
+     "nhom": "TP Thuận An cũ"
+    },
+    {
+     "ten": "Phường Bình Hòa",
+     "tu": "Bình Hòa, một phần Vĩnh Phú",
+     "nhom": "TP Thuận An cũ"
+    },
+    {
+     "ten": "Phường Lái Thiêu",
+     "tu": "Bình Nhâm, Lái Thiêu, phần còn lại Vĩnh Phú",
+     "nhom": "TP Thuận An cũ"
+    },
+    {
+     "ten": "Phường Thuận An",
+     "tu": "Hưng Định, An Thạnh, xã An Sơn",
+     "nhom": "TP Thuận An cũ"
+    },
+    {
+     "ten": "Phường Thuận Giao",
+     "tu": "Thuận Giao, phần còn lại Bình Chuẩn",
+     "nhom": "TP Thuận An cũ"
+    },
+    {
+     "ten": "Phường Đông Hòa",
+     "tu": "Bình An, Bình Thắng, Đông Hòa",
+     "nhom": "TP Dĩ An cũ"
+    },
+    {
+     "ten": "Phường Dĩ An",
+     "tu": "An Bình, Dĩ An, một phần Tân Đông Hiệp",
+     "nhom": "TP Dĩ An cũ"
+    },
+    {
+     "ten": "Phường Tân Đông Hiệp",
+     "tu": "Tân Bình (Dĩ An), một phần Thái Hòa (Tân Uyên), phần còn lại Tân Đông Hiệp",
+     "nhom": "TP Dĩ An cũ"
+    },
+    {
+     "ten": "Phường Tân Uyên",
+     "tu": "Uyên Hưng, xã Bạch Đằng, xã Tân Lập (Bắc Tân Uyên), một phần xã Tân Mỹ (Bắc Tân Uyên)",
+     "nhom": "TP Tân Uyên cũ"
+    },
+    {
+     "ten": "Phường Tân Hiệp",
+     "tu": "Khánh Bình, Tân Hiệp",
+     "nhom": "TP Tân Uyên cũ"
+    },
+    {
+     "ten": "Phường Tân Khánh",
+     "tu": "Thạnh Phước, Tân Phước Khánh, Tân Vĩnh Hiệp, xã Thạnh Hội, phần còn lại Thái Hòa",
+     "nhom": "TP Tân Uyên cũ"
+    },
+    {
+     "ten": "Phường Vĩnh Tân",
+     "tu": "Vĩnh Tân, TT Tân Bình (Bắc Tân Uyên)",
+     "nhom": "TP Tân Uyên cũ"
+    },
+    {
+     "ten": "Phường Bình Cơ",
+     "tu": "Hội Nghĩa, xã Bình Mỹ (Bắc Tân Uyên)",
+     "nhom": "TP Tân Uyên cũ"
+    },
+    {
+     "ten": "Phường Bến Cát",
+     "tu": "Phần lớn Mỹ Phước, xã Tân Hưng và xã Lai Hưng (Bàu Bàng)",
+     "nhom": "TP Bến Cát cũ"
+    },
+    {
+     "ten": "Phường Long Nguyên",
+     "tu": "Xã Long Nguyên (Bàu Bàng), An Điền, một phần Mỹ Phước",
+     "nhom": "TP Bến Cát cũ"
+    },
+    {
+     "ten": "Phường Tây Nam",
+     "tu": "An Tây, một phần xã Thanh Tuyền và xã An Lập (Dầu Tiếng)",
+     "nhom": "TP Bến Cát cũ"
+    },
+    {
+     "ten": "Phường Chánh Phú Hòa",
+     "tu": "Chánh Phú Hòa, xã Hưng Hòa (Bàu Bàng)",
+     "nhom": "TP Bến Cát cũ"
+    },
+    {
+     "ten": "Phường Hòa Lợi",
+     "tu": "Tân Định (Bến Cát), Hòa Lợi",
+     "nhom": "TP Bến Cát cũ"
+    },
+    {
+     "ten": "Phường Thới Hòa",
+     "tu": "Giữ nguyên, không sắp xếp",
+     "nhom": "TP Bến Cát cũ"
+    },
+    {
+     "ten": "Xã Bàu Bàng",
+     "tu": "Phần còn lại TT Lai Uyên",
+     "nhom": "Huyện Bàu Bàng cũ"
+    },
+    {
+     "ten": "Xã Trừ Văn Thố",
+     "tu": "Trừ Văn Thố, Cây Trường II, một phần TT Lai Uyên",
+     "nhom": "Huyện Bàu Bàng cũ"
+    },
+    {
+     "ten": "Xã Bắc Tân Uyên",
+     "tu": "TT Tân Thành, Đất Cuốc, Tân Định (BTU)",
+     "nhom": "Huyện Bắc Tân Uyên cũ"
+    },
+    {
+     "ten": "Xã Thường Tân",
+     "tu": "Lạc An, Hiếu Liêm, Thường Tân, phần còn lại Tân Mỹ",
+     "nhom": "Huyện Bắc Tân Uyên cũ"
+    },
+    {
+     "ten": "Xã Dầu Tiếng",
+     "tu": "TT Dầu Tiếng, Định An, Định Thành, phần còn lại Định Hiệp",
+     "nhom": "Huyện Dầu Tiếng cũ"
+    },
+    {
+     "ten": "Xã Minh Thạnh",
+     "tu": "Minh Hòa, phần còn lại Minh Tân, phần còn lại Minh Thạnh",
+     "nhom": "Huyện Dầu Tiếng cũ"
+    },
+    {
+     "ten": "Xã Long Hòa",
+     "tu": "Long Tân, Long Hòa, một phần Minh Tân, một phần Minh Thạnh",
+     "nhom": "Huyện Dầu Tiếng cũ"
+    },
+    {
+     "ten": "Xã Thanh An",
+     "tu": "Thanh An, một phần Định Hiệp, phần còn lại Thanh Tuyền và An Lập",
+     "nhom": "Huyện Dầu Tiếng cũ"
+    },
+    {
+     "ten": "Xã Phú Giáo",
+     "tu": "TT Phước Vĩnh, An Bình, một phần Tam Lập",
+     "nhom": "Huyện Phú Giáo cũ"
+    },
+    {
+     "ten": "Xã Phước Hòa",
+     "tu": "Vĩnh Hòa, Phước Hòa, phần còn lại Tam Lập",
+     "nhom": "Huyện Phú Giáo cũ"
+    },
+    {
+     "ten": "Xã Phước Thành",
+     "tu": "Tân Hiệp (Phú Giáo), An Thái, Phước Sang",
+     "nhom": "Huyện Phú Giáo cũ"
+    },
+    {
+     "ten": "Xã An Long",
+     "tu": "An Linh, Tân Long, An Long",
+     "nhom": "Huyện Phú Giáo cũ"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Tỉnh Bình Dương cũ nay gồm những phường, xã nào?",
+    "a": "Từ 01/07/2025, tỉnh Bình Dương cũ hợp nhất vào TP.HCM (Nghị quyết 202/2025/QH15) và được sắp xếp thành 36 phường, xã theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Bảng kèm theo ghi từng đơn vị mới, nhóm theo thành phố, huyện cũ."
+   },
+   {
+    "q": "Khách hàng ở Bình Dương mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Bình Dương có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Trên địa bàn tỉnh Bình Dương cũ còn có Công ty Bảo hiểm PVI Đông Sài Gòn tại Tầng 4 và 5, Tòa nhà Số 48, Đường Hoàng Văn Thụ, Khu dân cư Chánh Nghĩa."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ tỉnh Bình Dương cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Doanh nghiệp ở Bình Dương cũ đổi địa chỉ sang TP.HCM có phải làm lại hợp đồng bảo hiểm không?",
+    "a": "Không cần làm lại. Hợp đồng đang có hiệu lực vẫn giữ nguyên quyền lợi đến hết thời hạn; địa chỉ chỉ đổi tên gọi đơn vị hành chính. Khi tái tục hoặc sửa đổi bổ sung, doanh nghiệp cung cấp địa chỉ theo phường, xã mới thuộc TP.HCM để hồ sơ thống nhất với giấy phép kinh doanh."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "https://tuoitre.vn/hdnd-tphcm-chinh-thuc-tan-thanh-thanh-lap-them-29-phuong-10026082712000196.htm",
+    "label": "HĐND TP.HCM tán thành đề án thành lập 29 phường trên cơ sở nguyên trạng 29 xã (27/08/2026)",
+    "org": "Báo Tuổi Trẻ"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-vung-tau",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-vung-tau",
+  "ten": "Vũng Tàu",
+  "nhan": "tỉnh Bà Rịa - Vũng Tàu cũ",
+  "thuocVe": "TP. Hồ Chí Minh",
+  "title": "Mua bảo hiểm PVI tại Vũng Tàu: văn phòng, phường xã mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Vũng Tàu: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách phường, xã, đặc khu mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Vũng Tàu, bảo hiểm PVI Vũng Tàu, văn phòng PVI Vũng Tàu, tỉnh Bà Rịa - Vũng Tàu cũ gồm những phường nào, bảo hiểm ô tô PVI Vũng Tàu, bảo hiểm tai nạn PVI Vũng Tàu, bảo hiểm cháy nổ Vũng Tàu",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Vũng Tàu.",
+  "lead": "Khách hàng ở tỉnh Bà Rịa - Vũng Tàu cũ (nay là 30 phường, xã, đặc khu thuộc TP. Hồ Chí Minh) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Vũng Tàu",
+   "paragraphs": [
+    "Bà Rịa - Vũng Tàu cũ có du lịch biển, khách sạn, cảng nước sâu ở Phú Mỹ, khu công nghiệp và ngành dầu khí. Nhu cầu phổ biến là bảo hiểm cháy nổ cho khách sạn, nhà hàng, nhà xưởng; hàng hóa qua cảng; tai nạn cho người lao động và khách du lịch.",
+    "Từ 01/07/2025, tỉnh Bà Rịa - Vũng Tàu hợp nhất vào TP.HCM theo Nghị quyết 202/2025/QH15; huyện Côn Đảo trở thành đặc khu Côn Đảo."
+   ],
+   "items": [
+    "Cháy nổ cho khách sạn, nhà hàng, nhà xưởng.",
+    "Hàng hóa xuất nhập khẩu qua cảng.",
+    "Tai nạn cho người lao động, khách du lịch; ô tô."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Vũng Tàu từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Trên địa bàn tỉnh Bà Rịa - Vũng Tàu cũ còn có Công ty Bảo hiểm PVI Vũng Tàu, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Vũng Tàu",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ, điện thoại theo danh bạ PVI; nên gọi trước khi đến.",
+  "phuong": {
+   "title": "Tỉnh Bà Rịa - Vũng Tàu cũ nay gồm những phường, xã, đặc khu nào?",
+   "answer": "Từ 01/07/2025, tỉnh Bà Rịa - Vũng Tàu cũ hợp nhất vào TP.HCM (Nghị quyết 202/2025/QH15) và được sắp xếp thành 30 phường, xã, đặc khu theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Bảng kèm theo ghi từng đơn vị mới, nhóm theo thành phố, huyện cũ.",
+   "tableCaption": "Tỉnh Bà Rịa - Vũng Tàu cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "HĐND TP.HCM ngày 27/08/2026 đã tán thành đề án chuyển nguyên trạng 29 xã thành phường (giữ nguyên địa giới). Khi Ủy ban Thường vụ Quốc hội quyết định, một số xã trong bảng có thể đổi tên gọi từ \"xã\" sang \"phường\"; địa bàn không thay đổi.",
+   "rows": [
+    {
+     "ten": "Phường Vũng Tàu",
+     "tu": "P1, P2, P3, P4, P5, Thắng Nhì, Thắng Tam",
+     "nhom": "TP Vũng Tàu cũ"
+    },
+    {
+     "ten": "Phường Tam Thắng",
+     "tu": "P7, P8, P9, Nguyễn An Ninh",
+     "nhom": "TP Vũng Tàu cũ"
+    },
+    {
+     "ten": "Phường Rạch Dừa",
+     "tu": "P10, Thắng Nhất, Rạch Dừa",
+     "nhom": "TP Vũng Tàu cũ"
+    },
+    {
+     "ten": "Phường Phước Thắng",
+     "tu": "P11, P12",
+     "nhom": "TP Vũng Tàu cũ"
+    },
+    {
+     "ten": "Xã Long Sơn",
+     "tu": "Giữ nguyên",
+     "nhom": "TP Vũng Tàu cũ"
+    },
+    {
+     "ten": "Phường Bà Rịa",
+     "tu": "Phước Trung, Phước Nguyên, Long Toàn, Phước Hưng",
+     "nhom": "TP Bà Rịa cũ"
+    },
+    {
+     "ten": "Phường Long Hương",
+     "tu": "Kim Dinh, Long Hương, xã Tân Hưng",
+     "nhom": "TP Bà Rịa cũ"
+    },
+    {
+     "ten": "Phường Tam Long",
+     "tu": "Long Tâm, xã Hòa Long, xã Long Phước",
+     "nhom": "TP Bà Rịa cũ"
+    },
+    {
+     "ten": "Phường Tân Hải",
+     "tu": "Tân Hòa, Tân Hải",
+     "nhom": "TX Phú Mỹ cũ"
+    },
+    {
+     "ten": "Phường Tân Phước",
+     "tu": "Phước Hòa, Tân Phước",
+     "nhom": "TX Phú Mỹ cũ"
+    },
+    {
+     "ten": "Phường Phú Mỹ",
+     "tu": "Phú Mỹ, Mỹ Xuân",
+     "nhom": "TX Phú Mỹ cũ"
+    },
+    {
+     "ten": "Phường Tân Thành",
+     "tu": "Hắc Dịch, xã Sông Xoài",
+     "nhom": "TX Phú Mỹ cũ"
+    },
+    {
+     "ten": "Xã Châu Pha",
+     "tu": "Tóc Tiên, Châu Pha",
+     "nhom": "TX Phú Mỹ cũ"
+    },
+    {
+     "ten": "Xã Ngãi Giao",
+     "tu": "TT Ngãi Giao, Bình Ba, Suối Nghệ",
+     "nhom": "Huyện Châu Đức cũ"
+    },
+    {
+     "ten": "Xã Kim Long",
+     "tu": "TT Kim Long, Bàu Chinh, Láng Lớn",
+     "nhom": "Huyện Châu Đức cũ"
+    },
+    {
+     "ten": "Xã Châu Đức",
+     "tu": "Cù Bị, Xà Bang",
+     "nhom": "Huyện Châu Đức cũ"
+    },
+    {
+     "ten": "Xã Bình Giã",
+     "tu": "Bình Trung, Quảng Thành, Bình Giã",
+     "nhom": "Huyện Châu Đức cũ"
+    },
+    {
+     "ten": "Xã Nghĩa Thành",
+     "tu": "Đá Bạc, Nghĩa Thành",
+     "nhom": "Huyện Châu Đức cũ"
+    },
+    {
+     "ten": "Xã Xuân Sơn",
+     "tu": "Suối Rao, Sơn Bình, Xuân Sơn",
+     "nhom": "Huyện Châu Đức cũ"
+    },
+    {
+     "ten": "Xã Hồ Tràm",
+     "tu": "TT Phước Bửu, Phước Tân, Phước Thuận",
+     "nhom": "Huyện Xuyên Mộc cũ"
+    },
+    {
+     "ten": "Xã Xuyên Mộc",
+     "tu": "Bông Trang, Bưng Riềng, Xuyên Mộc",
+     "nhom": "Huyện Xuyên Mộc cũ"
+    },
+    {
+     "ten": "Xã Hòa Hội",
+     "tu": "Hòa Hưng, Hòa Bình, Hòa Hội",
+     "nhom": "Huyện Xuyên Mộc cũ"
+    },
+    {
+     "ten": "Xã Bàu Lâm",
+     "tu": "Tân Lâm, Bàu Lâm",
+     "nhom": "Huyện Xuyên Mộc cũ"
+    },
+    {
+     "ten": "Xã Hòa Hiệp",
+     "tu": "Giữ nguyên",
+     "nhom": "Huyện Xuyên Mộc cũ"
+    },
+    {
+     "ten": "Xã Bình Châu",
+     "tu": "Giữ nguyên",
+     "nhom": "Huyện Xuyên Mộc cũ"
+    },
+    {
+     "ten": "Xã Long Hải",
+     "tu": "TT Long Hải, Phước Tỉnh, Phước Hưng",
+     "nhom": "Huyện Long Đất cũ"
+    },
+    {
+     "ten": "Xã Long Điền",
+     "tu": "TT Long Điền, Tam An",
+     "nhom": "Huyện Long Đất cũ"
+    },
+    {
+     "ten": "Xã Phước Hải",
+     "tu": "TT Phước Hải, Phước Hội",
+     "nhom": "Huyện Long Đất cũ"
+    },
+    {
+     "ten": "Xã Đất Đỏ",
+     "tu": "TT Đất Đỏ, Long Tân (Long Đất), Láng Dài, Phước Long Thọ",
+     "nhom": "Huyện Long Đất cũ"
+    },
+    {
+     "ten": "Đặc khu Côn Đảo",
+     "tu": "Toàn bộ huyện Côn Đảo",
+     "nhom": "Huyện Côn Đảo cũ"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Tỉnh Bà Rịa - Vũng Tàu cũ nay gồm những phường, xã, đặc khu nào?",
+    "a": "Từ 01/07/2025, tỉnh Bà Rịa - Vũng Tàu cũ hợp nhất vào TP.HCM (Nghị quyết 202/2025/QH15) và được sắp xếp thành 30 phường, xã, đặc khu theo Nghị quyết 1685/NQ-UBTVQH15 của Ủy ban Thường vụ Quốc hội. Bảng kèm theo ghi từng đơn vị mới, nhóm theo thành phố, huyện cũ."
+   },
+   {
+    "q": "Khách hàng ở Vũng Tàu mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Vũng Tàu có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Trên địa bàn tỉnh Bà Rịa - Vũng Tàu cũ còn có Công ty Bảo hiểm PVI Vũng Tàu tại Số 58A đường Võ Thị Sáu."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ tỉnh Bà Rịa - Vũng Tàu cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Khách sạn ở Vũng Tàu cần mua bảo hiểm cháy nổ bắt buộc không?",
+    "a": "Khách sạn thuộc danh mục cơ sở phải mua bảo hiểm cháy, nổ bắt buộc khi đáp ứng ngưỡng quy mô theo quy định hiện hành. Chủ khách sạn gửi địa chỉ, số tầng, số phòng, khối tích và giá trị tài sản để PVI Thành Đô kiểm tra và báo phí, có thể mở rộng thêm rủi ro bão, lũ."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1685-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-thanh-pho-ho-chi-minh-nam-2025-119250616211341304.htm",
+    "label": "Nghị quyết 1685/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của TP.HCM năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "https://tuoitre.vn/hdnd-tphcm-chinh-thuc-tan-thanh-thanh-lap-them-29-phuong-10026082712000196.htm",
+    "label": "HĐND TP.HCM tán thành đề án thành lập 29 phường trên cơ sở nguyên trạng 29 xã (27/08/2026)",
+    "org": "Báo Tuổi Trẻ"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ },
+ {
+  "slug": "mua-bao-hiem-pvi-dong-nai",
+  "path": "/kien-thuc/mua-bao-hiem-pvi-dong-nai",
+  "ten": "Đồng Nai",
+  "nhan": "tỉnh Đồng Nai cũ",
+  "thuocVe": "Thành phố Đồng Nai",
+  "title": "Mua bảo hiểm PVI tại Đồng Nai: văn phòng, phường xã mới và cách mua",
+  "description": "Mua bảo hiểm PVI ở Đồng Nai: văn phòng PVI, sản phẩm ô tô, tai nạn, cháy nổ, danh sách phường, xã mới từ 01/07/2025 và tư vấn qua Zalo 0938 072 236.",
+  "keywords": "mua bảo hiểm PVI tại Đồng Nai, bảo hiểm PVI Đồng Nai, văn phòng PVI Đồng Nai, tỉnh Đồng Nai cũ gồm những phường nào, bảo hiểm ô tô PVI Đồng Nai, bảo hiểm tai nạn PVI Đồng Nai, bảo hiểm cháy nổ Đồng Nai",
+  "heroSub": "Tư vấn trực tiếp tại văn phòng PVI Thành Đô hoặc làm từ xa qua Zalo 0938 072 236, cho cá nhân và doanh nghiệp ở Đồng Nai.",
+  "lead": "Khách hàng ở tỉnh Đồng Nai cũ (nay là 55 phường, xã thuộc Thành phố Đồng Nai) có thể mua bảo hiểm PVI qua Công ty Bảo hiểm PVI Thành Đô: nhắn Zalo 0938 072 236 để được tư vấn, báo phí từ xa, hoặc làm việc trực tiếp tại văn phòng 473 Điện Biên Phủ, TP.HCM.",
+  "reviewedAt": "2026-10-16",
+  "hero": {
+   "src": "/mua-bao-hiem-pvi-binh-thanh-mat-truoc.webp",
+   "alt": "Mặt trước tòa nhà cao tầng 194 Golden Building nhìn từ lối vào, có hai lá cờ và hàng cây cọ phía trước",
+   "caption": "Ảnh thực tế: mặt trước tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô."
+  },
+  "nhuCau": {
+   "title": "Nhu cầu bảo hiểm thường gặp ở Đồng Nai",
+   "paragraphs": [
+    "Đồng Nai có nhiều khu công nghiệp lớn quanh Biên Hòa, Nhơn Trạch, Long Thành, Trảng Bom và dự án sân bay quốc tế Long Thành. Doanh nghiệp hỏi nhiều về bảo hiểm cháy nổ nhà xưởng, công trình xây dựng, lắp đặt, tai nạn cho công nhân và hàng hóa xuất nhập khẩu.",
+    "Đồng Nai hợp nhất với Bình Phước từ 01/07/2025 (Nghị quyết 202/2025/QH15) và trở thành thành phố Đồng Nai trực thuộc trung ương từ 30/04/2026 (Nghị quyết 30/2026/QH16). Bài này nói về địa bàn tỉnh Đồng Nai trước khi hợp nhất."
+   ],
+   "items": [
+    "Cháy nổ nhà xưởng, kho hàng trong khu công nghiệp.",
+    "Công trình xây dựng, lắp đặt và tai nạn người thi công.",
+    "Tai nạn 24/24 cho công nhân; hàng hóa xuất nhập khẩu."
+   ]
+  },
+  "vanPhongIntro": "PVI Thành Đô nhận hồ sơ của khách hàng Đồng Nai từ xa qua Zalo và tại văn phòng 473 Điện Biên Phủ. Tại Đồng Nai còn có Công ty Bảo hiểm PVI Đông Nam Bộ, đơn vị thành viên khác của Tổng công ty Bảo hiểm PVI.",
+  "donVi": "Bảo hiểm PVI Đông Nam Bộ",
+  "donViGhiChu": "Đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Địa chỉ theo danh bạ PVI hiện tại; thông báo của PVI ngày 08/04/2026 ghi địa chỉ 328 Võ Thị Sáu, nên gọi xác nhận trước khi đến.",
+  "phuong": {
+   "title": "Đồng Nai cũ nay gồm những phường, xã nào?",
+   "answer": "Từ 01/07/2025, địa bàn tỉnh Đồng Nai cũ (trước khi hợp nhất với Bình Phước) được sắp xếp thành 55 phường, xã theo Nghị quyết 1662/NQ-UBTVQH15; từ 30/04/2026 thuộc thành phố Đồng Nai. Bảng kèm theo ghi từng đơn vị mới và các đơn vị cũ hình thành nên.",
+   "tableCaption": "Tỉnh Đồng Nai cũ: đơn vị hành chính mới từ 01/07/2025",
+   "note": "Phường cũ bị chia cho nhiều phường mới thì ranh giới cụ thể theo nghị quyết và bản đồ của UBND phường; khi làm hồ sơ nên ghi địa chỉ theo giấy tờ mới nhất. Từ 30/04/2026, theo Nghị quyết 237/NQ-UBTVQH16, các xã Trảng Bom, Long Thành, Nhơn Trạch, Trị An, Xuân Lộc, Tân Phú, Dầu Giây được chuyển nguyên trạng thành phường (bảng đã ghi tên mới).",
+   "rows": [
+    {
+     "ten": "Phường Trấn Biên",
+     "tu": "Bửu Long, Quang Vinh, Trung Dũng, Thống Nhất, Hiệp Hòa, An Bình",
+     "nhom": "TP Biên Hòa cũ"
+    },
+    {
+     "ten": "Phường Biên Hòa",
+     "tu": "Tân Hạnh, Hóa An, Bửu Hòa, Tân Vạn",
+     "nhom": "TP Biên Hòa cũ"
+    },
+    {
+     "ten": "Phường Tam Hiệp",
+     "tu": "Tân Hiệp, Tân Mai, Bình Đa, Tam Hiệp",
+     "nhom": "TP Biên Hòa cũ"
+    },
+    {
+     "ten": "Phường Long Bình",
+     "tu": "Hố Nai, Tân Biên, Long Bình",
+     "nhom": "TP Biên Hòa cũ"
+    },
+    {
+     "ten": "Phường Hố Nai",
+     "tu": "Tân Hòa, xã Hố Nai 3 (Trảng Bom)",
+     "nhom": "TP Biên Hòa cũ"
+    },
+    {
+     "ten": "Phường Trảng Dài",
+     "tu": "Trảng Dài, xã Thiện Tân (Vĩnh Cửu)",
+     "nhom": "TP Biên Hòa cũ"
+    },
+    {
+     "ten": "Phường Tân Triều",
+     "tu": "Tân Phong, các xã Tân Bình, Bình Lợi, Thạnh Phú (Vĩnh Cửu)",
+     "nhom": "TP Biên Hòa cũ"
+    },
+    {
+     "ten": "Phường Long Hưng",
+     "tu": "Long Bình Tân, An Hòa, xã Long Hưng",
+     "nhom": "TP Biên Hòa cũ"
+    },
+    {
+     "ten": "Phường Phước Tân",
+     "tu": "Giữ nguyên",
+     "nhom": "TP Biên Hòa cũ"
+    },
+    {
+     "ten": "Phường Tam Phước",
+     "tu": "Giữ nguyên",
+     "nhom": "TP Biên Hòa cũ"
+    },
+    {
+     "ten": "Phường Long Khánh",
+     "tu": "Xuân An, Xuân Bình, Xuân Hòa, Phú Bình, xã Bàu Trâm",
+     "nhom": "TP Long Khánh cũ"
+    },
+    {
+     "ten": "Phường Bình Lộc",
+     "tu": "Suối Tre, xã Bình Lộc, xã Xuân Thiện (Thống Nhất)",
+     "nhom": "TP Long Khánh cũ"
+    },
+    {
+     "ten": "Phường Bảo Vinh",
+     "tu": "Bảo Vinh, xã Bảo Quang",
+     "nhom": "TP Long Khánh cũ"
+    },
+    {
+     "ten": "Phường Xuân Lập",
+     "tu": "Bàu Sen, Xuân Lập",
+     "nhom": "TP Long Khánh cũ"
+    },
+    {
+     "ten": "Phường Hàng Gòn",
+     "tu": "Xuân Tân, xã Hàng Gòn",
+     "nhom": "TP Long Khánh cũ"
+    },
+    {
+     "ten": "Phường Nhơn Trạch",
+     "tu": "TT Hiệp Phước, Long Tân, Phú Thạnh, Phú Hội, Phước Thiền",
+     "nhom": "Huyện Nhơn Trạch cũ"
+    },
+    {
+     "ten": "Xã Đại Phước",
+     "tu": "Phú Hữu, Phú Đông, Phước Khánh, Đại Phước",
+     "nhom": "Huyện Nhơn Trạch cũ"
+    },
+    {
+     "ten": "Xã Phước An",
+     "tu": "Phước An (Nhơn Trạch), Vĩnh Thanh, Long Thọ",
+     "nhom": "Huyện Nhơn Trạch cũ"
+    },
+    {
+     "ten": "Phường Long Thành",
+     "tu": "TT Long Thành, Lộc An, Bình Sơn (Long Thành), Long An",
+     "nhom": "Huyện Long Thành cũ"
+    },
+    {
+     "ten": "Xã Long Phước",
+     "tu": "Bàu Cạn, Long Phước",
+     "nhom": "Huyện Long Thành cũ"
+    },
+    {
+     "ten": "Xã Phước Thái",
+     "tu": "Tân Hiệp (Long Thành), Phước Bình, Phước Thái",
+     "nhom": "Huyện Long Thành cũ"
+    },
+    {
+     "ten": "Xã Bình An",
+     "tu": "Long Đức, Bình An",
+     "nhom": "Huyện Long Thành cũ"
+    },
+    {
+     "ten": "Xã An Phước",
+     "tu": "Tam An, An Phước",
+     "nhom": "Huyện Long Thành cũ"
+    },
+    {
+     "ten": "Phường Trảng Bom",
+     "tu": "TT Trảng Bom, Quảng Tiến, Sông Trầu, Giang Điền",
+     "nhom": "Huyện Trảng Bom cũ"
+    },
+    {
+     "ten": "Xã Bàu Hàm",
+     "tu": "Thanh Bình, Cây Gáo, Sông Thao, Bàu Hàm",
+     "nhom": "Huyện Trảng Bom cũ"
+    },
+    {
+     "ten": "Xã Bình Minh",
+     "tu": "Bắc Sơn, Bình Minh",
+     "nhom": "Huyện Trảng Bom cũ"
+    },
+    {
+     "ten": "Xã Hưng Thịnh",
+     "tu": "Đông Hòa, Tây Hòa, Trung Hòa, Hưng Thịnh",
+     "nhom": "Huyện Trảng Bom cũ"
+    },
+    {
+     "ten": "Xã An Viễn",
+     "tu": "Đồi 61, An Viễn",
+     "nhom": "Huyện Trảng Bom cũ"
+    },
+    {
+     "ten": "Phường Dầu Giây",
+     "tu": "TT Dầu Giây, Hưng Lộc, Bàu Hàm 2, Lộ 25",
+     "nhom": "Huyện Thống Nhất cũ"
+    },
+    {
+     "ten": "Xã Gia Kiệm",
+     "tu": "Quang Trung, Gia Tân 3, Gia Kiệm",
+     "nhom": "Huyện Thống Nhất cũ"
+    },
+    {
+     "ten": "Xã Thống Nhất",
+     "tu": "Gia Tân 1, Gia Tân 2, Phú Cường, Phú Túc",
+     "nhom": "Huyện Thống Nhất cũ"
+    },
+    {
+     "ten": "Phường Trị An",
+     "tu": "TT Vĩnh An, Mã Đà, Trị An",
+     "nhom": "Huyện Vĩnh Cửu cũ"
+    },
+    {
+     "ten": "Xã Tân An",
+     "tu": "Vĩnh Tân, Tân An",
+     "nhom": "Huyện Vĩnh Cửu cũ"
+    },
+    {
+     "ten": "Xã Phú Lý",
+     "tu": "Giữ nguyên",
+     "nhom": "Huyện Vĩnh Cửu cũ"
+    },
+    {
+     "ten": "Xã Định Quán",
+     "tu": "TT Định Quán, Phú Ngọc, Gia Canh, Ngọc Định",
+     "nhom": "Huyện Định Quán cũ"
+    },
+    {
+     "ten": "Xã La Ngà",
+     "tu": "Túc Trưng, La Ngà",
+     "nhom": "Huyện Định Quán cũ"
+    },
+    {
+     "ten": "Xã Phú Vinh",
+     "tu": "Phú Tân, Phú Vinh",
+     "nhom": "Huyện Định Quán cũ"
+    },
+    {
+     "ten": "Xã Phú Hòa",
+     "tu": "Phú Điền, Phú Lợi, Phú Hòa",
+     "nhom": "Huyện Định Quán cũ"
+    },
+    {
+     "ten": "Xã Thanh Sơn",
+     "tu": "Giữ nguyên",
+     "nhom": "Huyện Định Quán cũ"
+    },
+    {
+     "ten": "Phường Tân Phú",
+     "tu": "TT Tân Phú, Phú Lộc, Trà Cổ, Phú Thanh, Phú Xuân",
+     "nhom": "Huyện Tân Phú cũ"
+    },
+    {
+     "ten": "Xã Phú Lâm",
+     "tu": "Phú Sơn, Phú Bình, Phú Lâm",
+     "nhom": "Huyện Tân Phú cũ"
+    },
+    {
+     "ten": "Xã Tà Lài",
+     "tu": "Phú Thịnh, Phú Lập, Tà Lài",
+     "nhom": "Huyện Tân Phú cũ"
+    },
+    {
+     "ten": "Xã Nam Cát Tiên",
+     "tu": "Phú An, Nam Cát Tiên",
+     "nhom": "Huyện Tân Phú cũ"
+    },
+    {
+     "ten": "Xã Đak Lua",
+     "tu": "Giữ nguyên",
+     "nhom": "Huyện Tân Phú cũ"
+    },
+    {
+     "ten": "Phường Xuân Lộc",
+     "tu": "TT Gia Ray, Xuân Thọ, Xuân Trường, Suối Cát, Xuân Hiệp",
+     "nhom": "Huyện Xuân Lộc cũ"
+    },
+    {
+     "ten": "Xã Xuân Định",
+     "tu": "Xuân Định, Bảo Hòa, Xuân Bảo (Cẩm Mỹ)",
+     "nhom": "Huyện Xuân Lộc cũ"
+    },
+    {
+     "ten": "Xã Xuân Phú",
+     "tu": "Lang Minh, Xuân Phú",
+     "nhom": "Huyện Xuân Lộc cũ"
+    },
+    {
+     "ten": "Xã Xuân Thành",
+     "tu": "Suối Cao, Xuân Thành",
+     "nhom": "Huyện Xuân Lộc cũ"
+    },
+    {
+     "ten": "Xã Xuân Bắc",
+     "tu": "Suối Nho, Xuân Bắc",
+     "nhom": "Huyện Xuân Lộc cũ"
+    },
+    {
+     "ten": "Xã Xuân Hòa",
+     "tu": "Xuân Hưng, Xuân Hòa, phần còn lại Xuân Tâm",
+     "nhom": "Huyện Xuân Lộc cũ"
+    },
+    {
+     "ten": "Xã Cẩm Mỹ",
+     "tu": "TT Long Giao, Nhân Nghĩa, Xuân Mỹ, Bảo Bình",
+     "nhom": "Huyện Cẩm Mỹ cũ"
+    },
+    {
+     "ten": "Xã Sông Ray",
+     "tu": "Lâm San, Sông Ray",
+     "nhom": "Huyện Cẩm Mỹ cũ"
+    },
+    {
+     "ten": "Xã Xuân Đông",
+     "tu": "Xuân Tây, Xuân Đông, một phần Xuân Tâm (Xuân Lộc)",
+     "nhom": "Huyện Cẩm Mỹ cũ"
+    },
+    {
+     "ten": "Xã Xuân Quế",
+     "tu": "Xuân Quế, Sông Nhạn",
+     "nhom": "Huyện Cẩm Mỹ cũ"
+    },
+    {
+     "ten": "Xã Xuân Đường",
+     "tu": "Cẩm Đường (Long Thành), Thừa Đức, Xuân Đường",
+     "nhom": "Huyện Cẩm Mỹ cũ"
+    }
+   ]
+  },
+  "faq": [
+   {
+    "q": "Đồng Nai cũ nay gồm những phường, xã nào?",
+    "a": "Từ 01/07/2025, địa bàn tỉnh Đồng Nai cũ (trước khi hợp nhất với Bình Phước) được sắp xếp thành 55 phường, xã theo Nghị quyết 1662/NQ-UBTVQH15; từ 30/04/2026 thuộc thành phố Đồng Nai. Bảng kèm theo ghi từng đơn vị mới và các đơn vị cũ hình thành nên."
+   },
+   {
+    "q": "Khách hàng ở Đồng Nai mua bảo hiểm PVI tại đâu?",
+    "a": "Khách hàng ở Đồng Nai có thể liên hệ Công ty Bảo hiểm PVI Thành Đô, Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, hoặc nhắn Zalo 0938 072 236 để được tư vấn và báo phí từ xa. Tại Đồng Nai còn có Công ty Bảo hiểm PVI Đông Nam Bộ tại Tầng 12, Tòa nhà Sonadezi, Số 1, Đường 1, Khu phố Khu Công nghiệp."
+   },
+   {
+    "q": "Có cần đến văn phòng để mua bảo hiểm không?",
+    "a": "Không bắt buộc. Phần lớn sản phẩm làm được từ xa: nhắn Zalo 0938 072 236, gửi ảnh đăng ký xe, danh sách người được bảo hiểm hoặc thông tin cơ sở, nhận báo phí rồi mới quyết định. Bảo hiểm vật chất xe, cháy nổ, công trình có thể cần thêm ảnh hoặc khảo sát thực tế trước khi phát hành."
+   },
+   {
+    "q": "Giấy chứng nhận bảo hiểm ghi địa chỉ tỉnh Đồng Nai cũ còn hiệu lực không?",
+    "a": "Còn. Việc sắp xếp đơn vị hành chính chỉ đổi tên gọi của địa chỉ, không làm chấm dứt hợp đồng bảo hiểm; giấy chứng nhận đã cấp vẫn có hiệu lực đến hết thời hạn ghi trên giấy. Khi tái tục hoặc sửa đổi hợp đồng, nên cung cấp địa chỉ theo tên phường, xã mới để hồ sơ thống nhất."
+   },
+   {
+    "q": "Nhà thầu thi công ở Long Thành, Nhơn Trạch mua bảo hiểm công trình ở đâu?",
+    "a": "Nhà thầu có thể gửi hợp đồng thi công, giá trị công trình và tiến độ qua Zalo 0938 072 236 để PVI Thành Đô tư vấn bảo hiểm công trình, tai nạn người lao động và trách nhiệm bên thứ ba, hoặc liên hệ Bảo hiểm PVI Đông Nam Bộ có văn phòng tại Đồng Nai."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Nghi-quyet-202-2025-QH15-sap-xep-don-vi-hanh-chinh-cap-tinh-648951.aspx",
+    "label": "Nghị quyết 202/2025/QH15 ngày 12/06/2025 của Quốc hội về sắp xếp đơn vị hành chính cấp tỉnh",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-so-1662-nq-ubtvqh15-sap-xep-cac-dvhc-cap-xa-cua-tinh-dong-nai-nam-2025-119250616200044446.htm",
+    "label": "Nghị quyết 1662/NQ-UBTVQH15 ngày 16/06/2025 về sắp xếp đơn vị hành chính cấp xã của tỉnh Đồng Nai năm 2025",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "https://xaydungchinhsach.chinhphu.vn/nghi-quyet-so-30-2026-qh16-thanh-lap-thanh-pho-dong-nai-119260430102336551.htm",
+    "label": "Nghị quyết 30/2026/QH16 thành lập thành phố Đồng Nai trực thuộc trung ương, hiệu lực từ 30/04/2026",
+    "org": "Quốc hội"
+   },
+   {
+    "url": "https://thuvienphapluat.vn/chinh-sach-phap-luat-moi/vn/ho-tro-phap-luat/chinh-sach-moi/110424/danh-sach-10-phuong-moi-duoc-thanh-lap-o-tinh-dong-nai-tu-30-4-2026",
+    "label": "Nghị quyết 237/NQ-UBTVQH16 thành lập 10 phường thuộc Đồng Nai, hiệu lực từ 30/04/2026",
+    "org": "Ủy ban Thường vụ Quốc hội"
+   },
+   {
+    "url": "/don-vi-thanh-vien-pvi",
+    "label": "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI 2026",
+    "org": "Bảo hiểm PVI Thành Đô"
+   },
+   {
+    "url": "/gioi-thieu",
+    "label": "Giới thiệu Công ty Bảo hiểm PVI Thành Đô và thông tin pháp nhân",
+    "org": "Bảo hiểm PVI Thành Đô"
+   }
+  ]
+ }
+]

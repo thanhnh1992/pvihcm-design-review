@@ -8,15 +8,18 @@ import * as kbCongTrinh from './articles/tai-nan-cong-trinh.mjs';
 import * as kbTaiNanCaNhan from './articles/loi-ich-tai-nan-ca-nhan.mjs';
 import * as kbBinhDuong from './articles/mua-bao-hiem-pvi-binh-duong.mjs';
 import * as kbBinhThanh from './articles/mua-bao-hiem-pvi-binh-thanh.mjs';
+import { areas, SKIP as AREA_SKIP, renderArea, ZALO_TU_VAN } from './articles/khu-vuc.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.resolve(HERE, '../dist');
 // Chủ site chốt 05/10/2026: bài viết TUYỆT ĐỐI không có link ra ngoài (nhất là đối thủ).
 // Chỉ cho phép link nội bộ, tel:, mailto: và Zalo OA của đơn vị. Vi phạm thì dừng sinh trang.
 const OWN_ZALO = 'https://zalo.me/2076363329232219188?src=qr&f=1';
+// Zalo tư vấn 0938 072 236 của đơn vị: chủ site chốt 15/10/2026 cho loạt bài theo khu vực (liên hệ đẩy về Zalo này).
 const checkNoOutbound = (rel, html) => {
   const main = html.slice(html.indexOf('<main'), html.indexOf('</main>'));
-  const bad = [...main.matchAll(/<a\s[^>]*href="(https?:)?\/\/[^"]*"/gi)].map((m) => m[0]).filter((tag) => !tag.includes(`href="${OWN_ZALO.replace(/&/g, '&amp;')}"`) && !tag.includes(`href="${OWN_ZALO}"`));
+  const own = [OWN_ZALO, OWN_ZALO.replace(/&/g, '&amp;'), ZALO_TU_VAN].map((u) => `href="${u}"`);
+  const bad = [...main.matchAll(/<a\s[^>]*href="(https?:)?\/\/[^"]*"/gi)].map((m) => m[0]).filter((tag) => !own.some((x) => tag.includes(x)));
   if (bad.length) throw new Error(`[${rel}] có link ra ngoài, không được phép:\n` + bad.join('\n'));
 };
 const write = (rel, html) => {
@@ -147,8 +150,16 @@ ${head(g, i)}
 <span class="nl-latest-copy"><span class="nl-badge">Mới nhất</span><span class="nl-label">${esc(first.cat)}</span><h3>${t(first.title)}</h3><p>${t(first.lead)}</p>
 <span class="nl-meta">${time(first)}<b>Đọc bài <i aria-hidden="true">&rarr;</i></b></span></span></a>
 ${rest.length ? `<ol class="nl-timeline">${rest.map((p) => `<li>${time(p)}<a href="/tin-tuc/${p.slug}/"><span class="nl-label">${esc(p.cat)}</span><h3>${t(p.title)}</h3><p>${t(p.lead)}</p></a></li>`).join('')}</ol>` : ''}
-</div>
+</div>${g.key === 'chung' ? areaIndex() : ''}
 </div></section>`;
+  };
+  // Loạt bài theo khu vực (tools/articles/khu-vuc.mjs): một khối link gọn, không xếp từng bài vào dòng thời gian.
+  const areaIndex = () => {
+    const list = [['Bình Thạnh', '/tin-tuc/mua-bao-hiem-pvi-binh-thanh/'], ['Bình Dương', '/tin-tuc/mua-bao-hiem-pvi-binh-duong/'],
+      ...areas.filter((a) => !AREA_SKIP.has(a.slug)).map((a) => [a.ten, `/tin-tuc/${a.slug}/`])];
+    return `
+<div class="nl-areas"><h3>Mua bảo hiểm PVI theo khu vực</h3><p>Văn phòng, phường xã mới sau sắp xếp từ 01/07/2025 và cách nhận báo phí cho từng khu vực.</p>
+<ul>${list.map(([ten, href]) => `<li><a href="${href}">${esc(ten)}</a></li>`).join('')}</ul></div>`;
   };
   const main = `
 <section class="nl-hero"><div class="nl-hero-grid" aria-hidden="true"></div><div class="fire-wrap">
@@ -448,3 +459,9 @@ renderKb(kbCongTrinh);
 renderKb(kbTaiNanCaNhan);
 renderKb(kbBinhDuong);
 renderKb(kbBinhThanh);
+
+/* ── Loạt bài theo khu vực: bản đăng lại, canonical về baohiempvi-vn.com ── */
+{
+  const units = JSON.parse(fs.readFileSync(path.resolve(HERE, 'data/don-vi-pvi.json'), 'utf8'));
+  for (const A of areas) if (!AREA_SKIP.has(A.slug)) renderArea(A, { page, write, units });
+}

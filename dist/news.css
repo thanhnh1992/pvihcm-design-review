@@ -636,3 +636,10 @@
   .kb-table td:last-child{padding-bottom:14px;color:var(--brand);font-weight:500}
 }
 @media(prefers-reduced-motion:reduce){.kb *{transition:none!important}}
+/* Trang Tin tức: khối link loạt bài theo khu vực (mục Tin tức chung) */
+.nl-areas{margin-top:28px;padding:20px 22px;border:1px solid #dbe5f0;border-radius:16px;background:#f5f9fe}
+.nl-areas h3{margin:0 0 6px;font-size:20px;color:#071f43}
+.nl-areas p{margin:0 0 14px;font-size:15px;line-height:1.6;color:#55687f}
+.nl-areas ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.nl-areas a{display:inline-block;padding:8px 14px;border-radius:999px;border:1px solid #cfdcea;background:#fff;font-size:14px;font-weight:600;color:#0b5cb8}
+.nl-areas a:hover{background:#e3effc}

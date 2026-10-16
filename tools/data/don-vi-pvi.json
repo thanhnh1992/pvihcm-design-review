@@ -1,0 +1,114 @@
+[
+ {
+  "name": "Bảo hiểm PVI Digital",
+  "type": "Chi nhánh Digital",
+  "province": "TP. Hồ Chí Minh",
+  "address": "Phòng G08, Tầng 1, Tòa nhà Petrovietnam, Số 1-5 Lê Duẩn, Phường Sài Gòn, Thành phố Hồ Chí Minh",
+  "phone": "028.9999.8386",
+  "note": "PVI Digital có kênh online.pvi.com.vn; số hotline trực tuyến trên bài của PVI khác số danh bạ."
+ },
+ {
+  "name": "Bảo hiểm PVI TP. Hồ Chí Minh",
+  "type": "Công ty thành viên",
+  "province": "TP. Hồ Chí Minh",
+  "address": "Tầng 3A và Tầng 5, Tòa nhà TMS, Số 172 Hai Bà Trưng, Phường Tân Định, Thành phố Hồ Chí Minh",
+  "phone": "0283.8246421",
+  "note": "—"
+ },
+ {
+  "name": "Bảo hiểm PVI Sài Gòn",
+  "type": "Công ty thành viên",
+  "province": "TP. Hồ Chí Minh",
+  "address": "Tầng 7, Tòa nhà Capital Place, Số 6 Thái Văn Lung, Phường Sài Gòn, Thành phố Hồ Chí Minh",
+  "phone": "0283.9333668",
+  "note": "—"
+ },
+ {
+  "name": "Bảo hiểm PVI Bến Thành",
+  "type": "Công ty thành viên",
+  "province": "TP. Hồ Chí Minh",
+  "address": "Tầng 4 và Tầng 5, Tòa nhà văn phòng, Số 06-10 Cửu Long, Phường Tân Sơn Hòa, Thành phố Hồ Chí Minh",
+  "phone": "0283.9291268",
+  "note": "—"
+ },
+ {
+  "name": "Bảo hiểm PVI Gia Định",
+  "type": "Công ty thành viên",
+  "province": "TP. Hồ Chí Minh",
+  "address": "Tầng 3, Cao ốc Yoco, Số 41 Nguyễn Thị Minh Khai, Phường Sài Gòn, Thành phố Hồ Chí Minh",
+  "phone": "0283.8258958",
+  "note": "—"
+ },
+ {
+  "name": "Bảo hiểm PVI Thành Đô",
+  "type": "Công ty thành viên",
+  "province": "TP. Hồ Chí Minh",
+  "address": "Tầng 12A, Tòa nhà 194 Golden Building, Số 473 Điện Biên Phủ, Phường Thạnh Mỹ Tây, Thành phố Hồ Chí Minh",
+  "phone": "0283.5352235",
+  "note": "Website baohiempvi-vn.com trùng danh bạ PVI về địa chỉ/MST; trang tra MST còn trụ sở cũ và khác tên người đại diện, cần xác nhận đăng ký pháp lý mới nhất."
+ },
+ {
+  "name": "Bảo hiểm PVI Thủ Đức",
+  "type": "Công ty thành viên",
+  "province": "TP. Hồ Chí Minh",
+  "address": "Tầng 3, Tòa nhà Sophie Building, Số 277B Đỗ Xuân Hợp, Phường Phước Long, Thành phố Hồ Chí Minh",
+  "phone": "0283.5355625",
+  "note": "—"
+ },
+ {
+  "name": "Bảo hiểm PVI Thống Nhất",
+  "type": "Công ty thành viên",
+  "province": "TP. Hồ Chí Minh",
+  "address": "Lầu 9, Tòa nhà Phượng Long, Số 506 Nguyễn Đình Chiểu, Phường Bàn Cờ, Thành phố Hồ Chí Minh",
+  "phone": "0283.9291679",
+  "note": "—"
+ },
+ {
+  "name": "Bảo hiểm PVI Nam Sài Gòn",
+  "type": "Công ty thành viên",
+  "province": "TP. Hồ Chí Minh",
+  "address": "Tầng 5, Cao ốc Văn phòng Phượng Long 2, Số 16 Nguyễn Trường Tộ, Phường Xóm Chiếu, Thành phố Hồ Chí Minh",
+  "phone": "0283.5358256",
+  "note": "—"
+ },
+ {
+  "name": "Bảo hiểm PVI Đông Nam Bộ",
+  "type": "Công ty thành viên",
+  "province": "Đồng Nai",
+  "address": "Tầng 12, Tòa nhà Sonadezi, Số 1, Đường 1, Khu phố Khu Công nghiệp, Phường Trấn Biên, Tỉnh Đồng Nai",
+  "phone": "0251.3918691",
+  "note": "Trang danh bạ hiện tại là Sonadezi, nhưng thông báo chính thức 08/04/2026 lại là 328 Võ Thị Sáu; chưa biết thời điểm chuyển sau cùng."
+ },
+ {
+  "name": "Bảo hiểm PVI Đông Sài Gòn",
+  "type": "Chi nhánh đổi tên",
+  "province": "TP. Hồ Chí Minh",
+  "address": "Tầng 4 và 5, Tòa nhà Số 48, Đường Hoàng Văn Thụ, Khu dân cư Chánh Nghĩa, Phường Thủ Dầu Một, Thành phố Hồ Chí Minh",
+  "phone": "0274.3872528",
+  "note": "Đổi tên từ PVI Bình Dương năm 2025."
+ },
+ {
+  "name": "Bảo hiểm PVI Vũng Tàu",
+  "type": "Công ty thành viên",
+  "province": "TP. Hồ Chí Minh",
+  "address": "Số 58A đường Võ Thị Sáu, Phường Vũng Tàu, Thành phố Hồ Chí Minh",
+  "phone": "0254.3810040",
+  "note": "—"
+ },
+ {
+  "name": "Bảo hiểm PVI Đồng Khởi",
+  "type": "Chi nhánh",
+  "province": "TP. Hồ Chí Minh",
+  "address": "Tầng 8, Tòa nhà HMC, Số 193 Đinh Tiên Hoàng, Phường Tân Định, Thành phố Hồ Chí Minh",
+  "phone": "Chưa công bố",
+  "note": "PVI không công bố số điện thoại."
+ },
+ {
+  "name": "Bảo hiểm PVI Phía Nam",
+  "type": "Đơn vị khu vực (ngoài danh mục 45)",
+  "province": "TP. Hồ Chí Minh",
+  "address": "Tầng 19, Tòa nhà PetroVietnam, Số 1-5 Lê Duẩn, Phường Sài Gòn, Thành phố Hồ Chí Minh",
+  "phone": "0283.9111666",
+  "note": "Được đặt ở phần đầu danh bạ của PVI; MST phân nhánh -025, không nằm trong nhóm Công ty thành viên."
+ }
+]

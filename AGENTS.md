@@ -81,7 +81,8 @@ Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist
 
 **Quy tắc viết bài Tin tức / Kiến thức (chủ site chốt 14/10/2026, bắt buộc)**
 - Đọc `QUY-TAC-VIET-BAI.md` trước khi viết bài. File này giống hệt bản trong repo baohiempvi-vnwebsite; sửa bên nào thì chép sang bên kia.
-- Kiến thức chung và cập nhật pháp lý: bản chuẩn ở baohiempvi-vn.com. Tin tức đơn vị và bài theo khu vực: bản chuẩn ở pvihcm.com.
+- Kiến thức chung, cập nhật pháp lý và bài theo khu vực: bản chuẩn ở baohiempvi-vn.com. Tin tức đơn vị: bản chuẩn ở pvihcm.com.
+- Loạt bài "Mua bảo hiểm PVI tại <khu vực>" (chủ site giao 15/10/2026): `tools/articles/khu-vuc.mjs` + dữ liệu `tools/data/khu-vuc.json` (chép từ `app/area-articles.json` của baohiempvi-vnwebsite) + CSS `dist/khu-vuc.css`. Trang khai canonical về baohiempvi-vn.com nên không vào sitemap. Liên hệ đẩy về Zalo 0938 072 236 (`https://zalo.me/0938072236`, được `checkNoOutbound` cho phép cùng Zalo OA). `tools/data/don-vi-pvi.json` là bản chép danh bạ đơn vị PVI phía Nam từ `app/pvi-member-directory.json`.
 - Đăng lại bài đã có bản chuẩn ở site khác: thêm `canonical: 'https://...'` vào `post` của module bài. `renderKb()` in canonical đó, `gen-sitemap.mjs` tự bỏ trang khỏi sitemap.
 
 **Link ra ngoài (chủ site chốt 05/10/2026, bắt buộc)**
