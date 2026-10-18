@@ -1,7 +1,7 @@
 // Tin: cháy căn hộ chung cư Happy Valley, đường Nguyễn Văn Linh, phường Tân Hưng (Quận 7 cũ), tối 17/10/2026.
 // Bản chuẩn ở baohiempvi-vn.com (chủ site giao 18/10/2026, đăng cả hai mục Tin tức); trang này khai canonical về đó.
 // Dữ kiện theo Thanh Niên, Sài Gòn Giải Phóng, Tiền Phong; nguồn ghi bằng chữ, không link ra ngoài.
-// Không dùng ảnh, video TikTok của người khác (chủ site chốt); chỉ hình minh họa có sẵn.
+// Ảnh, video do chủ site gửi (chủ site chốt 18/10/2026 dùng lại); ghi nguồn TikTok, video tắt tiếng, không tự phát.
 import { ZALO_TU_VAN } from './khu-vuc.mjs';
 
 export const post = {
@@ -11,14 +11,14 @@ export const post = {
   cat: 'Tin tức · Cháy nổ',
   title: 'Cháy căn hộ chung cư Happy Valley (Quận 7 cũ): chủ căn hộ được bảo hiểm gì, ai mua phần chung',
   lead: 'Khoảng 18 giờ 39 ngày 17/10/2026, căn hộ M304 ở lầu 3, Block M chung cư Happy Valley trên đường Nguyễn Văn Linh, phường Tân Hưng (Quận 7 cũ), TP.HCM bốc cháy khi trong nhà không có người. Không ai bị thương, nhưng khoảng 20 m² trong căn hộ 100 m² bị thiêu rụi. Thiệt hại trong căn hộ do ai bồi thường?',
-  image: '/assets/chung-cu-minh-hoa.webp',
-  alt: 'Hình ảnh minh họa: tòa chung cư nhiều tầng trên nền xanh đậm, một số ô cửa sổ sáng màu cam',
+  image: '/assets/chay-happy-valley-hien-truong.webp',
+  alt: 'Mặt đứng tòa chung cư màu trắng hồng, một dãy cửa sổ các tầng bị ám khói đen sau vụ cháy, phía trước là hàng cây',
   readMin: 5,
   canonical: 'https://www.baohiempvi-vn.com/kien-thuc/chay-can-ho-chung-cu-happy-valley-bao-hiem-chay-no',
 };
 
 export const crumb = 'Tin tức cháy nổ';
-export const hero = { name: 'chung-cu-minh-hoa', w: 1200, h: 630, position: '50% 50%', caption: 'Hình ảnh minh họa: tòa chung cư nhiều tầng, không phải ảnh thật của chung cư Happy Valley hay vụ cháy.' };
+export const hero = { name: 'chay-happy-valley-hien-truong', w: 1200, h: 630, position: '50% 40%', caption: 'Ảnh thực tế: mặt đứng chung cư với dãy cửa sổ bị ám khói đen sau vụ cháy, được cho là tại chung cư Happy Valley · Nguồn: người dùng TikTok @dqhuy280593.' };
 export const seo = {
   title: 'Cháy căn hộ chung cư Happy Valley: bảo hiểm gì, ai mua | PVI',
   description: 'Tối 17/10/2026, căn hộ lầu 3 chung cư Happy Valley, phường Tân Hưng bốc cháy. Bảo hiểm cháy nổ chung cư bảo vệ phần nào, chủ căn hộ cần mua gì thêm.',
@@ -66,11 +66,12 @@ export function body({ pic, ctaRow }) {
 <p>Theo báo Thanh Niên, Sài Gòn Giải Phóng và Tiền Phong ngày 17 và 18/10/2026, Trung tâm Chỉ huy 114 nhận tin báo cháy khoảng 18 giờ 39 tại căn hộ M304, lầu 3, Block M chung cư Happy Valley. Lửa bắt đầu ở phòng ngủ khi bên trong không có người. Chuông báo cháy vang lên, hàng trăm cư dân di tản xuống đất bằng cầu thang bộ.</p>
 <p>Đám cháy được dập tắt hoàn toàn lúc 18 giờ 58, thiêu rụi khoảng 20 m² trên tổng diện tích 100 m² của căn hộ; lực lượng chữa cháy bảo vệ được phần còn lại và các căn hộ lân cận. Không có thiệt hại về người. Công an phường Tân Hưng phối hợp Công an TP.HCM đang điều tra nguyên nhân.</p>
 <p>Ngoài phần bị cháy, căn hộ sau hỏa hoạn thường còn hư hỏng do khói, muội và nước chữa cháy, đây là phần thiệt hại chủ nhà hay bỏ sót khi tính toán.</p>
+<figure class="kb-photo"><img src="/assets/chay-happy-valley-mat-dung.webp" width="900" height="1196" alt="Mặt đứng tòa chung cư, dãy cửa sổ nhiều tầng bị ám khói đen, phía trước là hàng cây xanh" loading="lazy" decoding="async"><figcaption>Ảnh thực tế: dãy cửa sổ nhiều tầng bị ám khói đen sau vụ cháy, được cho là tại chung cư Happy Valley; ảnh giữ nguyên dấu nguồn của người chia sẻ · Nguồn: người dùng TikTok @dqhuy280593</figcaption></figure>
+<figure class="kb-photo kb-video"><video controls muted playsinline preload="none" poster="/assets/chay-happy-valley-video-poster.webp" width="480" height="854"><source src="/assets/chay-happy-valley-video.mp4" type="video/mp4"></video><figcaption>Video thực tế: lửa và khói bốc ra từ một căn hộ chung cư buổi tối, được cho là vụ cháy tại Happy Valley; video đã tắt tiếng · Nguồn: video chia sẻ trên TikTok</figcaption></figure>
 
 <h2 id="ai-chi-tra">Căn hộ bị cháy thì bảo hiểm nào chi trả?</h2>
 <p>Phải tách hai phần. Bảo hiểm cháy, nổ bắt buộc của tòa nhà thường được mua cho phần sở hữu chung (hành lang, thang máy, hệ thống kỹ thuật, kết cấu chung) do chủ đầu tư hoặc ban quản trị đứng ra mua. Phần sở hữu riêng của từng căn hộ và đồ đạc bên trong cần chủ căn hộ mua bảo hiểm riêng.</p>
 <p>Nếu chủ căn hộ chưa có bảo hiểm riêng, thiệt hại nội thất, thiết bị, tài sản trong nhà do chính chủ nhà gánh. Với PVI, chủ căn hộ có thể mua bảo hiểm tự nguyện theo Quy tắc Mọi rủi ro căn hộ chung cư.</p>
-<figure class="kb-photo">${pic('can-ho-ven-song', { w: 1280, h: 720, alt: 'Hình ảnh minh họa: các tòa căn hộ cao tầng ven sông lúc chạng vạng, cửa sổ sáng đèn', sizes: '(max-width:900px) 92vw, 700px' })}<figcaption>Hình ảnh minh họa: khu căn hộ cao tầng ven sông ở TP.HCM, không phải ảnh thật của chung cư Happy Valley.</figcaption></figure>
 
 <h2 id="can-ho">Bảo hiểm căn hộ chung cư của PVI bảo vệ những gì?</h2>
 <p>Quy tắc Mọi rủi ro căn hộ chung cư của PVI (hiệu lực 05/12/2016) là sản phẩm tự nguyện, khác với bảo hiểm cháy, nổ bắt buộc. Phạm vi gồm các rủi ro:</p>

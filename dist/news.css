@@ -643,3 +643,6 @@
 .nl-areas ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .nl-areas a{display:inline-block;padding:8px 14px;border-radius:999px;border:1px solid #cfdcea;background:#fff;font-size:14px;font-weight:600;color:#0b5cb8}
 .nl-areas a:hover{background:#e3effc}
+/* Video thực tế khổ dọc trong bài kiến thức/tin tức */
+.kb .kb-video{max-width:420px;margin-inline:auto}
+.kb .kb-video video{display:block;width:100%;height:auto;border-radius:14px;background:#0b1b33}
