@@ -10,6 +10,7 @@ import * as kbBinhDuong from './articles/mua-bao-hiem-pvi-binh-duong.mjs';
 import * as kbBinhThanh from './articles/mua-bao-hiem-pvi-binh-thanh.mjs';
 import * as kbChayMassage from './articles/chay-tiem-massage-le-van-luong.mjs';
 import * as kbChayHappyValley from './articles/chay-can-ho-chung-cu-happy-valley.mjs';
+import * as kbKhoSprinkler from './articles/bao-hiem-chay-no-kho-hang-sprinkler.mjs';
 import { areas, SKIP as AREA_SKIP, renderArea, ZALO_TU_VAN } from './articles/khu-vuc.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -34,6 +35,7 @@ const write = (rel, html) => {
 
 /* ── Danh sách bài, mới nhất lên đầu ── */
 export const posts = [
+  kbKhoSprinkler.post,
   kbChayHappyValley.post,
   kbChayMassage.post,
   kbBinhThanh.post,
@@ -109,6 +111,7 @@ const POST_GROUP = {
   'mua-bao-hiem-pvi-binh-thanh': 'chung',
   'chay-tiem-massage-le-van-luong-bao-hiem-chay-no': 'san-pham',
   'chay-can-ho-chung-cu-happy-valley-bao-hiem-chay-no': 'san-pham',
+  'bao-hiem-chay-no-kho-hang-sprinkler-thuc-te': 'san-pham',
 };
 for (const p of posts) {
   if (!GROUPS.some((g) => g.key === POST_GROUP[p.slug])) throw new Error(`Bài ${p.slug} chưa được xếp vào mục nào (POST_GROUP trong gen-news.mjs)`);
@@ -467,6 +470,7 @@ renderKb(kbBinhDuong);
 renderKb(kbBinhThanh);
 renderKb(kbChayMassage);
 renderKb(kbChayHappyValley);
+renderKb(kbKhoSprinkler);
 
 /* ── Loạt bài theo khu vực: bản đăng lại, canonical về baohiempvi-vn.com ── */
 {

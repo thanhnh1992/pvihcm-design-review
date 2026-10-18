@@ -537,6 +537,7 @@
 /* Ảnh minh họa trong cột chữ */
 .kb-photo{margin:28px 0 26px}
 .kb-photo img{aspect-ratio:3/2;object-fit:cover;border-radius:16px}
+.kb-photo.kb-doc img{aspect-ratio:auto;height:auto;object-fit:contain;background:#f4f6f8}
 .kb-photo-tight{margin:0 0 4px}
 .kb-photo-tight img{border-radius:12px}
 .kb-gcn-fee{margin-top:16px}
