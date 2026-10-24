@@ -113,3 +113,24 @@ if (siteHeader && menuToggle) {
     if (siteHeader.classList.contains('nav-open') && !siteHeader.contains(event.target)) setMenu(false);
   });
 }
+
+
+// GA4 site tag and contact intent events; never send personal details.
+window.dataLayer = window.dataLayer || [];
+function gtag() { window.dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-HYEVLMD710');
+const analyticsScript = document.createElement('script');
+analyticsScript.async = true;
+analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-HYEVLMD710';
+document.head.append(analyticsScript);
+
+document.addEventListener('click', (event) => {
+  const link = event.target.closest?.('a[href]');
+  if (!link) return;
+  const href = link.getAttribute('href') || '';
+  const method = /^tel:(?:0938072236|0918981869)$/.test(href)
+    ? 'phone'
+    : href.startsWith('https://zalo.me/') ? 'zalo' : null;
+  if (method) gtag('event', 'contact_click', { contact_method: method });
+});
