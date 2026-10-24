@@ -101,6 +101,12 @@ Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist
 - Không thêm font hay script từ CDN chặn hiển thị.
 - Bộ tính phí phải điền sẵn giá trị mặc định trong HTML để không xô bố cục.
 
+**Bảo mật (header trong `vercel.json`, mục `"source": "/(.*)"`)**
+- Content-Security-Policy chỉ cho chạy script từ chính site, Google Tag Manager/GA4 và đúng một đoạn script viết thẳng trong HTML: đoạn mở mục lục `.kb-toc` do `tools/gen-news.mjs` sinh, cho phép bằng mã băm `sha256-...`. **Sửa đoạn script đó thì phải tính lại mã băm** (`printf '%s' '<nội dung trong thẻ script>' | openssl dgst -sha256 -binary | base64`) và thay trong `vercel.json`, nếu không trình duyệt sẽ chặn nó.
+- Không thêm `<script>` viết thẳng mới, không dùng `onclick=` trong HTML: đặt JS vào file `.js` trong `dist/`.
+- Thêm dịch vụ ngoài mới (pixel quảng cáo, chat, video nhúng, bản đồ khác…) thì phải thêm tên miền của nó vào đúng mục CSP (`script-src`, `connect-src`, `img-src`, `frame-src`), rồi mở trang kiểm tra console không có dòng "Refused to…".
+- `api/nhan-xet.js` chỉ nhận POST dạng `application/json` (chặn site lạ gửi nhận xét rác). Không nới điều kiện này.
+
 **Git**
 - Commit tiếng Việt, mô tả ngắn điều đã đổi.
 - Không force-push `main`.

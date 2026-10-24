@@ -91,6 +91,11 @@ module.exports = async function handler(req, res) {
 
     if (req.method === 'POST') {
       res.setHeader('Cache-Control', 'no-store');
+      // Chỉ nhận JSON: trang web khác không gửi được JSON tới đây mà trình duyệt không chặn (preflight),
+      // nên chặn được việc site lạ âm thầm gửi nhận xét rác bằng form hoặc fetch text/plain.
+      if (!/^application\/json\b/i.test(String(req.headers['content-type'] || ''))) {
+        return res.status(415).json({ ok: false, error: 'Định dạng gửi không hợp lệ.' });
+      }
       const d = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
       if (d.website) return res.status(200).json({ ok: true }); // ô bẫy bot
       const slug = String(d.slug || '');
