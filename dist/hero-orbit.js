@@ -8,6 +8,23 @@
 (() => {
   const orbit = document.querySelector('[data-orbit]');
   if (!orbit) return;
+
+  // Thẻ sản phẩm chưa có trang (data-soon): bấm vào hiện "Coming soon – Sắp ra mắt", không chuyển trang.
+  let toast, hideT = 0;
+  const showSoon = (card) => {
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.className = 'orbit-toast';
+      toast.setAttribute('role', 'status');
+      toast.setAttribute('aria-live', 'polite');
+      orbit.parentElement.appendChild(toast);
+    }
+    toast.innerHTML = `<b>Coming soon · Sắp ra mắt</b><span>${card.dataset.title} đang được hoàn thiện. Cần tư vấn ngay? Gọi <a href="tel:0938072236">0938 072 236</a> hoặc nhắn <a href="https://zalo.me/2076363329232219188?src=qr&amp;f=1" target="_blank" rel="noopener">Zalo</a>.</span>`;
+    toast.classList.add('is-on');
+    clearTimeout(hideT);
+    hideT = setTimeout(() => toast.classList.remove('is-on'), 4500);
+  };
+  orbit.querySelectorAll('[data-soon]').forEach((c) => c.addEventListener('click', () => showSoon(c)));
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const cards = [...orbit.querySelectorAll('.orbit-card')];
   const n = cards.length;
@@ -19,11 +36,16 @@
   const SLOW = BASE * 0.12;       // rê chuột lên một thẻ
   orbit.classList.add('is-live');
   // Nhiều hơn 4 sản phẩm thì thu nhỏ thẻ cho vòng không chật.
-  if (n > 4) orbit.style.setProperty('--cw', `${Math.max(34, 50 * Math.sqrt(4 / n)).toFixed(1)}%`);
 
   let W = 0, H = 0, angle = 0, speed = BASE, target = BASE, boost = 0;
   let inArea = false, hot = null, running = false, last = 0, raf = 0, visible = true;
-  const measure = () => { W = orbit.clientWidth; H = orbit.clientHeight; };
+  // Nhiều hơn 4 sản phẩm thì thu nhỏ thẻ cho vòng không chật; màn hình hẹp giữ thẻ to hơn để nhãn đọc được.
+  const sizeCards = () => {
+    if (n <= 4) return orbit.style.removeProperty('--cw');
+    const min = orbit.clientWidth < 480 ? 44 : 34;
+    orbit.style.setProperty('--cw', `${Math.max(min, 50 * Math.sqrt(4 / n)).toFixed(1)}%`);
+  };
+  const measure = () => { sizeCards(); W = orbit.clientWidth; H = orbit.clientHeight; };
   measure();
   if ('ResizeObserver' in window) new ResizeObserver(() => { measure(); place(); }).observe(orbit);
 
