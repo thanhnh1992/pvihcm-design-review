@@ -22,7 +22,10 @@ const cards = heroProducts.map((p, i) => {
   const hasSet = ['480', '800'].every((w) => fs.existsSync(path.join(DIST, `${base}-${w}.webp`)));
   const srcset = hasSet ? ` srcset="${base}-480.webp 480w, ${base}-800.webp 800w, ${base}.webp 1280w" sizes="(max-width:820px) 60vw, 340px"` : '';
   const label = p.short ? `<span class="orbit-label"><span class="orbit-long">${esc(p.title)}</span><span class="orbit-short" aria-hidden="true">${esc(p.short)}</span></span>` : `<span class="orbit-label">${esc(p.title)}</span>`;
-  return `<a class="orbit-card" href="${esc(p.href)}"${external ? ' target="_blank" rel="noopener"' : ''} style="--i:${i}"><img width="1280" height="853" decoding="async"${i === 0 ? ' fetchpriority="high"' : ' loading="lazy"'} src="${base}.webp"${srcset} alt="${esc(p.alt)}">${label}</a>`;
+  const img = `<img width="1280" height="853" decoding="async"${i === 0 ? ' fetchpriority="high"' : ' loading="lazy"'} src="${base}.webp"${srcset} alt="${esc(p.alt)}">${label}`;
+  // Trang chưa có: nút thay vì link, để khách và Google không vào trang lỗi 404. Đường dẫn dự kiến giữ ở data-href.
+  if (p.soon) return `<button type="button" class="orbit-card" data-soon data-href="${esc(p.href)}" data-title="${esc(p.title)}" style="--i:${i}">${img}</button>`;
+  return `<a class="orbit-card" href="${esc(p.href)}"${external ? ' target="_blank" rel="noopener"' : ''} style="--i:${i}">${img}</a>`;
 }).join('\n');
 const block = `<!-- hero-orbit:start -->
 <div class="orbit" data-orbit style="--n:${heroProducts.length};--cols:${heroProducts.length > 4 ? 3 : 2}">

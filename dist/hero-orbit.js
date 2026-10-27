@@ -8,6 +8,23 @@
 (() => {
   const orbit = document.querySelector('[data-orbit]');
   if (!orbit) return;
+
+  // Thẻ sản phẩm chưa có trang (data-soon): bấm vào hiện "Coming soon – Sắp ra mắt", không chuyển trang.
+  let toast, hideT = 0;
+  const showSoon = (card) => {
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.className = 'orbit-toast';
+      toast.setAttribute('role', 'status');
+      toast.setAttribute('aria-live', 'polite');
+      orbit.parentElement.appendChild(toast);
+    }
+    toast.innerHTML = `<b>Coming soon · Sắp ra mắt</b><span>${card.dataset.title} đang được hoàn thiện. Cần tư vấn ngay? Gọi <a href="tel:0938072236">0938 072 236</a> hoặc nhắn <a href="https://zalo.me/2076363329232219188?src=qr&amp;f=1" target="_blank" rel="noopener">Zalo</a>.</span>`;
+    toast.classList.add('is-on');
+    clearTimeout(hideT);
+    hideT = setTimeout(() => toast.classList.remove('is-on'), 4500);
+  };
+  orbit.querySelectorAll('[data-soon]').forEach((c) => c.addEventListener('click', () => showSoon(c)));
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const cards = [...orbit.querySelectorAll('.orbit-card')];
   const n = cards.length;
