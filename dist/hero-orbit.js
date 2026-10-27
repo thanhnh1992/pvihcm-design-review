@@ -19,11 +19,16 @@
   const SLOW = BASE * 0.12;       // rê chuột lên một thẻ
   orbit.classList.add('is-live');
   // Nhiều hơn 4 sản phẩm thì thu nhỏ thẻ cho vòng không chật.
-  if (n > 4) orbit.style.setProperty('--cw', `${Math.max(34, 50 * Math.sqrt(4 / n)).toFixed(1)}%`);
 
   let W = 0, H = 0, angle = 0, speed = BASE, target = BASE, boost = 0;
   let inArea = false, hot = null, running = false, last = 0, raf = 0, visible = true;
-  const measure = () => { W = orbit.clientWidth; H = orbit.clientHeight; };
+  // Nhiều hơn 4 sản phẩm thì thu nhỏ thẻ cho vòng không chật; màn hình hẹp giữ thẻ to hơn để nhãn đọc được.
+  const sizeCards = () => {
+    if (n <= 4) return orbit.style.removeProperty('--cw');
+    const min = orbit.clientWidth < 480 ? 44 : 34;
+    orbit.style.setProperty('--cw', `${Math.max(min, 50 * Math.sqrt(4 / n)).toFixed(1)}%`);
+  };
+  const measure = () => { sizeCards(); W = orbit.clientWidth; H = orbit.clientHeight; };
   measure();
   if ('ResizeObserver' in window) new ResizeObserver(() => { measure(); place(); }).observe(orbit);
 
