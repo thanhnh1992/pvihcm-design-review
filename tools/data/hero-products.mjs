@@ -10,8 +10,8 @@
 //   soon  : (tùy chọn) true khi trang sản phẩm chưa có: thẻ là nút, bấm vào hiện "Coming soon – Sắp ra mắt"
 export const heroProducts = [
   { href: '/san-pham/bao-hiem-bat-buoc/', title: 'Bảo hiểm bắt buộc', short: 'Bắt buộc', img: 'bat-buoc', alt: 'Mô hình 3D xe tải và hồ sơ bảo hiểm bắt buộc' },
-  { href: '/san-pham/bao-hiem-tai-nan/', title: 'Bảo hiểm tai nạn', short: 'Tai nạn', img: 'tai-nan', alt: 'Mô hình 3D mũ bảo hộ và nhóm nhân viên' },
-  { href: '/san-pham/chay-no-bat-buoc/', title: 'Cháy nổ bắt buộc', short: 'Cháy nổ', img: 'chay-no', alt: 'Mô hình 3D nhà xưởng được bảo vệ' },
+  { href: '/san-pham/bao-hiem-tai-nan/', title: 'Bảo hiểm tai nạn', short: 'Tai nạn', img: 'tai-nan', alt: 'Mô hình 3D mũ bảo hộ đỏ, nhóm nhân viên và vòng sáng đỏ trên đế kính' },
+  { href: '/san-pham/chay-no-bat-buoc/', title: 'Cháy nổ bắt buộc', short: 'Cháy nổ', img: 'chay-no', alt: 'Mô hình 3D nhà xưởng có bình chữa cháy, khiên sáng bảo vệ và vòng sáng đỏ trên đế kính' },
   { href: '/san-pham/hang-hoa-xuat-nhap-khau/', title: 'Hàng hóa xuất nhập khẩu', short: 'Hàng hóa XNK', img: 'hang-hoa', alt: 'Mô hình 3D tàu container và máy bay vận tải' },
   // Ba sản phẩm thêm 27/10/2026: chưa có trang trên pvihcm.com. soon: true -> bấm vào hiện "Coming soon – Sắp ra mắt",
   // không chuyển trang. Khi trang đã làm xong ở đúng href thì xóa "soon: true" là thẻ thành link thường.
