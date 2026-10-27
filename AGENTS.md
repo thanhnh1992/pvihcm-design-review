@@ -44,6 +44,7 @@ node tools/srcset.mjs         # gắn srcset cho ảnh
 node tools/prerender-fire.mjs # in sẵn biểu phí cháy nổ (59 dòng Phụ lục VI) vào HTML cho bot không chạy JS; chạy lại khi đổi tariff-data.js
 node tools/gen-news.mjs       # mục Tin tức và các bài
 node tools/gen-why-pvi.mjs    # khối "Vì sao chọn PVI" trên trang chủ (chép từ baohiempvi-vn: thị phần, AM Best, công trình)
+node tools/gen-hero-orbit.mjs # thẻ sản phẩm chạy vòng ở đầu trang chủ; thêm sản phẩm: sửa tools/data/hero-products.mjs rồi chạy lại
 node tools/gen-sitemap.mjs    # PHẢI chạy sau cùng: sinh lại dist/sitemap.xml (không sửa tay file này)
 ```
 - `tools/chrome.mjs`: header, menu, chân trang, thẻ SEO dùng chung. Hai trang `dist/index.html` và `dist/san-pham/chay-no-bat-buoc/index.html` sửa tay; header và chân trang của chúng lấy từ chrome.mjs qua `tools/patch-static.mjs`. JSON-LD của trang chủ thì sửa tay. Bảng trong `#fire-ref` của trang cháy nổ nằm giữa hai dấu `<!-- fire-ref:start ... -->` / `<!-- fire-ref:end -->`, do `tools/prerender-fire.mjs` sinh: không sửa tay, `page.js` vẫn vẽ lại theo tab khi trang tải.

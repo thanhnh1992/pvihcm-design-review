@@ -1,0 +1,105 @@
+/* Thẻ sản phẩm chạy vòng ở đầu trang chủ.
+   - Các thẻ chia đều trên một quỹ đạo tròn nghiêng: phía trước (dưới) to và rõ, phía sau (trên) nhỏ và nhạt hơn,
+     nhưng thẻ nào cũng luôn nhìn thấy (chủ site chốt phương án A).
+   - Tự quay chậm; rê chuột vào khu thẻ thì quay nhanh gấp 3; rê lên đúng một thẻ thì gần dừng để dễ bấm.
+   - Lăn chuột trong khu thẻ: đẩy vòng quay theo chiều lăn rồi trôi chậm dần; trang vẫn cuộn bình thường.
+   - Điện thoại: tự quay chậm, vuốt ngang để quay (vuốt dọc vẫn cuộn trang).
+   - Dừng khi khu thẻ ra khỏi màn hình hoặc tab ẩn. Máy bật giảm chuyển động: giữ lưới tĩnh. */
+(() => {
+  const orbit = document.querySelector('[data-orbit]');
+  if (!orbit) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const cards = [...orbit.querySelectorAll('.orbit-card')];
+  const n = cards.length;
+  if (n < 2) return;
+
+  const TAU = Math.PI * 2;
+  const BASE = TAU / 22;          // tốc độ thường: 22 giây một vòng
+  const FAST = BASE * 3;          // rê chuột vào khu thẻ
+  const SLOW = BASE * 0.12;       // rê chuột lên một thẻ
+  orbit.classList.add('is-live');
+  // Nhiều hơn 4 sản phẩm thì thu nhỏ thẻ cho vòng không chật.
+  if (n > 4) orbit.style.setProperty('--cw', `${Math.max(34, 50 * Math.sqrt(4 / n)).toFixed(1)}%`);
+
+  let W = 0, H = 0, angle = 0, speed = BASE, target = BASE, boost = 0;
+  let inArea = false, hot = null, running = false, last = 0, raf = 0, visible = true;
+  const measure = () => { W = orbit.clientWidth; H = orbit.clientHeight; };
+  measure();
+  if ('ResizeObserver' in window) new ResizeObserver(() => { measure(); place(); }).observe(orbit);
+
+  function place() {
+    const cw = cards[0].offsetWidth, ch = cards[0].offsetHeight;
+    const rx = Math.max(0, Math.min(W * 0.26, W / 2 - cw / 2 - 4));
+    const ry = Math.max(0, Math.min(H * 0.27, H / 2 - ch / 2 - 4));
+    cards.forEach((c, i) => {
+      const t = angle + (i * TAU) / n;
+      const d = (Math.cos(t) + 1) / 2;               // 1 = phía trước (dưới), 0 = phía sau (trên)
+      const s = (0.74 + 0.26 * d) * (c === hot ? 1.05 : 1);
+      c.style.transform = `translate(-50%,-50%) translate3d(${(Math.sin(t) * rx).toFixed(1)}px,${(Math.cos(t) * ry).toFixed(1)}px,0) scale(${s.toFixed(3)})`;
+      c.style.opacity = (0.8 + 0.2 * d).toFixed(3);
+      c.style.zIndex = c === hot ? 200 : 10 + Math.round(d * 100);
+    });
+  }
+
+  function frame(now) {
+    raf = 0;
+    const dt = Math.min((now - (last || now)) / 1000, 0.05);
+    last = now;
+    target = hot ? SLOW : inArea ? FAST : BASE;
+    speed += (target - speed) * Math.min(1, dt * 3);   // tăng/giảm tốc mượt
+    boost *= Math.exp(-dt * 2.2);                       // lực lăn chuột/vuốt trôi chậm dần
+    if (Math.abs(boost) < 0.001) boost = 0;
+    if (!dragging) angle = (angle + (speed + boost) * dt) % TAU;
+    place();
+    loop();
+  }
+  const loop = () => { if (!raf && visible && !document.hidden) raf = requestAnimationFrame(frame); else if (!visible || document.hidden) last = 0; };
+
+  // Rê chuột
+  orbit.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') inArea = true; });
+  orbit.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') { inArea = false; hot = null; } });
+  cards.forEach((c) => {
+    c.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { hot = c; c.classList.add('is-hot'); } });
+    c.addEventListener('pointerleave', () => { if (hot === c) hot = null; c.classList.remove('is-hot'); });
+    c.addEventListener('focus', () => { hot = c; c.classList.add('is-hot'); });
+    c.addEventListener('blur', () => { if (hot === c) hot = null; c.classList.remove('is-hot'); });
+  });
+
+  // Lăn chuột: không chặn cuộn trang, chỉ cộng thêm đà quay
+  orbit.addEventListener('wheel', (e) => {
+    const dy = Math.max(-200, Math.min(200, e.deltaMode === 1 ? e.deltaY * 33 : e.deltaY));
+    boost = Math.max(-8, Math.min(8, boost + dy * 0.02));
+  }, { passive: true });
+
+  // Vuốt ngang (cảm ứng); vuốt dọc để trình duyệt cuộn trang nhờ touch-action: pan-y
+  let dragging = false, moved = false, sx = 0, lx = 0, lt = 0, vel = 0, pid = null;
+  orbit.addEventListener('pointerdown', (e) => {
+    if (e.pointerType === 'mouse') return;
+    pid = e.pointerId; sx = lx = e.clientX; lt = performance.now(); vel = 0; moved = false; dragging = true;
+  });
+  orbit.addEventListener('pointermove', (e) => {
+    if (!dragging || e.pointerId !== pid) return;
+    const dx = e.clientX - lx, now = performance.now();
+    if (Math.abs(e.clientX - sx) > 8) { moved = true; orbit.classList.add('is-dragging'); }
+    const da = (dx / Math.max(W, 1)) * Math.PI;      // vuốt nửa bề ngang = quay 90 độ
+    angle = (angle + da) % TAU;
+    vel = da / Math.max((now - lt) / 1000, 0.008);
+    lx = e.clientX; lt = now;
+  });
+  const end = (e) => {
+    if (!dragging || e.pointerId !== pid) return;
+    dragging = false; pid = null; orbit.classList.remove('is-dragging');
+    if (moved) boost = Math.max(-8, Math.min(8, vel * 0.6));
+  };
+  orbit.addEventListener('pointerup', end);
+  orbit.addEventListener('pointercancel', end);
+  // Vừa vuốt xong thì không tính là bấm vào thẻ
+  orbit.addEventListener('click', (e) => { if (moved) { e.preventDefault(); moved = false; } }, true);
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((es) => { visible = es.some((x) => x.isIntersecting); loop(); }).observe(orbit);
+  }
+  document.addEventListener('visibilitychange', loop);
+  place();
+  loop();
+})();
