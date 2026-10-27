@@ -15,7 +15,7 @@ export const heroProducts = [
   { href: '/san-pham/hang-hoa-xuat-nhap-khau/', title: 'Hàng hóa xuất nhập khẩu', short: 'Hàng hóa XNK', img: 'hang-hoa', alt: 'Mô hình 3D tàu container và máy bay vận tải' },
   // Ba sản phẩm thêm 27/10/2026: chưa có trang trên pvihcm.com. soon: true -> bấm vào hiện "Coming soon – Sắp ra mắt",
   // không chuyển trang. Khi trang đã làm xong ở đúng href thì xóa "soon: true" là thẻ thành link thường.
-  { href: '/san-pham/bao-hiem-cong-trinh/', soon: true, title: 'Bảo hiểm công trình', short: 'Công trình', img: 'hero-cong-trinh', alt: 'Mô hình 3D tòa nhà đang xây và cần cẩu trên đế kính' },
-  { href: '/san-pham/bao-hiem-suc-khoe/', soon: true, title: 'Bảo hiểm sức khỏe', short: 'Sức khỏe', img: 'hero-suc-khoe', alt: 'Mô hình 3D trái tim, ống nghe và gia đình nhỏ trên đế kính' },
-  { href: '/san-pham/bao-hiem-du-lich/', soon: true, title: 'Bảo hiểm du lịch', short: 'Du lịch', img: 'hero-du-lich', alt: 'Mô hình 3D vali, máy bay và quả địa cầu trên đế kính' },
+  { href: '/san-pham/bao-hiem-cong-trinh/', soon: true, title: 'Bảo hiểm công trình', short: 'Công trình', img: 'hero-cong-trinh', alt: 'Mô hình 3D tòa nhà đang xây, cần cẩu và vòng sáng đỏ trên đế kính' },
+  { href: '/san-pham/bao-hiem-suc-khoe/', soon: true, title: 'Bảo hiểm sức khỏe', short: 'Sức khỏe', img: 'hero-suc-khoe', alt: 'Mô hình 3D trái tim đỏ, ống nghe và gia đình nhỏ trên đế kính' },
+  { href: '/san-pham/bao-hiem-du-lich/', soon: true, title: 'Bảo hiểm du lịch', short: 'Du lịch', img: 'hero-du-lich', alt: 'Mô hình 3D vali đỏ, máy bay và quả địa cầu trên đế kính' },
 ];
