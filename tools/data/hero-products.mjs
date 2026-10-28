@@ -13,9 +13,8 @@ export const heroProducts = [
   { href: '/san-pham/bao-hiem-tai-nan/', title: 'Bảo hiểm tai nạn', short: 'Tai nạn', img: 'tai-nan', alt: 'Mô hình 3D mũ bảo hộ đỏ, nhóm nhân viên và vòng sáng đỏ trên đế kính' },
   { href: '/san-pham/chay-no-bat-buoc/', title: 'Cháy nổ bắt buộc', short: 'Cháy nổ', img: 'chay-no', alt: 'Mô hình 3D nhà xưởng có bình chữa cháy, khiên sáng bảo vệ và vòng sáng đỏ trên đế kính' },
   { href: '/san-pham/hang-hoa-xuat-nhap-khau/', title: 'Hàng hóa xuất nhập khẩu', short: 'Hàng hóa XNK', img: 'hang-hoa', alt: 'Mô hình 3D tàu container và máy bay vận tải' },
-  // Ba sản phẩm thêm 27/10/2026: chưa có trang trên pvihcm.com. soon: true -> bấm vào hiện "Coming soon – Sắp ra mắt",
-  // không chuyển trang. Khi trang đã làm xong ở đúng href thì xóa "soon: true" là thẻ thành link thường.
-  { href: '/san-pham/bao-hiem-cong-trinh/', soon: true, title: 'Bảo hiểm công trình', short: 'Công trình', img: 'hero-cong-trinh', alt: 'Mô hình 3D tòa nhà đang xây, cần cẩu và vòng sáng đỏ trên đế kính' },
-  { href: '/san-pham/bao-hiem-suc-khoe/', soon: true, title: 'Bảo hiểm sức khỏe', short: 'Sức khỏe', img: 'hero-suc-khoe', alt: 'Mô hình 3D trái tim đỏ, ống nghe và gia đình nhỏ trên đế kính' },
-  { href: '/san-pham/bao-hiem-du-lich/', soon: true, title: 'Bảo hiểm du lịch', short: 'Du lịch', img: 'hero-du-lich', alt: 'Mô hình 3D vali đỏ, máy bay và quả địa cầu trên đế kính' },
+  // Ba sản phẩm thêm 27/10/2026; trang sản phẩm đã có trên pvihcm.com từ 28/10/2026 nên là link thường.
+  { href: '/san-pham/bao-hiem-cong-trinh/', title: 'Bảo hiểm công trình', short: 'Công trình', img: 'hero-cong-trinh', alt: 'Mô hình 3D tòa nhà đang xây, cần cẩu và vòng sáng đỏ trên đế kính' },
+  { href: '/san-pham/bao-hiem-suc-khoe/', title: 'Bảo hiểm sức khỏe', short: 'Sức khỏe', img: 'hero-suc-khoe', alt: 'Mô hình 3D trái tim đỏ, ống nghe và gia đình nhỏ trên đế kính' },
+  { href: '/san-pham/bao-hiem-du-lich/', title: 'Bảo hiểm du lịch', short: 'Du lịch', img: 'hero-du-lich', alt: 'Mô hình 3D vali đỏ, máy bay và quả địa cầu trên đế kính' },
 ];
