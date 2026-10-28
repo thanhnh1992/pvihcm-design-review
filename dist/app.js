@@ -76,8 +76,9 @@ if (marqueeToggle && marqueeTrack) {
   });
 }
 
-/* Quy tắc toàn site (chủ site chốt 28/10/2026): bấm link là mở tab mới, áp dụng
-   cho mọi trang hiện có và trang thêm sau này vì trang nào cũng nạp app.js.
+/* Quy tắc toàn site (chủ site chốt 28/10/2026): trên máy tính (có chuột), bấm link
+   là mở tab mới; điện thoại và máy tính bảng cảm ứng vẫn mở cùng tab như cũ.
+   Áp dụng cho mọi trang hiện có và trang thêm sau này vì trang nào cũng nạp app.js.
    Giữ nguyên tab hiện tại cho: link nhảy tới mục trong cùng trang (#...),
    tel:, mailto:, link tải file (download) và link có data-same-tab.
    Gắn sẵn khi tải trang, và gắn lại lúc bấm để link sinh ra sau (Zalo nổi,
@@ -92,8 +93,9 @@ const opensNewTab = (link) => {
   const samePage = url.origin === location.origin && url.pathname === location.pathname && url.search === location.search;
   return !(samePage && url.hash);
 };
+const desktopPointer = matchMedia('(hover:hover) and (pointer:fine)');
 const setNewTab = (link) => {
-  if (!opensNewTab(link)) return;
+  if (!desktopPointer.matches || !opensNewTab(link)) return;
   link.target = '_blank';
   const rel = new Set((link.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
   rel.add('noopener');
