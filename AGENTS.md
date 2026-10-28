@@ -93,6 +93,12 @@ Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist
 - `checkNoOutbound` trong `tools/gen-news.mjs` dừng sinh trang nếu phát hiện link ra ngoài. Không được tắt hay nới chốt này.
 - Trang sản phẩm và trang chủ hiện còn link sang pvi.com.vn và cổng văn bản Chính phủ: giữ nguyên tới khi chủ site quyết định.
 
+**Bấm link mở tab mới, chỉ trên máy tính (chủ site chốt 28/10/2026, áp dụng cho mọi trang hiện có và sau này)**
+- Chỉ áp dụng khi thiết bị có chuột (`(hover:hover) and (pointer:fine)`). Điện thoại và máy tính bảng cảm ứng mở cùng tab như cũ (link vốn đã có sẵn `target="_blank"` trong HTML thì vẫn giữ).
+- Đoạn `opensNewTab` / `setNewTab` ở đầu phần hiệu ứng trong `dist/app.js` tự gắn `target="_blank" rel="noopener"` cho mọi link http/https. Mọi trang đều nạp `app.js` (qua `page()` trong `tools/chrome.mjs` và `dist/index.html`), nên trang mới không cần làm gì thêm. Trang viết tay mới phải nạp `/app.js`.
+- Giữ nguyên tab cho: link nhảy mục trong cùng trang (`#...`), `tel:`, `mailto:`, link có `download`. Link nào cần mở cùng tab thì thêm `data-same-tab`.
+- Không gỡ hay đảo quy tắc này khi chủ site chưa đồng ý.
+
 **Trang và URL**
 - Trang hoặc bài mới: hỏi chủ site gắn ở đâu (URL, mục, link từ đâu) rồi mới push.
 - Không tự đổi URL, xóa trang hay tạo redirect khi chưa được đồng ý.

@@ -76,6 +76,37 @@ if (marqueeToggle && marqueeTrack) {
   });
 }
 
+/* Quy tắc toàn site (chủ site chốt 28/10/2026): trên máy tính (có chuột), bấm link
+   là mở tab mới; điện thoại và máy tính bảng cảm ứng vẫn mở cùng tab như cũ.
+   Áp dụng cho mọi trang hiện có và trang thêm sau này vì trang nào cũng nạp app.js.
+   Giữ nguyên tab hiện tại cho: link nhảy tới mục trong cùng trang (#...),
+   tel:, mailto:, link tải file (download) và link có data-same-tab.
+   Gắn sẵn khi tải trang, và gắn lại lúc bấm để link sinh ra sau (Zalo nổi,
+   thông báo...) cũng theo quy tắc. Đoạn này phải đứng trước hiệu ứng mở trang. */
+const opensNewTab = (link) => {
+  if (link.hasAttribute('download') || link.hasAttribute('data-same-tab')) return false;
+  const raw = link.getAttribute('href');
+  if (!raw || raw.startsWith('#')) return false;
+  let url;
+  try { url = new URL(raw, location.href); } catch { return false; }
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') return false;
+  const samePage = url.origin === location.origin && url.pathname === location.pathname && url.search === location.search;
+  return !(samePage && url.hash);
+};
+const desktopPointer = matchMedia('(hover:hover) and (pointer:fine)');
+const setNewTab = (link) => {
+  if (!desktopPointer.matches || !opensNewTab(link)) return;
+  link.target = '_blank';
+  const rel = new Set((link.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
+  rel.add('noopener');
+  link.setAttribute('rel', [...rel].join(' '));
+};
+document.querySelectorAll('a[href]').forEach(setNewTab);
+document.addEventListener('click', (event) => {
+  const link = event.target.closest?.('a[href]');
+  if (link) setNewTab(link);
+}, true);
+
 /* Hiệu ứng mở trang 280ms. Chỉ bắt cú bấm chuột trái thuần tuý; mọi kiểu mở
    khác (tab mới, chuột giữa, Ctrl/Cmd, phím tắt) đều để trình duyệt tự lo.
    Nếu JavaScript hỏng, thẻ <a> vẫn là thẻ <a>. */
