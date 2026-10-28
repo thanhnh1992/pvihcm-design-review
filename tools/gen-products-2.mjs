@@ -205,96 +205,211 @@ const build = (o) => {
   });
 }
 
+
 /* ═════════════ 4. DU LỊCH QUỐC TẾ ═════════════
-   Chưa có trong dữ liệu đã duyệt. Chỉ dùng thông tin PVI công bố trên online.pvi.com.vn,
-   ghi rõ nguồn, không tự đặt ra quyền lợi, hạn mức hay loại trừ. */
+   Quyền lợi, loại trừ và biểu phí lấy nguyên văn từ tài liệu chính thức của
+   Tổng công ty Bảo hiểm PVI: Quy tắc bảo hiểm du lịch quốc tế và Bảng quyền lợi
+   ban hành kèm Quyết định số 491/QĐ-PVIBH ngày 27/6/2025, cùng biểu phí đang
+   niêm yết trên kênh PVI Online. Không tự đặt ra con số nào. */
 {
   const P = '/san-pham/bao-hiem-du-lich/';
-  const SRC = 'https://online.pvi.com.vn/san-pham/bao-hiem-du-lich';
-  const faqs = [
-    { question: 'Bảo hiểm du lịch quốc tế của PVI bảo vệ những gì?', answer: 'Theo thông tin PVI công bố, sản phẩm chi trả chi phí y tế và tai nạn cá nhân trong hành trình, đồng thời hỗ trợ khi gặp sự cố như hủy chuyến, mất hành lý hoặc mất giấy tờ tùy thân. Hạn mức từng quyền lợi ghi trong quy tắc và giấy chứng nhận được phát hành.' },
-    { question: 'Phí bảo hiểm du lịch quốc tế bao nhiêu?', answer: 'PVI công bố mức phí từ 100.000 đồng một người và số tiền bảo hiểm lên đến 3 tỷ đồng. Phí cụ thể phụ thuộc hành trình, số ngày, độ tuổi và chương trình chọn, nên cần báo phí theo từng chuyến.' },
-    { question: 'Mua trước khi khởi hành bao lâu?', answer: 'Nên mua trước ngày khởi hành để giấy chứng nhận có hiệu lực đúng hành trình, nhất là khi hồ sơ xin thị thực yêu cầu kèm bảo hiểm du lịch. Gửi lịch trình và danh sách người đi để chuyên viên xác nhận thời hạn phù hợp.' },
-    { question: 'Có bảo hiểm du lịch trong nước không?', answer: 'Trên kênh PVI Online, bảo hiểm du lịch trong nước đang ở trạng thái sắp ra mắt, phí và số tiền bảo hiểm đang cập nhật. Khi cần phương án cho chuyến trong nước, liên hệ để được tư vấn theo sản phẩm hiện có.' },
+  const SRC = 'https://online.pvi.com.vn/bao-hiem-du-lich-quoc-te';
+  const PDF = 'https://gw.pvi.digital/public/contract/';
+  const QD = 'Quyết định số 491/QĐ-PVIBH ngày 27/6/2025';
+
+  // Sáu chương trình trong Bảng quyền lợi chính thức. CT4, CT5, CT6 chính là ba gói
+  // Bạc, Vàng, Kim cương đang bán trên PVI Online (mã DLQTCT4, DLQTCT5, DLQTCT6).
+  const CT = ['1', '2', '3', '4', '5', '6'];
+  const SOLD = { 3: 'Bạc', 4: 'Vàng', 5: 'Kim cương' };
+
+  const main1 = [
+    ['Tai nạn cá nhân', ['300 triệu', '500 triệu', '800 triệu', '1 tỷ', '2 tỷ', '3 tỷ'],
+      'Người được bảo hiểm trên 75 tuổi: giới hạn 50% số tiền bảo hiểm của quyền lợi này.'],
+    ['Tử vong do nguyên nhân khác ngoài tai nạn', ['30 triệu', '50 triệu', '80 triệu', '100 triệu', '200 triệu', '300 triệu'],
+      'Không áp dụng với người được bảo hiểm trên 75 tuổi.'],
+    ['Chi phí y tế', ['300 triệu', '500 triệu', '800 triệu', '1 tỷ', '2 tỷ', '3 tỷ'],
+      'Người được bảo hiểm trên 75 tuổi: giới hạn 50% số tiền bảo hiểm của quyền lợi này.'],
+    ['Trong đó, chi phí điều trị tiếp theo tại Việt Nam', ['15 triệu', '25 triệu', '40 triệu', '50 triệu', '100 triệu', '150 triệu'],
+      'Nằm trong giới hạn của quyền lợi chi phí y tế, không cộng thêm.'],
+    ['Trợ cấp nằm viện tại nước ngoài, mỗi ngày', ['300.000đ', '500.000đ', '800.000đ', '1 triệu', '2 triệu', '3 triệu'],
+      'Tối đa 15 ngày. Người được bảo hiểm trên 75 tuổi: giới hạn 50%.'],
+    ['Vận chuyển y tế cấp cứu', ['300 triệu', '500 triệu', '800 triệu', '1 tỷ', '2 tỷ', '3 tỷ'],
+      'Người được bảo hiểm trên 75 tuổi: giới hạn 50% số tiền bảo hiểm của quyền lợi này.'],
+    ['Hồi hương', ['300 triệu', '500 triệu', '800 triệu', '1 tỷ', '2 tỷ', '3 tỷ'],
+      'Người được bảo hiểm trên 75 tuổi: giới hạn 50% số tiền bảo hiểm của quyền lợi này.'],
+    ['Chi phí mai táng và hồi hương thi hài', ['60 triệu', '100 triệu', '160 triệu', '200 triệu', '400 triệu', '600 triệu'],
+      'Người được bảo hiểm trên 75 tuổi: giới hạn 50% số tiền bảo hiểm của quyền lợi này.'],
+    ['Thăm bệnh nhân ở nước ngoài', ['15 triệu', '25 triệu', '40 triệu', '50 triệu', '100 triệu', '150 triệu'], ''],
+    ['Đưa trẻ em hồi hương', ['15 triệu', '25 triệu', '40 triệu', '50 triệu', '100 triệu', '150 triệu'], ''],
   ];
+
+  const main2 = [
+    ['Hủy chuyến đi, rút ngắn chuyến đi', ['30 triệu', '50 triệu', '80 triệu', '100 triệu', '200 triệu', '300 triệu'],
+      'Nếu vận chuyển bằng máy bay thì chỉ chi trả đến giá trị vé máy bay ban đầu, tối đa đến số tiền bảo hiểm của quyền lợi này. Rút ngắn chuyến đi không áp dụng cho chuyến một chiều.'],
+    ['Chuyến đi bị trì hoãn', ['6 triệu', '8 triệu', '10 triệu', '10 triệu', '15 triệu', '20 triệu'],
+      'Chương trình 1 đến 3: 2 triệu đồng cho mỗi 8 giờ liên tục bị trì hoãn. Chương trình 4 đến 6: 2,5 triệu đồng cho mỗi 8 giờ.'],
+    ['Lỡ nối chuyến', ['6 triệu', '8 triệu', '10 triệu', '10 triệu', '15 triệu', '20 triệu'],
+      'Cùng một sự việc chỉ bồi thường theo quyền lợi trì hoãn hoặc quyền lợi lỡ nối chuyến, không cả hai.'],
+    ['Nhận hành lý chậm', ['4,5 triệu', '6 triệu', '7,5 triệu', '10 triệu', '12 triệu', '14 triệu'],
+      'Chương trình 1 đến 3: 1,5 triệu đồng cho mỗi 8 giờ liên tục đến chậm. Chương trình 4 đến 6: 2 triệu đồng cho mỗi 8 giờ.'],
+    ['Hành lý và vật dụng cá nhân mang theo', ['15 triệu', '25 triệu', '40 triệu', '50 triệu', '100 triệu', '150 triệu'],
+      '3 triệu đồng cho mỗi món đồ. Không yêu cầu cùng lúc quyền lợi này và quyền lợi nhận hành lý chậm cho cùng một sự kiện.'],
+    ['Mất giấy tờ tùy thân', ['15 triệu', '25 triệu', '40 triệu', '50 triệu', '100 triệu', '150 triệu'],
+      'Phải trình báo công an hoặc cơ quan có thẩm quyền trong vòng 24 giờ và có biên bản chính thức.'],
+    ['Trách nhiệm cá nhân', ['150 triệu', '250 triệu', '400 triệu', '500 triệu', '1 tỷ', '1,5 tỷ'], ''],
+  ];
+
+  const bands = ['1 đến 3 ngày', '4 đến 6 ngày', '7 đến 10 ngày', '11 đến 14 ngày', '15 đến 18 ngày', '19 đến 22 ngày', '23 đến 27 ngày', '28 đến 31 ngày'];
+  const fees = {
+    'Bạc': [200000, 260000, 320000, 420000, 520000, 560000, 600000, 660000],
+    'Vàng': [240000, 300000, 360000, 480000, 620000, 720000, 820000, 940000],
+    'Kim cương': [340000, 420000, 560000, 740000, 880000, 1000000, 1100000, 1200000],
+  };
+  const vnd = (n) => n.toLocaleString('vi-VN') + 'đ';
+
+  const exclusions = [
+    'Sự kiện xảy ra ngoài phạm vi lịch trình ghi trên hợp đồng hoặc giấy chứng nhận bảo hiểm.',
+    'Đi nước ngoài trái với lời khuyên của bác sĩ, hoặc đi vì mục đích chữa bệnh, chăm sóc y tế.',
+    'Tử vong, ốm đau, bệnh tật, thương tật do hành vi cố ý của người được bảo hiểm hoặc người thụ hưởng.',
+    'Tai nạn hoặc bệnh tật có nguyên nhân từ rượu, bia, ma túy, chất kích thích, trừ thuốc hoặc chất gây mê theo chỉ dẫn của bác sĩ.',
+    'Vi phạm pháp luật, vi phạm luật giao thông, vi phạm quy định của quốc gia nơi đến.',
+    'Khám và điều trị tại cơ sở không có giấy phép hoạt động hợp pháp.',
+    'Điều trị hoặc dùng thuốc không theo chỉ định của cơ sở y tế, bác sĩ.',
+    'Tham gia đánh nhau, trừ khi được xác định là cứu người, bảo vệ tài sản hoặc tự vệ.',
+    'Hậu quả của động đất, núi lửa, sóng thần, nhiễm phóng xạ, hạt nhân, hóa chất độc hay vụ nổ do vũ khí.',
+    'Hậu quả của chiến tranh, nội chiến, đình công, gây rối, bạo động, tấn công và khủng bố theo công bố của cơ quan có thẩm quyền.',
+    'Dịch bệnh, trừ khi tham gia điều khoản mở rộng "Bảo hiểm dịch bệnh".',
+    'Thể thao chuyên nghiệp và thể thao mạo hiểm, trừ khi tham gia điều khoản mở rộng "Bảo hiểm các hoạt động rủi ro cao".',
+    'Ngộ độc thức ăn, đồ uống, hít phải hơi độc, khí độc, chất độc, trừ khi tham gia điều khoản mở rộng "Bảo hiểm ngộ độc".',
+    'Bệnh lây truyền qua đường tình dục, HIV, AIDS và hậu quả liên quan.',
+    'Tình trạng y tế có trước, bệnh hoặc dị tật bẩm sinh. Hợp đồng bảo hiểm năm áp dụng loại trừ này trong 12 tháng đầu.',
+    'Bệnh huyết áp, tim mạch, ung thư, u các loại, bệnh hệ thống tạo máu, lọc máu, chạy thận nhân tạo, đái tháo đường, Parkinson, dù xảy ra trước hay trong thời hạn bảo hiểm.',
+    'Bệnh tâm thần, rối loạn tâm thần và hành vi, suy nhược không có nguyên nhân bệnh lý, hội chứng căng thẳng, bệnh Alzheimer.',
+    'Điều trị răng, thai sản, sinh đẻ, trừ điều trị cấp cứu do tai nạn trong vòng 24 giờ kể từ khi xảy ra tai nạn.',
+    'Người được bảo hiểm là thành viên phi hành đoàn hoặc lực lượng vũ trang đang thi hành nhiệm vụ.',
+  ];
+
+  const faqs = [
+    { question: 'Ai được tham gia bảo hiểm du lịch quốc tế của PVI?', answer: 'Công dân Việt Nam hoặc người nước ngoài cư trú hợp pháp tại Việt Nam, từ 07 ngày tuổi trở lên. Trẻ em dưới 12 tuổi phải đi cùng người từ 18 tuổi trở lên được ủy quyền hợp pháp và được bảo hiểm trong cùng một hợp đồng hoặc giấy chứng nhận bảo hiểm.' },
+    { question: 'Phí bảo hiểm du lịch quốc tế bao nhiêu một người?', answer: 'Theo biểu phí đang niêm yết trên PVI Online, chuyến 1 đến 3 ngày là 200.000 đồng với chương trình Bạc, 240.000 đồng với chương trình Vàng và 340.000 đồng với chương trình Kim cương. Phí tăng theo số ngày của hành trình, chuyến 28 đến 31 ngày lần lượt là 660.000, 940.000 và 1.200.000 đồng một người.' },
+    { question: 'Số tiền bảo hiểm cao nhất là bao nhiêu?', answer: 'Chương trình Kim cương có số tiền bảo hiểm tai nạn cá nhân và chi phí y tế 3 tỷ đồng mỗi quyền lợi. Bảng quyền lợi chính thức của PVI có sáu chương trình, từ 300 triệu đến 3 tỷ đồng, ba chương trình cao nhất tương ứng với Bạc, Vàng và Kim cương bán trực tuyến.' },
+    { question: 'Người trên 75 tuổi có mua được không?', answer: 'Mua được, nhưng một số quyền lợi bị giới hạn. Quyền lợi tai nạn cá nhân, chi phí y tế, vận chuyển y tế cấp cứu, hồi hương, mai táng và hồi hương thi hài chỉ áp dụng 50% số tiền bảo hiểm. Quyền lợi tử vong do nguyên nhân khác ngoài tai nạn không áp dụng.' },
+    { question: 'Quyền lợi hủy chuyến đi có hiệu lực từ khi nào?', answer: 'Quyền lợi hủy chuyến đi bắt đầu có hiệu lực vào ngày cấp giấy chứng nhận bảo hiểm hoặc ngày thứ 60 trước ngày khởi hành đầu tiên, tùy thời điểm nào xảy ra sau. Các quyền lợi bổ sung còn lại có hiệu lực từ khi hoàn tất thủ tục xuất cảnh tại Việt Nam trong ngày khởi hành đầu tiên.' },
+    { question: 'Bao lâu thì nhận được tiền bồi thường?', answer: 'Theo quy tắc bảo hiểm, thông báo sự kiện bảo hiểm trong vòng 30 ngày kể từ ngày xảy ra, và Bảo hiểm PVI chi trả trong vòng 15 ngày làm việc kể từ khi nhận đủ hồ sơ hợp lệ.' },
+  ];
+
+  const ctRow = (rows) => rows.map(([label, vals, note]) => `<tr><th scope="row">${t(label)}${note ? `<span class="dl-note">${t(note)}</span>` : ''}</th>${vals.map((v) => `<td class="num">${t(v)}</td>`).join('')}</tr>`).join('');
+  const ctHead = `<thead><tr><th scope="col">Quyền lợi, số tiền bảo hiểm một người</th>${CT.map((n, i) => `<th scope="col" class="num">${SOLD[i] ? `<span>${SOLD[i]}</span>` : '<span>&nbsp;</span>'}Chương trình ${n}</th>`).join('')}</tr></thead>`;
+
   const main = heroBlock({
     eyebrow: 'Cá nhân · Du lịch quốc tế',
     h1: 'Bảo hiểm du lịch quốc tế',
-    lead: 'Chi phí y tế và tai nạn trong hành trình nước ngoài, kèm hỗ trợ khi hủy chuyến, mất hành lý hoặc mất giấy tờ tùy thân. Phí từ 100.000 đồng một người, số tiền bảo hiểm lên đến 3 tỷ đồng theo công bố của PVI.',
+    lead: 'Chi phí y tế ở nước ngoài, tai nạn cá nhân, hủy chuyến, hành lý và giấy tờ tùy thân, số tiền bảo hiểm đến 3 tỷ đồng một người. Phí từ 200.000 đồng cho chuyến 1 đến 3 ngày. Quyền lợi theo Bảng quyền lợi ban hành kèm ' + QD + '.',
     cta1: ['Gọi báo phí 0938 072 236', 'tel:0938072236'],
-    cta2: ['Thông tin cần gửi', '#chung-tu'],
+    cta2: ['Xem bảng quyền lợi', '#quyen-loi'],
     img: '/assets/hero-du-lich.webp',
     alt: 'Khách du lịch kéo vali tại sảnh làm thủ tục sân bay',
   }) + `
 <section class="pd-section"><div class="fire-wrap">
 <div class="pd-grid" style="margin-top:0">
 <div>
-<p class="fire-lede">Bảo hiểm du lịch quốc tế dành cho chuyến đi nước ngoài, thường được yêu cầu kèm trong hồ sơ xin thị thực của nhiều quốc gia. Sản phẩm xử lý phần chi phí phát sinh ngoài dự tính: khám chữa bệnh ở nước ngoài, tai nạn trong hành trình, và các sự cố làm gián đoạn chuyến đi.</p>
-<p class="fire-lede" style="margin-top:16px">Mức phí và hạn mức quyền lợi thay đổi theo hành trình, số ngày đi, độ tuổi người tham gia và chương trình chọn. Vì vậy trang này không in bảng phí cố định, phí chính thức do chuyên viên PVI phát hành theo từng chuyến.</p>
+<p class="fire-lede">Bảo hiểm du lịch quốc tế dành cho chuyến đi nước ngoài và thường được yêu cầu kèm trong hồ sơ xin thị thực. Sản phẩm xử lý phần chi phí phát sinh ngoài dự tính của chuyến đi: khám chữa bệnh ở nước ngoài, tai nạn trong hành trình, cùng các sự cố làm gián đoạn lịch trình như hủy chuyến, trì hoãn, chậm hoặc mất hành lý và mất giấy tờ tùy thân.</p>
+<p class="fire-lede" style="margin-top:16px">Bảng quyền lợi chính thức của Bảo hiểm PVI có sáu chương trình. Ba chương trình cao nhất, tương ứng số tiền bảo hiểm 1 tỷ, 2 tỷ và 3 tỷ đồng, chính là ba gói Bạc, Vàng và Kim cương đang bán trên kênh PVI Online. Toàn bộ con số trên trang này lấy từ tài liệu PVI phát hành, không phải ước tính.</p>
 </div>
-<div class="pd-card"><table class="pd-table"><caption style="padding:16px 18px 0">PVI công bố</caption><tbody>
-<tr><th scope="row">Phí bảo hiểm</th><td class="num strong">Từ 100.000đ</td><td>một người</td></tr>
-<tr><th scope="row">Số tiền bảo hiểm</th><td class="num strong">Đến 3 tỷ đồng</td><td>theo chương trình</td></tr>
-<tr><th scope="row">Du lịch trong nước</th><td colspan="2">Sắp ra mắt, phí đang cập nhật</td></tr>
+<div class="pd-card"><table class="pd-table"><caption style="padding:16px 18px 0">Theo tài liệu chính thức</caption><tbody>
+<tr><th scope="row">Số tiền bảo hiểm</th><td class="num strong">Đến 3 tỷ</td><td>một người</td></tr>
+<tr><th scope="row">Phí thấp nhất</th><td class="num strong">200.000đ</td><td>chuyến 1 đến 3 ngày</td></tr>
+<tr><th scope="row">Độ tuổi</th><td colspan="2">Từ 07 ngày tuổi trở lên</td></tr>
+<tr><th scope="row">Thông báo sự kiện</th><td colspan="2">Trong vòng 30 ngày</td></tr>
+<tr><th scope="row">Thời hạn chi trả</th><td colspan="2">15 ngày làm việc kể từ khi đủ hồ sơ</td></tr>
 </tbody></table>
-<p class="fire-note">Nguồn: <a href="${SRC}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">PVI Online, chuyên mục bảo hiểm du lịch</a>.</p>
+<p class="fire-note">Nguồn: Quy tắc và Bảng quyền lợi bảo hiểm du lịch quốc tế ban hành kèm ${QD}.</p>
 </div>
 </div>
 </div></section>
 
-<section class="pd-section pd-paper" id="pham-vi"><div class="fire-wrap">
-<h2>Sản phẩm xử lý những tình huống nào</h2>
-<div class="pd-two">
-<div><h3>Nhóm quyền lợi PVI nêu</h3><ul class="pd-list">
-<li>Chi phí y tế phát sinh trong hành trình nước ngoài.</li>
-<li>Tai nạn cá nhân xảy ra trong thời gian chuyến đi.</li>
-<li>Hỗ trợ khi hủy chuyến, mất hành lý hoặc mất giấy tờ tùy thân.</li>
-</ul></div>
-<div><h3>Cần làm rõ trước khi mua</h3><ul class="pd-list no">
-<li>Hạn mức từng quyền lợi và mức miễn thường, ghi trong quy tắc và giấy chứng nhận.</li>
-<li>Phạm vi lãnh thổ của hành trình, gồm cả điểm quá cảnh.</li>
-<li>Bệnh có sẵn, hoạt động thể thao mạo hiểm và các điểm loại trừ khác theo quy tắc.</li>
-<li>Thời điểm bắt đầu hiệu lực so với ngày khởi hành.</li>
-</ul></div>
-</div>
-<div class="fire-alert"><b>Trang này nêu thông tin chung, không thay cho quy tắc bảo hiểm</b><p>Quyền lợi, hạn mức và điểm loại trừ cụ thể theo quy tắc và hợp đồng Bảo hiểm PVI phát hành cho từng chương trình. Gửi hành trình để chuyên viên đối chiếu trước khi phát hành.</p></div>
+<section class="fire-compare pd-paper" id="quyen-loi"><div class="fire-wrap">
+<h2>Bảng quyền lợi, phạm vi bảo hiểm chính</h2>
+<p class="fire-lede" style="max-width:76ch">Sáu chương trình theo Bảng quyền lợi ban hành kèm ${QD}. Cột Bạc, Vàng, Kim cương là tên gọi của ba chương trình này trên kênh bán trực tuyến của PVI.</p>
+<div class="pd-scroll"><table class="dl-table" style="min-width:920px">${ctHead}<tbody>${ctRow(main1)}</tbody></table></div>
 </div></section>
 
-<section class="fire-docs" id="chung-tu"><div class="fire-wrap">
-<h2>Thông tin cần gửi và các bước</h2>
+<section class="pd-section" id="bo-sung"><div class="fire-wrap">
+<h2>Phạm vi bảo hiểm bổ sung</h2>
+<p class="fire-lede" style="max-width:76ch">Phần này đi kèm phạm vi bảo hiểm chính và có phí riêng. Đây là nhóm quyền lợi xử lý sự cố lịch trình và hành lý, nhóm hay dùng nhất trong thực tế.</p>
+<div class="pd-scroll"><table class="dl-table" style="min-width:920px">${ctHead}<tbody>${ctRow(main2)}</tbody></table></div>
+<div class="fire-alert"><b>Hiệu lực của phần bổ sung khác phần chính</b><p>Trừ quyền lợi hủy chuyến đi, các quyền lợi bổ sung bắt đầu có hiệu lực từ thời điểm hoàn tất thủ tục xuất cảnh tại Việt Nam trong ngày khởi hành đầu tiên. Riêng quyền lợi hủy chuyến đi có hiệu lực từ ngày cấp giấy chứng nhận bảo hiểm hoặc ngày thứ 60 trước ngày khởi hành đầu tiên, tùy thời điểm nào xảy ra sau.</p></div>
+</div></section>
+
+<section class="fire-compare pd-paper" id="phi"><div class="fire-wrap">
+<h2>Biểu phí ba chương trình bán trực tuyến</h2>
+<p class="fire-lede" style="max-width:76ch">Phí tính cho một người theo số ngày của hành trình, đang niêm yết trên kênh PVI Online cho phạm vi bảo hiểm chính.</p>
+<div class="pd-scroll"><table class="pd-table" style="min-width:620px"><thead><tr><th scope="col">Số ngày của chuyến đi</th>${Object.keys(fees).map((k, i) => `<th scope="col" class="num">${i === 2 ? '<span>Cao nhất</span>' : '<span>&nbsp;</span>'}${k}</th>`).join('')}</tr></thead><tbody>
+<tr class="sub"><th scope="colgroup" colspan="4">Số tiền bảo hiểm tai nạn cá nhân và chi phí y tế, mỗi quyền lợi</th></tr>
+<tr><th scope="row">Mức bảo hiểm</th><td class="num strong">1 tỷ</td><td class="num strong">2 tỷ</td><td class="num strong">3 tỷ</td></tr>
+<tr class="sub"><th scope="colgroup" colspan="4">Phí bảo hiểm một người</th></tr>
+${bands.map((b, i) => `<tr><th scope="row">${b}</th>${Object.keys(fees).map((k) => `<td class="num">${vnd(fees[k][i])}</td>`).join('')}</tr>`).join('')}
+</tbody></table></div>
+<p class="fire-note">Chuyến dài trên 31 ngày, đoàn nhiều người, hành trình có điểm quá cảnh đặc biệt hoặc chọn thêm các điều khoản mở rộng được báo phí riêng. Phí của phạm vi bảo hiểm bổ sung tính tách khỏi bảng này. Nguồn: <a href="${SRC}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">PVI Online, bảo hiểm du lịch quốc tế</a>.</p>
+</div></section>
+
+<section class="pd-section" id="loai-tru"><div class="fire-wrap">
+<h2>Điểm loại trừ theo quy tắc bảo hiểm</h2>
+<p class="fire-lede" style="max-width:76ch">Phần IV của Quy tắc bảo hiểm du lịch quốc tế liệt kê 19 trường hợp Bảo hiểm PVI không chi trả. Đọc kỹ trước khi mua, nhất là mục bệnh có sẵn và thể thao mạo hiểm.</p>
+<ul class="pd-list no dl-cols">${exclusions.map((x) => `<li>${t(x)}</li>`).join('')}</ul>
+<div class="fire-alert"><b>Ba điểm loại trừ có thể gỡ bằng điều khoản mở rộng</b><p>Dịch bệnh, thể thao mạo hiểm và ngộ độc là ba điểm loại trừ không áp dụng nếu người được bảo hiểm tham gia thêm điều khoản mở rộng tương ứng. Nếu chuyến đi có leo núi, lặn biển, trượt tuyết hoặc hoạt động rủi ro cao, nói trước để chuyên viên thêm điều khoản vào giấy chứng nhận.</p></div>
+<p class="fire-note">Phạm vi bảo hiểm bổ sung còn có các điểm loại trừ riêng cho từng quyền lợi, xem Phụ lục 1 của quy tắc.</p>
+</div></section>
+
+<section class="fire-docs pd-paper" id="chung-tu"><div class="fire-wrap">
+<h2>Mua và bồi thường</h2>
 <div class="fire-docs-grid">
-<div><h3>Thông tin chuyến đi</h3><ol>
-<li><b>Họ tên và ngày sinh của từng người đi</b></li>
-<li><b>Hành trình: nước đến, nước quá cảnh</b></li>
+<div><h3>Thông tin cần gửi khi mua</h3><ol>
+<li><b>Họ tên, ngày sinh, số hộ chiếu của từng người đi</b></li>
+<li><b>Hành trình: nước đến và nước quá cảnh</b></li>
 <li><b>Ngày khởi hành và ngày về</b></li>
-<li><b>Mục đích chuyến đi và yêu cầu của hồ sơ thị thực nếu có</b></li>
+<li><b>Chương trình chọn: Bạc, Vàng hay Kim cương</b></li>
+<li><b>Có cần phạm vi bổ sung hoặc điều khoản mở rộng không</b></li>
 </ol></div>
-<div><h3>Các bước</h3><ol>
-<li><b>Gửi thông tin</b><span>Qua điện thoại hoặc Zalo, kèm lịch trình dự kiến.</span></li>
-<li><b>Nhận báo phí</b><span>Chuyên viên xác nhận chương trình, hạn mức và phí theo hành trình.</span></li>
-<li><b>Phát hành giấy chứng nhận</b><span>Sau khi xác nhận phương án và hoàn tất thanh toán, giấy chứng nhận được cấp trước ngày khởi hành.</span></li>
+<div><h3>Hồ sơ bồi thường</h3><ol>
+<li><b>Hồ sơ bệnh án, giấy chứng nhận thương tật, hóa đơn viện phí gốc</b></li>
+<li><b>Vé vận chuyển, hợp đồng, hóa đơn liên quan tới khiếu nại</b></li>
+<li><b>Xác nhận của hãng vận chuyển về trì hoãn, chậm hoặc mất hành lý</b></li>
+<li><b>Hóa đơn mua hành lý, vật dụng bị mất hoặc hư hại</b></li>
+<li><b>Xác nhận của công an nơi xảy ra việc mất giấy tờ tùy thân</b></li>
 </ol></div>
 </div>
 ${ctaRow('Gọi báo phí 0938 072 236')}
 </div></section>
 
-<section class="fire-claim pd-paper" id="boi-thuong"><div class="fire-wrap">
+<section class="fire-claim" id="boi-thuong"><div class="fire-wrap">
 <span class="fire-eyebrow">Khi có sự cố trong chuyến đi</span>
-<h2>Ba việc cần làm</h2>
+<h2>Bốn việc cần làm</h2>
 <div class="fire-steps">
-<article><b>01</b><h3>Giữ an toàn và chữa trị trước</h3><p>Ưu tiên khám chữa tại cơ sở y tế gần nhất, giữ toàn bộ chứng từ gốc và đơn thuốc.</p></article>
-<article><b>02</b><h3>Thông báo sớm</h3><p>Gọi tổng đài bồi thường hoặc nhắn cho chuyên viên ngay khi sự việc xảy ra, trước khi làm thủ tục khác.</p></article>
-<article><b>03</b><h3>Tập hợp chứng từ</h3><p>Giữ hóa đơn, hồ sơ y tế, biên bản của hãng bay hoặc cơ quan chức năng với trường hợp mất hành lý và giấy tờ.</p></article>
+<article><b>01</b><h3>Chữa trị và giữ chứng từ gốc</h3><p>Khám chữa tại cơ sở y tế có giấy phép hợp pháp, giữ toàn bộ hóa đơn, đơn thuốc và hồ sơ bệnh án bản gốc.</p></article>
+<article><b>02</b><h3>Lấy biên bản ngay tại chỗ</h3><p>Mất hành lý hoặc giấy tờ phải trình báo trong vòng 24 giờ và lấy biên bản của hãng vận chuyển hoặc công an sở tại. Trì hoãn chuyến cần giấy xác nhận ghi rõ nguyên nhân và thời gian.</p></article>
+<article><b>03</b><h3>Thông báo trong 30 ngày</h3><p>Gọi tổng đài bồi thường hoặc nhắn cho chuyên viên trong vòng 30 ngày kể từ ngày xảy ra sự kiện bảo hiểm.</p></article>
+<article><b>04</b><h3>Nhận chi trả</h3><p>Bảo hiểm PVI chi trả trong vòng 15 ngày làm việc kể từ khi nhận đủ hồ sơ hợp lệ.</p></article>
 </div>
 ${hotline}
-<p class="fire-note"><b>Nguồn thông tin sản phẩm:</b> <a href="${SRC}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">PVI Online</a>. Thủ tục và hồ sơ bồi thường cụ thể theo quy tắc của chương trình đã phát hành.</p>
+<p class="fire-note"><b>Nguồn:</b> Quy tắc bảo hiểm du lịch quốc tế của Tổng công ty Bảo hiểm PVI, ban hành kèm ${QD}. Danh mục chứng từ đầy đủ ở Phần V Mục 2 của quy tắc.</p>
+</div></section>
+
+<section class="fire-news pd-paper" id="tai-lieu"><div class="fire-wrap">
+<h2>Tài liệu chính thức</h2>
+<ul class="pd-docs">
+<li><a href="${PDF}QTBH_DLQT_1.7.2025.pdf" target="_blank" rel="noopener"><span class="cat">Quy tắc bảo hiểm</span><div><b>Quy tắc bảo hiểm du lịch quốc tế</b><span class="d">Toàn văn quy tắc ban hành kèm ${QD}, gồm phạm vi, loại trừ, thủ tục bồi thường và Phụ lục 1 về phạm vi bổ sung.</span></div><i aria-hidden="true">&#8599;</i></a></li>
+<li><a href="${PDF}BQL_dlqt_1.7.2025.pdf" target="_blank" rel="noopener"><span class="cat">Bảng quyền lợi</span><div><b>Bảng quyền lợi bảo hiểm du lịch quốc tế</b><span class="d">Hạn mức từng quyền lợi của cả sáu chương trình, bản PDF do Bảo hiểm PVI phát hành.</span></div><i aria-hidden="true">&#8599;</i></a></li>
+<li><a href="${PDF}loaitrubaohiemDLQT.pdf" target="_blank" rel="noopener"><span class="cat">Loại trừ</span><div><b>Phần IV, loại trừ bảo hiểm</b><span class="d">19 điểm loại trừ của quy tắc, kèm Phụ lục 1 với loại trừ riêng của từng quyền lợi bổ sung.</span></div><i aria-hidden="true">&#8599;</i></a></li>
+<li><a href="${SRC}" target="_blank" rel="noopener"><span class="cat">Kênh bán của PVI</span><div><b>PVI Online, bảo hiểm du lịch quốc tế</b><span class="d">Trang sản phẩm và biểu phí ba chương trình Bạc, Vàng, Kim cương của Tổng công ty Bảo hiểm PVI.</span></div><i aria-hidden="true">&#8599;</i></a></li>
+</ul>
 </div></section>
 `
     + faqBlock(faqs);
   build({
     rel: 'san-pham/bao-hiem-du-lich/index.html', path: P, main, faqs,
     crumb: 'Bảo hiểm du lịch quốc tế', img: '/assets/hero-du-lich.webp',
-    title: 'Bảo hiểm du lịch quốc tế PVI | PVI Thành Đô',
-    desc: 'Bảo hiểm du lịch quốc tế PVI: chi phí y tế và tai nạn trong hành trình, hỗ trợ hủy chuyến và mất hành lý. Phí từ 100.000đ một người, bảo hiểm đến 3 tỷ đồng.',
+    title: 'Bảo hiểm du lịch quốc tế PVI: quyền lợi và biểu phí | PVI Thành Đô',
+    desc: 'Bảng quyền lợi 6 chương trình và biểu phí bảo hiểm du lịch quốc tế PVI theo Quyết định 491/QĐ-PVIBH. Bảo hiểm đến 3 tỷ đồng, phí từ 200.000đ một người.',
   });
 }

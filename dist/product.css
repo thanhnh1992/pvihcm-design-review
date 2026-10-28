@@ -374,3 +374,15 @@
 /* Danh sách gạch đầu dòng nằm trong khối fire-docs từng bị luật lưới của danh sách
    đánh số ép vào cột 30px, mỗi chữ rơi một dòng. Trả lại bố cục thường. */
 .fire-docs .pd-list li{display:block;grid-template-columns:none;counter-increment:none;padding:14px 0 14px 26px}
+
+/* Bảng quyền lợi du lịch quốc tế: 6 chương trình, cột nhãn rộng kèm ghi chú */
+.dl-table{width:100%;border-collapse:collapse}
+.dl-table th,.dl-table td{padding:14px 16px;border-bottom:1px solid var(--rail);vertical-align:top;font-size:16px;line-height:1.55}
+.dl-table thead th{border-bottom:2px solid var(--ink);color:var(--ink);font-size:16px;font-weight:700}
+.dl-table thead th span{display:block;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:4px}
+.dl-table tbody th{text-align:left;font-weight:600;color:var(--ink);width:300px;background:var(--paper)}
+.dl-table td{color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.dl-table tbody tr:nth-child(even) th{background:#eef3f9}
+.dl-note{display:block;font-weight:400;font-size:15px;line-height:1.5;color:var(--muted);margin-top:6px}
+.dl-cols{margin-top:26px}
+@media(min-width:900px){.dl-cols{column-count:2;column-gap:44px}.dl-cols li{break-inside:avoid}}
