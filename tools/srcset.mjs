@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const D=path.resolve(HERE,'../dist')+'/';
-const files=['index.html','san-pham/bao-hiem-bat-buoc/index.html','san-pham/bao-hiem-tai-nan/index.html','san-pham/chay-no-bat-buoc/index.html','san-pham/hang-hoa-xuat-nhap-khau/index.html','huong-dan/index.html','tai-nan-doanh-nghiep/index.html'];
+const files=(function walk(d,out=[]){for(const e of fs.readdirSync(D+d,{withFileTypes:true})){if(e.isDirectory())walk(d+e.name+'/',out);else if(e.name==='index.html')out.push(d+e.name)}return out})('');
 const tiles=['bat-buoc','tai-nan','chay-no','hang-hoa'];
 const big=[...tiles,'section-bat-buoc','section-tai-nan','section-chay-no','section-hang-hoa','claims-process'];
 for(const f of files){

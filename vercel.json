@@ -57,16 +57,6 @@
       "statusCode": 301
     },
     {
-      "source": "/pvi-care",
-      "destination": "/",
-      "statusCode": 301
-    },
-    {
-      "source": "/pvi-care/",
-      "destination": "/",
-      "statusCode": 301
-    },
-    {
       "source": "/display-feed",
       "destination": "/",
       "statusCode": 301
@@ -297,16 +287,6 @@
       "statusCode": 301
     },
     {
-      "source": "/product/7",
-      "destination": "/san-pham/bao-hiem-bat-buoc/#vat-chat",
-      "statusCode": 301
-    },
-    {
-      "source": "/product/7/",
-      "destination": "/san-pham/bao-hiem-bat-buoc/#vat-chat",
-      "statusCode": 301
-    },
-    {
       "source": "/product/16",
       "destination": "/san-pham/hang-hoa-xuat-nhap-khau/",
       "statusCode": 301
@@ -354,16 +334,6 @@
     {
       "source": "/product/details/6/",
       "destination": "/san-pham/bao-hiem-bat-buoc/",
-      "statusCode": 301
-    },
-    {
-      "source": "/product/details/7",
-      "destination": "/san-pham/bao-hiem-bat-buoc/#vat-chat",
-      "statusCode": 301
-    },
-    {
-      "source": "/product/details/7/",
-      "destination": "/san-pham/bao-hiem-bat-buoc/#vat-chat",
       "statusCode": 301
     },
     {
@@ -474,6 +444,216 @@
     {
       "source": "/product/",
       "destination": "/#giai-phap",
+      "statusCode": 301
+    },
+    {
+      "source": "/pvi-care",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/pvi-care/",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/23",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/23/",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/25",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/25/",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/6",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/6/",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/7",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/7/",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/8",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/8/",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/9",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/9/",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/10",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/10/",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/11",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/11/",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/12",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/12/",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/13",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/13/",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/14",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/14/",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/15",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/15/",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/36",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/36/",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/details/15",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/details/15/",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/5",
+      "destination": "/san-pham/bao-hiem-du-lich/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/5/",
+      "destination": "/san-pham/bao-hiem-du-lich/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/details/5",
+      "destination": "/san-pham/bao-hiem-du-lich/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/details/5/",
+      "destination": "/san-pham/bao-hiem-du-lich/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/7",
+      "destination": "/san-pham/bao-hiem-vat-chat-xe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/7/",
+      "destination": "/san-pham/bao-hiem-vat-chat-xe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/details/7",
+      "destination": "/san-pham/bao-hiem-vat-chat-xe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/details/7/",
+      "destination": "/san-pham/bao-hiem-vat-chat-xe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/details/23",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/details/23/",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/details/25",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/details/25/",
+      "destination": "/san-pham/bao-hiem-suc-khoe/",
       "statusCode": 301
     },
     {

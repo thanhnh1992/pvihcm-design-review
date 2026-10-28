@@ -157,6 +157,11 @@ export const officialDocuments = [
         href: "/bao-lanh-sua-chua-xe-mercedes-tphcm",
     },
     {
+        title: "Bảo hiểm ô tô: những điểm cần kiểm tra trước khi tham gia",
+        type: "Kiến thức · Bảo hiểm PVI Thành Đô",
+        href: "/kien-thuc/bao-hiem-o-to",
+    },
+    {
         title: "Quy tắc bảo hiểm tự nguyện xe ô tô",
         type: "Quy tắc · Bảo hiểm PVI · Hiệu lực 01/07/2025",
         href: "https://adminweb.pvi.com.vn/wp-content/uploads/2025/04/2025-QUY-TAC-BH-TU-NGUYEN-XE-O-TO.pdf",
@@ -230,8 +235,7 @@ export function passengerFeeForSeats(seats, business) {
         return row?.baseFee ? { label: `xe kinh doanh ${row.label.toLowerCase()}`, fee: row.baseFee } : null;
     }
     const rows = passengerRows("private");
-    const id = seats < 6 ? "private-under-6" : seats <= 11 ? "private-6-11" : seats <= 24 ? "private-12-24" : "private-over-24";
-    const row = rows.find((item) => item.id === id);
+    const row = rows.find((item) => item.id === bacKhongKinhDoanh(seats));
     return row?.baseFee ? { label: `xe không kinh doanh ${row.label.toLowerCase()}`, fee: row.baseFee } : null;
 }
 /** Dòng phí gốc mà một dòng suy ra dựa vào; thiếu thông số thì null. */
@@ -330,4 +334,142 @@ export function quoteTnds(baseFee, online = false) {
     const fullTotal = baseFee + Math.round(baseFee * VAT_RATE);
     const total = base + vat;
     return { base, vat, total, saving: fullTotal - total };
+}
+/* ==================================================================
+   BẢO HIỂM TAI NẠN NGƯỜI NGỒI TRÊN XE (NNTX) — tuỳ chọn thêm vào đơn TNDS.
+
+   Công thức: số chỗ × mức trách nhiệm × 0,1%. Kết quả ĐÃ GỒM VAT, tuyệt
+   đối không nhân thêm 10% lần nữa. Ví dụ 7 chỗ × 10.000.000đ × 0,1% =
+   70.000đ.
+
+   Chỉ áp cho xe chở người KHÔNG kinh doanh vận tải (usage "private").
+   Xe kinh doanh, xe tải, xe chuyên dùng giữ nguyên luồng cũ: không hiện
+   khối này, phí NNTX = 0.
+   ================================================================== */
+/**
+ * Ưu đãi 10% mua online có áp cho phần phí NNTX hay không.
+ * Mặc định false: giảm giá chỉ áp cho phí TNDS. Chủ site đổi thành true
+ * khi muốn giảm cả phần NNTX — mọi nơi (giao diện, form, API) đổi theo.
+ */
+export const GIAM_GIA_ONLINE_AP_DUNG_NNTX = false;
+/** Tỷ lệ phí NNTX trên mức trách nhiệm: 0,1%. */
+export const NNTX_TY_LE = 0.001;
+/** Các mức trách nhiệm khách được chọn, đồng/người/vụ. */
+export const NNTX_MUC_TRACH_NHIEM = [10_000_000, 20_000_000, 50_000_000, 100_000_000];
+export const NNTX_MUC_MAC_DINH = 10_000_000;
+export const NNTX_SO_CHO_MIN = 1;
+export const NNTX_SO_CHO_MAX = 64;
+/**
+ * Bậc số chỗ của từng dòng xe không kinh doanh. Phí TNDS chia theo KHOẢNG
+ * chỗ, còn phí NNTX cần đúng số chỗ trên đăng ký — nên khách nhập số chỗ cụ
+ * thể ở bước 03 và chính số đó chọn khoảng phí (xem bacKhongKinhDoanh).
+ * `macDinh` dùng khi khách bấm chọn khoảng trước: điền sẵn số chỗ phổ biến.
+ *
+ * Pickup/minivan tính theo dòng riêng chứ không theo số chỗ, nên để cả dải
+ * 1–64 để khách khai đúng số chỗ thật mà không bị báo lỗi.
+ */
+export const NNTX_BAC_SO_CHO = {
+    "private-under-6": { min: NNTX_SO_CHO_MIN, max: 5, macDinh: 5 },
+    "private-6-11": { min: 6, max: 11, macDinh: 7 },
+    "private-12-24": { min: 12, max: 24, macDinh: 16 },
+    "private-over-24": { min: 25, max: NNTX_SO_CHO_MAX, macDinh: 29 },
+    "private-pickup": { min: NNTX_SO_CHO_MIN, max: NNTX_SO_CHO_MAX, macDinh: 5 },
+};
+/**
+ * Khoảng phí TNDS ứng với số chỗ của xe chở người không kinh doanh vận tải:
+ * dưới 6 · từ 6 đến 11 · từ 12 đến 24 · trên 24. Dùng chung cho biểu phí
+ * (passengerFeeForSeats) và cho ô nhập số chỗ ở bước 03.
+ */
+export function bacKhongKinhDoanh(seats) {
+    if (seats < 6)
+        return "private-under-6";
+    if (seats <= 11)
+        return "private-6-11";
+    if (seats <= 24)
+        return "private-12-24";
+    return "private-over-24";
+}
+/** Khối NNTX chỉ hiện với xe chở người không kinh doanh vận tải. */
+export function nntxApDung(usageId) {
+    return usageId === "private";
+}
+/** Bậc số chỗ của dòng xe đang chọn; dòng không thuộc diện NNTX thì null. */
+export function nntxBacSoCho(rowId) {
+    return (rowId && NNTX_BAC_SO_CHO[rowId]) || null;
+}
+/** Số chỗ hợp lệ cho NNTX: số nguyên trong khoảng cho phép. */
+export function parseNntxSeats(value) {
+    const so = typeof value === "number" ? value : typeof value === "string" ? Number(value.trim()) : Number.NaN;
+    return Number.isInteger(so) && so >= NNTX_SO_CHO_MIN && so <= NNTX_SO_CHO_MAX ? so : null;
+}
+/** Mức trách nhiệm phải đúng một trong các mức được công bố. */
+export function parseNntxLimit(value) {
+    const so = typeof value === "number" ? value : typeof value === "string" ? Number(value.trim()) : Number.NaN;
+    return NNTX_MUC_TRACH_NHIEM.includes(so) ? so : null;
+}
+/** Phí NNTX = số chỗ × mức trách nhiệm × 0,1%, đã gồm VAT. */
+export function phiNntx(soCho, mucTrachNhiem) {
+    return Math.round(soCho * mucTrachNhiem * NNTX_TY_LE);
+}
+/**
+ * Câu giải thích dưới ô "Số chỗ ngồi" ở bước 03 của xe không kinh doanh:
+ * nói rõ số chỗ vừa nhập rơi vào khoảng phí nào, vì phí TNDS tính theo
+ * khoảng chứ không theo từng chỗ. `typed`: khách đã gõ gì chưa.
+ */
+export function giaiThichBacSoCho(soCho, rowId, typed) {
+    if (soCho === null) {
+        return typed
+            ? `Số chỗ chưa hợp lệ — nhập số nguyên từ ${NNTX_SO_CHO_MIN} đến ${NNTX_SO_CHO_MAX}, ví dụ 5 hoặc 7.`
+            : "Nhập số chỗ theo giấy đăng ký (gồm cả lái xe) để chọn đúng khoảng phí.";
+    }
+    if (rowId === "private-pickup") {
+        return `Pickup, minivan tính theo dòng riêng, không theo số chỗ. ${soCho} chỗ dùng để tính phí người ngồi trên xe.`;
+    }
+    const rows = passengerRows("private");
+    const bac = rows.find((item) => item.id === bacKhongKinhDoanh(soCho));
+    if (!bac)
+        return "";
+    return `${soCho} chỗ → khoảng phí “${bac.label}”: ${formatVnd(bac.baseFee)} phí cơ bản.`;
+}
+/** Lời nhắc dưới ô số chỗ khi khách gõ ngoài khoảng của bậc đã chọn. */
+export function loiSoChoNntx(rowId, soCho) {
+    const bac = nntxBacSoCho(rowId);
+    if (!bac)
+        return "";
+    if (soCho === null)
+        return `Nhập số nguyên từ ${bac.min} đến ${bac.max}.`;
+    if (soCho < bac.min || soCho > bac.max) {
+        return `Dòng xe đang chọn có ${bac.min}–${bac.max} chỗ. Đổi bậc xe ở bước 03 nếu xe nhiều chỗ hơn.`;
+    }
+    return "";
+}
+/**
+ * Phí NNTX thực áp — hàm DUY NHẤT mà trình duyệt, form đặt mua và API cùng
+ * gọi. Không đủ điều kiện hay tham số sai thì trả 0, không chặn việc mua.
+ */
+export function resolveNntxFee(usageId, rowId, input) {
+    if (!nntxApDung(usageId))
+        return 0;
+    if (input.chon !== true && input.chon !== "1")
+        return 0;
+    const bac = nntxBacSoCho(rowId);
+    const soCho = parseNntxSeats(input.soCho);
+    const muc = parseNntxLimit(input.mucTrachNhiem);
+    if (!bac || soCho === null || muc === null)
+        return 0;
+    if (soCho < bac.min || soCho > bac.max)
+        return 0;
+    return phiNntx(soCho, muc);
+}
+/** Ghi gọn vào đơn: "7 chỗ × 10.000.000đ/người/vụ = 70.000đ". */
+export function describeNntx(soCho, mucTrachNhiem) {
+    return `${soCho} chỗ × ${formatVnd(mucTrachNhiem)}/người/vụ = ${formatVnd(phiNntx(soCho, mucTrachNhiem))}`;
+}
+/**
+ * Nhãn cho ô chọn mức trách nhiệm: "10 triệu đồng".
+ * Không lặp lại "/ người / vụ" vì nhãn ngay trên ô đã ghi, và ô hẹp thì
+ * phần đuôi bị cắt mất, khách đọc không ra.
+ */
+export function nhanMucTrachNhiem(muc) {
+    return `${muc / 1_000_000} triệu đồng`;
 }
