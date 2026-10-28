@@ -37,7 +37,7 @@ tools/        script sinh trang (xem bên dưới)
 Ba trang sản phẩm, `/huong-dan/` và `/tai-nan-doanh-nghiep/` **được sinh bằng script**. Muốn sửa lâu dài thì sửa script rồi chạy lại. Nếu sửa tay HTML, lần sinh sau sẽ ghi đè mất.
 ```
 node tools/load-data.mjs      # chỉ khi dữ liệu bên baohiempvi-vn đổi (cần typescript trong project đó)
-node tools/gen-products.mjs   # bắt buộc, tai nạn, hàng hóa
+node tools/gen-products.mjs   # bắt buộc, tai nạn, hàng hóa. Trang tai nạn (giao diện + bộ tính phí theo baohiempvi-vn, 28/10/2026) dựng trong tools/tai-nan-ui.mjs; CSS dist/tai-nan.css trích bằng tools/extract-tai-nan-css.cjs, không sửa tay
 node tools/gen-others.mjs     # huong-dan, tai-nan-doanh-nghiep, gioi-thieu
 node tools/gen-products-2.mjs # sức khỏe, công trình, vật chất xe, du lịch; phần đầu trang du lịch (mẫu duyệt 28/10/2026) ở tools/du-lich-ui.mjs + dist/du-lich.css + dist/du-lich.js
 node tools/patch-static.mjs   # áp header/menu/chân trang mới cho index.html và trang cháy nổ

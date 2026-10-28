@@ -1,0 +1,1097 @@
+/* ═══════════════════════════════════════════════════════════════════
+   BẢO HIỂM TAI NẠN 24/24: giao diện theo trang /bao-hiem-tai-nan-24-24 của
+   baohiempvi-vn (chủ site yêu cầu 28/10/2026). Markup sinh từ tools/tai-nan-ui.mjs.
+   Phần dưới khối "đặt lại" là luật trích nguyên từ app/globals.css của
+   baohiempvi-vnwebsite, chỉ giữ lớp có trên trang và gắn tiền tố .tn-page.
+   ═══════════════════════════════════════════════════════════════════ */
+/* Đặt lại giống phần nền của baohiempvi-vn, độ ưu tiên thấp nhất (:where) */
+:where(.tn-page .auto-page){display:block;background:#f7fbff;color:var(--ink);overflow:hidden;line-height:normal}
+:where(.tn-page .auto-page) a{color:inherit;text-decoration:none}
+:where(.tn-page .auto-page) img{display:block;width:auto;max-width:100%}
+:where(.tn-page .auto-page) button,:where(.tn-page .auto-page) input,:where(.tn-page .auto-page) select,:where(.tn-page .auto-page) textarea{font:inherit}
+:where(.tn-page .auto-page) button{cursor:pointer}
+/* Phần tử có thuộc tính hidden luôn ẩn, kể cả khi lớp CSS đặt display */
+.tn-page .auto-page [hidden]{display:none!important}
+/* Mũi tên trong link không đổi sang đỏ khi rê chuột như luật chung của site.css */
+.tn-page .auto-page a:hover i[aria-hidden],.tn-page .auto-page a:focus-visible i[aria-hidden]{color:inherit}
+.tn-page .auto-page{--navy:#071a38;--navy-2:#0c2b5a;--blue:#1262df;--cyan:#17b7e8;--red:#e52b36;--ice:#eaf7ff;--ink:#10223d;--muted:#66778e;--line:rgba(14, 45, 88, .13);--shadow:0 30px 80px rgba(12, 48, 98, .16);--muted:#49657f;--pvi-readable-body:16px;--pvi-readable-secondary:15px;--pvi-readable-ui:14px;--pvi-readable-caption:13px;--pvi-readable-ink:#173d66;--pvi-readable-muted:#486783;--pvi-readable-link:#075fae;--pvi-readable-on-dark:#edf8ff;--pvi-readable-on-dark-muted:#d1ebfb;--pvi-readable-secondary:16px;--pvi-readable-ui:15px;--pvi-readable-caption:13px;--pvi-on-dark-text:#f4faff;--pvi-on-dark-body:#e3f0fb;--pvi-on-dark-link:#a9dcff;--pvi-readable-ui:16px;--pvi-readable-caption:14px;--pvi-readable-caption:14px}
+
+.tn-page .shell { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
+
+@media (max-width: 760px) {
+  .tn-page .shell { width: min(100% - 28px, 1180px); }
+}
+
+@media (max-width: 680px) {
+  .tn-page .shell { width: min(100% - 30px,1180px); }
+}
+
+.tn-page .auto-page { --auto-ink: #09264c; --auto-blue: #1465d9; --auto-blue-deep: #073b8f; --auto-red: #e33b42; --auto-cyan: #2aabd5; background: #f5f9fd; color: var(--auto-ink); min-height: 100vh; overflow: clip; }
+
+.tn-page .auto-page h1, .tn-page .auto-page h2, .tn-page .auto-page h3, .tn-page .auto-page p { margin-top: 0; }
+
+.tn-page .auto-brand { align-items: center; display: flex; flex: none; gap: 10px; }
+
+.tn-page .auto-brand > span { align-items: center; border-radius: 8px; display: flex; height: 36px; width: 102px; }
+
+.tn-page .auto-brand img { height: 100%; object-fit: contain; width: 100%; }
+
+.tn-page .auto-brand b { border-left: 1px solid rgba(12,65,116,.17); color: #375673; font: 800 13px/1.35 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .1em; max-width: 72px; padding-left: 10px; }
+
+.tn-page .auto-hero { background: radial-gradient(circle at 77% 15%, rgba(50,176,225,.27), transparent 27%), linear-gradient(125deg, #061d42 0%, #0b427b 60%, #0e6894 125%); min-height: 485px; overflow: hidden; position: relative; }
+
+.tn-page .auto-hero::before { background-image: linear-gradient(rgba(194,233,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(194,233,255,.08) 1px, transparent 1px); background-size: 62px 62px; content: ""; inset: 0; mask-image: linear-gradient(115deg, #000, transparent 78%); opacity: .52; position: absolute; }
+
+.tn-page .auto-hero-copy { padding: 94px 0 176px; position: relative; z-index: 2; }
+
+.tn-page .auto-kicker { align-items: center; background: rgba(213,243,255,.11); border: 1px solid rgba(190,231,255,.24); border-radius: 999px; color: #b7ecff; display: inline-flex; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .12em; padding: 9px 12px; }
+
+.tn-page .auto-kicker.blue { background: #e9f5ff; border-color: #d0e8f8; color: #1767c6; }
+
+.tn-page .auto-hero h1 { color: #fff; font: 800 clamp(42px,5.4vw,72px)/1.02 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.06em; margin: 21px 0 17px; max-width: 760px; }
+
+.tn-page .auto-hero h1 em { color: #91e4f6; font-style: normal; }
+
+.tn-page .auto-hero p { color: rgba(224,243,255,.79); font-size: 15px; line-height: 1.75; margin-bottom: 0; max-width: 600px; }
+
+.tn-page .auto-hero-links { display: flex; gap: 11px; margin-top: 27px; }
+
+.tn-page .auto-hero-links > * { align-items: center; border-radius: 10px; display: inline-flex; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; gap: 9px; min-height: 45px; padding: 0 16px; transition: background .25s ease, transform .25s ease, box-shadow .25s ease; }
+
+.tn-page .auto-hero-links > *:hover { transform: translateY(-3px); }
+
+.tn-page .auto-hero-links > a:first-child { background: #fff; box-shadow: 0 13px 30px rgba(0,11,35,.22); color: #0a4a9f; }
+
+.tn-page .auto-hero-links > a:last-child { border: 1px solid rgba(216,243,255,.32); color: #e5f7ff; }
+
+.tn-page .auto-hero-links > a:last-child:hover { background: rgba(255,255,255,.1); }
+
+.tn-page .auto-hero-orb { border: 1px solid rgba(185,234,255,.18); border-radius: 50%; position: absolute; }
+
+.tn-page .auto-hero-orb::after { background: #7ee5ff; border: 5px solid rgba(255,255,255,.78); border-radius: 50%; box-shadow: 0 0 22px rgba(100,223,255,.56); content: ""; height: 8px; position: absolute; width: 8px; }
+
+.tn-page .orb-one { animation: autoOrbit 22s linear infinite; height: 420px; right: 8%; top: 28px; width: 420px; }
+
+.tn-page .orb-one::after { left: 9%; top: 12%; }
+
+.tn-page .orb-two { animation: autoOrbitReverse 31s linear infinite; height: 570px; opacity: .62; right: -2%; top: -54px; width: 570px; }
+
+.tn-page .orb-two::after { bottom: 12%; right: 9%; }
+
+.tn-page .auto-product-surface { margin-top: -116px; position: relative; z-index: 4; }
+
+.tn-page .auto-experience { display: grid; gap: 20px; }
+
+.tn-page .auto-choice-grid { display: flex; gap: 15px; min-height: 304px; }
+
+.tn-page .auto-choice-card { appearance: none; background: #0c376d; border: 1px solid rgba(21,91,184,.28); border-radius: 20px; color: #fff; cursor: pointer; flex: 1 1 0; min-width: 0; overflow: hidden; padding: 0; position: relative; text-align: left; transition: border-color .38s ease, box-shadow .4s cubic-bezier(.2,.76,.23,1), flex-grow .72s cubic-bezier(.2,.74,.2,1), transform .35s cubic-bezier(.2,.74,.2,1); }
+
+.tn-page .auto-choice-card:hover { border-color: rgba(73,164,255,.84); box-shadow: 0 20px 42px rgba(6,38,88,.21); transform: translateY(-3px); }
+
+.tn-page .auto-choice-card.is-selected { border-color: #70bbff; box-shadow: 0 0 0 3px rgba(80,164,255,.18), 0 24px 48px rgba(8,44,103,.25); }
+
+.tn-page .auto-choice-card > img { height: 100%; inset: 0; object-fit: cover; position: absolute; transition: transform .7s cubic-bezier(.2,.74,.2,1), filter .5s ease; width: 100%; }
+
+.tn-page .auto-choice-card:hover > img { filter: saturate(1.12) contrast(1.03); transform: scale(1.055); }
+
+.tn-page .auto-choice-veil { background: linear-gradient(90deg, rgba(5,29,67,.88) 0%, rgba(5,29,67,.67) 47%, rgba(5,29,67,.18) 100%), linear-gradient(0deg, rgba(4,25,59,.75), transparent 58%); inset: 0; position: absolute; transition: background .4s ease; }
+
+.tn-page .auto-choice-card.is-selected .auto-choice-veil { background: linear-gradient(105deg, rgba(5,35,82,.91), rgba(7,77,143,.57) 63%, rgba(9,83,139,.14)); }
+
+.tn-page .auto-choice-copy { bottom: 25px; display: flex; flex-direction: column; left: 25px; max-width: 385px; position: absolute; right: 24px; z-index: 2; }
+
+.tn-page .auto-choice-copy small { color: #a8e5ff; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .12em; }
+
+.tn-page .auto-choice-copy strong { color: #fff; font: 800 clamp(19px,2.1vw,29px)/1.08 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.045em; margin: 11px 0 8px; transition: color .3s ease; }
+
+.tn-page .auto-choice-card:hover .auto-choice-copy strong { color: #a8e9ff; }
+
+.tn-page .auto-choice-copy em { color: rgba(239,248,255,.82); font-size: 13px; font-style: normal; line-height: 1.58; max-width: 318px; }
+
+.tn-page .auto-choice-copy > b { color: #d6f2ff; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; margin-top: 14px; }
+
+.tn-page .auto-choice-copy > .auto-choice-price { align-self: flex-start; background: rgba(255,255,255,.96); border: 2px solid #ff2437; border-radius: 11px; box-shadow: 0 10px 24px rgba(128,0,20,.27), 0 0 0 4px rgba(255,36,55,.12); color: #f20d2a; display: flex; flex-direction: column; font: 900 clamp(18px,2vw,26px)/1.05 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.045em; margin-top: 15px; max-width: 100%; padding: 10px 13px; text-shadow: 0 1px 0 #fff; }
+
+.tn-page .auto-choice-copy > .auto-choice-price span { color: #d50822; font: 900 13px/1.3 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .035em; margin-top: 5px; text-transform: uppercase; }
+
+.tn-page .auto-choice-selected { align-items: center; color: #c5efff; display: flex; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; gap: 7px; margin-top: 13px; max-height: 0; opacity: 0; overflow: hidden; transition: max-height .36s ease, opacity .28s ease; }
+
+.tn-page .auto-choice-selected i { font-size: 16px; font-style: normal; }
+
+.tn-page .auto-choice-card.is-selected .auto-choice-selected { max-height: 25px; opacity: 1; }
+
+.tn-page .auto-trust-line { align-items: center; color: #214e82; display: flex; flex-wrap: wrap; font: 700 13px "Be Vietnam Pro","BVP Fallback",sans-serif; gap: 15px 30px; justify-content: center; padding: 1px 8px 0; }
+
+.tn-page .auto-trust-line span::first-letter { color: #1474e5; }
+
+.tn-page .auto-dashboard { background: rgba(255,255,255,.8); border: 1px solid rgba(22,92,159,.14); border-radius: 21px; box-shadow: 0 24px 55px rgba(11,68,125,.1); display: grid; gap: 15px; grid-template-columns: minmax(0,1fr) 270px; padding: 16px; }
+
+.tn-page .auto-dashboard-main { background: linear-gradient(145deg, #fff, #f3f9fe); border: 1px solid #ddebf5; border-radius: 16px; padding: 25px; }
+
+.tn-page .auto-dashboard-heading { align-items: flex-start; display: flex; gap: 20px; justify-content: space-between; }
+
+.tn-page .auto-dashboard-heading span, .tn-page .auto-section-heading > span, .tn-page .auto-limit-card > span, .tn-page .auto-docs > span { color: #1769c9; display: block; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .12em; }
+
+.tn-page .auto-dashboard-heading h2 { color: #0a315e; font: 800 clamp(21px,2.4vw,30px)/1.1 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.045em; margin: 7px 0 0; }
+
+.tn-page .auto-dashboard-heading > a { color: #176bd2; flex: none; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; margin-top: 4px; }
+
+.tn-page .auto-dashboard-heading > a i, .tn-page .auto-cta a i { font-size: 15px; font-style: normal; margin-left: 4px; }
+
+.tn-page .auto-segments { display: grid; gap: 11px; }
+
+.tn-page .auto-segment-group { background: rgba(248,252,255,.88); border: 1px solid #e1edf5; border-radius: 13px; display: grid; gap: 11px; grid-template-columns: 142px 1fr; padding: 10px; }
+
+.tn-page .auto-segment-group > small { align-self: center; color: #5a738d; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+
+.tn-page .auto-segment-group > div { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.tn-page .auto-segment-group button { background: #f0f6fb; border: 1px solid transparent; border-radius: 8px; color: #47617a; cursor: pointer; font: 700 13px/1.25 "Be Vietnam Pro","BVP Fallback",sans-serif; padding: 8px 9px; transition: background .25s ease, border-color .25s ease, box-shadow .25s ease, color .25s ease, transform .25s ease; }
+
+.tn-page .auto-segment-group button:hover { border-color: #a8d1f2; color: #1263c3; transform: translateY(-1px); }
+
+.tn-page .auto-segment-group button.is-current { background: linear-gradient(135deg, #156ada, #1983da); border-color: #156ada; box-shadow: 0 7px 15px rgba(12,91,191,.18); color: #fff; }
+
+.tn-page .auto-fee-panel { background: linear-gradient(120deg, rgba(231,245,255,.92), #fff 55%, rgba(237,249,255,.9)); border: 1px solid #cfe5f5; border-radius: 15px; margin-top: 16px; overflow: hidden; padding: 18px; position: relative; }
+
+.tn-page .auto-fee-panel::after { background: radial-gradient(circle, rgba(41,165,224,.18), transparent 68%); content: ""; height: 250px; pointer-events: none; position: absolute; right: -105px; top: -105px; width: 250px; }
+
+.tn-page .auto-fee-value { position: relative; z-index: 1; }
+
+.tn-page .auto-fee-value > span { color: #426280; display: block; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+
+.tn-page .auto-fee-value > span small { color: #7f95aa; font-size: 13px; }
+
+.tn-page .auto-fee-value strong { color: #0958bc; display: block; font: 800 clamp(30px,4vw,47px)/1 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.06em; margin: 8px 0 7px; text-shadow: 0 5px 18px rgba(19,117,216,.1); }
+
+.tn-page .auto-fee-value strong em { color: #4a6887; font-size: 13px; font-style: normal; letter-spacing: 0; }
+
+.tn-page .auto-fee-value p { color: #55728d; font: 700 13px "Be Vietnam Pro","BVP Fallback",sans-serif; margin: 0; }
+
+.tn-page .auto-fee-line { align-items: center; border-top: 1px solid #dbeaf3; display: flex; flex-wrap: wrap; gap: 7px 9px; margin-top: 15px; padding-top: 13px; position: relative; z-index: 1; }
+
+.tn-page .auto-fee-line > span { color: #738aa0; font-size: 13px; }
+
+.tn-page .auto-fee-line > b { color: #143c68; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+
+.tn-page .auto-fee-line > i { color: #1686d6; font-size: 16px; font-style: normal; }
+
+.tn-page .auto-dashboard-aside { display: grid; gap: 15px; }
+
+.tn-page .auto-limit-card { background: #fff; border: 1px solid #deebf4; border-radius: 16px; box-shadow: 0 10px 26px rgba(20,79,132,.05); padding: 20px; }
+
+.tn-page .auto-limit-card > span { margin-bottom: 15px; }
+
+.tn-page .auto-limit-card > div { align-items: center; display: flex; gap: 11px; margin-top: 17px; }
+
+.tn-page .auto-limit-card i { align-items: center; background: #e9f4ff; border-radius: 12px; color: #0d68da; display: flex; font-size: 21px; height: 42px; justify-content: center; width: 42px; }
+
+.tn-page .auto-limit-card div:nth-child(3) i { background: #fff0f0; color: #df3e45; }
+
+.tn-page .auto-limit-card p { color: #5b7188; display: flex; flex: 1; flex-direction: column; font-size: 13px; line-height: 1.45; margin: 0; }
+
+.tn-page .auto-limit-card b { color: #173b66; font: 800 13px/1.35 "Be Vietnam Pro","BVP Fallback",sans-serif; margin-top: 3px; }
+
+.tn-page .auto-limit-card b small { color: #6e839a; font-size: 13px; }
+
+.tn-page .auto-section { padding: 88px 0; }
+
+.tn-page .auto-soft-section { background: #edf6fb; }
+
+.tn-page .auto-faq-docs { display: grid; gap: 34px; grid-template-columns: 1.25fr .75fr; margin-top: 55px; }
+
+.tn-page .auto-section-heading > span { margin-bottom: 10px; }
+
+.tn-page .auto-section-heading h2 { color: #0c345f; font: 800 clamp(25px,3.3vw,39px)/1.12 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.05em; margin: 0; }
+
+.tn-page .auto-section-heading p { color: #637b92; font-size: 13px; line-height: 1.65; margin: 11px 0 0; max-width: 650px; }
+
+.tn-page .auto-faqs details { background: rgba(255,255,255,.82); border-bottom: 1px solid #d8e7f0; }
+
+.tn-page .auto-faqs details:first-of-type { border-top: 1px solid #d8e7f0; margin-top: 25px; }
+
+.tn-page .auto-faqs summary { align-items: center; color: #153a63; cursor: pointer; display: flex; font: 800 13px/1.5 "Be Vietnam Pro","BVP Fallback",sans-serif; justify-content: space-between; list-style: none; min-height: 61px; padding: 0 10px; }
+
+.tn-page .auto-faqs summary::-webkit-details-marker { display: none; }
+
+.tn-page .auto-faqs summary i { align-items: center; border: 1px solid #c4dbeb; border-radius: 50%; color: #1670d3; display: flex; font-size: 17px; font-style: normal; height: 25px; justify-content: center; transition: transform .25s ease, background .25s ease; width: 25px; }
+
+.tn-page .auto-faqs details[open] summary i { background: #e2f2ff; transform: rotate(45deg); }
+
+.tn-page .auto-faqs details > p { color: #627b93; font-size: 13px; line-height: 1.72; margin: -2px 48px 16px 10px; }
+
+.tn-page .auto-docs { background: linear-gradient(145deg, #0a3d76, #075d8e); border-radius: 18px; box-shadow: 0 19px 42px rgba(9,55,109,.16); color: #fff; padding: 25px; }
+
+.tn-page .auto-docs > span { color: #9ee7ff; }
+
+.tn-page .auto-docs h2 { font: 800 22px/1.18 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.045em; margin: 12px 0 20px; }
+
+.tn-page .auto-docs a { border-top: 1px solid rgba(197,235,255,.2); color: #fff; display: grid; gap: 5px; grid-template-columns: 1fr auto; padding: 14px 0; }
+
+.tn-page .auto-docs small { color: #8adffc; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; grid-column: 1; letter-spacing: .06em; }
+
+.tn-page .auto-docs b { font: 700 13px/1.45 "Be Vietnam Pro","BVP Fallback",sans-serif; grid-column: 1; }
+
+.tn-page .auto-docs i { align-self: center; color: #a7eaff; font-size: 16px; font-style: normal; grid-column: 2; grid-row: 1 / span 2; }
+
+.tn-page .auto-table-scroll { overflow-x: auto; scrollbar-color: #b8d6e9 #edf5fa; }
+
+.tn-page .auto-reference-note { align-items: center; background: linear-gradient(105deg, #edf7ff, #f8fcff); border: 1px solid #cae2f3; border-radius: 15px; color: #4e6e89; display: flex; gap: 13px; margin-top: 22px; padding: 16px 18px; }
+
+.tn-page .auto-reference-note > span { align-items: center; background: #d9edff; border-radius: 50%; color: #176bcf; display: flex; flex: 0 0 auto; font: 800 13px serif; height: 29px; justify-content: center; width: 29px; }
+
+.tn-page .auto-reference-note p { flex: 1; font-size: 13px; line-height: 1.65; margin: 0; }
+
+.tn-page .auto-reference-note a { color: #1167ce; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; white-space: nowrap; }
+
+.tn-page .auto-cta { background: linear-gradient(120deg, #061e42, #0a4d7d 63%, #0788a5 138%); color: #fff; padding: 67px 0; position: relative; }
+
+.tn-page .auto-cta::after { background-image: linear-gradient(rgba(188,235,255,.09) 1px, transparent 1px), linear-gradient(90deg, rgba(188,235,255,.09) 1px, transparent 1px); background-size: 56px 56px; content: ""; inset: 0; mask-image: linear-gradient(90deg, #000, transparent 72%); position: absolute; }
+
+.tn-page .auto-cta-inner { align-items: center; display: flex; justify-content: space-between; position: relative; z-index: 1; }
+
+.tn-page .auto-cta span { color: #91ddf5; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .12em; }
+
+.tn-page .auto-cta h2 { font: 800 clamp(28px,3.8vw,46px)/1.08 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.05em; margin: 11px 0 0; }
+
+.tn-page .auto-cta p { color: rgba(219,243,255,.72); font-size: 13px; line-height: 1.65; margin: 13px 0 0; max-width: 530px; }
+
+.tn-page .auto-cta a { align-items: center; background: #fff; border-radius: 10px; box-shadow: 0 14px 30px rgba(0,13,36,.2); color: #0b57b6; display: inline-flex; flex: none; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; padding: 16px 19px; transition: transform .25s ease, box-shadow .25s ease; }
+
+.tn-page .auto-cta a:hover { box-shadow: 0 18px 36px rgba(0,13,36,.3); transform: translateY(-3px); }
+
+@media (max-width: 960px) {
+  .tn-page .auto-dashboard { grid-template-columns: 1fr; }
+  .tn-page .auto-dashboard-aside { grid-template-columns: repeat(2,1fr); }
+}
+
+@media (max-width: 700px) {
+  .tn-page .auto-brand b { display: none; }
+  .tn-page .auto-brand > span { height: 31px; width: 88px; }
+  .tn-page .auto-hero { min-height: 430px; }
+  .tn-page .auto-hero-copy { padding: 65px 0 130px; }
+  .tn-page .auto-hero h1 { font-size: 40px; }
+  .tn-page .auto-hero p { font-size: 13px; }
+  .tn-page .auto-hero-links { flex-direction: column; max-width: 235px; }
+  .tn-page .auto-hero-links > * { justify-content: center; }
+  .tn-page .orb-one { height: 285px; right: -16%; top: 47px; width: 285px; }
+  .tn-page .orb-two { display: none; }
+  .tn-page .auto-product-surface { margin-top: -76px; }
+  .tn-page .auto-choice-grid { flex-direction: column; min-height: 0; }
+  .tn-page .auto-choice-card { flex: 0 0 248px; }
+  .tn-page .auto-choice-copy { bottom: 20px; left: 20px; }
+  .tn-page .auto-trust-line { justify-content: flex-start; padding-left: 3px; }
+  .tn-page .auto-dashboard { border-radius: 16px; padding: 8px; }
+  .tn-page .auto-dashboard-main { border-radius: 12px; padding: 17px; }
+  .tn-page .auto-dashboard-heading { flex-direction: column; gap: 9px; }
+  .tn-page .auto-dashboard-heading h2 { font-size: 23px; }
+  .tn-page .auto-segment-group { gap: 8px; grid-template-columns: 1fr; }
+  .tn-page .auto-segment-group > div { max-height: 115px; overflow-y: auto; }
+  .tn-page .auto-fee-value strong { font-size: 34px; }
+  .tn-page .auto-fee-line { align-items: baseline; }
+  .tn-page .auto-dashboard-aside { grid-template-columns: 1fr; }
+  .tn-page .auto-section { padding: 62px 0; }
+  .tn-page .auto-faq-docs { gap: 18px; grid-template-columns: 1fr; margin-top: 32px; }
+  .tn-page .auto-table-scroll { overflow: visible; }
+  .tn-page .auto-reference-note { align-items: flex-start; }
+  .tn-page .auto-reference-note a { display: none; }
+  .tn-page .auto-cta-inner { align-items: flex-start; flex-direction: column; gap: 23px; }
+  .tn-page .auto-cta a { width: 100%; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tn-page .auto-choice-card, .tn-page .auto-choice-card > img, .tn-page .auto-choice-selected { transition: none; }
+  .tn-page .auto-hero-orb { animation: none; }
+}
+
+.tn-page .auto-page .auto-hero { background: linear-gradient(180deg, #fff 0%, #f7fbff 100%); min-height: 0; overflow: visible; }
+
+.tn-page .auto-page .auto-hero::before, .tn-page .auto-page .auto-hero-orb { display: none; }
+
+.tn-page .auto-page .auto-hero-copy { align-items: center; display: flex; flex-direction: column; padding: 34px 0 26px; text-align: center; }
+
+.tn-page .auto-page .auto-kicker { background: #eaf5ff; border-color: #cde5f6; color: #1768bd; }
+
+.tn-page .auto-page .auto-hero h1 { color: #082f60; font-size: clamp(34px, 4vw, 53px); letter-spacing: -.055em; margin: 13px 0 10px; max-width: none; }
+
+.tn-page .auto-page .auto-hero h1 em { color: #0f65c9; }
+
+.tn-page .auto-page .auto-hero p { color: #47647f; font-size: 13px; line-height: 1.65; max-width: 720px; }
+
+.tn-page .auto-page .auto-hero-links { display: none; }
+
+.tn-page .auto-page .auto-product-surface { margin-top: 0; padding-bottom: 8px; }
+
+.tn-page .auto-page .auto-choice-grid { gap: 13px; min-height: 284px; }
+
+.tn-page .auto-page .auto-choice-card { border-radius: 16px; }
+
+.tn-page .auto-page .auto-choice-copy { bottom: 21px; left: 23px; }
+
+.tn-page .auto-page .auto-choice-copy > .auto-choice-price { background: #fff; border: 3px solid #ff1c37; box-shadow: 0 14px 30px rgba(130, 0, 25, .32), 0 0 0 4px rgba(255, 28, 55, .13); color: #e00029; gap: 0; isolation: isolate; min-width: 218px; opacity: 1; padding: 10px 15px 11px; position: relative; text-shadow: none; z-index: 4; }
+
+.tn-page .auto-page .auto-choice-price .auto-choice-price-prefix { color: #b30b25; display: block; font: 900 13px/1 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .075em; margin: 0 0 3px; text-transform: uppercase; }
+
+.tn-page .auto-page .auto-choice-price .auto-choice-price-amount { color: #e00029; display: block; font: 900 clamp(25px, 2.6vw, 35px)/.98 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.065em; margin: 0; text-shadow: none; }
+
+.tn-page .auto-page .auto-choice-copy > .auto-choice-price span { color: #ad001d; font-size: 13px; margin-top: 6px; }
+
+.tn-page .auto-page .auto-dashboard { align-items: start; grid-template-columns: minmax(0, 1fr) 300px; }
+
+.tn-page .auto-page .auto-dashboard-aside { align-content: start; grid-auto-rows: max-content; gap: 12px; }
+
+.tn-page .auto-page .auto-side-card, .tn-page .auto-page .auto-sidebar-consult { border-radius: 14px; box-shadow: 0 10px 24px rgba(20, 79, 132, .06); padding: 17px; }
+
+.tn-page .auto-page .auto-limit-card > div { margin-top: 14px; }
+
+.tn-page .auto-page .auto-limit-card > span, .tn-page .auto-page .auto-side-card > span, .tn-page .auto-page .auto-sidebar-consult > span { color: #1265c3; display: block; font: 900 13px "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .12em; margin-bottom: 12px; }
+
+.tn-page .auto-page .auto-sidebar-consult { background: linear-gradient(135deg, #eef6ff, #fff); border: 1px solid #cfe2f6; }
+
+.tn-page .auto-page .auto-sidebar-consult > span { color: #1769c9; }
+
+.tn-page .auto-page .auto-sidebar-consult h3 { color: #0c386d; font: 800 20px/1.12 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.045em; margin: 0 0 7px; }
+
+.tn-page .auto-page .auto-sidebar-consult p { color: #53718d; font-size: 13px; line-height: 1.55; margin: 0 0 12px; }
+
+.tn-page .auto-page .auto-sidebar-consult a { align-items: center; background: #126bd3; border-radius: 8px; color: #fff; display: inline-flex; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; padding: 10px 12px; }
+
+.tn-page .auto-page .auto-sidebar-consult a i { font-size: 14px; font-style: normal; margin-left: 5px; }
+
+@media (max-width: 960px) {
+  .tn-page .auto-page .auto-dashboard { grid-template-columns: 1fr; }
+  .tn-page .auto-page .auto-dashboard-aside { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tn-page .auto-page .auto-sidebar-consult { align-self: start; }
+}
+
+@media (max-width: 700px) {
+  .tn-page .auto-page .auto-hero-copy { align-items: flex-start; padding: 28px 0 21px; text-align: left; }
+  .tn-page .auto-page .auto-hero h1 { font-size: 35px; }
+  .tn-page .auto-page .auto-choice-grid { gap: 11px; }
+  .tn-page .auto-page .auto-choice-card { flex-basis: 258px; }
+  .tn-page .auto-page .auto-choice-copy > .auto-choice-price { min-width: 0; width: min(100%, 265px); }
+  .tn-page .auto-page .auto-choice-price .auto-choice-price-amount { font-size: 28px; }
+  .tn-page .auto-page .auto-dashboard-aside { grid-template-columns: 1fr; }
+}
+
+.tn-page .auto-page .auto-choice-copy > .auto-choice-price {
+  min-width: 236px;
+  padding: 12px 16px 13px;
+}
+
+.tn-page .auto-page .auto-choice-price .auto-choice-price-prefix,
+.tn-page .auto-page .auto-choice-copy > .auto-choice-price span {
+  color: #a40722 !important;
+}
+
+.tn-page .auto-page .auto-choice-price .auto-choice-price-amount {
+  color: #ce0027 !important;
+  font-size: clamp(30px, 3vw, 40px) !important;
+  line-height: 1.04 !important;
+}
+
+.tn-page .auto-page .auto-choice-grid { min-height: 312px; }
+
+.tn-page .auto-page .auto-choice-card { min-height: 312px; }
+
+.tn-page .auto-page .auto-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+.tn-page .auto-page .auto-reference-note a { color: var(--pvi-readable-link) !important; font-size: var(--pvi-readable-ui) !important; }
+
+.tn-page .auto-page .auto-choice-copy > .auto-choice-price :is(small, strong, span) { color: #ce0027 !important; }
+
+.tn-page .auto-page .auto-choice-copy > .auto-choice-price span { color: #a40722 !important; }
+
+@media (max-width: 700px) {
+
+  .tn-page .auto-page .auto-choice-grid { min-height: 0; }
+  .tn-page .auto-page .auto-choice-card { flex-basis: 306px; min-height: 306px; }
+  .tn-page .auto-page .auto-choice-copy > .auto-choice-price { width: min(100%, 290px); }
+  .tn-page .auto-page .auto-choice-price .auto-choice-price-amount { font-size: 30px !important; }
+}
+
+.tn-page .auto-page .auto-brand b,
+.tn-page .auto-page .auto-dashboard-heading span,
+.tn-page .auto-page .auto-limit-card p > span {
+  font-size: var(--pvi-readable-caption) !important;
+  line-height: 1.45 !important;
+}
+
+.tn-page .auto-page .auto-fee-value strong em,
+.tn-page .auto-page .auto-fee-line :is(span, b),
+.tn-page .auto-page .auto-limit-card b,
+.tn-page .auto-page .auto-docs a > b,
+.tn-page .auto-page .auto-cta span {
+  font-size: var(--pvi-readable-ui) !important;
+  line-height: 1.42 !important;
+}
+
+.tn-page .auto-page .auto-fee-line {
+  align-items: start;
+  display: grid;
+  gap: 7px 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.tn-page .auto-page .auto-fee-line > i { display: none; }
+
+@media (max-width: 700px) {
+  .tn-page .auto-page .auto-fee-line { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.tn-page .auto-page .auto-choice-selected {
+  background: rgba(4, 31, 65, .9);
+  border: 1px solid rgba(210, 242, 255, .7);
+  border-radius: 999px;
+  color: #ffffff !important;
+  font-size: var(--pvi-readable-ui) !important;
+  line-height: 1.35 !important;
+  padding: 4px 9px;
+  width: fit-content;
+}
+
+.tn-page .auto-page .auto-choice-selected i { color: #ffffff !important; }
+
+.tn-page .auto-page .auto-limit-card b small { color: #355f84 !important; }
+
+.tn-page .auto-page .auto-sidebar-consult a,
+.tn-page .auto-page .auto-sidebar-consult a i { color: #ffffff !important; }
+
+.tn-page .auto-page .auto-reference-note > span { background: #0a5da8; color: #ffffff !important; }
+
+.tn-page .auto-page {
+  --fs-eyebrow: 13px;   /* nhãn chữ hoa có letter-spacing */
+  --fs-caption: 14px;   /* helper, meta, ghi chú nguồn */
+  --fs-label:   15px;   /* label form/filter, nút, bảng */
+  --fs-card:    15px;   /* mô tả card, body phụ */
+  --fs-body:    16px;   /* body chính, FAQ */
+  --fs-lead:    17px;   /* đoạn dẫn dưới H1 */
+}
+
+.tn-page .auto-page .auto-kicker,
+.tn-page .auto-page .auto-brand b,
+.tn-page .auto-page .auto-choice-copy small,
+.tn-page .auto-page .auto-dashboard-heading span,
+.tn-page .auto-page .auto-section-heading > span,
+.tn-page .auto-page .auto-limit-card > span,
+.tn-page .auto-page .auto-side-card > span,
+.tn-page .auto-page .auto-sidebar-consult > span,
+.tn-page .auto-page .auto-docs > span,
+.tn-page .auto-page .auto-segment-group > small,
+.tn-page .auto-page .auto-cta span,
+.tn-page .auto-page .auto-docs small,
+.tn-page .auto-page .auto-choice-price .auto-choice-price-prefix,
+.tn-page .auto-page .auto-tier-flag { font-size: var(--fs-eyebrow); letter-spacing: .07em; }
+
+.tn-page .auto-page .auto-trust-line,
+.tn-page .auto-page .auto-fee-line > span,
+.tn-page .auto-page .auto-reference-note a,
+.tn-page .auto-page .auto-reference-note > span,
+.tn-page .auto-page .auto-limit-card b small,
+.tn-page .auto-page .auto-fee-value > span small,
+.tn-page .auto-page .auto-choice-selected,
+.tn-page .auto-page .auto-choice-copy > .auto-choice-price span { font-size: var(--fs-caption); letter-spacing: normal; }
+
+.tn-page .auto-page .auto-segment-group button,
+.tn-page .auto-page .auto-hero-links > *,
+.tn-page .auto-page .auto-dashboard-heading > a,
+.tn-page .auto-page .auto-sidebar-consult a,
+.tn-page .auto-page .auto-cta a,
+.tn-page .auto-page .auto-docs b { font-size: var(--fs-label); letter-spacing: normal; }
+
+.tn-page .auto-page .auto-choice-copy em,
+.tn-page .auto-page .auto-limit-card p,
+.tn-page .auto-page .auto-fee-line > b,
+.tn-page .auto-page .auto-fee-value p,
+.tn-page .auto-page .auto-fee-value > span,
+.tn-page .auto-page .auto-sidebar-consult p,
+.tn-page .auto-page .auto-reference-note p { font-size: var(--fs-card); line-height: 1.65; }
+
+.tn-page .auto-page .auto-section-heading p,
+.tn-page .auto-page .auto-cta p,
+.tn-page .auto-page .auto-faqs summary,
+.tn-page .auto-page .auto-faqs details > p { font-size: var(--fs-body); line-height: 1.7; }
+
+.tn-page .auto-page .auto-limit-card b,
+.tn-page .auto-page .auto-fee-value strong em { font-size: var(--fs-body); }
+
+.tn-page .auto-page .auto-hero p { font-size: var(--fs-lead); line-height: 1.72; }
+
+.tn-page .auto-page .auto-choice-card { align-items: flex-end; display: flex; }
+
+.tn-page .auto-page .auto-choice-card > .auto-choice-copy {
+  bottom: auto;
+  left: auto;
+  max-width: none;
+  padding: 30px 24px 24px;
+  position: relative;
+  right: auto;
+  width: 100%;
+  z-index: 2;
+}
+
+@media (max-width: 700px) {
+  .tn-page .auto-page .auto-choice-card { flex: 0 0 auto; }
+}
+
+.tn-page .accident-page { padding-bottom: 96px; }
+
+.tn-page .accident-hero { padding-bottom: 64px; }
+
+.tn-page .accident-chips { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 22px 0 0; padding: 0; }
+
+.tn-page .accident-chips li { background: rgba(255, 255, 255, .12); border: 1px solid rgba(255, 255, 255, .26); border-radius: 999px; color: #eaf6ff; font-size: var(--fs-caption); font-weight: 600; padding: 9px 16px; }
+
+.tn-page .accident-answer { background: linear-gradient(135deg, #eef7ff, #f8fcff); border: 1px solid rgba(18, 98, 223, .16); border-radius: 24px; padding: 32px; }
+
+.tn-page .accident-answer h2 { font: 700 clamp(24px, 3vw, 32px)/1.2 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.02em; margin: 14px 0 16px; }
+
+.tn-page .auto-page .accident-answer-lead { color: #24445f; font-size: var(--fs-lead); line-height: 1.8; margin: 0; }
+
+.tn-page .accident-table { border-collapse: collapse; min-width: 640px; width: 100%; }
+
+.tn-page .auto-page .accident-table caption { color: #5c7791; font-size: var(--fs-caption); line-height: 1.6; padding-bottom: 12px; text-align: left; }
+
+.tn-page .auto-page .accident-table th, .tn-page .auto-page .accident-table td { border-bottom: 1px solid #e3edf4; font-size: var(--fs-label); line-height: 1.6; padding: 14px 16px; text-align: left; vertical-align: top; }
+
+.tn-page .auto-page .accident-table thead th { background: #f2f8fd; color: #33546f; font-weight: 700; }
+
+.tn-page .auto-page .accident-table tbody th { color: #143f68; font-weight: 700; width: 34%; }
+
+.tn-page .auto-page .accident-table tbody td { color: #41607c; }
+
+.tn-page .auto-page .accident-table tbody td b { color: #0c4f96; font-weight: 700; }
+
+.tn-page .auto-page .accident-table tbody td small { color: #6a839b; font-size: var(--fs-caption); }
+
+.tn-page .accident-table tbody tr:nth-child(even) { background: #f9fcfe; }
+
+.tn-page .accident-flag { border-radius: 999px; display: inline-block; font-size: var(--fs-caption); font-weight: 700; padding: 5px 12px; white-space: nowrap; }
+
+.tn-page .accident-flag.is-ok { background: rgba(13, 122, 79, .1); color: #0d7a4f; }
+
+.tn-page .accident-callout { align-items: start; background: #fff6f6; border: 1px solid rgba(229, 43, 54, .2); border-radius: 20px; display: grid; gap: 16px; grid-template-columns: 34px minmax(0, 1fr) auto; margin-top: 24px; padding: 22px; }
+
+.tn-page .accident-callout > span { align-items: center; background: var(--red); border-radius: 50%; color: #fff; display: flex; font-weight: 800; height: 34px; justify-content: center; width: 34px; }
+
+.tn-page .auto-page .accident-callout p { color: #4a2b2d; font-size: var(--fs-body); line-height: 1.75; margin: 0; }
+
+.tn-page .auto-page .accident-callout a { align-items: center; color: #b31f28; display: inline-flex; font-size: var(--fs-label); font-weight: 700; min-height: 44px; white-space: nowrap; }
+
+.tn-page .accident-scenario-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-top: 28px; }
+
+.tn-page .accident-scenario-grid article { background: #fff; border: 1px solid var(--line); border-radius: 22px; box-shadow: 0 14px 38px rgba(16, 74, 148, .07); display: flex; flex-direction: column; padding: 26px; }
+
+.tn-page .accident-scenario-index { color: var(--auto-blue); font: 800 var(--fs-eyebrow)/1 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+
+.tn-page .accident-scenario-grid h3 { font: 700 var(--fs-lead)/1.4 "Be Vietnam Pro","BVP Fallback",sans-serif; margin: 12px 0 14px; }
+
+.tn-page .auto-page .accident-scenario-context { color: #4a6580; font-size: var(--fs-card); line-height: 1.75; margin: 0 0 18px; }
+
+.tn-page .accident-scenario-steps { border-top: 1px solid var(--line); list-style: none; margin: 0; padding: 0; }
+
+.tn-page .accident-scenario-steps li { align-items: baseline; border-bottom: 1px solid var(--line); display: flex; gap: 16px; justify-content: space-between; padding: 12px 0; }
+
+.tn-page .auto-page .accident-scenario-steps span { color: #5c7791; font-size: var(--fs-label); }
+
+.tn-page .auto-page .accident-scenario-steps b { color: #143f68; font-size: var(--fs-label); font-variant-numeric: tabular-nums; font-weight: 700; text-align: right; }
+
+.tn-page .auto-page .accident-scenario-result { align-items: baseline; background: #eef7ff; border-radius: 16px; display: flex; gap: 14px; justify-content: space-between; margin: 18px 0 0; padding: 16px 18px; }
+
+.tn-page .auto-page .accident-scenario-result span { color: #33546f; font-size: var(--fs-label); }
+
+.tn-page .auto-page .accident-scenario-result strong { color: #0c4f96; font: 800 clamp(22px, 3vw, 28px)/1.1 "Be Vietnam Pro","BVP Fallback",sans-serif; font-variant-numeric: tabular-nums; }
+
+.tn-page .auto-page .accident-scenario-note { color: #5c7791; font-size: var(--fs-caption); line-height: 1.7; margin: 16px 0 0; }
+
+.tn-page .accident-exclusion-list { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); list-style: none; margin: 28px 0 0; padding: 0; }
+
+.tn-page .auto-page .accident-exclusion-list li { background: #fff; border: 1px solid var(--line); border-left: 3px solid rgba(229, 43, 54, .45); border-radius: 14px; color: #41607c; font-size: var(--fs-card); line-height: 1.7; padding: 16px 18px; }
+
+.tn-page .auto-page .accident-field { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+
+.tn-page .auto-page .accident-field label { color: #33546f; font-size: var(--fs-label); font-weight: 600; }
+
+.tn-page .auto-page .accident-field input, .tn-page .auto-page .accident-field select { background: #fff; border: 1px solid rgba(14, 45, 88, .2); border-radius: 12px; color: var(--auto-ink); font-size: var(--fs-body); min-height: 48px; padding: 11px 14px; width: 100%; }
+
+.tn-page .auto-page .accident-field input:focus-visible, .tn-page .auto-page .accident-field select:focus-visible { border-color: var(--auto-blue); outline: 2px solid rgba(18, 98, 223, .28); outline-offset: 1px; }
+
+.tn-page .auto-page .accident-field input[aria-invalid="true"] { border-color: #c62828; box-shadow: 0 0 0 1px #c62828; }
+
+.tn-page .auto-page .accident-field input[aria-invalid="true"]:focus-visible { border-color: #c62828; outline: 2px solid rgba(198, 40, 40, .3); outline-offset: 1px; }
+
+.tn-page .auto-page .accident-field-help { color: #5c7791; font-size: var(--fs-caption); line-height: 1.65; margin: 0; }
+
+.tn-page .accident-field-row { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); width: 100%; }
+
+.tn-page .auto-page .accident-fee-contact { font-size: clamp(26px, 4vw, 34px); }
+
+.tn-page .accident-compliance { align-items: start; background: rgba(255, 244, 214, .8); border: 1px solid rgba(196, 138, 12, .3); border-radius: 16px; display: grid; gap: 14px; grid-template-columns: 30px minmax(0, 1fr); margin-top: 18px; padding: 16px 18px; }
+
+.tn-page .accident-compliance > span { align-items: center; background: #c48a0c; border-radius: 50%; color: #fff; display: flex; font-weight: 800; height: 30px; justify-content: center; width: 30px; }
+
+.tn-page .auto-page .accident-compliance p { color: #5a4310; font-size: var(--fs-card); line-height: 1.7; margin: 0; }
+
+.tn-page .auto-page .accident-compliance b { display: block; }
+
+.tn-page .auto-page .accident-disclaimer { color: #5c7791; font-size: var(--fs-caption); line-height: 1.65; margin: 16px 0 0; }
+
+.tn-page .accident-calc-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+
+.tn-page .auto-page .accident-primary { align-items: center; background: var(--auto-blue); border: 0; border-radius: 999px; color: #fff; display: inline-flex; font-size: var(--fs-label); font-weight: 700; gap: 9px; justify-content: center; min-height: 48px; padding: 0 24px; transition: background-color .22s ease, box-shadow .22s ease, transform .18s ease; }
+
+.tn-page .auto-page .accident-primary:hover { background: var(--auto-blue-deep); box-shadow: 0 10px 24px rgba(18, 98, 223, .28); transform: translateY(-1px); }
+
+.tn-page .auto-page .accident-primary:active { transform: translateY(0); }
+
+.tn-page .auto-page .accident-secondary { align-items: center; background: #fff; border: 1px solid rgba(14, 45, 88, .2); border-radius: 999px; color: #14477a; display: inline-flex; font-size: var(--fs-label); font-weight: 700; gap: 9px; justify-content: center; min-height: 48px; padding: 0 22px; text-align: center; transition: border-color .22s ease, color .22s ease, background-color .22s ease; }
+
+.tn-page .auto-page .accident-secondary:hover { background: #f2f8fd; border-color: var(--auto-blue); color: var(--auto-blue-deep); }
+
+.tn-page .accident-share-note { background: #f2f8fd; border: 1px solid var(--line); border-radius: 16px; margin-top: 18px; padding: 16px 18px; }
+
+.tn-page .auto-page .accident-share-note p { color: #33546f; font-size: var(--fs-card); line-height: 1.7; margin: 0 0 10px; }
+
+.tn-page .accident-share-note pre { color: #41607c; font-family: inherit; font-size: var(--fs-caption); line-height: 1.7; margin: 0; overflow-x: auto; white-space: pre-wrap; word-break: break-word; }
+
+.tn-page .accident-steps { display: grid; gap: 14px; list-style: none; margin: 28px 0 0; padding: 0; }
+
+.tn-page .accident-steps li { align-items: start; background: #fff; border: 1px solid var(--line); border-radius: 18px; display: grid; gap: 16px; grid-template-columns: 44px minmax(0, 1fr); padding: 20px; }
+
+.tn-page .accident-steps > li > b { align-items: center; background: #eef7ff; border-radius: 12px; color: var(--auto-blue); display: flex; font: 800 var(--fs-label)/1 "Be Vietnam Pro","BVP Fallback",sans-serif; height: 44px; justify-content: center; width: 44px; }
+
+.tn-page .accident-steps h3 { font: 700 var(--fs-lead)/1.35 "Be Vietnam Pro","BVP Fallback",sans-serif; margin: 0 0 6px; }
+
+.tn-page .auto-page .accident-steps p { color: #4a6580; font-size: var(--fs-card); line-height: 1.7; margin: 0; }
+
+.tn-page .accident-step-actions { align-items: center; display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; }
+
+.tn-page .accident-page .accident-product-docs { align-items: stretch; background: linear-gradient(130deg, #f3f9ff, #fff 68%); border: 1px solid #d8e9f6; border-radius: 24px; display: grid; gap: clamp(22px, 4vw, 44px); grid-template-columns: minmax(0, 1.25fr) minmax(220px, .75fr); margin-top: 28px; overflow: hidden; padding: clamp(22px, 4vw, 38px); }
+
+.tn-page .accident-product-docs-copy { min-width: 0; }
+
+.tn-page .accident-product-docs h3 { color: #102f51; font: 700 clamp(22px, 3vw, 30px)/1.25 "Be Vietnam Pro","BVP Fallback",sans-serif; margin: 10px 0 12px; }
+
+.tn-page .auto-page .accident-product-docs-copy > p { color: #45627d; font-size: var(--fs-card); line-height: 1.75; margin: 0; }
+
+.tn-page .accident-page .accident-product-doc-list { display: grid; gap: 10px; list-style: none; margin: 20px 0; padding: 0; }
+
+.tn-page .accident-product-doc-list a { align-items: center; background: #fff; border: 1px solid #dce8f1; border-radius: 14px; color: #14477a; display: flex; gap: 14px; justify-content: space-between; min-height: 76px; padding: 14px 18px; text-decoration: none; transition: border-color .2s ease, transform .2s ease; }
+
+.tn-page .accident-product-doc-list a:hover { border-color: var(--auto-blue); transform: translateY(-1px); }
+
+.tn-page .accident-product-doc-list b, .tn-page .accident-product-doc-list small { display: block; }
+
+.tn-page .accident-product-doc-list b { font-size: var(--fs-label); line-height: 1.45; }
+
+.tn-page .accident-product-doc-list small { color: #607a91; font-size: var(--fs-caption); line-height: 1.5; margin-top: 4px; }
+
+.tn-page .accident-product-doc-list i { color: var(--auto-blue); flex: 0 0 auto; font-size: 22px; font-style: normal; }
+
+.tn-page .auto-page .accident-product-docs-copy > .accident-product-doc-note { border-left: 3px solid #e2a137; color: #69562e; font-size: var(--fs-caption); line-height: 1.7; margin-top: 18px; padding-left: 13px; }
+
+.tn-page .accident-product-docs > img { align-self: center; border-radius: 18px; height: 100%; max-height: 340px; min-height: 230px; object-fit: cover; width: 100%; }
+
+@media (max-width: 720px) { .tn-page .accident-page .accident-product-docs { grid-template-columns: 1fr; } .tn-page .accident-product-docs > img { max-height: 240px; min-height: 180px; order: -1; } }
+
+.tn-page .accident-claim-grid { display: grid; gap: 24px; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); margin-top: 4px; }
+
+.tn-page .accident-claim-docs { background: #f7fbff; border: 1px solid var(--line); border-radius: 20px; padding: 24px; }
+
+.tn-page .accident-claim-docs h3 { font: 700 var(--fs-lead)/1.35 "Be Vietnam Pro","BVP Fallback",sans-serif; margin: 0 0 14px; }
+
+.tn-page .accident-claim-docs ul { display: grid; gap: 10px; list-style: none; margin: 0 0 18px; padding: 0; }
+
+.tn-page .auto-page .accident-claim-docs li { color: #41607c; font-size: var(--fs-card); line-height: 1.65; padding-left: 20px; position: relative; }
+
+.tn-page .accident-claim-docs li::before { color: var(--auto-blue); content: "\25A1"; left: 0; position: absolute; }
+
+.tn-page .accident-contact-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 28px; }
+
+.tn-page .accident-contact-grid article { background: #fff; border: 1px solid var(--line); border-radius: 20px; display: flex; flex-direction: column; gap: 8px; padding: 22px; }
+
+.tn-page .auto-page .accident-contact-grid span { color: #5c7791; font: 800 var(--fs-eyebrow)/1.4 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+
+.tn-page .auto-page .accident-contact-grid a { align-items: center; color: var(--auto-blue-deep); display: inline-flex; font-size: var(--fs-lead); font-weight: 700; min-height: 44px; word-break: break-word; }
+
+.tn-page .auto-page .accident-contact-grid p { color: #4a6580; font-size: var(--fs-card); line-height: 1.7; margin: 0; }
+
+.tn-page .accident-form-block { background: #f7fbff; border: 1px solid var(--line); border-radius: 24px; display: grid; gap: 28px; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); margin-top: 28px; padding: 28px; }
+
+.tn-page .accident-form-block h3 { font: 700 clamp(22px, 3vw, 28px)/1.25 "Be Vietnam Pro","BVP Fallback",sans-serif; margin: 14px 0 10px; }
+
+.tn-page .auto-page .accident-form-block > div > p { color: #4a6580; font-size: var(--fs-card); line-height: 1.7; margin: 0; }
+
+.tn-page .accident-form { display: grid; gap: 16px; }
+
+.tn-page .accident-consent { align-items: start; display: grid; gap: 12px; grid-template-columns: 22px minmax(0, 1fr); }
+
+.tn-page .accident-consent input { height: 22px; margin: 2px 0 0; width: 22px; }
+
+.tn-page .auto-page .accident-consent span { color: #41607c; font-size: var(--fs-card); line-height: 1.65; }
+
+.tn-page .auto-page .accident-form-error { color: #b31f28; font-size: var(--fs-card); margin: 0; }
+
+.tn-page .auto-page .accident-form-ok { color: #0d7a4f; font-size: var(--fs-card); margin: 0; }
+
+.tn-page .accident-related-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 28px; }
+
+.tn-page .accident-related-grid a { background: #fff; border: 1px solid var(--line); border-radius: 20px; display: block; padding: 22px; transition: border-color .25s ease, transform .25s ease; }
+
+.tn-page .accident-related-grid a:hover { border-color: var(--auto-blue); transform: translateY(-2px); }
+
+.tn-page .accident-related-grid h3 { font: 700 var(--fs-lead)/1.35 "Be Vietnam Pro","BVP Fallback",sans-serif; margin: 0 0 8px; }
+
+.tn-page .auto-page .accident-related-grid p { color: #4a6580; font-size: var(--fs-card); line-height: 1.7; margin: 0 0 12px; }
+
+.tn-page .auto-page .accident-related-grid span { color: var(--auto-blue); font-size: var(--fs-label); font-weight: 700; }
+
+.tn-page .accident-sticky { display: none; }
+
+@media (max-width: 1050px) {
+
+
+  .tn-page .accident-claim-grid, .tn-page .accident-form-block { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .tn-page .accident-page { padding-bottom: 104px; }
+
+  .tn-page .accident-answer, .tn-page .accident-form-block { padding: 22px; }
+  .tn-page .accident-callout { grid-template-columns: 34px minmax(0, 1fr); }
+  .tn-page .accident-callout a { grid-column: 2; }
+  .tn-page .accident-calc-actions .accident-primary, .tn-page .accident-calc-actions .accident-secondary { width: 100%; }
+  .tn-page .accident-sticky { align-items: center; background: rgba(255, 255, 255, .97); border-top: 1px solid var(--line); bottom: 0; box-shadow: 0 -8px 24px rgba(12, 48, 98, .12); display: flex; gap: 10px; left: 0; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); position: fixed; right: 0; z-index: 150; }
+  .tn-page .accident-sticky a { align-items: center; border-radius: 999px; display: flex; flex: 1; font-size: var(--fs-label); font-weight: 700; justify-content: center; min-height: 48px; }
+  .tn-page .accident-sticky-zalo { background: var(--auto-blue); color: #fff; }
+  .tn-page .accident-sticky-call { background: #fff; border: 1px solid rgba(14, 45, 88, .2); color: #14477a; }
+}
+
+.tn-page .accident-page .auto-segment-group button { min-height: 44px; }
+
+.tn-page .accident-page .auto-faqs summary, .tn-page .accident-page .auto-docs a { min-height: 44px; }
+
+.tn-page .accident-page .auto-dashboard-heading > a, .tn-page .accident-page .auto-sidebar-consult a { align-items: center; display: inline-flex; min-height: 44px; }
+
+.tn-page .accident-page .auto-hero-copy { padding-bottom: 40px; }
+
+.tn-page .accident-page .auto-hero p { font-size: var(--fs-lead); line-height: 1.75; }
+
+.tn-page .accident-page .accident-chips { justify-content: center; }
+
+.tn-page .accident-page .accident-chips li { background: #fff; border-color: rgba(18, 98, 223, .18); box-shadow: 0 6px 18px rgba(16, 74, 148, .06); color: #1e4f7d; }
+
+.tn-page .accident-page .auto-hero-links { display: flex; flex-wrap: wrap; justify-content: center; }
+
+.tn-page .accident-page .auto-hero-links > * { font-size: var(--fs-label); min-height: 48px; padding: 0 22px; }
+
+.tn-page .accident-page .auto-hero-links > a:first-child { background: var(--auto-blue); box-shadow: 0 14px 32px rgba(18, 98, 223, .26); color: #fff; }
+
+.tn-page .accident-page .auto-hero-links > a:first-child:hover { background: var(--auto-blue-deep); }
+
+.tn-page .accident-page .auto-hero-links > a:last-child { background: #fff; border: 1px solid rgba(14, 45, 88, .2); color: #14477a; }
+
+.tn-page .accident-page .auto-hero-links > a:last-child:hover { background: #f2f8fd; border-color: var(--auto-blue); }
+
+.tn-page .accident-stack { display: flex; flex-direction: column; gap: 72px; }
+
+.tn-page .accident-page .auto-section > .shell > section { scroll-margin-top: 24px; }
+
+.tn-page .accident-page .accident-tier-grid { min-height: 300px; }
+
+.tn-page .accident-page .auto-choice-card.is-tier { background: linear-gradient(150deg, #0a336e 0%, #124a94 58%, #1663bd 120%); flex: 1 1 0; }
+
+.tn-page .accident-page .auto-choice-card.is-tier:hover { border-color: rgba(120, 190, 245, .85); }
+
+.tn-page .accident-page .auto-choice-card.is-tier .auto-choice-veil { background: linear-gradient(90deg, rgba(4, 24, 56, .82) 0%, rgba(7, 36, 78, .6) 47%, rgba(12, 58, 116, .16) 100%), linear-gradient(0deg, rgba(3, 20, 48, .78), transparent 58%); }
+
+.tn-page .accident-page .auto-choice-copy { max-width: 340px; }
+
+.tn-page .accident-page .auto-tier-flag { align-items: center; background: rgba(255, 255, 255, .94); border-radius: 999px; color: #0b57b6; display: inline-flex; font-family: inherit; font-weight: 800; gap: 5px; padding: 6px 10px; position: absolute; right: 22px; top: 24px; z-index: 3; }
+
+.tn-page .accident-page .auto-tier-flag.is-required { background: #d81f2a; color: #fff; }
+
+@media (max-width: 900px) {
+  .tn-page .accident-page .accident-tier-grid { flex-direction: column; min-height: 0; }
+  .tn-page .accident-page .auto-choice-card.is-tier { min-height: 268px; }
+}
+
+@media (max-width: 700px) {
+  .tn-page .accident-stack { gap: 56px; }
+  .tn-page .accident-page .auto-section { padding: 56px 0; }
+}
+
+.tn-page .auto-page.accident-page .auto-choice-copy > .auto-choice-price { min-width: 232px; }
+
+.tn-page .auto-page.accident-page .auto-choice-copy > .auto-choice-price span { line-height: 1.45; text-transform: none; }
+
+.tn-page .auto-page.accident-page .auto-hero-links > a:first-child, .tn-page .accident-page .accident-sticky-zalo { color: #fff !important; }
+
+.tn-page .accident-page .auto-tier-flag { color: #0b57b6 !important; }
+
+.tn-page .accident-page .auto-tier-flag.is-required { color: #fff !important; }
+
+.tn-page .accident-page .auto-choice-copy small { display: block; max-width: calc(100% - 104px); }
+
+.tn-page .accident-page .auto-docs a, .tn-page .accident-page .auto-docs a b, .tn-page .accident-page .auto-docs a i { color: #fff !important; }
+
+.tn-page .accident-page .auto-brand { align-items: center; display: inline-flex; min-height: 44px; }
+
+.tn-page .accident-offer-ladder { display: grid; gap: 8px; list-style: none; margin: 16px 0 12px; padding: 0; }
+
+.tn-page .accident-page .accident-offer-ladder li { align-items: center; background: rgba(255, 255, 255, .12); border: 1px solid rgba(255, 255, 255, .2); border-radius: 10px; display: flex; gap: 12px; justify-content: space-between; padding: 9px 12px; }
+
+.tn-page .accident-page .accident-offer-ladder li.is-current { background: rgba(255, 255, 255, .96); border-color: #fff; }
+
+.tn-page .accident-page .accident-offer-ladder span { color: #e8f5ff; font-size: var(--fs-caption); }
+
+.tn-page .accident-page .accident-offer-ladder b { color: #fff; font: 800 var(--fs-label)/1 "Be Vietnam Pro","BVP Fallback",sans-serif; font-variant-numeric: tabular-nums; }
+
+.tn-page .accident-page .accident-offer-ladder li.is-current span { color: #14477a; }
+
+.tn-page .accident-page .accident-offer-ladder li.is-current b { color: #b31f28; }
+
+.tn-page .accident-page .accident-offer-note { color: #cfe8fb; font-size: var(--fs-caption); line-height: 1.6; margin: 0 0 16px; }
+
+.tn-page .accident-page .accident-offer-cta { align-items: center; background: #fff; border-radius: 999px; color: #0b57b6 !important; display: flex; font-size: var(--fs-label); font-weight: 800; gap: 9px; justify-content: center; min-height: 50px; padding: 0 20px; transition: background-color .22s ease, transform .18s ease; width: 100%; }
+
+.tn-page .accident-page .accident-offer-cta:hover { background: #eaf5ff; transform: translateY(-1px); }
+
+.tn-page .accident-page .accident-offer-call { color: #d7ecfb !important; display: inline-flex; align-items: center; font-size: var(--fs-caption); justify-content: center; min-height: 44px; transition: color .2s ease; width: 100%; }
+
+.tn-page .accident-page .accident-offer .accident-offer-call.accident-offer-call:hover { color: #fff !important; text-decoration: underline; }
+
+.tn-page .accident-discount-band { background: linear-gradient(135deg, #0a336e, #1663bd); border-radius: 22px; margin-top: 24px; padding: 24px 26px; }
+
+.tn-page .accident-page .accident-discount-band > span { color: #a8e5ff; display: block; font: 800 var(--fs-eyebrow)/1.4 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .1em; }
+
+.tn-page .accident-discount-band ol { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); list-style: none; margin: 16px 0 14px; padding: 0; }
+
+.tn-page .accident-discount-band li { background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .18); border-radius: 14px; padding: 14px 16px; }
+
+.tn-page .accident-page .accident-discount-band b { color: #fff; display: block; font: 800 clamp(24px, 3vw, 32px)/1 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.03em; }
+
+.tn-page .accident-page .accident-discount-band li span { color: #d7ecfb; display: block; font-size: var(--fs-caption); margin-top: 6px; }
+
+.tn-page .accident-page .accident-discount-band > p { color: #cfe8fb; font-size: var(--fs-caption); line-height: 1.6; margin: 0; }
+
+.tn-page .accident-page .accident-fee-table thead th small { color: #b31f28; display: block; font-size: var(--fs-caption); font-weight: 700; margin-top: 3px; }
+
+.tn-page .accident-page .accident-field label small { color: #6a839b; font-size: var(--fs-caption); font-weight: 400; }
+
+.tn-page .accident-page .accident-field textarea { background: #fff; border: 1px solid rgba(14, 45, 88, .2); border-radius: 12px; color: var(--auto-ink); font-family: inherit; font-size: var(--fs-body); line-height: 1.6; padding: 12px 14px; resize: vertical; width: 100%; }
+
+.tn-page .accident-page .accident-field textarea:focus-visible { border-color: var(--auto-blue); outline: 2px solid rgba(18, 98, 223, .28); outline-offset: 1px; }
+
+.tn-page .accident-page .accident-offer { background: linear-gradient(150deg, #0a336e 0%, #124a94 58%, #1663bd 120%) !important; border: 0; }
+
+.tn-page .accident-page .accident-offer > span { color: #a8e5ff !important; }
+
+.tn-page .accident-page .accident-offer h3, .tn-page .accident-page .accident-offer h2 { color: #fff !important; }
+
+.tn-page .accident-page .accident-offer-cta { background: #fff !important; color: #0b57b6 !important; }
+
+.tn-page .accident-page .accident-offer-cta:hover { background: #eaf5ff !important; }
+
+.tn-page .accident-page .accident-offer .accident-offer-cta.accident-offer-cta { background: #fff !important; color: #0b57b6 !important; }
+
+.tn-page .accident-page .accident-offer .accident-offer-cta.accident-offer-cta:hover { background: #eaf5ff !important; }
+
+.tn-page .accident-page .accident-offer .accident-offer-note.accident-offer-note { color: #cfe8fb !important; font-size: var(--fs-caption) !important; line-height: 1.6 !important; }
+
+.tn-page .accident-page .accident-offer .accident-offer-call.accident-offer-call { background: none !important; color: #d7ecfb !important; font-size: var(--fs-caption) !important; }
+
+.tn-page .accident-page .accident-offer .accident-offer-ladder span { color: #e8f5ff !important; font-size: var(--fs-caption) !important; }
+
+.tn-page .accident-page .accident-offer .accident-offer-ladder li.is-current span { color: #14477a !important; }
+
+.tn-page .accident-page .accident-subheading { font: 700 clamp(20px, 2.6vw, 26px)/1.3 "Be Vietnam Pro","BVP Fallback",sans-serif; margin: 36px 0 10px; scroll-margin-top: 24px; }
+
+.tn-page .accident-page .accident-subheading-lead { color: #4a6580; font-size: var(--fs-card); line-height: 1.75; margin: 0 0 18px; }
+
+.tn-page .accident-page .accident-shortterm-table { min-width: 720px; }
+
+.tn-page .accident-page .accident-shortterm-table :is(th, td) { text-align: center; }
+
+.tn-page .accident-page .accident-shortterm-table tbody th, .tn-page .accident-page .accident-shortterm-table thead th:first-child { text-align: left; white-space: nowrap; width: auto; }
+
+.tn-page .accident-page .accident-shortterm-table tbody td { color: #0c4f96; font-variant-numeric: tabular-nums; font-weight: 700; }
+
+.tn-page .accident-page .accident-zalo-qr { background: #fff; border: 1px solid var(--line); border-radius: 12px; height: 132px; margin-top: 14px; padding: 7px; width: 132px; }
+
+@media (max-width: 700px) {
+  .tn-page .accident-page .accident-zalo-qr { display: none; }
+}
+
+.tn-page .accident-page .accident-hub-all { align-items: center; background: #eef7ff; border: 1px solid rgba(18, 98, 223, .18); border-radius: 999px; color: #0b57b6; display: inline-flex; font-size: var(--fs-label); font-weight: 700; gap: 9px; margin-top: 18px; min-height: 48px; padding: 0 22px; }
+
+.tn-page .accident-page .accident-hub-all:hover { background: #e2f0ff; border-color: var(--auto-blue); }
+
+.tn-page .accident-page .accident-hub-faq { margin-top: 20px; }
+
+.tn-page .accident-page .accident-hub-faq summary { align-items: center; display: flex; gap: 14px; }
+
+.tn-page .accident-page .accident-hub-faq .accident-hub-q { align-items: center; display: flex; flex: 1; flex-wrap: wrap; gap: 10px; min-width: 0; }
+
+.tn-page .accident-page .accident-hub-faq .accident-flag { flex: none; font-size: var(--fs-caption); }
+
+.tn-page .accident-page .accident-hub-faq summary em { color: #566f88; flex: none; font-size: var(--fs-caption); font-style: normal; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.tn-page .accident-page .accident-hub-answer p { color: #34506b; font-size: var(--fs-body); line-height: 1.8; margin: 0 0 14px; }
+
+.tn-page .accident-page .accident-hub-byline { color: #566f88 !important; font-size: var(--fs-caption) !important; margin-bottom: 10px !important; }
+
+.tn-page .accident-page .accident-hub-answer > a { align-items: center; color: #0b57b6; display: inline-flex; font-size: var(--fs-label); font-weight: 700; gap: 8px; min-height: 44px; }
+
+.tn-page .accident-page .accident-hub-answer > a:hover { text-decoration: underline; }
+
+@media (max-width: 700px) {
+  .tn-page .accident-page .accident-hub-faq summary em { display: none; }
+}
+
+.tn-page .auto-brand b {
+  font-size: 13px !important;
+  line-height: 1.32 !important;
+  max-width: 104px !important;
+}
+
+.tn-page .auto-page .auto-docs a,
+.tn-page .auto-page .auto-docs a :is(b, strong, small, span) {
+  color: var(--pvi-on-dark-text) !important;
+}
+
+.tn-page .auto-page .auto-segment-group button.is-current {
+  background: linear-gradient(135deg, #125fc6, #1269c0) !important;
+}
+
+.tn-page .auto-page .auto-hero-copy h1 em {
+  background: linear-gradient(100deg, #0b57b6 0%, #1a7fd4 26%, #0b57b6 52%, #1a7fd4 78%, #0b57b6 100%);
+  background-clip: text;
+  background-size: 260% 100%;
+  color: #0b57b6;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: pvi-chu-chay-mau 7s linear infinite;
+}
+
+.tn-page .auto-page .auto-hero-copy .auto-kicker::before {
+  animation: pvi-cham-tho 2.6s ease-in-out infinite;
+  background: #4fc3f7;
+  border-radius: 50%;
+  content: "";
+  display: inline-block;
+  height: 8px;
+  margin-right: 8px;
+  vertical-align: baseline;
+  width: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .tn-page .auto-page .auto-hero-copy h1 em,
+  .tn-page .auto-page .auto-hero-copy .auto-kicker::before {
+    animation: none;
+  }
+}
+
+.tn-page .accident-trio-eyebrow { color: var(--blue); display: block; font: 800 var(--fs-eyebrow)/1.3 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .1em; }
+
+.tn-page .accident-page a.accident-trio-tile, .tn-page .accident-page a.accident-trio-card { color: #fff !important; }
+
+.tn-page .accident-trio-tile, .tn-page .accident-trio-card { color: #fff; isolation: isolate; overflow: hidden; position: relative; text-decoration: none; }
+
+.tn-page .accident-trio-tile > img, .tn-page .accident-trio-card > img { height: 100%; inset: 0; object-fit: cover; position: absolute; transition: transform .5s ease; width: 100%; z-index: -2; }
+
+.tn-page .accident-trio-veil { inset: 0; position: absolute; z-index: -1; }
+
+.tn-page a.accident-trio-tile:hover > img, .tn-page a.accident-trio-card:hover > img { transform: scale(1.06); }
+
+.tn-page .accident-trio-index { font: 800 var(--fs-eyebrow)/1 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .08em; }
+
+.tn-page .accident-trio-tile.is-empty, .tn-page .accident-trio-card.is-empty { cursor: default; }
+
+.tn-page .accident-trio-tile.is-empty > img, .tn-page .accident-trio-card.is-empty > img { filter: saturate(.7); }
+
+.tn-page .accident-trio-tile > img, .tn-page .accident-trio-card > img { object-position: 78% center; }
+
+.tn-page .auto-page .accident-trio-aside { background: #fff; border: 1px solid #d6e6f6; border-radius: 14px; box-shadow: 0 10px 24px rgba(20, 79, 132, .06); padding: 17px; }
+
+.tn-page .accident-trio-aside h3 { color: var(--navy-2); font: 700 19px/1.3 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.02em; margin: 8px 0 14px; }
+
+.tn-page .accident-trio-aside ul { display: grid; gap: 10px; list-style: none; margin: 0; padding: 0; }
+
+.tn-page .accident-trio-tile { border-radius: 12px; display: grid; gap: 4px; min-height: 104px; padding: 14px 44px 14px 16px; align-content: end; }
+
+.tn-page .accident-trio-tile .accident-trio-veil { background: linear-gradient(90deg, rgba(var(--trio-a, 7, 26, 56), .94) 0%, rgba(var(--trio-a, 7, 26, 56), .74) 55%, rgba(var(--trio-b, 7, 26, 56), .32) 100%); }
+
+.tn-page .accident-trio-tile .accident-trio-index { color: rgba(255, 255, 255, .78); }
+
+.tn-page .accident-trio-tile strong { font: 700 17px/1.25 "Be Vietnam Pro","BVP Fallback",sans-serif; }
+
+.tn-page .accident-trio-tile small { color: rgba(255, 255, 255, .86); font-size: var(--fs-caption); }
+
+.tn-page .accident-trio-tile i { bottom: 14px; font-style: normal; font-weight: 700; position: absolute; right: 16px; transition: transform .2s ease; }
+
+.tn-page a.accident-trio-tile:hover i { transform: translateX(3px); }
+
+.tn-page .auto-page .accident-trio-all { align-items: center; color: var(--blue); display: inline-flex; font-size: var(--fs-label); font-weight: 700; gap: 6px; margin-top: 8px; min-height: 44px; }
+
+.tn-page .accident-trio-band { margin-top: 44px; }
+
+.tn-page .accident-trio-band-head h3 { color: var(--navy-2); font: 700 clamp(24px, 2.6vw, 32px)/1.2 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.035em; margin: 10px 0 20px; max-width: 760px; }
+
+.tn-page .accident-trio-grid { display: grid; gap: 18px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.tn-page .accident-trio-card { border-radius: 20px; box-shadow: 0 18px 40px rgba(11, 68, 125, .16); display: flex; flex-direction: column; gap: 18px; justify-content: space-between; min-height: 320px; padding: 22px; transition: transform .25s ease, box-shadow .25s ease; }
+
+.tn-page a.accident-trio-card:hover { box-shadow: 0 24px 48px rgba(11, 68, 125, .24); transform: translateY(-3px); }
+
+.tn-page .accident-trio-card .accident-trio-veil { background: linear-gradient(180deg, rgba(var(--trio-b, 7, 26, 56), .28) 0%, rgba(var(--trio-a, 7, 26, 56), .62) 40%, rgba(var(--trio-a, 7, 26, 56), .95) 100%); }
+
+.tn-page .accident-trio-top { align-items: center; display: flex; gap: 10px; justify-content: space-between; }
+
+.tn-page .accident-trio-top > * { backdrop-filter: blur(6px); background: rgba(255, 255, 255, .16); border: 1px solid rgba(255, 255, 255, .28); border-radius: 999px; padding: 7px 12px; }
+
+.tn-page .accident-trio-top small { font-size: var(--fs-caption); font-weight: 700; }
+
+.tn-page .accident-trio-body { display: grid; gap: 6px; }
+
+.tn-page .accident-trio-body strong { font: 700 24px/1.2 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.02em; }
+
+.tn-page .accident-trio-hint { color: rgba(255, 255, 255, .78); font-size: var(--fs-caption); font-weight: 700; letter-spacing: .02em; }
+
+.tn-page .accident-trio-latest { color: rgba(255, 255, 255, .92); font-size: var(--fs-card); line-height: 1.55; margin-top: 4px; }
+
+.tn-page .accident-trio-go { align-items: center; display: inline-flex; font-size: var(--fs-label); font-weight: 700; gap: 8px; }
+
+.tn-page a.accident-trio-card:hover .accident-trio-go i { transform: translateX(3px); }
+
+.tn-page .accident-trio-go i { font-style: normal; transition: transform .2s ease; }
+
+@media (max-width: 900px) {
+  .tn-page .accident-trio-grid { grid-template-columns: 1fr; }
+  .tn-page .accident-trio-card { min-height: 250px; }
+}
+
+@keyframes autoOrbit { to { transform: rotate(360deg); } }
+
+@keyframes autoOrbitReverse { to { transform: rotate(-360deg); } }
+
+@keyframes pvi-chu-chay-mau {
+  to {
+    background-position: -260% 0;
+  }
+}
+
+@keyframes pvi-cham-tho {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .45; transform: scale(.72); }
+}
+/* pvihcm: trên màn hẹp, bản gốc ép thẻ đối tượng cao 268px (flex 1 1 0 trong cột) nên phần đầu thẻ
+   bị cắt mất tiêu đề. Cho thẻ cao theo nội dung. */
+@media (max-width: 900px) {
+  .tn-page .accident-page .auto-choice-card.is-tier { flex: 0 0 auto; }
+}
+/* pvihcm: bản gốc giới hạn mỗi mục của bộ tính phí cao 115px và cuộn bên trong trên điện thoại,
+   khách dễ không thấy nút "Trường học", "Cá nhân" hay ô thời hạn. Hiện đủ, không cuộn trong. */
+.tn-page .accident-page .auto-segment-group > div { max-height: none; overflow: visible; }
