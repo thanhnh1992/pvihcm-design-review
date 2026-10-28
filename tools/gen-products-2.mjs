@@ -12,6 +12,8 @@ const DIST = path.resolve(HERE, '../dist');
 const pr = await import(pathToFileURL(path.join(HERE, 'data/product.mjs')).href);
 const tn = await import(pathToFileURL(path.join(HERE, 'data/tnds.mjs')).href);
 const SISTER = 'https://www.baohiempvi-vn.com';
+// pvi.com.vn/products/corporate trong dữ liệu nguồn đang trả 404, chuyển sang đường dẫn còn sống.
+const fixUrl = (u) => (u === 'https://www.pvi.com.vn/products/corporate' ? 'https://www.pvi.com.vn/vi/products/business' : u);
 
 const write = (rel, html) => {
   const f = path.join(DIST, rel);
@@ -87,7 +89,7 @@ const claimBlock = (p, eyebrow, heading) => `
 <h2>${esc(heading)}</h2>
 ${steps(p.claimSteps)}
 ${hotline}
-<p class="fire-note"><b>Nguồn:</b> <a href="${p.sourceUrl}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">${t(p.sourceLabel)}</a>. Phạm vi, điều khoản, mức khấu trừ và phí được chuyên viên xác nhận theo từng hồ sơ.</p>
+<p class="fire-note"><b>Nguồn:</b> <a href="${fixUrl(p.sourceUrl)}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">${t(p.sourceLabel)}</a>. Phạm vi, điều khoản, mức khấu trừ và phí được chuyên viên xác nhận theo từng hồ sơ.</p>
 </div></section>`;
 
 const build = (o) => {
@@ -172,7 +174,7 @@ const build = (o) => {
   }) + `
 <section class="pd-section"><div class="fire-wrap">
 <div class="pd-grid" style="margin-top:0">
-<div><p class="fire-lede">${t(v.summary)}</p><p class="fire-lede" style="margin-top:16px">Phí và điều kiện không cố định như TNDS bắt buộc. Chuyên viên cần xem hồ sơ xe trước khi báo giá, vì các yếu tố sau quyết định phương án.</p></div>
+<div><p class="fire-lede">Bảo hiểm vật chất xe là phần tự nguyện, nằm ngoài TNDS bắt buộc. Xe hỏng do va chạm, cháy nổ, thiên tai hay mất cắp bộ phận đều thuộc nhóm nhu cầu này, tùy phạm vi và điều khoản được xác nhận trên hợp đồng.</p><p class="fire-lede" style="margin-top:16px">Phí và điều kiện không cố định như TNDS bắt buộc. Chuyên viên cần xem hồ sơ xe trước khi báo giá, vì các yếu tố sau quyết định phương án.</p></div>
 <div class="pd-card"><table class="pd-table"><caption style="padding:16px 18px 0">Phí và phạm vi căn cứ vào</caption><tbody>${v.considerations.map((c) => `<tr><td>${t(c)}</td></tr>`).join('')}</tbody></table></div>
 </div>
 <h2 class="sr-only">Điểm chính của sản phẩm</h2>
