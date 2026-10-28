@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL, fileURLToPath } from 'node:url';
 import { page, t, esc, faqBlock, faqJsonLd, breadcrumbJsonLd, steps, hotline, ctaRow } from './chrome.mjs';
+import { tvHero, tvPurpose, tvPlans, tvRisks, tvAdvisor, tvFaq, tvCta } from './du-lich-ui.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.resolve(HERE, '../dist');
@@ -97,6 +98,9 @@ const build = (o) => {
     path: o.path, title: o.title, description: o.desc, image: o.img,
     head: (o.faqs ? faqJsonLd(o.faqs) : '') + breadcrumbJsonLd(o.path, o.crumb),
     main: o.main,
+    ...(o.bodyClass ? { bodyClass: o.bodyClass } : {}),
+    ...(o.extraCss ? { extraCss: o.extraCss } : {}),
+    ...(o.scripts ? { scripts: o.scripts } : {}),
   }));
 };
 
@@ -311,11 +315,17 @@ const build = (o) => {
     'Người được bảo hiểm là thành viên phi hành đoàn hoặc lực lượng vũ trang đang thi hành nhiệm vụ.',
   ];
 
+  // Sáu câu đầu hiện sẵn theo mẫu (lưới 2 cột: trái 1-3-5, phải 2-4-6), các câu sau mở bằng "Xem tất cả câu hỏi".
   const faqs = [
+    { question: 'Gói nào phù hợp để xin visa Schengen?', answer: 'Quy định chung về thị thực Schengen yêu cầu bảo hiểm y tế du lịch có mức chi trả tối thiểu 30.000 euro, có hiệu lực trên toàn khối Schengen trong suốt thời gian lưu trú và bao gồm chi phí hồi hương. Gói Bạc có chi phí y tế 1 tỷ đồng, cao hơn mức này ở tỷ giá hiện tại nhưng khoảng cách không lớn; nếu muốn chắc chắn trước biến động tỷ giá thì chọn Vàng (2 tỷ đồng) hoặc Kim cương (3 tỷ đồng). Báo trước tên nước nộp hồ sơ để chuyên viên đối chiếu yêu cầu của lãnh sự quán trước khi phát hành.' },
+    { question: 'Bảo hiểm có áp dụng khi quá cảnh không?', answer: 'Hành trình được bảo hiểm tính theo các nước khai báo khi mua, gồm cả nước quá cảnh, nên cần ghi đủ nước đến và nước quá cảnh. Quy tắc bảo hiểm loại trừ sự kiện xảy ra ngoài phạm vi lịch trình ghi trên hợp đồng hoặc giấy chứng nhận bảo hiểm. Trường hợp lỡ nối chuyến được xem xét theo quyền lợi lỡ nối chuyến của phạm vi bảo hiểm bổ sung.' },
+    { question: 'Người trên 75 tuổi có mua được không?', answer: 'Mua được, nhưng một số quyền lợi bị giới hạn. Quyền lợi tai nạn cá nhân, chi phí y tế, vận chuyển y tế cấp cứu, hồi hương, mai táng và hồi hương thi hài chỉ áp dụng 50% số tiền bảo hiểm. Quyền lợi tử vong do nguyên nhân khác ngoài tai nạn không áp dụng.' },
+    { question: 'Trẻ em có cần mua riêng không?', answer: 'Trẻ em là một người được bảo hiểm, phí tính theo từng người, nhưng không cần làm hợp đồng riêng. Theo quy tắc, trẻ từ 07 ngày tuổi được tham gia; trẻ dưới 12 tuổi phải đi cùng người từ 18 tuổi trở lên được ủy quyền hợp pháp và được bảo hiểm trong cùng một hợp đồng hoặc giấy chứng nhận bảo hiểm với người đó.' },
+    { question: 'Chi phí y tế được chi trả như thế nào?', answer: 'Bảo hiểm PVI chi trả chi phí khám, điều trị phát sinh ở nước ngoài trong hạn mức của gói: 1 tỷ đồng với gói Bạc, 2 tỷ đồng với gói Vàng, 3 tỷ đồng với gói Kim cương. Hạn mức này đã gồm chi phí điều trị tiếp theo tại Việt Nam, lần lượt 50, 100 và 150 triệu đồng. Nằm viện ở nước ngoài được trợ cấp thêm mỗi ngày, tối đa 15 ngày. Giữ hóa đơn, đơn thuốc và hồ sơ bệnh án bản gốc, thông báo trong vòng 30 ngày; PVI chi trả trong 15 ngày làm việc kể từ khi nhận đủ hồ sơ hợp lệ.' },
+    { question: 'Cần chuẩn bị giấy tờ gì khi tham gia?', answer: 'Gửi họ tên, ngày sinh, số hộ chiếu của từng người đi; nước đến và nước quá cảnh; ngày khởi hành và ngày về; gói chọn (Bạc, Vàng hay Kim cương) và có cần phạm vi bổ sung hoặc điều khoản mở rộng không. Nếu mua để làm hồ sơ thị thực, báo thêm tên nước nộp hồ sơ.' },
     { question: 'Ai được tham gia bảo hiểm du lịch quốc tế của PVI?', answer: 'Công dân Việt Nam hoặc người nước ngoài cư trú hợp pháp tại Việt Nam, từ 07 ngày tuổi trở lên. Trẻ em dưới 12 tuổi phải đi cùng người từ 18 tuổi trở lên được ủy quyền hợp pháp và được bảo hiểm trong cùng một hợp đồng hoặc giấy chứng nhận bảo hiểm.' },
     { question: 'Phí bảo hiểm du lịch quốc tế bao nhiêu một người?', answer: 'Phí tính theo số ngày của hành trình và chương trình chọn. Theo biểu phí chung của PVI, chuyến 1 đến 3 ngày là 200.000 đồng với chương trình Bạc, 240.000 đồng với chương trình Vàng và 340.000 đồng với chương trình Kim cương. Theo biểu phí chia vùng lãnh thổ thì chuyến đi Đông Nam Á rẻ hơn, 1 đến 3 ngày gói Bạc là 100.000 đồng. Phạm vi bảo hiểm bổ sung tính phí riêng, chẳng hạn 17.600 đồng cho gói Bạc đi Đông Nam Á 1 đến 3 ngày.' },
     { question: 'Số tiền bảo hiểm cao nhất là bao nhiêu?', answer: 'Chương trình Kim cương có số tiền bảo hiểm tai nạn cá nhân và chi phí y tế 3 tỷ đồng mỗi quyền lợi. Bảng quyền lợi chính thức của PVI có sáu chương trình, từ 300 triệu đến 3 tỷ đồng, ba chương trình cao nhất tương ứng với Bạc, Vàng và Kim cương bán trực tuyến.' },
-    { question: 'Người trên 75 tuổi có mua được không?', answer: 'Mua được, nhưng một số quyền lợi bị giới hạn. Quyền lợi tai nạn cá nhân, chi phí y tế, vận chuyển y tế cấp cứu, hồi hương, mai táng và hồi hương thi hài chỉ áp dụng 50% số tiền bảo hiểm. Quyền lợi tử vong do nguyên nhân khác ngoài tai nạn không áp dụng.' },
     { question: 'Quyền lợi hủy chuyến đi có hiệu lực từ khi nào?', answer: 'Quyền lợi hủy chuyến đi bắt đầu có hiệu lực vào ngày cấp giấy chứng nhận bảo hiểm hoặc ngày thứ 60 trước ngày khởi hành đầu tiên, tùy thời điểm nào xảy ra sau. Các quyền lợi bổ sung còn lại có hiệu lực từ khi hoàn tất thủ tục xuất cảnh tại Việt Nam trong ngày khởi hành đầu tiên.' },
     { question: 'Bao lâu thì nhận được tiền bồi thường?', answer: 'Theo quy tắc bảo hiểm, thông báo sự kiện bảo hiểm trong vòng 30 ngày kể từ ngày xảy ra, và Bảo hiểm PVI chi trả trong vòng 15 ngày làm việc kể từ khi nhận đủ hồ sơ hợp lệ.' },
   ];
@@ -323,36 +333,12 @@ const build = (o) => {
   const ctRow = (rows) => rows.map(([label, vals, note]) => `<tr><th scope="row">${t(label)}${note ? `<span class="dl-note">${t(note)}</span>` : ''}</th>${vals.map((v) => `<td class="num">${t(v)}</td>`).join('')}</tr>`).join('');
   const ctHead = `<thead><tr><th scope="col">Quyền lợi, số tiền bảo hiểm một người</th>${CT.map((n, i) => `<th scope="col" class="num">${SOLD[i] ? `<span>${SOLD[i]}</span>` : '<span>&nbsp;</span>'}Chương trình ${n}</th>`).join('')}</tr></thead>`;
 
-  const main = heroBlock({
-    eyebrow: 'Cá nhân · Du lịch quốc tế',
-    h1: 'Bảo hiểm du lịch quốc tế',
-    lead: 'Chi phí y tế ở nước ngoài, tai nạn cá nhân, hủy chuyến, hành lý và giấy tờ tùy thân, số tiền bảo hiểm đến 3 tỷ đồng một người. Phí từ 100.000 đồng cho chuyến 1 đến 3 ngày trong Đông Nam Á. Quyền lợi theo Bảng quyền lợi ban hành kèm ' + QD + '.',
-    cta1: ['Gọi báo phí 0938 072 236', 'tel:0938072236'],
-    cta2: ['Xem bảng quyền lợi', '#quyen-loi'],
-    img: '/assets/hero-du-lich.webp',
-    alt: 'Khách du lịch kéo vali tại sảnh làm thủ tục sân bay',
-  }) + `
-<section class="pd-section"><div class="fire-wrap">
-<div class="pd-grid" style="margin-top:0">
-<div>
-<p class="fire-lede">Bảo hiểm du lịch quốc tế dành cho chuyến đi nước ngoài và thường được yêu cầu kèm trong hồ sơ xin thị thực. Sản phẩm xử lý phần chi phí phát sinh ngoài dự tính của chuyến đi: khám chữa bệnh ở nước ngoài, tai nạn trong hành trình, cùng các sự cố làm gián đoạn lịch trình như hủy chuyến, trì hoãn, chậm hoặc mất hành lý và mất giấy tờ tùy thân.</p>
-<p class="fire-lede" style="margin-top:16px">Bảng quyền lợi chính thức của Bảo hiểm PVI có sáu chương trình. Ba chương trình cao nhất, tương ứng số tiền bảo hiểm 1 tỷ, 2 tỷ và 3 tỷ đồng, chính là ba gói Bạc, Vàng và Kim cương đang bán trên kênh PVI Online. Toàn bộ con số trên trang này lấy từ tài liệu PVI phát hành, không phải ước tính.</p>
-</div>
-<div class="pd-card"><table class="pd-table"><caption style="padding:16px 18px 0">Theo tài liệu chính thức</caption><tbody>
-<tr><th scope="row">Số tiền bảo hiểm</th><td class="num strong">Đến 3 tỷ</td><td>một người</td></tr>
-<tr><th scope="row">Phí thấp nhất</th><td class="num strong">100.000đ</td><td>đi Đông Nam Á</td></tr>
-<tr><th scope="row">Độ tuổi</th><td colspan="2">Từ 07 ngày tuổi trở lên</td></tr>
-<tr><th scope="row">Thông báo sự kiện</th><td colspan="2">Trong vòng 30 ngày</td></tr>
-<tr><th scope="row">Thời hạn chi trả</th><td colspan="2">15 ngày làm việc kể từ khi đủ hồ sơ</td></tr>
-</tbody></table>
-<p class="fire-note">Nguồn: Quy tắc và Bảng quyền lợi bảo hiểm du lịch quốc tế ban hành kèm ${QD}.</p>
-</div>
-</div>
-</div></section>
-
+  // Phần đầu trang theo mẫu chủ site duyệt 28/10/2026 (tools/du-lich-ui.mjs);
+  // phần tham chiếu chi tiết bên dưới giữ nguyên số liệu chính thức.
+  const main = tvHero({ regions, bands }) + tvPurpose() + tvPlans({ main1, main2 }) + tvRisks() + tvAdvisor() + `
 <section class="fire-compare pd-paper" id="quyen-loi"><div class="fire-wrap">
 <h2>Bảng quyền lợi, phạm vi bảo hiểm chính</h2>
-<p class="fire-lede" style="max-width:76ch">Sáu chương trình theo Bảng quyền lợi ban hành kèm ${QD}. Cột Bạc, Vàng, Kim cương là tên gọi của ba chương trình này trên kênh bán trực tuyến của PVI.</p>
+<p class="fire-lede" style="max-width:76ch">Sáu chương trình theo Bảng quyền lợi ban hành kèm ${QD}. Cột Bạc, Vàng, Kim cương là tên gọi của ba chương trình này trên kênh bán trực tuyến của PVI. Toàn bộ con số trên trang lấy từ tài liệu PVI phát hành, không phải ước tính.</p>
 <div class="pd-scroll"><table class="dl-table" style="min-width:920px">${ctHead}<tbody>${ctRow(main1)}</tbody></table></div>
 </div></section>
 
@@ -440,10 +426,13 @@ ${hotline}
 </ul>
 </div></section>
 `
-    + faqBlock(faqs);
+    + tvFaq(faqs) + tvCta();
   build({
     rel: 'san-pham/bao-hiem-du-lich/index.html', path: P, main, faqs,
-    crumb: 'Bảo hiểm du lịch quốc tế', img: '/assets/hero-du-lich.webp',
+    bodyClass: 'fire tv-page',
+    extraCss: '<link rel="stylesheet" href="/du-lich.css">',
+    scripts: '<script src="/du-lich.js" defer></script>',
+    crumb: 'Bảo hiểm du lịch quốc tế', img: '/assets/du-lich-hero-1280.webp',
     title: 'Bảo hiểm du lịch quốc tế PVI: quyền lợi và biểu phí | PVI Thành Đô',
     desc: 'Bảng quyền lợi 6 chương trình và biểu phí bảo hiểm du lịch quốc tế PVI theo Quyết định 491/QĐ-PVIBH. Bảo hiểm đến 3 tỷ đồng, phí từ 100.000đ một người.',
   });
