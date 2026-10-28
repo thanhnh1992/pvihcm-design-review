@@ -386,3 +386,20 @@
 .dl-note{display:block;font-weight:400;font-size:15px;line-height:1.5;color:var(--muted);margin-top:6px}
 .dl-cols{margin-top:26px}
 @media(min-width:900px){.dl-cols{column-count:2;column-gap:44px}.dl-cols li{break-inside:avoid}}
+
+/* Tab chọn vùng lãnh thổ ở biểu phí du lịch quốc tế, thuần CSS */
+.dl-tabs{margin-top:22px}
+.dl-tabs>input{position:absolute;width:1px;height:1px;margin:-1px;opacity:0;pointer-events:none}
+.dl-tabbar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.dl-tabbar label{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border:1px solid #b9d0e8;
+  border-radius:999px;background:#fff;font-size:16px;font-weight:600;color:var(--ink);cursor:pointer;
+  transition:background .18s ease,color .18s ease,border-color .18s ease}
+.dl-tabbar label:hover{border-color:var(--blue);background:#eaf2fb;color:var(--blue)}
+.dl-panel{display:none}
+#dl-dna:checked~.dl-tabbar label[for="dl-dna"],#dl-ca:checked~.dl-tabbar label[for="dl-ca"],
+#dl-tc:checked~.dl-tabbar label[for="dl-tc"]{background:var(--blue);border-color:var(--blue);color:#fff}
+#dl-dna:focus-visible~.dl-tabbar label[for="dl-dna"],#dl-ca:focus-visible~.dl-tabbar label[for="dl-ca"],
+#dl-tc:focus-visible~.dl-tabbar label[for="dl-tc"]{outline:3px solid var(--blue);outline-offset:3px}
+#dl-dna:checked~.dl-panels #dl-p-dna,#dl-ca:checked~.dl-panels #dl-p-ca,
+#dl-tc:checked~.dl-panels #dl-p-tc{display:block}
+.dl-sub{display:block;font-size:15px;font-weight:400;color:var(--muted);margin-top:3px;white-space:nowrap}

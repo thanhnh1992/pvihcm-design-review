@@ -259,13 +259,35 @@ const build = (o) => {
     ['Trách nhiệm cá nhân', ['150 triệu', '250 triệu', '400 triệu', '500 triệu', '1 tỷ', '1,5 tỷ'], ''],
   ];
 
+  // Biểu phí lấy từ dữ liệu sản phẩm của PVI Online. Hai bộ: bộ chung không phân
+  // vùng, và bộ chia theo vùng lãnh thổ kèm phí riêng của phạm vi bảo hiểm bổ sung.
   const bands = ['1 đến 3 ngày', '4 đến 6 ngày', '7 đến 10 ngày', '11 đến 14 ngày', '15 đến 18 ngày', '19 đến 22 ngày', '23 đến 27 ngày', '28 đến 31 ngày'];
+  const GOI = ['Bạc', 'Vàng', 'Kim cương'];
   const fees = {
-    'Bạc': [200000, 260000, 320000, 420000, 520000, 560000, 600000, 660000],
-    'Vàng': [240000, 300000, 360000, 480000, 620000, 720000, 820000, 940000],
-    'Kim cương': [340000, 420000, 560000, 740000, 880000, 1000000, 1100000, 1200000],
+    'Bạc': [200000, 260000, 320000, 420000, 520000, 560000, 600000, 660000, 120000],
+    'Vàng': [240000, 300000, 360000, 480000, 620000, 720000, 820000, 940000, 160000],
+    'Kim cương': [340000, 420000, 560000, 740000, 880000, 1000000, 1100000, 1200000, 220000],
   };
+  // Mỗi ô: [phí phạm vi chính, phí phạm vi bổ sung]
+  const regions = [
+    ['dna', 'Đông Nam Á', {
+      'Bạc': [[100000, 17600], [119000, 20000], [182000, 28000], [245000, 35200], [278000, 40000], [317000, 44800], [341000, 47200], [364000, 50400], [65000, 5600]],
+      'Vàng': [[168000, 26400], [198000, 30400], [303000, 44000], [408000, 56800], [464000, 64000], [528000, 72000], [568000, 76800], [605000, 81600], [108000, 5600]],
+      'Kim cương': [[200000, 31200], [237000, 36000], [364000, 51200], [489000, 67200], [556000, 76000], [633000, 85600], [681000, 91200], [726000, 96800], [130000, 5600]],
+    }],
+    ['ca', 'Châu Á', {
+      'Bạc': [[113000, 19800], [134000, 22500], [205000, 31500], [276000, 39600], [313000, 45000], [357000, 50400], [384000, 53100], [409000, 56700], [73000, 6300]],
+      'Vàng': [[189000, 29700], [223000, 34200], [341000, 49500], [459000, 63900], [522000, 72000], [594000, 81000], [639000, 86400], [681000, 91800], [122000, 6300]],
+      'Kim cương': [[225000, 35100], [267000, 40500], [409000, 57600], [550000, 75600], [625000, 85500], [712000, 96300], [766000, 102600], [817000, 108900], [146000, 6300]],
+    }],
+    ['tc', 'Toàn cầu', {
+      'Bạc': [[125000, 22000], [148000, 25000], [227000, 35000], [306000, 44000], [347000, 50000], [396000, 56000], [426000, 59000], [454000, 63000], [81000, 7000]],
+      'Vàng': [[209000, 33000], [247000, 38000], [378000, 55000], [509000, 71000], [579000, 80000], [659000, 90000], [710000, 96000], [756000, 102000], [135000, 7000]],
+      'Kim cương': [[250000, 39000], [296000, 45000], [454000, 64000], [611000, 84000], [694000, 95000], [791000, 107000], [851000, 114000], [907000, 121000], [162000, 7000]],
+    }],
+  ];
   const vnd = (n) => n.toLocaleString('vi-VN') + 'đ';
+  const goiHead = (lbl) => `<thead><tr><th scope="col">${esc(lbl)}</th>${GOI.map((k, i) => `<th scope="col" class="num">${i === 2 ? '<span>Cao nhất</span>' : '<span>&nbsp;</span>'}${k}</th>`).join('')}</tr></thead>`;
 
   const exclusions = [
     'Sự kiện xảy ra ngoài phạm vi lịch trình ghi trên hợp đồng hoặc giấy chứng nhận bảo hiểm.',
@@ -291,7 +313,7 @@ const build = (o) => {
 
   const faqs = [
     { question: 'Ai được tham gia bảo hiểm du lịch quốc tế của PVI?', answer: 'Công dân Việt Nam hoặc người nước ngoài cư trú hợp pháp tại Việt Nam, từ 07 ngày tuổi trở lên. Trẻ em dưới 12 tuổi phải đi cùng người từ 18 tuổi trở lên được ủy quyền hợp pháp và được bảo hiểm trong cùng một hợp đồng hoặc giấy chứng nhận bảo hiểm.' },
-    { question: 'Phí bảo hiểm du lịch quốc tế bao nhiêu một người?', answer: 'Theo biểu phí đang niêm yết trên PVI Online, chuyến 1 đến 3 ngày là 200.000 đồng với chương trình Bạc, 240.000 đồng với chương trình Vàng và 340.000 đồng với chương trình Kim cương. Phí tăng theo số ngày của hành trình, chuyến 28 đến 31 ngày lần lượt là 660.000, 940.000 và 1.200.000 đồng một người.' },
+    { question: 'Phí bảo hiểm du lịch quốc tế bao nhiêu một người?', answer: 'Phí tính theo số ngày của hành trình và chương trình chọn. Theo biểu phí chung của PVI, chuyến 1 đến 3 ngày là 200.000 đồng với chương trình Bạc, 240.000 đồng với chương trình Vàng và 340.000 đồng với chương trình Kim cương. Theo biểu phí chia vùng lãnh thổ thì chuyến đi Đông Nam Á rẻ hơn, 1 đến 3 ngày gói Bạc là 100.000 đồng. Phạm vi bảo hiểm bổ sung tính phí riêng, chẳng hạn 17.600 đồng cho gói Bạc đi Đông Nam Á 1 đến 3 ngày.' },
     { question: 'Số tiền bảo hiểm cao nhất là bao nhiêu?', answer: 'Chương trình Kim cương có số tiền bảo hiểm tai nạn cá nhân và chi phí y tế 3 tỷ đồng mỗi quyền lợi. Bảng quyền lợi chính thức của PVI có sáu chương trình, từ 300 triệu đến 3 tỷ đồng, ba chương trình cao nhất tương ứng với Bạc, Vàng và Kim cương bán trực tuyến.' },
     { question: 'Người trên 75 tuổi có mua được không?', answer: 'Mua được, nhưng một số quyền lợi bị giới hạn. Quyền lợi tai nạn cá nhân, chi phí y tế, vận chuyển y tế cấp cứu, hồi hương, mai táng và hồi hương thi hài chỉ áp dụng 50% số tiền bảo hiểm. Quyền lợi tử vong do nguyên nhân khác ngoài tai nạn không áp dụng.' },
     { question: 'Quyền lợi hủy chuyến đi có hiệu lực từ khi nào?', answer: 'Quyền lợi hủy chuyến đi bắt đầu có hiệu lực vào ngày cấp giấy chứng nhận bảo hiểm hoặc ngày thứ 60 trước ngày khởi hành đầu tiên, tùy thời điểm nào xảy ra sau. Các quyền lợi bổ sung còn lại có hiệu lực từ khi hoàn tất thủ tục xuất cảnh tại Việt Nam trong ngày khởi hành đầu tiên.' },
@@ -304,7 +326,7 @@ const build = (o) => {
   const main = heroBlock({
     eyebrow: 'Cá nhân · Du lịch quốc tế',
     h1: 'Bảo hiểm du lịch quốc tế',
-    lead: 'Chi phí y tế ở nước ngoài, tai nạn cá nhân, hủy chuyến, hành lý và giấy tờ tùy thân, số tiền bảo hiểm đến 3 tỷ đồng một người. Phí từ 200.000 đồng cho chuyến 1 đến 3 ngày. Quyền lợi theo Bảng quyền lợi ban hành kèm ' + QD + '.',
+    lead: 'Chi phí y tế ở nước ngoài, tai nạn cá nhân, hủy chuyến, hành lý và giấy tờ tùy thân, số tiền bảo hiểm đến 3 tỷ đồng một người. Phí từ 100.000 đồng cho chuyến 1 đến 3 ngày trong Đông Nam Á. Quyền lợi theo Bảng quyền lợi ban hành kèm ' + QD + '.',
     cta1: ['Gọi báo phí 0938 072 236', 'tel:0938072236'],
     cta2: ['Xem bảng quyền lợi', '#quyen-loi'],
     img: '/assets/hero-du-lich.webp',
@@ -318,7 +340,7 @@ const build = (o) => {
 </div>
 <div class="pd-card"><table class="pd-table"><caption style="padding:16px 18px 0">Theo tài liệu chính thức</caption><tbody>
 <tr><th scope="row">Số tiền bảo hiểm</th><td class="num strong">Đến 3 tỷ</td><td>một người</td></tr>
-<tr><th scope="row">Phí thấp nhất</th><td class="num strong">200.000đ</td><td>chuyến 1 đến 3 ngày</td></tr>
+<tr><th scope="row">Phí thấp nhất</th><td class="num strong">100.000đ</td><td>đi Đông Nam Á</td></tr>
 <tr><th scope="row">Độ tuổi</th><td colspan="2">Từ 07 ngày tuổi trở lên</td></tr>
 <tr><th scope="row">Thông báo sự kiện</th><td colspan="2">Trong vòng 30 ngày</td></tr>
 <tr><th scope="row">Thời hạn chi trả</th><td colspan="2">15 ngày làm việc kể từ khi đủ hồ sơ</td></tr>
@@ -343,14 +365,27 @@ const build = (o) => {
 
 <section class="fire-compare pd-paper" id="phi"><div class="fire-wrap">
 <h2>Biểu phí ba chương trình bán trực tuyến</h2>
-<p class="fire-lede" style="max-width:76ch">Phí tính cho một người theo số ngày của hành trình, đang niêm yết trên kênh PVI Online cho phạm vi bảo hiểm chính.</p>
-<div class="pd-scroll"><table class="pd-table" style="min-width:620px"><thead><tr><th scope="col">Số ngày của chuyến đi</th>${Object.keys(fees).map((k, i) => `<th scope="col" class="num">${i === 2 ? '<span>Cao nhất</span>' : '<span>&nbsp;</span>'}${k}</th>`).join('')}</tr></thead><tbody>
+<p class="fire-lede" style="max-width:76ch">Phí tính cho một người theo số ngày của hành trình. PVI đang áp hai biểu phí: một bộ chung không phân vùng, và một bộ chia theo vùng lãnh thổ kèm phí riêng cho phạm vi bảo hiểm bổ sung. Chuyên viên xác nhận biểu phí áp dụng cho hồ sơ của anh chị trước khi phát hành.</p>
+
+<h3 style="margin-top:34px">Bộ một: biểu phí chung, không phân vùng</h3>
+<div class="pd-scroll"><table class="pd-table" style="min-width:620px">${goiHead('Số ngày của chuyến đi')}<tbody>
 <tr class="sub"><th scope="colgroup" colspan="4">Số tiền bảo hiểm tai nạn cá nhân và chi phí y tế, mỗi quyền lợi</th></tr>
 <tr><th scope="row">Mức bảo hiểm</th><td class="num strong">1 tỷ</td><td class="num strong">2 tỷ</td><td class="num strong">3 tỷ</td></tr>
-<tr class="sub"><th scope="colgroup" colspan="4">Phí bảo hiểm một người</th></tr>
-${bands.map((b, i) => `<tr><th scope="row">${b}</th>${Object.keys(fees).map((k) => `<td class="num">${vnd(fees[k][i])}</td>`).join('')}</tr>`).join('')}
+<tr class="sub"><th scope="colgroup" colspan="4">Phí bảo hiểm một người, phạm vi bảo hiểm chính</th></tr>
+${[...bands, '32 đến 180 ngày'].map((b, i) => `<tr><th scope="row">${b}</th>${GOI.map((k) => `<td class="num">${vnd(fees[k][i])}</td>`).join('')}</tr>`).join('')}
 </tbody></table></div>
-<p class="fire-note">Chuyến dài trên 31 ngày, đoàn nhiều người, hành trình có điểm quá cảnh đặc biệt hoặc chọn thêm các điều khoản mở rộng được báo phí riêng. Phí của phạm vi bảo hiểm bổ sung tính tách khỏi bảng này. Nguồn: <a href="${SRC}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">PVI Online, bảo hiểm du lịch quốc tế</a>.</p>
+
+<h3 style="margin-top:44px">Bộ hai: biểu phí theo vùng lãnh thổ</h3>
+<p class="fire-lede" style="max-width:76ch">Mỗi ô có hai dòng: dòng trên là phí phạm vi bảo hiểm chính, dòng dưới là phí phạm vi bảo hiểm bổ sung nếu chọn thêm. Vùng tính theo điểm đến của hành trình.</p>
+<div class="dl-tabs">
+${regions.map(([id, label], i) => `<input type="radio" name="dl-vung" id="dl-${id}" aria-label="Xem biểu phí đi ${label}"${i === 0 ? ' checked' : ''}>`).join('')}
+<div class="dl-tabbar" role="group" aria-label="Chọn vùng lãnh thổ của hành trình">${regions.map(([id, label]) => `<label for="dl-${id}">${esc(label)}</label>`).join('')}</div>
+<div class="dl-panels">
+${regions.map(([id, label, tb]) => `<div class="dl-panel" id="dl-p-${id}"><div class="pd-scroll"><table class="pd-table" style="min-width:660px"><caption class="sr-only">Biểu phí bảo hiểm du lịch quốc tế đi ${esc(label)}</caption>${goiHead('Số ngày, đi ' + label)}<tbody>${[...bands, '32 đến 185 ngày'].map((b, i) => `<tr><th scope="row">${b}</th>${GOI.map((k) => `<td class="num">${vnd(tb[k][i][0])}<span class="dl-sub">bổ sung ${vnd(tb[k][i][1])}</span></td>`).join('')}</tr>`).join('')}</tbody></table></div></div>`).join('')}
+</div>
+</div>
+
+<p class="fire-note">Bậc từ 32 ngày có mức thấp hơn các bậc ngắn ngày, đây là mức ghi trong biểu phí của PVI, cách áp cho chuyến dài ngày được chuyên viên xác nhận theo từng hồ sơ. Đoàn nhiều người và các điều khoản mở rộng (bảo hiểm dịch bệnh, hoạt động rủi ro cao, ngộ độc) được báo phí riêng. Nguồn: <a href="${SRC}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">PVI Online, bảo hiểm du lịch quốc tế</a>.</p>
 </div></section>
 
 <section class="pd-section" id="loai-tru"><div class="fire-wrap">
@@ -410,6 +445,6 @@ ${hotline}
     rel: 'san-pham/bao-hiem-du-lich/index.html', path: P, main, faqs,
     crumb: 'Bảo hiểm du lịch quốc tế', img: '/assets/hero-du-lich.webp',
     title: 'Bảo hiểm du lịch quốc tế PVI: quyền lợi và biểu phí | PVI Thành Đô',
-    desc: 'Bảng quyền lợi 6 chương trình và biểu phí bảo hiểm du lịch quốc tế PVI theo Quyết định 491/QĐ-PVIBH. Bảo hiểm đến 3 tỷ đồng, phí từ 200.000đ một người.',
+    desc: 'Bảng quyền lợi 6 chương trình và biểu phí bảo hiểm du lịch quốc tế PVI theo Quyết định 491/QĐ-PVIBH. Bảo hiểm đến 3 tỷ đồng, phí từ 100.000đ một người.',
   });
 }
