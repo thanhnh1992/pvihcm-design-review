@@ -236,16 +236,7 @@ export const legalReference = {
     replaces: "Thay thế Nghị định 67/2023/NĐ-CP",
     href: "https://vanban.chinhphu.vn/?docid=218555&pageid=27160",
 };
-/* ------------------------------------------------------------------ */
-/* 5. NGƯỜI MUA                                                        */
-/* ------------------------------------------------------------------ */
-export const audiences = [
-    { code: "P1", title: "Nhà thầu, chỉ huy trưởng công trường", need: "Cần giấy chứng nhận đứng tên đúng gói thầu, có ngay để kịp nộp hồ sơ, kèm hoá đơn VAT xuất theo tên công ty." },
-    { code: "P2", title: "HR / hành chính doanh nghiệp", need: "Mua theo năm tài chính, cần một danh sách chuẩn để đưa vào chi phí và giải trình được với ban giám đốc." },
-    { code: "P3", title: "Chủ xưởng sản xuất nhỏ", need: "Vài chục lao động, ca kíp đổi liên tục, cần thay người trong danh sách mà không phải làm lại hợp đồng." },
-    { code: "P4", title: "Trường học", need: "Mua tập trung trước năm học, danh sách theo lớp, cần biên lai và giấy chứng nhận để thông báo với phụ huynh." },
-    { code: "P5", title: "Cá nhân, shipper, lao động tự do", need: "Một người, đi đường nhiều, muốn biết phí một năm là bao nhiêu trước khi quyết định." },
-];
+export const trustedClients = [];
 export const benefitRows = [
     {
         group: "Tử vong, mất tích hoặc thương tật toàn bộ vĩnh viễn do tai nạn",
@@ -435,7 +426,7 @@ export const expert = {
 export const documents = [
     { type: "Văn bản pháp lý · Chính phủ", title: "Nghị định 220/2026/NĐ-CP", href: legalReference.href },
     { type: "Sản phẩm · Bảo hiểm PVI", title: "Bảo hiểm tai nạn con người", href: "https://www.pvi.com.vn/vi/products/personal/personal-accident" },
-    { type: "Hướng dẫn · PVI Digital", title: "Hướng dẫn yêu cầu bồi thường", href: "https://online.pvi.com.vn/huong-dan-boi-thuong" },
+    { type: "Hướng dẫn · Bảo hiểm PVI", title: "Hướng dẫn yêu cầu bồi thường", href: "https://online.pvi.com.vn/huong-dan-boi-thuong" },
 ];
 export const relatedProducts = [
     { title: "Bảo hiểm công trình & lắp đặt", text: "Bảo vệ chính hạng mục thi công và trách nhiệm với bên thứ ba của dự án.", href: "/bao-hiem-xay-dung-lap-dat" },

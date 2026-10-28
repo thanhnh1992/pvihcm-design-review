@@ -10,7 +10,7 @@ const APP = process.env.BAOHIEMPVI_DIR || 'C:/Users/DELL/Documents/Codex/2026-08
 const require = createRequire(APP + '/package.json');
 const ts = require('typescript');
 const OUT = path.join(HERE, 'data');
-for (const [name, rel] of [['product', 'app/product-data.ts'], ['tnds', 'app/bao-hiem-o-to/tnds-data.ts'], ['accident', 'app/bao-hiem-tai-nan-24-24/accident-data.ts']]) {
+for (const [name, rel] of [['product', 'app/product-data.ts'], ['tnds', 'app/bao-hiem-o-to/tnds-data.ts'], ['accident', 'app/bao-hiem-tai-nan-24-24/accident-data.ts'], ['accident-updates', 'app/bao-hiem-tai-nan-24-24/accident-updates.ts']]) {
   const src = fs.readFileSync(`${APP}/${rel}`, 'utf8');
   const js = ts.transpileModule(src, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 } }).outputText;
   fs.writeFileSync(path.join(OUT, `${name}.mjs`), js, 'utf8');

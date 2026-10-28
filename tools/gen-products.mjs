@@ -2,12 +2,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { taiNanMain, taiNanJs, taiNanJsonLd } from './tai-nan-ui.mjs';
 import { page, t, esc, clean, faqBlock, faqJsonLd, breadcrumbJsonLd, steps, hotline, ctaRow, ZALO } from './chrome.mjs';
 
 const HERE = path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1'));
 const D = (f) => pathToFileURL(path.join(HERE, 'data', f)).href;
 const tn = await import(D('tnds.mjs'));
 const ac = await import(D('accident.mjs'));
+const acUp = await import(D('accident-updates.mjs'));
 const pr = await import(D('product.mjs'));
 const DIST = path.resolve(HERE, '../dist');
 const vnd = (n) => `${new Intl.NumberFormat('vi-VN').format(n)}đ`;
@@ -196,140 +198,24 @@ ${faqBlock([...tn.tndsFaqs, car.faqs[2]])}`;
   write('san-pham/bao-hiem-bat-buoc/page.js', js);
 }
 
-/* ═════════════ 2. BẢO HIỂM TAI NẠN 24/24 ═════════════ */
+/* ═════════════ 2. BẢO HIỂM TAI NẠN 24/24 ═════════════
+   Giao diện và bộ tính phí theo trang /bao-hiem-tai-nan-24-24 của baohiempvi-vn
+   (chủ site yêu cầu 28/10/2026), dựng trong tools/tai-nan-ui.mjs. */
 {
   const P = '/san-pham/bao-hiem-tai-nan/';
-  const plans = ac.accidentPlans, tiers = ac.groupTiers;
-  const planOpts = plans.map((p, i) => `<option value="${p.id}"${p.id === '100' ? ' selected' : ''}>Gói ${esc(p.label)}, phí gốc ${vnd(p.basePremium)}/người/năm</option>`).join('');
-  const termOpts = ac.termOptions.map((o) => `<option value="${o.months}">${esc(o.label)}</option>`).join('');
-  const matrix = `<div class="pd-scroll pd-card"><table class="pd-table"><thead><tr><th scope="col">Gói (số tiền bảo hiểm)</th>${tiers.map((x) => `<th scope="col" class="num">${t(x.shortLabel)} người${x.discount ? `<br>giảm ${Math.round(x.discount * 100)}%` : '<br>phí gốc'}</th>`).join('')}</tr></thead><tbody>${plans.map((p) => `<tr><th scope="row">${t(p.label)}</th>${tiers.map((x, i) => `<td class="num${i === 0 ? ' strong' : ''}">${vnd(ac.premiumFor(p, i, 12))}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
-
-  const audience = ac.audienceCards.map((c) => {
-    const plan = plans.find((p) => p.id === c.planId);
-    const fee = ac.premiumFor(plan, c.tierIndex, 12);
-    return `<article class="pd-row"${c.id === 'nha-thau' ? ' id="nha-thau"' : ''}><div><span class="flag${c.required ? ' req' : ''}">${esc(c.flag)}</span><span class="who">${esc(c.eyebrow)}</span></div><div><h3>${t(c.title.replace(/<br\s*\/?>/g, ' '))}</h3><p>${t(c.summary)}</p></div><div class="price"><b>${vnd(fee)}</b><span>${t(c.priceNote)}</span></div></article>`;
-  }).join('');
-
-  const cases = ac.claimScenarios.map((s) => `<article class="pd-case"><h3>${t(s.title)}</h3><p>${t(s.context)}</p><dl>${s.steps.map((x) => `<div><dt>${t(x.label)}</dt><dd>${t(x.value)}</dd></div>`).join('')}</dl><div class="res"><span>Số tiền chi trả</span><strong>${t(s.result)}</strong></div><p class="fire-note">${t(s.note)}</p></article>`).join('');
-
-  const main = `
-<section class="fire-hero"><div class="fire-wrap"><div class="fire-hero-copy">
-<span class="fire-eyebrow">Bảo hiểm tai nạn 24/24 · Cá nhân và doanh nghiệp</span>
-<h1>Tai nạn 24/24, <em>phí theo gói và quy mô nhóm.</em></h1>
-<p>${t(ac.comparisonRows[1].accident)}. ${t(ac.comparisonRows[3].accident)}. Từ 20 người trở lên được giảm phí theo quy mô, cao nhất ${esc(ac.MAX_DISCOUNT_LABEL)}.</p>
-<div class="fire-actions"><a class="fire-btn fire-btn-red" href="#tinh-phi">Tính phí cho nhóm</a><a class="fire-btn fire-btn-line" href="#doi-tuong">Nhà thầu công trường</a></div>
-</div><figure class="fire-hero-art"><img src="/assets/section-tai-nan.webp" width="1280" height="853" alt="Nhân sự doanh nghiệp trao đổi phương án bảo hiểm tai nạn"></figure></div></section>
-
-<section class="fire-tool" id="tinh-phi"><div class="fire-wrap">
-<h2>Tính phí theo gói, số người và thời hạn</h2>
-<p class="fire-lede" style="margin-top:12px">Chọn gói số tiền bảo hiểm, nhập số người trong danh sách. Bậc giảm phí tự áp theo quy mô nhóm, thời hạn dưới 12 tháng tính theo tỷ lệ ngắn hạn.</p>
-<div class="pd-grid">
-<div class="fire-panel"><div class="fire-panel-head"><h3>Thông tin nhóm</h3><p>Phí tham chiếu, chưa gồm thẩm định nhóm nghề.</p></div>
-<form class="pd-form" id="acc-form" novalidate>
-<label class="pd-field"><span>Gói bảo hiểm</span><select id="acc-plan">${planOpts}</select></label>
-<label class="pd-field"><span>Số người trong danh sách</span><input id="acc-n" type="number" inputmode="numeric" min="1" max="100000" step="1" value="50"></label>
-<label class="pd-field"><span>Thời hạn</span><select id="acc-term">${termOpts}</select></label>
-<p class="pd-explain" id="acc-explain" aria-live="polite">Gói 100 triệu: 250.000 đ × 80% = 200.000 đ mỗi người.</p>
-</form></div>
-<div>
-<div class="fire-total pd-result">
-<div class="fire-total-rows"><div><span>Phí mỗi người</span><b id="acc-per">200.000 đ</b></div><div><span>Bậc giảm phí</span><b id="acc-tier">20-100 người, giảm 20%</b></div><div><span>Số người</span><b id="acc-count">50 người</b></div></div>
-<div class="fire-total-sum"><span>Tổng phí tham chiếu</span><strong id="acc-total">10.000.000 đ</strong></div>
-<div class="fire-total-foot"><a class="fire-btn fire-btn-red" href="tel:0938072236">Gọi báo phí 0938 072 236</a><a class="fire-btn fire-btn-line" href="${ZALO}" target="_blank" rel="noopener" style="color:var(--ink);border:1px solid #c9d6e3;background:#fff">Gửi danh sách qua Zalo</a></div>
-</div>
-<p class="fire-note"><b>Lưu ý:</b> ${t(ac.FEE_SOURCE.note)}</p>
-</div></div></div></section>
-
-<section class="fire-tables" id="bang-phi"><div class="fire-wrap">
-<span class="fire-eyebrow">Giảm phí theo quy mô, áp dụng từ ${esc(ac.DISCOUNT_EFFECTIVE_FROM)}</span>
-<h2>Phí mỗi người một năm theo gói và số người</h2>
-${matrix}
-</div></section>
-
-<section class="pd-section" id="doi-tuong"><div class="fire-wrap">
-<h2>Ai thường mua, mua để làm gì</h2>
-<div class="pd-rows">${audience}</div>
-<div class="fire-alert"><b>${t(ac.legalReference.current)} · ${t(ac.legalReference.effective)}</b><p>${t(ac.legalReference.replaces)}. <b>${t(ac.faqs[2].question)}</b> ${t(ac.faqs[2].answer)} <a href="${ac.legalReference.href}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">Đọc văn bản</a></p></div>
-<p class="fire-note">Đọc thêm: <a href="/tin-tuc/bao-hiem-tai-nan-cong-trinh-pvi/">Bảo hiểm tai nạn công trình PVI: phần bắt buộc, quyền lợi, hồ sơ báo giá và bồi thường</a></p>
-</div></section>
-
-<section class="fire-compare pd-paper" id="quyen-loi"><div class="fire-wrap">
-<h2>Quyền lợi và cách tính tiền chi trả</h2>
-<div class="pd-scroll"><table><thead><tr><th scope="col">Quyền lợi</th><th scope="col">Căn cứ</th><th scope="col">Mức chi trả</th></tr></thead><tbody>${ac.benefitRows.map((b) => `<tr><th scope="row" style="width:34%">${t(b.group)}</th><td>${t(b.basis)}</td><td class="yes">${t(b.payout)}</td></tr>`).join('')}</tbody></table></div>
-<div class="pd-cases">${cases}</div>
-<p class="fire-note">Đọc thêm: <a href="/tin-tuc/loi-ich-bao-hiem-tai-nan-ca-nhan/">Lợi ích của bảo hiểm tai nạn cá nhân và cách đọc giấy chứng nhận</a></p>
-</div></section>
-
-<section class="fire-compare" id="so-sanh"><div class="fire-wrap">
-<h2>Khác gì chế độ tai nạn lao động của BHXH</h2>
-<div class="pd-scroll"><table><thead><tr><th scope="col"><span class="sr-only">Tiêu chí</span></th><th scope="col"><span>Bắt buộc theo luật lao động</span>BHXH tai nạn lao động</th><th scope="col"><span>Bảo hiểm thương mại</span>Tai nạn 24/24</th></tr></thead><tbody>${ac.comparisonRows.map((r) => `<tr><th scope="row">${t(r.aspect)}</th><td>${t(r.social)}</td><td class="yes">${t(r.accident)}</td></tr>`).join('')}</tbody></table></div>
-</div></section>
-
-<section class="fire-docs pd-paper" id="loai-tru"><div class="fire-wrap">
-<h2>Trường hợp không được chi trả</h2>
-<ul class="pd-list no" style="margin-top:22px;max-width:880px">${ac.exclusions.map((e) => `<li>${t(e)}</li>`).join('')}</ul>
-</div></section>
-
-<section class="fire-docs" id="chung-tu"><div class="fire-wrap">
-<h2>Mua theo danh sách, ba bước</h2>
-${steps(ac.buySteps)}
-${ctaRow('Gọi tư vấn 0938 072 236')}
-</div></section>
-
-<section class="fire-claim pd-paper" id="boi-thuong"><div class="fire-wrap">
-<span class="fire-eyebrow">Khi có người gặp tai nạn</span>
-<h2>Bốn việc cần làm theo đúng thứ tự</h2>
-${steps(ac.claimSteps)}
-${hotline}
-<div class="fire-docs-grid" style="margin-top:34px"><div><h3>Hồ sơ yêu cầu trả tiền bảo hiểm</h3><ol>${ac.claimDocuments.map((d) => `<li><b>${t(d)}</b></li>`).join('')}</ol></div>
-<div><h3>Tài liệu chính thức</h3><ul class="pd-docs" style="margin-top:0;border-top:0">${ac.documents.map((d) => `<li><a href="${d.href}" target="_blank" rel="noopener" style="grid-template-columns:minmax(0,1fr) 24px"><div style="display:block;padding:0"><span class="cat">${t(d.type)}</span><b>${t(d.title)}</b></div><i aria-hidden="true">&#8599;</i></a></li>`).join('')}</ul></div></div>
-</div></section>
-
-${faqBlock(ac.faqs)}`;
-
   const html = page({
     path: P,
-    title: 'Bảo hiểm tai nạn 24/24: bảng phí theo nhóm | PVI Thành Đô',
-    description: 'Bảo hiểm tai nạn 24/24 cho cá nhân, doanh nghiệp và nhà thầu: phí gốc từ 50.000đ/người/năm, giảm tới 55% theo quy mô nhóm, quyền lợi và hồ sơ.',
-    image: '/assets/section-tai-nan.webp',
-    head: faqJsonLd(ac.faqs) + breadcrumbJsonLd(P, 'Bảo hiểm tai nạn'),
-    main,
+    title: 'Bảo hiểm Tai nạn 24/24 PVI: tính phí theo gói và nhóm | PVI Thành Đô',
+    description: 'Bảo hiểm tai nạn 24/24 cho cá nhân, doanh nghiệp và nhà thầu: gói 20 đến 200 triệu, phí gốc từ 50.000đ/người/năm, giảm tới 55% theo quy mô nhóm. Tính phí ngay, báo giá qua Zalo.',
+    image: '/assets/tn-the-nha-thau.webp',
+    head: faqJsonLd(ac.faqs) + breadcrumbJsonLd(P, 'Bảo hiểm tai nạn') + taiNanJsonLd(ac, 'https://pvihcm.com' + P),
+    main: taiNanMain(ac, acUp),
+    bodyClass: 'tn-page',
+    extraCss: '<link rel="stylesheet" href="/tai-nan.css">',
     scripts: '<script src="page.js" defer></script>',
   });
   write('san-pham/bao-hiem-tai-nan/index.html', html);
-
-  const js = `/* Bộ tính phí tai nạn 24/24. Công thức chép nguyên từ accident-data.ts:
-   phí = phí gốc × (1 − giảm theo bậc) × tỷ lệ ngắn hạn, làm tròn theo đồng. */
-(() => {
-  const PLANS = ${JSON.stringify(plans)};
-  const TIERS = ${JSON.stringify(tiers.map((x) => ({ ...x, label: clean(x.label), shortLabel: clean(x.shortLabel) })))};
-  const SHORT = ${JSON.stringify(ac.shortTermRates)};
-  const fmt = (n) => Math.round(n).toLocaleString('vi-VN') + ' đ';
-  const $ = (id) => document.getElementById(id);
-  const plan = $('acc-plan'), n = $('acc-n'), term = $('acc-term');
-  if (!plan) return;
-  function run() {
-    const p = PLANS.find((x) => x.id === plan.value);
-    const count = Number(n.value);
-    const months = Number(term.value);
-    const ok = Number.isInteger(count) && count >= 1 && count <= 100000;
-    if (!ok) { $('acc-explain').textContent = 'Nhập số người là số nguyên từ 1 trở lên.'; ['acc-per','acc-tier','acc-count','acc-total'].forEach((id) => { $(id).textContent = '…'; }); return; }
-    let ti = TIERS.findIndex((t) => count >= t.min && (t.max === null || count <= t.max)); if (ti < 0) ti = 0;
-    const tier = TIERS[ti];
-    const rate = (SHORT.find((s) => s.months === months) || { rate: 1 }).rate;
-    const per = Math.round(p.basePremium * (1 - tier.discount) * rate);
-    $('acc-per').textContent = fmt(per);
-    $('acc-tier').textContent = tier.discount ? tier.label + ', giảm ' + Math.round(tier.discount * 100) + '%' : tier.label + ', phí gốc';
-    $('acc-count').textContent = count.toLocaleString('vi-VN') + ' người';
-    $('acc-total').textContent = fmt(per * count);
-    $('acc-explain').textContent = 'Gói ' + p.label + ': ' + fmt(p.basePremium) + (tier.discount ? ' × ' + Math.round((1 - tier.discount) * 100) + '%' : '') + (rate !== 1 ? ' × ' + Math.round(rate * 100) + '% (thời hạn ' + months + ' tháng)' : '') + ' = ' + fmt(per) + ' mỗi người.';
-  }
-  [plan, n, term].forEach((el) => { el.addEventListener('input', run); el.addEventListener('change', run); });
-  $('acc-form').addEventListener('submit', (e) => e.preventDefault());
-  run();
-})();
-`;
-  write('san-pham/bao-hiem-tai-nan/page.js', js);
+  write('san-pham/bao-hiem-tai-nan/page.js', taiNanJs(ac, clean));
 }
 
 /* ═════════════ 3. HÀNG HÓA XUẤT NHẬP KHẨU ═════════════ */
