@@ -34,6 +34,7 @@
   const BASE = TAU / 22;          // tốc độ thường: 22 giây một vòng
   const FAST = BASE * 3;          // rê chuột vào khu thẻ
   const SLOW = BASE * 0.12;       // rê chuột lên một thẻ
+  const S_BACK = 0.6, S_FRONT_BONUS = 0.12, S_MAX = (1 + S_FRONT_BONUS) * 1.05;
   orbit.classList.add('is-live');
   // Nhiều hơn 4 sản phẩm thì thu nhỏ thẻ cho vòng không chật.
 
@@ -42,8 +43,8 @@
   // Nhiều hơn 4 sản phẩm thì thu nhỏ thẻ cho vòng không chật; màn hình hẹp giữ thẻ to hơn để nhãn đọc được.
   const sizeCards = () => {
     if (n <= 4) return orbit.style.removeProperty('--cw');
-    const min = orbit.clientWidth < 480 ? 44 : 34;
-    orbit.style.setProperty('--cw', `${Math.max(min, 50 * Math.sqrt(4 / n)).toFixed(1)}%`);
+    const min = orbit.clientWidth < 480 ? 48 : 37;
+    orbit.style.setProperty('--cw', `${Math.max(min, 55 * Math.sqrt(4 / n)).toFixed(1)}%`);
   };
   const measure = () => { sizeCards(); W = orbit.clientWidth; H = orbit.clientHeight; };
   measure();
@@ -51,14 +52,18 @@
 
   function place() {
     const cw = cards[0].offsetWidth, ch = cards[0].offsetHeight;
-    const rx = Math.max(0, Math.min(W * 0.26, W / 2 - cw / 2 - 4));
-    const ry = Math.max(0, Math.min(H * 0.27, H / 2 - ch / 2 - 4));
+    // Quỹ đạo co theo cỡ thẻ lớn nhất (thẻ trước nhất đang được rê chuột) để không tràn khỏi khung.
+    const rx = Math.max(0, Math.min(W * 0.26, W / 2 - (cw * S_MAX) / 2 - 4));
+    const ry = Math.max(0, Math.min(H * 0.27, H / 2 - (ch * S_MAX) / 2 - 4));
     cards.forEach((c, i) => {
       const t = angle + (i * TAU) / n;
       const d = (Math.cos(t) + 1) / 2;               // 1 = phía trước (dưới), 0 = phía sau (trên)
-      const s = (0.74 + 0.26 * d) * (c === hot ? 1.05 : 1);
+      // Thẻ sau nhỏ (0,6), thẻ trước to (1,0) và riêng vị trí trước nhất phóng thêm tới 1,12:
+      // thẻ đang hiện ra to hơn thẻ phía sau khoảng 1,8 lần.
+      const front = Math.max(0, (d - 0.8) / 0.2);
+      const s = (S_BACK + (1 - S_BACK) * d + S_FRONT_BONUS * front) * (c === hot ? 1.05 : 1);
       c.style.transform = `translate(-50%,-50%) translate3d(${(Math.sin(t) * rx).toFixed(1)}px,${(Math.cos(t) * ry).toFixed(1)}px,0) scale(${s.toFixed(3)})`;
-      c.style.opacity = (0.8 + 0.2 * d).toFixed(3);
+      c.style.opacity = (0.72 + 0.28 * d).toFixed(3);
       c.style.zIndex = c === hot ? 200 : 10 + Math.round(d * 100);
     });
   }
