@@ -22,7 +22,7 @@ body>header.site-header{position:relative;z-index:40;max-width:var(--content);ma
 .site-nav{display:flex;align-items:center;gap:22px;font-size:15px;margin-left:auto}
 .site-nav a{display:inline-flex;align-items:center;min-height:var(--tap);color:var(--ink);font-weight:500;white-space:nowrap}
 .site-nav a:hover{color:var(--blue)}
-.site-nav a[aria-current="page"]{color:var(--blue);box-shadow:inset 0 -2px 0 var(--blue)}
+.site-nav a[aria-current]{color:var(--blue);box-shadow:inset 0 -2px 0 var(--blue)}
 .site-header .phone{display:inline-flex;align-items:center;gap:8px;min-height:var(--tap);padding:0 18px;border-radius:var(--r-pill);
   background:var(--ink);color:#fff;font-size:15px;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
 .site-header .phone svg{width:17px;height:17px;flex:none}
@@ -40,7 +40,7 @@ body>header.site-header{position:relative;z-index:40;max-width:var(--content);ma
   .site-header.nav-open .site-nav{display:flex}
   .site-nav a{min-height:50px;padding:0 14px;border-radius:var(--r-chip);font-size:16px}
   .site-nav a+a{border-top:1px solid #eef2f6}
-  .site-nav a[aria-current="page"]{box-shadow:none;background:#eef5fc}
+  .site-nav a[aria-current]{box-shadow:none;background:#eef5fc}
   .site-header .phone{margin-left:auto}
 }
 @media(max-width:820px){
@@ -241,7 +241,7 @@ a[href^="#"]:hover i[aria-hidden],a[href^="#"]:focus-visible i[aria-hidden]{tran
 @media(max-width:1180px){
   .site-nav a{transition:color .2s ease,background-color .2s ease,padding-left .25s var(--ease-out)}
   .site-nav a:hover,.site-nav a:focus-visible{background:#f3f7fb;padding-left:20px}
-  .site-nav a[aria-current="page"]{box-shadow:inset 3px 0 0 var(--blue)}
+  .site-nav a[aria-current]{box-shadow:inset 3px 0 0 var(--blue)}
 }
 @media(prefers-reduced-motion:reduce){
   .site-nav a{transition:color .2s ease,background-color .2s ease}
@@ -287,8 +287,8 @@ a[href^="#"]:hover i[aria-hidden],a[href^="#"]:focus-visible i[aria-hidden]{tran
   .site-nav a{min-height:40px;padding:0 12px;border:1px solid transparent;border-radius:999px;
     transition:color .2s ease,background-color .2s ease,border-color .2s ease}
   .site-nav a:hover,.site-nav a:focus-visible{color:var(--blue);background:#eaf2fb;border-color:#b9d0e8}
-  .site-nav a[aria-current="page"]{color:var(--blue);background:#eaf2fb;border-color:var(--blue);box-shadow:none}
-  .site-nav a[aria-current="page"]:hover{background:#dde9f7}
+  .site-nav a[aria-current]{color:var(--blue);background:#eaf2fb;border-color:var(--blue);box-shadow:none}
+  .site-nav a[aria-current]:hover{background:#dde9f7}
 }
 
 /* Chữ chỉ dành cho máy đọc màn hình */
