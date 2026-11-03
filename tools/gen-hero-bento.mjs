@@ -38,7 +38,7 @@ const tiles = heroProducts.map((p, i) => {
     + `<span class="bt-label"><b class="bt-long">${esc(p.title)}</b><b class="bt-short" aria-hidden="true">${esc(p.short || p.title)}</b><i aria-hidden="true">&rarr;</i></span></a>`;
 }).join('\n');
 
-const info = `<a class="bt bt-info bt-red" data-slot="b" href="tel:1900545458"><small>Bồi thường 24/7</small><b>1900 54 54 58</b><span>Gọi ngay khi có sự cố</span></a>
+const info = `<a class="bt bt-info bt-red" data-slot="b" href="tel:1900545458"><small>Bồi thường 24/7</small><b>1900 54 54 58</b><span>Gọi khi có sự cố</span></a>
 <a class="bt bt-info bt-blue" data-slot="e" href="tel:0938072236"><small>Tư vấn và báo phí</small><b>0938 072 236</b><span>Gọi hoặc nhắn Zalo</span></a>`;
 
 const block = `<!-- hero-bento:start -->
