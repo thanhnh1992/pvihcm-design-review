@@ -6,6 +6,8 @@
   const form = document.getElementById('tinh-phi');
   const dataEl = document.getElementById('tv-fee-data');
   if (!form || !dataEl) return;
+  // Bấm Enter trong ô nhập không gửi form, trang không tải lại (thay cho onsubmit viết thẳng trong HTML, CSP chặn kiểu đó).
+  form.addEventListener('submit', (e) => e.preventDefault());
   const FEES = JSON.parse(dataEl.textContent);
   const BANDS = [3, 6, 10, 14, 18, 22, 27, 31];
   const REGION = { dna: 'dna', ca: 'ca', eu: 'tc', tc: 'tc' };

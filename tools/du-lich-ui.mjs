@@ -66,7 +66,7 @@ export function tvHero({ regions, bands }) {
 <p class="tv-hero-note">${svg('plane', 'tv-ico-sm')} Dùng cho du lịch, thăm thân, công tác và hồ sơ xin thị thực.</p>
 </div>
 
-<form class="tv-calc" id="tinh-phi" aria-labelledby="tv-calc-h" onsubmit="return false">
+<form class="tv-calc" id="tinh-phi" aria-labelledby="tv-calc-h">
 <h2 id="tv-calc-h">Tính phí bảo hiểm du lịch</h2>
 <p class="tv-calc-sub">Chỉ mất vài phút để tìm gói phù hợp với chuyến đi của bạn.</p>
 <label class="tv-field"><span>Điểm đến</span><span class="tv-input">${svg('pin', 'tv-ico-sm')}<select name="dest" id="tv-dest">
