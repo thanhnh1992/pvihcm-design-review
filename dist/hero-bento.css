@@ -13,7 +13,8 @@
   .hero-copy{align-self:start;padding-top:28px}
   .hero .hero-all{margin-top:14px}
 }
-.hero-stage--bento .hero-depth{display:none}
+/* Ba mặt phẳng nền trôi chậm phía sau giữ nguyên (chủ site yêu cầu), thu sát lưới để không bị cắt dưới menu */
+@media(min-width:821px){.hero-stage--bento .hero-depth{inset:-3% -4% -6%}}
 .bento{--gap:12px;--r:20px;position:relative;z-index:1;display:grid;gap:var(--gap);
   grid-template-columns:1.12fr 1fr 1fr;grid-template-rows:repeat(4,minmax(0,1fr));
   grid-template-areas:"a b c" "a d e" "f d g" "h i j";height:clamp(400px,33vw,480px)}
