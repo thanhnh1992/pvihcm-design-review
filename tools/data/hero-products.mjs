@@ -17,4 +17,6 @@ export const heroProducts = [
   { href: '/san-pham/bao-hiem-cong-trinh/', title: 'Bảo hiểm công trình', short: 'Công trình', img: 'hero-cong-trinh', alt: 'Mô hình 3D tòa nhà đang xây, cần cẩu và vòng sáng đỏ trên đế kính' },
   { href: '/san-pham/bao-hiem-suc-khoe/', title: 'Bảo hiểm sức khỏe', short: 'Sức khỏe', img: 'hero-suc-khoe', alt: 'Mô hình 3D trái tim đỏ, ống nghe và gia đình nhỏ trên đế kính' },
   { href: '/san-pham/bao-hiem-du-lich/', title: 'Bảo hiểm du lịch', short: 'Du lịch', img: 'hero-du-lich', alt: 'Mô hình 3D vali đỏ, máy bay và quả địa cầu trên đế kính' },
+  // Thêm 03/11/2026 cho lưới bento (gen-hero-bento.mjs). Ảnh chụp thật, chưa có bản 3D cùng kiểu.
+  { href: '/san-pham/bao-hiem-vat-chat-xe/', title: 'Vật chất xe ô tô', short: 'Vật chất xe', img: 'tu-van-xe-o-to', alt: 'Chuyên viên trao đổi với chủ xe về phương án bảo hiểm vật chất xe' },
 ];

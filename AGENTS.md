@@ -45,7 +45,7 @@ node tools/srcset.mjs         # gắn srcset cho ảnh
 node tools/prerender-fire.mjs # in sẵn biểu phí cháy nổ (59 dòng Phụ lục VI) vào HTML cho bot không chạy JS; chạy lại khi đổi tariff-data.js
 node tools/gen-news.mjs       # mục Tin tức và các bài
 node tools/gen-why-pvi.mjs    # khối "Vì sao chọn PVI" trên trang chủ (chép từ baohiempvi-vn: thị phần, AM Best, công trình)
-node tools/gen-hero-orbit.mjs # thẻ sản phẩm chạy vòng ở đầu trang chủ; thêm sản phẩm: sửa tools/data/hero-products.mjs rồi chạy lại
+node tools/gen-hero-bento.mjs  # lưới bento sản phẩm ở đầu trang chủ (thay vòng xoay từ 03/11/2026); thêm sản phẩm: sửa tools/data/hero-products.mjs và chọn ô trong SLOTS của script
 node tools/gen-san-pham.mjs   # trang danh mục /san-pham/ (mục "Sản phẩm" trên menu); thêm sản phẩm: sửa tools/data/san-pham.mjs. Chạy sau các script trang sản phẩm
 node tools/gen-sitemap.mjs    # PHẢI chạy sau cùng: sinh lại dist/sitemap.xml (không sửa tay file này)
 ```
