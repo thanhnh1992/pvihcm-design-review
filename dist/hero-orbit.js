@@ -43,8 +43,10 @@
   // Nhiều hơn 4 sản phẩm thì thu nhỏ thẻ cho vòng không chật; màn hình hẹp giữ thẻ to hơn để nhãn đọc được.
   const sizeCards = () => {
     if (n <= 4) return orbit.style.removeProperty('--cw');
+    // Khung rộng (máy tính) cho thẻ to hơn để dễ nhìn; điện thoại giữ như cũ.
+    const wide = orbit.clientWidth >= 560;
     const min = orbit.clientWidth < 480 ? 48 : 37;
-    orbit.style.setProperty('--cw', `${Math.max(min, 55 * Math.sqrt(4 / n)).toFixed(1)}%`);
+    orbit.style.setProperty('--cw', `${Math.max(min, (wide ? 62 : 55) * Math.sqrt(4 / n)).toFixed(1)}%`);
   };
   const measure = () => { sizeCards(); W = orbit.clientWidth; H = orbit.clientHeight; };
   measure();
