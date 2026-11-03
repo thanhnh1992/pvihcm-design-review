@@ -2,6 +2,9 @@
 // Chỉ ghi vào dist/index.html giữa hai dấu <!-- hero-orbit:start --> và <!-- hero-orbit:end -->
 // (lần đầu: thay 4 thẻ .hero-tile cũ trong .hero-stage). Lớp nền .hero-depth giữ nguyên.
 // Chuyển động ở dist/hero-orbit.js, giao diện ở dist/hero-orbit.css.
+// NGƯNG DÙNG từ 03/11/2026: trang chủ chuyển sang lưới bento (tools/gen-hero-bento.mjs).
+// Giữ file để có thể quay lại vòng xoay; muốn dùng lại thì bỏ 2 dòng dưới và chạy script này thay bento.
+console.log('gen-hero-orbit.mjs đã ngưng dùng, chạy tools/gen-hero-bento.mjs'); process.exit(0);
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
