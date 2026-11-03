@@ -21,6 +21,7 @@
 .bento [data-slot=f]{grid-area:f}.bento [data-slot=g]{grid-area:g}.bento [data-slot=h]{grid-area:h}.bento [data-slot=i]{grid-area:i}.bento [data-slot=j]{grid-area:j}
 
 .bt{position:relative;display:block;overflow:hidden;border-radius:var(--r);text-decoration:none;color:var(--ink);isolation:isolate;
+  box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 14px 30px -20px rgba(8,40,80,.45);
   transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s ease;opacity:0;animation:bt-in .7s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--k,0) * 60ms + 80ms)}
 .bt-info{animation-delay:.5s}
 @keyframes bt-in{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
@@ -32,22 +33,23 @@
 .bt-photo:nth-child(3n){--ox:30%;--oy:60%;--dur:21s}.bt-photo:nth-child(3n+1){--ox:70%;--oy:40%;--dur:17s}.bt-photo:nth-child(3n+2){--ox:50%;--oy:30%;--dur:24s}
 @keyframes bt-drift{from{transform:scale(1.04) translate3d(0,0,0)}to{transform:scale(1.13) translate3d(-1.5%,-1.2%,0)}}
 .bt-veil{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,30,60,0) 45%,rgba(6,30,60,.28) 100%);transition:opacity .45s}
-.bt-label{position:absolute;left:10px;right:10px;bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px 8px 12px;border-radius:12px;
-  background:#fff;transition:background .35s,color .35s}
+/* Nhãn gọn: ôm vừa chữ, góc dưới trái, để lộ phần lớn ảnh (chủ site yêu cầu 03/11/2026) */
+.bt-label{position:absolute;left:8px;bottom:8px;max-width:calc(100% - 16px);display:inline-flex;align-items:center;gap:6px;padding:4px 5px 4px 9px;border-radius:999px;
+  background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 6px 18px -10px rgba(8,40,80,.5);transition:background .35s,color .35s}
 .bt-label b{font-size:13px;line-height:1.25;font-weight:700;color:var(--ink);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color .35s}
 .bt-label .bt-long{display:none}
-.bt-label i{flex:none;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#eef4fb;color:var(--blue);font-style:normal;font-size:14px;transition:transform .35s,background .35s,color .35s}
+.bt-label i{flex:none;display:grid;place-items:center;width:18px;height:18px;font-size:12px!important;border-radius:50%;background:#eef4fb;color:var(--blue);font-style:normal;font-size:14px;transition:transform .35s,background .35s,color .35s}
 .bt-photo.is-tall .bt-label b{font-size:15px}
 
 /* Đèn soi: ô đang được giới thiệu, hoặc ô khách đang rê chuột */
-.bt.is-lit,.bt-photo:hover,.bt-photo:focus-visible{transform:translateY(-4px);box-shadow:0 0 0 3px var(--blue)}
+.bt.is-lit,.bt-photo:hover,.bt-photo:focus-visible{transform:translateY(-4px);box-shadow:0 0 0 2px rgba(255,255,255,.9),0 0 0 5px rgba(22,90,156,.22),0 26px 44px -22px rgba(8,40,80,.6)}
 .bt-photo.is-lit .bt-label,.bt-photo:hover .bt-label,.bt-photo:focus-visible .bt-label{background:var(--blue)}
 .bt-photo.is-lit .bt-label b,.bt-photo:hover .bt-label b,.bt-photo:focus-visible .bt-label b{color:#fff}
 .bt-photo.is-lit .bt-label i,.bt-photo:hover .bt-label i,.bt-photo:focus-visible .bt-label i{background:#fff;color:var(--blue);transform:translateX(2px)}
 .bt-photo.is-lit::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.38) 48%,transparent 66%);transform:translateX(-100%);animation:bt-sheen 1.1s ease-out forwards}
 @keyframes bt-sheen{to{transform:translateX(100%)}}
-.bento.is-paused .bt.is-lit:not(:hover){transform:none;box-shadow:none}
-.bento.is-paused .bt-photo.is-lit:not(:hover) .bt-label{background:#fff}
+.bento.is-paused .bt.is-lit:not(:hover){transform:none;box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 14px 30px -20px rgba(8,40,80,.45)}
+.bento.is-paused .bt-photo.is-lit:not(:hover) .bt-label{background:rgba(255,255,255,.82)}
 .bento.is-paused .bt-photo.is-lit:not(:hover) .bt-label b{color:var(--ink)}
 .bt:focus-visible{outline:3px solid rgba(22,90,156,.6);outline-offset:3px}
 
@@ -68,9 +70,9 @@
   .hero-stage.hero-stage--bento{display:block;max-width:560px;width:100%;margin:8px auto 0}
   .bento{--gap:10px;--r:16px;height:auto;grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:118px;
     grid-template-areas:"a b" "a e" "c d" "f d" "g h" "i j"}
-  .bt-label{left:8px;right:8px;bottom:8px;padding:7px 8px 7px 10px}
+  .bt-label{left:7px;bottom:7px;padding:4px 5px 4px 8px}
   .bt-label b,.bt-photo.is-tall .bt-label b{font-size:13px}
-  .bt-label i{width:22px;height:22px}
+  .bt-label i{width:18px;height:18px}
   .bt-info{padding:12px}
   .bt-info b{font-size:17px}
 }
