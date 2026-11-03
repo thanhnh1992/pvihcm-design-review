@@ -3,11 +3,18 @@
    Rê chuột hay dùng bàn phím trong lưới thì dừng; máy bật giảm chuyển động thì đứng yên hoàn toàn. */
 .hero-stage.hero-stage--bento{height:auto;perspective:none;transform-style:flat}
 /* Cột lưới rộng hơn cột chữ trên máy tính (giữ tỉ lệ đã duyệt 28/10/2026 cho khu sản phẩm) */
-@media(min-width:1001px){.hero{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center}}
+/* Cân lại 03/11/2026 (chủ site: chữ to, khu ảnh lớn quá): hai cột chia đều, chữ hero nhỏ một bậc,
+   lưới thấp hơn để cả khối nằm gọn trong màn hình đầu. */
+@media(min-width:1001px){
+  .hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+  .hero h1{font-size:clamp(34px,2.9vw,42px);line-height:1.16;margin:12px 0 16px}
+  .hero h1 .hero-audience{font-size:.58em;line-height:1.4;margin-top:6px}
+  .hero h1 em{margin-top:14px}
+}
 .hero-stage--bento .hero-depth{display:none}
 .bento{--gap:12px;--r:20px;position:relative;z-index:1;display:grid;gap:var(--gap);
   grid-template-columns:1.12fr 1fr 1fr;grid-template-rows:repeat(4,minmax(0,1fr));
-  grid-template-areas:"a b c" "a d e" "f d g" "h i j";height:clamp(440px,40vw,560px)}
+  grid-template-areas:"a b c" "a d e" "f d g" "h i j";height:clamp(400px,33vw,480px)}
 .bento [data-slot=a]{grid-area:a}.bento [data-slot=b]{grid-area:b}.bento [data-slot=c]{grid-area:c}.bento [data-slot=d]{grid-area:d}.bento [data-slot=e]{grid-area:e}
 .bento [data-slot=f]{grid-area:f}.bento [data-slot=g]{grid-area:g}.bento [data-slot=h]{grid-area:h}.bento [data-slot=i]{grid-area:i}.bento [data-slot=j]{grid-area:j}
 
@@ -26,7 +33,7 @@
 .bt-veil{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,30,60,0) 45%,rgba(6,30,60,.28) 100%);transition:opacity .45s}
 .bt-label{position:absolute;left:10px;right:10px;bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px 8px 12px;border-radius:12px;
   background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 6px 18px -10px rgba(8,40,80,.5);transition:background .35s,color .35s}
-.bt-label b{font-size:14px;line-height:1.25;font-weight:700;color:var(--ink);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color .35s}
+.bt-label b{font-size:13px;line-height:1.25;font-weight:700;color:var(--ink);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color .35s}
 .bt-label .bt-long{display:none}
 .bt-label i{flex:none;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#eef4fb;color:var(--blue);font-style:normal;font-size:14px;transition:transform .35s,background .35s,color .35s}
 .bt-photo.is-tall .bt-label b{font-size:15px}
@@ -46,7 +53,7 @@
 /* Hai ô liên hệ: đỏ cho bồi thường (việc gấp), xanh cho tư vấn */
 .bt-info{display:flex;flex-direction:column;justify-content:center;gap:2px;padding:14px 16px}
 .bt-info small{font-size:13px;font-weight:700;letter-spacing:.02em}
-.bt-info b{font-size:clamp(17px,1.45vw,21px);line-height:1.2;letter-spacing:-.01em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bt-info b{font-size:clamp(16px,1.3vw,19px);line-height:1.2;letter-spacing:-.01em;font-variant-numeric:tabular-nums;white-space:nowrap}
 .bt-info span{font-size:13px;opacity:.85}
 .bt-red{background:linear-gradient(140deg,#fff1f1 0%,#ffe1e3 100%);color:#8f1a22}
 .bt-blue{background:linear-gradient(140deg,#eef6ff 0%,#dcebfb 100%);color:#063d79}
