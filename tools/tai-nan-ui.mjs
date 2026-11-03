@@ -275,6 +275,8 @@ export function taiNanJsonLd(ac, url) {
       '@context': 'https://schema.org', '@type': 'Product', name: 'Bảo hiểm Tai nạn 24/24 PVI',
       description: 'Bảo hiểm tai nạn 24/24 cho cá nhân, nhóm nhân sự và người lao động thi công trên công trường, chi trả tử vong và thương tật do tai nạn trong và ngoài giờ làm việc.',
       url, category: 'Bảo hiểm con người', brand: { '@type': 'Brand', name: 'PVI' },
+      // Google bắt buộc trường image cho dữ liệu sản phẩm: dùng đúng 3 ảnh thẻ đối tượng đang hiện trên trang.
+      image: ['tn-the-nha-thau', 'tn-the-doanh-nghiep', 'tn-the-ca-nhan'].map((n) => `https://pvihcm.com/assets/${n}.webp`),
       offers: ac.accidentPlans.map((p) => ({ '@type': 'Offer', name: `Gói ${p.label}`, price: p.basePremium, priceCurrency: 'VND', availability: 'https://schema.org/InStock', url: `${url}#bang-phi`, description: `Phí gốc ${ac.formatVnd(p.basePremium)}/người/năm, thời hạn 12 tháng. Giảm tới ${ac.MAX_DISCOUNT_LABEL} theo quy mô nhóm.` })),
     },
     {
