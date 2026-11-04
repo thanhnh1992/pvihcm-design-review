@@ -95,3 +95,15 @@
 /* Dòng chứng minh dưới tiêu đề (04/11/2026): link xuống khối Vì sao chọn PVI có số liệu và nguồn */
 .hero-proof-line .hero-proof{display:inline-flex;align-items:center;gap:4px;font-weight:700;color:var(--blue);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
 .hero-proof-line .hero-proof:hover{text-decoration-thickness:2px}
+
+/* Nút "Nhận tư vấn bảo hiểm xe" (04/11/2026): nền xanh chuyển màu, viền 4 màu kiểu Google
+   chạy vòng liên tục. Máy bật giảm chuyển động thì viền đứng yên. */
+@property --cta-a{syntax:'<angle>';inherits:false;initial-value:0deg}
+.solution-copy>a.cta-glow{position:relative;color:#fff;
+  background:linear-gradient(120deg,#063d79 0%,#0b62c4 50%,#1a8cff 100%) padding-box,
+             conic-gradient(from var(--cta-a),#4285f4,#ea4335,#fbbc05,#34a853,#4285f4) border-box;
+  border:3px solid transparent;box-shadow:0 10px 22px -12px rgba(11,98,196,.75);
+  animation:cta-spin 3.2s linear infinite;transition:transform .2s ease,box-shadow .2s ease}
+.solution-copy>a.cta-glow:hover{transform:translateY(-1px);box-shadow:0 14px 28px -12px rgba(11,98,196,.85)}
+@keyframes cta-spin{to{--cta-a:360deg}}
+@media(prefers-reduced-motion:reduce){.solution-copy>a.cta-glow{animation:none}}
