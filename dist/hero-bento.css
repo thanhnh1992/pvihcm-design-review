@@ -37,12 +37,12 @@
 @keyframes bt-drift{from{transform:scale(1.04) translate3d(0,0,0)}to{transform:scale(1.13) translate3d(-1.5%,-1.2%,0)}}
 .bt-veil{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,30,60,0) 45%,rgba(6,30,60,.28) 100%);transition:opacity .45s}
 /* Nhãn gọn: ôm vừa chữ, góc dưới trái, để lộ phần lớn ảnh (chủ site yêu cầu 03/11/2026) */
-.bt-label{position:absolute;left:8px;bottom:8px;max-width:calc(100% - 16px);display:inline-flex;align-items:center;gap:6px;padding:4px 5px 4px 9px;border-radius:999px;
+.bt-label{position:absolute;left:8px;bottom:8px;max-width:calc(100% - 16px);display:inline-flex;align-items:center;gap:5px;padding:3px 4px 3px 8px;border-radius:999px;
   background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 6px 18px -10px rgba(8,40,80,.5);transition:background .35s,color .35s}
-.bt-label b{font-size:13px;line-height:1.25;font-weight:700;color:var(--ink);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color .35s}
+.bt-label b{font-size:13px;line-height:1.2;font-weight:600;color:var(--ink);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color .35s}
 .bt-label .bt-long{display:none}
-.bt-label i{flex:none;display:grid;place-items:center;width:18px;height:18px;font-size:12px!important;border-radius:50%;background:#eef4fb;color:var(--blue);font-style:normal;font-size:14px;transition:transform .35s,background .35s,color .35s}
-.bt-photo.is-tall .bt-label b{font-size:15px}
+.bt-label i{flex:none;display:grid;place-items:center;width:16px;height:16px;font-size:11px!important;border-radius:50%;background:#eef4fb;color:var(--blue);font-style:normal;font-size:14px;transition:transform .35s,background .35s,color .35s}
+.bt-photo.is-tall .bt-label b{font-size:13px}
 
 /* Đèn soi: ô đang được giới thiệu, hoặc ô khách đang rê chuột */
 .bt.is-lit{z-index:2}
@@ -78,7 +78,7 @@
     grid-template-areas:"a b" "a e" "c d" "f d" "g h" "i j"}
   .bt-label{left:7px;bottom:7px;padding:4px 5px 4px 8px}
   .bt-label b,.bt-photo.is-tall .bt-label b{font-size:13px}
-  .bt-label i{width:18px;height:18px}
+  .bt-label i{width:16px;height:16px}
   .bt-info{padding:12px}
   .bt-info b{font-size:17px}
 }
@@ -91,3 +91,7 @@
   .bt.is-lit::after{display:none}
   .bt{transition:none}
 }
+
+/* Dòng chứng minh dưới tiêu đề (04/11/2026): link xuống khối Vì sao chọn PVI có số liệu và nguồn */
+.hero-proof-line .hero-proof{display:inline-flex;align-items:center;gap:4px;font-weight:700;color:var(--blue);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.hero-proof-line .hero-proof:hover{text-decoration-thickness:2px}
