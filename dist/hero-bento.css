@@ -6,11 +6,13 @@
 /* Cân lại 03/11/2026 (chủ site: chữ to, khu ảnh lớn quá): hai cột chia đều, chữ hero nhỏ một bậc,
    lưới thấp hơn để cả khối nằm gọn trong màn hình đầu. */
 @media(min-width:1001px){
-  .hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:48px;row-gap:0;align-items:center}
-  .hero h1{font-size:clamp(34px,2.9vw,42px);line-height:1.16;margin:12px 0 16px}
-  .hero h1 .hero-audience{font-size:.58em;line-height:1.4;margin-top:6px}
+  .hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:40px;row-gap:0;align-items:center}
+  /* 04/11/2026: chữ to và rộng hơn để lấp khoảng trống giữa hai cột ở màn 100% */
+  .hero h1{font-size:clamp(40px,3.7vw,56px);line-height:1.12;margin:0 0 18px}
+  .hero h1 .hero-audience{font-size:.47em;line-height:1.4;margin-top:8px;white-space:nowrap}
+  .hero-copy>p:not(.kicker){font-size:18px;line-height:1.65;max-width:none}
   .hero h1 em{margin-top:14px}
-  .hero-copy{align-self:start;padding-top:28px}
+  .hero-copy{align-self:center;padding-top:0}
   .hero .hero-all{margin-top:14px}
 }
 /* Ba mặt phẳng nền trôi chậm phía sau giữ nguyên (chủ site yêu cầu), thu sát lưới để không bị cắt dưới menu */
@@ -35,14 +37,17 @@
 @keyframes bt-drift{from{transform:scale(1.04) translate3d(0,0,0)}to{transform:scale(1.13) translate3d(-1.5%,-1.2%,0)}}
 .bt-veil{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,30,60,0) 45%,rgba(6,30,60,.28) 100%);transition:opacity .45s}
 /* Nhãn gọn: ôm vừa chữ, góc dưới trái, để lộ phần lớn ảnh (chủ site yêu cầu 03/11/2026) */
-.bt-label{position:absolute;left:8px;bottom:8px;max-width:calc(100% - 16px);display:inline-flex;align-items:center;gap:6px;padding:4px 5px 4px 9px;border-radius:999px;
+.bt-label{position:absolute;left:8px;bottom:8px;max-width:calc(100% - 16px);display:inline-flex;align-items:center;gap:5px;padding:3px 4px 3px 8px;border-radius:999px;
   background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 6px 18px -10px rgba(8,40,80,.5);transition:background .35s,color .35s}
-.bt-label b{font-size:13px;line-height:1.25;font-weight:700;color:var(--ink);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color .35s}
+.bt-label b{font-size:13px;line-height:1.2;font-weight:600;color:var(--ink);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color .35s}
 .bt-label .bt-long{display:none}
-.bt-label i{flex:none;display:grid;place-items:center;width:18px;height:18px;font-size:12px!important;border-radius:50%;background:#eef4fb;color:var(--blue);font-style:normal;font-size:14px;transition:transform .35s,background .35s,color .35s}
-.bt-photo.is-tall .bt-label b{font-size:15px}
+.bt-label i{flex:none;display:grid;place-items:center;width:16px;height:16px;font-size:11px!important;border-radius:50%;background:#eef4fb;color:var(--blue);font-style:normal;font-size:14px;transition:transform .35s,background .35s,color .35s}
+.bt-photo.is-tall .bt-label b{font-size:13px}
 
 /* Đèn soi: ô đang được giới thiệu, hoặc ô khách đang rê chuột */
+.bt.is-lit{z-index:2}
+/* Rê chuột: ô phóng to nổi lên trên các ô bên cạnh (04/11/2026) */
+.bt-photo:hover,.bt-photo:focus-visible{z-index:5;transform:scale(1.1)!important}
 .bt.is-lit,.bt-photo:hover,.bt-photo:focus-visible{transform:translateY(-4px);box-shadow:0 0 0 2px rgba(255,255,255,.9),0 0 0 5px rgba(22,90,156,.22),0 26px 44px -22px rgba(8,40,80,.6)}
 .bt-photo.is-lit .bt-label,.bt-photo:hover .bt-label,.bt-photo:focus-visible .bt-label{background:var(--blue)}
 .bt-photo.is-lit .bt-label b,.bt-photo:hover .bt-label b,.bt-photo:focus-visible .bt-label b{color:#fff}
@@ -73,7 +78,7 @@
     grid-template-areas:"a b" "a e" "c d" "f d" "g h" "i j"}
   .bt-label{left:7px;bottom:7px;padding:4px 5px 4px 8px}
   .bt-label b,.bt-photo.is-tall .bt-label b{font-size:13px}
-  .bt-label i{width:18px;height:18px}
+  .bt-label i{width:16px;height:16px}
   .bt-info{padding:12px}
   .bt-info b{font-size:17px}
 }
@@ -86,3 +91,7 @@
   .bt.is-lit::after{display:none}
   .bt{transition:none}
 }
+
+/* Dòng chứng minh dưới tiêu đề (04/11/2026): link xuống khối Vì sao chọn PVI có số liệu và nguồn */
+.hero-proof-line .hero-proof{display:inline-flex;align-items:center;gap:4px;font-weight:700;color:var(--blue);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.hero-proof-line .hero-proof:hover{text-decoration-thickness:2px}
