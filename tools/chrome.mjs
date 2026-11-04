@@ -29,7 +29,7 @@ const MENU_SVG = '<svg class="open-i" viewBox="0 0 24 24" fill="none" stroke="cu
 
 export function header(path) {
   const links = NAV.map(([href, label]) => `<a href="${href}"${href === path ? ' aria-current="page"' : href === '/san-pham/' && path.startsWith('/san-pham/') ? ' aria-current="true"' : ''}>${label}</a>`).join('');
-  return `<a class="skip" href="#main">Đến nội dung chính</a><header class="site-header"><a class="brand" href="/"><img src="/assets/pvi-logo.svg" width="132" height="48" alt="Bảo hiểm PVI"><span>Thành Đô</span></a><nav id="site-nav" class="site-nav" aria-label="Điều hướng chính">${links}</nav><a class="phone" href="tel:0938072236" aria-label="Gọi tư vấn 0938 072 236">${PHONE_SVG}<span>0938 072 236</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Mở menu">${MENU_SVG}<span class="lbl">Menu</span></button></header>`;
+  return `<a class="skip" href="#main">Đến nội dung chính</a><header class="site-header"><a class="brand" href="/"><img src="/assets/pvi-logo.svg" width="132" height="48" alt="Bảo hiểm PVI"><span>Thành Đô</span></a><nav id="site-nav" class="site-nav" aria-label="Điều hướng chính">${links}</nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Mở menu">${MENU_SVG}<span class="lbl">Menu</span></button></header>`;
 }
 
 // Ô trụ sở ở cột đầu chân trang: ảnh tòa nhà chuyển động chậm, rê chuột hiện logo PVI (file gốc),
