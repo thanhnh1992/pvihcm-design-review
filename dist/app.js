@@ -151,6 +151,8 @@ window.dataLayer = window.dataLayer || [];
 function gtag() { window.dataLayer.push(arguments); }
 gtag('js', new Date());
 gtag('config', 'G-HYEVLMD710');
+// Google Ads (remarketing, chuyển đổi); dùng chung một gtag.js với GA4.
+gtag('config', 'AW-18556160976');
 const analyticsScript = document.createElement('script');
 analyticsScript.async = true;
 analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-HYEVLMD710';
