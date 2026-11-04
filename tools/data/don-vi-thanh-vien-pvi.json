@@ -1,0 +1,413 @@
+[
+  {
+    "name": "Bảo hiểm PVI Đông Đô",
+    "type": "Công ty thành viên",
+    "province": "Hà Nội",
+    "address": "Số 03B Phan Đình Phùng, Phường Hoàn Kiếm, Thành phố Hà Nội",
+    "phone": "0243.9725875",
+    "taxCode": "0105402531-002",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Digital",
+    "type": "Chi nhánh Digital",
+    "province": "TP. Hồ Chí Minh",
+    "address": "Phòng G08, Tầng 1, Tòa nhà Petrovietnam, Số 1-5 Lê Duẩn, Phường Sài Gòn, Thành phố Hồ Chí Minh",
+    "phone": "028.9999.8386",
+    "taxCode": "0105402531-044",
+    "note": "PVI Digital có kênh online.pvi.com.vn; số hotline trực tuyến trên bài của PVI khác số danh bạ."
+  },
+  {
+    "name": "Bảo hiểm PVI Thăng Long",
+    "type": "Công ty thành viên",
+    "province": "Hà Nội",
+    "address": "Tầng 4, Tòa nhà 508 Trường Chinh, Phường Kim Liên, Thành phố Hà Nội",
+    "phone": "0243.7635588",
+    "taxCode": "0105402531-003",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Hà Nội",
+    "type": "Công ty thành viên",
+    "province": "Hà Nội",
+    "address": "Tầng 14, Tòa nhà Cục Tần số vô tuyến điện, Số 115 Trần Duy Hưng, Phường Yên Hòa, Thành phố Hà Nội",
+    "phone": "0246.2997788",
+    "taxCode": "0105402531-001",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Hà Thành",
+    "type": "Công ty thành viên",
+    "province": "Hà Nội",
+    "address": "Tầng 10, Tòa nhà CIC Tower, Ngõ 219 phố Trung Kính, Phường Yên Hòa, Thành phố Hà Nội",
+    "phone": "0243.3221188",
+    "taxCode": "0105402531-032",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Thủ Đô",
+    "type": "Công ty thành viên",
+    "province": "Hà Nội",
+    "address": "Tầng 3, Tòa nhà Liễu Giai Tower, Số 26 Liễu Giai, Phường Cống Vị, Thành phố Hà Nội",
+    "phone": "0243.3772288",
+    "taxCode": "0105402531-038",
+    "note": "Tên phường ở danh bạ PVI cần đối chiếu địa giới hiện hành."
+  },
+  {
+    "name": "Bảo hiểm PVI Tràng An",
+    "type": "Công ty thành viên",
+    "province": "Hà Nội",
+    "address": "Tầng 5, Tòa nhà HDI, Số 37 Nguyễn Đình Chiểu, Phường Hai Bà Trưng, Thành phố Hà Nội",
+    "phone": "0243.2018355",
+    "taxCode": "0105402531-040",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Âu Lạc",
+    "type": "Công ty thành viên",
+    "province": "Hà Nội",
+    "address": "Tầng 3, Tòa nhà HAREC, Số 4 phố Láng Hạ, Phường Giảng Võ, Thành phố Hà Nội",
+    "phone": "0243.3626699",
+    "taxCode": "0105402531-042",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Hải Hưng",
+    "type": "Công ty thành viên",
+    "province": "Hưng Yên",
+    "address": "Tầng 1, Số 02 đường Nguyễn Lương Bằng, Phường Sơn Nam, Tỉnh Hưng Yên",
+    "phone": "0220.3848523",
+    "taxCode": "0105402531-004",
+    "note": "Địa chỉ trên trang tra MST còn ghi 208 Trường Chinh, TP Hải Phòng: xung đột, ưu tiên trang PVI công khai nhưng cần xác nhận."
+  },
+  {
+    "name": "Bảo hiểm PVI Nam Trung Bộ",
+    "type": "Công ty thành viên",
+    "province": "Quảng Ngãi",
+    "address": "Số 37 Hai Bà Trưng, Phường Nghĩa Lộ, Tỉnh Quảng Ngãi",
+    "phone": "0255.3829555",
+    "taxCode": "0105402531-013",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Duyên Hải",
+    "type": "Công ty thành viên",
+    "province": "Hải Phòng",
+    "address": "Tầng 4 và 5, Tòa nhà ASHICO, Số 7 Võ Thị Sáu, Phường Ngô Quyền, Thành phố Hải Phòng",
+    "phone": "0225.3747366",
+    "taxCode": "0105402531-009",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Khánh Hòa",
+    "type": "Công ty thành viên",
+    "province": "Khánh Hòa",
+    "address": "STH28A.03, Đường số 13, Khu đô thị mới Lê Hồng Phong II, Phường Nam Nha Trang, Tỉnh Khánh Hòa",
+    "phone": "02583.516671",
+    "taxCode": "0105402531-014",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Tây Nguyên",
+    "type": "Công ty thành viên",
+    "province": "Đắk Lắk",
+    "address": "Tầng 2, Tòa nhà KOTIA, Số 39 đường Trường Chinh, Phường Buôn Ma Thuột, Tỉnh Đắk Lắk",
+    "phone": "0262.3976999",
+    "taxCode": "0105402531-021",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Quảng Ninh",
+    "type": "Công ty thành viên",
+    "province": "Quảng Ninh",
+    "address": "Tầng 12, Tòa nhà Viettel, Số 70 Nguyễn Văn Cừ, Phường Hạ Long, Tỉnh Quảng Ninh",
+    "phone": "0203.2222028",
+    "taxCode": "0105402531-008",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Lâm Đồng",
+    "type": "Chi nhánh đổi tên",
+    "province": "Lâm Đồng",
+    "address": "Số 340 Hai Bà Trưng, Phường Cam Ly – Đà Lạt, Tỉnh Lâm Đồng",
+    "phone": "0269.3830666",
+    "note": "Đổi tên từ PVI Gia Lai năm 2025; địa chỉ đổi theo thông báo 08/04/2026."
+  },
+  {
+    "name": "Bảo hiểm PVI Kinh Bắc",
+    "type": "Công ty thành viên",
+    "province": "Bắc Ninh",
+    "address": "Tầng 5, Tòa nhà Viettel Bắc Ninh, Phố Vũ, Phường Võ Cường, Tỉnh Bắc Ninh",
+    "phone": "0222.2221166",
+    "taxCode": "0105402531-006",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI TP. Hồ Chí Minh",
+    "type": "Công ty thành viên",
+    "province": "TP. Hồ Chí Minh",
+    "address": "Tầng 3A và Tầng 5, Tòa nhà TMS, Số 172 Hai Bà Trưng, Phường Tân Định, Thành phố Hồ Chí Minh",
+    "phone": "0283.8246421",
+    "taxCode": "0105402531-019",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Vĩnh Phú",
+    "type": "Công ty thành viên",
+    "province": "Phú Thọ",
+    "address": "Tầng 15, Tòa nhà MobiFone Phú Thọ, Khu Đồng Mạ, Phường Thanh Miếu, Tỉnh Phú Thọ",
+    "phone": "0211.3616666",
+    "taxCode": "0105402531-005",
+    "note": "Địa chỉ đổi theo thông báo 08/04/2026; trang tra MST còn địa chỉ cũ."
+  },
+  {
+    "name": "Bảo hiểm PVI Thái Nguyên",
+    "type": "Công ty thành viên",
+    "province": "Thái Nguyên",
+    "address": "Tầng 5, Số 66, Đường Hoàng Văn Thụ, Tổ 98, Phường Phan Đình Phùng, Tỉnh Thái Nguyên",
+    "phone": "0208.3654959",
+    "taxCode": "0105402531-027",
+    "note": "Trang tra MST còn ghi Số 188A Phan Đình Phùng, cần kiểm tra."
+  },
+  {
+    "name": "Bảo hiểm PVI Thanh Hóa",
+    "type": "Công ty thành viên",
+    "province": "Thanh Hóa",
+    "address": "Tầng 2, Tòa nhà lô 09 Hạc Thành, Phường Hạc Thành, Tỉnh Thanh Hóa",
+    "phone": "0237.2200010",
+    "taxCode": "0105402531-010",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Bắc Trung Bộ",
+    "type": "Công ty thành viên",
+    "province": "Nghệ An",
+    "address": "Tầng 3, Tòa nhà TD Complex, Số 139 đường Phạm Đình Toái, Phường Vinh Phú, Tỉnh Nghệ An",
+    "phone": "0238.3542888",
+    "taxCode": "0105402531-011",
+    "note": "Địa chỉ đổi theo thông báo 08/04/2026; trang tra MST còn địa chỉ cũ."
+  },
+  {
+    "name": "Bảo hiểm PVI Quảng Trị",
+    "type": "Chi nhánh đổi tên",
+    "province": "Quảng Trị",
+    "address": "Tầng 1, Số 77 đường Phạm Văn Đồng, Phường Đồng Hới, Tỉnh Quảng Trị",
+    "phone": "0232.3845525",
+    "note": "Đổi tên từ PVI Quảng Bình năm 2025."
+  },
+  {
+    "name": "Bảo hiểm PVI Gia Lai",
+    "type": "Chi nhánh đổi tên",
+    "province": "Gia Lai",
+    "address": "Lô 31, Đường Nguyễn Thị Định, Phường Quy Nhơn Nam, Tỉnh Gia Lai",
+    "phone": "0256.3686339",
+    "taxCode": "0105402531-031",
+    "note": "Đổi tên từ PVI Bình Định năm 2025; khác mã PVI Gia Lai cũ đã đổi thành Lâm Đồng."
+  },
+  {
+    "name": "Bảo hiểm PVI Huế",
+    "type": "Công ty thành viên",
+    "province": "Huế",
+    "address": "Số 1E, Đường Lê Viết Lượng, Phường Vỹ Dạ, Thành phố Huế",
+    "phone": "0234.3965599",
+    "taxCode": "0105402531-026",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Sài Gòn",
+    "type": "Công ty thành viên",
+    "province": "TP. Hồ Chí Minh",
+    "address": "Tầng 7, Tòa nhà Capital Place, Số 6 Thái Văn Lung, Phường Sài Gòn, Thành phố Hồ Chí Minh",
+    "phone": "0283.9333668",
+    "taxCode": "0105402531-018",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Đà Nẵng",
+    "type": "Công ty thành viên",
+    "province": "Đà Nẵng",
+    "address": "Số 100-102 Nguyễn Văn Linh, Phường Hải Châu, Thành phố Đà Nẵng",
+    "phone": "0236.3896896",
+    "taxCode": "0105402531-012",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Bến Thành",
+    "type": "Công ty thành viên",
+    "province": "TP. Hồ Chí Minh",
+    "address": "Tầng 4 và Tầng 5, Tòa nhà văn phòng, Số 06-10 Cửu Long, Phường Tân Sơn Hòa, Thành phố Hồ Chí Minh",
+    "phone": "0283.9291268",
+    "taxCode": "0105402531-020",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Gia Định",
+    "type": "Công ty thành viên",
+    "province": "TP. Hồ Chí Minh",
+    "address": "Tầng 3, Cao ốc Yoco, Số 41 Nguyễn Thị Minh Khai, Phường Sài Gòn, Thành phố Hồ Chí Minh",
+    "phone": "0283.8258958",
+    "taxCode": "0105402531-028",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Nam Đà Nẵng",
+    "type": "Chi nhánh đổi tên",
+    "province": "Đà Nẵng",
+    "address": "Số 26 Phan Bội Châu, Phường Bàn Thạch, Thành phố Đà Nẵng",
+    "phone": "0235.2223468",
+    "note": "Đổi tên từ PVI Quảng Nam năm 2025."
+  },
+  {
+    "name": "Bảo hiểm PVI Thành Đô",
+    "type": "Công ty thành viên",
+    "province": "TP. Hồ Chí Minh",
+    "address": "Tầng 12A, Tòa nhà 194 Golden Building, Số 473 Điện Biên Phủ, Phường Thạnh Mỹ Tây, Thành phố Hồ Chí Minh",
+    "phone": "0283.5352235",
+    "taxCode": "0105402531-041",
+    "note": "Website baohiempvi-vn.com trùng danh bạ PVI về địa chỉ/MST; trang tra MST còn trụ sở cũ và khác tên người đại diện, cần xác nhận đăng ký pháp lý mới nhất."
+  },
+  {
+    "name": "Bảo hiểm PVI Thủ Đức",
+    "type": "Công ty thành viên",
+    "province": "TP. Hồ Chí Minh",
+    "address": "Tầng 3, Tòa nhà Sophie Building, Số 277B Đỗ Xuân Hợp, Phường Phước Long, Thành phố Hồ Chí Minh",
+    "phone": "0283.5355625",
+    "taxCode": "0105402531-043",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Thống Nhất",
+    "type": "Công ty thành viên",
+    "province": "TP. Hồ Chí Minh",
+    "address": "Lầu 9, Tòa nhà Phượng Long, Số 506 Nguyễn Đình Chiểu, Phường Bàn Cờ, Thành phố Hồ Chí Minh",
+    "phone": "0283.9291679",
+    "taxCode": "0105402531-037",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Nam Sài Gòn",
+    "type": "Công ty thành viên",
+    "province": "TP. Hồ Chí Minh",
+    "address": "Tầng 5, Cao ốc Văn phòng Phượng Long 2, Số 16 Nguyễn Trường Tộ, Phường Xóm Chiếu, Thành phố Hồ Chí Minh",
+    "phone": "0283.5358256",
+    "taxCode": "0105402531-023",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Đông Nam Bộ",
+    "type": "Công ty thành viên",
+    "province": "Đồng Nai",
+    "address": "Tầng 12, Tòa nhà Sonadezi, Số 1, Đường 1, Khu phố Khu Công nghiệp, Phường Trấn Biên, Tỉnh Đồng Nai",
+    "phone": "0251.3918691",
+    "taxCode": "0105402531-016",
+    "note": "Trang danh bạ hiện tại là Sonadezi, nhưng thông báo chính thức 08/04/2026 lại là 328 Võ Thị Sáu; chưa biết thời điểm chuyển sau cùng."
+  },
+  {
+    "name": "Bảo hiểm PVI Đông Sài Gòn",
+    "type": "Chi nhánh đổi tên",
+    "province": "TP. Hồ Chí Minh",
+    "address": "Tầng 4 và 5, Tòa nhà Số 48, Đường Hoàng Văn Thụ, Khu dân cư Chánh Nghĩa, Phường Thủ Dầu Một, Thành phố Hồ Chí Minh",
+    "phone": "0274.3872528",
+    "taxCode": "0105402531-015",
+    "note": "Đổi tên từ PVI Bình Dương năm 2025."
+  },
+  {
+    "name": "Bảo hiểm PVI Tây Nam",
+    "type": "Công ty thành viên",
+    "province": "Cần Thơ",
+    "address": "Tầng 9, Tòa nhà Xổ số kiến thiết Cần Thơ, Số 29 đường Cách mạng tháng Tám, Phường Ninh Kiều, Thành phố Cần Thơ",
+    "phone": "0292.3763067",
+    "taxCode": "0105402531-022",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Cửu Long",
+    "type": "Công ty thành viên",
+    "province": "Vĩnh Long",
+    "address": "Số 73/14D, Đường Phó Cơ Điều, Khóm 4, Phường Phước Hậu, Tỉnh Vĩnh Long",
+    "phone": "0270.6286789",
+    "taxCode": "0105402531-033",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Vũng Tàu",
+    "type": "Công ty thành viên",
+    "province": "TP. Hồ Chí Minh",
+    "address": "Số 58A đường Võ Thị Sáu, Phường Vũng Tàu, Thành phố Hồ Chí Minh",
+    "phone": "0254.3810040",
+    "taxCode": "0105402531-017",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Cà Mau",
+    "type": "Công ty thành viên",
+    "province": "Cà Mau",
+    "address": "Số 128-130 Ngô Quyền, Phường An Xuyên, Tỉnh Cà Mau",
+    "phone": "0290.3828969",
+    "taxCode": "0105402531-024",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Link",
+    "type": "Chi nhánh Link",
+    "province": "Hà Nội",
+    "address": "Tầng 17, Tòa nhà PVI Tower, Lô VP2 Yên Hòa, Phường Cầu Giấy, Thành phố Hà Nội",
+    "phone": "Chưa công bố",
+    "taxCode": "0105402531-046",
+    "note": "PVI không công bố số điện thoại; trang thuế còn tầng 25."
+  },
+  {
+    "name": "Bảo hiểm PVI Đồng Khởi",
+    "type": "Chi nhánh",
+    "province": "TP. Hồ Chí Minh",
+    "address": "Tầng 8, Tòa nhà HMC, Số 193 Đinh Tiên Hoàng, Phường Tân Định, Thành phố Hồ Chí Minh",
+    "phone": "Chưa công bố",
+    "taxCode": "0105402531-045",
+    "note": "PVI không công bố số điện thoại."
+  },
+  {
+    "name": "Bảo hiểm PVI Ninh Bình",
+    "type": "Chi nhánh",
+    "province": "Ninh Bình",
+    "address": "Tầng 5, Số 1065 Trần Hưng Đạo, Phường Hoa Lư, Tỉnh Ninh Bình",
+    "phone": "0229.3663666",
+    "taxCode": "0105402531-047",
+    "note": "—"
+  },
+  {
+    "name": "Bảo hiểm PVI Đồng Tháp",
+    "type": "Chi nhánh",
+    "province": "Đồng Tháp",
+    "address": "Tầng 3, Tòa nhà ACB Tiền Giang, Số 139 Nam Kỳ Khởi Nghĩa, Phường Đạo Thạnh, Tỉnh Đồng Tháp",
+    "phone": "Chưa công bố",
+    "taxCode": "0105402531-049",
+    "note": "PVI không công bố số điện thoại."
+  },
+  {
+    "name": "Bảo hiểm PVI An Giang",
+    "type": "Chi nhánh",
+    "province": "An Giang",
+    "address": "Tầng 3, Tòa nhà ACB Kiên Giang, Số 451 Nguyễn Trung Trực, Phường Rạch Giá, Tỉnh An Giang",
+    "phone": "Chưa công bố",
+    "taxCode": "0105402531-048",
+    "note": "PVI không công bố số điện thoại; trang tra MST còn địa chỉ cũ 28B Nguyễn Văn Cừ."
+  },
+  {
+    "name": "Bảo hiểm PVI Tây Ninh",
+    "type": "Chi nhánh",
+    "province": "Tây Ninh",
+    "address": "Căn C5-20, 21, Khu dân cư Lavilla Green City, Phường Long An, Tỉnh Tây Ninh",
+    "phone": "Chưa công bố",
+    "taxCode": "0105402531-050",
+    "note": "PVI không công bố số điện thoại; địa chỉ đổi theo thông báo 08/04/2026."
+  },
+  {
+    "name": "Bảo hiểm PVI Phía Nam",
+    "type": "Đơn vị khu vực (ngoài danh mục 45)",
+    "province": "TP. Hồ Chí Minh",
+    "address": "Tầng 19, Tòa nhà PetroVietnam, Số 1-5 Lê Duẩn, Phường Sài Gòn, Thành phố Hồ Chí Minh",
+    "phone": "0283.9111666",
+    "taxCode": "0105402531-025",
+    "note": "Được đặt ở phần đầu danh bạ của PVI; MST phân nhánh -025, không nằm trong nhóm Công ty thành viên."
+  }
+]
