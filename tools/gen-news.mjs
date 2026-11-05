@@ -13,7 +13,7 @@ import * as kbChayHappyValley from './articles/chay-can-ho-chung-cu-happy-valley
 import * as kbKhoSprinkler from './articles/bao-hiem-chay-no-kho-hang-sprinkler.mjs';
 import * as kbVfWild from './articles/bao-hiem-xe-ban-tai-dien-vinfast-vf-wild.mjs';
 import * as kbDonVi from './articles/don-vi-thanh-vien-pvi.mjs';
-import * as kbPvi27045 from './articles/bao-hiem-pvi-doanh-thu-27045-ty-dong.mjs';
+import * as kbPvi27045 from './articles/bao-hiem-pvi-ve-dich-som-2026.mjs';
 import { areas, SKIP as AREA_SKIP, renderArea, ZALO_TU_VAN } from './articles/khu-vuc.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -120,7 +120,7 @@ const POST_GROUP = {
   'bao-hiem-chay-no-kho-hang-sprinkler-thuc-te': 'san-pham',
   'bao-hiem-xe-ban-tai-dien-vinfast-vf-wild': 'san-pham',
   'don-vi-thanh-vien-pvi': 'chung',
-  'bao-hiem-pvi-doanh-thu-27045-ty-dong-2026': 'chung',
+  'bao-hiem-pvi-ve-dich-som-vuot-ke-hoach-2026': 'chung',
 };
 for (const p of posts) {
   if (!GROUPS.some((g) => g.key === POST_GROUP[p.slug])) throw new Error(`Bài ${p.slug} chưa được xếp vào mục nào (POST_GROUP trong gen-news.mjs)`);
