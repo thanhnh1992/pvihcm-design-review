@@ -647,3 +647,4 @@
 /* Video thực tế khổ dọc trong bài kiến thức/tin tức */
 .kb .kb-video{max-width:420px;margin-inline:auto}
 .kb .kb-video video{display:block;width:100%;height:auto;border-radius:14px;background:#0b1b33}
+.kb-photo.kb-chart img{aspect-ratio:16/9;object-fit:contain;background:#eef4fb}
