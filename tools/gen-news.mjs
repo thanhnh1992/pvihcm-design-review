@@ -13,6 +13,7 @@ import * as kbChayHappyValley from './articles/chay-can-ho-chung-cu-happy-valley
 import * as kbKhoSprinkler from './articles/bao-hiem-chay-no-kho-hang-sprinkler.mjs';
 import * as kbVfWild from './articles/bao-hiem-xe-ban-tai-dien-vinfast-vf-wild.mjs';
 import * as kbDonVi from './articles/don-vi-thanh-vien-pvi.mjs';
+import * as kbPvi27045 from './articles/bao-hiem-pvi-doanh-thu-27045-ty-dong.mjs';
 import { areas, SKIP as AREA_SKIP, renderArea, ZALO_TU_VAN } from './articles/khu-vuc.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -37,6 +38,7 @@ const write = (rel, html) => {
 
 /* ── Danh sách bài, mới nhất lên đầu ── */
 export const posts = [
+  kbPvi27045.post,
   kbDonVi.post,
   kbVfWild.post,
   kbKhoSprinkler.post,
@@ -118,6 +120,7 @@ const POST_GROUP = {
   'bao-hiem-chay-no-kho-hang-sprinkler-thuc-te': 'san-pham',
   'bao-hiem-xe-ban-tai-dien-vinfast-vf-wild': 'san-pham',
   'don-vi-thanh-vien-pvi': 'chung',
+  'bao-hiem-pvi-doanh-thu-27045-ty-dong-2026': 'chung',
 };
 for (const p of posts) {
   if (!GROUPS.some((g) => g.key === POST_GROUP[p.slug])) throw new Error(`Bài ${p.slug} chưa được xếp vào mục nào (POST_GROUP trong gen-news.mjs)`);
@@ -452,7 +455,7 @@ ${feedbackBlock(p)}
     image: p.image,
     canonical: p.canonical,
     head: `<script type="application/ld+json">${JSON.stringify({
-      '@context': 'https://schema.org', '@type': 'Article',
+      '@context': 'https://schema.org', '@type': p.schemaType || 'Article',
       headline: p.title, datePublished: p.date, dateModified: p.date,
       image: [SITE + p.image], mainEntityOfPage: p.canonical || SITE + P,
       author: { '@type': 'Organization', name: 'Công ty Bảo hiểm PVI Thành Đô' },
@@ -479,6 +482,7 @@ renderKb(kbChayHappyValley);
 renderKb(kbKhoSprinkler);
 renderKb(kbVfWild);
 renderKb(kbDonVi);
+renderKb(kbPvi27045);
 
 /* ── Loạt bài theo khu vực: bản đăng lại, canonical về baohiempvi-vn.com ── */
 {
