@@ -25,6 +25,7 @@ dist/
   style.css   CSS nền chung (có @font-face Be Vietnam Pro tự lưu trữ + phông dự phòng chỉnh số đo)
   product.css CSS chung của các trang sản phẩm (lớp .fire-*, .pd-*)
   site.css    header + menu điện thoại + chân trang dùng chung (nạp sau cùng)
+  cta.css     kiểu nút hành động (CTA) toàn site theo 2 màu logo #183665/#E31F26, nạp sau cùng mọi trang (06/11/2026)
   advisor.css/js  cụm 3 nút nổi: Zalo 0938072236 · Gọi · Chat chuyên viên (Zalo OA)
   app.js      menu điện thoại, hiệu ứng nhỏ trang chủ
   fonts/      Be Vietnam Pro woff2 (vietnamese, latin, latin-ext)
