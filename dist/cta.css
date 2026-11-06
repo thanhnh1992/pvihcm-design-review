@@ -1,0 +1,90 @@
+/* ═══ Nút hành động (CTA) toàn site, theo đúng 2 màu logo PVI (06/11/2026) ═══
+   Xanh logo #183665 làm nền, đỏ logo #E31F26 làm viền chạy vòng để hút mắt.
+   File này nạp SAU CÙNG trên mọi trang (sau advisor.css) nên thắng CSS riêng từng trang.
+   :is() lấy độ ưu tiên cao nhất trong danh sách (.featured .solution-copy>a:not(.secondary-link) = 0,3,1),
+   đủ để đè các nút đỏ/xanh cũ mà không cần !important. */
+:root{--logo-navy:#183665;--logo-navy-2:#24508c;--logo-red:#E31F26}
+@property --cta-a{syntax:'<angle>';inherits:false;initial-value:0deg}
+
+/* 1) Nút chính (nền đặc) */
+:is(.primary,.solution-copy>a:not(.secondary-link),.fire-btn-red,.fire-btn-dark,.fx-btn-primary,
+    .kv-btn-red,.kv-btn-blue,.kv-final .kv-btn-red,.tv-page .tv-btn-red,.sp-btn-red,
+    .tn-page .auto-page .accident-primary,.fb .fb-btn,.featured .solution-copy>a:not(.secondary-link)){
+  position:relative;border-radius:999px;
+  color:#fff;font-weight:700;text-decoration:none;
+  border:2.5px solid transparent;
+  background:
+    linear-gradient(135deg,var(--logo-navy) 0%,var(--logo-navy-2) 100%) padding-box,
+    conic-gradient(from var(--cta-a),var(--logo-red) 0deg,#ff8a8f 60deg,#fff 110deg,var(--logo-navy) 180deg,var(--logo-red) 260deg,#fff 320deg,var(--logo-red) 360deg) border-box;
+  box-shadow:0 10px 22px -12px rgba(24,54,101,.7),0 0 0 4px rgba(227,31,38,.10);
+  animation:cta-spin 3.6s linear infinite;
+}
+:is(.primary,.solution-copy>a:not(.secondary-link),.fire-btn-red,.fire-btn-dark,.fx-btn-primary,
+    .kv-btn-red,.kv-btn-blue,.kv-final .kv-btn-red,.tv-page .tv-btn-red,.sp-btn-red,
+    .tn-page .auto-page .accident-primary,.fb .fb-btn,.featured .solution-copy>a:not(.secondary-link)):is(:hover,:focus-visible){
+  color:#fff;
+  background:
+    linear-gradient(135deg,#1e4580 0%,#2d62a8 100%) padding-box,
+    conic-gradient(from var(--cta-a),var(--logo-red) 0deg,#ff8a8f 60deg,#fff 110deg,var(--logo-navy) 180deg,var(--logo-red) 260deg,#fff 320deg,var(--logo-red) 360deg) border-box;
+  box-shadow:0 16px 30px -12px rgba(24,54,101,.8),0 0 0 5px rgba(227,31,38,.18);
+}
+:is(.primary,.solution-copy>a:not(.secondary-link),.fire-btn-red,.fire-btn-dark,.fx-btn-primary,
+    .kv-btn-red,.kv-btn-blue,.tv-btn-red,.sp-btn-red,.accident-primary,.fb-btn) :is(span,i,svg){color:inherit}
+:is(.primary,.solution-copy>a:not(.secondary-link),.fire-btn-red,.fire-btn-dark,.fx-btn-primary,
+    .kv-btn-red,.kv-btn-blue,.tv-btn-red,.sp-btn-red,.accident-primary,.fb-btn):focus-visible{
+  outline:3px solid var(--logo-red);outline-offset:3px}
+@keyframes cta-spin{to{--cta-a:360deg}}
+
+/* 2) Nút phụ (viền): nền trắng, viền xanh logo, rê chuột thì viền đỏ */
+:is(.fire-btn-line,.kv-btn-ghost,.tv-page .tv-btn-line,.tv-page .tv-btn-ghost,.sp-btn-line,.fx-btn-ghost){
+  border-radius:999px;font-weight:700;text-decoration:none;
+  background:#fff;color:var(--logo-navy);border:2px solid var(--logo-navy);box-shadow:none}
+:is(.fire-btn-line,.kv-btn-ghost,.tv-page .tv-btn-line,.tv-page .tv-btn-ghost,.sp-btn-line,.fx-btn-ghost):is(:hover,:focus-visible){
+  background:#fff;color:var(--logo-navy);border-color:var(--logo-red);box-shadow:0 0 0 4px rgba(227,31,38,.14)}
+
+/* 3) Trang chủ: bấm vào tiêu đề hoặc phần chữ của khối sản phẩm là mở trang sản phẩm.
+   Link tiêu đề phủ cả vùng chữ; các nút và link phụ nằm trên lớp phủ nên vẫn bấm riêng được. */
+.solution-copy h2 .solution-link{color:inherit;text-decoration:none}
+.solution-copy h2 .solution-link::after{content:"";position:absolute;inset:0;z-index:1}
+.solution-copy h2 .solution-link:hover,.solution-copy h2 .solution-link:focus-visible{color:var(--logo-navy);text-decoration:underline;text-decoration-color:var(--logo-red);text-decoration-thickness:3px;text-underline-offset:6px}
+.solution-copy{cursor:pointer}
+.solution-copy>a{z-index:2}
+.solution-copy>a.secondary-link{position:relative}
+
+@media(prefers-reduced-motion:reduce){
+  :is(.primary,.solution-copy>a:not(.secondary-link),.fire-btn-red,.fire-btn-dark,.fx-btn-primary,
+      .kv-btn-red,.kv-btn-blue,.tv-btn-red,.sp-btn-red,.accident-primary,.fb-btn){animation:none}
+}
+
+/* 4) Trang tai nạn (tai-nan.css dùng bộ chọn dài, link không có class) */
+.tn-page .auto-page.accident-page .auto-hero-links > a:first-child{
+  border-radius:999px;color:#fff;border:2.5px solid transparent;
+  background:
+    linear-gradient(135deg,var(--logo-navy) 0%,var(--logo-navy-2) 100%) padding-box,
+    conic-gradient(from var(--cta-a),var(--logo-red) 0deg,#ff8a8f 60deg,#fff 110deg,var(--logo-navy) 180deg,var(--logo-red) 260deg,#fff 320deg,var(--logo-red) 360deg) border-box;
+  box-shadow:0 10px 22px -12px rgba(24,54,101,.7),0 0 0 4px rgba(227,31,38,.10);
+  animation:cta-spin 3.6s linear infinite}
+.tn-page .auto-page.accident-page .auto-hero-links > a:first-child:hover{
+  background:
+    linear-gradient(135deg,#1e4580 0%,#2d62a8 100%) padding-box,
+    conic-gradient(from var(--cta-a),var(--logo-red) 0deg,#ff8a8f 60deg,#fff 110deg,var(--logo-navy) 180deg,var(--logo-red) 260deg,#fff 320deg,var(--logo-red) 360deg) border-box;
+  box-shadow:0 16px 30px -12px rgba(24,54,101,.8),0 0 0 5px rgba(227,31,38,.18)}
+.tn-page .accident-page .auto-hero-links > a:last-child,.tn-page .auto-page .accident-secondary{
+  background:#fff;color:var(--logo-navy);border:2px solid var(--logo-navy)}
+.tn-page .accident-page .auto-hero-links > a:last-child:hover,.tn-page .auto-page .accident-secondary:hover{
+  background:#fff;color:var(--logo-navy);border-color:var(--logo-red);box-shadow:0 0 0 4px rgba(227,31,38,.14)}
+
+/* 5) Nút trên nền tối (khối kêu gọi cuối trang): nền trắng chữ xanh logo, viền logo chạy vòng */
+.tn-page .auto-cta a,.tn-page .accident-page .accident-offer .accident-offer-cta.accident-offer-cta{
+  border-radius:999px;color:var(--logo-navy)!important;border:2.5px solid transparent;
+  background:
+    linear-gradient(#fff,#fff) padding-box,
+    conic-gradient(from var(--cta-a),var(--logo-red) 0deg,var(--logo-navy) 120deg,var(--logo-red) 240deg,var(--logo-navy) 360deg) border-box!important;
+  animation:cta-spin 3.6s linear infinite}
+.tn-page .auto-cta a:hover,.tn-page .accident-page .accident-offer .accident-offer-cta.accident-offer-cta:hover{
+  background:
+    linear-gradient(#fff4f4,#fff4f4) padding-box,
+    conic-gradient(from var(--cta-a),var(--logo-red) 0deg,var(--logo-navy) 120deg,var(--logo-red) 240deg,var(--logo-navy) 360deg) border-box!important}
+@media(prefers-reduced-motion:reduce){
+  .tn-page .auto-page.accident-page .auto-hero-links > a:first-child,.tn-page .auto-cta a,.tn-page .accident-page .accident-offer-cta{animation:none}
+}
