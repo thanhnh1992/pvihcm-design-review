@@ -16,8 +16,8 @@
 /* Chữ hai nhãn theo 2 màu logo PVI, nền kính mờ giữ nguyên (chủ site yêu cầu 09/11/2026) */
 .intro-badge.is-red{color:#E31F26;font-weight:700}
 .intro-badge.is-blue{color:#1F4A8C;font-weight:700}
-/* Điện thoại: nhãn nằm trên nền xanh đậm, dùng tông sáng hơn cùng gam để chữ không chìm */
-@media (max-width:700px){.intro-badge.is-red{color:#ff6b70}.intro-badge.is-blue{color:#8cc0ff}}
+/* Điện thoại: giữ nguyên chữ trắng như cũ (chủ site chốt 09/11/2026) */
+@media (max-width:700px){.intro-badge.is-red,.intro-badge.is-blue{color:#fff;font-weight:600}}
 .intro-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;text-decoration:none;font-weight:700;font-size:15px;padding:11px 20px;border-radius:999px;border:2px solid transparent;transition:transform .12s,background .12s}
 .intro-btn:hover{transform:translateY(-1px)}
 /* Nút chính dùng kiểu CTA chung của cta.css (lớp .primary): nền xanh logo, viền đỏ chạy vòng */
