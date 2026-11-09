@@ -11,12 +11,16 @@
   // 1) Vị trí ngôi sao
   const pic = intro.querySelector('.intro-pic');
   const stars = [...intro.querySelectorAll('.intro-star[data-box]')];
-  const W = 1668, H = 943, POS_Y = 0.45; // khớp object-position:50% 45% trong intro.css
+  const W = 1668, H = 943;
   const place = () => {
     const w = pic.clientWidth, h = pic.clientHeight;
     if (!w || !h) return;
-    const s = Math.max(w / W, h / H);
-    const ox = (w - W * s) * 0.5, oy = (h - H * s) * POS_Y;
+    // Máy tính: ảnh co trọn trong khung (contain). Điện thoại: phủ kín (cover). Đọc thẳng từ CSS.
+    const cs = getComputedStyle(pic);
+    const s = cs.objectFit === 'contain' ? Math.min(w / W, h / H) : Math.max(w / W, h / H);
+    const posY = parseFloat(cs.objectPosition.split(' ')[1]) / 100;
+    // offsetLeft/Top: máy tính căn giữa ảnh trong khung, nên ảnh không bắt đầu từ mép trái.
+    const ox = pic.offsetLeft + (w - W * s) * 0.5, oy = (h - H * s) * (Number.isFinite(posY) ? posY : 0.5) + pic.offsetTop;
     stars.forEach((el) => {
       const [x, y, bw, bh] = el.dataset.box.split(' ').map(Number);
       el.style.left = `${(ox + x * s).toFixed(1)}px`;
