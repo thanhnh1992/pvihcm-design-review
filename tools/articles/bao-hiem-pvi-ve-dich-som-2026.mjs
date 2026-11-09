@@ -87,6 +87,8 @@ export function body({ pic, ctaRow }) {
 <h2 id="khach-hang">Kết quả này có ý nghĩa gì với khách hàng?</h2>
 <p>Với khách hàng, quy mô doanh thu, lợi nhuận và năng lực tài chính là căn cứ để đánh giá khả năng chi trả bồi thường của doanh nghiệp bảo hiểm, nhất là với hợp đồng giá trị lớn như cháy nổ, công trình hay hàng hóa xuất nhập khẩu.</p>
 <p>Kết quả kinh doanh không làm thay đổi quyền lợi trên hợp đồng đang có. Phạm vi, điều kiện và mức bồi thường vẫn theo quy tắc và hợp đồng Bảo hiểm PVI phát hành cho từng khách hàng.</p>
+<p>Tại TP.HCM, Công ty Bảo hiểm PVI Thành Đô, đơn vị thành viên của Tổng công ty Bảo hiểm PVI, tư vấn và cấp đơn tại trụ sở tòa nhà 194 Golden Building, 473 Điện Biên Phủ.</p>
+<figure class="kb-photo kb-doc"><img src="/assets/tru-so-pvi-thanh-do-800.webp" srcset="/assets/tru-so-pvi-thanh-do-480.webp 480w, /assets/tru-so-pvi-thanh-do-800.webp 800w, /assets/tru-so-pvi-thanh-do.webp 1200w" sizes="(max-width:820px) 100vw, 700px" width="1200" height="900" alt="Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, trụ sở Công ty Bảo hiểm PVI Thành Đô" loading="lazy" decoding="async"><figcaption>Ảnh thực tế: tòa nhà 194 Golden Building, 473 Điện Biên Phủ, TP.HCM, trụ sở Công ty Bảo hiểm PVI Thành Đô · Nguồn: PVI Thành Đô.</figcaption></figure>
 </div>
 
 <section class="kb-cta kb-wide" aria-labelledby="tu-van">
