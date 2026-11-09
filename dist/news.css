@@ -62,7 +62,7 @@
 .art-list a:hover{background:var(--ice,#f5f9fd)}
 /* ── Trang danh sách /tin-tuc/: bố cục theo thư viện kiến thức baohiempvi-vn, màu và font pvihcm ── */
 .nl-hero{position:relative;isolation:isolate;overflow:hidden;padding:76px 0 132px;color:#fff;
-  background:radial-gradient(circle at 80% 14%,rgba(92,200,255,.34),transparent 30%),radial-gradient(circle at 8% 110%,rgba(203,37,48,.16),transparent 34%),linear-gradient(132deg,#052c57 0%,#063d79 52%,#0b62a8 100%)}
+  background:radial-gradient(circle at 80% 14%,rgba(92,200,255,.34),transparent 30%),radial-gradient(circle at 8% 110%,rgba(203,37,48,.16),transparent 34%),linear-gradient(132deg,#052c57 0%,#183665 52%,#0b62a8 100%)}
 .nl-hero-grid{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.7;
   background-image:linear-gradient(rgba(178,226,255,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(178,226,255,.11) 1px,transparent 1px);background-size:62px 62px;
   -webkit-mask-image:linear-gradient(90deg,#000,transparent 88%);mask-image:linear-gradient(90deg,#000,transparent 88%)}
@@ -74,8 +74,8 @@
 .nl-streams{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:-92px!important}
 .nl-tile{display:grid;grid-template-columns:58px 1fr;gap:6px;padding:24px 24px;background:linear-gradient(180deg,#fff 0%,#fff 62%,#f4f9fe 100%);border:1px solid #d8e7f5;border-radius:20px;box-shadow:0 18px 40px rgba(6,61,121,.13);color:var(--ink);transition:border-color .2s,box-shadow .2s,transform .2s}
 .nl-tile:hover{border-color:#7fb4e6;box-shadow:0 24px 50px rgba(6,61,121,.2);transform:translateY(-3px)}
-.nl-idx{grid-row:span 3;font-size:36px;font-weight:800;line-height:1;letter-spacing:-.05em;background:linear-gradient(135deg,#0b62a8,#063d79);-webkit-background-clip:text;background-clip:text;color:transparent}
-.nl-tile strong{font-size:20px;font-weight:800;line-height:1.25;letter-spacing:-.02em;color:#063d79}
+.nl-idx{grid-row:span 3;font-size:36px;font-weight:800;line-height:1;letter-spacing:-.05em;background:linear-gradient(135deg,#0b62a8,#183665);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nl-tile strong{font-size:20px;font-weight:800;line-height:1.25;letter-spacing:-.02em;color:#183665}
 .nl-hint{font-size:15px;color:#586574}
 .nl-count{display:flex;align-items:center;gap:8px;margin-top:4px;font-size:15px;font-weight:700;color:#0b62a8}
 .nl-count i{font-style:normal;transition:transform .2s}
@@ -84,13 +84,13 @@
 .nl-section{padding-top:72px;scroll-margin-top:84px}
 .nl-section:last-of-type{padding-bottom:8px}
 .nl-head{max-width:720px;margin-bottom:28px}
-.nl-kicker{display:block;font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#165a9c}
+.nl-kicker{display:block;font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#183665}
 .nl-head h2{margin:10px 0 12px;font-size:clamp(28px,3.2vw,40px);line-height:1.12;letter-spacing:-.04em;color:var(--ink);text-wrap:balance}
 .nl-head p{margin:0;font-size:16px;line-height:1.65;color:#586574}
-.nl-label{display:block;font-size:13px;font-weight:800;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:#165a9c}
+.nl-label{display:block;font-size:13px;font-weight:800;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:#183665}
 .nl-date{font-size:14px;color:#586574}
 .nl-meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 14px;margin-top:auto;padding-top:16px}
-.nl-meta b{display:inline-flex;align-items:center;gap:6px;margin-left:auto;font-size:15px;font-weight:700;color:#165a9c}
+.nl-meta b{display:inline-flex;align-items:center;gap:6px;margin-left:auto;font-size:15px;font-weight:700;color:#183665}
 .nl-meta b i{font-style:normal;transition:transform .2s}
 .nl-feature:hover .nl-meta b i,.nl-latest:hover .nl-meta b i{transform:translateX(4px)}
 
@@ -128,11 +128,11 @@
 .nl-latest p{margin:0;font-size:16px;line-height:1.65;color:#586574}
 .nl-timeline{display:grid;gap:4px;list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid #d9e2e9}
 .nl-timeline li{position:relative;padding:4px 0 18px}
-.nl-timeline li::before{content:"";position:absolute;left:-30px;top:8px;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid #165a9c}
+.nl-timeline li::before{content:"";position:absolute;left:-30px;top:8px;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid #183665}
 .nl-timeline .nl-date{display:block;margin-bottom:4px;font-weight:700}
 .nl-timeline a{display:block;color:var(--ink)}
 .nl-timeline h3{margin:6px 0;font-size:18px;font-weight:700;line-height:1.4;letter-spacing:-.015em;transition:color .2s}
-.nl-timeline a:hover h3{color:#165a9c;text-decoration:underline;text-underline-offset:3px}
+.nl-timeline a:hover h3{color:#183665;text-decoration:underline;text-underline-offset:3px}
 .nl-timeline p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin:0;font-size:15px;line-height:1.6;color:#586574}
 .nl-total{margin:56px 0 64px!important;font-size:14px;line-height:1.6;color:#586574}
 
@@ -297,7 +297,7 @@
 .fb-stars label:active svg{transform:scale(.9)}
 .fb-stars input:focus-visible+svg{outline:2px solid var(--blue);outline-offset:3px;border-radius:6px}
 .fb-stars[data-v="1"] label:nth-child(-n+1) svg,.fb-stars[data-v="2"] label:nth-child(-n+2) svg,.fb-stars[data-v="3"] label:nth-child(-n+3) svg,
-.fb-stars[data-v="4"] label:nth-child(-n+4) svg,.fb-stars[data-v="5"] label:nth-child(-n+5) svg{fill:#164f87;stroke:#164f87}
+.fb-stars[data-v="4"] label:nth-child(-n+4) svg,.fb-stars[data-v="5"] label:nth-child(-n+5) svg{fill:#183665;stroke:#183665}
 .fb .fb-hint{font-size:15px;color:#5b6f86;min-width:9ch}
 .fb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
@@ -307,12 +307,12 @@
   border:1px solid #c5d3e0;border-radius:10px;padding:11px 14px;transition:border-color .2s,box-shadow .2s}
 .fb textarea{min-height:120px;resize:vertical}
 .fb input[name=name]{max-width:360px;min-height:46px}
-.fb textarea:focus,.fb input[name=name]:focus{outline:none;border-color:#164f87;box-shadow:0 0 0 3px rgba(22,79,135,.15)}
+.fb textarea:focus,.fb input[name=name]:focus{outline:none;border-color:#183665;box-shadow:0 0 0 3px rgba(22,79,135,.15)}
 .fb .fb-honey{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .fb .fb-note{margin:14px 0 0;font-size:14px;line-height:1.6;color:#5b6f86}
 .fb .fb-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}
 .fb .fb-btn{min-height:48px;padding:0 26px;border:0;border-radius:var(--r-pill,999px);background:var(--ink);color:#fff;font:inherit;font-size:16px;font-weight:600;cursor:pointer;transition:background .2s,transform .1s}
-.fb .fb-btn:hover{background:#164f87}
+.fb .fb-btn:hover{background:#183665}
 .fb .fb-btn:active{transform:translateY(1px)}
 .fb .fb-btn:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 .fb .fb-btn:disabled{opacity:.6;cursor:default}
@@ -347,7 +347,7 @@
    khối rộng xen giữa). Một màu nhấn xanh PVI; đỏ chỉ ở nhãn "Bắt buộc" và
    số tổng đài bồi thường. Bo góc: khối 16px, nút và nhãn viên thuốc.
    ═══════════════════════════════════════════════════════════════════ */
-.kb{--line:#dbe4ec;--sub:#4a5d72;--tint:#f2f7fb;--brand:#164f87;--ease:cubic-bezier(.22,.8,.24,1)}
+.kb{--line:#dbe4ec;--sub:#4a5d72;--tint:#f2f7fb;--brand:#183665;--ease:cubic-bezier(.22,.8,.24,1)}
 .kb-shell{width:min(1160px,calc(100% - 2*var(--gutter,24px)));margin-inline:auto}
 
 /* Mở bài */

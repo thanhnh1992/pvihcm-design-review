@@ -245,7 +245,7 @@
 .fire-hero{background:radial-gradient(90% 120% at 78% 30%,#e3f1fc 0,#f3f9fe 45%,#fff 80%);color:var(--ink);padding:56px 0 64px;border-bottom:1px solid var(--rail)}
 .fire-hero .fire-wrap{align-items:center;gap:36px}
 .fire-hero h1{color:var(--ink)}
-.fire-hero h1 em{color:#165a9c}
+.fire-hero h1 em{color:#183665}
 .fire-hero p{color:var(--muted)}
 .fire-hero .fire-eyebrow{color:#5b6f86}
 .fire-hero-copy{padding-bottom:0}
