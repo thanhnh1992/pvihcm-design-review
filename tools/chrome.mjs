@@ -11,7 +11,8 @@ export const clean = (s) => {
   let t = String(s).replace(/\s+—\s+/g, ', ').replace(/—/g, ', ')
     .replace(/(\d)\s*–\s*(\d)/g, '$1-$2').replace(/–/g, '-')
     .replace(/trong trong/g, 'trong');
-  for (const [re, to] of SPELL) t = t.replace(re, to);
+  // Chỉ đổi khi là trọn một chữ: "hoà" thành "hòa" nhưng giữ "hoàn", "toàn", "hoạch", "hoạt".
+  for (const [re, to] of SPELL) t = t.replace(new RegExp(re.source + '(?!\\p{L})', 'gu'), to);
   return t;
 };
 export const t = (s) => esc(clean(s));
