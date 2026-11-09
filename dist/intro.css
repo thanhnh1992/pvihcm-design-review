@@ -13,10 +13,10 @@
 .intro-badge{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:9px 15px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;text-decoration:none;font-size:14px;font-weight:600}
 .intro-badge i{font-style:normal;color:#ffd75e}
 .intro-badge:hover{background:rgba(255,255,255,.28)}
-.intro-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;text-decoration:none;font-weight:700;font-size:15px;padding:11px 20px;border-radius:12px;border:2px solid transparent;transition:transform .12s,background .12s}
+.intro-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;text-decoration:none;font-weight:700;font-size:15px;padding:11px 20px;border-radius:999px;border:2px solid transparent;transition:transform .12s,background .12s}
 .intro-btn:hover{transform:translateY(-1px)}
-.intro-btn.is-primary{background:#cb2530;color:#fff}
-.intro-btn.is-primary:hover{background:#b5121a}
+/* Nút chính dùng kiểu CTA chung của cta.css (lớp .primary): nền xanh logo, viền đỏ chạy vòng */
+.intro-btn.primary{border-radius:999px;margin-top:0}
 .intro-btn.is-ghost{border-color:rgba(255,255,255,.75);color:#fff}
 .intro-btn.is-ghost:hover{background:rgba(255,255,255,.14)}
 /* Tấm nội dung trượt lên đè ảnh; clip-path giữ nền 3D (canvas cố định) chỉ trong tấm */
