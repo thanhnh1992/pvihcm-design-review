@@ -33,6 +33,7 @@
 .bt-photo{background:#e9f2fb}
 .bt-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transform-origin:var(--ox,50%) var(--oy,50%);
   animation:bt-drift var(--dur,18s) ease-in-out infinite alternate;animation-delay:calc(var(--k,0) * -2.3s)}
+.bt-photo[data-slot="d"] img{object-position:80% 50%}
 .bt-photo:nth-child(3n){--ox:30%;--oy:60%;--dur:21s}.bt-photo:nth-child(3n+1){--ox:70%;--oy:40%;--dur:17s}.bt-photo:nth-child(3n+2){--ox:50%;--oy:30%;--dur:24s}
 @keyframes bt-drift{from{transform:scale(1.04) translate3d(0,0,0)}to{transform:scale(1.13) translate3d(-1.5%,-1.2%,0)}}
 .bt-veil{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,30,60,0) 45%,rgba(6,30,60,.28) 100%);transition:opacity .45s}
