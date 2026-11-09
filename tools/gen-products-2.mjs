@@ -114,7 +114,7 @@ const build = (o) => {
     lead: p.summary,
     cta1: ['Gọi tư vấn 0938 072 236', 'tel:0938072236'],
     cta2: ['Xem chương trình', '#phuong-an'],
-    img: '/assets/hero-suc-khoe.webp',
+    img: '/assets/hero-suc-khoe.webp?v=20261109',
     alt: 'Bác sĩ trao đổi với khách hàng tại quầy tiếp nhận bệnh viện',
   })
     + introBlock(p, 'Chương trình căn cứ vào')
@@ -126,7 +126,7 @@ const build = (o) => {
     + faqBlock(p.faqs);
   build({
     rel: 'san-pham/bao-hiem-suc-khoe/index.html', path: P, main, faqs: p.faqs,
-    crumb: 'Bảo hiểm chăm sóc sức khỏe', img: '/assets/hero-suc-khoe.webp',
+    crumb: 'Bảo hiểm chăm sóc sức khỏe', img: '/assets/hero-suc-khoe.webp?v=20261109',
     title: 'Bảo hiểm sức khỏe PVI Care | PVI Thành Đô',
     desc: 'Bảo hiểm chăm sóc sức khỏe PVI Care: chương trình nội trú và ngoại trú theo độ tuổi, bảo lãnh viện phí tại 69 cơ sở ở TP.HCM, hồ sơ và cách tham gia.',
   });
@@ -142,7 +142,7 @@ const build = (o) => {
     lead: p.summary,
     cta1: ['Gửi hồ sơ công trình', '#chung-tu'],
     cta2: ['Xem ba phương án', '#phuong-an'],
-    img: '/assets/hero-cong-trinh.webp',
+    img: '/assets/hero-cong-trinh.webp?v=20261109',
     alt: 'Kỹ sư và nhà thầu kiểm tra tiến độ tại công trường xây dựng',
   })
     + introBlock(p, 'Phương án căn cứ vào')
@@ -154,7 +154,7 @@ const build = (o) => {
     + faqBlock(p.faqs);
   build({
     rel: 'san-pham/bao-hiem-cong-trinh/index.html', path: P, main, faqs: p.faqs,
-    crumb: 'Bảo hiểm công trình và lắp đặt', img: '/assets/hero-cong-trinh.webp',
+    crumb: 'Bảo hiểm công trình và lắp đặt', img: '/assets/hero-cong-trinh.webp?v=20261109',
     title: 'Bảo hiểm công trình và lắp đặt | PVI Thành Đô',
     desc: 'Bảo hiểm mọi rủi ro xây dựng và lắp đặt của Bảo hiểm PVI: phương án theo hợp đồng, dự toán và tiến độ thi công; hồ sơ cần gửi và quy trình bồi thường.',
   });
