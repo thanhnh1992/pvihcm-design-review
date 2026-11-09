@@ -32,11 +32,12 @@
 }
 @media (prefers-reduced-motion:reduce){.intro-btn{transition:none}}
 
-/* ═══ Ảnh nghiêng 3D theo chuột + vệt sáng chạy quanh logo (chủ site yêu cầu 09/11/2026) ═══
-   intro-3d.js đặt --mx/--my (từ -1 đến 1, đã làm mượt). Ảnh là lớp xa: nghiêng và lùi ngược chuột.
-   Logo, chữ là lớp gần: trôi nhẹ theo chuột. Ảnh phóng 1.08 để khi nghiêng không lộ mép. */
+/* ═══ Ảnh nghiêng 3D theo chuột + ngôi sao PVI trên tòa nhà phát sáng (chủ site yêu cầu 09/11/2026) ═══
+   intro-3d.js đặt --mx/--my (từ -1 đến 1, đã làm mượt). Ảnh (cùng 2 ngôi sao) là lớp xa: nghiêng và
+   lùi ngược chuột. Logo, chữ là lớp gần: trôi nhẹ theo chuột. Phóng 1.08 để khi nghiêng không lộ mép.
+   Logo góc trên trái giữ nguyên như cũ, không có hiệu ứng. */
 .intro{--mx:0;--my:0;perspective:1600px}
-.intro-pic{transform:scale(1.08) translate3d(calc(var(--mx) * -14px),calc(var(--my) * -10px),0) rotateY(calc(var(--mx) * 3.5deg)) rotateX(calc(var(--my) * -2.5deg));transform-origin:50% 50%;will-change:transform;backface-visibility:hidden}
+.intro-scene{position:relative;transform:scale(1.08) translate3d(calc(var(--mx) * -14px),calc(var(--my) * -10px),0) rotateY(calc(var(--mx) * 3.5deg)) rotateX(calc(var(--my) * -2.5deg));transform-origin:50% 50%;will-change:transform;backface-visibility:hidden}
 .intro-top{transform:translate3d(calc(var(--mx) * 8px),calc(var(--my) * 6px),0)}
 .intro-copy{transform:translate3d(calc(var(--mx) * 12px),calc(var(--my) * 8px),0)}
 /* Vệt nắng mềm đi theo chuột, giúp mắt đọc ra bề mặt có khối */
@@ -44,33 +45,35 @@
   background:radial-gradient(42vw circle at calc(50% + var(--mx) * 40%) calc(45% + var(--my) * 35%),rgba(255,224,178,.22),rgba(255,224,178,0) 62%)}
 .intro.is-3d .intro-shine{opacity:1}
 
-/* Logo: giữ nguyên file logo, chỉ đặt lên tấm kính sáng và cho một vệt sáng đỏ trắng chạy vòng quanh. */
-@property --logo-a{syntax:'<angle>';inherits:false;initial-value:0deg}
-.intro-logo{position:relative;isolation:isolate;border-radius:18px;margin-left:-14px}
-.intro-logo img{box-sizing:content-box;padding:9px 14px;border-radius:18px;background:rgba(255,255,255,.8);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  box-shadow:0 0 0 1px rgba(255,255,255,.7),0 10px 30px -8px rgba(8,28,52,.45);animation:logo-pulse 2.8s ease-in-out infinite}
-.intro-logo::before,.intro-logo::after{content:"";position:absolute;border-radius:inherit;pointer-events:none;
-  background:conic-gradient(from var(--logo-a),rgba(227,31,38,0) 0deg,rgba(227,31,38,0) 70deg,#E31F26 140deg,#fff 172deg,rgba(255,255,255,0) 180deg,rgba(227,31,38,0) 250deg,#E31F26 320deg,#fff 352deg,rgba(255,255,255,0) 360deg);
-  animation:logo-run 2.8s linear infinite}
-/* Lớp trên: viền sáng sắc nét 3px, hai vệt đỏ trắng đuổi nhau */
-.intro-logo::before{inset:-3px;padding:3px;z-index:1;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
-/* Lớp dưới: cùng vệt sáng nhưng nhòe rộng, tạo quầng phát sáng mạnh quanh tấm logo */
-.intro-logo::after{inset:-14px;z-index:-1;filter:blur(14px) saturate(1.4)}
-@keyframes logo-run{to{--logo-a:360deg}}
-@keyframes logo-pulse{0%,100%{box-shadow:0 0 0 1px rgba(255,255,255,.7),0 10px 30px -8px rgba(8,28,52,.45),0 0 18px rgba(227,31,38,.25)}50%{box-shadow:0 0 0 1px rgba(255,255,255,.85),0 10px 30px -8px rgba(8,28,52,.45),0 0 44px rgba(227,31,38,.75)}}
+/* Ngôi sao đỏ trên logo gắn tòa nhà: lớp phủ cắt đúng hình ngôi sao từ chính ảnh (assets/sao-pvi-*.png),
+   intro-3d.js đặt vị trí khớp ảnh ở mọi khổ màn hình. Một vệt sáng trắng chạy vòng theo thân ngôi sao,
+   cả ngôi sao tỏa quầng đỏ đập nhịp. Chưa có JS thì lớp phủ ẩn, ảnh vẫn hiện bình thường. */
+@property --star-a{syntax:'<angle>';inherits:false;initial-value:0deg}
+.intro-star{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none;opacity:0;
+  animation:star-glow 2.4s ease-in-out infinite;animation-delay:var(--d,0s)}
+.intro-star.is-placed{opacity:1}
+.intro-star img,.intro-star i{position:absolute;inset:0;width:100%;height:100%;display:block}
+.intro-star img{filter:brightness(1.35) saturate(1.25)}
+.intro-star i{-webkit-mask-size:100% 100%;mask-size:100% 100%;
+  background:conic-gradient(from var(--star-a),rgba(255,255,255,0) 0deg,rgba(255,255,255,0) 250deg,rgba(255,190,190,.7) 310deg,#fff 345deg,rgba(255,255,255,0) 360deg);
+  animation:star-run 1.8s linear infinite;animation-delay:var(--d,0s)}
+@keyframes star-run{to{--star-a:360deg}}
+@keyframes star-glow{
+  0%,100%{filter:drop-shadow(0 0 3px rgba(255,80,80,1)) drop-shadow(0 0 10px rgba(255,30,30,.85)) drop-shadow(0 0 22px rgba(255,30,30,.5))}
+  50%{filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 12px rgba(255,40,40,1)) drop-shadow(0 0 34px rgba(255,30,30,1))}
+}
 
 /* Điện thoại, máy tính bảng (không có chuột): ảnh trôi chậm qua lại để vẫn có chiều sâu */
 @media (hover:none),(pointer:coarse){
-  .intro-pic{animation:intro-drift 16s ease-in-out infinite alternate}
+  .intro-scene{animation:intro-drift 16s ease-in-out infinite alternate}
 }
 @keyframes intro-drift{from{transform:scale(1.05) translate3d(0,0,0) rotateY(0deg)}to{transform:scale(1.1) translate3d(-1.6%,-1%,0) rotateY(-2deg)}}
 @media (max-width:700px){
   .intro-copy{position:relative;transform:none}
-  .intro-logo{margin-left:-10px}
-  .intro-logo img{padding:7px 10px;border-radius:14px}
 }
 @media (prefers-reduced-motion:reduce){
-  .intro-pic,.intro-top,.intro-copy{transform:none;animation:none}
-  .intro-logo img,.intro-logo::before,.intro-logo::after{animation:none}
+  .intro-scene,.intro-top,.intro-copy{transform:none;animation:none}
+  .intro-star,.intro-star i{animation:none}
+  .intro-star{filter:drop-shadow(0 0 8px rgba(255,30,30,.8))}
   .intro-shine{display:none}
 }
