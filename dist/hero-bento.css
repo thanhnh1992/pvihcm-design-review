@@ -98,3 +98,17 @@
 .hero-proof-line .hero-proof:hover{text-decoration-thickness:2px}
 
 /* Nút "Nhận tư vấn bảo hiểm xe": kiểu dáng chung cho mọi CTA nằm trong dist/cta.css (06/11/2026). */
+
+/* Hai ô liên hệ thành ô ảnh (09/11/2026): nhãn 2 dòng, số điện thoại là chữ thật để bấm gọi và Google đọc được */
+.bt-call .bt-label{flex-direction:column;align-items:flex-start;gap:0;padding:4px 10px 5px;border-radius:10px}
+.bt-call .bt-label small{font-size:13px;line-height:1.25;font-weight:600;color:#3d4b5c}
+.bt-call .bt-label b{font-size:15px;line-height:1.25;font-weight:800;font-variant-numeric:tabular-nums;overflow:visible;text-overflow:clip}
+.bt-call-red .bt-label b{color:#b3161f}
+.bt-call-blue .bt-label b{color:#1F4A8C}
+.bt-call.is-lit .bt-label small,.bt-call:hover .bt-label small,.bt-call:focus-visible .bt-label small{color:#fff}
+.bt-call-red.is-lit .bt-label,.bt-call-red:hover .bt-label,.bt-call-red:focus-visible .bt-label{background:#cb2530}
+.bento.is-paused .bt-call.is-lit:not(:hover) .bt-label small{color:#3d4b5c}
+.bento.is-paused .bt-call-red.is-lit:not(:hover) .bt-label b{color:#b3161f}
+.bento.is-paused .bt-call-blue.is-lit:not(:hover) .bt-label b{color:#1F4A8C}
+.bt-photo[data-slot="b"] img{object-position:70% 50%}
+.bt-photo[data-slot="e"] img{object-position:62% 40%}
