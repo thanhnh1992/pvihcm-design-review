@@ -1,0 +1,33 @@
+/* Mở đầu trang chủ: ảnh tòa nhà PVI đứng yên, nội dung trượt lên đè (bê từ pvigiadinh.com) */
+.intro{position:sticky;top:0;z-index:0;width:100%;background:#0b2a4a;color:#fff;overflow:hidden}
+.intro-pic{display:block;width:100%;height:auto;max-height:92vh;object-fit:cover;object-position:50% 45%}
+.intro::after{content:"";position:absolute;left:0;right:0;bottom:0;height:50%;background:linear-gradient(0deg,rgba(8,28,52,.78) 0%,rgba(8,28,52,.42) 48%,rgba(8,28,52,0) 100%);pointer-events:none}
+.intro-wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.intro-top{position:absolute;top:0;left:0;right:0;z-index:2;padding-top:clamp(10px,2vw,24px)}
+.intro-logo{display:inline-block;line-height:0}
+.intro-logo img{display:block;height:clamp(28px,4.2vw,48px);width:auto}
+.intro-copy{position:absolute;left:0;right:0;bottom:0;z-index:2;padding-bottom:clamp(52px,6.5vw,88px)}
+.intro-title{margin:0 0 16px;font-size:clamp(24px,3.5vw,46px);font-weight:700;line-height:1.12;max-width:13em;letter-spacing:-.01em;color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.5)}
+.intro-acts{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.intro-acts>div{display:flex;flex-wrap:wrap;gap:10px 12px}
+.intro-badge{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:9px 15px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;text-decoration:none;font-size:14px;font-weight:600}
+.intro-badge i{font-style:normal;color:#ffd75e}
+.intro-badge:hover{background:rgba(255,255,255,.28)}
+.intro-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;text-decoration:none;font-weight:700;font-size:15px;padding:11px 20px;border-radius:12px;border:2px solid transparent;transition:transform .12s,background .12s}
+.intro-btn:hover{transform:translateY(-1px)}
+.intro-btn.is-primary{background:#cb2530;color:#fff}
+.intro-btn.is-primary:hover{background:#b5121a}
+.intro-btn.is-ghost{border-color:rgba(255,255,255,.75);color:#fff}
+.intro-btn.is-ghost:hover{background:rgba(255,255,255,.14)}
+/* Tấm nội dung trượt lên đè ảnh; clip-path giữ nền 3D (canvas cố định) chỉ trong tấm */
+.intro-sheet{position:relative;z-index:1;margin-top:-28px;background:#fff;border-radius:24px 24px 0 0;box-shadow:0 -14px 44px rgba(8,28,52,.28);clip-path:inset(-60px 0 0 0 round 24px 24px 0 0)}
+@media (max-width:700px){
+  .intro{display:flex;flex-direction:column}
+  .intro-pic{max-height:none}
+  .intro::after{display:none}
+  .intro-copy{position:static;padding:22px 0 58px;background:#0b2a4a}
+  .intro-title{font-size:26px;max-width:none;text-shadow:none}
+  .intro-acts,.intro-acts>div{width:100%}
+  .intro-btn{flex:1 1 100%}
+}
+@media (prefers-reduced-motion:reduce){.intro-btn{transition:none}}
