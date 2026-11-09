@@ -1,7 +1,8 @@
 /* Phần mở đầu trang chủ (ảnh tòa nhà PVI), chủ site yêu cầu 09/11/2026:
    1) Đặt lớp phát sáng của ngôi sao PVI bên phải tòa nhà khớp đúng chỗ trong ảnh. Ảnh dùng
       object-fit:cover nên bị cắt khác nhau theo khổ màn hình; vị trí tính lại mỗi khi khung đổi cỡ.
-      Tọa độ data-box tính theo ảnh gốc 1668x943 (x y rộng cao).
+      Máy tính dùng ảnh khổ rộng 3168x1344 (hero-tru-so-pvi-rong), điện thoại dùng ảnh gốc 1668x943;
+      mỗi ảnh có một lớp ngôi sao riêng (data-anh), data-box tính theo ảnh đó (x y rộng cao).
    2) Ảnh nghiêng 3D theo chuột, có quán tính nên mềm, không giật. JS chỉ đặt --mx/--my trên .intro,
       CSS lo phần hiển thị. Chỉ chạy khi có chuột; điện thoại dùng chuyển động trôi chậm trong intro.css. */
 (() => {
@@ -11,10 +12,12 @@
   // 1) Vị trí ngôi sao
   const pic = intro.querySelector('.intro-pic');
   const stars = [...intro.querySelectorAll('.intro-star[data-box]')];
-  const W = 1668, H = 943;
+  const SIZE = { goc: [1668, 943], rong: [3168, 1344] };
   const place = () => {
     const w = pic.clientWidth, h = pic.clientHeight;
     if (!w || !h) return;
+    const anh = (pic.currentSrc || pic.src).includes('-rong') ? 'rong' : 'goc';
+    const [W, H] = SIZE[anh];
     // Máy tính: ảnh co trọn trong khung (contain). Điện thoại: phủ kín (cover). Đọc thẳng từ CSS.
     const cs = getComputedStyle(pic);
     const s = cs.objectFit === 'contain' ? Math.min(w / W, h / H) : Math.max(w / W, h / H);
@@ -22,6 +25,7 @@
     // offsetLeft/Top: máy tính căn giữa ảnh trong khung, nên ảnh không bắt đầu từ mép trái.
     const ox = pic.offsetLeft + (w - W * s) * 0.5, oy = (h - H * s) * (Number.isFinite(posY) ? posY : 0.5) + pic.offsetTop;
     stars.forEach((el) => {
+      if (el.dataset.anh !== anh) { el.classList.remove('is-placed'); return; }
       const [x, y, bw, bh] = el.dataset.box.split(' ').map(Number);
       el.style.left = `${(ox + x * s).toFixed(1)}px`;
       el.style.top = `${(oy + y * s).toFixed(1)}px`;
@@ -31,7 +35,9 @@
     });
   };
   if (pic && stars.length) {
-    if (pic.complete) place(); else pic.addEventListener('load', place);
+    // Đổi cỡ cửa sổ qua mốc 700px thì trình duyệt nạp ảnh khác và báo load lại.
+    if (pic.complete) place();
+    pic.addEventListener('load', place);
     if ('ResizeObserver' in window) new ResizeObserver(place).observe(pic);
     else addEventListener('resize', place);
   }
