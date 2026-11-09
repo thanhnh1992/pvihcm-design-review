@@ -1,0 +1,1884 @@
+/* ═══════════════════════════════════════════════════════════════════
+   BẢO HIỂM Ô TÔ: giao diện theo trang /bao-hiem-o-to của baohiempvi-vn
+   (chủ site yêu cầu 09/11/2026). Markup sinh từ tools/o-to-ui.mjs.
+   File này do tools/extract-o-to-css.cjs sinh ra, đừng sửa tay: sửa riêng
+   của pvihcm đặt trong khối FOOT của công cụ đó.
+   ═══════════════════════════════════════════════════════════════════ */
+/* Đặt lại giống phần nền của baohiempvi-vn, độ ưu tiên thấp nhất (:where) */
+:where(.oto-page .auto-page){display:block;background:#f7fbff;color:var(--ink);overflow:hidden;line-height:1.6}
+:where(.oto-page .auto-page) a{color:inherit;text-decoration:none}
+:where(.oto-page .auto-page) img{display:block;width:auto;max-width:100%}
+:where(.oto-page .auto-page) button,:where(.oto-page .auto-page) input,:where(.oto-page .auto-page) select,:where(.oto-page .auto-page) textarea{font:inherit}
+:where(.oto-page .auto-page) button{cursor:pointer}
+.oto-page .auto-page [hidden]{display:none!important}
+.oto-page .auto-page a:hover i[aria-hidden],.oto-page .auto-page a:focus-visible i[aria-hidden]{color:inherit}
+
+
+.oto-page .auto-page {
+  --navy: #071a38;
+  --navy-2: #0c2b5a;
+  --blue: #1262df;
+  --cyan: #17b7e8;
+  --red: #e52b36;
+  --ice: #eaf7ff;
+  --ink: #10223d;
+  --muted: #66778e;
+  --line: rgba(14, 45, 88, .13);
+  --shadow: 0 30px 80px rgba(12, 48, 98, .16);
+}
+.oto-page .shell { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
+@media (max-width: 760px) {
+  .oto-page .shell { width: min(100% - 28px, 1180px); }
+}
+@media (max-width: 680px) {
+  .oto-page .shell { width: min(100% - 30px,1180px); }
+}
+@media (max-width: 768px) {
+  .oto-page .orb-one { animation: none; }
+}
+.oto-page .auto-page { --muted: #49657f; }
+.oto-page .auto-page { --auto-ink: #09264c; --auto-blue: #1465d9; --auto-blue-deep: #073b8f; --auto-red: #e33b42; --auto-cyan: #2aabd5; background: #f5f9fd; color: var(--auto-ink); min-height: 100vh; overflow: clip; }
+.oto-page .auto-page h1, .oto-page .auto-page h2, .oto-page .auto-page h3, .oto-page .auto-page p { margin-top: 0; }
+.oto-page .auto-hero { background: radial-gradient(circle at 77% 15%, rgba(50,176,225,.27), transparent 27%), linear-gradient(125deg, #061d42 0%, #0b427b 60%, #0e6894 125%); min-height: 485px; overflow: hidden; position: relative; }
+.oto-page .auto-hero::before { background-image: linear-gradient(rgba(194,233,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(194,233,255,.08) 1px, transparent 1px); background-size: 62px 62px; content: ""; inset: 0; mask-image: linear-gradient(115deg, #000, transparent 78%); opacity: .52; position: absolute; }
+.oto-page .auto-hero-copy { padding: 94px 0 176px; position: relative; z-index: 2; }
+.oto-page .auto-kicker { align-items: center; background: rgba(213,243,255,.11); border: 1px solid rgba(190,231,255,.24); border-radius: 999px; color: #b7ecff; display: inline-flex; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .12em; padding: 9px 12px; }
+.oto-page .auto-kicker.blue { background: #e9f5ff; border-color: #d0e8f8; color: #1767c6; }
+.oto-page .auto-hero h1 { color: #fff; font: 800 clamp(42px,5.4vw,72px)/1.02 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.06em; margin: 21px 0 17px; max-width: 760px; }
+.oto-page .auto-hero h1 em, .oto-page .auto-intro h2 em { color: #91e4f6; font-style: normal; }
+.oto-page .auto-hero p { color: rgba(224,243,255,.79); font-size: 15px; line-height: 1.75; margin-bottom: 0; max-width: 600px; }
+.oto-page .auto-hero-links { display: flex; gap: 11px; margin-top: 27px; }
+.oto-page .auto-hero-links > * { align-items: center; border-radius: 10px; display: inline-flex; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; gap: 9px; min-height: 45px; padding: 0 16px; transition: background .25s ease, transform .25s ease, box-shadow .25s ease; }
+.oto-page .auto-hero-links > *:hover { transform: translateY(-3px); }
+.oto-page .auto-hero-links > a:first-child { background: #fff; box-shadow: 0 13px 30px rgba(0,11,35,.22); color: #0a4a9f; }
+.oto-page .auto-hero-links > a:last-child { border: 1px solid rgba(216,243,255,.32); color: #e5f7ff; }
+.oto-page .auto-hero-links > a:last-child:hover { background: rgba(255,255,255,.1); }
+.oto-page .auto-hero-orb { border: 1px solid rgba(185,234,255,.18); border-radius: 50%; position: absolute; }
+.oto-page .auto-hero-orb::after { background: #7ee5ff; border: 5px solid rgba(255,255,255,.78); border-radius: 50%; box-shadow: 0 0 22px rgba(100,223,255,.56); content: ""; height: 8px; position: absolute; width: 8px; }
+.oto-page .orb-one { animation: autoOrbit 22s linear infinite; height: 420px; right: 8%; top: 28px; width: 420px; }
+.oto-page .orb-one::after { left: 9%; top: 12%; }
+.oto-page .orb-two { animation: autoOrbitReverse 31s linear infinite; height: 570px; opacity: .62; right: -2%; top: -54px; width: 570px; }
+.oto-page .orb-two::after { bottom: 12%; right: 9%; }
+.oto-page .auto-product-surface { margin-top: -116px; position: relative; z-index: 4; }
+.oto-page .auto-experience { display: grid; gap: 20px; }
+.oto-page .auto-choice-grid { display: flex; gap: 15px; min-height: 304px; }
+.oto-page .auto-choice-card { appearance: none; background: #0c376d; border: 1px solid rgba(21,91,184,.28); border-radius: 20px; color: #fff; cursor: pointer; flex: 1 1 0; min-width: 0; overflow: hidden; padding: 0; position: relative; text-align: left; transition: border-color .38s ease, box-shadow .4s cubic-bezier(.2,.76,.23,1), flex-grow .72s cubic-bezier(.2,.74,.2,1), transform .35s cubic-bezier(.2,.74,.2,1); }
+.oto-page .state-tnds .card-tnds, .oto-page .state-damage .card-damage { flex-grow: 3; }
+.oto-page .state-tnds .card-damage, .oto-page .state-damage .card-tnds { flex-grow: 1; }
+.oto-page .auto-choice-card:hover { border-color: rgba(73,164,255,.84); box-shadow: 0 20px 42px rgba(6,38,88,.21); transform: translateY(-3px); }
+.oto-page .auto-choice-card.card-damage:hover { border-color: rgba(238,90,95,.75); }
+.oto-page .auto-choice-card.is-selected { border-color: #70bbff; box-shadow: 0 0 0 3px rgba(80,164,255,.18), 0 24px 48px rgba(8,44,103,.25); }
+.oto-page .auto-choice-card.card-damage.is-selected { border-color: #f27376; box-shadow: 0 0 0 3px rgba(242,108,111,.15), 0 24px 48px rgba(91,34,43,.2); }
+.oto-page .auto-choice-card > img { height: 100%; inset: 0; object-fit: cover; position: absolute; transition: transform .7s cubic-bezier(.2,.74,.2,1), filter .5s ease; width: 100%; }
+.oto-page .card-damage > img { object-position: 80% 28%; }
+.oto-page .auto-choice-card:hover > img { filter: saturate(1.12) contrast(1.03); transform: scale(1.055); }
+.oto-page .auto-choice-veil { background: linear-gradient(90deg, rgba(5,29,67,.88) 0%, rgba(5,29,67,.67) 47%, rgba(5,29,67,.18) 100%), linear-gradient(0deg, rgba(4,25,59,.75), transparent 58%); inset: 0; position: absolute; transition: background .4s ease; }
+.oto-page .card-damage .auto-choice-veil { background: linear-gradient(90deg, rgba(52,16,26,.66) 0%, rgba(49,24,38,.34) 47%, rgba(6,28,58,.06) 100%), linear-gradient(0deg, rgba(41,15,27,.42) 0%, rgba(49,17,31,.16) 43%, transparent 75%); }
+.oto-page .auto-choice-card.card-damage::after { background: linear-gradient(0deg, rgba(55,13,25,.5) 0%, rgba(83,22,37,.22) 45%, transparent 100%); bottom: 0; content: ""; height: 40%; left: 0; pointer-events: none; position: absolute; right: 0; z-index: 1; }
+.oto-page .auto-choice-card.is-selected .auto-choice-veil { background: linear-gradient(105deg, rgba(5,35,82,.91), rgba(7,77,143,.57) 63%, rgba(9,83,139,.14)); }
+.oto-page .card-damage.is-selected .auto-choice-veil { background: linear-gradient(105deg, rgba(70,18,28,.72), rgba(150,40,50,.26) 58%, rgba(10,80,139,.06)); }
+.oto-page .card-damage .auto-choice-copy > small, .oto-page .card-damage .auto-choice-copy > strong, .oto-page .card-damage .auto-choice-copy > em { text-shadow: 0 1px 10px rgba(30,8,14,.6), 0 1px 2px rgba(30,8,14,.45); }
+.oto-page .auto-choice-copy { bottom: 25px; display: flex; flex-direction: column; left: 25px; max-width: 385px; position: absolute; right: 24px; z-index: 2; }
+.oto-page .auto-choice-copy small { color: #a8e5ff; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .12em; }
+.oto-page .card-damage .auto-choice-copy small { color: #ffc7c9; }
+.oto-page .auto-choice-copy strong { color: #fff; font: 800 clamp(19px,2.1vw,29px)/1.08 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.045em; margin: 11px 0 8px; transition: color .3s ease; }
+.oto-page .auto-choice-card:hover .auto-choice-copy strong { color: #a8e9ff; }
+.oto-page .card-damage:hover .auto-choice-copy strong { color: #ffd6d6; }
+.oto-page .auto-choice-copy em { color: rgba(239,248,255,.82); font-size: 13px; font-style: normal; line-height: 1.58; max-width: 318px; }
+.oto-page .auto-choice-copy > b { color: #d6f2ff; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; margin-top: 14px; }
+.oto-page .card-damage .auto-choice-copy > b { color: #ffe2e3; }
+.oto-page .auto-choice-copy > .auto-choice-price { align-self: flex-start; background: rgba(255,255,255,.96); border: 2px solid #ff2437; border-radius: 11px; box-shadow: 0 10px 24px rgba(128,0,20,.27), 0 0 0 4px rgba(255,36,55,.12); color: #f20d2a; display: flex; flex-direction: column; font: 900 clamp(18px,2vw,26px)/1.05 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.045em; margin-top: 15px; max-width: 100%; padding: 10px 13px; text-shadow: 0 1px 0 #fff; }
+.oto-page .auto-choice-copy > .auto-choice-price span { color: #d50822; font: 900 13px/1.3 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .035em; margin-top: 5px; text-transform: uppercase; }
+.oto-page .auto-choice-selected { align-items: center; color: #c5efff; display: flex; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; gap: 7px; margin-top: 13px; max-height: 0; opacity: 0; overflow: hidden; transition: max-height .36s ease, opacity .28s ease; }
+.oto-page .auto-choice-selected i { font-size: 16px; font-style: normal; }
+.oto-page .auto-choice-card.is-selected .auto-choice-selected { max-height: 25px; opacity: 1; }
+.oto-page .auto-trust-line { align-items: center; color: #214e82; display: flex; flex-wrap: wrap; font: 700 13px "Be Vietnam Pro","BVP Fallback",sans-serif; gap: 15px 30px; justify-content: center; padding: 1px 8px 0; }
+.oto-page .auto-trust-line span::first-letter { color: #1474e5; }
+.oto-page .auto-page .auto-choice-hint { align-items: center; color: #0b2a4f; display: flex; font: 700 16px/1.4 "Be Vietnam Pro","BVP Fallback",sans-serif; gap: 10px; justify-content: center; margin: 0 0 14px; text-align: center; }
+.oto-page .auto-page .auto-choice-hint i { align-items: center; background: #1462d0; border-radius: 6px; color: #fff; display: inline-flex; flex: none; font-size: 14px; font-style: normal; height: 22px; justify-content: center; width: 22px; }
+.oto-page .auto-page .auto-choice-card .auto-choice-tick { align-items: center; background: rgba(255, 255, 255, .96); border-radius: 999px; box-shadow: 0 6px 16px rgba(4, 24, 56, .28); display: inline-flex; gap: 8px; padding: 6px 14px 6px 7px; position: absolute; right: 16px; top: 16px; z-index: 3; }
+.oto-page .auto-page .auto-choice-card .auto-choice-tick i { align-items: center; background: #fff; border: 2px solid #1462d0; border-radius: 7px; color: transparent; display: inline-flex; font-size: 15px; font-style: normal; font-weight: 800; height: 24px; justify-content: center; transition: background-color .2s ease, color .2s ease; width: 24px; }
+.oto-page .auto-page .auto-choice-card .auto-choice-tick em { color: #0b2a4f; font: 800 15px/1 "Be Vietnam Pro","BVP Fallback",sans-serif; font-style: normal; }
+.oto-page .auto-page .auto-choice-card.is-selected .auto-choice-tick i { background: #1462d0; color: #fff; }
+.oto-page .auto-page .state-default .auto-choice-tick { animation: autoTickPulse 1.8s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .oto-page .auto-page .state-default .auto-choice-tick { animation: none; } }
+.oto-page .auto-page .auto-choice-card { container-type: inline-size; }
+@media (max-width: 480px) { .oto-page .auto-page .auto-choice-hint { font-size: 14px; gap: 8px; } }
+.oto-page .auto-switch-note { background: #eaf3ff; border: 1px solid #cfe0f4; border-radius: 12px; color: #0b468f; font: 700 15px "Be Vietnam Pro","BVP Fallback",sans-serif; margin: 18px auto 0; max-width: 520px; padding: 12px 16px; text-align: center; }
+.oto-page .auto-vcx-inline { margin-top: 8px; }
+.oto-page .auto-vcx-more { color: #1462d0; display: inline-flex; font: 700 15px "Be Vietnam Pro","BVP Fallback",sans-serif; gap: 6px; margin-top: 18px; }
+.oto-page .auto-dashboard { background: rgba(255,255,255,.8); border: 1px solid rgba(22,92,159,.14); border-radius: 21px; box-shadow: 0 24px 55px rgba(11,68,125,.1); display: grid; gap: 15px; grid-template-columns: minmax(0,1fr) 270px; padding: 16px; }
+.oto-page .auto-dashboard-main { background: linear-gradient(145deg, #fff, #f3f9fe); border: 1px solid #ddebf5; border-radius: 16px; padding: 25px; }
+.oto-page .auto-dashboard-heading { align-items: flex-start; display: flex; gap: 20px; justify-content: space-between; }
+.oto-page .auto-dashboard-heading span, .oto-page .auto-section-heading > span, .oto-page .auto-limit-card > span, .oto-page .auto-docs > span { color: #1769c9; display: block; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .12em; }
+.oto-page .auto-dashboard-heading h2 { color: #0a315e; font: 800 clamp(21px,2.4vw,30px)/1.1 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.045em; margin: 7px 0 0; }
+.oto-page .auto-dashboard-heading > a { color: #176bd2; flex: none; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; margin-top: 4px; }
+.oto-page .auto-dashboard-heading > a i, .oto-page .auto-knowledge-grid a i, .oto-page .auto-cta a i { font-size: 15px; font-style: normal; margin-left: 4px; }
+.oto-page .auto-progress { align-items: center; display: flex; gap: 10px; margin: 25px 0 18px; }
+.oto-page .auto-progress > div { align-items: center; display: flex; flex: none; gap: 8px; }
+.oto-page .auto-progress span { align-items: center; background: #e9f4ff; border: 1px solid #cee5fa; border-radius: 50%; color: #1266ce; display: flex; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; height: 25px; justify-content: center; width: 25px; }
+.oto-page .auto-progress b { color: #47637e; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.oto-page .auto-progress > i { background: linear-gradient(90deg, #75baff, #32b8d7); flex: 1; height: 1px; min-width: 14px; }
+.oto-page .auto-segments { display: grid; gap: 11px; }
+.oto-page .auto-segment-group { background: rgba(248,252,255,.88); border: 1px solid #e1edf5; border-radius: 13px; display: grid; gap: 11px; grid-template-columns: 142px 1fr; padding: 10px; }
+.oto-page .auto-segment-group > small { align-self: center; color: #5a738d; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.oto-page .auto-segment-group > div { display: flex; flex-wrap: wrap; gap: 6px; }
+.oto-page .auto-segment-group button { background: #f0f6fb; border: 1px solid transparent; border-radius: 8px; color: #47617a; cursor: pointer; font: 700 13px/1.25 "Be Vietnam Pro","BVP Fallback",sans-serif; padding: 8px 9px; transition: background .25s ease, border-color .25s ease, box-shadow .25s ease, color .25s ease, transform .25s ease; }
+.oto-page .auto-segment-group button:hover { border-color: #a8d1f2; color: #1263c3; transform: translateY(-1px); }
+.oto-page .auto-segment-group button.is-current { background: linear-gradient(135deg, #156ada, #1983da); border-color: #156ada; box-shadow: 0 7px 15px rgba(12,91,191,.18); color: #fff; }
+.oto-page .auto-fee-panel { background: linear-gradient(120deg, rgba(231,245,255,.92), #fff 55%, rgba(237,249,255,.9)); border: 1px solid #cfe5f5; border-radius: 15px; margin-top: 16px; overflow: hidden; padding: 18px; position: relative; }
+.oto-page .auto-fee-panel::after { background: radial-gradient(circle, rgba(41,165,224,.18), transparent 68%); content: ""; height: 250px; pointer-events: none; position: absolute; right: -105px; top: -105px; width: 250px; }
+.oto-page .auto-fee-value { position: relative; z-index: 1; }
+.oto-page .auto-fee-value > span { color: #426280; display: block; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.oto-page .auto-fee-value > span small { color: #7f95aa; font-size: 13px; }
+.oto-page .auto-fee-value strong { color: #0958bc; display: block; font: 800 clamp(30px,4vw,47px)/1 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.06em; margin: 8px 0 7px; text-shadow: 0 5px 18px rgba(19,117,216,.1); }
+.oto-page .auto-fee-value strong em { color: #4a6887; font-size: 13px; font-style: normal; letter-spacing: 0; }
+.oto-page .auto-fee-value p { color: #55728d; font: 700 13px "Be Vietnam Pro","BVP Fallback",sans-serif; margin: 0; }
+.oto-page .auto-fee-line { align-items: center; border-top: 1px solid #dbeaf3; display: flex; flex-wrap: wrap; gap: 7px 9px; margin-top: 15px; padding-top: 13px; position: relative; z-index: 1; }
+.oto-page .auto-fee-line > span { color: #738aa0; font-size: 13px; }
+.oto-page .auto-fee-line > b { color: #143c68; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.oto-page .auto-fee-line > i { color: #1686d6; font-size: 16px; font-style: normal; }
+.oto-page .auto-rule-chip { align-items: center; background: rgba(255,255,255,.65); border-top: 1px solid #dbeaf3; display: flex; gap: 9px; margin: 15px -18px -18px; padding: 10px 18px; position: relative; z-index: 1; }
+.oto-page .auto-rule-chip > span { align-items: center; background: #e3f3ff; border-radius: 8px; color: #1975d2; display: flex; height: 29px; justify-content: center; width: 29px; }
+.oto-page .auto-rule-chip p { display: flex; flex: 1; flex-direction: column; gap: 2px; margin: 0; }
+.oto-page .auto-rule-chip b { color: #355a7c; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.oto-page .auto-rule-chip small { color: #8196a9; font-size: 13px; }
+.oto-page .auto-rule-chip a { color: #1469c9; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.oto-page .auto-dashboard-aside { display: grid; gap: 15px; }
+.oto-page .auto-limit-card { background: #fff; border: 1px solid #deebf4; border-radius: 16px; box-shadow: 0 10px 26px rgba(20,79,132,.05); padding: 20px; }
+.oto-page .auto-limit-card > span { margin-bottom: 15px; }
+.oto-page .auto-limit-card > div { align-items: center; display: flex; gap: 11px; margin-top: 17px; }
+.oto-page .auto-limit-card i { align-items: center; background: #e9f4ff; border-radius: 12px; color: #0d68da; display: flex; font-size: 21px; height: 42px; justify-content: center; width: 42px; }
+.oto-page .auto-limit-card div:nth-child(3) i { background: #fff0f0; color: #df3e45; }
+.oto-page .auto-limit-card p { color: #5b7188; display: flex; flex: 1; flex-direction: column; font-size: 13px; line-height: 1.45; margin: 0; }
+.oto-page .auto-limit-card b { color: #173b66; font: 800 13px/1.35 "Be Vietnam Pro","BVP Fallback",sans-serif; margin-top: 3px; }
+.oto-page .auto-limit-card b small { color: #6e839a; font-size: 13px; }
+.oto-page .auto-section { padding: 88px 0; }
+.oto-page .auto-soft-section { background: #edf6fb; }
+.oto-page .auto-intro { background: #fff; padding-bottom: 82px; }
+.oto-page .auto-intro-grid { display: grid; gap: 75px; grid-template-columns: .9fr 1.1fr; }
+.oto-page .auto-intro h2 { color: #0a315c; font: 800 clamp(29px,4vw,47px)/1.08 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.055em; margin: 15px 0 0; }
+.oto-page .auto-intro h2 em { color: #1169d1; }
+.oto-page .auto-intro-grid > div:last-child { align-self: end; }
+.oto-page .auto-intro p { color: #5d748c; font-size: 14px; line-height: 1.75; margin: 0 0 14px; }
+.oto-page .auto-knowledge-grid { display: grid; gap: 14px; grid-template-columns: repeat(3, 1fr); }
+.oto-page .auto-knowledge-grid article { background: rgba(255,255,255,.9); border: 1px solid #dceaf4; border-radius: 17px; box-shadow: 0 14px 32px rgba(20,77,129,.06); min-height: 218px; padding: 21px; position: relative; transition: border-color .28s ease, box-shadow .28s ease, transform .28s ease; }
+.oto-page .auto-knowledge-grid article:hover { border-color: #a9d1f2; box-shadow: 0 20px 42px rgba(20,77,129,.11); transform: translateY(-3px); }
+.oto-page .auto-knowledge-grid article > span { color: #52a6d9; display: block; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.oto-page .auto-knowledge-grid h2 { color: #12385f; font: 800 17px/1.2 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.035em; margin: 18px 0 9px; }
+.oto-page .auto-knowledge-grid p { color: #667e95; font-size: 13px; line-height: 1.7; margin: 0; }
+.oto-page .auto-knowledge-grid a { bottom: 19px; color: #176bcf; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; position: absolute; }
+.oto-page .auto-limit-list { display: grid; gap: 9px; margin-top: 13px; }
+.oto-page .auto-limit-list p { background: #f3f8fd; border-radius: 9px; display: grid; gap: 2px; padding: 8px 9px; }
+.oto-page .auto-limit-list p span { color: #6d859c; font-size: 13px; }
+.oto-page .auto-limit-list p b { color: #174b86; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.oto-page .auto-limit-list p small { color: #66809d; font-size: 13px; }
+.oto-page .auto-faq-docs { display: grid; gap: 34px; grid-template-columns: 1.25fr .75fr; margin-top: 55px; }
+.oto-page .auto-section-heading > span { margin-bottom: 10px; }
+.oto-page .auto-section-heading h2 { color: #0c345f; font: 800 clamp(25px,3.3vw,39px)/1.12 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.05em; margin: 0; }
+.oto-page .auto-section-heading p { color: #637b92; font-size: 13px; line-height: 1.65; margin: 11px 0 0; max-width: 650px; }
+.oto-page .auto-faqs details { background: rgba(255,255,255,.82); border-bottom: 1px solid #d8e7f0; }
+.oto-page .auto-faqs details:first-of-type { border-top: 1px solid #d8e7f0; margin-top: 25px; }
+.oto-page .auto-faqs summary { align-items: center; color: #153a63; cursor: pointer; display: flex; font: 800 13px/1.5 "Be Vietnam Pro","BVP Fallback",sans-serif; justify-content: space-between; list-style: none; min-height: 61px; padding: 0 10px; }
+.oto-page .auto-faqs summary::-webkit-details-marker { display: none; }
+.oto-page .auto-faqs summary i { align-items: center; border: 1px solid #c4dbeb; border-radius: 50%; color: #1670d3; display: flex; font-size: 17px; font-style: normal; height: 25px; justify-content: center; transition: transform .25s ease, background .25s ease; width: 25px; }
+.oto-page .auto-faqs details[open] summary i { background: #e2f2ff; transform: rotate(45deg); }
+.oto-page .auto-faqs details > p { color: #627b93; font-size: 13px; line-height: 1.72; margin: -2px 48px 16px 10px; }
+.oto-page .auto-docs { background: linear-gradient(145deg, #0a3d76, #075d8e); border-radius: 18px; box-shadow: 0 19px 42px rgba(9,55,109,.16); color: #fff; padding: 25px; }
+.oto-page .auto-docs > span { color: #9ee7ff; }
+.oto-page .auto-docs h2 { font: 800 22px/1.18 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.045em; margin: 12px 0 20px; }
+.oto-page .auto-docs a { border-top: 1px solid rgba(197,235,255,.2); color: #fff; display: grid; gap: 5px; grid-template-columns: 1fr auto; padding: 14px 0; }
+.oto-page .auto-docs small { color: #8adffc; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; grid-column: 1; letter-spacing: .06em; }
+.oto-page .auto-docs b { font: 700 13px/1.45 "Be Vietnam Pro","BVP Fallback",sans-serif; grid-column: 1; }
+.oto-page .auto-docs i { align-self: center; color: #a7eaff; font-size: 16px; font-style: normal; grid-column: 2; grid-row: 1 / span 2; }
+.oto-page .auto-fee-tables { scroll-margin-top: 90px; }
+.oto-page .auto-fee-table-stack { display: grid; gap: 24px; margin-top: 38px; }
+.oto-page .auto-fee-table-card { background: #fff; border: 1px solid #d7e7f2; border-radius: 20px; box-shadow: 0 18px 46px rgba(16,72,121,.07); overflow: hidden; }
+.oto-page .auto-fee-table-card > div:first-child { align-items: center; background: linear-gradient(110deg, #edf7ff 0, #f9fcff 58%, #fff 100%); border-bottom: 1px solid #dbeaf4; display: grid; gap: 5px 18px; grid-template-columns: auto 1fr auto; padding: 23px 26px; }
+.oto-page .auto-fee-table-card > div:first-child > span { background: #e0f0ff; border: 1px solid #c6e2f8; border-radius: 999px; color: #1168c9; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .08em; padding: 7px 9px; }
+.oto-page .auto-fee-table-card h3 { color: #0f3763; font: 800 19px/1.25 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.035em; margin: 0; }
+.oto-page .auto-fee-table-card > div:first-child p { color: #6c849a; font-size: 13px; line-height: 1.55; margin: 0; max-width: 310px; text-align: right; }
+.oto-page .auto-table-scroll { overflow-x: auto; scrollbar-color: #b8d6e9 #edf5fa; }
+.oto-page .auto-fee-table-card table { border-collapse: separate; border-spacing: 0; min-width: 760px; table-layout: fixed; text-align: left; width: 100%; }
+.oto-page .auto-fee-table-card th, .oto-page .auto-fee-table-card td { border-bottom: 1px solid #e3edf4; font-size: 13px; line-height: 1.5; padding: 14px 18px; vertical-align: middle; }
+.oto-page .auto-fee-table-card thead th { background: #f7fbfe; color: #58738c; font: 800 13px/1.4 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .055em; text-transform: uppercase; }
+.oto-page .auto-fee-table-card thead th:first-child, .oto-page .auto-fee-table-card tbody th { width: 40%; }
+.oto-page .auto-fee-table-card thead th:not(:first-child), .oto-page .auto-fee-table-card tbody td { text-align: right; }
+.oto-page .auto-fee-table-card tbody th { color: #1a456f; font: 700 13px/1.5 "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.oto-page .auto-fee-table-card td { color: #3f607d; font-variant-numeric: tabular-nums; }
+.oto-page .auto-fee-table-card td:last-child { color: #0c5fc0; font-weight: 800; }
+.oto-page .auto-fee-table-card tbody tr:nth-child(even) { background: #f9fcfe; }
+.oto-page .auto-fee-table-card tbody tr { transition: background .2s ease; }
+.oto-page .auto-fee-table-card tbody tr:hover { background: #edf7ff; }
+.oto-page .auto-fee-table-card tbody tr:last-child > * { border-bottom: 0; }
+.oto-page .auto-reference-note { align-items: center; background: linear-gradient(105deg, #edf7ff, #f8fcff); border: 1px solid #cae2f3; border-radius: 15px; color: #4e6e89; display: flex; gap: 13px; margin-top: 22px; padding: 16px 18px; }
+.oto-page .auto-reference-note > span { align-items: center; background: #d9edff; border-radius: 50%; color: #176bcf; display: flex; flex: 0 0 auto; font: 800 13px serif; height: 29px; justify-content: center; width: 29px; }
+.oto-page .auto-reference-note p { flex: 1; font-size: 13px; line-height: 1.65; margin: 0; }
+.oto-page .auto-reference-note a { color: #1167ce; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; white-space: nowrap; }
+.oto-page .auto-cta { background: linear-gradient(120deg, #061e42, #0a4d7d 63%, #0788a5 138%); color: #fff; padding: 67px 0; position: relative; }
+.oto-page .auto-cta::after { background-image: linear-gradient(rgba(188,235,255,.09) 1px, transparent 1px), linear-gradient(90deg, rgba(188,235,255,.09) 1px, transparent 1px); background-size: 56px 56px; content: ""; inset: 0; mask-image: linear-gradient(90deg, #000, transparent 72%); position: absolute; }
+.oto-page .auto-cta-inner { align-items: center; display: flex; justify-content: space-between; position: relative; z-index: 1; }
+.oto-page .auto-cta span { color: #91ddf5; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .12em; }
+.oto-page .auto-cta h2 { font: 800 clamp(28px,3.8vw,46px)/1.08 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.05em; margin: 11px 0 0; }
+.oto-page .auto-cta p { color: rgba(219,243,255,.72); font-size: 13px; line-height: 1.65; margin: 13px 0 0; max-width: 530px; }
+.oto-page .auto-cta a { align-items: center; background: #fff; border-radius: 10px; box-shadow: 0 14px 30px rgba(0,13,36,.2); color: #0b57b6; display: inline-flex; flex: none; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; padding: 16px 19px; transition: transform .25s ease, box-shadow .25s ease; }
+.oto-page .auto-cta a:hover { box-shadow: 0 18px 36px rgba(0,13,36,.3); transform: translateY(-3px); }
+@media (max-width: 960px) {
+  .oto-page .auto-dashboard { grid-template-columns: 1fr; }
+  .oto-page .auto-dashboard-aside { grid-template-columns: repeat(2,1fr); }
+  .oto-page .auto-intro-grid { gap: 45px; }
+}
+@media (max-width: 700px) {
+  .oto-page .auto-hero { min-height: 430px; }
+  .oto-page .auto-hero-copy { padding: 65px 0 130px; }
+  .oto-page .auto-hero h1 { font-size: 40px; }
+  .oto-page .auto-hero p { font-size: 13px; }
+  .oto-page .auto-hero-links { flex-direction: column; max-width: 235px; }
+  .oto-page .auto-hero-links > * { justify-content: center; }
+  .oto-page .orb-one { height: 285px; right: -16%; top: 47px; width: 285px; }
+  .oto-page .orb-two { display: none; }
+  .oto-page .auto-product-surface { margin-top: -76px; }
+  .oto-page .auto-choice-grid { flex-direction: column; min-height: 0; }
+  .oto-page .auto-choice-card, .oto-page .state-tnds .card-tnds, .oto-page .state-damage .card-damage, .oto-page .state-tnds .card-damage, .oto-page .state-damage .card-tnds { flex: 0 0 248px; }
+  .oto-page .auto-choice-copy { bottom: 20px; left: 20px; }
+  .oto-page .auto-trust-line { justify-content: flex-start; padding-left: 3px; }
+  .oto-page .auto-dashboard { border-radius: 16px; padding: 8px; }
+  .oto-page .auto-dashboard-main { border-radius: 12px; padding: 17px; }
+  .oto-page .auto-dashboard-heading { flex-direction: column; gap: 9px; }
+  .oto-page .auto-dashboard-heading h2 { font-size: 23px; }
+  .oto-page .auto-progress { gap: 6px; overflow: hidden; }
+  .oto-page .auto-progress b { font-size: 13px; }
+  .oto-page .auto-segment-group { gap: 8px; grid-template-columns: 1fr; }
+  .oto-page .auto-segment-group > div { max-height: 115px; overflow-y: auto; }
+  .oto-page .auto-fee-value strong { font-size: 34px; }
+  .oto-page .auto-fee-line { align-items: baseline; }
+  .oto-page .auto-rule-chip { align-items: flex-start; }
+  .oto-page .auto-rule-chip a { display: none; }
+  .oto-page .auto-dashboard-aside { grid-template-columns: 1fr; }
+  .oto-page .auto-section { padding: 62px 0; }
+  .oto-page .auto-intro-grid { gap: 25px; grid-template-columns: 1fr; }
+  .oto-page .auto-knowledge-grid { grid-template-columns: 1fr; }
+  .oto-page .auto-knowledge-grid article { min-height: 188px; }
+  .oto-page .auto-faq-docs { gap: 18px; grid-template-columns: 1fr; margin-top: 32px; }
+  .oto-page .auto-fee-table-card > div:first-child { align-items: flex-start; flex-direction: column; gap: 5px; }
+  .oto-page .auto-fee-table-card > div:first-child { display: flex; padding: 19px; }
+  .oto-page .auto-fee-table-card > div:first-child p { margin-left: 0; text-align: left; }
+  .oto-page .auto-fee-table-card h3 { font-size: 17px; }
+  .oto-page .auto-table-scroll { overflow: visible; }
+  .oto-page .auto-fee-table-card table { min-width: 0; table-layout: fixed; width: 100%; }
+  .oto-page .auto-fee-table-card th:nth-child(2), .oto-page .auto-fee-table-card td:nth-child(2), .oto-page .auto-fee-table-card th:nth-child(3), .oto-page .auto-fee-table-card td:nth-child(3) { display: none; }
+  .oto-page .auto-fee-table-card thead th:first-child, .oto-page .auto-fee-table-card tbody th { width: 58%; }
+  .oto-page .auto-fee-table-card thead th:last-child, .oto-page .auto-fee-table-card tbody td:last-child { width: 42%; }
+  .oto-page .auto-fee-table-card th, .oto-page .auto-fee-table-card td { font-size: 13px; overflow-wrap: anywhere; padding: 13px 12px; white-space: normal; }
+  .oto-page .auto-fee-table-card thead th { font-size: 13px; letter-spacing: .025em; }
+  .oto-page .auto-fee-table-card tbody td:last-child { font-size: 13px; line-height: 1.45; }
+  .oto-page .auto-reference-note { align-items: flex-start; }
+  .oto-page .auto-reference-note a { display: none; }
+  .oto-page .auto-cta-inner { align-items: flex-start; flex-direction: column; gap: 23px; }
+  .oto-page .auto-cta a { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .oto-page .auto-choice-card, .oto-page .auto-choice-card > img, .oto-page .auto-choice-selected, .oto-page .auto-knowledge-grid article { transition: none; }
+  .oto-page .auto-hero-orb { animation: none; }
+}
+.oto-page .auto-page .auto-hero { background: linear-gradient(180deg, #fff 0%, #f7fbff 100%); min-height: 0; overflow: visible; }
+.oto-page .auto-page .auto-hero::before, .oto-page .auto-page .auto-hero-orb { display: none; }
+.oto-page .auto-page .auto-hero-copy { align-items: center; display: flex; flex-direction: column; padding: 34px 0 26px; text-align: center; }
+.oto-page .auto-page .auto-kicker { background: #eaf5ff; border-color: #cde5f6; color: #1768bd; }
+.oto-page .auto-page .auto-hero h1 { color: #082f60; font-size: clamp(34px, 4vw, 53px); letter-spacing: -.055em; margin: 13px 0 10px; max-width: none; }
+.oto-page .auto-page .auto-hero h1 em { color: #0f65c9; }
+.oto-page .auto-page .auto-hero p { color: #47647f; font-size: 13px; line-height: 1.65; max-width: 720px; }
+.oto-page .auto-page .auto-hero-links { display: none; }
+.oto-page .auto-page .auto-product-surface { margin-top: 0; padding-bottom: 8px; }
+.oto-page .auto-page .auto-choice-grid { gap: 13px; min-height: 284px; }
+.oto-page .auto-page .auto-choice-card { border-radius: 16px; }
+.oto-page .auto-page .auto-choice-copy { bottom: 21px; left: 23px; }
+.oto-page .auto-page .auto-choice-copy > .auto-choice-price { background: #fff; border: 3px solid #ff1c37; box-shadow: 0 14px 30px rgba(130, 0, 25, .32), 0 0 0 4px rgba(255, 28, 55, .13); color: #e00029; gap: 0; isolation: isolate; min-width: 218px; opacity: 1; padding: 10px 15px 11px; position: relative; text-shadow: none; z-index: 4; }
+.oto-page .auto-page .auto-choice-price .auto-choice-price-prefix { color: #b30b25; display: block; font: 900 13px/1 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .075em; margin: 0 0 3px; text-transform: uppercase; }
+.oto-page .auto-page .auto-choice-price .auto-choice-price-amount { color: #e00029; display: block; font: 900 clamp(25px, 2.6vw, 35px)/.98 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.065em; margin: 0; text-shadow: none; }
+.oto-page .auto-page .auto-choice-copy > .auto-choice-price span { color: #ad001d; font-size: 13px; margin-top: 6px; }
+.oto-page .auto-page .card-damage .auto-choice-copy > .auto-choice-price { background: linear-gradient(135deg, #fff 0%, #fff6f7 100%); border-color: #ff1837; box-shadow: 0 16px 34px rgba(113, 0, 23, .42), 0 0 0 5px rgba(255, 31, 55, .16); min-width: 258px; }
+.oto-page .auto-page .card-damage .auto-choice-price .auto-choice-price-prefix, .oto-page .auto-page .card-damage .auto-choice-price span { color: #b40020; }
+.oto-page .auto-page .card-damage .auto-choice-price .auto-choice-price-amount { color: #e5002b; font-size: clamp(28px, 3vw, 39px); }
+.oto-page .auto-page .auto-dashboard { align-items: start; grid-template-columns: minmax(0, 1fr) 300px; }
+.oto-page .auto-page .auto-dashboard-aside { align-content: start; grid-auto-rows: max-content; gap: 12px; }
+.oto-page .auto-page .auto-side-card, .oto-page .auto-page .auto-sidebar-consult { border-radius: 14px; box-shadow: 0 10px 24px rgba(20, 79, 132, .06); padding: 17px; }
+.oto-page .auto-page .auto-limit-card > div { margin-top: 14px; }
+.oto-page .auto-page .auto-limit-card > span, .oto-page .auto-page .auto-side-card > span, .oto-page .auto-page .auto-sidebar-consult > span { color: #1265c3; display: block; font: 900 13px "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .12em; margin-bottom: 12px; }
+.oto-page .auto-page .auto-sidebar-docs { background: #fff; border: 1px solid #deebf4; }
+.oto-page .auto-page .auto-sidebar-docs > a { align-items: center; border-top: 1px solid #e7f0f6; color: #133c67; display: grid; gap: 8px; grid-template-columns: 18px minmax(0, 1fr) 13px; padding: 10px 0; transition: color .22s ease, transform .22s ease; }
+.oto-page .auto-page .auto-sidebar-docs > a:first-of-type { border-top: 0; }
+.oto-page .auto-page .auto-sidebar-docs > a:hover { color: #1068cc; transform: translateX(2px); }
+.oto-page .auto-page .auto-sidebar-docs a > i { color: #1473d8; font-size: 15px; font-style: normal; }
+.oto-page .auto-page .auto-sidebar-docs a p { display: flex; flex-direction: column; gap: 3px; margin: 0; }
+.oto-page .auto-page .auto-sidebar-docs a small { color: #6c869d; font: 700 13px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.oto-page .auto-page .auto-sidebar-docs a b { font: 800 13px/1.35 "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.oto-page .auto-page .auto-sidebar-docs a em { color: #1473d8; font-size: 13px; font-style: normal; }
+.oto-page .auto-page .auto-sidebar-faqs { background: #fff; border: 1px solid #deebf4; }
+.oto-page .auto-page .auto-sidebar-faqs details { border-top: 1px solid #e7f0f6; }
+.oto-page .auto-page .auto-sidebar-faqs summary { align-items: center; color: #274a70; cursor: pointer; display: flex; font: 800 13px/1.45 "Be Vietnam Pro","BVP Fallback",sans-serif; gap: 10px; justify-content: space-between; list-style: none; padding: 10px 0; }
+.oto-page .auto-page .auto-sidebar-faqs summary::-webkit-details-marker { display: none; }
+.oto-page .auto-page .auto-sidebar-faqs summary i { align-items: center; border: 1px solid #c8dfef; border-radius: 50%; color: #176ccd; display: flex; flex: none; font-size: 14px; font-style: normal; height: 20px; justify-content: center; transition: transform .2s ease; width: 20px; }
+.oto-page .auto-page .auto-sidebar-faqs details[open] summary i { transform: rotate(45deg); }
+.oto-page .auto-page .auto-sidebar-faqs details > p { color: #627d95; font-size: 13px; line-height: 1.6; margin: 0 30px 11px 0; }
+.oto-page .auto-page .auto-sidebar-more { color: #126acd; display: inline-flex; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; margin-top: 12px; }
+.oto-page .auto-page .auto-sidebar-more i { font-size: 14px; font-style: normal; margin-left: 5px; }
+.oto-page .auto-page .auto-sidebar-consult { background: linear-gradient(135deg, #eef6ff, #fff); border: 1px solid #cfe2f6; }
+.oto-page .auto-page .auto-sidebar-consult > span { color: #1769c9; }
+.oto-page .auto-page .auto-sidebar-consult h3 { color: #0c386d; font: 800 20px/1.12 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.045em; margin: 0 0 7px; }
+.oto-page .auto-page .auto-sidebar-consult p { color: #53718d; font-size: 13px; line-height: 1.55; margin: 0 0 12px; }
+.oto-page .auto-page .auto-sidebar-consult a { align-items: center; background: #126bd3; border-radius: 8px; color: #fff; display: inline-flex; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; padding: 10px 12px; }
+.oto-page .auto-page .auto-sidebar-consult a i { font-size: 14px; font-style: normal; margin-left: 5px; }
+.oto-page .auto-page .auto-intro { padding: 52px 0 56px; }
+.oto-page .auto-page .auto-intro-grid { align-items: center; gap: 58px; }
+.oto-page .auto-page .auto-intro-grid > div:last-child { align-self: center; }
+.oto-page .auto-page .auto-intro h2 { font-size: clamp(31px, 3.45vw, 45px); margin-top: 12px; }
+.oto-page .auto-page .auto-intro p { font-size: 13px; line-height: 1.68; margin-bottom: 12px; }
+@media (max-width: 960px) {
+  .oto-page .auto-page .auto-dashboard { grid-template-columns: 1fr; }
+  .oto-page .auto-page .auto-dashboard-aside { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .oto-page .auto-page .auto-sidebar-consult { align-self: start; }
+}
+@media (max-width: 700px) {
+  .oto-page .auto-page .auto-hero-copy { align-items: flex-start; padding: 28px 0 21px; text-align: left; }
+  .oto-page .auto-page .auto-hero h1 { font-size: 35px; }
+  .oto-page .auto-page .auto-choice-grid { gap: 11px; }
+  .oto-page .auto-page .auto-choice-card, .oto-page .auto-page .state-tnds .card-tnds, .oto-page .auto-page .state-damage .card-damage, .oto-page .auto-page .state-tnds .card-damage, .oto-page .auto-page .state-damage .card-tnds { flex-basis: 258px; }
+  .oto-page .auto-page .auto-choice-copy > .auto-choice-price, .oto-page .auto-page .card-damage .auto-choice-copy > .auto-choice-price { min-width: 0; width: min(100%, 265px); }
+  .oto-page .auto-page .auto-choice-price .auto-choice-price-amount, .oto-page .auto-page .card-damage .auto-choice-price .auto-choice-price-amount { font-size: 28px; }
+  .oto-page .auto-page .auto-dashboard-aside { grid-template-columns: 1fr; }
+  .oto-page .auto-page .auto-intro { padding: 42px 0 45px; }
+  .oto-page .auto-page .auto-intro-grid { gap: 21px; }
+}
+.oto-page .auto-page {
+  --pvi-readable-body: 16px;
+  --pvi-readable-secondary: 15px;
+  --pvi-readable-ui: 14px;
+  --pvi-readable-caption: 13px;
+  --pvi-readable-ink: #173d66;
+  --pvi-readable-muted: #486783;
+  --pvi-readable-link: #075fae;
+  --pvi-readable-on-dark: #edf8ff;
+  --pvi-readable-on-dark-muted: #d1ebfb;
+}
+.oto-page :is(.v4-home, .detail-page, .auto-page, .content-page, .knowledge-article-page) :is(p, li) {
+  color: var(--pvi-readable-muted);
+  font-size: var(--pvi-readable-secondary) !important;
+  line-height: 1.62 !important;
+}
+.oto-page :is(.v4-home, .detail-page, .auto-page, .content-page, .knowledge-article-page) :is(a, button, label, input, select, textarea, summary) {
+  font-size: var(--pvi-readable-ui) !important;
+  line-height: 1.42 !important;
+}
+.oto-page :is(.v4-home, .detail-page, .auto-page, .content-page, .knowledge-article-page) :is(small, caption) {
+  font-size: var(--pvi-readable-caption) !important;
+  line-height: 1.45 !important;
+}
+.oto-page :is(.v4-home, .detail-page, .auto-page, .content-page, .knowledge-article-page) :is(th, td) {
+  font-size: var(--pvi-readable-ui) !important;
+  line-height: 1.5 !important;
+}
+.oto-page :is(.v4-home, .detail-page, .auto-page, .content-page, .knowledge-article-page) :is(h1, h2, h3, h4) {
+  line-height: 1.17;
+}
+.oto-page :is(.v4-home, .detail-page, .auto-page, .content-page, .knowledge-article-page) :is(p, a, b, small, span, em, strong, summary, th, td) {
+  overflow-wrap: anywhere;
+}
+.oto-page .auto-page :is(.auto-kicker, .auto-trust-line, .auto-dashboard-heading > span, .auto-section-heading > span, .auto-limit-card > span, .auto-side-card > span, .auto-sidebar-consult > span, .auto-damage-prompt > span, .auto-docs > span, .auto-pillar-source small, .auto-choice-price-prefix, .auto-choice-price > span) {
+  color: var(--pvi-readable-muted) !important;
+  font-size: var(--pvi-readable-caption) !important;
+  line-height: 1.45 !important;
+}
+.oto-page .auto-page :is(.auto-header nav a, .auto-header-call, .auto-dashboard-heading > a, .auto-progress b, .auto-segment-group > small, .auto-segment-group button, .auto-rule-chip :is(b, small, a), .auto-sidebar-docs a :is(small, b), .auto-sidebar-faqs summary, .auto-sidebar-more, .auto-sidebar-consult a, .auto-document-grid a :is(small, b), .auto-back-link, .auto-hero-solid-link) {
+  font-size: var(--pvi-readable-ui) !important;
+  line-height: 1.42 !important;
+}
+.oto-page .auto-page :is(.auto-choice-copy em, .auto-fee-value > span, .auto-fee-value > small, .auto-fee-value > p, .auto-fee-line :is(span, b), .auto-limit-card p, .auto-limit-card b, .auto-sidebar-faqs details > p, .auto-sidebar-consult p, .auto-pillar-hero p, .auto-reference-note p) {
+  font-size: var(--pvi-readable-ui) !important;
+  line-height: 1.52 !important;
+}
+.oto-page .auto-page :is(.auto-intro p, .auto-knowledge-grid p, .auto-damage-details p, .auto-damage-considerations p, .auto-fee-table-card > div:first-child p, .auto-faqs details > p, .auto-cta p) {
+  color: var(--pvi-readable-muted) !important;
+  font-size: var(--pvi-readable-secondary) !important;
+  line-height: 1.62 !important;
+}
+.oto-page .auto-page .auto-choice-copy > .auto-choice-price {
+  min-width: 236px;
+  padding: 12px 16px 13px;
+}
+.oto-page .auto-page .auto-choice-price .auto-choice-price-prefix,
+.oto-page .auto-page .card-damage .auto-choice-price .auto-choice-price-prefix,
+.oto-page .auto-page .auto-choice-copy > .auto-choice-price span,
+.oto-page .auto-page .card-damage .auto-choice-price span {
+  color: #a40722 !important;
+}
+.oto-page .auto-page .auto-choice-price .auto-choice-price-amount,
+.oto-page .auto-page .card-damage .auto-choice-price .auto-choice-price-amount {
+  color: #ce0027 !important;
+  font-size: clamp(30px, 3vw, 40px) !important;
+  line-height: 1.04 !important;
+}
+.oto-page .auto-page .auto-choice-grid { min-height: 312px; }
+.oto-page .auto-page .auto-choice-card { min-height: 312px; }
+.oto-page .auto-page .auto-fee-table-card :is(th, td) { padding: 14px 15px; }
+.oto-page .auto-page .auto-fee-table-card thead th { font-size: var(--pvi-readable-caption) !important; }
+.oto-page .auto-page .auto-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.oto-page .auto-page .auto-reference-note a { color: var(--pvi-readable-link) !important; font-size: var(--pvi-readable-ui) !important; }
+.oto-page :is(.v4-home, .detail-page, .auto-page, .content-page, .knowledge-article-page) :is(.v4-official-note, .v4-no-form-note, .auto-reference-note, .auto-rule-chip, .content-note, .knowledge-price-note, .knowledge-aside-note) {
+  color: var(--pvi-readable-ink) !important;
+}
+.oto-page :is(.v4-home, .detail-page, .auto-page, .content-page, .knowledge-article-page) a:not(.pill-glass):not(.detail-brand):not(.knowledge-brand) {
+  color: var(--pvi-readable-link);
+}
+.oto-page :is(.v4-home, .detail-page, .auto-page, .knowledge-article-page) :is(.detail-hero, .detail-final, .auto-choice-card, .auto-cta, .knowledge-article-hero) :is(p, a, small, span, em) {
+  color: var(--pvi-readable-on-dark-muted);
+}
+.oto-page :is(.v4-home, .detail-page, .auto-page, .knowledge-article-page) :is(.detail-hero, .detail-final, .auto-choice-card, .auto-cta, .knowledge-article-hero) :is(h1, h2, h3, b, strong) {
+  color: var(--pvi-readable-on-dark);
+}
+.oto-page .auto-page .auto-choice-copy > .auto-choice-price :is(small, strong, span) { color: #ce0027 !important; }
+.oto-page .auto-page .auto-choice-copy > .auto-choice-price span { color: #a40722 !important; }
+@media (max-width: 700px) {
+
+  .oto-page .auto-page .auto-choice-grid { min-height: 0; }
+  .oto-page .auto-page .auto-choice-card,
+  .oto-page .auto-page .state-tnds .card-tnds,
+  .oto-page .auto-page .state-damage .card-damage,
+  .oto-page .auto-page .state-tnds .card-damage,
+  .oto-page .auto-page .state-damage .card-tnds { flex-basis: 306px; min-height: 306px; }
+  .oto-page .auto-page .auto-choice-copy > .auto-choice-price,
+  .oto-page .auto-page .card-damage .auto-choice-copy > .auto-choice-price { width: min(100%, 290px); }
+  .oto-page .auto-page .auto-choice-price .auto-choice-price-amount,
+  .oto-page .auto-page .card-damage .auto-choice-price .auto-choice-price-amount { font-size: 30px !important; }
+  .oto-page .auto-page .auto-fee-table-card :is(th, td) { padding: 14px 12px; }
+  .oto-page .auto-page .auto-fee-table-card thead th { font-size: var(--pvi-readable-caption) !important; }
+  .oto-page .auto-page .auto-fee-table-card tbody td:last-child { font-size: var(--pvi-readable-ui) !important; }
+}
+.oto-page .auto-page .auto-dashboard-heading span,
+.oto-page .auto-page .auto-progress span,
+.oto-page .auto-page .auto-knowledge-grid article > span,
+.oto-page .auto-page .auto-limit-card p > span,
+.oto-page .auto-page .auto-sidebar-docs a :is(small, b),
+.oto-page .auto-page .auto-rule-chip :is(b, small, a) {
+  font-size: var(--pvi-readable-caption) !important;
+  line-height: 1.45 !important;
+}
+.oto-page .auto-page .auto-progress b,
+.oto-page .auto-page .auto-fee-value strong em,
+.oto-page .auto-page .auto-fee-line :is(span, b),
+.oto-page .auto-page .auto-limit-card b,
+.oto-page .auto-page .auto-limit-list p > span,
+.oto-page .auto-page .auto-docs a > b,
+.oto-page .auto-page .auto-fee-table-card > div:first-child span,
+.oto-page .auto-page .auto-cta span,
+.oto-page .auto-page .auto-sidebar-docs a b {
+  font-size: var(--pvi-readable-ui) !important;
+  line-height: 1.42 !important;
+}
+.oto-page .auto-page .auto-progress {
+  align-items: start;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  overflow: visible;
+}
+.oto-page .auto-page .auto-progress > div { align-items: flex-start; min-width: 0; }
+.oto-page .auto-page .auto-progress > i { display: none; }
+.oto-page .auto-page .auto-progress span { flex: none; font-size: var(--pvi-readable-caption) !important; height: 30px; width: 30px; }
+.oto-page .auto-page .auto-fee-line {
+  align-items: start;
+  display: grid;
+  gap: 7px 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.oto-page .auto-page .auto-fee-line > i { display: none; }
+@media (max-width: 700px) {
+  .oto-page .auto-page .auto-fee-line { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.oto-page .auto-page .auto-choice-selected {
+  background: rgba(4, 31, 65, .9);
+  border: 1px solid rgba(210, 242, 255, .7);
+  border-radius: 999px;
+  color: #ffffff !important;
+  font-size: var(--pvi-readable-ui) !important;
+  line-height: 1.35 !important;
+  padding: 4px 9px;
+  width: fit-content;
+}
+.oto-page .auto-page .auto-choice-selected i { color: #ffffff !important; }
+.oto-page .auto-page .auto-rule-chip > span { background: #0a5da8; color: #ffffff !important; }
+.oto-page .auto-page .auto-limit-card b small,
+.oto-page .auto-page .auto-limit-list p :is(span, small) { color: #355f84 !important; }
+.oto-page .auto-page .auto-sidebar-docs a small { color: #3f617e !important; }
+.oto-page .auto-page .auto-sidebar-consult a,
+.oto-page .auto-page .auto-sidebar-consult a i { color: #ffffff !important; }
+.oto-page .auto-page .auto-reference-note > span { background: #0a5da8; color: #ffffff !important; }
+.oto-page .auto-page {
+  --fs-eyebrow: 13px;   /* nhãn chữ hoa có letter-spacing */
+  --fs-caption: 14px;   /* helper, meta, ghi chú nguồn */
+  --fs-label:   15px;   /* label form/filter, nút, bảng */
+  --fs-card:    15px;   /* mô tả card, body phụ */
+  --fs-body:    16px;   /* body chính, FAQ */
+  --fs-lead:    17px;   /* đoạn dẫn dưới H1 */
+}
+.oto-page .auto-page .auto-kicker,
+.oto-page .auto-page .auto-choice-copy small,
+.oto-page .auto-page .auto-dashboard-heading span,
+.oto-page .auto-page .auto-section-heading > span,
+.oto-page .auto-page .auto-limit-card > span,
+.oto-page .auto-page .auto-side-card > span,
+.oto-page .auto-page .auto-sidebar-consult > span,
+.oto-page .auto-page .auto-docs > span,
+.oto-page .auto-page .auto-segment-group > small,
+.oto-page .auto-page .auto-fee-table-card > div:first-child > span,
+.oto-page .auto-page .auto-cta span,
+.oto-page .auto-page .auto-rule-chip small,
+.oto-page .auto-page .auto-docs small,
+.oto-page .auto-page .auto-sidebar-docs a small,
+.oto-page .auto-page .auto-limit-list p small,
+.oto-page .auto-page .auto-choice-price .auto-choice-price-prefix { font-size: var(--fs-eyebrow); letter-spacing: .07em; }
+.oto-page .auto-page .auto-trust-line,
+.oto-page .auto-page .auto-progress span,
+.oto-page .auto-page .auto-progress b,
+.oto-page .auto-page .auto-fee-line > span,
+.oto-page .auto-page .auto-rule-chip b,
+.oto-page .auto-page .auto-rule-chip a,
+.oto-page .auto-page .auto-reference-note a,
+.oto-page .auto-page .auto-reference-note > span,
+.oto-page .auto-page .auto-limit-card b small,
+.oto-page .auto-page .auto-limit-list p span,
+.oto-page .auto-page .auto-fee-value > span small,
+.oto-page .auto-page .auto-knowledge-grid article > span,
+.oto-page .auto-page .auto-choice-selected,
+.oto-page .auto-page .auto-choice-copy > .auto-choice-price span,
+.oto-page .auto-page .auto-fee-table-card > div:first-child p,
+.oto-page .auto-page .auto-fee-table-card thead th { font-size: var(--fs-caption); letter-spacing: normal; }
+.oto-page .auto-page .auto-segment-group button,
+.oto-page .auto-page .auto-hero-links > *,
+.oto-page .auto-page .auto-dashboard-heading > a,
+.oto-page .auto-page .auto-knowledge-grid a,
+.oto-page .auto-page .auto-sidebar-more,
+.oto-page .auto-page .auto-sidebar-consult a,
+.oto-page .auto-page .auto-cta a,
+.oto-page .auto-page .auto-docs b,
+.oto-page .auto-page .auto-sidebar-docs a b { font-size: var(--fs-label); letter-spacing: normal; }
+.oto-page .auto-page .auto-choice-copy em,
+.oto-page .auto-page .auto-knowledge-grid p,
+.oto-page .auto-page .auto-limit-card p,
+.oto-page .auto-page .auto-limit-list p b,
+.oto-page .auto-page .auto-fee-line > b,
+.oto-page .auto-page .auto-fee-value p,
+.oto-page .auto-page .auto-fee-value > span,
+.oto-page .auto-page .auto-sidebar-consult p,
+.oto-page .auto-page .auto-reference-note p { font-size: var(--fs-card); line-height: 1.65; }
+.oto-page .auto-page .auto-intro p,
+.oto-page .auto-page .auto-section-heading p,
+.oto-page .auto-page .auto-cta p,
+.oto-page .auto-page .auto-faqs summary,
+.oto-page .auto-page .auto-faqs details > p,
+.oto-page .auto-page .auto-sidebar-faqs summary,
+.oto-page .auto-page .auto-sidebar-faqs details > p { font-size: var(--fs-body); line-height: 1.7; }
+.oto-page .auto-page .auto-fee-table-card th,
+.oto-page .auto-page .auto-fee-table-card td,
+.oto-page .auto-page .auto-fee-table-card tbody th,
+.oto-page .auto-page .auto-fee-table-card tbody td:last-child { font-size: var(--fs-label); }
+.oto-page .auto-page .auto-limit-card b,
+.oto-page .auto-page .auto-fee-value strong em { font-size: var(--fs-body); }
+.oto-page .auto-page .auto-hero p { font-size: var(--fs-lead); line-height: 1.72; }
+.oto-page .auto-page .auto-choice-card { align-items: flex-end; display: flex; }
+.oto-page .auto-page .auto-choice-card > .auto-choice-copy {
+  bottom: auto;
+  left: auto;
+  max-width: none;
+  padding: 30px 24px 24px;
+  position: relative;
+  right: auto;
+  width: 100%;
+  z-index: 2;
+}
+@media (max-width: 700px) {
+  .oto-page .auto-page .auto-choice-card,
+  .oto-page .auto-page .state-tnds .card-tnds,
+  .oto-page .auto-page .state-damage .card-damage,
+  .oto-page .auto-page .state-tnds .card-damage,
+  .oto-page .auto-page .state-damage .card-tnds { flex: 0 0 auto; }
+}
+.oto-page .accident-page { padding-bottom: 96px; }
+.oto-page .auto-page .accident-field { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+.oto-page .auto-page .accident-field label { color: #33546f; font-size: var(--fs-label); font-weight: 600; }
+.oto-page .auto-page .accident-field input, .oto-page .auto-page .accident-field select { background: #fff; border: 1px solid rgba(14, 45, 88, .2); border-radius: 12px; color: var(--auto-ink); font-size: var(--fs-body); min-height: 48px; padding: 11px 14px; width: 100%; }
+.oto-page .auto-page .accident-field input:focus-visible, .oto-page .auto-page .accident-field select:focus-visible { border-color: var(--auto-blue); outline: 2px solid rgba(18, 98, 223, .28); outline-offset: 1px; }
+.oto-page .auto-page .accident-field input[aria-invalid="true"] { border-color: #c62828; box-shadow: 0 0 0 1px #c62828; }
+.oto-page .auto-page .accident-field input[aria-invalid="true"]:focus-visible { border-color: #c62828; outline: 2px solid rgba(198, 40, 40, .3); outline-offset: 1px; }
+.oto-page .auto-page .accident-field-error { color: #c62828; font-size: var(--fs-caption); font-weight: 600; line-height: 1.5; margin: 0; }
+.oto-page .auto-page .accident-consent + .accident-field-error { margin-top: -6px; }
+.oto-page .auto-page .accident-primary { align-items: center; background: var(--auto-blue); border: 0; border-radius: 999px; color: #fff; display: inline-flex; font-size: var(--fs-label); font-weight: 700; gap: 9px; justify-content: center; min-height: 48px; padding: 0 24px; transition: background-color .22s ease, box-shadow .22s ease, transform .18s ease; }
+.oto-page .auto-page .accident-primary:hover { background: var(--auto-blue-deep); box-shadow: 0 10px 24px rgba(18, 98, 223, .28); transform: translateY(-1px); }
+.oto-page .auto-page .accident-primary:active { transform: translateY(0); }
+.oto-page .auto-page .accident-secondary { align-items: center; background: #fff; border: 1px solid rgba(14, 45, 88, .2); border-radius: 999px; color: #14477a; display: inline-flex; font-size: var(--fs-label); font-weight: 700; gap: 9px; justify-content: center; min-height: 48px; padding: 0 22px; text-align: center; transition: border-color .22s ease, color .22s ease, background-color .22s ease; }
+.oto-page .auto-page .accident-secondary:hover { background: #f2f8fd; border-color: var(--auto-blue); color: var(--auto-blue-deep); }
+.oto-page .accident-consent { align-items: start; display: grid; gap: 12px; grid-template-columns: 22px minmax(0, 1fr); }
+.oto-page .accident-consent input { height: 22px; margin: 2px 0 0; width: 22px; }
+.oto-page .auto-page .accident-consent span { color: #41607c; font-size: var(--fs-card); line-height: 1.65; }
+@media (max-width: 700px) {
+  .oto-page .accident-page { padding-bottom: 104px; }
+}
+.oto-page .accident-page .auto-segment-group button { min-height: 44px; }
+.oto-page .accident-page .auto-faqs summary, .oto-page .accident-page .auto-docs a { min-height: 44px; }
+.oto-page .accident-page .auto-dashboard-heading > a, .oto-page .accident-page .auto-sidebar-consult a { align-items: center; display: inline-flex; min-height: 44px; }
+.oto-page .accident-page .auto-hero-copy { padding-bottom: 40px; }
+.oto-page .accident-page .auto-hero p { font-size: var(--fs-lead); line-height: 1.75; }
+.oto-page .accident-page .auto-hero-links { display: flex; flex-wrap: wrap; justify-content: center; }
+.oto-page .accident-page .auto-hero-links > * { font-size: var(--fs-label); min-height: 48px; padding: 0 22px; }
+.oto-page .accident-page .auto-hero-links > a:first-child { background: var(--auto-blue); box-shadow: 0 14px 32px rgba(18, 98, 223, .26); color: #fff; }
+.oto-page .accident-page .auto-hero-links > a:first-child:hover { background: var(--auto-blue-deep); }
+.oto-page .accident-page .auto-hero-links > a:last-child { background: #fff; border: 1px solid rgba(14, 45, 88, .2); color: #14477a; }
+.oto-page .accident-page .auto-hero-links > a:last-child:hover { background: #f2f8fd; border-color: var(--auto-blue); }
+.oto-page .accident-page .auto-section > .shell > section { scroll-margin-top: 24px; }
+.oto-page .accident-page .auto-choice-copy { max-width: 340px; }
+@media (max-width: 700px) {
+  .oto-page .accident-page .auto-section { padding: 56px 0; }
+}
+.oto-page .auto-page.accident-page .auto-choice-copy > .auto-choice-price { min-width: 232px; }
+.oto-page .auto-page.accident-page .auto-choice-copy > .auto-choice-price span { line-height: 1.45; text-transform: none; }
+.oto-page .auto-page.accident-page .auto-hero-links > a:first-child { color: #fff !important; }
+.oto-page .accident-page .auto-choice-copy small { display: block; max-width: calc(100% - 104px); }
+.oto-page .accident-page .auto-docs a, .oto-page .accident-page .auto-docs a b, .oto-page .accident-page .auto-docs a i { color: #fff !important; }
+.oto-page .accident-order-page { padding-bottom: 80px; }
+.oto-page .accident-order-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.oto-page .accident-page .accident-field label small { color: #6a839b; font-size: var(--fs-caption); font-weight: 400; }
+.oto-page .accident-page .accident-field textarea { background: #fff; border: 1px solid rgba(14, 45, 88, .2); border-radius: 12px; color: var(--auto-ink); font-family: inherit; font-size: var(--fs-body); line-height: 1.6; padding: 12px 14px; resize: vertical; width: 100%; }
+.oto-page .accident-page .accident-field textarea:focus-visible { border-color: var(--auto-blue); outline: 2px solid rgba(18, 98, 223, .28); outline-offset: 1px; }
+.oto-page .accident-order-summary { background: #eef7ff; border: 1px solid rgba(18, 98, 223, .16); border-radius: 18px; margin-top: 22px; padding: 20px 22px; }
+.oto-page .accident-page .accident-order-summary > div > span { color: #33546f; display: block; font-size: var(--fs-label); }
+.oto-page .accident-page .accident-order-summary strong { color: #0c4f96; display: block; font: 800 clamp(26px, 3.4vw, 36px)/1.05 "Be Vietnam Pro","BVP Fallback",sans-serif; font-variant-numeric: tabular-nums; letter-spacing: -.03em; margin: 6px 0 4px; }
+.oto-page .accident-page .accident-order-summary > div > small { color: #4a6580; font-size: var(--fs-caption); }
+.oto-page .accident-order-done { text-align: left; }
+.oto-page .accident-page .accident-order-code { background: #eef7ff; border-radius: 999px; color: #0b57b6; display: inline-block; font: 800 var(--fs-label)/1 "Be Vietnam Pro","BVP Fallback",sans-serif; padding: 10px 16px; }
+.oto-page .accident-order-done h2 { font: 700 clamp(24px, 3vw, 32px)/1.2 "Be Vietnam Pro","BVP Fallback",sans-serif; margin: 16px 0 12px; }
+.oto-page .accident-page .accident-order-done p { color: #41607c; font-size: var(--fs-body); line-height: 1.75; margin: 0 0 16px; }
+.oto-page .accident-order-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.oto-page .accident-order-message { background: #f2f8fd; border: 1px solid var(--line); border-radius: 14px; color: #41607c; font-family: inherit; font-size: var(--fs-caption); line-height: 1.7; margin: 18px 0 0; overflow-x: auto; padding: 16px; white-space: pre-wrap; word-break: break-word; }
+@media (max-width: 700px) {
+  .oto-page .accident-order-actions .accident-primary, .oto-page .accident-order-actions .accident-secondary { width: 100%; }
+}
+.oto-page .accident-order-qr { align-items: center; display: flex; gap: 16px; margin-top: 20px; }
+.oto-page .accident-order-qr img { background: #fff; border: 1px solid var(--line); border-radius: 14px; flex: none; height: 148px; padding: 8px; width: 148px; }
+.oto-page .accident-page .accident-order-qr p { color: #5c7791; font-size: var(--fs-card); line-height: 1.65; margin: 0; }
+@media (max-width: 700px) {
+  .oto-page .accident-order-qr { display: none; }
+}
+.oto-page .accident-order-page .accident-order-online small { font-size: 14px; line-height: 1.5; }
+.oto-page .accident-order-page .accident-order-online input[type="checkbox"],
+.oto-page .accident-order-page .accident-consent input[type="checkbox"] {
+  flex: none;
+  height: 22px;
+  width: 22px;
+}
+.oto-page .accident-order-page .accident-order-online {
+  align-items: flex-start;
+  background: #f3f8fd;
+  border: 1px solid #d8e7f5;
+  border-radius: 14px;
+  cursor: pointer;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+  min-height: 44px;
+  padding: 14px 16px;
+}
+.oto-page .accident-order-page .accident-order-online span {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.oto-page .accident-order-page .accident-order-online b { color: #0b57b6; font-size: 15px; }
+.oto-page .accident-order-page .accident-order-online-note { font-size: 14px !important; line-height: 1.5; }
+.oto-page .tnds-order-page .accident-consent {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  min-height: 44px;
+}
+.oto-page .tnds-pay {
+  align-items: start;
+  background: #f3f8fd;
+  border: 1px solid #d8e7f5;
+  border-radius: 18px;
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 1fr auto;
+  margin: 20px 0 24px;
+  padding: 22px 24px;
+  text-align: left;
+}
+.oto-page .tnds-pay h3 { color: #0d365f; font: 800 20px/1.3 "Be Vietnam Pro","BVP Fallback",sans-serif; margin: 0 0 8px; }
+.oto-page .tnds-pay p { color: #55718d; font-size: 15px; line-height: 1.6; margin: 0 0 14px; }
+.oto-page .tnds-pay dl { display: grid; gap: 8px; margin: 0; }
+.oto-page .tnds-pay dl > div { display: flex; flex-wrap: wrap; gap: 4px 10px; }
+.oto-page .tnds-pay dt { color: #6c8399; font-size: 14px; min-width: 118px; }
+.oto-page .tnds-pay dd { color: #143a63; font-size: 15px; font-weight: 700; margin: 0; }
+.oto-page .tnds-pay-note { color: #55718d; font-size: 14px !important; line-height: 1.6; margin: 14px 0 0 !important; }
+.oto-page .tnds-pay-qr {
+  background: #fff;
+  border: 1px solid #dfe9f0;
+  border-radius: 14px;
+  padding: 10px;
+}
+.oto-page .tnds-pay-qr img { display: block; height: auto; width: 220px; }
+@media (max-width: 760px) {
+  .oto-page .tnds-pay { grid-template-columns: 1fr; justify-items: center; padding: 20px; text-align: center; }
+  .oto-page .tnds-pay dl > div { justify-content: center; }
+  .oto-page .tnds-pay dt { min-width: 0; }
+}
+.oto-page .tnds-pay .tnds-copy {
+  background: #eaf3fd;
+  border: 1px solid #cfe2f7;
+  border-radius: 7px;
+  color: #0b57b6;
+  cursor: pointer;
+  font: 700 14px "Be Vietnam Pro","BVP Fallback",sans-serif;
+  margin-left: 8px;
+  padding: 3px 9px;
+  transition: background .18s ease;
+  vertical-align: baseline;
+}
+.oto-page .tnds-pay .tnds-copy:hover { background: #0b57b6; color: #fff; }
+.oto-page .tnds-save-qr {
+  background: #0b57b6;
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font: 800 15px "Be Vietnam Pro","BVP Fallback",sans-serif;
+  margin-top: 12px;
+  min-height: 44px;
+  padding: 11px 16px;
+  transition: background .18s ease;
+  width: 100%;
+}
+.oto-page .tnds-save-qr:hover { background: #08468f; }
+.oto-page .tnds-save-hint {
+  color: #55718d;
+  display: block;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 8px;
+  max-width: 240px;
+}
+@media (max-width: 760px) {
+  .oto-page .tnds-save-hint { margin-inline: auto; text-align: center; }
+}
+.oto-page .tnds-pay .tnds-save-hint { font-size: 14px !important; }
+.oto-page .tnds-pay .tnds-copy {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  min-height: 44px;
+  padding: 3px 12px;
+}
+.oto-page .tnds-verify {
+  background: #fff7ed;
+  border: 1px solid #f0cfa0;
+  border-radius: 14px;
+  grid-column: 1 / -1;
+  padding: 16px 18px;
+}
+.oto-page .tnds-verify b {
+  color: #9a5406;
+  display: block;
+  font: 800 15px "Be Vietnam Pro","BVP Fallback",sans-serif;
+  letter-spacing: .04em;
+  margin-bottom: 8px;
+}
+.oto-page .tnds-verify p {
+  color: #7c4a10 !important;
+  font-size: 15px !important;
+  line-height: 1.6;
+  margin: 0 0 8px !important;
+}
+.oto-page .tnds-verify p:last-child { margin-bottom: 0 !important; }
+.oto-page .tnds-verify strong { color: #6b3d06; font-weight: 800; }
+.oto-page .tnds-confirm { grid-column: 1 / -1; }
+.oto-page .tnds-confirm > label {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 11px;
+  min-height: 44px;
+  padding: 4px 0;
+}
+.oto-page .tnds-confirm > label input[type="checkbox"] { flex: none; height: 22px; width: 22px; }
+.oto-page .tnds-confirm > label span { color: #143a63; font-size: 15px; line-height: 1.5; }
+.oto-page .tnds-paid-btn {
+  background: #0b57b6;
+  border: 0;
+  border-radius: 12px;
+  color: #fff;
+  cursor: pointer;
+  font: 800 15px "Be Vietnam Pro","BVP Fallback",sans-serif;
+  margin-top: 10px;
+  min-height: 48px;
+  padding: 13px 20px;
+  transition: background .18s ease;
+}
+.oto-page .tnds-paid-btn:hover:not(:disabled) { background: #08468f; }
+.oto-page .tnds-paid-btn:disabled { background: #b9cadb; cursor: not-allowed; }
+.oto-page .tnds-paid {
+  background: #e7f4ee;
+  border: 1px solid #b9ddcb;
+  border-radius: 14px;
+  margin-top: 12px;
+  padding: 16px 18px;
+}
+.oto-page .tnds-paid b { color: #145c40; display: block; font-size: 15px; margin-bottom: 6px; }
+.oto-page .tnds-paid p { color: #2c6b51 !important; font-size: 15px !important; line-height: 1.6; margin: 0 0 12px !important; }
+.oto-page .tnds-paid small { color: #2c6b51; display: block; font-size: 14px; margin-top: 8px; }
+.oto-page .tnds-qr-error {
+  background: #fff7ed;
+  border: 1px dashed #f0cfa0;
+  border-radius: 12px;
+  color: #9a5406 !important;
+  font-size: 15px !important;
+  line-height: 1.6;
+  margin: 0 !important;
+  padding: 16px;
+  text-align: center;
+}
+@media (max-width: 760px) {
+  .oto-page .tnds-verify, .oto-page .tnds-paid { padding: 14px 16px; }
+  .oto-page .tnds-verify p, .oto-page .tnds-confirm > label span { text-align: left; }
+  .oto-page .tnds-paid-btn { width: 100%; }
+}
+.oto-page .auto-segment-group > .tnds-tonnage { align-items: stretch; display: grid; gap: 8px; max-height: none; overflow: visible; }
+.oto-page .tnds-tonnage label { color: #2c4969; font: 700 14px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.oto-page .tnds-tonnage input {
+  background: #fff;
+  border: 1.5px solid #b9d6f2;
+  border-radius: 10px;
+  color: #12365e;
+  font-family: inherit;
+  font-weight: 700;
+  max-width: 220px;
+  padding: 11px 13px;
+  width: 100%;
+}
+.oto-page .tnds-tonnage input:focus { border-color: #0b57b6; box-shadow: 0 0 0 4px rgba(11,87,182,.14); outline: none; }
+.oto-page .tnds-tonnage p { color: #35618c; font-size: 14px; line-height: 1.5; margin: 0; }
+.oto-page .tnds-tonnage-help { color: #4d6d8c; display: block; font-size: 14px; line-height: 1.5; margin: 6px 0 14px; }
+.oto-page .auto-page {
+  --pvi-readable-secondary: 16px;
+  --pvi-readable-ui: 15px;
+  --pvi-readable-caption: 13px;
+  --pvi-on-dark-text: #f4faff;
+  --pvi-on-dark-body: #e3f0fb;
+  --pvi-on-dark-link: #a9dcff;
+}
+@media (max-width: 700px) {
+  .oto-page .auto-page {
+    --pvi-readable-ui: 16px;
+    --pvi-readable-caption: 14px;
+  }
+}
+.oto-page :is(.content-hero, .content-article-cta, .accident-article-cta, .auto-cta, .auto-docs,
+    .detail-hero, .benefit-section, .exclusions-section, .claim-section, .detail-final,
+    .auto-pillar-hero, .auto-sidebar-consult.accident-offer, .accident-discount-band,
+    .knowledge-article-nav, .knowledge-article-hero, .knowledge-price-result,
+    .knowledge-claim-flow, .knowledge-article-cta, .v15-claim-guide, .v4-yagi,
+    .v7-contact-card.customer-care, .claims-garage, .about-contact, .fire-hub-alert)
+  :is(p, li, span, small, i, label, dt, dd, time, figcaption, .tiny-label, .content-eyebrow,
+      .content-label, .detail-tag, .auto-kicker, .knowledge-kicker):not(:is(.content-primary, .accident-primary, .detail-float-card, .coverage-panel,
+           .pill-white, .auto-choice-price, .auto-tier-flag, .auto-hero-solid-link,
+           .accident-offer-cta, .fire-hub-alert-cta, .legal-footer-moit, h1, h2, h3) *) {
+  color: var(--pvi-on-dark-body) !important;
+}
+.oto-page :is(.content-hero, .content-article-cta, .accident-article-cta, .auto-cta, .auto-docs,
+    .detail-hero, .benefit-section, .exclusions-section, .claim-section, .detail-final,
+    .auto-pillar-hero, .auto-sidebar-consult.accident-offer, .accident-discount-band,
+    .knowledge-article-nav, .knowledge-article-hero, .knowledge-price-result,
+    .knowledge-claim-flow, .knowledge-article-cta, .v15-claim-guide, .v4-yagi,
+    .v7-contact-card.customer-care, .claims-garage, .about-contact, .fire-hub-alert)
+  :is(h1, h2, h3, h4, b, strong):not(:is(.content-primary, .accident-primary, .detail-float-card, .coverage-panel,
+           .pill-white, .auto-choice-price, .auto-tier-flag, .auto-hero-solid-link,
+           .accident-offer-cta, .fire-hub-alert-cta, .legal-footer-moit) *) {
+  color: var(--pvi-on-dark-text) !important;
+}
+.oto-page :is(.content-hero, .content-article-cta, .accident-article-cta, .auto-cta, .auto-docs,
+    .detail-hero, .benefit-section, .exclusions-section, .claim-section, .detail-final,
+    .auto-pillar-hero, .knowledge-article-hero, .knowledge-claim-flow, .knowledge-article-cta,
+    .v15-claim-guide, .v4-yagi, .claims-garage, .about-contact)
+  :is(nav a, .content-breadcrumb a, .detail-breadcrumb a, .knowledge-breadcrumb a) {
+  color: var(--pvi-on-dark-link) !important;
+}
+.oto-page .auto-page .auto-docs a,
+.oto-page .auto-page .auto-docs a :is(b, strong, small, span) {
+  color: var(--pvi-on-dark-text) !important;
+}
+.oto-page .auto-page .auto-segment-group button.is-current {
+  background: linear-gradient(135deg, #125fc6, #1269c0) !important;
+}
+.oto-page :is(.v4-home, .detail-page, .auto-page, .content-page, .knowledge-article-page, .gara-page)
+  :is(.gara-card address, .gara-card .gara-brand, .gara-stats span, .gara-quick span,
+      .attachment-meta, .attachment-card span, .plan-note, .fire-tariff-name i,
+      .knowledge-topic-copy em, .pvi-production-product-card small, .claims-page p,
+      .auto-segment-group > small, .auto-fee-line span) {
+  color: #45617d !important;
+}
+.oto-page .auto-page {
+  --pvi-readable-caption: 14px;
+}
+@media (max-width: 700px) {
+.oto-page :is(a.is-current > span),
+.oto-page :is(button.is-selected > b),
+.oto-page :is(div.shell b > span),
+.oto-page :is(section.auto-sidebar-docs.auto-side-card a > em) {
+  font-size: 14px !important;
+}
+}
+@media (min-width: 701px) {
+.oto-page :is(a.is-current > span),
+.oto-page :is(aside.auto-docs > span),
+.oto-page :is(aside.auto-docs a > small),
+.oto-page :is(b.auto-choice-price > span),
+.oto-page :is(b.auto-choice-price small.auto-choice-price-prefix),
+.oto-page :is(button.is-selected > b),
+.oto-page :is(button.is-selected > small),
+.oto-page :is(div.auto-dashboard-heading div > span),
+.oto-page :is(div.auto-fee-panel strong > small),
+.oto-page :is(div.auto-fee-value span > small),
+.oto-page :is(div.auto-limit-list b > small),
+.oto-page :is(div.auto-progress div > span),
+.oto-page :is(div.auto-section-heading > span),
+.oto-page :is(div.auto-trust-line > span),
+.oto-page :is(div.shell b > span),
+.oto-page :is(div.shell span.auto-kicker),
+.oto-page :is(div.shell.auto-hero-copy span.auto-kicker),
+.oto-page :is(div.shell.auto-intro-grid span.auto-kicker.blue),
+.oto-page :is(section.auto-knowledge-grid article > span),
+.oto-page :is(section.auto-limit-card.auto-side-card > span),
+.oto-page :is(section.auto-limit-card.auto-side-card b > small),
+.oto-page :is(section.auto-sidebar-consult > span),
+.oto-page :is(section.auto-sidebar-docs.auto-side-card > span),
+.oto-page :is(section.auto-sidebar-docs.auto-side-card a > em),
+.oto-page :is(section.auto-sidebar-faqs.auto-side-card > span),
+.oto-page :is(span.auto-choice-copy > small) {
+  font-size: 14px !important;
+}
+}
+.js-cuon .oto-page .auto-page .cuon-hien {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity .6s cubic-bezier(.16, 1, .3, 1),
+    transform .6s cubic-bezier(.16, 1, .3, 1);
+  transition-delay: calc(var(--cuon-thu-tu, 0) * 70ms);
+}
+.js-cuon .oto-page .auto-page .cuon-hien.da-hien {
+  opacity: 1;
+  transform: none;
+}
+.oto-page .auto-page .cuon-gach {
+  position: relative;
+}
+.oto-page .auto-page .cuon-gach::after {
+  background: linear-gradient(90deg, #0b57b6, #2f97e0);
+  border-radius: 3px;
+  bottom: -10px;
+  content: "";
+  height: 3px;
+  left: 0;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .85s cubic-bezier(.16, 1, .3, 1) .12s;
+  width: min(220px, 60%);
+}
+.oto-page .auto-page .cuon-gach.da-hien::after {
+  transform: scaleX(1);
+}
+.oto-page .auto-page .auto-cta-inner .cuon-gach::after {
+  background: linear-gradient(90deg, #9fd8ff, #ffffff);
+}
+.oto-page .auto-page .auto-hero-copy h1 em {
+  background: linear-gradient(100deg, #0b57b6 0%, #1a7fd4 26%, #0b57b6 52%, #1a7fd4 78%, #0b57b6 100%);
+  background-clip: text;
+  background-size: 260% 100%;
+  color: #0b57b6;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: pvi-chu-chay-mau 7s linear infinite;
+}
+.oto-page .auto-page .auto-intro h2 em {
+  background: linear-gradient(100deg, #0b57b6 0%, #2f97e0 28%, #0b57b6 56%, #2f97e0 84%, #0b57b6 100%);
+  background-clip: text;
+  background-size: 260% 100%;
+  color: #1169d1;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: pvi-chu-chay-mau 7s linear infinite;
+}
+.oto-page .auto-page .auto-hero-copy .auto-kicker::before {
+  animation: pvi-cham-tho 2.6s ease-in-out infinite;
+  background: #4fc3f7;
+  border-radius: 50%;
+  content: "";
+  display: inline-block;
+  height: 8px;
+  margin-right: 8px;
+  vertical-align: baseline;
+  width: 8px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .js-cuon .oto-page .auto-page .cuon-hien {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .oto-page .auto-page .cuon-gach::after {
+    transform: scaleX(1);
+    transition: none;
+  }
+
+  .oto-page .auto-page .auto-hero-copy h1 em,
+  .oto-page .auto-page .auto-intro h2 em,
+  .oto-page .auto-page .auto-hero-copy .auto-kicker::before {
+    animation: none;
+  }
+}
+@keyframes autoTickPulse { 0%, 100% { box-shadow: 0 6px 16px rgba(4, 24, 56, .28), 0 0 0 0 rgba(255, 255, 255, .7); } 50% { box-shadow: 0 6px 16px rgba(4, 24, 56, .28), 0 0 0 8px rgba(255, 255, 255, 0); } }
+@keyframes autoOrbit { to { transform: rotate(360deg); } }
+@keyframes autoOrbitReverse { to { transform: rotate(-360deg); } }
+@keyframes pvi-chu-chay-mau {
+  to {
+    background-position: -260% 0;
+  }
+}
+@keyframes pvi-cham-tho {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .45; transform: scale(.72); }
+}
+/* ── online-purchase-cta.module.css ── */
+.oto-page .ocp-feePanel {
+  padding: 0;
+}
+.oto-page .ocp-feePanel::after {
+  opacity: 0.38;
+}
+
+.oto-page .ocp-feeContent {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(0, 1fr) minmax(290px, 0.82fr);
+  padding: 21px;
+  position: relative;
+  z-index: 1;
+}
+
+.oto-page .ocp-feeSummary {
+  align-content: center;
+  display: grid;
+  min-width: 0;
+}
+
+.oto-page .ocp-ruleChip .auto-rule-chip {
+  margin: 0;
+  padding: 13px 21px;
+}
+
+.oto-page .ocp-purchaseCard {
+  background:
+    radial-gradient(circle at 88% 12%, rgba(169, 238, 255, 0.62), transparent 29%),
+    radial-gradient(circle at 12% 115%, rgba(91, 73, 231, 0.48), transparent 44%),
+    linear-gradient(132deg, #073e9c 0%, #086dcc 50%, #5951c8 100%);
+  border: 1px solid rgba(179, 239, 255, 0.48);
+  border-radius: 15px;
+  box-shadow: 0 16px 30px rgba(18, 75, 174, 0.24);
+  color: #fff;
+  overflow: hidden;
+  padding: 19px;
+  position: relative;
+  transition: box-shadow 300ms ease, transform 300ms ease;
+}
+
+.oto-page .ocp-purchaseCard::before {
+  background: linear-gradient(112deg, transparent 25%, rgba(255, 255, 255, 0.18) 48%, transparent 70%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  transform: translateX(-108%);
+  transition: transform 650ms ease;
+}
+
+.oto-page .ocp-purchaseCard:hover {
+  box-shadow: 0 20px 36px rgba(18, 75, 174, 0.32);
+  transform: translateY(-2px);
+}
+
+.oto-page .ocp-purchaseCard:hover::before {
+  transform: translateX(108%);
+}
+
+.oto-page .ocp-purchaseHeader,
+.oto-page .ocp-checkboxRow,
+.oto-page .ocp-onlinePrice,
+.oto-page .ocp-nextStep {
+  position: relative;
+  z-index: 1;
+}
+
+.oto-page .ocp-purchaseHeader {
+  align-items: center;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 38px minmax(0, 1fr) auto;
+}
+
+.oto-page .ocp-cartIcon,
+.oto-page .ocp-secureMark {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(235, 251, 255, 0.42);
+  border-radius: 12px;
+  display: inline-flex;
+  height: 38px;
+  justify-content: center;
+  width: 38px;
+}
+
+.oto-page .ocp-cartIcon svg {
+  height: 24px;
+  width: 24px;
+}
+
+.oto-page .ocp-secureMark {
+  background: rgba(204, 247, 255, 0.9);
+  color: #0759bb;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.oto-page .ocp-eyebrow {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.oto-page .ocp-purchaseHeader h3 {
+  color: #fff7b8;
+  font-size: clamp(23px, 2.1vw, 30px);
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  margin: 3px 0 0;
+}
+
+.oto-page .ocp-certificate {
+  color: rgba(244, 252, 255, 0.9);
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 11px 0 14px;
+}
+
+.oto-page .ocp-checkboxRow {
+  align-items: flex-start;
+  cursor: pointer;
+  display: grid;
+  font-size: 14px;
+  font-weight: 700;
+  gap: 9px;
+  grid-template-columns: 20px minmax(0, 1fr);
+  line-height: 1.4;
+}
+
+.oto-page .ocp-checkboxRow input {
+  appearance: none;
+  height: 20px;
+  margin: 0;
+  opacity: 0;
+  position: absolute;
+  width: 20px;
+}
+
+.oto-page .ocp-checkboxControl {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 6px;
+  color: transparent;
+  display: flex;
+  font-size: 14px;
+  font-weight: 900;
+  height: 20px;
+  justify-content: center;
+  transition: background 250ms ease, border-color 250ms ease, color 250ms ease, transform 250ms ease;
+  width: 20px;
+}
+
+.oto-page .ocp-checkboxRow input:checked + .ocp-checkboxControl {
+  background: #fff;
+  border-color: #fff;
+  color: #125dc1;
+  transform: scale(1.04);
+}
+
+.oto-page .ocp-checkboxRow input:focus-visible + .ocp-checkboxControl {
+  outline: 3px solid rgba(215, 249, 255, 0.88);
+  outline-offset: 3px;
+}
+
+.oto-page .ocp-checkboxRow input:disabled + .ocp-checkboxControl {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.oto-page .ocp-onlinePrice {
+  border-top: 1px solid rgba(225, 249, 255, 0.3);
+  display: grid;
+  gap: 5px;
+  margin-top: 14px;
+  padding-top: 13px;
+}
+
+.oto-page .ocp-originalPrice {
+  color: rgba(235, 248, 255, 0.82);
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.oto-page .ocp-originalPrice s {
+  color: #fff;
+  font-weight: 800;
+}
+
+.oto-page .ocp-onlinePrice > strong {
+  color: #fff;
+  font-size: clamp(27px, 2.8vw, 38px);
+  font-variant-numeric: tabular-nums;
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  line-height: 1;
+  text-shadow: 0 5px 18px rgba(0, 26, 95, 0.27);
+  transition: color 420ms ease;
+}
+
+.oto-page .ocp-onlinePrice > strong small {
+  color: rgba(235, 250, 255, 0.9);
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.4;
+  margin-top: 5px;
+}
+
+.oto-page .ocp-savings {
+  color: #fff5a3;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.oto-page .ocp-discountBreakdown {
+  color: rgba(235, 250, 255, 0.85);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.oto-page .ocp-unavailable {
+  color: rgba(239, 250, 255, 0.86);
+  font-size: 14px;
+  line-height: 1.45;
+  margin: 14px 0 0;
+}
+
+.oto-page .ocp-purchaseButton {
+  align-items: center;
+  background: linear-gradient(105deg, #fff 0%, #e7fbff 100%);
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 10px 18px rgba(0, 23, 92, 0.2);
+  color: #0757b6;
+  cursor: pointer;
+  display: flex;
+  font-size: 14px;
+  font-weight: 900;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+  min-height: 46px;
+  overflow: hidden;
+  padding: 0 16px;
+  position: relative;
+  transition: box-shadow 250ms ease, transform 250ms ease;
+  width: 100%;
+  z-index: 1;
+}
+
+.oto-page .ocp-purchaseButton::before {
+  background: linear-gradient(108deg, transparent 27%, rgba(88, 210, 255, 0.42) 49%, transparent 70%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  transform: translateX(-110%);
+  transition: transform 620ms ease;
+}
+
+.oto-page .ocp-purchaseButton > span {
+  font-size: 21px;
+  line-height: 1;
+  transition: transform 250ms ease;
+}
+
+.oto-page .ocp-purchaseButton:hover:not(:disabled) {
+  box-shadow: 0 14px 23px rgba(0, 23, 92, 0.28);
+  transform: translateY(-2px);
+}
+
+.oto-page .ocp-purchaseButton:hover:not(:disabled)::before {
+  transform: translateX(110%);
+}
+
+.oto-page .ocp-purchaseButton:hover:not(:disabled) > span {
+  transform: translateX(4px);
+}
+
+.oto-page .ocp-purchaseButton:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.oto-page .ocp-purchaseButton:focus-visible {
+  outline: 3px solid #d8f9ff;
+  outline-offset: 3px;
+}
+
+.oto-page .ocp-purchaseButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.62;
+}
+
+.oto-page .ocp-nextStep {
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(234, 250, 255, 0.34);
+  border-radius: 10px;
+  display: grid;
+  gap: 3px;
+  margin-top: 12px;
+  padding: 10px 11px;
+}
+
+.oto-page .ocp-nextStep b {
+  color: #fff9bd;
+  font-size: 14px;
+}
+
+.oto-page .ocp-nextStep span {
+  color: rgba(245, 252, 255, 0.9);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+@media (max-width: 700px) {
+  .oto-page .ocp-feeContent {
+    grid-template-columns: 1fr;
+    padding: 17px;
+  }
+
+  .oto-page .ocp-purchaseCard {
+    padding: 18px;
+  }
+
+  .oto-page .ocp-ruleChip .auto-rule-chip {
+    padding: 12px 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oto-page .ocp-purchaseCard,
+  .oto-page .ocp-purchaseCard::before,
+  .oto-page .ocp-checkboxControl,
+  .oto-page .ocp-onlinePrice > strong,
+  .oto-page .ocp-purchaseButton,
+  .oto-page .ocp-purchaseButton::before,
+  .oto-page .ocp-purchaseButton > span {
+    transition: none;
+  }
+}
+
+/* Rule chung toan site ":is(.auto-page, ...) :is(p, li)" to mau xam cho moi
+   doan van va co do uu tien cao hon mot class trong module, nen chu trang tren
+   nen xanh cua the bi to xam, gan nhu khong doc duoc. Ghi de bang 2 class. */
+.oto-page .ocp-purchaseCard .ocp-certificate {
+  color: rgba(244, 252, 255, 0.9);
+}
+
+.oto-page .ocp-purchaseCard .ocp-unavailable {
+  color: rgba(239, 250, 255, 0.86);
+}
+
+/* ==================================================================
+   TAI NẠN NGƯỜI NGỒI TRÊN XE (NNTX) — tuỳ chọn thêm trong ô kết quả phí.
+   Nền của ô kết quả là gradient xanh nhạt nên chữ dùng mực đậm #173d66;
+   mọi cỡ chữ từ 14px trở lên, ô bấm cao tối thiểu 44px.
+   ================================================================== */
+.oto-page .ocp-nntx {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid #cfe2f2;
+  border-radius: 13px;
+  display: grid;
+  gap: 13px;
+  margin-top: 15px;
+  padding: 14px 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.oto-page .ocp-nntxToggle {
+  align-items: start;
+  cursor: pointer;
+  display: grid;
+  gap: 11px;
+  grid-template-columns: 22px minmax(0, 1fr);
+  min-height: 44px;
+}
+
+.oto-page .ocp-nntxToggle input {
+  appearance: none;
+  height: 22px;
+  margin: 0;
+  opacity: 0;
+  position: absolute;
+  width: 22px;
+}
+
+.oto-page .ocp-nntxCheck {
+  align-items: center;
+  background: #fff;
+  border: 2px solid #9dbfdd;
+  border-radius: 6px;
+  color: transparent;
+  display: flex;
+  font-size: 15px;
+  font-weight: 900;
+  height: 22px;
+  justify-content: center;
+  transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
+  width: 22px;
+}
+
+.oto-page .ocp-nntxToggle input:checked + .ocp-nntxCheck {
+  background: #0d68da;
+  border-color: #0d68da;
+  color: #fff;
+}
+
+.oto-page .ocp-nntxToggle input:focus-visible + .ocp-nntxCheck {
+  outline: 3px solid #7cc0ff;
+  outline-offset: 2px;
+}
+
+.oto-page .ocp-nntxToggleText b {
+  color: #10406f;
+  display: block;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.oto-page .ocp-nntxToggleText small {
+  color: #4a6887;
+  display: block;
+  font-size: 14px;
+  line-height: 1.45;
+  margin-top: 3px;
+}
+
+.oto-page .ocp-nntxFields {
+  display: grid;
+  gap: 11px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+}
+
+.oto-page .ocp-nntxField {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.oto-page .ocp-nntxField label {
+  color: #345b7f;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.oto-page .ocp-nntxField input,
+.oto-page .ocp-nntxField select {
+  background: #fff;
+  border: 1px solid #b9d3e8;
+  border-radius: 9px;
+  color: #10406f;
+  font: 700 16px "Be Vietnam Pro","BVP Fallback",sans-serif;
+  min-height: 46px;
+  padding: 0 11px;
+  width: 100%;
+}
+
+.oto-page .ocp-nntxField input:focus-visible,
+.oto-page .ocp-nntxField select:focus-visible {
+  border-color: #0d68da;
+  outline: 3px solid #a9d6ff;
+  outline-offset: 1px;
+}
+
+.oto-page .ocp-nntxField input[aria-invalid="true"] {
+  border-color: #c4262e;
+}
+
+.oto-page .ocp-nntxHint {
+  color: #5b7893;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+/* Số chỗ hiển thị lại (không nhập ở đây): khách nhập một lần ở bước 04. */
+.oto-page .ocp-nntxReadonlyLabel {
+  color: #345b7f;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.oto-page .ocp-nntxReadonly {
+  align-items: baseline;
+  color: #10406f;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 15px;
+  gap: 4px 10px;
+  line-height: 1.45;
+  margin: 0;
+  min-height: 46px;
+}
+
+.oto-page .ocp-nntxReadonly b {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.oto-page .ocp-nntxReadonly a {
+  color: #0a5fc4;
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: underline;
+  width: 100%;
+}
+
+.oto-page .ocp-nntxError {
+  color: #b71c22;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.oto-page .ocp-nntxTotals {
+  border-top: 1px solid #dbeaf3;
+  display: grid;
+  gap: 7px;
+  padding-top: 11px;
+}
+
+.oto-page .ocp-nntxTotals > div {
+  align-items: baseline;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.oto-page .ocp-nntxTotals span {
+  color: #4a6887;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.oto-page .ocp-nntxTotals span small {
+  /* Cùng mực với chữ chính: mực nhạt hơn thì tương phản tụt dưới 4.5:1. */
+  color: inherit;
+  font-size: 14px;
+}
+
+.oto-page .ocp-nntxTotals b {
+  color: #143c68;
+  font: 800 16px "Be Vietnam Pro","BVP Fallback",sans-serif;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.oto-page .ocp-nntxGrand {
+  border-top: 1px dashed #c9dced;
+  padding-top: 8px;
+}
+
+.oto-page .ocp-nntxGrand span {
+  color: #10406f;
+  font-weight: 800;
+}
+
+.oto-page .ocp-nntxGrand b {
+  color: #0958bc;
+  font-size: 19px;
+}
+
+@media (max-width: 700px) {
+  .oto-page .ocp-nntxFields {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oto-page .ocp-nntxCheck {
+    transition: none;
+  }
+}
+
+/* ── story.module.css ── */
+/*
+ * Mạch kể theo cuộn trên trang bảo hiểm ô tô.
+ * Cỡ chữ nhỏ nhất ở đây là 14px; chữ trên nền xanh dùng tông sáng đạt WCAG AA.
+ */
+
+.oto-page .st-khoi {
+  background: linear-gradient(180deg, #f4faff, #eaf4ff 60%, #f7fbff);
+  overflow: hidden;
+  padding: 46px 0 40px;
+}
+
+.oto-page .st-luoi {
+  display: grid;
+  gap: 26px;
+}
+
+@media (min-width: 900px) {
+  .oto-page .st-luoi {
+    align-items: start;
+    grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+    gap: 48px;
+  }
+}
+
+/* ----- Cột trái: đứng yên khi cuộn ----- */
+.oto-page .st-ben {
+  position: relative;
+}
+
+@media (min-width: 900px) {
+  .oto-page .st-dinh {
+    position: sticky;
+    top: 96px;
+  }
+}
+
+.oto-page .st-nhan {
+  color: #0b57b6;
+  display: inline-block;
+  font: 800 14px/1.4 "Be Vietnam Pro","BVP Fallback",sans-serif;
+  letter-spacing: 0.14em;
+  margin-bottom: 10px;
+}
+
+.oto-page .st-dinh h2 {
+  color: #0f2f52;
+  font: 800 clamp(26px, 3.4vw, 38px)/1.16 "Be Vietnam Pro","BVP Fallback",sans-serif;
+  margin: 0 0 12px;
+}
+
+.oto-page .st-dinh p {
+  color: #35618c;
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0;
+  max-width: 46ch;
+}
+
+/*
+ * Cụm chữ quan trọng: màu chạy chậm và liên tục. Dùng nền chuyển màu cắt theo
+ * chữ; trình duyệt không hỗ trợ thì rơi về màu xanh PVI đặc, vẫn đọc được.
+ */
+.oto-page .st-chuSong {
+  background: linear-gradient(100deg, #0b57b6 0%, #1f9cf0 28%, #0b57b6 56%, #1f9cf0 84%, #0b57b6 100%);
+  background-clip: text;
+  background-size: 260% 100%;
+  color: #0b57b6;
+  font-style: normal;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: st-chay-mau 7s linear infinite;
+}
+
+@keyframes st-chay-mau {
+  to {
+    background-position: -260% 0;
+  }
+}
+
+/* ----- Danh sách chấm bước ----- */
+.oto-page .st-dongHo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 20px;
+}
+
+.oto-page .st-chamBuoc {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #cfe2f4;
+  border-radius: 999px;
+  display: inline-flex;
+  gap: 8px;
+  padding: 7px 14px 7px 9px;
+  transition: background .3s ease, border-color .3s ease, transform .3s ease;
+}
+
+.oto-page .st-chamBuoc b {
+  background: #e7f1fc;
+  border-radius: 50%;
+  color: #0b57b6;
+  display: grid;
+  font: 800 14px "Be Vietnam Pro","BVP Fallback",sans-serif;
+  height: 26px;
+  place-items: center;
+  transition: background .3s ease, color .3s ease;
+  width: 26px;
+}
+
+.oto-page .st-chamBuoc i {
+  color: #35618c;
+  font: 700 14px "Be Vietnam Pro","BVP Fallback",sans-serif;
+  font-style: normal;
+}
+
+/* Bước đang đọc: nổi lên. Class do script gắn khi cuộn tới. */
+.oto-page .st-chamBuoc.anh-dang-xem {
+  background: #0b57b6;
+  border-color: #0b57b6;
+  transform: translateY(-1px);
+}
+
+.oto-page .st-chamBuoc.anh-dang-xem b {
+  background: #ffffff;
+  color: #0b57b6;
+}
+
+.oto-page .st-chamBuoc.anh-dang-xem i {
+  color: #ffffff;
+}
+
+.oto-page .st-nutGoi {
+  background: #0b57b6;
+  border-radius: 999px;
+  color: #ffffff !important;
+  display: inline-block;
+  font: 800 16px "Be Vietnam Pro","BVP Fallback",sans-serif !important;
+  padding: 13px 22px;
+  text-decoration: none;
+}
+
+.oto-page .st-nutGoi:hover {
+  background: #0a4c9f;
+}
+
+/* ----- Cột phải: các bước ----- */
+.oto-page .st-danhSach {
+  display: grid;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.oto-page .st-buoc {
+  background: #ffffff;
+  border: 1px solid #dbe8f4;
+  border-left: 4px solid #cfe2f4;
+  border-radius: 16px;
+  padding: 20px 22px;
+  position: relative;
+  transition: border-color .35s ease, box-shadow .35s ease, transform .35s ease;
+}
+
+@media (min-width: 900px) {
+  .oto-page .st-buoc {
+    min-height: 210px;
+  }
+}
+
+/* Bước đang ở giữa màn hình. */
+.oto-page .st-buoc.buoc-dang-xem {
+  border-left-color: #0b57b6;
+  box-shadow: 0 18px 40px rgba(11, 87, 182, 0.14);
+  transform: translateY(-2px);
+}
+
+.oto-page .st-soBuoc {
+  color: #9dc2e6;
+  font: 800 15px "Be Vietnam Pro","BVP Fallback",sans-serif;
+  letter-spacing: 0.12em;
+  transition: color .35s ease;
+}
+
+.oto-page .st-buoc.buoc-dang-xem .st-soBuoc {
+  color: #0b57b6;
+}
+
+.oto-page .st-buoc h3 {
+  color: #0f2f52;
+  font: 800 clamp(19px, 2.2vw, 23px)/1.3 "Be Vietnam Pro","BVP Fallback",sans-serif;
+  margin: 6px 0 8px;
+}
+
+.oto-page .st-buoc p {
+  color: #2b4a68;
+  font-size: 16px;
+  line-height: 1.66;
+  margin: 0;
+}
+
+.oto-page .st-manh {
+  border-top: 1px dashed #d8e6f3;
+  color: #0b57b6 !important;
+  font-weight: 700;
+  margin-top: 12px !important;
+  padding-top: 10px;
+}
+
+.oto-page .st-chanKhoi {
+  color: #35618c;
+  font-size: 16px;
+  margin: 24px auto 0;
+}
+
+.oto-page .st-chanKhoi a {
+  color: #0b57b6;
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oto-page .st-chuSong {
+    animation: none;
+  }
+
+  .oto-page .st-buoc,
+  .oto-page .st-chamBuoc {
+    transition: none;
+  }
+}
+
+/* pvihcm: bản gốc giới hạn mỗi mục của bộ tra phí cao 115px và cuộn bên trong trên điện thoại,
+   nút "Pickup, minivan…" bị cắt nửa. Hiện đủ, không cuộn trong (giống trang tai nạn). */
+.oto-page .auto-segment-group > div { max-height: none; overflow: visible; }
