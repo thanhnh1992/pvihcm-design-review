@@ -13,6 +13,11 @@
 .intro-badge{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:9px 15px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;text-decoration:none;font-size:14px;font-weight:600}
 .intro-badge i{font-style:normal;color:#ffd75e}
 .intro-badge:hover{background:rgba(255,255,255,.28)}
+/* Chữ hai nhãn theo 2 màu logo PVI, nền kính mờ giữ nguyên (chủ site yêu cầu 09/11/2026) */
+.intro-badge.is-red{color:#E31F26;font-weight:700}
+.intro-badge.is-blue{color:#1F4A8C;font-weight:700}
+/* Điện thoại: giữ nguyên chữ trắng như cũ (chủ site chốt 09/11/2026) */
+@media (max-width:700px){.intro-badge.is-red,.intro-badge.is-blue{color:#fff;font-weight:600}}
 .intro-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;text-decoration:none;font-weight:700;font-size:15px;padding:11px 20px;border-radius:999px;border:2px solid transparent;transition:transform .12s,background .12s}
 .intro-btn:hover{transform:translateY(-1px)}
 /* Nút chính dùng kiểu CTA chung của cta.css (lớp .primary): nền xanh logo, viền đỏ chạy vòng */
