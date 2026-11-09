@@ -162,6 +162,16 @@ export const officialDocuments = [
         href: "/kien-thuc/bao-hiem-o-to",
     },
     {
+        title: "Gây tai nạn ô tô, bảo hiểm bắt buộc bồi thường thế nào",
+        type: "Kiến thức · Bảo hiểm PVI Thành Đô",
+        href: "/kien-thuc/gay-tai-nan-o-to-bao-hiem-bat-buoc-boi-thuong-the-nao",
+    },
+    {
+        title: "Tông vào xe phía trước: bồi thường xe bên kia thế nào, có cần công an",
+        type: "Kiến thức · Bảo hiểm PVI Thành Đô",
+        href: "/kien-thuc/va-cham-o-to-hu-xe-phia-truoc-boi-thuong-the-nao",
+    },
+    {
         title: "Quy tắc bảo hiểm tự nguyện xe ô tô",
         type: "Quy tắc · Bảo hiểm PVI · Hiệu lực 01/07/2025",
         href: "https://adminweb.pvi.com.vn/wp-content/uploads/2025/04/2025-QUY-TAC-BH-TU-NGUYEN-XE-O-TO.pdf",
