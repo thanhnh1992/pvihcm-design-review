@@ -70,7 +70,7 @@ Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist
 
 **Logo và thiết kế**
 - Chỉ dùng logo gốc `dist/assets/pvi-logo.svg`, không vẽ lại, không đổi màu.
-- Màu chủ đạo xanh/trắng: chữ #17212E, xanh #164F87, nền #F5F7F9, chữ phụ #586574. Đỏ #CB2530 chỉ làm điểm nhấn nhỏ (nút chính, hotline bồi thường).
+- Màu chủ đạo xanh/trắng: chữ #17212E, xanh #1F4A8C (cùng sắc xanh logo #183665, sáng hơn cho giao diện; logo giữ nguyên màu gốc), nền #F5F7F9, chữ phụ #586574. Đỏ #CB2530 chỉ làm điểm nhấn nhỏ (nút chính, hotline bồi thường).
 - Hiệu ứng nền 3D chỉ dùng cho pvihcm, không mang sang baohiempvi-vn.
 
 **Độ dễ đọc** (kiểm trước khi giao)

@@ -1,9 +1,9 @@
 /* ═══ Nút hành động (CTA) toàn site, theo đúng 2 màu logo PVI (06/11/2026) ═══
-   Xanh logo #183665 làm nền, đỏ logo #E31F26 làm viền chạy vòng để hút mắt.
+   Xanh logo #1F4A8C làm nền, đỏ logo #E31F26 làm viền chạy vòng để hút mắt.
    File này nạp SAU CÙNG trên mọi trang (sau advisor.css) nên thắng CSS riêng từng trang.
    :is() lấy độ ưu tiên cao nhất trong danh sách (.featured .solution-copy>a:not(.secondary-link) = 0,3,1),
    đủ để đè các nút đỏ/xanh cũ mà không cần !important. */
-:root{--logo-navy:#183665;--logo-navy-2:#24508c;--logo-red:#E31F26}
+:root{--logo-navy:#1F4A8C;--logo-navy-2:#24508c;--logo-red:#E31F26}
 @property --cta-a{syntax:'<angle>';inherits:false;initial-value:0deg}
 
 /* 1) Nút chính (nền đặc) */
