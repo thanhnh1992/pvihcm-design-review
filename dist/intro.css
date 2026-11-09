@@ -45,7 +45,7 @@
   background:radial-gradient(42vw circle at calc(50% + var(--mx) * 40%) calc(45% + var(--my) * 35%),rgba(255,224,178,.22),rgba(255,224,178,0) 62%)}
 .intro.is-3d .intro-shine{opacity:1}
 
-/* Ngôi sao đỏ trên logo gắn tòa nhà: lớp phủ cắt đúng hình ngôi sao từ chính ảnh (assets/sao-pvi-*.png),
+/* Ngôi sao đỏ trên logo mặt bên phải tòa nhà (chủ site chốt chỉ sao bên phải): lớp phủ cắt từ chính ảnh (assets/sao-pvi-ben.png),
    intro-3d.js đặt vị trí khớp ảnh ở mọi khổ màn hình. Một vệt sáng trắng chạy vòng theo thân ngôi sao,
    cả ngôi sao tỏa quầng đỏ đập nhịp. Chưa có JS thì lớp phủ ẩn, ảnh vẫn hiện bình thường. */
 @property --star-a{syntax:'<angle>';inherits:false;initial-value:0deg}

@@ -1,5 +1,5 @@
 /* Phần mở đầu trang chủ (ảnh tòa nhà PVI), chủ site yêu cầu 09/11/2026:
-   1) Đặt lớp phát sáng của 2 ngôi sao PVI trên tòa nhà khớp đúng chỗ trong ảnh. Ảnh dùng
+   1) Đặt lớp phát sáng của ngôi sao PVI bên phải tòa nhà khớp đúng chỗ trong ảnh. Ảnh dùng
       object-fit:cover nên bị cắt khác nhau theo khổ màn hình; vị trí tính lại mỗi khi khung đổi cỡ.
       Tọa độ data-box tính theo ảnh gốc 1668x943 (x y rộng cao).
    2) Ảnh nghiêng 3D theo chuột, có quán tính nên mềm, không giật. JS chỉ đặt --mx/--my trên .intro,
