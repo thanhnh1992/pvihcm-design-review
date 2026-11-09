@@ -133,12 +133,12 @@ Tên miền gốc: **`https://pvihcm.com`** (không có www).
 - Site khác phải là repo riêng; không gắn tên miền khác vào project Vercel của repo này.
 
 **Thay đổi tên miền thật phải qua 2 bước**
-Phạm vi (chỉ những việc này): đổi tên miền gốc; thêm/bỏ `www`; http/https; cấu hình tên miền/DNS trên Vercel hoặc nơi quản lý tên miền (kể cả việc "trỏ domain pvihcm.com sang Vercel" trong mục Việc đang mở); file xác minh Search Console.
+Phạm vi (chỉ những việc này): đổi tên miền gốc; thêm/bỏ `www`; http/https; cấu hình tên miền/DNS trên Vercel hoặc nơi quản lý tên miền (kể cả việc "trỏ domain pvihcm.com sang Vercel" trong mục Việc đang mở).
 1. **Bước 1, CẢNH BÁO:** agent gửi chủ site tin bắt đầu bằng `⚠️ CẢNH BÁO THAY ĐỔI TRÊN TÊN MIỀN GỐC`, ghi rõ tên miền/cấu hình cũ → mới, ảnh hưởng tới quảng cáo, SEO, link đã chia sẻ, cách hoàn tác. Chưa sửa gì ở bước này.
 2. **Bước 2, PHÊ DUYỆT:** chỉ làm khi chủ site trả lời đúng cụm `DUYỆT THAY ĐỔI TÊN MIỀN` cho đúng cảnh báo đó. "ok", "làm đi", "đẩy lên", "sửa luôn" **không** tính là phê duyệt. Mỗi lần duyệt chỉ cho đúng thay đổi đã cảnh báo.
 3. Khi đã duyệt: cập nhật `tools/domain-lock.json` cho đúng thay đổi đó; commit ghi `Đã qua 2 bước: cảnh báo <ngày> · phê duyệt <ngày>`.
 
-**Không cần 2 bước (làm bình thường, báo lại cho chủ site trong tin trả lời):** sitemap, robots.txt, canonical trong nội bộ pvihcm.com, `trailingSlash`, header trong `vercel.json`. Đổi URL, xóa/gộp trang, thêm/sửa/xóa chuyển hướng: vẫn hỏi chủ site trước theo mục "Trang và URL" (hỏi thường, không cần cụm phê duyệt); khi đã được đồng ý thì cập nhật `tools/domain-lock.json` cho khớp.
+**Không cần 2 bước (làm bình thường, báo lại cho chủ site trong tin trả lời):** thêm file xác minh Search Console mới (chủ site chốt 09/11/2026, giống baohiempvi-vn; vẫn không xóa, đổi tên hay sửa file xác minh đang có), sitemap, robots.txt, canonical trong nội bộ pvihcm.com, `trailingSlash`, header trong `vercel.json`. Đổi URL, xóa/gộp trang, thêm/sửa/xóa chuyển hướng: vẫn hỏi chủ site trước theo mục "Trang và URL" (hỏi thường, không cần cụm phê duyệt); khi đã được đồng ý thì cập nhật `tools/domain-lock.json` cho khớp.
 
 **Chốt tự động:** `node tools/check-domain.mjs` so với bản khóa `tools/domain-lock.json` (tên miền, 56 chuyển hướng, `trailingSlash`, 15 trang đang có, file xác minh Search Console, canonical, sitemap, robots). Trang mới thêm vào thì không bị chặn; xóa/đổi trang cũ hay sửa chuyển hướng thì hỏng. **Không sửa script hay bản khóa để cho qua** khi chủ site chưa đồng ý thay đổi đó (thay đổi tên miền thật thì phải có cụm phê duyệt).
 
@@ -147,7 +147,7 @@ Phạm vi (chỉ những việc này): đổi tên miền gốc; thêm/bỏ `www
 - Trỏ domain pvihcm.com sang Vercel. Chỉ sửa bản ghi A/CNAME, không đụng MX. **Đây là thay đổi tên miền thật: phải qua 2 bước Cảnh báo → Phê duyệt (mục Tên miền gốc) trước khi làm.**
 - Đã có: trang `/gioi-thieu/` và redirect 301 từ URL cũ trong `vercel.json` (mỗi luật có 2 biến thể có và không có dấu / cuối, vì trailingSlash chạy trước). Thêm URL cũ thì thêm cả 2 biến thể, luật cụ thể đặt trước luật `:id`.
 - Sau khi trỏ domain: chủ site gửi sitemap trong Google Search Console.
-- Xác minh Google Search Console bằng file `dist/google7d40bd15f458ed73.html` (thêm 07/10/2026) và `dist/google72d1b9c3233d95bc.html` (chủ site gửi, thêm 09/11/2026). **Không xóa, không đổi tên, không sửa nội dung hai file này**, nếu không Search Console sẽ mất quyền xác minh.
+- Xác minh Google Search Console bằng file `dist/google7d40bd15f458ed73.html` (thêm 07/10/2026) , `dist/google72d1b9c3233d95bc.html` (chủ site gửi, thêm 09/11/2026) và `dist/google49f1c9f6aa9cf1c6.html` (chủ site gửi, thêm 09/11/2026). **Không xóa, không đổi tên, không sửa nội dung ba file này**, nếu không Search Console sẽ mất quyền xác minh.
 - Trang chủ khối #ve-pvi: đã gỡ câu ghi chú nội bộ. Ba số liệu 2025 (#1, 16,93%, 14.908 tỷ) vẫn chờ chủ site gửi nguồn chính thức để ghi dòng trích nguồn.
 - Rà soát định kỳ: axe-core (truy cập), wave.webaim.org, và đối chiếu chính tả bằng bản xuất chữ ở `E:CodexPVIHCM	ext-audit`. `clean()` trong chrome.mjs tự chuẩn hóa chính tả và gạch ngang cho trang sinh tự động; trang viết tay phải tự kiểm.
 - Biểu phí TNDS đang theo NĐ 67/2023 (đối chiếu 08/05/2026). Cần xác nhận còn đúng sau NĐ 220/2026 (hiệu lực 01/07/2026).
