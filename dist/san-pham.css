@@ -35,7 +35,7 @@
 
 /* Hỗ trợ chọn */
 .sp-help{padding:0 0 48px}
-.sp-help-box{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 28px;border-radius:20px;background:linear-gradient(120deg,#183665 0%,#0b5fae 100%);color:#fff}
+.sp-help-box{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 28px;border-radius:20px;background:linear-gradient(120deg,#1F4A8C 0%,#0b5fae 100%);color:#fff}
 .sp-help h2{margin:0;font-size:21px;letter-spacing:-.02em;color:#fff}
 .sp-help p{margin:6px 0 0;font-size:16px;line-height:1.6;color:rgba(255,255,255,.86)}
 .sp-help-actions{display:flex;flex-wrap:wrap;gap:12px;flex:none}

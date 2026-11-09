@@ -1,4 +1,4 @@
-:root{--ink:#17212e;--blue:#183665;--red:#cb2530;--muted:#586574;--ice:#f5f7f9;--content:1160px}
+:root{--ink:#17212e;--blue:#1F4A8C;--red:#cb2530;--muted:#586574;--ice:#f5f7f9;--content:1160px}
 body{line-height:1.6;overflow-x:clip}a,button,summary{touch-action:manipulation}:focus-visible{outline:3px solid #1768aa;outline-offset:5px}img{height:auto}
 header{max-width:var(--content);padding:0 28px;height:72px;gap:24px}.brand{font-size:21px;letter-spacing:-.035em;white-space:nowrap}nav{font-size:14px;gap:24px}.phone{padding:11px 18px;font-size:14px;white-space:nowrap}.preview{font-size:12px;padding:6px 16px;letter-spacing:0}
 .hero{max-width:var(--content);grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:30px;min-height:0;padding:38px 28px 44px;background:none}.hero h1{font-size:clamp(36px,3.7vw,52px);line-height:1.19;letter-spacing:-.035em;margin:14px 0 18px;font-weight:700}.hero-audience{display:block;font-size:.6em;font-weight:500;letter-spacing:-.02em;line-height:1.4;margin:8px 0 19px;max-width:460px}.hero h1 em{display:block;color:var(--blue)}.hero-copy>p:not(.kicker){font-size:16px;line-height:1.7;margin:16px 0}.kicker{font-size:12px;line-height:1.7;letter-spacing:.13em;color:var(--muted)}.hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px 22px;margin-top:22px}.primary,.solution-copy>a{min-height:44px;margin-top:0;font-size:14px;padding:11px 20px;gap:12px;border-radius:24px}.text-link{display:inline-flex;align-items:center;gap:10px;min-height:44px;color:var(--blue);font-size:14px;font-weight:600}.text-link:hover,.secondary-link:hover{text-decoration:underline;text-underline-offset:5px}
@@ -113,7 +113,7 @@ a,button{-webkit-tap-highlight-color:transparent}
 .primary,.solution-copy>a,.text-link,.secondary-link,.phone,.marquee-pause{
   display:inline-flex;align-items:center;justify-content:center;
 }
-:focus-visible{outline:3px solid var(--blue,#183665);outline-offset:3px;border-radius:4px}
+:focus-visible{outline:3px solid var(--blue,#1F4A8C);outline-offset:3px;border-radius:4px}
 
 /* ═══════════════════════════════════════════════════════════════════
    LỚP CHIỀU SÂU HERO — CSS 3D thật, không phải ảnh phẳng nghiêng.
@@ -320,7 +320,7 @@ body>.preview,body>header,body>main,body>footer,body>.skip{position:relative;z-i
 .site-footer .brand img{height:36px}
 .footer-identity p{margin:12px 0 0}
 .footer-identity strong:not(.footer-label){color:var(--ink);font-weight:700}
-.footer-contact a{color:#183665;font-weight:700}
+.footer-contact a{color:#1F4A8C;font-weight:700}
 .footer-contact a:first-of-type{font-size:19px;letter-spacing:-.01em}
 
 .footer-bottom{

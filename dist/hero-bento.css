@@ -66,7 +66,7 @@
 .bt-info b{font-size:clamp(16px,1.3vw,19px);line-height:1.2;letter-spacing:-.01em;font-variant-numeric:tabular-nums;white-space:nowrap}
 .bt-info span{font-size:13px;opacity:.85}
 .bt-red{background:#fde8ea;color:#8f1a22}
-.bt-blue{background:#e4effb;color:#183665}
+.bt-blue{background:#e4effb;color:#1F4A8C}
 .bt-info:hover{transform:translateY(-3px)}
 
 /* Máy tính bảng hẹp */

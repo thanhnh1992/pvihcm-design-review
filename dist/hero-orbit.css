@@ -13,8 +13,8 @@
 .hero-stage--orbit{position:relative}
 .orbit-toast{position:absolute;left:50%;bottom:6%;z-index:300;width:min(340px,calc(100% - 24px));display:grid;gap:4px;padding:14px 16px;border-radius:14px;background:#fff;border:1px solid #d8e7f5;border-left:4px solid var(--red,#e3262e);box-shadow:0 18px 40px rgba(6,61,121,.22);color:var(--ink);font-size:14px;line-height:1.5;opacity:0;pointer-events:none;transform:translate(-50%,10px);transition:opacity .25s ease,transform .3s ease}
 .orbit-toast.is-on{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
-.orbit-toast b{font-size:15px;color:#183665}
-.orbit-toast a{color:#183665;font-weight:700}
+.orbit-toast b{font-size:15px;color:#1F4A8C}
+.orbit-toast a{color:#1F4A8C;font-weight:700}
 
 /* Khu vực quay lớn hơn và cân với đầu trang (chủ site yêu cầu 28/10/2026, lần 2):
    cột vòng rộng hơn cột chữ, khung cao tới 560px; ba mặt phẳng nền thu vào sát khung vòng
