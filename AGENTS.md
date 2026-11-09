@@ -147,7 +147,7 @@ Phạm vi (chỉ những việc này): đổi tên miền gốc; thêm/bỏ `www
 - Trỏ domain pvihcm.com sang Vercel. Chỉ sửa bản ghi A/CNAME, không đụng MX. **Đây là thay đổi tên miền thật: phải qua 2 bước Cảnh báo → Phê duyệt (mục Tên miền gốc) trước khi làm.**
 - Đã có: trang `/gioi-thieu/` và redirect 301 từ URL cũ trong `vercel.json` (mỗi luật có 2 biến thể có và không có dấu / cuối, vì trailingSlash chạy trước). Thêm URL cũ thì thêm cả 2 biến thể, luật cụ thể đặt trước luật `:id`.
 - Sau khi trỏ domain: chủ site gửi sitemap trong Google Search Console.
-- Xác minh Google Search Console bằng file `dist/google7d40bd15f458ed73.html` (thêm 07/10/2026). **Không xóa, không đổi tên, không sửa nội dung file này**, nếu không Search Console sẽ mất quyền xác minh.
+- Xác minh Google Search Console bằng file `dist/google7d40bd15f458ed73.html` (thêm 07/10/2026) và `dist/google72d1b9c3233d95bc.html` (chủ site gửi, thêm 09/11/2026). **Không xóa, không đổi tên, không sửa nội dung hai file này**, nếu không Search Console sẽ mất quyền xác minh.
 - Trang chủ khối #ve-pvi: đã gỡ câu ghi chú nội bộ. Ba số liệu 2025 (#1, 16,93%, 14.908 tỷ) vẫn chờ chủ site gửi nguồn chính thức để ghi dòng trích nguồn.
 - Rà soát định kỳ: axe-core (truy cập), wave.webaim.org, và đối chiếu chính tả bằng bản xuất chữ ở `E:CodexPVIHCM	ext-audit`. `clean()` trong chrome.mjs tự chuẩn hóa chính tả và gạch ngang cho trang sinh tự động; trang viết tay phải tự kiểm.
 - Biểu phí TNDS đang theo NĐ 67/2023 (đối chiếu 08/05/2026). Cần xác nhận còn đúng sau NĐ 220/2026 (hiệu lực 01/07/2026).
