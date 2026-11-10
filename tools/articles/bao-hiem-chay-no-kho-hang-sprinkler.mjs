@@ -2,6 +2,7 @@
 // Bản chuẩn ở baohiempvi-vn.com (mảng Trải nghiệm thực tế); trang này khai canonical về đó.
 // Đã che tên, địa chỉ, ngành nghề, số chứng từ của khách; không đăng trang 4 (số hợp đồng). Ảnh kho đã làm mờ biển số, số nhà, biển tên.
 import { ZALO_TU_VAN } from './khu-vuc.mjs';
+import { articleSrcset } from '../chrome.mjs';
 
 export const post = {
   slug: 'bao-hiem-chay-no-kho-hang-sprinkler-thuc-te',
@@ -56,7 +57,7 @@ export const related = [
 ];
 
 const photo = (name, w, h, alt, caption) =>
-  `<figure class="kb-photo kb-doc"><img src="/assets/kho-${name}.webp" width="${w}" height="${h}" alt="${alt}" loading="lazy" decoding="async"><figcaption>Ảnh thực tế: ${caption} · Nguồn: PVI Thành Đô</figcaption></figure>`;
+  `<figure class="kb-photo kb-doc"><img src="/assets/kho-${name}.webp"${articleSrcset(`kho-${name}`, w)} width="${w}" height="${h}" alt="${alt}" loading="lazy" decoding="async"><figcaption>Ảnh thực tế: ${caption} · Nguồn: PVI Thành Đô</figcaption></figure>`;
 
 export function body({ ctaRow }) {
   return `

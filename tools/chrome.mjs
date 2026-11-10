@@ -16,6 +16,12 @@ export const clean = (s) => {
   return t;
 };
 export const t = (s) => esc(clean(s));
+// srcset cho ảnh trong bài: chỉ khai bản -480/-800 nhỏ hơn bản gốc (rộng w px), để điện thoại tải ảnh nhẹ.
+// Ảnh phải có sẵn /assets/<tên>-480.webp và -800.webp (tools/srcset.mjs, AGENTS.md mục Hiệu năng).
+export const articleSrcset = (base, w) => {
+  const parts = [480, 800].filter((x) => x < w).map((x) => `/assets/${base}-${x}.webp ${x}w`);
+  return parts.length ? ` srcset="${parts.join(', ')}, /assets/${base}.webp ${w}w" sizes="(max-width:820px) 92vw, 720px"` : '';
+};
 
 export const NAV = [
   ['/gioi-thieu/', 'Giới thiệu'],

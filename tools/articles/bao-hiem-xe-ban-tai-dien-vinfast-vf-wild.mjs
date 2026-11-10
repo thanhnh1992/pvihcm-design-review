@@ -3,6 +3,7 @@
 // Tỷ lệ 1,05% (xe bán tải VinFast) và 1,21% (xe bán tải thường) do chủ site cung cấp, áp dụng từ 18/10/2026 đến khi có thông báo mới.
 // Ảnh giới thiệu của VinFast là ảnh dựng nên ghi "Hình ảnh mô phỏng"; ảnh showroom đã làm mờ mặt người.
 import { ZALO_TU_VAN } from './khu-vuc.mjs';
+import { articleSrcset } from '../chrome.mjs';
 
 export const post = {
   slug: 'bao-hiem-xe-ban-tai-dien-vinfast-vf-wild',
@@ -57,7 +58,7 @@ export const related = [
 ];
 
 const pic = (name, w, h, alt, caption, real = true) =>
-  `<figure class="kb-photo${h > w ? ' kb-doc' : ''}"><img src="/assets/vfw-${name}.webp" width="${w}" height="${h}" alt="${alt}" loading="lazy" decoding="async"><figcaption>${real ? `Ảnh thực tế: ${caption} · Nguồn: PVI Thành Đô` : caption}</figcaption></figure>`;
+  `<figure class="kb-photo${h > w ? ' kb-doc' : ''}"><img src="/assets/vfw-${name}.webp"${articleSrcset(`vfw-${name}`, w)} width="${w}" height="${h}" alt="${alt}" loading="lazy" decoding="async"><figcaption>${real ? `Ảnh thực tế: ${caption} · Nguồn: PVI Thành Đô` : caption}</figcaption></figure>`;
 
 export function body({ ctaRow }) {
   return `

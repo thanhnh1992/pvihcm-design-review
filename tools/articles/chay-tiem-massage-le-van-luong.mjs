@@ -3,6 +3,7 @@
 // Dữ kiện theo Tuổi Trẻ, VnExpress, Dân trí 17/10/2026; nguồn ghi bằng chữ, không link ra ngoài.
 // Ảnh do chủ site cung cấp (người quen chụp), đã làm mờ tên, địa chỉ cơ sở, khuôn mặt, biển số.
 import { ZALO_TU_VAN } from './khu-vuc.mjs';
+import { articleSrcset } from '../chrome.mjs';
 
 export const post = {
   slug: 'chay-tiem-massage-le-van-luong-bao-hiem-chay-no',
@@ -59,7 +60,7 @@ export const related = [
 ];
 
 const photo = (name, w, h, alt, caption) =>
-  `<figure class="kb-photo"><img src="/assets/${name}.webp" width="${w}" height="${h}" alt="${alt}" loading="lazy" decoding="async"><figcaption>Ảnh thực tế: ${caption} · Nguồn: PVI Thành Đô</figcaption></figure>`;
+  `<figure class="kb-photo"><img src="/assets/${name}.webp"${articleSrcset(name, w)} width="${w}" height="${h}" alt="${alt}" loading="lazy" decoding="async"><figcaption>Ảnh thực tế: ${caption} · Nguồn: PVI Thành Đô</figcaption></figure>`;
 
 export function body({ pic, ctaRow }) {
   return `
