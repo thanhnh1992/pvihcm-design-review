@@ -202,34 +202,6 @@ a[href^="#"]:hover i[aria-hidden],a[href^="#"]:focus-visible i[aria-hidden]{tran
   .site-header .phone:hover svg,.site-header .phone:focus-visible svg{animation:none}
 }
 
-/* ═══ Số chạy kiểu đồng hồ số: khối "Niềm tin cần bằng chứng rõ ràng" ═══
-   counters.js tách từng chữ số thành một cột 0-9 x3; khi khối vào màn hình
-   mỗi cột quay đến đúng chữ số, cột sau dừng muộn hơn cột trước một nhịp.
-   Chiều cao cột = line-height của dd nên không xô bố cục. */
-.odo{display:inline-flex;align-items:flex-end;color:var(--ink);transition:color .6s ease}
-.is-counting .odo{color:var(--blue)}
-.is-done .odo{color:var(--ink)}
-.odo-col{display:inline-block;height:1.25em;vertical-align:bottom;width:var(--w,auto);
-  /* chỉ cắt theo chiều dọc; chữ số rộng hơn cột vẫn thấy trọn khi lướt qua */
-  clip-path:inset(0 -.35em)}
-/* Lúc đang quay: mép trên/dưới mờ dần, chữ số lướt qua như bánh xe đồng hồ số */
-.odo-ready .odo-col{-webkit-mask-image:linear-gradient(transparent 0,#000 14%,#000 86%,transparent 100%);mask-image:linear-gradient(transparent 0,#000 14%,#000 86%,transparent 100%)}
-.is-done .odo-col{-webkit-mask-image:none;mask-image:none}
-.odo-strip{display:flex;flex-direction:column;transform:translateY(0);will-change:transform;
-  transition:transform calc(1.5s + var(--i)*.12s) var(--ease-out);transition-delay:calc(var(--k)*.18s + var(--i)*.06s)}
-.odo-strip span{display:block;height:1.25em;line-height:1.25em;text-align:center}
-.is-counting .odo-strip{transform:translateY(calc(-1.25em*(20 + var(--d))))}
-.odo-unit{display:inline-block;opacity:0;transform:translateY(.35em);transition:opacity .45s ease,transform .45s var(--ease-out);
-  transition-delay:calc(var(--k)*.18s + 1.35s)}
-.is-counting .odo-unit{opacity:1;transform:none}
-.odo-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
-.proof-points>div{position:relative}
-.proof-points.odo-ready>div::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--blue);
-  transform:scaleX(0);transform-origin:left;transition:transform calc(1.7s) var(--ease-out);transition-delay:calc(var(--k,0)*.18s)}
-.proof-points.is-counting>div::after{transform:scaleX(1)}
-/* Luật cũ ".proof-points dd span" (dành cho đơn vị %, tỷ đồng) không được thu nhỏ chữ số. */
-.proof-points dd .odo,.proof-points dd .odo span{font-size:inherit;letter-spacing:inherit}
-
 /* ═══ Menu header: rê chuột thì chữ chuyển xanh (không gạch chân chạy) ═══
    Mục đang ở trang hiện tại giữ vạch tĩnh như cũ. Trên điện thoại (menu thả xuống)
    mục được rê có nền nhạt và chữ nhích sang phải. */
