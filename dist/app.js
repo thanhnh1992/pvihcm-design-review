@@ -149,14 +149,17 @@ if (siteHeader && menuToggle) {
 // GA4 site tag and contact intent events; never send personal details.
 window.dataLayer = window.dataLayer || [];
 function gtag() { window.dataLayer.push(arguments); }
-gtag('js', new Date());
-gtag('config', 'G-HYEVLMD710');
-// Google Ads (remarketing, chuyển đổi); dùng chung một gtag.js với GA4.
-gtag('config', 'AW-18556160976');
-const analyticsScript = document.createElement('script');
-analyticsScript.async = true;
-analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-HYEVLMD710';
-document.head.append(analyticsScript);
+// Chỉ đo trên tên miền thật: bản xem thử *.vercel.app, máy chạy thử không gửi số liệu (không lẫn vào GA4/Ads).
+if (/(^|\.)pvihcm\.com$/.test(location.hostname)) {
+  gtag('js', new Date());
+  gtag('config', 'G-HYEVLMD710');
+  // Google Ads (remarketing, chuyển đổi); dùng chung một gtag.js với GA4.
+  gtag('config', 'AW-18556160976');
+  const analyticsScript = document.createElement('script');
+  analyticsScript.async = true;
+  analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-HYEVLMD710';
+  document.head.append(analyticsScript);
+}
 
 document.addEventListener('click', (event) => {
   const link = event.target.closest?.('a[href]');
