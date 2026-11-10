@@ -1,8 +1,7 @@
 // Lưới bento sản phẩm ở đầu trang chủ (chủ site yêu cầu 03/11/2026, thay vòng thẻ xoay).
 // Mỗi ô là một sản phẩm cố định; chuyển động nhẹ liên tục: ảnh trôi chậm trong ô và "đèn soi"
 // lần lượt sáng từng sản phẩm. Dữ liệu: tools/data/hero-products.mjs. Vị trí ô: SLOTS bên dưới.
-// Ghi vào dist/index.html giữa <!-- hero-bento:start --> và <!-- hero-bento:end -->
-// (lần đầu: thay khối <!-- hero-orbit:start/end --> cũ). CSS dist/hero-bento.css, JS dist/hero-bento.js.
+// Ghi vào dist/index.html giữa <!-- hero-bento:start --> và <!-- hero-bento:end -->. CSS dist/hero-bento.css, JS dist/hero-bento.js.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -50,12 +49,8 @@ ${info}
 
 let page = fs.readFileSync(FILE, 'utf8');
 const marked = /<!-- hero-bento:start -->[\s\S]*?<!-- hero-bento:end -->/;
-const orbit = /<!-- hero-orbit:start -->[\s\S]*?<!-- hero-orbit:end -->/;
 if (marked.test(page)) page = page.replace(marked, block);
-else if (orbit.test(page)) page = page.replace(orbit, block);
 else throw new Error('Không tìm thấy chỗ đặt lưới bento trong dist/index.html');
-page = page.replace('<div class="hero-stage hero-stage--orbit" aria-label="Các nhóm sản phẩm">', '<div class="hero-stage hero-stage--bento" aria-label="Các nhóm sản phẩm">');
-page = page.replace('<link rel="stylesheet" href="/hero-orbit.css">', '').replace('<script src="/hero-orbit.js" defer></script>', '');
 if (!page.includes('href="/hero-bento.css"')) page = page.replace('<link rel="stylesheet" href="/polish.css">', '<link rel="stylesheet" href="/polish.css"><link rel="stylesheet" href="/hero-bento.css">');
 if (!page.includes('src="/hero-bento.js"')) page = page.replace('<script src="/app.js" defer></script>', '<script src="/app.js" defer></script><script src="/hero-bento.js" defer></script>');
 fs.writeFileSync(FILE, page);

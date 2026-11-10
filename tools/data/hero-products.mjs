@@ -1,7 +1,7 @@
-// Các thẻ sản phẩm chạy vòng ở đầu trang chủ (khối .orbit trong .hero-stage).
+// Các ô sản phẩm ở đầu trang chủ (lưới bento trong .hero-stage).
 // THÊM SẢN PHẨM: thêm một dòng vào mảng dưới đây, đặt ảnh vào dist/assets/<img>.webp
-// (nên có thêm bản <img>-480.webp và <img>-800.webp), rồi chạy: node tools/gen-hero-orbit.mjs
-// Vòng quay tự chia đều cho số thẻ, không cần sửa CSS hay JS.
+// (nên có thêm bản <img>-480.webp và <img>-800.webp), rồi chạy: node tools/gen-hero-bento.mjs
+// Vị trí ô: SLOTS trong tools/gen-hero-bento.mjs.
 //   href  : đường dẫn trang sản phẩm nội bộ (/...), hoặc https://www.baohiempvi-vn.com/... / https://zalo.me/... (mở tab mới)
 //   title : tên hiện trên nhãn thẻ
 //   short : (tùy chọn) tên ngắn cho điện thoại hẹp, khi title quá dài
