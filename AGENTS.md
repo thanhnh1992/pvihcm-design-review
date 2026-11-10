@@ -154,4 +154,3 @@ Phạm vi (chỉ những việc này): đổi tên miền gốc; thêm/bỏ `www
 - Rà soát định kỳ: axe-core (truy cập), wave.webaim.org, và đối chiếu chính tả bằng bản xuất chữ ở `E:CodexPVIHCM	ext-audit`. `clean()` trong chrome.mjs tự chuẩn hóa chính tả và gạch ngang cho trang sinh tự động; trang viết tay phải tự kiểm.
 - Biểu phí TNDS đang theo NĐ 67/2023 (đối chiếu 08/05/2026). Cần xác nhận còn đúng sau NĐ 220/2026 (hiệu lực 01/07/2026).
 - Nội dung PVI Care / sức khỏe từ site cũ: chưa quyết định có đưa lên không.
-- `FINAL-POLISH.md` và `design-qa.md` là ghi chú của giai đoạn trước, đã cũ. File này mới là nguồn đúng.
