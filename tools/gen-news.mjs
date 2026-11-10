@@ -486,6 +486,6 @@ renderKb(kbPvi27045);
 
 /* ── Loạt bài theo khu vực: bản đăng lại, canonical về baohiempvi-vn.com ── */
 {
-  const units = JSON.parse(fs.readFileSync(path.resolve(HERE, 'data/don-vi-pvi.json'), 'utf8'));
+  const units = JSON.parse(fs.readFileSync(path.resolve(HERE, 'data/don-vi-thanh-vien-pvi.json'), 'utf8'));
   for (const A of areas) if (!AREA_SKIP.has(A.slug)) renderArea(A, { page, write, units });
 }
