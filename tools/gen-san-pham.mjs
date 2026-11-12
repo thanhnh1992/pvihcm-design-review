@@ -30,7 +30,6 @@ for (const p of products) {
   }
 }
 
-const label = Object.fromEntries(groups.map((g) => [g.id, g.label]));
 const count = (id) => products.filter((p) => p.group === id).length;
 
 const cards = products.map((p, i) => {
@@ -40,7 +39,7 @@ const cards = products.map((p, i) => {
   const width = cover ? 1200 : 1280;
   const height = cover ? 420 : 533;
   return `<li class="sp-card" data-group="${p.group}"><a href="${p.href}">
-<span class="sp-media"><img src="/assets/${base}-800.webp" srcset="/assets/${base}-480.webp 480w, /assets/${base}-800.webp 800w, /assets/${base}.webp ${width}w" sizes="(max-width:640px) 100vw, (max-width:860px) 46vw, (max-width:1100px) 31vw, 280px" width="800" height="${height}" alt="${esc(alt)}"${i < 3 ? '' : ' loading="lazy"'} decoding="async"><span class="sp-tag">${esc(label[p.group])}</span></span>
+<span class="sp-media"><img src="/assets/${base}-800.webp" srcset="/assets/${base}-480.webp 480w, /assets/${base}-800.webp 800w, /assets/${base}.webp ${width}w" sizes="(max-width:640px) 100vw, (max-width:860px) 46vw, (max-width:1100px) 31vw, 280px" width="800" height="${height}" alt="${esc(alt)}"${i < 3 ? '' : ' loading="lazy"'} decoding="async"></span>
 <span class="sp-body"><h2>${t(p.title)}</h2><p>${t(metaOf(p.href))}</p><span class="sp-more">Xem chi tiết <i aria-hidden="true">&rarr;</i></span></span>
 </a></li>`;
 }).join('\n');
