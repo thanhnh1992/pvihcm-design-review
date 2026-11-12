@@ -3,12 +3,15 @@
 // "Làm thế nào để mua bảo hiểm tại PVI Bình Dương hoặc qua đại lý ở Bình Dương?"
 // Dữ kiện dùng: Nghị quyết 202/2025/QH15 (hợp nhất Bình Dương, Bà Rịa - Vũng Tàu vào TP.HCM,
 // chính quyền mới hoạt động từ 01/07/2025); thông tin liên hệ PVI Thành Đô đã chốt trong AGENTS.md.
-// Không ghi địa chỉ, chi nhánh PVI nào tại Bình Dương vì chưa có nguồn xác minh. Không link ra ngoài.
+// Địa chỉ chi nhánh được đối chiếu với danh bạ và thông báo đổi tên của Tổng công ty Bảo hiểm PVI.
+import { binhDuongGuideLinks, binhDuongOffice, binhDuongOfficeSources } from './binh-duong-guides.mjs';
 
 export const post = {
   slug: 'mua-bao-hiem-pvi-binh-duong',
   date: '2026-10-08',
   dateText: '08/10/2026',
+  updated: '2026-11-13',
+  updatedText: '13/11/2026',
   cat: 'Kiến thức · Mua bảo hiểm',
   title: 'Mua bảo hiểm PVI ở Bình Dương: liên hệ ai, chuẩn bị gì',
   lead: 'Từ 01/07/2025, Bình Dương thuộc TP.HCM. Khách hàng ở Thủ Dầu Một, Dĩ An, Thuận An, Bến Cát, Tân Uyên có thể mua bảo hiểm PVI qua PVI Thành Đô, đơn vị thành viên của Tổng công ty Bảo hiểm PVI tại TP.HCM: gửi thông tin qua Zalo, nhận báo phí, kiểm tra rồi mới phát hành.',
@@ -32,10 +35,12 @@ export const toc = [
   ['cach-mua', 'Ba bước mua bảo hiểm PVI'],
   ['dai-ly', 'Mua qua đại lý: kiểm tra gì'],
   ['nhu-cau', 'Nhu cầu thường gặp ở Bình Dương'],
+  ['bao-hiem-theo-nghiep-vu', 'Hướng dẫn theo từng nghiệp vụ'],
   ['ho-so', 'Hồ sơ cần chuẩn bị'],
   ['su-co', 'Khi có sự cố'],
   ['san-pham', 'Sản phẩm liên quan'],
   ['cau-hoi', 'Câu hỏi thường gặp'],
+  ['dia-chi-pvi-binh-duong', 'Địa chỉ PVI tại Bình Dương'],
 ];
 
 export const faqs = [
@@ -62,7 +67,10 @@ export const sources = [
   ['Cháy nổ bắt buộc: tra cứu Phụ lục VI và tính phí', '/san-pham/chay-no-bat-buoc/', 'PVI Thành Đô'],
   ['Bảo hiểm bắt buộc: TNDS ô tô và người lao động công trường', '/san-pham/bao-hiem-bat-buoc/', 'PVI Thành Đô'],
   ['Bảo hiểm tai nạn 24/24: quyền lợi, tính phí, hồ sơ', '/san-pham/bao-hiem-tai-nan/', 'PVI Thành Đô'],
+  ...binhDuongOfficeSources,
 ];
+
+export const endMatter = binhDuongOffice;
 
 export const related = [
   { href: '/san-pham/chay-no-bat-buoc/', img: 'section-chay-no', w: 1280, h: 853, k: 'Nhà xưởng, kho bãi', title: 'Cháy nổ bắt buộc', text: 'Tra cứu cơ sở phải mua theo Nghị định 105/2025 và tính phí tham khảo.' },
@@ -116,6 +124,7 @@ export function body() {
 <li><b>Xe ô tô:</b> bảo hiểm trách nhiệm dân sự bắt buộc của chủ xe, cùng trang bảo hiểm bắt buộc.</li>
 <li><b>Hàng xuất nhập khẩu:</b> <a class="kb-link" href="/san-pham/hang-hoa-xuat-nhap-khau/">bảo hiểm hàng hóa</a> theo từng lô hoặc hợp đồng bao.</li>
 </ul>
+${binhDuongGuideLinks()}
 
 <h2 id="ho-so">Hồ sơ cần chuẩn bị</h2>
 <p>Mỗi sản phẩm cần thông tin khác nhau. Danh sách dưới đây giúp bạn gửi đủ ngay lần đầu; chuyên viên có thể hỏi thêm tùy trường hợp.</p>

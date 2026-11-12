@@ -14,6 +14,7 @@ import * as kbKhoSprinkler from './articles/bao-hiem-chay-no-kho-hang-sprinkler.
 import * as kbVfWild from './articles/bao-hiem-xe-ban-tai-dien-vinfast-vf-wild.mjs';
 import * as kbDonVi from './articles/don-vi-thanh-vien-pvi.mjs';
 import * as kbPvi27045 from './articles/bao-hiem-pvi-ve-dich-som-2026.mjs';
+import { binhDuongGuides } from './articles/binh-duong-guides.mjs';
 import { areas, SKIP as AREA_SKIP, renderArea, ZALO_TU_VAN } from './articles/khu-vuc.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -38,6 +39,7 @@ const write = (rel, html) => {
 
 /* ── Danh sách bài, mới nhất lên đầu ── */
 export const posts = [
+  ...binhDuongGuides.map(({ post }) => post),
   kbPvi27045.post,
   kbDonVi.post,
   kbVfWild.post,
@@ -109,6 +111,7 @@ const GROUPS = [
   { id: 'tin-chung', key: 'chung', name: 'Tin tức chung', hint: 'PVI Thành Đô và khu vực', title: 'Hoạt động của PVI Thành Đô', lead: 'Thông báo của đơn vị và thông tin mua bảo hiểm PVI theo từng khu vực tại TP.HCM.' },
 ];
 const POST_GROUP = {
+  ...Object.fromEntries(binhDuongGuides.map(({ post }) => [post.slug, 'san-pham'])),
   'loi-ich-bao-hiem-tai-nan-ca-nhan': 'san-pham',
   'bao-hiem-tai-nan-cong-trinh-pvi': 'san-pham',
   'nghi-dinh-347-2026-chay-no-bat-buoc': 'phap-ly',
@@ -424,7 +427,7 @@ function renderKb(A) {
 <p class="kb-crumb"><a href="/tin-tuc/">Tin tức</a><span aria-hidden="true">/</span><span>${t(A.crumb)}</span></p>
 <h1>${t(p.title)}</h1>
 <p class="kb-lead">${t(p.lead)}</p>
-<p class="kb-meta"><span>Công ty Bảo hiểm PVI Thành Đô</span><time datetime="${p.date}">${esc(p.dateText)}</time><span>${p.readMin} phút đọc</span></p>
+<p class="kb-meta"><span>Công ty Bảo hiểm PVI Thành Đô</span><time datetime="${p.date}">${esc(p.dateText)}</time>${p.updated ? `<time datetime="${p.updated}">Cập nhật ${esc(p.updatedText)}</time>` : ''}<span>${p.readMin} phút đọc</span></p>
 </div></div>
 
 <figure class="kb-hero"${H.position ? ` style="--pos:${H.position}"` : ''}>${pic(H.name, { w: H.w, h: H.h, alt: p.alt, sizes: '(max-width:820px) 100vw, 1160px', eager: true })}
@@ -441,7 +444,7 @@ ${A.body({ img, pic, ctaRow })}
 ${faq}
 <h2 id="nguon">Nguồn tham chiếu</h2>
 <ul class="art-sources">${A.sources.map(([name, href, org]) => href.startsWith('/') ? `<li><a href="${href}"><b>${esc(name)}</b><span>${esc(org)}</span><i aria-hidden="true">&rarr;</i></a></li>` : `<li><p class="src"><b>${esc(name)}</b><span>${esc(org)}</span></p></li>`).join('')}</ul>
-<p class="kb-disclaimer">Bài viết để tham khảo. Phạm vi, điều kiện, quyền lợi và phí chính thức theo quy tắc và hợp đồng Bảo hiểm PVI phát hành.</p>
+${A.endMatter ? A.endMatter() + '\n' : ''}<p class="kb-disclaimer">Bài viết để tham khảo. Phạm vi, điều kiện, quyền lợi và phí chính thức theo quy tắc và hợp đồng Bảo hiểm PVI phát hành.</p>
 ${feedbackBlock(p)}
 </div>
 </div>
@@ -452,11 +455,11 @@ ${feedbackBlock(p)}
     path: P,
     title: A.seo.title,
     description: A.seo.description,
-    image: p.image,
+    image: p.socialImage || p.image,
     canonical: p.canonical,
     head: `<script type="application/ld+json">${JSON.stringify({
       '@context': 'https://schema.org', '@type': p.schemaType || 'Article',
-      headline: p.title, datePublished: p.date, dateModified: p.date,
+      headline: p.title, datePublished: p.date, dateModified: p.updated || p.date,
       image: [SITE + p.image], mainEntityOfPage: p.canonical || SITE + P,
       author: { '@type': 'Organization', name: 'Công ty Bảo hiểm PVI Thành Đô' },
       publisher: { '@type': 'Organization', name: 'Công ty Bảo hiểm PVI Thành Đô', logo: { '@type': 'ImageObject', url: SITE + '/assets/pvi-logo.svg' } },
@@ -483,6 +486,7 @@ renderKb(kbKhoSprinkler);
 renderKb(kbVfWild);
 renderKb(kbDonVi);
 renderKb(kbPvi27045);
+for (const article of binhDuongGuides) renderKb(article);
 
 /* ── Loạt bài theo khu vực: bản đăng lại, canonical về baohiempvi-vn.com ── */
 {
