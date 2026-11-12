@@ -64,18 +64,6 @@ if (depthField) {
   }, { passive: true });
 }
 
-/* Marquee: nút tạm dừng thật, trạng thái phản ánh qua aria-pressed. */
-const marqueeToggle = document.querySelector('[data-marquee-toggle]');
-const marqueeTrack = document.querySelector('[data-marquee-track]');
-if (marqueeToggle && marqueeTrack) {
-  marqueeToggle.addEventListener('click', () => {
-    const paused = marqueeTrack.dataset.paused === 'true';
-    marqueeTrack.dataset.paused = String(!paused);
-    marqueeToggle.setAttribute('aria-pressed', String(!paused));
-    marqueeToggle.textContent = paused ? 'Tạm dừng chuyển động' : 'Chạy tiếp chuyển động';
-  });
-}
-
 /* Quy tắc toàn site (chủ site chốt 28/10/2026): trên máy tính (có chuột), bấm link
    là mở tab mới; điện thoại và máy tính bảng cảm ứng vẫn mở cùng tab như cũ.
    Áp dụng cho mọi trang hiện có và trang thêm sau này vì trang nào cũng nạp app.js.
