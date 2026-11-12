@@ -8,6 +8,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { page, t, esc, breadcrumbJsonLd, ZALO, SITE } from './chrome.mjs';
 import { groups, products } from './data/san-pham.mjs';
+import { productCovers } from './data/product-covers.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.resolve(HERE, '../dist');
@@ -23,18 +24,26 @@ const metaOf = (href) => {
 };
 for (const p of products) {
   if (!groups.some((g) => g.id === p.group)) throw new Error(`Nhóm "${p.group}" của ${p.href} không có trong groups.`);
+  const base = productCovers[p.href]?.base ?? p.img;
   for (const suf of ['', '-800', '-480']) {
-    if (!fs.existsSync(path.join(DIST, 'assets', `${p.img}${suf}.webp`))) throw new Error(`Thiếu ảnh /assets/${p.img}${suf}.webp`);
+    if (!fs.existsSync(path.join(DIST, 'assets', `${base}${suf}.webp`))) throw new Error(`Thiếu ảnh /assets/${base}${suf}.webp`);
   }
 }
 
 const label = Object.fromEntries(groups.map((g) => [g.id, g.label]));
 const count = (id) => products.filter((p) => p.group === id).length;
 
-const cards = products.map((p, i) => `<li class="sp-card" data-group="${p.group}"><a href="${p.href}">
-<span class="sp-media"><img src="/assets/${p.img}-800.webp" srcset="/assets/${p.img}-480.webp 480w, /assets/${p.img}-800.webp 800w, /assets/${p.img}.webp 1280w" sizes="(max-width:640px) 38vw, (max-width:860px) 46vw, (max-width:1100px) 31vw, 280px" width="800" height="533" alt="${esc(p.alt)}"${i < 3 ? '' : ' loading="lazy"'} decoding="async"><span class="sp-tag">${esc(label[p.group])}</span></span>
+const cards = products.map((p, i) => {
+  const cover = productCovers[p.href];
+  const base = cover?.base ?? p.img;
+  const alt = cover?.alt ?? p.alt;
+  const width = cover ? 1200 : 1280;
+  const height = cover ? 420 : 533;
+  return `<li class="sp-card" data-group="${p.group}"><a href="${p.href}">
+<span class="sp-media"><img src="/assets/${base}-800.webp" srcset="/assets/${base}-480.webp 480w, /assets/${base}-800.webp 800w, /assets/${base}.webp ${width}w" sizes="(max-width:640px) 100vw, (max-width:860px) 46vw, (max-width:1100px) 31vw, 280px" width="800" height="${height}" alt="${esc(alt)}"${i < 3 ? '' : ' loading="lazy"'} decoding="async"><span class="sp-tag">${esc(label[p.group])}</span></span>
 <span class="sp-body"><h2>${t(p.title)}</h2><p>${t(metaOf(p.href))}</p><span class="sp-more">Xem chi tiết <i aria-hidden="true">&rarr;</i></span></span>
-</a></li>`).join('\n');
+</a></li>`;
+}).join('\n');
 
 const main = `
 <section class="sp-hero"><div class="sp-wrap">
