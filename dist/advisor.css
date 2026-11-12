@@ -9,8 +9,8 @@
   transition:box-shadow .24s ease,filter .24s ease,transform .24s ease}
 .consult-action svg{height:25px;width:25px}
 .consult-zalo{background:linear-gradient(145deg,#1496ff,#0866e8);color:#fff}
-.consult-zalo-mark{align-items:center;background:#fff;border-radius:11px;color:#0879ef;display:flex;font:900 24px/1 Arial,sans-serif;
-  height:28px;justify-content:center;letter-spacing:-.1em;padding-right:2px;width:29px}
+.consult-zalo-mark{align-items:center;background:#fff;border-radius:11px;color:#075d9a;display:flex;font:700 13px/1 Arial,sans-serif;
+  height:28px;justify-content:center;width:36px}
 .consult-phone{background:linear-gradient(145deg,#fff,#e9f6ff);color:#075d9a}
 
 .consult-tip,.consult-advisor-label{background:#082f5a;border-radius:8px;box-shadow:0 10px 22px rgba(1,26,54,.2);color:#fff;
@@ -44,7 +44,7 @@
   .consult-stack{align-items:flex-end;bottom:calc(12px + env(safe-area-inset-bottom));gap:10px;right:12px;top:auto;transform:none}
   .consult-action{height:46px;width:46px}
   .consult-action svg{height:23px;width:23px}
-  .consult-zalo-mark{font-size:21px;height:25px;width:26px}
+  .consult-zalo-mark{height:25px;width:34px}
   .consult-advisor{height:56px;width:56px}
   .consult-advisor-motion{margin-right:4px}
   .consult-tip,.consult-advisor-label{display:none}
