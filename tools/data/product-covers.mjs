@@ -5,7 +5,7 @@ export const productCovers = {
     "alt": "TRA PHÍ TNDS THEO ĐÚNG LOẠI XE. CHUẨN BỊ HỒ SƠ TRƯỚC KHI MUA."
   },
   "/san-pham/chay-no-bat-buoc/": {
-    "base": "product-covers/chay-no",
+    "base": "product-covers/chay-no-v2",
     "alt": "TRA LOẠI CƠ SỞ TRƯỚC KHI TÍNH PHÍ. KÊ KHAI TÀI SẢN THEO TỪNG HẠNG MỤC."
   },
   "/san-pham/bao-hiem-tai-nan/": {
@@ -21,7 +21,7 @@ export const productCovers = {
     "alt": "CHỌN BẢO HIỂM THEO CHUYẾN ĐI. TRA PHÍ VÀ PHẠM VI QUYỀN LỢI."
   },
   "/san-pham/hang-hoa-xuat-nhap-khau/": {
-    "base": "product-covers/hang-hoa",
+    "base": "product-covers/hang-hoa-v2",
     "alt": "BẢO HIỂM HÀNG HÓA THEO HÀNH TRÌNH. CHUẨN BỊ CHỨNG TỪ ĐỂ NHẬN BÁO PHÍ."
   },
   "/san-pham/bao-hiem-cong-trinh/": {
