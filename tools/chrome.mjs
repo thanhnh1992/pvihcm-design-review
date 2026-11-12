@@ -1,3 +1,5 @@
+import { productCovers } from './data/product-covers.mjs';
+
 // Khung dùng chung cho mọi trang: head SEO, header có menu, chân trang.
 export const SITE = 'https://pvihcm.com';
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -70,7 +72,9 @@ export function footer() {
 // canonical: chỉ truyền khi trang là bản phụ của bài đã có bản chuẩn ở site khác (xem QUY-TAC-VIET-BAI.md mục 2).
 export function seo({ path, title, description, image = '/assets/section-bat-buoc.webp', canonical }) {
   const url = canonical || SITE + path;
-  return `<link rel="canonical" href="${url}"><meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Bảo hiểm PVI Thành Đô"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${SITE}${image}"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#ffffff">`;
+  const cover = productCovers[path];
+  const imageMeta = cover ? productCoverMeta(cover) : `<meta property="og:image" content="${SITE}${image}">`;
+  return `<link rel="canonical" href="${url}"><meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Bảo hiểm PVI Thành Đô"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${url}">${imageMeta}<meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#ffffff">`;
 }
 
 export function faqJsonLd(faqs) {
@@ -102,3 +106,8 @@ export const hotline = `<div class="fire-hotline"><div><strong>Tổng đài bồ
 
 export const ZALO = 'https://zalo.me/2076363329232219188?src=qr&f=1';
 export const ctaRow = (primaryLabel = 'Gọi tư vấn 0938 072 236') => `<div class="pd-cta"><a class="fire-btn fire-btn-red" href="tel:0938072236">${primaryLabel}</a><a class="fire-btn fire-btn-line" href="${ZALO}" target="_blank" rel="noopener">Nhắn Zalo</a></div>`;
+
+export function productCoverMeta({ base, alt }) {
+  const src = SITE + `/assets/${base}.jpg`;
+  return `<meta property="og:image" content="${src}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="${esc(alt)}"><meta name="twitter:image" content="${src}"><meta name="twitter:image:alt" content="${esc(alt)}">`;
+}
