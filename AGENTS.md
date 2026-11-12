@@ -26,7 +26,7 @@ dist/
   product.css CSS chung của các trang sản phẩm (lớp .fire-*, .pd-*)
   site.css    header + menu điện thoại + chân trang dùng chung (nạp sau cùng)
   cta.css     kiểu nút hành động (CTA) toàn site theo 2 màu logo #183665/#E31F26, nạp sau cùng mọi trang (06/11/2026)
-  advisor.css/js  cụm nút nổi: Gọi 0938072236 · Chat chuyên viên (Zalo OA); nút Zalo cá nhân đã tắt 11/11/2026, nhắn tin chỉ qua OA
+  advisor.css/js  cụm nút nổi: Gọi 0938072236 · Chat Zalo cá nhân theo username thanhnguyenhoang · Chat chuyên viên (Zalo OA)
   app.js      menu điện thoại, hiệu ứng nhỏ trang chủ
   fonts/      Be Vietnam Pro woff2 (vietnamese, latin, latin-ext)
   assets/     ảnh; mỗi ảnh lớn có bản -480/-800 cho srcset
