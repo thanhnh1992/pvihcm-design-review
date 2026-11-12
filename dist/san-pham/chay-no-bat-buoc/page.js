@@ -60,7 +60,7 @@
   /* ── Bảng tính bên phải ── */
   function drawSheet() {
     if (!chosen.size) {
-      elSheet.innerHTML = '<p class="fire-sheet-empty">Chưa chọn hạng mục nào. Bấm một dòng ở danh mục bên trái để thêm vào đây.</p>';
+      elSheet.innerHTML = '<p class="fire-sheet-empty">Chưa chọn hạng mục nào. Chọn một loại cơ sở trong danh mục phía trên để nhập số tiền bảo hiểm.</p>';
       elTotal.hidden = true;
       return;
     }
@@ -70,10 +70,10 @@
       const fee = rec.stbh * 1e6 * it.rate / 100;
       rows += '<tr>'
         + `<td><span class="code">${esc(it.code)}</span><span class="nm">${esc(it.ten)}</span></td>`
-        + `<td class="num">${rateText(it.rate)}</td>`
-        + `<td><span class="fire-kt">Loại ${esc(it.kt)}</span></td>`
-        + `<td class="num"><input type="number" min="0" step="100" value="${rec.stbh}" data-code="${esc(code)}" aria-label="Số tiền bảo hiểm của dòng ${esc(it.code)}, triệu đồng"></td>`
-        + `<td class="num">${rec.stbh > 0 ? vnd(fee) : '<span style="color:#9aa9b9">chưa nhập</span>'}</td>`
+        + `<td class="num" data-label="Tỷ lệ phí">${rateText(it.rate)}</td>`
+        + `<td data-label="Khấu trừ"><span class="fire-kt">Loại ${esc(it.kt)}</span></td>`
+        + `<td class="num" data-label="Số tiền bảo hiểm (triệu đồng)"><input type="number" min="0" step="100" value="${rec.stbh}" data-code="${esc(code)}" aria-label="Số tiền bảo hiểm của dòng ${esc(it.code)}, triệu đồng"></td>`
+        + `<td class="num" data-label="Phí năm chưa VAT">${rec.stbh > 0 ? vnd(fee) : '<span style="color:#9aa9b9">chưa nhập</span>'}</td>`
         + `<td class="num"><button type="button" class="fire-del" data-del="${esc(code)}" aria-label="Bỏ dòng ${esc(it.code)}">Bỏ</button></td>`
         + '</tr>';
     }
