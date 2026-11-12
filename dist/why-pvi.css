@@ -72,18 +72,15 @@
 .wp-tile-link:hover .wp-tile-name{color:#1465d9}
 .wp-tile-link:focus-visible{border-radius:14px;outline:2px solid #1465d9;outline-offset:3px}
 .wp-tile-name{color:#09264c;font-size:14px;font-weight:600;line-height:1.35;overflow-wrap:anywhere}
-.wp-slogan{-webkit-mask-image:linear-gradient(to right,transparent 0,#000 24px,#000 calc(100% - 24px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 24px,#000 calc(100% - 24px),transparent 100%);overflow:hidden}
-.wp-slogan-track{animation:wpSlogan 16s linear infinite;display:flex;width:max-content}
-.wp-slogan:hover .wp-slogan-track{animation-play-state:paused}
-.wp-slogan-track span{color:#c8262d;font-size:16px;font-weight:800;line-height:1.5;padding-right:64px;white-space:nowrap}
-@keyframes wpSlogan{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* Khẩu hiệu đứng yên, hiện trọn câu (trước là chữ chạy, luôn bị cắt 2 đầu). Bản lặp aria-hidden trong HTML được ẩn. */
+.wp-slogan-track span{color:#c8262d;display:block;font-size:16px;font-weight:800;line-height:1.5}
+.wp-slogan-track span[aria-hidden]{display:none}
 .wp-note{color:#56718f;font-size:14px!important;line-height:1.5;margin:0!important}
 
 @media (prefers-reduced-motion:reduce){
-  .wp-track,.wp-slogan-track{animation:none}
+  .wp-track{animation:none}
   .wp-slice,.wp-cert,.wp-donut svg,.wp-legend li,.wp-legend em::after,.wp-badge{transition:none}
   .wp-brand-red{animation:none;background-position:100% 0}
-  .wp-slogan-track span[aria-hidden]{display:none}
   .wp-market[data-pop] .wp-halo{animation:none}
   .wp-strip{overflow-x:auto}
 }
