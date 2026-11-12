@@ -60,6 +60,7 @@
   .sp-body h2{font-size:16px}
   .sp-body p{font-size:15px;-webkit-line-clamp:2}
   .sp-more{padding-top:6px;font-size:14px}
-  .sp-help-actions{width:100%;display:grid;grid-template-columns:1fr 1fr}
+  /* auto-fit: màn hẹp (360-390px) hai nút xếp dọc, nút "Gọi 0938 072 236" không còn tràn khỏi khung */
+  .sp-help-actions{width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
 }
 @media(prefers-reduced-motion:reduce){.sp-card a,.sp-media img{transition:none}}

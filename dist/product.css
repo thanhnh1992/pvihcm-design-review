@@ -353,6 +353,8 @@
   .pd-section{padding:44px 0}
   .pd-two,.pd-cases{grid-template-columns:1fr;gap:28px}
   .pd-docs a,.pd-docs div{grid-template-columns:minmax(0,1fr) 24px;gap:4px 14px}
+  /* Khối chữ bên trong link không phải một hàng lưới: nếu để lưới 2 cột, mô tả bị ép vào cột 24px (mỗi dòng một chữ) và làm trang cuộn ngang. */
+  .pd-docs a>div{display:block;padding:0}
   .pd-docs .cat{grid-column:1/-1}
   .pd-table th,.pd-table td{padding:12px 12px;font-size:15px}
   .pd-scroll .pd-table{min-width:560px}
