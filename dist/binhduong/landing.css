@@ -45,6 +45,12 @@
 .bd-jumps { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 24px; }
 .bd-jumps a { display: inline-flex; align-items: center; min-height: 44px; padding: 5px 13px; border: 1px solid var(--bd-line); border-radius: 8px; color: var(--bd-blue); font-size: 15px; font-weight: 700; }
 .bd-jumps a:hover { background: var(--bd-surface); border-color: var(--bd-blue); }
+.bd-page-nav { margin-top: 0; margin-bottom: 28px; }
+.bd-guide { max-width: 850px; }
+.bd-guide ol, .bd-guide ul { margin: 12px 0 0; padding-inline-start: 1.5em; }
+.bd-guide li { padding-inline-start: 4px; }
+.bd-guide li + li { margin-top: 10px; }
+.bd-guide li::marker { color: var(--bd-blue); font-weight: 750; }
 .bd-fees { background: var(--bd-surface); border: 1px solid var(--bd-line); border-radius: 16px; padding: clamp(16px, 3vw, 28px); }
 .bd-fees h3 { font-size: 20px; margin-bottom: 6px; }
 .bd-fees dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 20px; margin-top: 14px; max-width: 620px; }
