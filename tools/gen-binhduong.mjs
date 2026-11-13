@@ -82,7 +82,7 @@ function productCard({ label, basis, action, guide, destination, url }) {
   return `<li class="bd-product">
   <div class="bd-product-photo">${photo(name, guide.post.alt, '(max-width:620px) calc(100vw - 40px), (max-width:1248px) 48vw, 588px', { width: w, height: h })}</div>
   <div class="bd-product-copy">
-    <h3>${esc(label)}</h3><p>${esc(basis)}</p>
+    <h3><a class="bd-product-title" href="${url}">${esc(label)}</a></h3><p>${esc(basis)}</p>
     <div class="bd-product-links">
       <a class="bd-product-primary" href="${destination}">${esc(action)} <span aria-hidden="true">→</span></a>
       <a class="bd-product-detail" href="${url}" aria-label="Xem chi tiết: ${esc(label)}">Xem chi tiết</a>

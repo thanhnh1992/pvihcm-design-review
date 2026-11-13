@@ -63,6 +63,8 @@
 .bd-product-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .bd-product-copy { display: flex; flex: 1; flex-direction: column; gap: 8px; padding: clamp(16px, 2.25vw, 26px); }
 .bd-product-copy h3 { font-size: clamp(20px, 2vw, 27px); letter-spacing: -.02em; }
+.bd-product-title { display: flex; align-items: center; min-height: 44px; color: var(--bd-blue); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.bd-product-title:hover { color: #0c3c6b; text-decoration-thickness: 2px; }
 .bd-product-copy p { max-width: 57ch; }
 .bd-product-links { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin-top: auto; padding-top: 8px; }
 .bd-product-links a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-size: 15px; font-weight: 700; }
