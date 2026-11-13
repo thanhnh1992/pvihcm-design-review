@@ -3,7 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { page, t, esc, ctaRow, faqJsonLd, SITE } from './chrome.mjs';
+import { page, t, esc, ctaRow, faqJsonLd, SITE, av } from './chrome.mjs';
 import * as kbCongTrinh from './articles/tai-nan-cong-trinh.mjs';
 import * as kbTaiNanCaNhan from './articles/loi-ich-tai-nan-ca-nhan.mjs';
 import * as kbBinhDuong from './articles/mua-bao-hiem-pvi-binh-duong.mjs';
@@ -15,6 +15,11 @@ import * as kbVfWild from './articles/bao-hiem-xe-ban-tai-dien-vinfast-vf-wild.m
 import * as kbDonVi from './articles/don-vi-thanh-vien-pvi.mjs';
 import * as kbPvi27045 from './articles/bao-hiem-pvi-ve-dich-som-2026.mjs';
 import { binhDuongGuides } from './articles/binh-duong-guides.mjs';
+import * as kbCnMuaODau from './articles/cn-mua-o-dau.mjs';
+import * as kbCnBaoNhieu from './articles/cn-bao-nhieu-tien.mjs';
+import * as kbCnChungCu from './articles/cn-chung-cu.mjs';
+import * as kbCnGcn from './articles/cn-giay-chung-nhan.mjs';
+import * as kbCnQuyDinh from './articles/cn-quy-dinh.mjs';
 import { areas, SKIP as AREA_SKIP, renderArea, ZALO_TU_VAN } from './articles/khu-vuc.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -39,6 +44,11 @@ const write = (rel, html) => {
 
 /* ── Danh sách bài, mới nhất lên đầu ── */
 export const posts = [
+  kbCnMuaODau.post,
+  kbCnBaoNhieu.post,
+  kbCnChungCu.post,
+  kbCnGcn.post,
+  kbCnQuyDinh.post,
   ...binhDuongGuides.map(({ post }) => post),
   kbPvi27045.post,
   kbDonVi.post,
@@ -111,6 +121,11 @@ const GROUPS = [
   { id: 'tin-chung', key: 'chung', name: 'Tin tức chung', hint: 'PVI Thành Đô và khu vực', title: 'Hoạt động của PVI Thành Đô', lead: 'Thông báo của đơn vị và thông tin mua bảo hiểm PVI theo từng khu vực tại TP.HCM.' },
 ];
 const POST_GROUP = {
+  'mua-bao-hiem-chay-no-bat-buoc-o-dau': 'san-pham',
+  'bao-hiem-chay-no-bat-buoc-bao-nhieu-tien': 'san-pham',
+  'bao-hiem-chay-no-bat-buoc-chung-cu': 'san-pham',
+  'giay-chung-nhan-bao-hiem-chay-no-bat-buoc': 'san-pham',
+  'quy-dinh-mua-bao-hiem-chay-no-bat-buoc': 'phap-ly',
   ...Object.fromEntries(binhDuongGuides.map(({ post }) => [post.slug, 'san-pham'])),
   'loi-ich-bao-hiem-tai-nan-ca-nhan': 'san-pham',
   'bao-hiem-tai-nan-cong-trinh-pvi': 'san-pham',
@@ -410,7 +425,7 @@ ${feedbackBlock(p)}
    Mục lục bám theo khi cuộn trên máy tính, cột chữ 700px, khối rộng xen giữa.
    Mỗi module bài khai báo: post, seo, crumb, hero, toc, body(ctx), related, faqs, sources. */
 const pic = (name, { w = 1280, h = 853, alt = '', sizes = '100vw', eager = false } = {}) =>
-  `<img src="/assets/${name}.webp" srcset="/assets/${name}-480.webp 480w, /assets/${name}-800.webp 800w, /assets/${name}.webp ${w}w" sizes="${sizes}" width="${w}" height="${h}" alt="${esc(alt)}"${eager ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"'}>`;
+  `<img src="/assets/${name}.webp${av(name)}" srcset="/assets/${name}-480.webp${av(name)} 480w, /assets/${name}-800.webp${av(name)} 800w, /assets/${name}.webp${av(name)} ${w}w" sizes="${sizes}" width="${w}" height="${h}" alt="${esc(alt)}"${eager ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"'}>`;
 const img = (name, alt, sizes, eager = false) => pic(name, { alt, sizes, eager });
 
 function renderKb(A) {
@@ -475,6 +490,11 @@ ${feedbackBlock(p)}
 }
 
 renderKb(kbCongTrinh);
+renderKb(kbCnMuaODau);
+renderKb(kbCnBaoNhieu);
+renderKb(kbCnChungCu);
+renderKb(kbCnGcn);
+renderKb(kbCnQuyDinh);
 renderKb(kbTaiNanCaNhan);
 renderKb(kbBinhDuong);
 renderKb(kbBinhThanh);
