@@ -125,6 +125,7 @@ export function body() {
 <li><b>Hàng xuất nhập khẩu:</b> <a class="kb-link" href="/san-pham/hang-hoa-xuat-nhap-khau/">bảo hiểm hàng hóa</a> theo từng lô hoặc hợp đồng bao.</li>
 </ul>
 ${binhDuongGuideLinks()}
+<p><a class="kb-link" href="/binhduong/">Tra biểu phí bảo hiểm PVI tại Bình Dương năm 2026</a> cho ô tô, cháy nổ, tai nạn và các nghiệp vụ khác.</p>
 
 <h2 id="ho-so">Hồ sơ cần chuẩn bị</h2>
 <p>Mỗi sản phẩm cần thông tin khác nhau. Danh sách dưới đây giúp bạn gửi đủ ngay lần đầu; chuyên viên có thể hỏi thêm tùy trường hợp.</p>
