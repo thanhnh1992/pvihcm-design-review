@@ -93,6 +93,12 @@ function productCard({ label, basis, action, guide, destination, url }) {
 
 const productGroups = groups.map((group) => ({ ...group, products: group.products.map(productDetails) }));
 const fireProduct = productGroups[1].products[0];
+const industrialParks = [
+  'VSIP I', 'VSIP II', 'VSIP III',
+  'Mỹ Phước 1', 'Mỹ Phước 2', 'Mỹ Phước 3',
+  'Thới Hòa', 'Bàu Bàng', 'Bàu Bàng mở rộng',
+  'Nam Tân Uyên', 'Đồng An 2', 'Sóng Thần 3',
+];
 
 const main = `<div class="bd">
 <section class="bd-hero">
@@ -117,7 +123,11 @@ const main = `<div class="bd">
   </nav>
   <section class="bd-section" aria-labelledby="bieu-phi">
     <h2 id="bieu-phi">Biểu phí bảo hiểm PVI tại Bình Dương mới nhất 2026</h2>
-    <p class="bd-summary">Chọn nghiệp vụ để tra biểu phí công khai, tính phí tham khảo hoặc xem thông tin cần gửi để PVI báo phí theo hồ sơ.</p>
+    <div class="bd-local-intro">
+      <p><strong>PVI Bình Dương</strong>, hay còn có tên gọi khác là <strong>Bảo hiểm PVI Đông Sài Gòn</strong>, có văn phòng tại địa chỉ tầng 4 và 5, tòa nhà số 48 đường Hoàng Văn Thụ, khu dân cư Chánh Nghĩa, phường Thủ Dầu Một, TP.HCM. Bạn có thể gọi <a class="bd-link" href="tel:02743872528">0274 387 2528</a> để hỏi thông tin nghiệp vụ, hồ sơ và việc cấp bảo hiểm tại khu vực Bình Dương.</p>
+      <p>Cá nhân và doanh nghiệp tại các phường Thủ Dầu Một, Phú Lợi, Bình Dương, Dĩ An, Tân Đông Hiệp, Thuận An, Thuận Giao, Bến Cát, Thới Hòa và Tân Uyên có thể gửi nhu cầu mua bảo hiểm ô tô, cháy nổ, tài sản hoặc người lao động. Khi chuẩn bị hồ sơ, ghi đúng địa chỉ hành chính đang sử dụng và địa điểm xe, nhà xưởng hoặc công trình cần bảo hiểm.</p>
+      <p>Với cơ sở tại KCN VSIP I, VSIP II, VSIP III, Mỹ Phước, Bàu Bàng, Nam Tân Uyên, Đồng An 2 hoặc Sóng Thần 3, hãy gửi công năng, danh mục và giá trị tài sản để nhận báo phí phù hợp. Bên dưới có liên kết tra phí theo từng nghiệp vụ; doanh nghiệp có nhu cầu bảo hiểm cho công nhân nên bổ sung số người, nhóm công việc và thời hạn mong muốn.</p>
+    </div>
   </section>
   <nav class="bd-jumps" aria-label="Nhóm sản phẩm">
     <a href="#xe">Ô tô</a><a href="${fireProduct.url}">Cháy nổ bắt buộc</a><a href="#tai-san">Nhà xưởng và công trình</a><a href="#con-nguoi">Con người và du lịch</a>
@@ -159,6 +169,12 @@ const main = `<div class="bd">
   <section class="bd-section bd-office" aria-labelledby="dia-chi-pvi-binh-duong">
     <figure>${photo('binhduong-thu-dau-mot', 'Minh họa hai tháp trung tâm hành chính và đại lộ có hàng cây ở Bình Dương', '(max-width:800px) 92vw, 510px')}<figcaption>Hình ảnh minh họa lấy cảm hứng từ Trung tâm Hành chính Bình Dương.</figcaption></figure>
     <div>${binhDuongOffice()}<p class="bd-source">Nguồn: ${binhDuongOfficeSources.map(([name]) => esc(name)).join(' và ')}.</p></div>
+  </section>
+  <section class="bd-section bd-industrial" aria-labelledby="phi-khu-cong-nghiep">
+    <h2 id="phi-khu-cong-nghiep">Phí bảo hiểm PVI tại các khu công nghiệp Bình Dương</h2>
+    <p class="bd-summary">Chọn <a class="bd-link" href="${fireProduct.url}">bảo hiểm cháy nổ bắt buộc</a>, <a class="bd-link" href="/binhduong/taisannhaxuong/">bảo hiểm tài sản nhà xưởng</a> hoặc <a class="bd-link" href="/binhduong/tainan2424/">bảo hiểm tai nạn công nhân</a> để xem hồ sơ báo phí cho cơ sở của bạn. Phí được xác định theo nghiệp vụ và thông tin rủi ro của từng cơ sở, nhóm tài sản hoặc nhóm người lao động.</p>
+    <ul class="bd-industrial-list">${industrialParks.map((name) => `<li>Phí bảo hiểm PVI tại KCN ${esc(name)} Bình Dương</li>`).join('\n')}</ul>
+    <p class="bd-source">Tên phường đối chiếu Nghị quyết 1685/NQ-UBTVQH15. Tên khu công nghiệp tham khảo danh mục dự án VSIP, công bố của Becamex, Công ty Cổ phần KCN Nam Tân Uyên và Quy hoạch tỉnh Bình Dương thời kỳ 2021–2030. Bình Dương trong trang này chỉ khu vực tỉnh Bình Dương trước sắp xếp, nay thuộc TP.HCM.</p>
   </section>
 </div>
 </div>`;

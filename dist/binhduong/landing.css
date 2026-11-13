@@ -41,6 +41,11 @@
 .bd-body { padding-block: clamp(34px, 5vw, 68px); }
 .bd-section + .bd-section { margin-top: clamp(44px, 7vw, 88px); }
 .bd .bd-summary { margin-top: 10px; max-width: 65ch; }
+.bd-local-intro { max-width: 68ch; margin-top: 16px; }
+.bd-local-intro p { line-height: 1.8; }
+.bd-local-intro p + p { margin-top: 16px; }
+.bd-industrial-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; margin: 20px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--bd-line); }
+.bd-industrial-list li { min-width: 0; padding: 14px 0; border-bottom: 1px solid var(--bd-line); font-size: 16px; line-height: 1.65; font-weight: 650; }
 .bd-jumps { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 24px; }
 .bd-jumps a { display: inline-flex; align-items: center; min-height: 44px; padding: 5px 13px; border: 1px solid var(--bd-line); border-radius: 8px; color: var(--bd-blue); font-size: 15px; font-weight: 700; }
 .bd-jumps a:hover { background: var(--bd-surface); border-color: var(--bd-blue); }
@@ -96,4 +101,5 @@
 }
 @media (max-width: 620px) {
   .bd-group > ul { grid-template-columns: 1fr; }
+  .bd-industrial-list { grid-template-columns: 1fr; }
 }
