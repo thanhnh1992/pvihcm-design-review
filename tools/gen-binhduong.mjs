@@ -1,39 +1,39 @@
 import fs from 'node:fs';
-import { page, esc, SITE, faqJsonLd, breadcrumbJsonLd } from './chrome.mjs';
+import { page, esc, SITE, ZALO, faqJsonLd, breadcrumbJsonLd } from './chrome.mjs';
 import { formatVnd, tndsVehicleClasses } from './data/tnds.mjs';
 import { binhDuongGuides, binhDuongOffice, binhDuongOfficeSources } from './articles/binh-duong-guides.mjs';
 
 const route = '/binhduong/';
 const overview = '/tin-tuc/mua-bao-hiem-pvi-binh-duong/';
-const title = 'Biểu phí bảo hiểm PVI tại Bình Dương mới nhất 2026';
-const description = 'Tra biểu phí bảo hiểm PVI tại Bình Dương năm 2026 cho ô tô, cháy nổ, tai nạn và nhà xưởng. Xem hồ sơ, báo phí và địa chỉ chi nhánh ở Thủ Dầu Một.';
+const title = 'Mua bảo hiểm xe ô tô tại Bình Dương | Biểu phí 2026';
+const description = 'Mua bảo hiểm xe ô tô tại Bình Dương. Tra phí TNDS, vật chất xe và cháy nổ bắt buộc 2026. Xem hồ sơ cho nhà xưởng và địa chỉ tư vấn ở Thủ Dầu Một.';
 const groups = [
   {
     id: 'xe',
     title: 'Xe ô tô',
     products: [
-      ['bao-hiem-tnds-o-to-binh-duong', 'TNDS ô tô bắt buộc', 'Tra theo loại xe, số chỗ hoặc tải trọng và mục đích sử dụng.', '#tnds-tra-cuu', 'Tra phí TNDS'],
-      ['bao-hiem-vat-chat-xe-o-to-binh-duong', 'Vật chất xe ô tô', 'Báo phí theo giá trị xe, cách sử dụng, khấu trừ và điều khoản bổ sung.', '', 'Xem bảo hiểm vật chất xe'],
+      ['bao-hiem-tnds-o-to-binh-duong', 'Bảo hiểm TNDS ô tô bắt buộc', 'Cho xe cá nhân và xe kinh doanh. Tra phí theo loại xe, số chỗ, tải trọng và mục đích sử dụng.', '#tnds-tra-cuu', 'Tra phí TNDS'],
+      ['bao-hiem-vat-chat-xe-o-to-binh-duong', 'Bảo hiểm vật chất xe ô tô', 'Xem phạm vi bảo hiểm thân vỏ, mức khấu trừ và điều khoản bổ sung. Báo phí theo giá trị và tình trạng xe.', '', 'Xem quyền lợi vật chất xe'],
     ],
   },
   {
     id: 'tai-san',
     title: 'Nhà xưởng, công trình và hàng hóa',
     products: [
-      ['bao-hiem-chay-no-nha-xuong-kho-binh-duong', 'Cháy nổ nhà xưởng, kho', 'Tra nhóm cơ sở và tỷ lệ phí, sau đó nhập giá trị tài sản để ước tính.', '#tra-cuu', 'Tra phí cháy nổ'],
-      ['bao-hiem-tai-san-nha-xuong-binh-duong', 'Tài sản nhà xưởng', 'Gửi danh mục và giá trị nhà xưởng, máy móc, tồn kho theo từng địa điểm.', '#nhan-bao-phi', 'Nhận báo phí tài sản'],
-      ['bao-hiem-cong-trinh-lap-dat-binh-duong', 'Công trình và lắp đặt', 'Gửi dự toán, địa điểm thi công, thời gian lắp đặt và chạy thử.', '', 'Xem bảo hiểm công trình'],
-      ['bao-hiem-hang-hoa-xuat-nhap-khau-binh-duong', 'Hàng hóa xuất nhập khẩu', 'Báo phí theo giá trị lô hàng, cách đóng gói và hành trình vận chuyển.', '', 'Xem bảo hiểm hàng hóa'],
+      ['bao-hiem-chay-no-nha-xuong-kho-binh-duong', 'Mua bảo hiểm cháy nổ bắt buộc tại Bình Dương', 'Cho nhà xưởng, kho và cơ sở thuộc diện phải mua. Tra loại cơ sở và nhập giá trị tài sản để ước tính phí.', '#tra-cuu', 'Tra phí cháy nổ'],
+      ['bao-hiem-tai-san-nha-xuong-binh-duong', 'Bảo hiểm tài sản nhà xưởng', 'Cho nhà xưởng đang vận hành, máy móc và tồn kho. Lập danh mục tài sản theo từng địa điểm để nhận báo phí.', '#nhan-bao-phi', 'Nhận báo phí tài sản'],
+      ['bao-hiem-cong-trinh-lap-dat-binh-duong', 'Bảo hiểm công trình và lắp đặt', 'Cho chủ đầu tư và nhà thầu xây mới, cải tạo hoặc lắp dây chuyền. Chuẩn bị dự toán, tiến độ và lịch chạy thử.', '', 'Xem bảo hiểm công trình'],
+      ['bao-hiem-hang-hoa-xuat-nhap-khau-binh-duong', 'Bảo hiểm hàng hóa xuất nhập khẩu', 'Cho lô hàng đi từ kho Bình Dương đến cảng hoặc điểm giao. Báo phí theo giá trị hàng, bao bì và hành trình.', '', 'Xem bảo hiểm hàng hóa'],
     ],
   },
   {
     id: 'con-nguoi',
     title: 'Công nhân, sức khỏe và du lịch',
     products: [
-      ['bao-hiem-tai-nan-cong-nhan-cong-truong-binh-duong', 'Người lao động thi công', 'Khai công trình, nhóm công việc, số người và thời gian thi công.', '#cong-truong', 'Xem bảo hiểm công trường'],
-      ['bao-hiem-tai-nan-24-24-cong-nhan-binh-duong', 'Tai nạn 24/24 cho công nhân', 'Ước tính theo gói, số người và thời hạn. Nêu rõ các nhóm nghề khi hỏi báo phí.', '#tinh-phi', 'Tính phí tai nạn 24/24'],
-      ['bao-hiem-suc-khoe-pvi-care-binh-duong', 'Sức khỏe PVI Care', 'Chọn quyền lợi theo nhu cầu khám, điều trị và bảo lãnh viện phí.', '', 'Xem các chương trình PVI Care'],
-      ['bao-hiem-du-lich-quoc-te-binh-duong', 'Du lịch quốc tế', 'Tra phí theo điểm đến, thời hạn và chương trình bảo hiểm.', '#tinh-phi', 'Tính phí du lịch'],
+      ['bao-hiem-tai-nan-cong-nhan-cong-truong-binh-duong', 'Bảo hiểm người lao động thi công', 'Cho nhà thầu cần bảo hiểm đội thi công. Khai địa điểm công trình, nhóm việc, số người và thời gian làm việc.', '#cong-truong', 'Xem bảo hiểm công trường'],
+      ['bao-hiem-tai-nan-24-24-cong-nhan-binh-duong', 'Bảo hiểm tai nạn 24/24 cho công nhân', 'Cho doanh nghiệp mua theo danh sách nhân viên. Ước tính phí theo gói, số người và thời hạn.', '#tinh-phi', 'Tính phí tai nạn 24/24'],
+      ['bao-hiem-suc-khoe-pvi-care-binh-duong', 'Bảo hiểm sức khỏe', 'Cho cá nhân, gia đình hoặc nhân viên. So quyền lợi nội trú, ngoại trú và điều kiện bảo lãnh viện phí.', '', 'Xem các chương trình sức khỏe'],
+      ['bao-hiem-du-lich-quoc-te-binh-duong', 'Bảo hiểm du lịch quốc tế', 'Cho chuyến đi du lịch, công tác hoặc thăm thân. Tra phí theo điểm đến, số ngày và chương trình.', '#tinh-phi', 'Tính phí du lịch'],
     ],
   },
 ];
@@ -45,20 +45,29 @@ const faqs = [
 const exampleFees = tndsVehicleClasses
   .find(({ id }) => id === 'passenger').usages
   .find(({ id }) => id === 'private').rows.slice(0, 2);
+const feeExample = `<div class="bd-fees">
+  <div><h4>Phí TNDS ô tô không kinh doanh vận tải</h4><p>Mức phí cơ sở một năm, chưa gồm VAT.</p></div>
+  <dl>${exampleFees.map((fee) => `<div><dt>${esc(fee.label)}</dt><dd>${formatVnd(fee.baseFee)}</dd></div>`).join('')}</dl>
+  <p class="bd-source">Căn cứ Phụ lục I Nghị định 67/2023/NĐ-CP, đối chiếu Văn bản hợp nhất 64/2026/VBHN-NĐ-BTC ngày 05/11/2026.</p>
+</div>`;
 
-function photo(name, alt, sizes, eager = false) {
+function photo(name, alt, sizes, { eager = false, width = 1200, height = 800 } = {}) {
   const src = `/assets/${name}`;
-  return `<img src="${src}.webp" srcset="${src}-480.webp 480w, ${src}-800.webp 800w, ${src}.webp 1200w" sizes="${sizes}" width="1200" height="800" alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+  return `<img src="${src}.webp" srcset="${src}-480.webp 480w, ${src}-800.webp 800w, ${src}.webp ${width}w" sizes="${sizes}" width="${width}" height="${height}" alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
 }
 
-function productRow([slug, label, basis, anchor, action]) {
+function productCard([slug, label, basis, anchor, action]) {
   const guide = binhDuongGuides.find(({ post }) => post.slug === slug);
   const destination = anchor.startsWith('#nhan-') ? anchor : guide.related[0].href + anchor;
+  const { name, w, h } = guide.hero;
   return `<li class="bd-product">
-  <div><h4>${esc(label)}</h4><p>${esc(basis)}</p></div>
-  <div class="bd-product-links">
-    <a href="${destination}">${esc(action)} <span aria-hidden="true">→</span></a>
-    <a href="/tin-tuc/${slug}/" aria-label="Hồ sơ ${esc(label)} tại Bình Dương">Hồ sơ tại Bình Dương</a>
+  <div class="bd-product-photo">${photo(name, guide.post.alt, '(max-width:620px) calc(100vw - 40px), (max-width:1248px) 48vw, 588px', { width: w, height: h })}</div>
+  <div class="bd-product-copy">
+    <h4>${esc(label)}</h4><p>${esc(basis)}</p>
+    <div class="bd-product-links">
+      <a class="bd-product-primary" href="${destination}">${esc(action)} <span aria-hidden="true">→</span></a>
+      <a class="bd-product-detail" href="/tin-tuc/${slug}/" aria-label="Xem hồ sơ cho sản phẩm: ${esc(label)}">Xem hồ sơ</a>
+    </div>
   </div>
 </li>`;
 }
@@ -67,15 +76,15 @@ const main = `<div class="bd">
 <section class="bd-hero">
   <div class="bd-wrap bd-hero-grid">
     <div class="bd-intro">
-      <nav class="bd-crumb" aria-label="Đường dẫn"><a href="/">Trang chủ</a><span aria-hidden="true">/</span><span aria-current="page">Bảo hiểm PVI tại Bình Dương</span></nav>
-      <p class="bd-eyebrow">Bảo hiểm PVI · Khu vực Bình Dương</p>
-      <h1>Biểu phí bảo hiểm PVI tại Bình Dương <span>mới nhất 2026</span></h1>
-      <p>PVI có thể cấp bảo hiểm cho cá nhân và doanh nghiệp tại Bình Dương. Tra phí ô tô, cháy nổ, tai nạn hoặc xem hồ sơ báo phí cho nhà xưởng và công trình.</p>
-      <div class="bd-actions"><a class="bd-button" href="#bieu-phi">Tra phí theo sản phẩm</a><a class="bd-button bd-secondary" href="#dia-chi-pvi-binh-duong">Xem địa chỉ PVI</a></div>
+      <nav class="bd-crumb" aria-label="Đường dẫn"><a href="/">Trang chủ</a><span aria-hidden="true">/</span><span aria-current="page">Bảo hiểm tại Bình Dương</span></nav>
+      <p class="bd-eyebrow">Biểu phí bảo hiểm 2026</p>
+      <h1>Mua bảo hiểm xe ô tô tại Bình Dương</h1>
+      <p>Tra phí TNDS theo loại xe, xem quyền lợi thân vỏ và chuẩn bị hồ sơ mua bảo hiểm. Doanh nghiệp có thể tra phí cháy nổ cho nhà xưởng, kho và các cơ sở thuộc diện bắt buộc.</p>
+      <div class="bd-actions"><a class="bd-button" href="#xe">Xem bảo hiểm ô tô</a><a class="bd-button bd-secondary" href="#chay-no">Xem cháy nổ bắt buộc</a></div>
       <p class="bd-location"><strong>PVI Đông Sài Gòn (PVI Bình Dương trước đây)</strong><br>48 Hoàng Văn Thụ, phường Thủ Dầu Một, TP.HCM</p>
     </div>
     <figure class="bd-hero-photo">
-      ${photo('binhduong-khu-cong-nghiep', 'Đại lộ Bình Dương minh họa với xe tải và nhà xưởng khu công nghiệp', '(max-width:800px) 92vw, 550px', true)}
+      ${photo('binhduong-khu-cong-nghiep', 'Đại lộ Bình Dương minh họa với xe tải và nhà xưởng khu công nghiệp', '(max-width:800px) 92vw, 550px', { eager: true })}
       <figcaption>Hình ảnh minh họa lấy cảm hứng từ các khu công nghiệp VSIP và Mỹ Phước, Bình Dương.</figcaption>
     </figure>
   </div>
@@ -85,18 +94,16 @@ const main = `<div class="bd">
     <a href="#bieu-phi">Biểu phí</a><a href="#cach-mua">Cách mua</a><a href="#dai-ly">Kiểm tra đại lý</a><a href="#nhan-bao-phi">Hồ sơ</a><a href="#su-co">Khi có sự cố</a><a href="#dia-chi-pvi-binh-duong">Địa chỉ PVI</a>
   </nav>
   <section class="bd-section" aria-labelledby="bieu-phi">
-    <h2 id="bieu-phi">Biểu phí theo sản phẩm</h2>
+    <h2 id="bieu-phi">Biểu phí bảo hiểm tại Bình Dương 2026</h2>
     <p class="bd-summary">Chọn nghiệp vụ để tra biểu phí công khai, tính phí tham khảo hoặc xem thông tin cần gửi để PVI báo phí theo hồ sơ.</p>
     <nav class="bd-jumps" aria-label="Nhóm sản phẩm">${groups.map((g) => `<a href="#${g.id}">${g.title}</a>`).join('')}</nav>
-    <div class="bd-fees">
-      <div><h3>Phí TNDS ô tô không kinh doanh vận tải</h3><p>Mức phí cơ sở một năm, chưa gồm VAT.</p></div>
-      <dl>${exampleFees.map((fee) => `<div><dt>${esc(fee.label)}</dt><dd>${formatVnd(fee.baseFee)}</dd></div>`).join('')}</dl>
-      <p class="bd-source">Căn cứ Phụ lục I Nghị định 67/2023/NĐ-CP, đối chiếu Văn bản hợp nhất 64/2026/VBHN-NĐ-BTC ngày 05/11/2026.</p>
-    </div>
-    ${groups.map((g) => `<section class="bd-group" aria-labelledby="${g.id}"><h3 id="${g.id}">${g.title}</h3><ul>${g.products.map(productRow).join('\n')}</ul></section>`).join('\n')}
+    ${groups.map((g) => `<section class="bd-group" aria-labelledby="${g.id}">
+      <h3 id="${g.id}">${g.title}</h3>${g.id === 'xe' ? '\n      ' + feeExample : ''}
+      <ul${g.id === 'tai-san' ? ' id="chay-no"' : ''}>${g.products.map(productCard).join('\n')}</ul>
+    </section>`).join('\n')}
   </section>
   <section class="bd-section bd-guide" aria-labelledby="cach-mua">
-    <h2 id="cach-mua">Ba bước mua bảo hiểm PVI tại Bình Dương</h2>
+    <h2 id="cach-mua">Ba bước mua bảo hiểm tại Bình Dương</h2>
     <ol>
       <li><strong>Gửi nhu cầu.</strong> Chọn nghiệp vụ, nêu đối tượng cần bảo hiểm và ngày muốn bắt đầu. Gửi giấy tờ theo hướng dẫn của đầu mối tư vấn.</li>
       <li><strong>Đọc báo phí.</strong> Soát phạm vi, mức phí, quyền lợi, loại trừ và mức khấu trừ nếu có. Hỏi lại nếu thông tin xe, nhà xưởng hoặc danh sách người lao động chưa khớp.</li>
@@ -114,7 +121,7 @@ const main = `<div class="bd">
   </section>
   <section class="bd-section bd-quote" aria-labelledby="nhan-bao-phi">
     <div><h2 id="nhan-bao-phi">Hồ sơ để nhận báo phí</h2><p>Gửi nghiệp vụ, địa chỉ xe hoặc tài sản và ngày cần hiệu lực. Với nhà xưởng hoặc kho, thêm công năng và danh mục tài sản. Với công nhân, thêm số người, nhóm việc và nơi làm việc.</p><a class="bd-link" href="${overview}">Xem hướng dẫn mua bảo hiểm PVI tại Bình Dương →</a></div>
-    <a class="bd-button" href="tel:0938072236">Gọi PVI Thành Đô 0938 072 236</a>
+    <div class="bd-actions bd-quote-actions"><a class="bd-button" href="tel:0938072236">Gọi tư vấn 0938 072 236</a><a class="bd-button bd-secondary" href="${esc(ZALO)}">Nhắn Zalo</a></div>
   </section>
   <section class="bd-section bd-guide" aria-labelledby="su-co">
     <h2 id="su-co">Khi có sự cố ở Bình Dương</h2>
@@ -138,9 +145,9 @@ const jsonLd = JSON.stringify({
   about: { '@type': 'Place', name: 'Khu vực Bình Dương, TP.HCM' },
 }).replace(/</g, '\\u003c');
 const html = page({
-  path: route, title, description, image: '/assets/binhduong-khu-cong-nghiep.webp', main,
+  path: route, title, description, image: '/assets/binhduong-khu-cong-nghiep.webp', main, bodyClass: 'fire bd-page',
   extraCss: '<link rel="stylesheet" href="/binhduong/landing.css">',
-  head: `<script type="application/ld+json">${jsonLd}</script>${breadcrumbJsonLd(route, 'Bảo hiểm PVI tại Bình Dương')}${faqJsonLd(faqs)}`,
+  head: `<script type="application/ld+json">${jsonLd}</script>${breadcrumbJsonLd(route, 'Bảo hiểm tại Bình Dương')}${faqJsonLd(faqs)}`,
 });
 const output = new URL('../dist/binhduong/', import.meta.url);
 fs.mkdirSync(output, { recursive: true });
