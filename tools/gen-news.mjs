@@ -131,7 +131,7 @@ for (const p of posts) {
 
 /* ── Trang danh sách ──
    Bố cục theo thư viện kiến thức của baohiempvi-vn (chủ site chốt 14/10/2026), giữ màu và font pvihcm:
-   dải đầu trang xanh, ba ô chọn mục nổi trên mép dưới; Tin sản phẩm = thẻ ảnh lớn + thẻ ảnh nhỏ;
+   dải đầu trang xanh, ba ô chọn mục nổi trên mép dưới; Tin sản phẩm = bài nổi bật và lưới bài;
    Pháp lý mới và Tin tức chung = thẻ mới nhất + dòng thời gian. */
 {
   const P = '/tin-tuc/';
@@ -152,13 +152,11 @@ for (const p of posts) {
     return `
 <section class="nl-section" id="${g.id}" aria-labelledby="${g.id}-h"><div class="fire-wrap">
 ${head(g, i)}
-<div class="nl-bento${rest.length ? '' : ' nl-solo'}">
-<a class="nl-feature" href="/tin-tuc/${first.slug}/">${cover(first, '(max-width:900px) 100vw, 640px')}
+<a class="nl-feature" href="/tin-tuc/${first.slug}/"><span class="nl-photo">${cover(first, '(max-width:760px) calc(100vw - 40px), (max-width:1288px) 50vw, 620px')}</span>
 <span class="nl-feature-copy"><span class="nl-label">${esc(first.cat)}</span><h3>${t(first.title)}</h3><p>${t(first.lead)}</p>
 <span class="nl-meta">${time(first)}<b>Đọc bài <i aria-hidden="true">&rarr;</i></b></span></span></a>
-<ul class="nl-photos">${rest.map((p) => `<li><a class="nl-card" href="/tin-tuc/${p.slug}/"><span class="nl-photo">${cover(p, '(max-width:760px) 100vw, 300px')}</span>
-<span class="nl-card-copy"><span class="nl-label">${esc(p.cat)}</span><h3>${t(p.title)}</h3>${time(p)}</span></a></li>`).join('')}</ul>
-</div>
+${rest.length ? `<ul class="nl-photos">${rest.map((p) => `<li><a class="nl-card" href="/tin-tuc/${p.slug}/"><span class="nl-photo">${cover(p, '(max-width:600px) 120px, (max-width:960px) 50vw, 400px')}</span>
+<span class="nl-card-copy"><span class="nl-label">${esc(p.cat)}</span><h3>${t(p.title)}</h3>${time(p)}</span></a></li>`).join('')}</ul>` : ''}
 </div></section>`;
   };
   const generalSection = (g, i) => {

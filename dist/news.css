@@ -94,27 +94,23 @@
 .nl-meta b i{font-style:normal;transition:transform .2s}
 .nl-feature:hover .nl-meta b i,.nl-latest:hover .nl-meta b i{transform:translateX(4px)}
 
-/* 01 Tin sản phẩm: thẻ ảnh lớn + thẻ ảnh nhỏ */
-.nl-bento{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px}
-.nl-feature{position:relative;display:flex;min-height:460px;overflow:hidden;border-radius:20px;color:#fff}
-.nl-feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.72,.24,1)}
-.nl-feature:hover img{transform:scale(1.04)}
-.nl-feature::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,31,67,.05) 18%,rgba(7,31,67,.9) 78%)}
-.nl-feature-copy{position:relative;z-index:1;align-self:flex-end;display:flex;flex-direction:column;padding:28px}
-.nl-feature .nl-label{color:#bfe3ff}
-.nl-feature h3{margin:10px 0;font-size:clamp(22px,2.3vw,30px);line-height:1.2;letter-spacing:-.03em;color:#fff;text-wrap:balance}
-.nl-feature p{margin:0;font-size:16px;line-height:1.6;color:rgba(235,245,255,.92)}
-.nl-feature .nl-date{color:rgba(225,239,255,.88)}
-.nl-feature .nl-meta b{color:#fff}
-.nl-photos{display:grid;grid-template-columns:1fr;gap:16px;list-style:none;margin:0;padding:0}
-.nl-card{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);height:100%;overflow:hidden;background:#fff;border:1px solid #dfe7ee;border-radius:16px;color:var(--ink);transition:box-shadow .2s,transform .2s}
-.nl-card:hover{box-shadow:0 16px 34px rgba(7,31,67,.1);transform:translateY(-2px)}
+/* 01 Tin sản phẩm: bài nổi bật nằm riêng, danh sách tự xuống hàng. */
+.nl-feature{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:hidden;border:1px solid #d9e2e9;border-radius:20px;background:#f2f7fc;color:var(--ink)}
+.nl-feature .nl-photo{align-self:center;aspect-ratio:16/9}
+.nl-feature-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(20px,3vw,40px)}
+.nl-feature h3{margin:10px 0;font-size:clamp(23px,2.7vw,36px);line-height:1.2;letter-spacing:-.03em;text-wrap:balance}
+.nl-feature p{margin:0;max-width:56ch;font-size:16px;line-height:1.65;color:#43586f}
+.nl-feature .nl-meta{margin-top:8px}
+.nl-photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;list-style:none;margin:24px 0 0;padding:0}
+.nl-card{display:flex;flex-direction:column;height:100%;overflow:hidden;background:#fff;border:1px solid #dfe7ee;border-radius:16px;color:var(--ink);transition:border-color .2s,background-color .2s}
+.nl-card:hover{border-color:#8fb3d6;background:#f5f9fd}
 .nl-photo{display:block;overflow:hidden;background:#eef3f7}
 .nl-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.72,.24,1)}
-.nl-card .nl-photo{min-height:200px}
-.nl-card:hover .nl-photo img,.nl-latest:hover .nl-photo img{transform:scale(1.05)}
-.nl-card-copy{display:flex;flex-direction:column;gap:8px;padding:18px 20px}
-.nl-card-copy h3{margin:0;font-size:17px;font-weight:700;line-height:1.38;letter-spacing:-.015em}
+.nl-card .nl-photo{aspect-ratio:16/9}
+.nl-feature:hover .nl-photo img,.nl-card:hover .nl-photo img,.nl-latest:hover .nl-photo img{transform:scale(1.04)}
+.nl-card-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:8px;padding:16px 18px}
+.nl-card-copy h3{margin:0;font-size:18px;font-weight:700;line-height:1.4;letter-spacing:-.015em;text-wrap:pretty}
+.nl-feature:hover h3,.nl-card:hover h3{color:#1F4A8C;text-decoration:underline;text-underline-offset:3px}
 .nl-card-copy .nl-date{margin-top:auto}
 
 /* 02 Tin tức chung: thẻ mới nhất + dòng thời gian */
@@ -139,7 +135,7 @@
 .nl-tile:focus-visible,.nl-feature:focus-visible,.nl-card:focus-visible,.nl-latest:focus-visible,.nl-timeline a:focus-visible{outline:3px solid rgba(22,90,156,.45);outline-offset:3px}
 
 /* Mục chỉ có một bài: thẻ chiếm trọn chiều ngang, ảnh và chữ nằm cạnh nhau */
-.nl-solo{grid-template-columns:1fr}
+.nl-news.nl-solo{grid-template-columns:1fr}
 .nl-news.nl-solo .nl-latest{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
 .nl-news.nl-solo .nl-latest .nl-photo{aspect-ratio:auto;min-height:320px}
 @media (max-width:1024px){
@@ -148,10 +144,12 @@
   .nl-idx{grid-row:auto;font-size:28px}
   .nl-hint{display:none}
   .nl-count{margin-top:0;white-space:nowrap}
-  .nl-bento,.nl-news{grid-template-columns:1fr}
+  .nl-news{grid-template-columns:1fr}
   .nl-news.nl-solo .nl-latest{display:flex}
   .nl-news.nl-solo .nl-latest .nl-photo{min-height:0;aspect-ratio:16/9}
-  .nl-feature{min-height:400px}
+}
+@media (max-width:960px){
+  .nl-photos{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 }
 @media (max-width:760px){
   .nl-hero{padding:52px 0 112px}
@@ -161,14 +159,22 @@
   .nl-idx{font-size:24px}
   .nl-tile strong{font-size:17px}
   .nl-section{padding-top:52px}
-  .nl-feature{min-height:420px}
+  .nl-feature{grid-template-columns:1fr}
   .nl-feature-copy,.nl-latest-copy{padding:22px}
-  .nl-card{grid-template-columns:1fr}
-  .nl-card .nl-photo{min-height:0;aspect-ratio:16/9}
+}
+@media (max-width:600px){
+  .nl-feature .nl-meta{justify-content:flex-start;gap:8px 20px}
+  .nl-feature .nl-meta b{margin-left:0}
+  .nl-photos{grid-template-columns:1fr;gap:12px;margin-top:16px}
+  .nl-card{display:grid;grid-template-columns:minmax(88px,32%) minmax(0,1fr)}
+  .nl-card .nl-photo{aspect-ratio:auto;min-height:112px}
+  .nl-card-copy{gap:6px;padding:12px}
+  .nl-card-copy h3{font-size:16px}
 }
 @media (prefers-reduced-motion:reduce){
-  .nl-tile,.nl-card,.nl-feature img,.nl-photo img,.nl-meta b i,.nl-count i{transition:none}
-  .nl-tile:hover,.nl-card:hover{transform:none}
+  .nl-tile,.nl-card,.nl-photo img,.nl-meta b i,.nl-count i{transition:none}
+  .nl-tile:hover{transform:none}
+  .nl-feature:hover .nl-photo img,.nl-card:hover .nl-photo img,.nl-latest:hover .nl-photo img{transform:none}
 }
 .art-list a:hover b{color:var(--blue)}
 
