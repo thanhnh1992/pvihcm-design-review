@@ -20,9 +20,12 @@ export const clean = (s) => {
 export const t = (s) => esc(clean(s));
 // srcset cho ảnh trong bài: chỉ khai bản -480/-800 nhỏ hơn bản gốc (rộng w px), để điện thoại tải ảnh nhẹ.
 // Ảnh phải có sẵn /assets/<tên>-480.webp và -800.webp (tools/srcset.mjs, AGENTS.md mục Hiệu năng).
+// Ảnh đã thay nội dung nhưng giữ tên file: gắn ?v= để vượt cache 30 ngày của /assets/ (vercel.json).
+export const ASSET_VER = { 'bat-buoc': '20261110', 'tai-nan': '20261110', 'chay-no': '20261110', 'hang-hoa': '20261110', 'hero-cong-trinh': '20261110', 'hero-suc-khoe': '20261110', 'hero-du-lich': '20261110', 'tu-van-xe-o-to': '20261110' };
+export const av = (name) => (ASSET_VER[name] ? `?v=${ASSET_VER[name]}` : '');
 export const articleSrcset = (base, w) => {
-  const parts = [480, 800].filter((x) => x < w).map((x) => `/assets/${base}-${x}.webp ${x}w`);
-  return parts.length ? ` srcset="${parts.join(', ')}, /assets/${base}.webp ${w}w" sizes="(max-width:820px) 92vw, 720px"` : '';
+  const parts = [480, 800].filter((x) => x < w).map((x) => `/assets/${base}-${x}.webp${av(base)} ${x}w`);
+  return parts.length ? ` srcset="${parts.join(', ')}, /assets/${base}.webp${av(base)} ${w}w" sizes="(max-width:820px) 92vw, 720px"` : '';
 };
 
 export const NAV = [
