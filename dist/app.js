@@ -134,6 +134,25 @@ if (siteHeader && menuToggle) {
 }
 
 
+/* Nút tìm kiếm trên header: lần bấm đầu mới tải search.js + dữ liệu, trang không nặng thêm. Ctrl/⌘+K cũng mở. */
+const searchBtn = document.querySelector('.search-btn');
+if (searchBtn) {
+  let searchScript = null;
+  const openSearch = () => {
+    if (window.pviSearch) return window.pviSearch(searchBtn);
+    if (searchScript) return;
+    searchScript = document.createElement('script');
+    searchScript.src = '/search.js?v=20261113';
+    searchScript.onload = () => window.pviSearch?.(searchBtn);
+    searchScript.onerror = () => { searchScript.remove(); searchScript = null; };
+    document.head.append(searchScript);
+  };
+  searchBtn.addEventListener('click', openSearch);
+  addEventListener('keydown', (event) => {
+    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); openSearch(); }
+  });
+}
+
 // GA4 site tag and contact intent events; never send personal details.
 window.dataLayer = window.dataLayer || [];
 function gtag() { window.dataLayer.push(arguments); }

@@ -50,3 +50,6 @@ const home = fs.readFileSync(path.join(DIST, 'index.html'), 'utf8');
 const llms = `# Công ty Bảo hiểm PVI Thành Đô (pvihcm.com)\n\n> ${attr(home.match(/<meta name="description" content="([^"]*)"/)[1])}\n\n${sections.join('\n\n')}\n`;
 fs.writeFileSync(path.join(DIST, 'llms.txt'), llms);
 console.log('llms.txt:', pages.length, 'trang');
+
+// Bộ tìm kiếm trên header dùng cùng danh sách trang: sinh lại cùng lúc.
+await import('./gen-search.mjs');

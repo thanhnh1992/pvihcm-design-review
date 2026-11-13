@@ -1,0 +1,40 @@
+/* Khung tìm kiếm toàn site (dist/search.js nạp file này khi bấm nút tìm lần đầu). */
+.srch-lock,.srch-lock body{overflow:hidden}
+.srch{width:min(760px,calc(100vw - 32px));max-height:min(760px,calc(100dvh - 12vh));margin:8vh auto auto;padding:0;border:0;
+  border-radius:var(--r-card,16px);background:#fff;color:var(--ink,#071f43);box-shadow:0 30px 80px rgba(7,31,67,.28);
+  display:none;flex-direction:column;overflow:hidden;font-family:inherit}
+.srch[open]{display:flex}
+.srch::backdrop{background:rgba(7,31,67,.55);backdrop-filter:blur(3px)}
+.srch-bar{display:flex;align-items:center;gap:10px;padding:10px 10px 10px 18px;border-bottom:1px solid #e3eaf2;margin:0}
+.srch-bar>svg{width:22px;height:22px;flex:none;color:var(--blue,#1F4A8C)}
+.srch-bar input{flex:1;min-width:0;min-height:48px;border:0;outline:0;background:none;font:inherit;font-size:18px;color:inherit}
+.srch-bar input::-webkit-search-cancel-button{display:none}
+.srch-close{flex:none;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;border-radius:var(--r-chip,10px);
+  background:#f1f5f9;color:inherit;cursor:pointer}
+.srch-close:hover{background:#e3eaf2}
+.srch-close svg{width:20px;height:20px}
+.srch-status{margin:0;padding:12px 20px 4px;font-size:14px;color:var(--muted,#617289)}
+.srch-body{overflow-y:auto;overscroll-behavior:contain;padding:4px 10px 14px}
+.srch-hint{margin:8px 10px 10px;font-size:14px;font-weight:600;color:var(--muted,#617289)}
+.srch-chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 10px 6px}
+.srch-chips button{min-height:44px;padding:0 16px;border:1px solid #d3dde8;border-radius:999px;background:#fff;color:inherit;font:inherit;font-size:15px;cursor:pointer}
+.srch-chips button:hover{border-color:var(--blue,#1F4A8C);color:var(--blue,#1F4A8C);background:#f3f7fb}
+.srch-list{list-style:none;margin:0;padding:0}
+.srch-list a{display:flex;flex-direction:column;gap:4px;padding:14px 12px;border-radius:12px;color:inherit}
+.srch-list li+li a{border-top:1px solid #eef2f6}
+.srch-list a:hover,.srch-list a:focus-visible{background:#f3f7fb}
+.srch-list li:first-child a{background:#f7fafd}
+.srch-kind{align-self:flex-start;padding:2px 9px;border-radius:999px;background:#eef5fc;color:var(--blue,#1F4A8C);font-size:13px;font-weight:600}
+.srch-list b{font-size:17px;line-height:1.4;font-weight:650}
+.srch-sec{font-size:14px;color:var(--blue,#1F4A8C);font-weight:500}
+.srch-snip{font-size:15px;line-height:1.55;color:#40536b;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.srch mark{background:#fff1b8;color:inherit;border-radius:3px;padding:0 1px}
+.srch-empty{padding:6px 12px 10px}
+.srch-empty p{margin:0 0 14px;font-size:16px;color:#40536b}
+.srch-call{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#183665;color:#fff;font-weight:600;font-size:15px}
+@media(max-width:640px){
+  .srch{width:100vw;max-width:none;height:100dvh;max-height:none;margin:0;border-radius:0}
+  .srch-bar{padding:8px 8px 8px 14px}
+  .srch-status{padding:10px 16px 4px}
+  .srch-body{padding:4px 6px 20px}
+}

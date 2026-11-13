@@ -28,6 +28,7 @@ dist/
   cta.css     kiểu nút hành động (CTA) toàn site theo 2 màu logo #183665/#E31F26, nạp sau cùng mọi trang (06/11/2026)
   advisor.css/js  cụm nút nổi: Gọi 0938072236 · Chat Zalo cá nhân theo username thanhnguyenhoang · Chat chuyên viên (Zalo OA)
   app.js      menu điện thoại, hiệu ứng nhỏ trang chủ
+  search.js/css  nút Tìm kiếm trên header (13/11/2026): app.js tải khi khách bấm; dữ liệu search-index.json do tools/gen-search.mjs sinh (chạy kèm gen-sitemap), không sửa tay
   fonts/      Be Vietnam Pro woff2 (vietnamese, latin, latin-ext)
   assets/     ảnh; mỗi ảnh lớn có bản -480/-800 cho srcset
   robots.txt, sitemap.xml
@@ -49,7 +50,7 @@ node tools/gen-news.mjs       # mục Tin tức và các bài
 node tools/gen-why-pvi.mjs    # khối "Vì sao chọn PVI" trên trang chủ (chép từ baohiempvi-vn: thị phần, AM Best, công trình)
 node tools/gen-hero-bento.mjs  # lưới bento sản phẩm ở đầu trang chủ (thay vòng xoay từ 03/11/2026); thêm sản phẩm: sửa tools/data/hero-products.mjs và chọn ô trong SLOTS của script
 node tools/gen-san-pham.mjs   # trang danh mục /san-pham/ (mục "Sản phẩm" trên menu); thêm sản phẩm: sửa tools/data/san-pham.mjs. Chạy sau các script trang sản phẩm
-node tools/gen-sitemap.mjs    # PHẢI chạy sau cùng: sinh lại dist/sitemap.xml và dist/llms.txt (bản đồ site cho AI) (không sửa tay hai file này)
+node tools/gen-sitemap.mjs    # PHẢI chạy sau cùng: sinh lại dist/sitemap.xml, dist/llms.txt (bản đồ site cho AI) và dist/search-index.json (dữ liệu nút Tìm kiếm) (không sửa tay các file này)
 ```
 - `tools/chrome.mjs`: header, menu, chân trang, thẻ SEO dùng chung. Hai trang `dist/index.html` và `dist/san-pham/chay-no-bat-buoc/index.html` sửa tay; header và chân trang của chúng lấy từ chrome.mjs qua `tools/patch-static.mjs`. JSON-LD của trang chủ thì sửa tay. Bảng trong `#fire-ref` của trang cháy nổ nằm giữa hai dấu `<!-- fire-ref:start ... -->` / `<!-- fire-ref:end -->`, do `tools/prerender-fire.mjs` sinh: không sửa tay, `page.js` vẫn vẽ lại theo tab khi trang tải.
 - `tools/data/*.mjs`: dữ liệu đã duyệt, chuyển nguyên văn từ `product-data.ts`, `tnds-data.ts`, `accident-data.ts` của baohiempvi-vn. **Không gõ lại số liệu bằng tay.**
