@@ -25,6 +25,11 @@ import * as kbCnNd23 from './articles/cn-nghi-dinh-23.mjs';
 import * as kbCnPhiCc from './articles/cn-phi-chung-cu.mjs';
 import * as kbCnCanHo from './articles/cn-can-ho.mjs';
 import * as kbCnPhat from './articles/cn-bi-phat.mjs';
+import * as kbCnXuongKho from './articles/cn-nha-xuong-kho.mjs';
+import * as kbCnKhauTru from './articles/cn-khau-tru.mjs';
+import * as kbCnBieuPhi from './articles/cn-bieu-phi.mjs';
+import * as kbCnNhaO from './articles/cn-nha-o-tu-nguyen.mjs';
+import * as kbCnTiengAnh from './articles/cn-tieng-anh.mjs';
 import { areas, SKIP as AREA_SKIP, renderArea, ZALO_TU_VAN } from './articles/khu-vuc.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -49,6 +54,11 @@ const write = (rel, html) => {
 
 /* ── Danh sách bài, mới nhất lên đầu ── */
 export const posts = [
+  kbCnXuongKho.post,
+  kbCnKhauTru.post,
+  kbCnBieuPhi.post,
+  kbCnNhaO.post,
+  kbCnTiengAnh.post,
   kbCnCoSo.post,
   kbCnNd23.post,
   kbCnPhiCc.post,
@@ -131,6 +141,11 @@ const GROUPS = [
   { id: 'tin-chung', key: 'chung', name: 'Tin tức chung', hint: 'PVI Thành Đô và khu vực', title: 'Hoạt động của PVI Thành Đô', lead: 'Thông báo của đơn vị và thông tin mua bảo hiểm PVI theo từng khu vực tại TP.HCM.' },
 ];
 const POST_GROUP = {
+  'bao-hiem-chay-no-nha-xuong-kho-hang': 'san-pham',
+  'muc-khau-tru-bao-hiem-chay-no-bat-buoc': 'san-pham',
+  'bieu-phi-bao-hiem-chay-no-bat-buoc': 'phap-ly',
+  'bao-hiem-chay-no-nha-o-tu-nguyen': 'san-pham',
+  'bao-hiem-chay-no-tieng-anh': 'san-pham',
   'co-so-phai-mua-bao-hiem-chay-no-bat-buoc': 'san-pham',
   'nghi-dinh-23-2018-bao-hiem-chay-no-het-hieu-luc': 'phap-ly',
   'phi-bao-hiem-chay-no-chung-cu': 'san-pham',
@@ -505,6 +520,11 @@ ${feedbackBlock(p)}
 }
 
 renderKb(kbCongTrinh);
+renderKb(kbCnXuongKho);
+renderKb(kbCnKhauTru);
+renderKb(kbCnBieuPhi);
+renderKb(kbCnNhaO);
+renderKb(kbCnTiengAnh);
 renderKb(kbCnCoSo);
 renderKb(kbCnNd23);
 renderKb(kbCnPhiCc);
