@@ -1,0 +1,284 @@
+/* BẢO HIỂM VẬT CHẤT XE: giao diện theo trang /bao-hiem-o-to/bao-hiem-vat-chat-xe của baohiempvi-vn
+   (chủ site yêu cầu 16/11/2026). File này do tools/vcx-ui.mjs sinh từ vcx.module.css, đừng sửa tay:
+   sửa riêng của pvihcm đặt trong FOOT của công cụ đó. */
+.vcx-page, .vcx-builder {
+  --ink: #0b2a4f;
+  --text: #46617d;
+  --blue: #1462d0;
+  --blue-deep: #0b468f;
+  --line: #dde8f3;
+  --soft: #f3f8fd;
+  --shadow: 0 18px 40px rgba(17, 72, 140, .10);
+}
+.vcx-page {
+  background: #fff;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.vcx-page h1, .vcx-page h2, .vcx-page h3 { font-family: "Be Vietnam Pro","BVP Fallback",sans-serif; text-wrap: balance; }
+.vcx-page p { text-wrap: pretty; }
+.vcx-page a:focus-visible, .vcx-page button:focus-visible, .vcx-page summary:focus-visible, .vcx-page input:focus-visible, .vcx-page select:focus-visible { outline: 3px solid #7fb4ff; outline-offset: 2px; }
+
+.vcx-kicker { color: var(--blue); display: block; font: 700 13px/1.4 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .08em; }
+
+.vcx-hero { background: radial-gradient(1200px 420px at 85% -10%, #dcebff 0, transparent 60%), var(--soft); padding: 18px 0 44px; }
+.vcx-breadcrumb { align-items: center; color: #5b738c; display: flex; flex-wrap: wrap; font-size: 14px; gap: 8px; }
+.vcx-breadcrumb a { color: #2c4f78; }
+.vcx-breadcrumb b { color: var(--ink); font-weight: 600; }
+.vcx-heroGrid { align-items: center; display: grid; gap: 44px; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); margin-top: 26px; }
+.vcx-heroCopy h1 { font: 800 clamp(32px, 4.6vw, 54px)/1.08 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.035em; margin: 12px 0 10px; }
+.vcx-heroCopy h1 em { color: var(--blue); font-style: normal; }
+.vcx-tagline { color: var(--blue-deep); font: 700 clamp(18px, 1.8vw, 22px)/1.35 "Be Vietnam Pro","BVP Fallback",sans-serif; margin: 0 0 12px; }
+.vcx-lead { color: var(--text); font-size: 16px; line-height: 1.7; margin: 0; max-width: 560px; }
+.vcx-heroActions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.vcx-primary, .vcx-secondary { border-radius: 12px; display: inline-flex; font: 700 15px "Be Vietnam Pro","BVP Fallback",sans-serif; min-height: 48px; padding: 14px 22px; text-decoration: none; transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }
+.vcx-primary { background: var(--blue); box-shadow: 0 10px 24px rgba(20, 98, 208, .28); color: #fff; }
+.vcx-primary:hover { background: var(--blue-deep); transform: translateY(-1px); }
+.vcx-secondary { background: #fff; border: 1px solid #c8dbf1; color: var(--blue-deep); }
+.vcx-secondary:hover { border-color: var(--blue); }
+.vcx-primary:active, .vcx-secondary:active { transform: scale(.98); }
+.vcx-facts { display: grid; gap: 10px; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 26px 0 0; max-width: 560px; }
+.vcx-facts div { border-left: 2px solid #c8dbf1; padding-left: 12px; }
+.vcx-facts dt { color: #6a8098; font-size: 13px; }
+.vcx-facts dd { color: var(--ink); font: 700 15px/1.35 "Be Vietnam Pro","BVP Fallback",sans-serif; margin: 2px 0 0; }
+.vcx-video { margin: 0; }
+.vcx-video video { aspect-ratio: 16 / 9; background: #dfeaf6; border-radius: 22px; box-shadow: var(--shadow); display: block; height: auto; width: 100%; }
+.vcx-video figcaption, .vcx-viewer figcaption { color: #6a8098; font-size: 13px; line-height: 1.5; margin-top: 10px; }
+
+.vcx-claim { margin-top: -24px; position: relative; scroll-margin-top: 16px; }
+.vcx-claimCard { background: #fff; border: 1px solid var(--line); border-radius: 24px; box-shadow: 0 24px 50px rgba(17, 72, 140, .14); display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 2fr); overflow: hidden; }
+.vcx-claimHead { align-content: center; background: linear-gradient(160deg, #0b2a4f, #0d4380); color: #fff; display: grid; gap: 10px; justify-items: start; padding: 26px; }
+.vcx-claimHead > span { color: #a9d0ff; font: 700 13px "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .08em; }
+.vcx-claimHead h2 { color: #fff; font: 800 clamp(22px, 2.2vw, 28px)/1.2 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.02em; margin: 0; text-wrap: balance; }
+.vcx-claimCall { background: #fff; border-radius: 14px; display: grid; gap: 2px; margin-top: 6px; padding: 11px 16px; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+.vcx-claimCall:hover { box-shadow: 0 10px 24px rgba(0, 0, 0, .18); transform: translateY(-1px); }
+.vcx-claimCall:active { transform: scale(.98); }
+.vcx-claimCall:focus-visible, .vcx-claimLink:focus-visible { outline: 3px solid #a9d0ff; outline-offset: 3px; }
+.vcx-claimCall small { color: var(--text); font: 600 13px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.vcx-claimCall b { color: #c8102e; font: 800 22px/1.2 "Be Vietnam Pro","BVP Fallback",sans-serif; font-variant-numeric: tabular-nums; }
+.vcx-claimLink { color: #cfe3ff; font: 700 14px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.vcx-claimLink:hover { color: #fff; }
+.vcx-claimSteps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; margin: 0; padding: 28px 18px; }
+.vcx-claimSteps li { align-content: start; display: grid; gap: 12px; padding: 0 14px; position: relative; }
+.vcx-claimSteps li > i { align-items: center; background: #e6f0fc; border-radius: 12px; color: var(--blue); display: inline-flex; font: 800 17px "Be Vietnam Pro","BVP Fallback",sans-serif; font-style: normal; height: 40px; justify-content: center; position: relative; width: 40px; z-index: 1; }
+.vcx-claimSteps li:not(:last-child)::after { background: repeating-linear-gradient(90deg, #b9d3f0 0 6px, transparent 6px 12px); content: ""; height: 2px; left: 66px; position: absolute; right: 0; top: 19px; }
+.vcx-claimSteps h3 { font: 800 17px/1.3 "Be Vietnam Pro","BVP Fallback",sans-serif; margin: 0 0 6px; }
+.vcx-claimSteps p { color: var(--text); font-size: 15px; line-height: 1.6; margin: 0; }
+
+.vcx-builder { color: var(--ink); display: grid; gap: 28px; margin: 40px 0 8px; }
+.vcx-builder h2, .vcx-builder h3 { font-family: "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.vcx-step { scroll-margin-top: 16px; }
+.vcx-stepHead { align-items: center; display: flex; gap: 12px; margin-bottom: 16px; }
+.vcx-stepHead span { align-items: center; background: var(--blue); border-radius: 10px; color: #fff; display: inline-flex; font: 800 15px "Be Vietnam Pro","BVP Fallback",sans-serif; height: 34px; justify-content: center; width: 34px; }
+.vcx-stepHead h2 { font-size: clamp(20px, 2.2vw, 26px); font-weight: 800; letter-spacing: -.02em; margin: 0; }
+
+.vcx-fields { background: #fff; border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); display: grid; gap: 16px 18px; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr) minmax(0, .55fr) minmax(0, .8fr) minmax(0, 1.25fr); padding: 22px; }
+.vcx-fields label { align-content: start; display: grid; gap: 7px; }
+.vcx-fields .vcx-value { grid-column: 1 / 2; }
+.vcx-fields label > span { color: var(--ink); font: 600 15px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.vcx-fields input, .vcx-fields select { background: var(--soft); border: 1px solid #cfdeee; border-radius: 12px; color: var(--ink); font: 500 16px "Be Vietnam Pro","BVP Fallback",sans-serif; min-height: 48px; padding: 0 14px; transition: border-color .2s ease, background .2s ease; width: 100%; }
+.vcx-fields input:hover, .vcx-fields select:hover { border-color: #a9c6e6; }
+.vcx-fields input:focus, .vcx-fields select:focus { background: #fff; border-color: var(--blue); outline: none; }
+.vcx-fields input[aria-invalid="true"] { border-color: #c8102e; }
+.vcx-fields em { color: #b3122b; font-size: 14px; font-style: normal; }
+.vcx-fields small { color: #6a8098; font-size: 14px; line-height: 1.5; }
+.vcx-money { align-items: center; display: flex; position: relative; }
+.vcx-money input { font-size: 18px; font-weight: 700; padding-right: 36px; }
+.vcx-money b { color: #6a8098; position: absolute; right: 14px; }
+.vcx-priceCheck { align-self: start; display: grid; gap: 8px; grid-column: 2 / 4; margin-top: 29px; }
+.vcx-priceHead { align-items: center; background: #fff; border: 1px solid #cfdeee; border-radius: 12px; display: flex; gap: 10px; min-height: 48px; padding: 4px 4px 4px 12px; }
+.vcx-priceHead i { color: var(--blue); display: inline-flex; font-size: 20px; }
+.vcx-priceHead b { color: var(--ink); flex: 1; font: 700 15px/1.3 "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.vcx-priceHead button, .vcx-priceResult button { background: var(--blue); border: 0; border-radius: 9px; color: #fff; cursor: pointer; font: 700 14px "Be Vietnam Pro","BVP Fallback",sans-serif; min-height: 40px; padding: 0 16px; transition: background-color .2s ease, transform .2s ease; }
+.vcx-priceHead button:hover, .vcx-priceResult button:hover { background: var(--blue-deep); }
+.vcx-priceHead button:active, .vcx-priceResult button:active { transform: scale(.98); }
+.vcx-priceHead button:focus-visible, .vcx-priceResult button:focus-visible { outline: 3px solid #a9d0ff; outline-offset: 2px; }
+.vcx-priceHead button:disabled { cursor: progress; opacity: .7; }
+
+.vcx-quoteBtn { align-self: start; background: transparent; border: 0; border-radius: 14px; box-shadow: 0 0 0 rgba(20, 98, 208, 0); cursor: pointer; grid-column: 4 / 6; isolation: isolate; margin-top: 29px; overflow: hidden; padding: 2px; position: relative; animation: vcxGlow 2.4s ease-in-out infinite; transition: transform .2s ease; }
+.vcx-quoteBtn::before { animation: vcxSpin 3.2s linear infinite; background: conic-gradient(from 0deg, #1462d0, #6cb8ff, #ffffff, #6cb8ff, #1462d0 40%, #c8102e 48%, #1462d0 56%, #9ad4ff 75%, #1462d0); content: ""; inset: -160%; position: absolute; z-index: -1; }
+.vcx-quoteBtn span { align-items: center; background: linear-gradient(135deg, #1462d0, #0b468f); border-radius: 12px; color: #fff; display: flex; font: 800 16px/1 "Be Vietnam Pro","BVP Fallback",sans-serif; gap: 10px; justify-content: center; letter-spacing: .01em; min-height: 46px; padding: 0 20px; }
+.vcx-quoteBtn b { transition: transform .2s ease; }
+.vcx-quoteBtn:hover b { transform: translateX(3px); }
+.vcx-quoteBtn:active { transform: scale(.98); }
+.vcx-quoteBtn:focus-visible { outline: 3px solid #a9d0ff; outline-offset: 3px; }
+@keyframes vcxSpin { to { transform: rotate(360deg); } }
+@keyframes vcxGlow { 0%, 100% { box-shadow: 0 0 12px rgba(20, 98, 208, .28); } 50% { box-shadow: 0 0 26px rgba(76, 160, 255, .55); } }
+.vcx-fields .vcx-priceCheck em { color: var(--text); font-size: 14px; line-height: 1.5; }
+.vcx-priceResult { display: grid; gap: 6px; width: 100%; }
+.vcx-priceResult strong { color: var(--ink); font: 800 20px/1.3 "Be Vietnam Pro","BVP Fallback",sans-serif; font-variant-numeric: tabular-nums; }
+.vcx-priceResult ul { display: grid; gap: 4px; list-style: none; margin: 0 0 4px; padding: 0; }
+.vcx-priceResult a { color: var(--blue-deep); font-size: 14px; }
+
+.vcx-stepGrid { align-items: start; display: grid; gap: 18px; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); }
+.vcx-viewer { background: linear-gradient(180deg, #fff, var(--soft)); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); margin: 0; padding: 18px; }
+.vcx-viewerTop { align-items: center; display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; }
+.vcx-viewerTop small { color: var(--blue); display: block; font: 700 13px "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .06em; }
+.vcx-viewerTop b { font: 800 20px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.vcx-viewToggle { background: #e9f1fa; border-radius: 12px; display: inline-flex; padding: 4px; }
+.vcx-viewToggle button { background: transparent; border: 0; border-radius: 9px; color: #3d5876; cursor: pointer; font: 700 14px "Be Vietnam Pro","BVP Fallback",sans-serif; min-height: 40px; padding: 0 14px; transition: background .2s ease, color .2s ease; }
+.vcx-viewToggle button[aria-pressed="true"] { background: #fff; box-shadow: 0 4px 12px rgba(17, 72, 140, .12); color: var(--blue-deep); }
+.vcx-canvas { aspect-ratio: 16 / 10; cursor: grab; margin-top: 8px; position: relative; }
+.vcx-canvas:active { cursor: grabbing; }
+.vcx-canvas canvas { display: block; height: 100% !important; width: 100% !important; }
+.vcx-canvasNote { color: #6a8098; font-size: 14px; inset: 0; margin: 0; place-content: center; position: absolute; text-align: center; display: grid; }
+.vcx-packLabel { background: rgba(11, 70, 143, .92); border-radius: 8px; color: #fff; font: 700 13px "Be Vietnam Pro","BVP Fallback",sans-serif; left: 12px; padding: 6px 10px; position: absolute; top: 12px; }
+.vcx-viewerBottom { align-items: center; display: flex; justify-content: space-between; margin-top: 6px; }
+.vcx-paints { display: flex; gap: 10px; }
+.vcx-paints button { border: 2px solid #fff; border-radius: 50%; box-shadow: 0 0 0 1px #c3d5e8; cursor: pointer; height: 28px; transition: box-shadow .2s ease, transform .2s ease; width: 28px; }
+.vcx-paints button[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--blue); }
+.vcx-paints button:active { transform: scale(.94); }
+.vcx-dragHint { color: #6a8098; font-size: 13px; }
+
+.vcx-cover { display: grid; gap: 14px; }
+.vcx-basic { background: var(--ink); border-radius: 18px; color: #fff; padding: 18px 20px; }
+.vcx-basic small { color: #a9d0ff; font: 700 13px "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .06em; }
+.vcx-basic ul { display: grid; gap: 6px 14px; grid-template-columns: 1fr 1fr; list-style: none; margin: 10px 0 0; padding: 0; }
+.vcx-basic ul li { color: #fff; font: 600 15px/1.4 "Be Vietnam Pro","BVP Fallback",sans-serif; padding-left: 20px; position: relative; }
+.vcx-basic ul li::before { color: #7fc0ff; content: "✓"; left: 0; position: absolute; }
+.vcx-clauses { border: 0; display: grid; gap: 10px; margin: 0; padding: 0; }
+.vcx-clauses legend { font: 800 17px "Be Vietnam Pro","BVP Fallback",sans-serif; margin-bottom: 8px; padding: 0; }
+.vcx-clauses legend span { color: #6a8098; font: 500 14px "Be Vietnam Pro","BVP Fallback",sans-serif; margin-left: 6px; }
+.vcx-clause { align-items: flex-start; background: #fff; border: 1px solid var(--line); border-radius: 14px; cursor: pointer; display: grid; gap: 12px; grid-template-columns: auto auto 1fr; padding: 14px; transition: border-color .2s ease, background .2s ease, box-shadow .2s ease; }
+.vcx-clause:hover { border-color: #a9c6e6; }
+.vcx-clause[data-on] { background: #f1f7ff; border-color: var(--blue); box-shadow: 0 8px 20px rgba(20, 98, 208, .10); }
+.vcx-clause input { accent-color: var(--blue); height: 20px; margin: 2px 0 0; width: 20px; }
+.vcx-clause > i { align-items: center; background: #e6f0fc; border-radius: 10px; color: var(--blue); display: inline-flex; font-size: 22px; height: 38px; justify-content: center; width: 38px; }
+.vcx-clause b { display: block; font: 700 15px/1.35 "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.vcx-clause small { color: var(--blue); display: block; font-size: 13px; font-weight: 600; margin: 1px 0 4px; }
+.vcx-clause span span { color: var(--text); display: block; font-size: 14px; line-height: 1.5; }
+
+.vcx-summary { align-items: center; background: linear-gradient(120deg, #0b2a4f, #0d4380); border-radius: 22px; box-shadow: 0 20px 44px rgba(11, 42, 79, .22); color: #fff; display: grid; gap: 18px 24px; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) auto; padding: 22px 24px; scroll-margin-top: 16px; }
+.vcx-summary small { color: #a9d0ff; display: block; font: 700 13px "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .06em; }
+.vcx-summaryInfo h2 { font-size: 22px; font-weight: 800; margin: 4px 0 4px; }
+.vcx-summaryInfo p { color: #d6e7fb; font-size: 14px; line-height: 1.5; margin: 0; }
+.vcx-summaryFee { border-left: 1px solid rgba(255, 255, 255, .18); padding-left: 22px; }
+.vcx-summaryFee b { display: block; font: 800 19px/1.3 "Be Vietnam Pro","BVP Fallback",sans-serif; margin: 4px 0; }
+.vcx-summaryFee span { color: #d6e7fb; font-size: 14px; line-height: 1.5; }
+.vcx-summaryAct { display: grid; gap: 8px; justify-items: end; max-width: 260px; }
+.vcx-summaryAct button { background: #fff; border: 0; border-radius: 12px; color: var(--blue-deep); cursor: pointer; font: 800 15px "Be Vietnam Pro","BVP Fallback",sans-serif; min-height: 48px; padding: 0 20px; transition: transform .2s ease, background .2s ease; }
+.vcx-summaryAct button:hover { background: #e8f2ff; }
+.vcx-summaryAct button:active { transform: scale(.98); }
+.vcx-summaryAct span { color: #bcd6f3; font-size: 13px; line-height: 1.45; text-align: right; }
+
+.vcx-tnds { background: #fff; border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); display: grid; gap: 14px; padding: 18px 22px; }
+.vcx-tndsToggle { align-items: center; cursor: pointer; display: flex; gap: 12px; }
+.vcx-tndsToggle input { accent-color: var(--blue); flex: none; height: 22px; margin: 0; width: 22px; }
+.vcx-tndsToggle b { color: var(--ink); display: block; font: 700 16px/1.3 "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.vcx-tndsToggle small { color: var(--text); display: block; font-size: 14px; margin-top: 2px; }
+.vcx-tndsFee { border-top: 1px solid #edf2f8; display: grid; gap: 0 28px; grid-template-columns: repeat(3, minmax(0, auto)); justify-content: start; margin: 0; padding-top: 14px; }
+.vcx-tndsFee div { display: grid; gap: 2px; }
+.vcx-tndsFee dt { color: var(--text); font-size: 14px; }
+.vcx-tndsFee dd { color: var(--ink); font: 700 17px/1.3 "Be Vietnam Pro","BVP Fallback",sans-serif; font-variant-numeric: tabular-nums; margin: 0; white-space: nowrap; }
+.vcx-tndsFee .vcx-tndsTotal dd { color: var(--blue); font-size: 20px; }
+.vcx-tndsSrc { color: #6a8098; font-size: 14px; line-height: 1.5; margin: 0; }
+.vcx-tndsSrc a { color: var(--blue-deep); font-weight: 600; }
+
+.vcx-section { padding: 64px 0; }
+.vcx-soft { background: var(--soft); }
+.vcx-heading { max-width: 640px; }
+.vcx-heading h2 { font: 800 clamp(26px, 3vw, 36px)/1.15 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.03em; margin: 8px 0 0; }
+.vcx-heading p { color: var(--text); font-size: 16px; line-height: 1.7; margin: 12px 0 0; }
+.vcx-textLink { color: var(--blue); display: inline-block; font: 700 15px "Be Vietnam Pro","BVP Fallback",sans-serif; margin-top: 16px; }
+
+.vcx-sample { align-items: start; display: grid; gap: 26px; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); margin-top: 26px; }
+.vcx-cert { margin: 0; }
+.vcx-certPaper { background: radial-gradient(circle at 100% 0, #eef5ff 0, transparent 46%), #fff; border: 1px solid #cfdcea; border-radius: 8px; border-top: 5px solid var(--blue); box-shadow: 0 26px 50px rgba(17, 72, 140, .14), 0 2px 0 #e6eef7; overflow: hidden; padding: 22px 24px 18px; position: relative; }
+.vcx-certStamp { color: rgba(11, 70, 143, .07); font: 800 clamp(96px, 14vw, 150px)/1 "Be Vietnam Pro","BVP Fallback",sans-serif; left: 50%; letter-spacing: .12em; pointer-events: none; position: absolute; top: 56%; transform: translate(-50%, -50%) rotate(-18deg); user-select: none; white-space: nowrap; }
+.vcx-certTop { align-items: center; border-bottom: 2px solid var(--ink); display: flex; gap: 14px; margin-bottom: 6px; padding-bottom: 14px; }
+.vcx-certTop img { height: 36px; object-fit: contain; width: auto; }
+.vcx-certTop b { color: var(--ink); display: block; font: 800 16px/1.3 "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.vcx-certTop small { color: var(--text); display: block; font-size: 14px; margin-top: 2px; }
+.vcx-certRows { column-gap: 20px; display: grid; grid-template-columns: 1fr 1fr; margin: 0; position: relative; }
+.vcx-certRows > div { align-items: baseline; border-bottom: 1px dashed #d9e4f0; display: flex; gap: 12px; grid-column: 1 / -1; justify-content: space-between; padding: 9px 0; }
+.vcx-certRows > .vcx-certHalf { align-items: flex-start; flex-direction: column; gap: 2px; grid-column: auto; justify-content: flex-start; }
+.vcx-certRows dt { color: var(--text); font-size: 14px; }
+.vcx-certRows dd { color: var(--ink); font: 700 14px/1.4 "Be Vietnam Pro","BVP Fallback",sans-serif; font-variant-numeric: tabular-nums; margin: 0; overflow-wrap: anywhere; text-align: right; }
+.vcx-certRows > .vcx-certHalf dd { text-align: left; }
+.vcx-certRows > .vcx-certMark { background: #f1f7ff; border-bottom-color: transparent; border-radius: 8px; margin: 3px -10px; padding: 9px 12px 9px 40px; position: relative; }
+.vcx-certMark::before { background: var(--blue); border-radius: 50%; color: #fff; content: attr(data-n); font: 800 13px/22px "Be Vietnam Pro","BVP Fallback",sans-serif; height: 22px; left: 10px; position: absolute; text-align: center; top: 50%; transform: translateY(-50%); width: 22px; }
+.vcx-certRows > .vcx-certTotal dd { color: var(--blue); font-size: 20px; }
+.vcx-cert figcaption { color: #6a8098; font-size: 14px; line-height: 1.55; margin-top: 12px; text-wrap: pretty; }
+.vcx-certNotes { align-content: start; display: grid; gap: 12px; list-style: none; margin: 0; padding: 0; }
+.vcx-certNotes li { background: #fff; border: 1px solid var(--line); border-radius: 16px; display: grid; gap: 14px; grid-template-columns: 28px 1fr; padding: 16px 18px; }
+.vcx-certNotes li > i { background: var(--blue); border-radius: 50%; color: #fff; font: 800 14px/28px "Be Vietnam Pro","BVP Fallback",sans-serif; font-style: normal; height: 28px; text-align: center; width: 28px; }
+.vcx-certNotes small { color: var(--text); display: block; font: 600 14px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.vcx-certNotes b { color: var(--ink); display: block; font: 800 20px/1.3 "Be Vietnam Pro","BVP Fallback",sans-serif; font-variant-numeric: tabular-nums; margin: 2px 0 4px; }
+.vcx-certNotes p { color: var(--text); font-size: 15px; line-height: 1.6; margin: 0; }
+.vcx-split { align-items: start; display: grid; gap: 34px; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+.vcx-askList { counter-reset: ask; display: grid; gap: 10px; list-style: none; margin: 0; padding: 0; }
+.vcx-askList li { background: #fff; border: 1px solid var(--line); border-radius: 14px; counter-increment: ask; display: grid; font-size: 16px; gap: 14px; grid-template-columns: 30px 1fr; line-height: 1.55; padding: 14px 16px; }
+.vcx-askList li::before { color: var(--blue); content: counter(ask, decimal-leading-zero); font: 800 15px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+
+.vcx-related { display: grid; gap: 8px; list-style: none; margin: 18px 0 0; padding: 0; }
+.vcx-related a { color: var(--blue-deep); font-size: 15px; line-height: 1.5; }
+.vcx-faqs details { background: #fff; border: 1px solid var(--line); border-radius: 14px; margin-bottom: 10px; }
+.vcx-faqs summary { align-items: center; cursor: pointer; display: flex; font: 700 16px/1.4 "Be Vietnam Pro","BVP Fallback",sans-serif; gap: 14px; justify-content: space-between; list-style: none; padding: 16px 18px; }
+.vcx-faqs summary::-webkit-details-marker { display: none; }
+.vcx-faqs summary i { align-items: center; border: 1px solid #c4dbeb; border-radius: 50%; color: var(--blue); display: flex; flex: none; font-size: 18px; font-style: normal; height: 30px; justify-content: center; transition: transform .2s ease; width: 30px; }
+.vcx-faqs details[open] summary i { background: #e2f0ff; transform: rotate(45deg); }
+.vcx-faqs details > p { color: var(--text); font-size: 16px; line-height: 1.7; margin: 0; padding: 0 18px 18px; }
+
+.vcx-sources h2 { font-size: 20px; font-weight: 800; margin: 0 0 12px; }
+.vcx-sources ul { color: var(--text); display: grid; font-size: 15px; gap: 8px; line-height: 1.55; margin: 0 0 14px; padding-left: 18px; }
+.vcx-sources a { color: var(--blue-deep); }
+.vcx-sources p { color: #6a8098; font-size: 14px; line-height: 1.6; margin: 0 0 18px; max-width: 760px; }
+
+@media (max-width: 1024px) {
+  .vcx-heroGrid, .vcx-stepGrid, .vcx-split, .vcx-sample, .vcx-claimCard { grid-template-columns: 1fr; }
+  .vcx-summary { grid-template-columns: 1fr 1fr; }
+  .vcx-summaryAct { grid-column: 1 / -1; justify-items: start; max-width: none; }
+  .vcx-summaryAct span { text-align: left; }
+}
+@media (max-width: 720px) {
+  .vcx-hero { padding-bottom: 32px; }
+  .vcx-heroGrid { gap: 26px; margin-top: 18px; }
+  .vcx-facts { grid-template-columns: 1fr 1fr; }
+  .vcx-fields { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); padding: 16px; }
+  .vcx-fields label:nth-child(5), .vcx-fields .vcx-value, .vcx-fields .vcx-priceCheck { grid-column: 1 / -1; }
+  .vcx-priceCheck { margin-top: 0; }
+  .vcx-tnds { padding: 16px; }
+  .vcx-tndsFee { gap: 10px; grid-template-columns: 1fr; }
+  .vcx-tndsFee div { align-items: baseline; display: flex; gap: 12px; justify-content: space-between; }
+  .vcx-quoteBtn { grid-column: 1 / -1; margin-top: 4px; }
+  .vcx-viewer { padding: 14px; }
+  .vcx-basic ul { grid-template-columns: 1fr; }
+  .vcx-summary { grid-template-columns: 1fr; padding: 20px; }
+  .vcx-summaryFee { border-left: 0; border-top: 1px solid rgba(255, 255, 255, .18); padding: 14px 0 0; }
+  .vcx-summaryAct button { width: 100%; }
+  .vcx-claim { margin-top: -16px; }
+  .vcx-claimHead { padding: 22px 20px; }
+  .vcx-claimSteps { gap: 18px; grid-template-columns: 1fr; padding: 22px 20px; }
+  .vcx-claimSteps li { gap: 14px; grid-template-columns: 40px 1fr; padding: 0; }
+  .vcx-claimSteps li:not(:last-child)::after { background: repeating-linear-gradient(180deg, #b9d3f0 0 6px, transparent 6px 12px); bottom: -14px; height: auto; left: 19px; right: auto; top: 46px; width: 2px; }
+  .vcx-section { padding: 48px 0; }
+  .vcx-certPaper { padding: 18px 16px 14px; }
+  .vcx-certRows { column-gap: 14px; }
+  .vcx-certRows > div:not(.vcx-certHalf) { align-items: flex-start; flex-direction: column; gap: 2px; }
+  .vcx-certRows > div:not(.vcx-certHalf) dd { text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vcx-quoteBtn, .vcx-quoteBtn::before { animation: none; }
+  .vcx-primary, .vcx-secondary, .vcx-claimCall, .vcx-priceHead button, .vcx-priceResult button, .vcx-viewToggle button, .vcx-clause, .vcx-summaryAct button, .vcx-faqs summary i, .vcx-paints button, .vcx-fields input, .vcx-fields select { transition: none; }
+}
+
+/* ── Riêng pvihcm ── */
+.vcx-page .shell{width:min(1180px,calc(100% - 48px));margin-inline:auto}
+@media(max-width:720px){.vcx-page .shell{width:min(100% - 28px,1180px)}}
+.vcx-page{line-height:1.6}
+.vcx-page a{text-decoration:none}
+.vcx-page img,.vcx-page video{max-width:100%}
+.vcx-page [hidden]{display:none!important}
+/* style.css của pvihcm đặt kiểu chung cho mọi <header> (đầu trang cũ): gỡ cho các header bên trong trang này. */
+.vcx-page header{height:auto;max-width:none;justify-content:flex-start}
+.vcx-page .vcx-stepHead{margin:0 0 16px;padding:0}
+.vcx-page .vcx-certTop{margin:0 0 6px;padding:0 0 14px}
+.vcx-page .vcx-viewer svg,.vcx-page .vcx-clause svg{width:1em;height:1em}
+/* Không có ô kiểm tra giá như bản gốc: nút báo giá nằm cạnh ô giá trị xe. */
+.vcx-fields .vcx-quoteBtn{grid-column:2/4}
+@media(max-width:720px){.vcx-fields .vcx-quoteBtn{grid-column:1/-1}}
+.vcx-canvas canvas{touch-action:pan-y}
+/* Chữ trên nền xanh đậm: product.css (.fire h2) và .vcx-sources a làm chìm chữ trắng. */
+.vcx-page .vcx-summary h2{color:#fff}
+.vcx-sources a.vcx-primary{color:#fff}

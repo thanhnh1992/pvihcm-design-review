@@ -160,54 +160,9 @@ const build = (o) => {
   });
 }
 
-/* ═════════════ 3. VẬT CHẤT XE Ô TÔ ═════════════ */
-{
-  const p = pr.getProduct('bao-hiem-o-to');
-  const v = tn.vehicleDamageFacts;
-  const P = '/san-pham/bao-hiem-vat-chat-xe/';
-  // Chỉ lấy phần vật chất xe; phần TNDS bắt buộc đã có trang riêng.
-  const plansVc = p.plans.filter((x) => x.name !== 'TNDS bắt buộc');
-  const main = heroBlock({
-    eyebrow: `${p.category} · Vật chất xe ô tô`,
-    h1: 'Bảo hiểm vật chất xe ô tô',
-    lead: v.summary,
-    cta1: ['Gửi thông tin xe', '#chung-tu'],
-    cta2: ['Khác gì TNDS bắt buộc', '#khac-tnds'],
-    img: '/assets/tu-van-xe-o-to.webp?v=20261110',
-    alt: 'Chuyên viên trao đổi với chủ xe về phương án bảo hiểm vật chất xe',
-  }) + `
-<section class="pd-section"><div class="fire-wrap">
-<div class="pd-grid" style="margin-top:0">
-<div><p class="fire-lede">Bảo hiểm vật chất xe là phần tự nguyện, nằm ngoài TNDS bắt buộc. Xe hỏng do va chạm, cháy nổ, thiên tai hay mất cắp bộ phận đều thuộc nhóm nhu cầu này, tùy phạm vi và điều khoản được xác nhận trên hợp đồng.</p><p class="fire-lede" style="margin-top:16px">Phí và điều kiện không cố định như TNDS bắt buộc. Chuyên viên cần xem hồ sơ xe trước khi báo giá, vì các yếu tố sau quyết định phương án.</p></div>
-<div class="pd-card"><table class="pd-table"><caption style="padding:16px 18px 0">Phí và phạm vi căn cứ vào</caption><tbody>${v.considerations.map((c) => `<tr><td>${t(c)}</td></tr>`).join('')}</tbody></table></div>
-</div>
-<h2 class="sr-only">Điểm chính của sản phẩm</h2>
-<div class="pd-rows" style="margin-top:44px">${p.benefits.map((b, i) => `<article class="pd-row" style="grid-template-columns:80px minmax(0,1fr)"><div><span class="flag">${String(i + 1).padStart(2, '0')}</span></div><div><h3>${t(b.title)}</h3><p>${t(b.text)}</p></div></article>`).join('')}</div>
-</div></section>
-
-<section class="fire-compare pd-paper" id="khac-tnds"><div class="fire-wrap">
-<h2>Vật chất xe khác bảo hiểm bắt buộc ở chỗ nào</h2>
-<p class="fire-lede" style="margin-top:12px"><b>${t(tn.tndsFaqs[2].question)}</b> ${t(tn.tndsFaqs[2].answer)}</p>
-<div class="pd-scroll"><table><thead><tr><th scope="col"><span class="sr-only">Tiêu chí</span></th><th scope="col"><span>Bắt buộc</span>TNDS chủ xe</th><th scope="col"><span>Tự nguyện</span>${t(v.title)}</th></tr></thead><tbody>
-<tr><th scope="row">Bảo vệ</th><td>${t(p.coverage[0])}</td><td class="yes">${t(p.coverage[1])}</td></tr>
-<tr><th scope="row">Căn cứ phí</th><td>${t(tn.tndsReference.legalBasis)}, theo loại xe và mục đích sử dụng</td><td>${v.considerations.map(t).join('<br>')}</td></tr>
-<tr><th scope="row">Tính phí trên web</th><td class="yes"><a href="/san-pham/bao-hiem-bat-buoc/#tinh-phi" style="color:var(--blue);text-decoration:underline">Có, xem biểu phí TNDS</a></td><td>${t(p.faqs[1].answer)}</td></tr>
-</tbody></table></div>
-</div></section>
-`
-    + plansBlock({ ...p, plans: plansVc }, 'phuong-an', 'Hai hướng tham gia cho xe của bạn')
-    + scopeBlock(p)
-    + docsBlock(p, 'chung-tu', 'Hồ sơ xe cần gửi và các bước mua')
-    + linksBlock(p, 'tai-lieu', 'Quy tắc, mẫu biểu và gara liên kết')
-    + claimBlock(p, 'Khi xe có tổn thất', 'Ba bước xử lý bồi thường')
-    + faqBlock(p.faqs);
-  build({
-    rel: 'san-pham/bao-hiem-vat-chat-xe/index.html', path: P, main, faqs: p.faqs,
-    crumb: 'Bảo hiểm vật chất xe ô tô', img: '/assets/tu-van-xe-o-to.webp?v=20261110',
-    title: 'Bảo hiểm vật chất xe ô tô PVI | PVI Thành Đô',
-    desc: 'Bảo hiểm vật chất xe ô tô của Bảo hiểm PVI: phạm vi, điều khoản bổ sung, hồ sơ xe cần gửi, gara liên kết và quy trình bồi thường. Khác gì TNDS bắt buộc.',
-  });
-}
+/* ═════════════ 3. VẬT CHẤT XE Ô TÔ ═════════════
+   Từ 16/11/2026 trang /san-pham/bao-hiem-vat-chat-xe/ dựng theo trang baohiempvi-vn bằng tools/vcx-ui.mjs.
+   Script này không sinh trang đó nữa (tránh ghi đè). */
 
 
 /* ═════════════ 4. DU LỊCH QUỐC TẾ ═════════════
