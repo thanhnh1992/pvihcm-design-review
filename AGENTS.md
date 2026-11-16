@@ -46,6 +46,7 @@ node tools/o-to-ui.mjs        # trang /san-pham/bao-hiem-o-to/ và /dat-mua/ (po
 node tools/patch-static.mjs   # áp header/menu/chân trang mới cho index.html và trang cháy nổ
 node tools/srcset.mjs         # gắn srcset cho ảnh
 node tools/prerender-fire.mjs # in sẵn biểu phí cháy nổ (59 dòng Phụ lục VI) vào HTML cho bot không chạy JS; chạy lại khi đổi tariff-data.js
+node tools/gen-chay-no-tra-cuu.mjs # bộ tra cứu tài sản + ước tính phí cháy nổ (theo baohiempvi-vn, 16/11/2026), đặt TRƯỚC phần Nghị định; chỉ thay khối giữa <!-- chay-no-tra-cuu:start/end -->. JS dist/chay-no/tra-cuu.js, dữ liệu tools/data/fire.mjs + property-asset-*.{mjs,js} + chay-no-icons.js (chép nguyên văn); CSS dist/chay-no.css trích bằng tools/extract-chay-no-css.cjs (lõi chung tools/extract-bhvn-css.cjs), không sửa tay. page.js của trang cháy nổ giờ chỉ còn bảng biểu phí chia tab và thanh điều hướng
 node tools/gen-news.mjs       # mục Tin tức và các bài
 node tools/gen-why-pvi.mjs    # khối "Vì sao chọn PVI" trên trang chủ (chép từ baohiempvi-vn: thị phần, AM Best, công trình)
 node tools/gen-hero-bento.mjs  # lưới bento sản phẩm ở đầu trang chủ (thay vòng xoay từ 03/11/2026); thêm sản phẩm: sửa tools/data/hero-products.mjs và chọn ô trong SLOTS của script
