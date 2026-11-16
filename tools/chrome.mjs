@@ -32,6 +32,8 @@ export const NAV = [
   ['/gioi-thieu/', 'Giới thiệu'],
   // Các trang sản phẩm gộp vào một mục, dẫn tới trang danh mục /san-pham/ (chủ site yêu cầu 28/10/2026).
   ['/san-pham/', 'Sản phẩm'],
+  // Khu Kiến thức theo sản phẩm (chủ site yêu cầu 16/11/2026).
+  ['/kien-thuc/', 'Kiến thức'],
   ['/tin-tuc/', 'Tin tức'],
   ['/#boi-thuong', 'Bồi thường'],
 ];
@@ -42,7 +44,7 @@ const SEARCH_BTN = '<button class="search-btn" type="button" aria-haspopup="dial
 const MENU_SVG = '<svg class="open-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="close-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
 
 export function header(path) {
-  const links = NAV.map(([href, label]) => `<a href="${href}"${href === path ? ' aria-current="page"' : href === '/san-pham/' && path.startsWith('/san-pham/') ? ' aria-current="true"' : ''}>${label}</a>`).join('');
+  const links = NAV.map(([href, label]) => `<a href="${href}"${href === path ? ' aria-current="page"' : (href === '/san-pham/' || href === '/kien-thuc/') && path.startsWith(href) ? ' aria-current="true"' : ''}>${label}</a>`).join('');
   return `<a class="skip" href="#main">Đến nội dung chính</a><header class="site-header"><a class="brand" href="/"><img src="/assets/pvi-logo.svg" width="132" height="48" alt="Bảo hiểm PVI"><span>Thành Đô</span></a><nav id="site-nav" class="site-nav" aria-label="Điều hướng chính">${links}</nav>${SEARCH_BTN}<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Mở menu">${MENU_SVG}<span class="lbl">Menu</span></button></header>`;
 }
 
