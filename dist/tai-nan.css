@@ -1095,6 +1095,10 @@
 /* pvihcm: bản gốc giới hạn mỗi mục của bộ tính phí cao 115px và cuộn bên trong trên điện thoại,
    khách dễ không thấy nút "Trường học", "Cá nhân" hay ô thời hạn. Hiện đủ, không cuộn trong. */
 .tn-page .accident-page .auto-segment-group > div { max-height: none; overflow: visible; }
+
+/* Link căn cứ pháp lý trong đầu trang (16/11/2026) */
+.tn-legal-link{color:#1F4A8C;font-weight:600;text-decoration:underline;text-decoration-color:rgba(31,74,140,.45);text-underline-offset:3px}
+.tn-legal-link:hover,.tn-legal-link:focus-visible{text-decoration-color:#E31F26}
 /* pvihcm: hero hai cot, danh khung 16:9 cho video tai nan. */
 .tn-page .accident-page .accident-hero { min-height: 0; padding: 0; }
 .tn-page .accident-page .accident-hero-layout {
