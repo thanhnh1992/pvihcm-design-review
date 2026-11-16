@@ -13,12 +13,12 @@
 //   KV_REST_API_URL / KV_REST_API_TOKEN (hoặc UPSTASH_REDIS_REST_URL / _TOKEN)  tùy chọn: chống trùng bền hơn
 // Chưa khai ORDER_SHEET_* thì đơn vẫn nhận, trả nội dung để khách gửi qua Zalo (giống baohiempvi-vn khi lỗi).
 // Không ghi log dữ liệu khách.
-import crypto from 'node:crypto';
 import {
   GIAM_GIA_ONLINE_AP_DUNG_NNTX, ONLINE_DISCOUNT_RATE, describeDeriveInput, findTndsSelection, formatVnd, parseNntxLimit,
   parseNntxSeats, parseSeats, parseTonnage, quoteTnds, resolveBaseFee, resolveNntxFee,
 } from '../tools/data/tnds.mjs';
 import { checkTndsOrderInput, normalizeName, normalizePhone, normalizePlate } from '../tools/data/order-input-rules.mjs';
+import { DUPLICATE_ORDER_ERROR, asText, claimOrderSubmission, orderCode, pushToSheet } from './_lib/order-sheet.mjs';
 
 const SOURCE = 'pvihcm.com /san-pham/bao-hiem-o-to/';
 
@@ -39,48 +39,6 @@ function buildPaymentQr(amount, parts) {
   const note = [name, tail].filter(Boolean).join(' ').trim();
   const params = new URLSearchParams({ amount: String(Math.round(amount)), addInfo: note, accountName: PAYMENT_RECIPIENT.accountName });
   return { imageUrl: `${VIETQR_BASE_URL}?${params}`, accountNumber: PAYMENT_RECIPIENT.accountNumber, accountName: PAYMENT_RECIPIENT.accountName, bankName: PAYMENT_RECIPIENT.bankName, amount: Math.round(amount), transferNote: note };
-}
-
-/* ── Google Sheet qua Apps Script: không bao giờ làm hỏng phản hồi cho khách ── */
-async function pushToSheet(row) {
-  const endpoint = process.env.ORDER_SHEET_WEBHOOK, secret = process.env.ORDER_SHEET_SECRET;
-  if (!endpoint || !secret) return { saved: false, reason: 'Chưa cấu hình ORDER_SHEET_WEBHOOK / ORDER_SHEET_SECRET trên Vercel.' };
-  try {
-    const r = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...row, secret }) });
-    if (!r.ok) return { saved: false, reason: `Apps Script trả về ${r.status}.` };
-    const j = await r.json();
-    return j.ok ? { saved: true } : { saved: false, reason: j.error || 'Apps Script từ chối.' };
-  } catch { return { saved: false, reason: 'Không gọi được Apps Script.' }; }
-}
-
-/* ── Chống gửi trùng (order-dedupe.ts): Redis nếu có, không thì nhớ trong phiên bản hàm ── */
-const DUPLICATE_ORDER_ERROR = 'Thông tin này vừa được gửi trong 5 phút gần đây nên đơn không được gửi lại. Đơn trước đã được ghi nhận, nhân viên sẽ gọi lại cho anh/chị.';
-const memory = (globalThis.__pvihcmOrderDedupe ??= new Map());
-const windowSeconds = () => { const raw = process.env.ORDER_DEDUPE_SECONDS; if (raw === undefined || raw === '') return 300; const v = Number(raw); return Number.isFinite(v) && v >= 0 ? Math.floor(v) : 300; };
-async function claimOrderSubmission(scope, values) {
-  const seconds = windowSeconds();
-  if (!seconds) return true;
-  const keys = Object.entries(values).filter(([, v]) => v).map(([k, v]) => `chong-trung:${scope}:${k}:${crypto.createHash('sha256').update(v).digest('hex')}`);
-  if (!keys.length) return true;
-  const url = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL, token = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
-  if (url && token) {
-    try {
-      const r = await fetch(`${url.replace(/\/$/, '')}/pipeline`, { method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(keys.map((k) => ['SET', k, '1', 'NX', 'EX', seconds])) });
-      if (r.ok) { const rep = await r.json(); if (!rep.some((x) => x.error)) return rep.every((x) => x.result === 'OK'); }
-    } catch { /* Redis lỗi thì dùng bộ nhớ tạm */ }
-  }
-  const now = Date.now();
-  for (const [k, exp] of memory) if (exp <= now) memory.delete(k);
-  const taken = keys.some((k) => memory.has(k));
-  keys.forEach((k) => { if (!memory.has(k)) memory.set(k, now + seconds * 1000); });
-  return !taken;
-}
-
-const asText = (v, max) => (typeof v === 'string' ? v.trim().slice(0, max) : '');
-function orderCode() {
-  const now = new Date(Date.now() + 7 * 3600 * 1000); // giờ Việt Nam
-  const stamp = [now.getUTCFullYear() % 100, now.getUTCMonth() + 1, now.getUTCDate()].map((p) => String(p).padStart(2, '0')).join('');
-  return `OT${stamp}-${crypto.randomInt(1000, 10000)}`;
 }
 
 export default async function handler(req, res) {
