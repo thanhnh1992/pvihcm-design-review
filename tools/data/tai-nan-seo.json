@@ -214,7 +214,9 @@
     "label": "Tổng công ty Bảo hiểm PVI — Trang sản phẩm Bảo hiểm tai nạn cá nhân"
    }
   ],
-  "figure": "xe"
+  "figure": "giadinh",
+  "heroAlt": "Hình ảnh mô phỏng người đàn ông đội mũ bảo hiểm chạy xe máy đi làm trên con đường nhiều cây xanh ở TP.HCM buổi sáng",
+  "heroCaption": "Hình ảnh mô phỏng người đi xe máy đi làm buổi sáng ở TP.HCM; không phải khách hàng hay vụ việc thực tế của PVI."
  },
  {
   "slug": "bao-hiem-tai-nan-bao-nhieu-tien",
@@ -489,7 +491,9 @@
     "label": "Tổng công ty Bảo hiểm PVI — Trang sản phẩm Bảo hiểm tai nạn cá nhân"
    }
   ],
-  "figure": "vp"
+  "figure": "nhansu",
+  "heroAlt": "Hình ảnh mô phỏng người phụ nữ ngồi quán cà phê vỉa hè Sài Gòn, xem điện thoại và ghi chép chi tiêu vào sổ",
+  "heroCaption": "Hình ảnh mô phỏng người tính toán chi phí bảo hiểm cho gia đình; không phải khách hàng thực tế của PVI."
  },
  {
   "slug": "te-xe-may-co-duoc-bao-hiem-tai-nan-chi-tra",
@@ -715,7 +719,9 @@
     "label": "Tổng công ty Bảo hiểm PVI — Trang sản phẩm bảo hiểm tai nạn cá nhân"
    }
   ],
-  "figure": "xe"
+  "figure": "xe",
+  "heroAlt": "Hình ảnh mô phỏng thanh niên ngồi lề đường ướt sau mưa, ôm khuỷu tay trầy xước cạnh chiếc xe máy ngã, người đi đường hỏi thăm",
+  "heroCaption": "Hình ảnh mô phỏng một vụ té xe máy trên đường ướt; không phải vụ việc hay khách hàng thực tế của PVI."
  },
  {
   "slug": "tai-nan-choi-the-thao-co-duoc-boi-thuong",

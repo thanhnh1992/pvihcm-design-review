@@ -39,6 +39,8 @@ const FIGS = {
   xe: { name: 'tn-hinh-xe-may', w: 760, h: 950, alt: 'Hình ảnh mô phỏng người đàn ông đội mũ bảo hiểm chạy xe máy trên đường phố TP.HCM lúc hoàng hôn', caption: 'Hình ảnh mô phỏng người đi xe máy ở TP.HCM; không phải khách hàng hay vụ việc thực tế của PVI.' },
   vp: { name: 'tn-hinh-van-phong', w: 760, h: 950, alt: 'Hình ảnh mô phỏng nhóm nhân viên văn phòng trao đổi quanh bàn làm việc có máy tính', caption: 'Hình ảnh mô phỏng nhóm nhân viên văn phòng; không phải khách hàng thực tế của PVI.' },
   ct: { name: 'tn-hinh-cong-truong', w: 760, h: 950, alt: 'Hình ảnh mô phỏng công nhân đội mũ và mặc áo phản quang trao đổi tại công trường xây dựng', caption: 'Hình ảnh mô phỏng công nhân tại công trường xây dựng; không phải công trình hay khách hàng thực tế của PVI.' },
+  giadinh: { name: 'tn-hinh-gia-dinh-bang-co-chan', w: 1200, h: 800, alt: 'Hình ảnh mô phỏng người chồng đưa ly nước cho vợ đang băng cổ chân ngồi trên sofa, con gái nhỏ ngồi cạnh', caption: 'Hình ảnh mô phỏng một gia đình chăm người bị thương nhẹ sau tai nạn; không phải khách hàng hay vụ việc thực tế của PVI.' },
+  nhansu: { name: 'tn-hinh-nhan-su-danh-sach', w: 1200, h: 800, alt: 'Hình ảnh mô phỏng nữ nhân viên nhân sự và đồng nghiệp xem danh sách nhân viên trên máy tính xách tay và giấy in', caption: 'Hình ảnh mô phỏng bộ phận nhân sự soát danh sách nhân viên trước khi gửi báo phí; không phải khách hàng thực tế của PVI.' },
   bot: { name: 'tn-hinh-bo-bot', w: 800, h: 533, alt: 'Hình ảnh mô phỏng người đàn ông bó bột cánh tay cầm giấy tờ, ngồi ở hành lang cơ sở y tế', caption: 'Hình ảnh mô phỏng người bị bó bột cánh tay sau tai nạn; không phải khách hàng hay vụ việc thực tế của PVI.' },
 };
 
@@ -93,11 +95,11 @@ function build(a, i) {
       title: a.title,
       lead: a.lead,
       image: `/assets/tn-${a.slug}.webp`,
-      alt: `Hình ảnh mô phỏng: đồ họa nền xanh ghi tiêu đề bài "${a.title}"`,
+      alt: a.heroAlt || `Hình ảnh mô phỏng: đồ họa nền xanh ghi tiêu đề bài "${a.title}"`,
       readMin: Math.max(4, Math.round(wordCount(a) / 220)),
     },
     crumb: b2b ? 'Tai nạn doanh nghiệp' : 'Bảo hiểm tai nạn',
-    hero: { name: `tn-${a.slug}`, w: 1200, h: 630, caption: 'Hình ảnh mô phỏng: đồ họa tiêu đề bài viết do PVI Thành Đô biên soạn.' },
+    hero: { name: `tn-${a.slug}`, w: 1200, h: 630, caption: a.heroCaption || 'Hình ảnh mô phỏng: đồ họa tiêu đề bài viết do PVI Thành Đô biên soạn.' },
     seo: { title: a.title, description: a.description },
     toc: [...a.sections.map((s, k) => [ids[k], s.title.replace(/\?$/, '')]), ['doc-them', 'Đọc thêm'], ['san-pham', 'Sản phẩm liên quan'], ['cau-hoi', 'Câu hỏi thường gặp']],
     faqs: a.faq.map((f) => ({ question: f.q, answer: f.a })),
