@@ -68,7 +68,8 @@ export function body({ pic, ctaRow }) {
 
 <h2 id="dien-bien">Vụ cháy tiệm massage trên đường Lê Văn Lương diễn ra thế nào?</h2>
 <p>Theo báo Tuổi Trẻ, VnExpress và Dân trí ngày 17/10/2026, đám cháy bùng lên khoảng 9 giờ sáng tại một căn nhà 3 tầng dùng làm tiệm massage, cách Lotte Mart Tân Hưng khoảng 500 m. Khói đen bốc cao, nhìn thấy từ nhiều tuyến đường xung quanh.</p>
-<p>Người dân cho biết tiệm đang đóng cửa sửa chữa. Lãnh đạo UBND phường Tân Hưng cho biết cơ sở đã ngưng hoạt động khoảng một năm và hôm đó đang được sửa chữa. Cảnh sát PCCC và CNCH (PC07) Công an TP.HCM khống chế đám cháy sau khoảng 30 phút. Không có người bị thương; nhiều tài sản bên trong bị thiêu rụi. Nguyên nhân và thiệt hại đang được cơ quan chức năng xác định.</p>
+<p>Người dân cho biết tiệm đang đóng cửa sửa chữa. Lãnh đạo UBND phường Tân Hưng cho biết cơ sở đã ngưng hoạt động khoảng một năm và hôm đó đang được sửa chữa.</p>
+<p>Cảnh sát PCCC và CNCH (PC07) Công an TP.HCM khống chế đám cháy sau khoảng 30 phút. Không có người bị thương; nhiều tài sản bên trong bị thiêu rụi. Nguyên nhân và thiệt hại đang được cơ quan chức năng xác định.</p>
 ${photo('chay-massage-chua-chay', 442, 786, 'Chiến sĩ chữa cháy kéo vòi nước trên mặt đường ướt trước tiệm massage', 'lực lượng chữa cháy kéo vòi trước mặt tiền căn nhà; biển hiệu và khuôn mặt đã được làm mờ')}
 ${photo('chay-massage-khoi-den', 720, 960, 'Cột khói đen bốc cao phía xa nhìn từ một tuyến đường có xe máy và ô tô đang chạy', 'cột khói đen nhìn từ tuyến đường gần khu vực, sáng 17/10/2026; biển số xe đã được làm mờ')}
 

@@ -3,7 +3,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { page, t, esc, ctaRow, faqJsonLd, SITE, av } from './chrome.mjs';
+import { page, t, esc, clean, ctaRow, faqJsonLd, articleJsonLd, SITE, av } from './chrome.mjs';
+import { ensureH2Ids, tocEntries, tocHtml, withInlineToc } from './toc.mjs';
 import * as kbCongTrinh from './articles/tai-nan-cong-trinh.mjs';
 import * as kbTaiNanCaNhan from './articles/loi-ich-tai-nan-ca-nhan.mjs';
 import * as kbBinhDuong from './articles/mua-bao-hiem-pvi-binh-duong.mjs';
@@ -303,20 +304,13 @@ ${feedbackBlock(p)}
     title: 'Nghị định 347/2026: cháy nổ bắt buộc đổi gì từ 15/9 | PVI',
     description: 'Từ 15/9/2026, Nghị định 347/2026/NĐ-CP bỏ thủ tục nghiệm thu PCCC của Công an, thêm trường hợp loại trừ và cho tính phí riêng từng hạng mục theo Phụ lục VI.',
     image: p.image,
-    head: `<script type="application/ld+json">${JSON.stringify({
-      '@context': 'https://schema.org', '@type': 'NewsArticle',
-      headline: p.title, datePublished: p.date, dateModified: p.date,
-      image: [SITE + p.image], mainEntityOfPage: SITE + P,
-      author: { '@type': 'Organization', name: 'Công ty Bảo hiểm PVI Thành Đô' },
-      publisher: { '@type': 'Organization', name: 'Công ty Bảo hiểm PVI Thành Đô', logo: { '@type': 'ImageObject', url: SITE + '/assets/pvi-logo.svg' } },
-      description: p.lead,
-    }).replace(/</g, '\\u003c')}</script><script type="application/ld+json">${JSON.stringify({
+    head: `${articleJsonLd({ type: 'NewsArticle', path: P, title: p.title, description: p.lead, image: p.image, date: p.date })}<script type="application/ld+json">${JSON.stringify({
       '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: SITE + '/' },
         { '@type': 'ListItem', position: 2, name: 'Tin tức', item: SITE + '/tin-tuc/' },
         { '@type': 'ListItem', position: 3, name: p.title, item: SITE + P }],
     })}</script>`,
-    main,
+    main: withInlineToc(main, '<h2', { from: 'class="art-body"' }),
     scripts: feedbackScript(),
     extraCss: '<link rel="stylesheet" href="/news.css">',
   }));
@@ -408,21 +402,13 @@ ${feedbackBlock(p)}
     title: 'Bổ nhiệm Giám đốc, Phó Giám đốc PVI Thành Đô | PVI',
     description: 'Ngày 05/10/2026, Tổng công ty Bảo hiểm PVI công bố quyết định bổ nhiệm ông Hồ Vũ Bình làm Giám đốc và bà Trần Thị Thanh Thương làm Phó Giám đốc PVI Thành Đô.',
     image: p.image,
-    head: `<script type="application/ld+json">${JSON.stringify({
-      '@context': 'https://schema.org', '@type': 'NewsArticle',
-      headline: p.title, datePublished: p.date, dateModified: p.date,
-      image: ['bo-nhiem-thanh-do-tap-the', 'bo-nhiem-thanh-do-giam-doc', 'bo-nhiem-thanh-do-pho-giam-doc'].map((n) => `${SITE}/assets/${n}.webp`),
-      mainEntityOfPage: SITE + P,
-      author: { '@type': 'Organization', name: 'Công ty Bảo hiểm PVI Thành Đô' },
-      publisher: { '@type': 'Organization', name: 'Công ty Bảo hiểm PVI Thành Đô', logo: { '@type': 'ImageObject', url: SITE + '/assets/pvi-logo.svg' } },
-      description: p.lead,
-    }).replace(/</g, '\\u003c')}</script><script type="application/ld+json">${JSON.stringify({
+    head: `${articleJsonLd({ type: 'NewsArticle', path: P, title: p.title, description: p.lead, image: p.image, date: p.date })}<script type="application/ld+json">${JSON.stringify({
       '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: SITE + '/' },
         { '@type': 'ListItem', position: 2, name: 'Tin tức', item: SITE + '/tin-tuc/' },
         { '@type': 'ListItem', position: 3, name: p.title, item: SITE + P }],
     })}</script>`,
-    main,
+    main: withInlineToc(main, '<h2 id="ann-people-h"'),
     scripts: feedbackScript(),
     extraCss: '<link rel="stylesheet" href="/news.css">',
   }));
@@ -447,7 +433,9 @@ function renderKb(A) {
   const crumbHtml = `<p class="kb-crumb">${crumbs.map(([n, h]) => `<a href="${h}">${esc(n)}</a><span aria-hidden="true">/</span>`).join('')}<span>${t(kn ? (STREAMS.find((x) => x.key === HB.stream).name) : A.crumb)}</span></p>`;
   const hubBlock = HB ? `<aside class="kb-hub" aria-label="Sản phẩm của bài viết"><span class="kb-hub-k">Bài này thuộc sản phẩm</span><b>${esc(HB.hub.name)}</b><span class="kb-hub-links"><a class="kb-hub-main" href="${HB.hub.product}">Xem sản phẩm, quyền lợi và phí <i aria-hidden="true">&rarr;</i></a><a href="/kien-thuc/${HB.hub.slug}/">Kiến thức, trải nghiệm, tin tức ${esc(HB.hub.short)} <i aria-hidden="true">&rarr;</i></a></span></aside>\n` : '';
   const H = A.hero;
-  const tocList = `<ol>${A.toc.map(([id, label]) => `<li><a href="#${id}">${t(label)}</a></li>`).join('')}</ol>`;
+  // Mục lục dựng từ chính các H2 trong bài (tools/toc.mjs), giữ tên ngắn người viết đã khai trong A.toc.
+  const bodyHtml = ensureH2Ids(A.body({ img, pic, ctaRow }));
+  const endHtml = A.endMatter ? ensureH2Ids(A.endMatter()) : '';
   const faq = `<h2 id="cau-hoi">Câu hỏi thường gặp</h2><div class="kb-faq">${A.faqs.map((f) => `<details><summary>${t(f.question)}</summary><p>${t(f.answer)}</p></details>`).join('')}</div>`;
   const main = `
 <article class="kb">
@@ -462,17 +450,17 @@ ${crumbHtml}
 <figcaption>${t(H.caption)}</figcaption></figure>
 
 <div class="kb-shell kb-layout">
-<div class="kb-toc" role="navigation" aria-label="Mục lục bài viết"><details><summary>Trong bài này <span>${A.toc.length} mục</span></summary>${tocList}</details></div>
+${tocHtml(tocEntries(bodyHtml + '<h2 id="san-pham">Sản phẩm liên quan</h2>' + (A.faqs.length ? '<h2 id="cau-hoi">Câu hỏi thường gặp</h2>' : '') + endHtml, A.toc.map(([id, label]) => [id, clean(label)])))}
 <script>(function(){var d=document.querySelector('.kb-toc details');if(d&&window.matchMedia('(min-width:901px)').matches)d.open=true;})();</script>
 <div class="kb-main">
 <div class="kb-col">
-${A.body({ img, pic, ctaRow })}
+${bodyHtml}
 ${hubBlock}<h2 id="san-pham">Sản phẩm liên quan</h2>
 <ul class="kb-products">${A.related.map((r) => `<li><a href="${r.href}">${pic(r.img, { w: r.w, h: r.h, sizes: '(max-width:900px) 40vw, 200px' })}<span><em>${t(r.k)}</em><b>${t(r.title)}</b><small>${t(r.text)}</small></span><i aria-hidden="true">&rarr;</i></a></li>`).join('')}</ul>
 ${faq}
 <h2 id="nguon">Nguồn tham chiếu</h2>
 <ul class="art-sources">${A.sources.map(([name, href, org]) => href.startsWith('/') ? `<li><a href="${href}"><b>${esc(name)}</b><span>${esc(org)}</span><i aria-hidden="true">&rarr;</i></a></li>` : `<li><p class="src"><b>${esc(name)}</b><span>${esc(org)}</span></p></li>`).join('')}</ul>
-${A.endMatter ? A.endMatter() + '\n' : ''}<p class="kb-disclaimer">Bài viết để tham khảo. Phạm vi, điều kiện, quyền lợi và phí chính thức theo quy tắc và hợp đồng Bảo hiểm PVI phát hành.</p>
+${endHtml ? endHtml + '\n' : ''}<p class="kb-disclaimer">Bài viết để tham khảo. Phạm vi, điều kiện, quyền lợi và phí chính thức theo quy tắc và hợp đồng Bảo hiểm PVI phát hành.</p>
 ${feedbackBlock(p)}
 </div>
 </div>
@@ -485,14 +473,7 @@ ${feedbackBlock(p)}
     description: A.seo.description,
     image: p.socialImage || p.image,
     canonical: p.canonical,
-    head: `<script type="application/ld+json">${JSON.stringify({
-      '@context': 'https://schema.org', '@type': p.schemaType || 'Article',
-      headline: p.title, datePublished: p.date, dateModified: p.updated || p.date,
-      image: [SITE + p.image], mainEntityOfPage: p.canonical || SITE + P,
-      author: { '@type': 'Organization', name: 'Công ty Bảo hiểm PVI Thành Đô' },
-      publisher: { '@type': 'Organization', name: 'Công ty Bảo hiểm PVI Thành Đô', logo: { '@type': 'ImageObject', url: SITE + '/assets/pvi-logo.svg' } },
-      description: p.lead,
-    }).replace(/</g, '\\u003c')}</script><script type="application/ld+json">${JSON.stringify({
+    head: `${articleJsonLd({ type: p.schemaType || 'Article', path: P, canonical: p.canonical, title: p.title, description: p.lead, image: p.image, date: p.date, updated: p.updated })}<script type="application/ld+json">${JSON.stringify({
       '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: SITE + '/' },
         ...crumbs.map(([n, h], i) => ({ '@type': 'ListItem', position: i + 2, name: n, item: SITE + h })),
