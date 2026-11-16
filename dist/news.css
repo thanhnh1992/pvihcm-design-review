@@ -655,3 +655,13 @@
 .kb .kb-video video{display:block;width:100%;height:auto;border-radius:14px;background:#0b1b33}
 .kb-photo.kb-chart img{aspect-ratio:16/9;object-fit:contain;background:#eef4fb}
 .kb-video-embed iframe{display:block;width:100%;height:auto;aspect-ratio:16/9;border:0;border-radius:16px;background:#000}
+
+/* Mục lục dạng ô nằm đầu thân bài, cho bài một cột: bài tin, thông báo, trang khu vực (16/11/2026, tools/toc.mjs).
+   Cùng markup .kb-toc với bài kiến thức; mở sẵn, bấm tiêu đề để thu gọn. */
+.kb-toc-inline{margin:22px 0 8px;max-width:760px}
+.kb-toc-inline details{position:static;border:1px solid var(--line);border-radius:14px;background:var(--tint,#f4f8fc);padding:0 18px}
+.kb-toc-inline summary{pointer-events:auto;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:52px;margin:0;font-size:15px}
+.kb-toc-inline summary span{display:inline;font-weight:400;color:#5b6f86}
+.kb-toc-inline ol{border-left:0;padding:0 0 12px}
+.kb-toc-inline a{padding:8px 0;border-left:0;margin:0}
+.kb-toc-inline a:hover{border-left-color:transparent}

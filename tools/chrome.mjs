@@ -116,3 +116,21 @@ export function productCoverMeta({ base, alt }) {
   const src = SITE + `/assets/${base}.jpg`;
   return `<meta property="og:image" content="${src}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="${esc(alt)}"><meta name="twitter:image" content="${src}"><meta name="twitter:image:alt" content="${esc(alt)}">`;
 }
+
+/* JSON-LD cho mọi trang bài (bài kiến thức, tin, thông báo, khu vực), một nguồn duy nhất (16/11/2026).
+   Tác giả và đơn vị xuất bản trỏ về tổ chức khai ở trang chủ (@id SITE/#organization).
+   aggregateRating KHÔNG khai ở đây: feedback.js chỉ gắn khi bài có đánh giá thật của bạn đọc
+   (lấy từ /api/nhan-xet), không bao giờ ghi số cứng. */
+export const ORG_ID = SITE + '/#organization';
+export function articleJsonLd({ type = 'Article', path, canonical, title, description, image, date, updated }) {
+  const url = canonical || SITE + path;
+  return `<script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org', '@type': type, '@id': SITE + path + '#article',
+    headline: title, description, inLanguage: 'vi-VN',
+    image: [].concat(image).map((i) => (i.startsWith('http') ? i : SITE + i)),
+    datePublished: date, dateModified: updated || date,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    author: { '@type': 'Organization', '@id': ORG_ID, name: 'Công ty Bảo hiểm PVI Thành Đô', url: SITE + '/gioi-thieu/' },
+    publisher: { '@type': 'Organization', '@id': ORG_ID, name: 'Công ty Bảo hiểm PVI Thành Đô', url: SITE + '/', logo: { '@type': 'ImageObject', url: SITE + '/assets/pvi-logo.svg' } },
+  }).replace(/</g, '\\u003c')}</script>`;
+}

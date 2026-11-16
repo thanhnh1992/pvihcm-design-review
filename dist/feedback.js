@@ -84,9 +84,24 @@
     return s;
   }
   function viDate(iso) { var p = String(iso).split('-'); return p.length === 3 ? p[2] + '/' + p[1] + '/' + p[0] : ''; }
+  /* AggregateRating trong JSON-LD Article của bài (chủ site cho phép 16/11/2026).
+     Chỉ dùng số đánh giá thật vừa lấy từ /api/nhan-xet: có ít nhất 1 đánh giá mới gắn,
+     về 0 thì gỡ. Không bao giờ ghi số cứng vào HTML. */
+  function syncRatingLd(count, avg) {
+    var nodes = document.querySelectorAll('script[type="application/ld+json"]');
+    for (var i = 0; i < nodes.length; i++) {
+      var o; try { o = JSON.parse(nodes[i].textContent); } catch (e) { continue; }
+      if (!o || !/Article$/.test(o['@type'] || '')) continue;
+      if (count > 0) o.aggregateRating = { '@type': 'AggregateRating', ratingValue: avg, bestRating: 5, worstRating: 1, ratingCount: count };
+      else delete o.aggregateRating;
+      nodes[i].textContent = JSON.stringify(o);
+      return;
+    }
+  }
   function showSummary() {
-    if (!all.count) { summary.hidden = true; return; }
+    if (!all.count) { summary.hidden = true; syncRatingLd(0); return; }
     var avg = Math.round((all.sum / all.count) * 10) / 10;
+    syncRatingLd(all.count, avg);
     summary.querySelector('.fb-avg').textContent = avg.toFixed(1).replace('.', ',');
     var avgStars = summary.querySelector('.fb-rate');
     rate(avgStars, avg);

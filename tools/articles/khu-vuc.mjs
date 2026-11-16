@@ -5,7 +5,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { t, esc, SITE } from '../chrome.mjs';
+import { t, esc, SITE, articleJsonLd } from '../chrome.mjs';
+import { withInlineToc } from '../toc.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 export const areas = JSON.parse(fs.readFileSync(path.resolve(HERE, '../data/khu-vuc.json'), 'utf8'));
@@ -186,12 +187,7 @@ ${A.faq.map((f, i) => `<details${i === 0 ? ' open' : ''}><summary>${t(f.q)}</sum
     title: `${A.title} | PVI Thành Đô`.length > 70 ? A.title : `${A.title} | PVI Thành Đô`,
     description: A.description,
     image: '/assets/tru-so-pvi-thanh-do.webp',
-    head: ld({
-      '@context': 'https://schema.org', '@type': 'Article', headline: A.title, description: A.description,
-      datePublished: A.reviewedAt, dateModified: A.reviewedAt, image: [SITE + '/assets/tru-so-pvi-thanh-do.webp'], mainEntityOfPage: canonical,
-      author: { '@type': 'Organization', name: 'Công ty Bảo hiểm PVI Thành Đô' },
-      publisher: { '@type': 'Organization', name: 'Công ty Bảo hiểm PVI Thành Đô', logo: { '@type': 'ImageObject', url: SITE + '/assets/pvi-logo.svg' } },
-    }) + ld({
+    head: articleJsonLd({ path: P, canonical, title: A.title, description: A.description, image: '/assets/tru-so-pvi-thanh-do.webp', date: A.reviewedAt }) + ld({
       '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: SITE + '/' },
         { '@type': 'ListItem', position: 2, name: 'Tin tức', item: SITE + '/tin-tuc/' },
@@ -200,7 +196,8 @@ ${A.faq.map((f, i) => `<details${i === 0 ? ' open' : ''}><summary>${t(f.q)}</sum
       '@context': 'https://schema.org', '@type': 'FAQPage',
       mainEntity: A.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
     }),
-    main,
+    // Mục lục ngay dưới đoạn mở đầu, dựng từ các H2 của trang (tools/toc.mjs).
+    main: withInlineToc(main, '</div></div>', { from: 'class="kv-answer"' }),
     extraCss: '<link rel="stylesheet" href="/news.css"><link rel="stylesheet" href="/khu-vuc.css">',
   }));
 }
