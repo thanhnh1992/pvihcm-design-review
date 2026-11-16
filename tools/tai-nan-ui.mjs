@@ -51,12 +51,18 @@ const br = (s) => s.split(/<br\s*\/?>/).map(t).join('<br>');
 const hero = (ac) => `
 <section class="auto-hero accident-hero">
 <div class="auto-hero-orb orb-one"></div><div class="auto-hero-orb orb-two"></div>
-<div class="shell auto-hero-copy">
+<div class="shell accident-hero-layout">
+<div class="auto-hero-copy">
 <span class="auto-kicker">BẢO HIỂM CON NGƯỜI · PVI</span>
 <h1>Bảo hiểm Tai nạn <em>24/24</em> PVI</h1>
 <p>${t('Bảo vệ người lao động 24 giờ mỗi ngày, trong và ngoài giờ làm việc — và là giấy tờ nhà thầu cần có trong hồ sơ theo Nghị định 220/2026/NĐ-CP.')}</p>
 <ul class="accident-chips"><li>Bồi thường tai nạn 24/24h, trong và ngoài giờ</li><li>Cấp giấy chứng nhận trong ngày</li><li>Xuất hóa đơn VAT</li></ul>
 <div class="auto-hero-links"><a href="${ac.ZALO_URL}" target="_blank" rel="noopener">Nhận báo giá qua Zalo <i>→</i></a><a href="#tinh-phi">Tính phí ngay <i>↓</i></a></div>
+</div>
+<figure class="accident-hero-media">
+<div class="accident-hero-frame"><img src="/assets/section-tai-nan.webp" srcset="/assets/section-tai-nan-480.webp 480w, /assets/section-tai-nan-800.webp 800w, /assets/section-tai-nan.webp 1280w" sizes="(max-width: 1000px) calc(100vw - 48px), 566px" width="1280" height="853" alt="Tư vấn bảo hiểm tai nạn cho người lao động tại nhà máy" fetchpriority="high" decoding="async"></div>
+<figcaption>Bảo hiểm tai nạn là gì? Bảo hiểm tai nạn bồi thường như thế nào?</figcaption>
+</figure>
 </div>
 </section>`;
 
