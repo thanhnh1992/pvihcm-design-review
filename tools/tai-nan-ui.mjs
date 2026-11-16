@@ -54,7 +54,7 @@ const hero = (ac) => `
 <div class="shell auto-hero-copy">
 <span class="auto-kicker">BẢO HIỂM CON NGƯỜI · PVI</span>
 <h1>Bảo hiểm Tai nạn <em>24/24</em> PVI</h1>
-<p>${t('Bảo vệ người lao động 24 giờ mỗi ngày, trong và ngoài giờ làm việc — và là giấy tờ nhà thầu cần có trong hồ sơ theo Nghị định 220/2026/NĐ-CP.')}</p>
+<p>${t('Bảo vệ người lao động 24 giờ mỗi ngày, trong và ngoài giờ làm việc — và là giấy tờ nhà thầu cần có trong hồ sơ theo')} <a class="tn-legal-link" href="/tin-tuc/nghi-dinh-220-2026-bao-hiem-cong-trinh/">Nghị định 220/2026/NĐ-CP</a>.</p>
 <ul class="accident-chips"><li>Bồi thường tai nạn 24/24h, trong và ngoài giờ</li><li>Cấp giấy chứng nhận trong ngày</li><li>Xuất hóa đơn VAT</li></ul>
 <div class="auto-hero-links"><a href="${ac.ZALO_URL}" target="_blank" rel="noopener">Nhận báo giá qua Zalo <i>→</i></a><a href="#tinh-phi">Tính phí ngay <i>↓</i></a></div>
 </div>

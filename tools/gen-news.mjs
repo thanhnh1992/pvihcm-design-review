@@ -20,6 +20,7 @@ import * as kbCnBaoNhieu from './articles/cn-bao-nhieu-tien.mjs';
 import * as kbCnChungCu from './articles/cn-chung-cu.mjs';
 import * as kbCnGcn from './articles/cn-giay-chung-nhan.mjs';
 import * as kbCnQuyDinh from './articles/cn-quy-dinh.mjs';
+import * as kbTnNd220 from './articles/tn-nghi-dinh-220.mjs';
 import { areas, SKIP as AREA_SKIP, renderArea, ZALO_TU_VAN } from './articles/khu-vuc.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -44,6 +45,7 @@ const write = (rel, html) => {
 
 /* ── Danh sách bài, mới nhất lên đầu ── */
 export const posts = [
+  kbTnNd220.post,
   kbCnMuaODau.post,
   kbCnBaoNhieu.post,
   kbCnChungCu.post,
@@ -121,6 +123,7 @@ const GROUPS = [
   { id: 'tin-chung', key: 'chung', name: 'Tin tức chung', hint: 'PVI Thành Đô và khu vực', title: 'Hoạt động của PVI Thành Đô', lead: 'Thông báo của đơn vị và thông tin mua bảo hiểm PVI theo từng khu vực tại TP.HCM.' },
 ];
 const POST_GROUP = {
+  'nghi-dinh-220-2026-bao-hiem-cong-trinh': 'phap-ly',
   'mua-bao-hiem-chay-no-bat-buoc-o-dau': 'san-pham',
   'bao-hiem-chay-no-bat-buoc-bao-nhieu-tien': 'san-pham',
   'bao-hiem-chay-no-bat-buoc-chung-cu': 'san-pham',
@@ -490,6 +493,7 @@ ${feedbackBlock(p)}
 }
 
 renderKb(kbCongTrinh);
+renderKb(kbTnNd220);
 renderKb(kbCnMuaODau);
 renderKb(kbCnBaoNhieu);
 renderKb(kbCnChungCu);
