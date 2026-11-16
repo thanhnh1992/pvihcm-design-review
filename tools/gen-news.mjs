@@ -15,6 +15,7 @@ import * as kbVfWild from './articles/bao-hiem-xe-ban-tai-dien-vinfast-vf-wild.m
 import * as kbDonVi from './articles/don-vi-thanh-vien-pvi.mjs';
 import * as kbPvi27045 from './articles/bao-hiem-pvi-ve-dich-som-2026.mjs';
 import { binhDuongGuides } from './articles/binh-duong-guides.mjs';
+import { taiNanSeo } from './articles/tai-nan-seo.mjs';
 import * as kbCnMuaODau from './articles/cn-mua-o-dau.mjs';
 import * as kbCnBaoNhieu from './articles/cn-bao-nhieu-tien.mjs';
 import * as kbCnChungCu from './articles/cn-chung-cu.mjs';
@@ -44,6 +45,7 @@ const write = (rel, html) => {
 
 /* ── Danh sách bài, mới nhất lên đầu ── */
 export const posts = [
+  ...taiNanSeo.map(({ post }) => post),
   kbCnMuaODau.post,
   kbCnBaoNhieu.post,
   kbCnChungCu.post,
@@ -127,6 +129,7 @@ const POST_GROUP = {
   'giay-chung-nhan-bao-hiem-chay-no-bat-buoc': 'san-pham',
   'quy-dinh-mua-bao-hiem-chay-no-bat-buoc': 'phap-ly',
   ...Object.fromEntries(binhDuongGuides.map(({ post }) => [post.slug, 'san-pham'])),
+  ...Object.fromEntries(taiNanSeo.map(({ post }) => [post.slug, 'san-pham'])),
   'loi-ich-bao-hiem-tai-nan-ca-nhan': 'san-pham',
   'bao-hiem-tai-nan-cong-trinh-pvi': 'san-pham',
   'nghi-dinh-347-2026-chay-no-bat-buoc': 'phap-ly',
@@ -505,6 +508,7 @@ renderKb(kbVfWild);
 renderKb(kbDonVi);
 renderKb(kbPvi27045);
 for (const article of binhDuongGuides) renderKb(article);
+for (const article of taiNanSeo) renderKb(article);
 
 /* ── Loạt bài theo khu vực: bản đăng lại, canonical về baohiempvi-vn.com ── */
 {
