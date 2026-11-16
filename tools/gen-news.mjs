@@ -16,11 +16,14 @@ import * as kbVfWild from './articles/bao-hiem-xe-ban-tai-dien-vinfast-vf-wild.m
 import * as kbDonVi from './articles/don-vi-thanh-vien-pvi.mjs';
 import * as kbPvi27045 from './articles/bao-hiem-pvi-ve-dich-som-2026.mjs';
 import { binhDuongGuides } from './articles/binh-duong-guides.mjs';
+import { taiNanSeo } from './articles/tai-nan-seo.mjs';
+import { HUBS, STREAMS, POST_HUB, hubOf } from './data/kien-thuc-hub.mjs';
 import * as kbCnMuaODau from './articles/cn-mua-o-dau.mjs';
 import * as kbCnBaoNhieu from './articles/cn-bao-nhieu-tien.mjs';
 import * as kbCnChungCu from './articles/cn-chung-cu.mjs';
 import * as kbCnGcn from './articles/cn-giay-chung-nhan.mjs';
 import * as kbCnQuyDinh from './articles/cn-quy-dinh.mjs';
+import * as kbTnNd220 from './articles/tn-nghi-dinh-220.mjs';
 import { areas, SKIP as AREA_SKIP, renderArea, ZALO_TU_VAN } from './articles/khu-vuc.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -45,6 +48,8 @@ const write = (rel, html) => {
 
 /* ── Danh sách bài, mới nhất lên đầu ── */
 export const posts = [
+  kbTnNd220.post,
+  ...taiNanSeo.map(({ post }) => post),
   kbCnMuaODau.post,
   kbCnBaoNhieu.post,
   kbCnChungCu.post,
@@ -122,12 +127,14 @@ const GROUPS = [
   { id: 'tin-chung', key: 'chung', name: 'Tin tức chung', hint: 'PVI Thành Đô và khu vực', title: 'Hoạt động của PVI Thành Đô', lead: 'Thông báo của đơn vị và thông tin mua bảo hiểm PVI theo từng khu vực tại TP.HCM.' },
 ];
 const POST_GROUP = {
+  'nghi-dinh-220-2026-bao-hiem-cong-trinh': 'phap-ly',
   'mua-bao-hiem-chay-no-bat-buoc-o-dau': 'san-pham',
   'bao-hiem-chay-no-bat-buoc-bao-nhieu-tien': 'san-pham',
   'bao-hiem-chay-no-bat-buoc-chung-cu': 'san-pham',
   'giay-chung-nhan-bao-hiem-chay-no-bat-buoc': 'san-pham',
   'quy-dinh-mua-bao-hiem-chay-no-bat-buoc': 'phap-ly',
   ...Object.fromEntries(binhDuongGuides.map(({ post }) => [post.slug, 'san-pham'])),
+  ...Object.fromEntries(taiNanSeo.map(({ post }) => [post.slug, 'san-pham'])),
   'loi-ich-bao-hiem-tai-nan-ca-nhan': 'san-pham',
   'bao-hiem-tai-nan-cong-trinh-pvi': 'san-pham',
   'nghi-dinh-347-2026-chay-no-bat-buoc': 'phap-ly',
@@ -417,6 +424,14 @@ const img = (name, alt, sizes, eager = false) => pic(name, { alt, sizes, eager }
 function renderKb(A) {
   const p = A.post;
   const P = `/tin-tuc/${p.slug}/`;
+  // Khu Kiến thức theo sản phẩm (16/11/2026): bài kiến thức, trải nghiệm hiện đường dẫn Kiến thức › Sản phẩm; bài tin giữ Tin tức.
+  const HB = hubOf(p.slug);
+  const kn = HB && HB.stream !== 'tin-tuc';
+  const crumbs = kn
+    ? [['Kiến thức', '/kien-thuc/'], [HB.hub.short, `/kien-thuc/${HB.hub.slug}/`]]
+    : [['Tin tức', '/tin-tuc/']];
+  const crumbHtml = `<p class="kb-crumb">${crumbs.map(([n, h]) => `<a href="${h}">${esc(n)}</a><span aria-hidden="true">/</span>`).join('')}<span>${t(kn ? (STREAMS.find((x) => x.key === HB.stream).name) : A.crumb)}</span></p>`;
+  const hubBlock = HB ? `<aside class="kb-hub" aria-label="Sản phẩm của bài viết"><span class="kb-hub-k">Bài này thuộc sản phẩm</span><b>${esc(HB.hub.name)}</b><span class="kb-hub-links"><a class="kb-hub-main" href="${HB.hub.product}">Xem sản phẩm, quyền lợi và phí <i aria-hidden="true">&rarr;</i></a><a href="/kien-thuc/${HB.hub.slug}/">Kiến thức, trải nghiệm, tin tức ${esc(HB.hub.short)} <i aria-hidden="true">&rarr;</i></a></span></aside>\n` : '';
   const H = A.hero;
   // Mục lục dựng từ chính các H2 trong bài (tools/toc.mjs), giữ tên ngắn người viết đã khai trong A.toc.
   const bodyHtml = ensureH2Ids(A.body({ img, pic, ctaRow }));
@@ -425,7 +440,7 @@ function renderKb(A) {
   const main = `
 <article class="kb">
 <div class="kb-head"><div class="kb-shell">
-<p class="kb-crumb"><a href="/tin-tuc/">Tin tức</a><span aria-hidden="true">/</span><span>${t(A.crumb)}</span></p>
+${crumbHtml}
 <h1>${t(p.title)}</h1>
 <p class="kb-lead">${t(p.lead)}</p>
 <p class="kb-meta"><span>Công ty Bảo hiểm PVI Thành Đô</span><time datetime="${p.date}">${esc(p.dateText)}</time>${p.updated ? `<time datetime="${p.updated}">Cập nhật ${esc(p.updatedText)}</time>` : ''}<span>${p.readMin} phút đọc</span></p>
@@ -440,7 +455,7 @@ ${tocHtml(tocEntries(bodyHtml + '<h2 id="san-pham">Sản phẩm liên quan</h2>'
 <div class="kb-main">
 <div class="kb-col">
 ${bodyHtml}
-<h2 id="san-pham">Sản phẩm liên quan</h2>
+${hubBlock}<h2 id="san-pham">Sản phẩm liên quan</h2>
 <ul class="kb-products">${A.related.map((r) => `<li><a href="${r.href}">${pic(r.img, { w: r.w, h: r.h, sizes: '(max-width:900px) 40vw, 200px' })}<span><em>${t(r.k)}</em><b>${t(r.title)}</b><small>${t(r.text)}</small></span><i aria-hidden="true">&rarr;</i></a></li>`).join('')}</ul>
 ${faq}
 <h2 id="nguon">Nguồn tham chiếu</h2>
@@ -461,8 +476,8 @@ ${feedbackBlock(p)}
     head: `${articleJsonLd({ type: p.schemaType || 'Article', path: P, canonical: p.canonical, title: p.title, description: p.lead, image: p.image, date: p.date, updated: p.updated })}<script type="application/ld+json">${JSON.stringify({
       '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: SITE + '/' },
-        { '@type': 'ListItem', position: 2, name: 'Tin tức', item: SITE + '/tin-tuc/' },
-        { '@type': 'ListItem', position: 3, name: p.title, item: SITE + P }],
+        ...crumbs.map(([n, h], i) => ({ '@type': 'ListItem', position: i + 2, name: n, item: SITE + h })),
+        { '@type': 'ListItem', position: crumbs.length + 2, name: p.title, item: SITE + P }],
     })}</script>${faqJsonLd(A.faqs)}`,
     main,
     scripts: feedbackScript(),
@@ -471,6 +486,7 @@ ${feedbackBlock(p)}
 }
 
 renderKb(kbCongTrinh);
+renderKb(kbTnNd220);
 renderKb(kbCnMuaODau);
 renderKb(kbCnBaoNhieu);
 renderKb(kbCnChungCu);
@@ -486,6 +502,111 @@ renderKb(kbVfWild);
 renderKb(kbDonVi);
 renderKb(kbPvi27045);
 for (const article of binhDuongGuides) renderKb(article);
+for (const article of taiNanSeo) renderKb(article);
+
+/* ── Khu Kiến thức theo sản phẩm (chủ site yêu cầu 16/11/2026, mô hình baohiempvi-vn.com/kien-thuc/san-pham/<sp>) ──
+   /kien-thuc/: danh sách sản phẩm; /kien-thuc/<hub>/: ba mảng Kiến thức, Trải nghiệm thực tế, Tin tức.
+   Bài giữ URL /tin-tuc/<slug>/; xếp bài ở tools/data/kien-thuc-hub.mjs. */
+{
+  for (const slug of Object.keys(POST_HUB)) if (!posts.some((p) => p.slug === slug)) throw new Error(`kien-thuc-hub: không có bài ${slug}`);
+  const cover = (p, sizes) => {
+    const base = p.image.replace(/\.webp$/, '');
+    return `<img src="${p.image}${av(base.replace('/assets/', ''))}" srcset="${base}-480.webp 480w, ${base}-800.webp 800w, ${p.image} 1280w" sizes="${sizes}" width="1280" height="853" alt="${esc(p.alt)}" loading="lazy" decoding="async">`;
+  };
+  const time = (p) => `<time class="nl-date" datetime="${p.date}">${esc(p.dateText)}</time>`;
+  const byDate = (a, b) => b.date.localeCompare(a.date);
+  const hubPosts = (hub, stream) => posts.filter((p) => (POST_HUB[p.slug] || []).some(([h, st]) => h === hub && st === stream)).sort(byDate);
+  const live = HUBS.map((h) => ({ ...h, streams: STREAMS.map((st) => ({ ...st, items: hubPosts(h.slug, st.key) })) }))
+    .map((h) => ({ ...h, total: h.streams.reduce((n, st) => n + st.items.length, 0) }))
+    .filter((h) => h.total > 0)
+    .map((h) => ({ ...h, image: h.image || h.streams.flatMap((st) => st.items)[0].image, alt: h.alt || h.streams.flatMap((st) => st.items)[0].alt }));
+
+  const hero = (eyebrow, h1, lead) => `
+<section class="nl-hero kt-hero"><div class="nl-hero-grid" aria-hidden="true"></div><div class="fire-wrap">
+<p class="nl-eyebrow">${eyebrow}</p>
+<h1>${h1}</h1>
+<p>${lead}</p>
+</div></section>`;
+
+  // Trang chung /kien-thuc/
+  {
+    const P = '/kien-thuc/';
+    const main = `${hero('Kiến thức bảo hiểm PVI Thành Đô', 'Kiến thức theo từng sản phẩm.<br><em>Chọn sản phẩm, xem đủ ba mảng.</em>', 'Mỗi sản phẩm có ba mảng: kiến thức giải đáp, trải nghiệm thực tế có chứng từ và tin tức liên quan. Mỗi bài dẫn về trang sản phẩm để xem quyền lợi và phí.')}
+<section class="nl-section kt-index" aria-label="Chọn sản phẩm"><div class="fire-wrap">
+<ul class="kt-products">${live.map((h) => `<li><a class="kt-product" href="/kien-thuc/${h.slug}/"><span class="nl-photo">${cover(h, '(max-width:600px) 100vw, (max-width:960px) 50vw, 380px')}</span>
+<span class="kt-product-copy"><h2>${esc(h.name)}</h2><p>${esc(h.lead)}</p>
+<span class="kt-counts">${h.streams.map((st) => `<span>${esc(st.name)}: <b>${st.items.length}</b></span>`).join('')}</span>
+<b class="kt-go">Xem kiến thức ${esc(h.short)} <i aria-hidden="true">&rarr;</i></b></span></a></li>`).join('')}</ul>
+<p class="nl-total">Tin hoạt động của PVI Thành Đô và bài theo khu vực xem ở mục <a href="/tin-tuc/">Tin tức</a>.</p>
+</div></section>`;
+    write('kien-thuc/index.html', page({
+      path: P,
+      title: 'Kiến thức bảo hiểm theo sản phẩm | PVI Thành Đô',
+      description: 'Kiến thức, trải nghiệm thực tế và tin tức theo từng sản phẩm bảo hiểm PVI: tai nạn 24/24, cháy nổ bắt buộc, công trình, ô tô, sức khỏe, du lịch, hàng hóa.',
+      image: live[0].image,
+      head: `<script type="application/ld+json">${JSON.stringify({
+        '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Kiến thức bảo hiểm theo sản phẩm', url: SITE + P,
+        hasPart: live.map((h) => ({ '@type': 'CollectionPage', name: 'Kiến thức ' + h.name, url: SITE + P + h.slug + '/' })),
+      }).replace(/</g, '\\u003c')}</script><script type="application/ld+json">${JSON.stringify({
+        '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: SITE + '/' },
+          { '@type': 'ListItem', position: 2, name: 'Kiến thức', item: SITE + P }],
+      })}</script>`,
+      main,
+      extraCss: '<link rel="stylesheet" href="/news.css">',
+    }));
+  }
+
+  // Hub từng sản phẩm /kien-thuc/<hub>/
+  for (const h of live) {
+    const P = `/kien-thuc/${h.slug}/`;
+    const section = (st, i) => {
+      const id = `${st.key}`;
+      const body = st.items.length
+        ? `<ul class="nl-photos kt-list">${st.items.map((p) => `<li><a class="nl-card" href="/tin-tuc/${p.slug}/"><span class="nl-photo">${cover(p, '(max-width:600px) 120px, (max-width:960px) 50vw, 400px')}</span>
+<span class="nl-card-copy"><span class="nl-label">${esc(p.cat)}</span><h3>${t(p.title)}</h3><p class="kt-lead">${t(p.lead)}</p>${time(p)}</span></a></li>`).join('')}</ul>`
+        : `<p class="kt-empty">Mảng này đang biên soạn. Cần hỏi ngay, nhắn <a href="https://zalo.me/0938072236" target="_blank" rel="noopener">Zalo 0938 072 236</a>.</p>`;
+      return `
+<section class="nl-section" id="${id}" aria-labelledby="${id}-h"><div class="fire-wrap">
+<div class="nl-head"><span class="nl-kicker">${String(i + 1).padStart(2, '0')} · ${esc(st.name)}</span>
+<h2 id="${id}-h">${esc(st.name)} · ${esc(h.short)}</h2><p>${esc(st.lead)}</p></div>
+${body}
+</div></section>`;
+    };
+    const main = `
+<nav class="fire-wrap kt-crumb" aria-label="Đường dẫn"><a href="/">Trang chủ</a><span aria-hidden="true">/</span><a href="/kien-thuc/">Kiến thức</a><span aria-hidden="true">/</span><span>${esc(h.short)}</span></nav>
+${hero(`Kiến thức · ${esc(h.short)}`, `${esc(h.name)}<br><em>kiến thức, trải nghiệm, tin tức.</em>`, esc(h.lead))}
+<nav class="fire-wrap nl-streams" aria-label="Ba mảng kiến thức ${esc(h.name)}">${h.streams.map((st, i) => `<a class="nl-tile" href="#${st.key}"><span class="nl-idx">${String(i + 1).padStart(2, '0')}</span><strong>${esc(st.name)}</strong><span class="nl-hint">${st.items.length ? `${st.items.length} bài` : 'Đang biên soạn'} · ${esc(st.hint)}</span></a>`).join('')}</nav>
+${h.streams.map(section).join('')}
+<section class="nl-section"><div class="fire-wrap"><div class="kt-back">
+<div><span class="nl-kicker">Sản phẩm gốc</span><h2>${esc(h.name)}</h2><p>Xem quyền lợi, phí tham khảo và cách mua trên trang sản phẩm.</p></div>
+<a class="kt-back-btn" href="${h.product}">Đến trang ${esc(h.short)} <i aria-hidden="true">&rarr;</i></a>
+</div></div></section>`;
+    const items = h.streams.flatMap((st) => st.items);
+    write(`kien-thuc/${h.slug}/index.html`, page({
+      path: P,
+      title: `Kiến thức ${h.name} | PVI Thành Đô`.slice(0, 70),
+      description: `${h.lead} Kiến thức, trải nghiệm thực tế và tin tức về ${h.name.toLowerCase()} do PVI Thành Đô biên soạn.`.slice(0, 160),
+      image: h.image,
+      head: `<script type="application/ld+json">${JSON.stringify({
+        '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Kiến thức ' + h.name, url: SITE + P,
+        about: { '@type': 'Service', name: h.name, url: SITE + h.product },
+        hasPart: h.streams.filter((st) => st.items.length).map((st) => ({
+          '@type': 'ItemList', name: st.name, url: SITE + P + '#' + st.key, numberOfItems: st.items.length,
+          itemListElement: st.items.map((p, i) => ({ '@type': 'ListItem', position: i + 1, name: p.title, url: SITE + '/tin-tuc/' + p.slug + '/' })),
+        })),
+      }).replace(/</g, '\\u003c')}</script><script type="application/ld+json">${JSON.stringify({
+        '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: SITE + '/' },
+          { '@type': 'ListItem', position: 2, name: 'Kiến thức', item: SITE + '/kien-thuc/' },
+          { '@type': 'ListItem', position: 3, name: h.short, item: SITE + P }],
+      })}</script>`,
+      main,
+      extraCss: '<link rel="stylesheet" href="/news.css">',
+    }));
+    if (!items.length) throw new Error('hub rỗng ' + h.slug);
+  }
+}
 
 /* ── Loạt bài theo khu vực: bản đăng lại, canonical về baohiempvi-vn.com ── */
 {

@@ -21,7 +21,7 @@ export const t = (s) => esc(clean(s));
 // srcset cho ảnh trong bài: chỉ khai bản -480/-800 nhỏ hơn bản gốc (rộng w px), để điện thoại tải ảnh nhẹ.
 // Ảnh phải có sẵn /assets/<tên>-480.webp và -800.webp (tools/srcset.mjs, AGENTS.md mục Hiệu năng).
 // Ảnh đã thay nội dung nhưng giữ tên file: gắn ?v= để vượt cache 30 ngày của /assets/ (vercel.json).
-export const ASSET_VER = { 'bat-buoc': '20261110', 'tai-nan': '20261110', 'chay-no': '20261110', 'hang-hoa': '20261110', 'hero-cong-trinh': '20261110', 'hero-suc-khoe': '20261110', 'hero-du-lich': '20261110', 'tu-van-xe-o-to': '20261110' };
+export const ASSET_VER = { 'bat-buoc': '20261110', 'tai-nan': '20261110', 'chay-no': '20261110', 'hang-hoa': '20261110', 'hero-cong-trinh': '20261110', 'hero-suc-khoe': '20261110', 'hero-du-lich': '20261110', 'tu-van-xe-o-to': '20261110', 'tn-bao-hiem-tai-nan-la-gi': '20261116', 'tn-bao-hiem-tai-nan-bao-nhieu-tien': '20261116', 'tn-te-xe-may-co-duoc-bao-hiem-tai-nan-chi-tra': '20261116' };
 export const av = (name) => (ASSET_VER[name] ? `?v=${ASSET_VER[name]}` : '');
 export const articleSrcset = (base, w) => {
   const parts = [480, 800].filter((x) => x < w).map((x) => `/assets/${base}-${x}.webp${av(base)} ${x}w`);
@@ -32,6 +32,8 @@ export const NAV = [
   ['/gioi-thieu/', 'Giới thiệu'],
   // Các trang sản phẩm gộp vào một mục, dẫn tới trang danh mục /san-pham/ (chủ site yêu cầu 28/10/2026).
   ['/san-pham/', 'Sản phẩm'],
+  // Khu Kiến thức theo sản phẩm (chủ site yêu cầu 16/11/2026).
+  ['/kien-thuc/', 'Kiến thức'],
   ['/tin-tuc/', 'Tin tức'],
   ['/#boi-thuong', 'Bồi thường'],
 ];
@@ -42,7 +44,7 @@ const SEARCH_BTN = '<button class="search-btn" type="button" aria-haspopup="dial
 const MENU_SVG = '<svg class="open-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="close-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
 
 export function header(path) {
-  const links = NAV.map(([href, label]) => `<a href="${href}"${href === path ? ' aria-current="page"' : href === '/san-pham/' && path.startsWith('/san-pham/') ? ' aria-current="true"' : ''}>${label}</a>`).join('');
+  const links = NAV.map(([href, label]) => `<a href="${href}"${href === path ? ' aria-current="page"' : (href === '/san-pham/' || href === '/kien-thuc/') && path.startsWith(href) ? ' aria-current="true"' : ''}>${label}</a>`).join('');
   return `<a class="skip" href="#main">Đến nội dung chính</a><header class="site-header"><a class="brand" href="/"><img src="/assets/pvi-logo.svg" width="132" height="48" alt="Bảo hiểm PVI"><span>Thành Đô</span></a><nav id="site-nav" class="site-nav" aria-label="Điều hướng chính">${links}</nav>${SEARCH_BTN}<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Mở menu">${MENU_SVG}<span class="lbl">Menu</span></button></header>`;
 }
 

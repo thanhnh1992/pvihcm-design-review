@@ -1095,6 +1095,10 @@
 /* pvihcm: bản gốc giới hạn mỗi mục của bộ tính phí cao 115px và cuộn bên trong trên điện thoại,
    khách dễ không thấy nút "Trường học", "Cá nhân" hay ô thời hạn. Hiện đủ, không cuộn trong. */
 .tn-page .accident-page .auto-segment-group > div { max-height: none; overflow: visible; }
+
+/* Link căn cứ pháp lý trong đầu trang (16/11/2026) */
+.tn-legal-link{color:#1F4A8C;font-weight:600;text-decoration:underline;text-decoration-color:rgba(31,74,140,.45);text-underline-offset:3px}
+.tn-legal-link:hover,.tn-legal-link:focus-visible{text-decoration-color:#E31F26}
 /* pvihcm: hero hai cot, danh khung 16:9 cho video tai nan. */
 .tn-page .accident-page .accident-hero { min-height: 0; padding: 0; }
 .tn-page .accident-page .accident-hero-layout {
@@ -1155,3 +1159,12 @@
   .tn-page .accident-page .accident-hero-frame { border-radius: 18px; }
   .tn-page .accident-page .accident-hero-media figcaption { padding-right: 56px; }
 }
+/* Form "Nhận báo giá chi tiết" dưới bộ tính phí (16/11/2026) */
+.tn-page .accident-detail { animation: tn-detail-in .28s ease; background: #f7fbff; border: 1px solid var(--line); border-radius: 18px; display: grid; gap: 14px; margin-top: 16px; padding: 18px; }
+.tn-page .accident-detail-lead { color: #41607c; font-size: var(--fs-card); line-height: 1.65; margin: 0; }
+.tn-page .accident-detail-lead b { color: var(--auto-ink); display: block; margin-bottom: 2px; }
+.tn-page .accident-detail .accident-primary { justify-self: start; }
+.tn-page .accident-detail .accident-primary:disabled { cursor: wait; opacity: .65; }
+@keyframes tn-detail-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .tn-page .accident-detail { animation: none; } }
+@media (max-width: 640px) { .tn-page .accident-detail { padding: 16px; } .tn-page .accident-detail .accident-primary { justify-self: stretch; } }
