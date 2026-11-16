@@ -170,7 +170,8 @@ export function mount(root) {
     grid.className = `auto-choice-grid state-${state}`;
     if (state === 'damage' || state === 'both') {
       if (note) { note.hidden = false; note.textContent = state === 'both' ? 'Đang chuyển sang trang vật chất xe kèm phí TNDS…' : 'Đang chuyển sang trang vật chất xe…'; }
-      setTimeout(() => location.assign(card.closest('[data-vcx-url]').dataset.vcxUrl), 450);
+      // Chọn cả hai: sang trang vật chất xe, bật sẵn phần phí TNDS (giống baohiempvi-vn).
+      setTimeout(() => location.assign(card.closest('[data-vcx-url]').dataset.vcxUrl + (state === 'both' ? '?kem-tnds=1' : '')), 450);
     } else if (state === 'tnds') {
       document.getElementById('tnds-tra-cuu')?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
     }
