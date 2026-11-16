@@ -41,7 +41,13 @@
 <p class="accident-disclaimer">Phí tạm tính, chưa gồm thẩm định nhóm nghề. Báo phí chính thức do nhân viên PVI phát hành.</p>
 </div>
 
-<div class="accident-calc-actions"><button type="button" class="accident-primary" data-tn-share>Mua ngay <i aria-hidden="true">→</i></button><a class="accident-secondary" id="tn-template" href="https://zalo.me/2076363329232219188?src=qr&f=1" target="_blank" rel="noopener">Xin mẫu danh sách (.xlsx) qua Zalo</a></div>
+<div class="accident-calc-actions"><button type="button" class="accident-primary" data-tn-share>Mua ngay <i aria-hidden="true">→</i></button><button type="button" class="accident-secondary" data-tn-detail aria-expanded="false" aria-controls="tn-detail">Nhận báo giá chi tiết</button></div>
+<form class="accident-detail" id="tn-detail" novalidate hidden><p class="accident-detail-lead"><b>Nhận báo giá chi tiết theo đúng lựa chọn ở trên.</b> Để lại họ tên và số điện thoại, nhân viên PVI Thành Đô gửi báo giá chính thức và gọi lại tư vấn.</p>
+<div class="accident-field-row"><div class="accident-field"><label for="tn-detail-name">Họ và tên</label><input id="tn-detail-name" name="name" autocomplete="name" maxlength="120"></div><div class="accident-field"><label for="tn-detail-phone">Số điện thoại</label><input id="tn-detail-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20"></div></div>
+<label class="accident-consent"><input type="checkbox" name="consent"><span>Tôi đồng ý để Bảo hiểm PVI Thành Đô liên hệ và xử lý thông tin trên cho mục đích báo giá, tư vấn bảo hiểm.</span></label>
+<p class="accident-form-error" role="alert" hidden></p>
+<button type="submit" class="accident-primary">Gửi yêu cầu báo giá <i aria-hidden="true">→</i></button>
+<p class="accident-form-ok" role="status" hidden></p></form>
 <div class="accident-share-note" id="tn-share-note" hidden><p></p><pre></pre></div>
 </div>
 

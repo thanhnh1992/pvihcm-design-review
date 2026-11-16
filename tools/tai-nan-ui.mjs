@@ -112,7 +112,13 @@ ${seg('04. Số người và thời hạn', `<div class="accident-field-row"><di
 <p class="accident-disclaimer">Phí tạm tính, chưa gồm thẩm định nhóm nghề. Báo phí chính thức do nhân viên PVI phát hành.</p>
 </div>
 
-<div class="accident-calc-actions"><button type="button" class="accident-primary" data-tn-share>Mua ngay <i aria-hidden="true">→</i></button><a class="accident-secondary" id="tn-template" href="${ac.ZALO_URL}" target="_blank" rel="noopener">Xin mẫu danh sách (.xlsx) qua Zalo</a></div>
+<div class="accident-calc-actions"><button type="button" class="accident-primary" data-tn-share>Mua ngay <i aria-hidden="true">→</i></button><button type="button" class="accident-secondary" data-tn-detail aria-expanded="false" aria-controls="tn-detail">Nhận báo giá chi tiết</button></div>
+<form class="accident-detail" id="tn-detail" novalidate hidden><p class="accident-detail-lead"><b>Nhận báo giá chi tiết theo đúng lựa chọn ở trên.</b> Để lại họ tên và số điện thoại, nhân viên PVI Thành Đô gửi báo giá chính thức và gọi lại tư vấn.</p>
+<div class="accident-field-row"><div class="accident-field"><label for="tn-detail-name">Họ và tên</label><input id="tn-detail-name" name="name" autocomplete="name" maxlength="120"></div><div class="accident-field"><label for="tn-detail-phone">Số điện thoại</label><input id="tn-detail-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20"></div></div>
+<label class="accident-consent"><input type="checkbox" name="consent"><span>Tôi đồng ý để Bảo hiểm PVI Thành Đô liên hệ và xử lý thông tin trên cho mục đích báo giá, tư vấn bảo hiểm.</span></label>
+<p class="accident-form-error" role="alert" hidden></p>
+<button type="submit" class="accident-primary">Gửi yêu cầu báo giá <i aria-hidden="true">→</i></button>
+<p class="accident-form-ok" role="status" hidden></p></form>
 <div class="accident-share-note" id="tn-share-note" hidden><p></p><pre></pre></div>
 </div>
 
@@ -307,7 +313,8 @@ export function taiNanJs(ac, clean) {
     phone: ac.CUSTOMER_CARE_PHONE,
   };
   return `/* Bộ tính phí tai nạn 24/24, sinh từ tools/tai-nan-ui.mjs (bản chuyển của accident-calculator.tsx).
-   Web không gửi đi hay lưu thông tin: nút Mua ngay chép tóm tắt rồi mở Zalo để khách tự gửi. */
+   Nút Mua ngay chép tóm tắt rồi mở Zalo để khách tự gửi. Nút Nhận báo giá chi tiết gửi họ tên, SĐT
+   và lựa chọn hiện tại lên /api/bao-gia-tai-nan (ghi Google Sheet, có mail báo). */
 (() => {
   const D = ${JSON.stringify(data)};
   const root = document.getElementById('tinh-phi');
@@ -341,7 +348,6 @@ export function taiNanJs(ac, clean) {
       $('tn-fee-per').textContent = fmt(r.per); $('tn-fee-n').textContent = r.n; $('tn-fee-sum').textContent = fmt(r.total);
     }
     $('tn-compliance').hidden = !kind.contractor;
-    $('tn-template').hidden = kind.id === 'ca-nhan';
     $('tn-aside-tier').innerHTML = r.tier.label + ' <small>' + (r.disc > 0 ? 'giảm ' + r.disc + '%' : 'phí gốc') + '</small>';
     document.querySelectorAll('.accident-offer-ladder li').forEach((li) => li.classList.toggle('is-current', li.dataset.tier === r.tier.id));
   }
@@ -375,6 +381,48 @@ export function taiNanJs(ac, clean) {
   nIn.addEventListener('blur', () => { const v = parseInt(nIn.value, 10); nIn.value = Number.isFinite(v) && v >= 1 ? v : 1; render(); });
   [occ, term].forEach((el) => el.addEventListener('change', render));
   document.querySelectorAll('[data-tn-share]').forEach((b) => b.addEventListener('click', share));
+
+  // Nút "Nhận báo giá chi tiết": mở form họ tên + SĐT, gửi kèm lựa chọn đang có ở bộ tính phí
+  // lên /api/bao-gia-tai-nan (máy chủ tính lại phí, ghi Google Sheet, Apps Script gửi mail báo).
+  const dBtn = root.querySelector('[data-tn-detail]'), dForm = $('tn-detail');
+  if (dBtn && dForm) {
+    dBtn.addEventListener('click', () => {
+      const open = dForm.hidden; dForm.hidden = !open; dBtn.setAttribute('aria-expanded', String(open));
+      if (open) { dForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); dForm.name.focus({ preventScroll: true }); }
+    });
+    dForm.addEventListener('input', (e) => { if (e.target.getAttribute('aria-invalid') === 'true') { e.target.removeAttribute('aria-invalid'); dForm.querySelector('.accident-form-error').hidden = true; } });
+    dForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const err = dForm.querySelector('.accident-form-error'), ok = dForm.querySelector('.accident-form-ok'), btn = dForm.querySelector('button[type=submit]');
+      const name = dForm.name.value.normalize('NFC').trim().replace(/\\s+/g, ' '), phone = dForm.phone.value.replace(/[\\s.\\-]/g, '');
+      const bad = (el, v) => el.setAttribute('aria-invalid', String(v));
+      const nameBad = name.split(' ').length < 2, phoneBad = !/^0\\d{9}$/.test(phone);
+      bad(dForm.name, nameBad); bad(dForm.phone, phoneBad); ok.hidden = true;
+      const fail = nameBad ? 'Nhập đầy đủ họ và tên (ví dụ: Nguyễn Văn An).' : phoneBad ? 'Nhập đúng số điện thoại: đủ 10 chữ số, bắt đầu bằng số 0.' : !dForm.consent.checked ? 'Cần tích chọn đồng ý xử lý dữ liệu trước khi gửi.' : '';
+      err.textContent = fail; err.hidden = !fail;
+      if (fail) { (nameBad ? dForm.name : phoneBad ? dForm.phone : dForm.consent).focus(); return; }
+      const r = calc();
+      btn.disabled = true;
+      let j = null;
+      try {
+        const res = await fetch('/api/bao-gia-tai-nan', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, phone, consent: true, aud: st.aud, occ: occ.value, plan: st.plan, headcount: r.n, term: r.months }) });
+        j = await res.json().catch(() => null);
+        if (res.status === 429 && j && j.error) { btn.disabled = false; err.textContent = j.error; err.hidden = false; return; }
+        if (!res.ok || !j || !j.ok) throw new Error((j && j.error) || 'Chưa gửi được yêu cầu.');
+      } catch (x) {
+        btn.disabled = false;
+        err.textContent = (x && x.message ? x.message : 'Chưa gửi được yêu cầu.') + ' Anh/chị có thể bấm Mua ngay để gửi qua Zalo hoặc gọi ' + D.phone + '.'; err.hidden = false;
+        return;
+      }
+      btn.disabled = false;
+      if (j.sheet && j.sheet.saved) {
+        ok.textContent = 'Đã nhận yêu cầu ' + j.code + '. Nhân viên PVI Thành Đô sẽ gửi báo giá chi tiết và gọi lại cho anh/chị trong giờ làm việc.';
+      } else {
+        ok.textContent = 'Đã ghi nhận yêu cầu ' + j.code + ' nhưng hệ thống chưa chuyển được tới nhân viên. Anh/chị bấm Mua ngay để gửi qua Zalo hoặc gọi ' + D.phone + ' giúp em.';
+      }
+      ok.hidden = false; dForm.reset();
+    });
+  }
 
   // Form "Năm ô, không hơn": kiểm tra rồi chép thông tin, mở Zalo. Không gửi lên máy chủ.
   const f = document.getElementById('tn-quote');
