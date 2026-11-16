@@ -51,6 +51,8 @@ export const sources = [
 export const related = [
   { href: CHAY_NO, img: 'section-chay-no', k: 'Sản phẩm chính', title: 'Bảo hiểm cháy nổ bắt buộc', text: 'Tra cơ sở thuộc diện phải mua, biểu phí Phụ lục VI và tính phí tham khảo.' },
   { href: '/tin-tuc/mua-bao-hiem-chay-no-bat-buoc-o-dau/', img: 'kho-kho-hang-toan-canh', w: 1200, h: 630, k: 'Cùng chủ đề', title: 'Mua bảo hiểm cháy nổ bắt buộc ở đâu', text: 'Giấy tờ cần chuẩn bị và 5 bước mua tại PVI Thành Đô.' },
+  { href: '/tin-tuc/hach-toan-phi-bao-hiem-chay-no/', img: 'kho-bang-chao-phi-trang-2', w: 1200, h: 1697, k: 'Kế toán', title: 'Hạch toán phí bảo hiểm cháy nổ bắt buộc', text: 'Tính vào chi phí nào, giữ chứng từ gì.' },
+  { href: '/tin-tuc/bao-hiem-chay-no-tieng-anh/', img: 'kho-bang-chao-phi-trang-3', w: 1200, h: 1697, k: 'Thuật ngữ', title: 'Bảo hiểm cháy nổ tiếng Anh là gì', text: '15 thuật ngữ hợp đồng.' },
 ];
 
 export function body({ ctaRow }) {
