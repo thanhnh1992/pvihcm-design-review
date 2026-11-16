@@ -50,6 +50,7 @@ export const sources = [
 export const related = [
   { href: CHAY_NO, img: 'section-chay-no', k: 'Sản phẩm chính', title: 'Bảo hiểm cháy nổ bắt buộc', text: 'Bộ tính phí theo 59 dòng Phụ lục VI, đã gồm VAT.' },
   { href: '/tin-tuc/bao-hiem-chay-no-kho-hang-sprinkler-thuc-te/', img: 'kho-kho-hang-toan-canh', w: 1200, h: 630, k: 'Ca thực tế', title: 'Kho có sprinkler: bảng chào phí 56 tỷ đồng', text: 'Đọc từng dòng của một bảng chào phí thật.' },
+  { href: '/tin-tuc/bieu-phi-bao-hiem-chay-no-bat-buoc/', img: 'kho-bang-chao-phi-trang-2', w: 1200, h: 1697, k: 'Cùng cụm', title: 'Biểu phí bảo hiểm cháy nổ bắt buộc 2026', text: 'Tỷ lệ phí theo nhóm cơ sở, Phụ lục VI.' },
 ];
 
 export function body({ ctaRow }) {

@@ -54,6 +54,7 @@ export const sources = [
 export const related = [
   { href: CHAY_NO, img: 'section-chay-no', k: 'Sản phẩm chính', title: 'Bảo hiểm cháy nổ bắt buộc', text: 'Tra mục 1 Phụ lục VII và tính phí chung cư có, không có sprinkler.' },
   { href: '/tin-tuc/chay-can-ho-chung-cu-happy-valley-bao-hiem-chay-no/', img: 'chay-happy-valley-hien-truong', w: 1200, h: 630, k: 'Tình huống', title: 'Cháy căn hộ chung cư: bảo hiểm nào chi trả', text: 'Phần chung, phần riêng và bảo hiểm căn hộ tự nguyện.' },
+  { href: '/tin-tuc/bao-hiem-chay-no-nha-o-tu-nguyen/', img: 'chay-no', w: 1280, h: 853, k: 'Cùng cụm', title: 'Bảo hiểm cháy nổ nhà ở và tự nguyện', text: 'Khi nào bắt buộc, khi nào nên mở rộng.' },
 ];
 
 export function body({ ctaRow }) {

@@ -52,6 +52,7 @@ export const sources = [
 export const related = [
   { href: CHAY_NO, img: 'section-chay-no', k: 'Sản phẩm chính', title: 'Bảo hiểm cháy nổ bắt buộc', text: 'Căn cứ pháp lý NĐ 105/2025, biểu phí Phụ lục VI và công cụ tính phí.' },
   { href: '/tin-tuc/nghi-dinh-347-2026-chay-no-bat-buoc/', img: 'section-chay-no', k: 'Pháp lý mới', title: 'Nghị định 347/2026: cháy nổ bắt buộc thay đổi gì', text: 'Bỏ nghiệm thu của Công an, thêm trường hợp không phải mua, tính phí từng hạng mục.' },
+  { href: '/tin-tuc/khong-mua-bao-hiem-chay-no-bat-buoc-bi-phat/', img: 'kho-cong-vao-kho', w: 1000, h: 1333, k: 'Cùng cụm', title: 'Không mua bảo hiểm cháy nổ bắt buộc bị xử phạt thế nào', text: '3 hành vi bị xử phạt và biện pháp buộc mua.' },
 ];
 
 export function body({ ctaRow }) {

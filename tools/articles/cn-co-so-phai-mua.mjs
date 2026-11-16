@@ -51,6 +51,7 @@ export const sources = [
 export const related = [
   { href: CHAY_NO, img: 'section-chay-no', k: 'Sản phẩm chính', title: 'Bảo hiểm cháy nổ bắt buộc', text: 'Gõ tên ngành, tài sản để tra dòng Phụ lục VI và tính phí.' },
   { href: '/tin-tuc/quy-dinh-mua-bao-hiem-chay-no-bat-buoc/', img: 'kho-duong-ong-chua-chay', w: 1000, h: 750, k: 'Cùng cụm', title: 'Quy định mua bảo hiểm cháy nổ bắt buộc 2026', text: '7 quy định chủ cơ sở cần nắm.' },
+  { href: '/tin-tuc/bao-hiem-chay-no-nha-xuong-kho-hang/', img: 'kho-trong-kho-hang-bao', w: 1000, h: 1333, k: 'Cùng cụm', title: 'Bảo hiểm cháy nổ nhà xưởng, kho hàng', text: 'Xưởng, kho nào phải mua và phí theo hạng.' },
 ];
 
 const row = (stt, loai, nguong) => `<tr><td>${stt}</td><td>${loai}</td><td>${nguong}</td></tr>`;
