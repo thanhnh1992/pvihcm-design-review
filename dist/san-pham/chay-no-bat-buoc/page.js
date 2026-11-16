@@ -1,6 +1,8 @@
-/* Tra cứu loại cơ sở và cộng phí theo từng hạng mục.
+/* Bảng biểu phí Phụ lục VI chia tab theo nhóm và thanh điều hướng trong trang cháy nổ.
    Dữ liệu lấy từ tariff-data.js (59 dòng Phụ lục VI). Không tính toán lại tỷ lệ,
-   không làm tròn: mọi con số hiển thị đều bắt nguồn từ đúng dòng đã chọn.
+   không làm tròn: mọi con số hiển thị đều bắt nguồn từ đúng dòng trong dữ liệu.
+   Bộ tra cứu tài sản và ước tính phí (từ 16/11/2026, theo baohiempvi-vn) nằm ở
+   /chay-no/tra-cuu.js; bộ tính theo Phụ lục VI cũ đã bỏ khỏi file này.
    Vanilla, không thư viện, không bước build. */
 (() => {
   const items = window.FIRE_ITEMS || [];
@@ -8,169 +10,14 @@
   if (!items.length) return;
 
   const $ = (id) => document.getElementById(id);
-  const elIndex = $('fire-index');
-  const elSheet = $('fire-sheet');
-  const elChips = $('fire-chips');
-  const elQuery = $('fire-q');
   const elTabs = $('fire-tabs');
   const elRef = $('fire-ref');
-  const elTotal = $('fire-total');
-  if (!elIndex || !elSheet) return;
 
   /* Tỷ lệ phí luôn hiện tối thiểu 2 chữ số thập phân: 0,5 phải đọc là "0,50%",
      không được rút về "0,5%" vì người đọc dễ nhầm sang 0,05%. */
   const rateText = (r) => r.toLocaleString('vi-VN', { minimumFractionDigits: 2, maximumFractionDigits: 3 }) + '%';
   const vnd = (n) => Math.round(n).toLocaleString('vi-VN') + ' đ';
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const noDiacritic = (v) => v.toLowerCase().replace(/đ/g, 'd').normalize('NFD').replace(/[̀-ͯ]/g, '');
-
-  /* ── Danh mục bên trái ── */
-  const chosen = new Map();   // code -> { item, stbh (triệu đồng) }
-  let query = '';
-
-  const matches = () => {
-    if (!query) return items;
-    const q = noDiacritic(query).trim();
-    if (!q) return items;
-    return items.filter((it) => noDiacritic(it.kw + ' ' + it.code).includes(q));
-  };
-
-  function drawIndex() {
-    const list = matches();
-    if (!list.length) {
-      elIndex.innerHTML = '<p class="fire-empty">Không có dòng nào khớp. Thử gõ ngắn hơn, ví dụ "kho" hoặc "xưởng".</p>';
-      return;
-    }
-    let html = '';
-    for (const g of groups) {
-      const rows = list.filter((it) => it.g === g.id);
-      if (!rows.length) continue;
-      html += `<p class="fire-group">${esc(g.label)} · ${rows.length} dòng</p>`;
-      for (const it of rows) {
-        html += `<button type="button" class="fire-row" data-code="${esc(it.code)}" aria-pressed="${chosen.has(it.code)}">`
-          + `<code>${esc(it.code)}</code>`
-          + `<span class="nm">${esc(it.ten)}${it.nguong ? `<small>${esc(it.nguong)}</small>` : ''}</span>`
-          + `<span class="rt">${rateText(it.rate)}</span>`
-          + `<span class="kt ${it.kt === 'N' ? 'n' : 'm'}" title="Khấu trừ loại ${esc(it.kt)}">${esc(it.kt)}</span></button>`;
-      }
-    }
-    elIndex.innerHTML = html;
-  }
-
-  /* ── Bảng tính bên phải ── */
-  function drawSheet() {
-    if (!chosen.size) {
-      elSheet.innerHTML = '<p class="fire-sheet-empty">Chưa chọn hạng mục nào. Chọn một loại cơ sở trong danh mục phía trên để nhập số tiền bảo hiểm.</p>';
-      elTotal.hidden = true;
-      return;
-    }
-    let rows = '';
-    for (const [code, rec] of chosen) {
-      const it = rec.item;
-      const fee = rec.stbh * 1e6 * it.rate / 100;
-      rows += '<tr>'
-        + `<td><span class="code">${esc(it.code)}</span><span class="nm">${esc(it.ten)}</span></td>`
-        + `<td class="num" data-label="Tỷ lệ phí">${rateText(it.rate)}</td>`
-        + `<td data-label="Khấu trừ"><span class="fire-kt">Loại ${esc(it.kt)}</span></td>`
-        + `<td class="num" data-label="Số tiền bảo hiểm (triệu đồng)"><input type="number" min="0" step="100" value="${rec.stbh}" data-code="${esc(code)}" aria-label="Số tiền bảo hiểm của dòng ${esc(it.code)}, triệu đồng"></td>`
-        + `<td class="num" data-label="Phí năm chưa VAT">${rec.stbh > 0 ? vnd(fee) : '<span style="color:#9aa9b9">chưa nhập</span>'}</td>`
-        + `<td class="num"><button type="button" class="fire-del" data-del="${esc(code)}" aria-label="Bỏ dòng ${esc(it.code)}">Bỏ</button></td>`
-        + '</tr>';
-    }
-    elSheet.innerHTML = '<table><thead><tr>'
-      + '<th scope="col">Loại cơ sở</th><th scope="col" class="num">Tỷ lệ</th><th scope="col">Khấu trừ</th>'
-      + '<th scope="col" class="num">STBH (triệu)</th><th scope="col" class="num">Phí năm</th><th scope="col"></th>'
-      + '</tr></thead><tbody>' + rows + '</tbody></table>';
-
-    let stbh = 0;
-    let fee = 0;
-    for (const rec of chosen.values()) {
-      stbh += rec.stbh * 1e6;
-      fee += rec.stbh * 1e6 * rec.item.rate / 100;
-    }
-    $('fire-stbh').textContent = vnd(stbh);
-    $('fire-fee').textContent = vnd(fee);
-    $('fire-vat').textContent = vnd(fee * 0.1);
-    $('fire-sum').textContent = vnd(fee * 1.1);
-    elTotal.hidden = false;
-  }
-
-  const stepEls = [...document.querySelectorAll('#fx-steps li')];
-  function setStep() {
-    let fee = 0;
-    for (const r of chosen.values()) fee += r.stbh;
-    const step = !chosen.size ? 1 : fee > 0 ? 3 : 2;
-    stepEls.forEach((li) => {
-      const n = Number(li.dataset.step);
-      if (n === step) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current');
-      li.classList.toggle('is-done', n < step);
-    });
-  }
-
-  function toggle(code) {
-    if (chosen.has(code)) chosen.delete(code);
-    else {
-      const it = items.find((x) => x.code === code);
-      if (!it) return;
-      chosen.set(code, { item: it, stbh: 0 });
-    }
-    drawIndex();
-    drawSheet();
-    setStep();
-  }
-
-  elIndex.addEventListener('click', (e) => {
-    const btn = e.target.closest('[data-code]');
-    if (btn) toggle(btn.dataset.code);
-  });
-
-  elSheet.addEventListener('click', (e) => {
-    const del = e.target.closest('[data-del]');
-    if (del) toggle(del.dataset.del);
-  });
-
-  elSheet.addEventListener('input', (e) => {
-    const inp = e.target.closest('input[data-code]');
-    if (!inp) return;
-    const rec = chosen.get(inp.dataset.code);
-    if (!rec) return;
-    const v = Number(inp.value);
-    rec.stbh = Number.isFinite(v) && v > 0 ? v : 0;
-    // cập nhật tổng tại chỗ, không vẽ lại bảng để con trỏ không nhảy khỏi ô
-    let stbh = 0;
-    let fee = 0;
-    for (const r of chosen.values()) {
-      stbh += r.stbh * 1e6;
-      fee += r.stbh * 1e6 * r.item.rate / 100;
-    }
-    $('fire-stbh').textContent = vnd(stbh);
-    $('fire-fee').textContent = vnd(fee);
-    $('fire-vat').textContent = vnd(fee * 0.1);
-    $('fire-sum').textContent = vnd(fee * 1.1);
-    const cell = inp.closest('tr').lastElementChild.previousElementSibling;
-    setStep();
-    cell.innerHTML = rec.stbh > 0 ? vnd(rec.stbh * 1e6 * rec.item.rate / 100) : '<span style="color:#9aa9b9">chưa nhập</span>';
-  });
-
-  let typing = 0;
-  elQuery.addEventListener('input', () => {
-    clearTimeout(typing);
-    typing = setTimeout(() => { query = elQuery.value; drawIndex(); }, 120);
-  });
-
-  /* Gợi ý nhanh: lấy từ chính dữ liệu để không bao giờ lệch với danh mục. */
-  const shortcuts = ['kho', 'xưởng may', 'gỗ', 'xăng dầu', 'khách sạn', 'chung cư', 'chợ', 'karaoke'];
-  elChips.innerHTML = shortcuts
-    .map((s) => `<button type="button" data-q="${esc(s)}">${esc(s)}</button>`)
-    .join('');
-  elChips.addEventListener('click', (e) => {
-    const b = e.target.closest('[data-q]');
-    if (!b) return;
-    elQuery.value = b.dataset.q;
-    query = b.dataset.q;
-    drawIndex();
-    elIndex.scrollTop = 0;
-  });
 
   /* ── Biểu phí tham khảo, chia tab theo nhóm ── */
   const SAMPLE = 5e9;   // phí mẫu tính trên số tiền bảo hiểm 5 tỷ đồng
@@ -202,9 +49,6 @@
     });
     drawRef(groups[0].id);
   }
-
-  drawIndex();
-  drawSheet();
 
   /* Thanh điều hướng trong trang: tô đậm mục đang đọc. */
   const localLinks = [...document.querySelectorAll('.fx-local a')];

@@ -46,8 +46,8 @@
 .fx-layers{background:#fff;border-bottom:1px solid var(--line)}
 .fx-layers-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
 .fx-layer{position:relative;isolation:isolate;display:flex;background:#fff;flex-direction:column;gap:5px;padding:26px 28px 28px;border-left:1px solid var(--line);color:var(--ink)}
-.fx-layer .fx-layer-photo{position:absolute;inset:0;z-index:-1;display:block;width:100%;height:100%;object-fit:cover;object-position:right center;opacity:.28;pointer-events:none;
-  mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.38) 48%,#000 100%)}
+.fx-layer .fx-layer-photo{position:absolute;inset:0;z-index:-1;display:block;width:100%;height:100%;object-fit:cover;object-position:right center;opacity:.55;pointer-events:none;
+  mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.5) 45%,#000 100%)}
 .fx-layer:first-child{border-left:0;padding-left:0}
 .fx-layer:hover b{color:var(--blue);text-decoration:underline;text-underline-offset:4px}
 .fx-layer-tag{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#3f4d5e}

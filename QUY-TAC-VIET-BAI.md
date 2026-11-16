@@ -23,6 +23,8 @@ Loạt bài khu vực dùng chung một file dữ liệu: `app/area-articles.jso
 `tools/data/khu-vuc.json` (pvihcm-design-review); sửa bên nào thì chép sang bên kia. Hai bài Bình Thạnh, Bình Dương
 đăng trên pvihcm.com trước ngày 15/10/2026 giữ nguyên tới khi chủ site quyết định.
 
+Loạt 8 bài SEO "bảo hiểm tai nạn" (chủ site giao 16/11/2026: bảo hiểm tai nạn là gì, bao nhiêu tiền, té xe máy, chơi thể thao, so với bảo hiểm y tế, có bắt buộc không, doanh nghiệp có bắt buộc, tai nạn lao động) lấy **pvihcm.com** làm bản chuẩn (`/tin-tuc/<slug>/`, dữ liệu `tools/data/tai-nan-seo.json`), theo quyết định của chủ site ngày 16/11/2026. baohiempvi-vn.com không đăng lại các bài này; muốn nói cùng chủ đề thì viết góc khác theo mục 2.
+
 Bài kiến thức đã đăng trên pvihcm.com trước ngày 14/10/2026 (tai nạn công trình, lợi ích tai nạn cá nhân,
 Nghị định 347) giữ nguyên URL; khi baohiempvi-vn có bài cùng chủ đề thì xử lý theo mục 2.
 

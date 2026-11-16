@@ -43,9 +43,11 @@ node tools/gen-products.mjs   # bắt buộc, tai nạn, hàng hóa. Trang tai n
 node tools/gen-others.mjs     # huong-dan, tai-nan-doanh-nghiep, gioi-thieu
 node tools/gen-products-2.mjs # sức khỏe, công trình, vật chất xe, du lịch; phần đầu trang du lịch (mẫu duyệt 28/10/2026) ở tools/du-lich-ui.mjs + dist/du-lich.css + dist/du-lich.js
 node tools/o-to-ui.mjs        # trang /san-pham/bao-hiem-o-to/ và /dat-mua/ (port trang /bao-hiem-o-to của baohiempvi-vn, 09/11/2026). Bộ tra phí dist/o-to/tra-phi.js, form dist/o-to/dat-mua.js dùng chung dữ liệu tools/data/tnds.mjs (chép sang dist/o-to/tnds-data.js); CSS dist/o-to.css trích bằng tools/extract-o-to-css.cjs, không sửa tay
+node tools/vcx-ui.mjs        # trang /san-pham/bao-hiem-vat-chat-xe/ (port trang vật chất xe của baohiempvi-vn, 16/11/2026; gen-products-2 không sinh trang này nữa). Dữ liệu tools/data/vcx.mjs (load-data), JS dist/vcx/builder.js + vf7.js (mô hình 3D, Three.js ở dist/vendor), CSS dist/vcx.css sinh từ vcx.module.css, không sửa tay
 node tools/patch-static.mjs   # áp header/menu/chân trang mới cho index.html và trang cháy nổ
 node tools/srcset.mjs         # gắn srcset cho ảnh
 node tools/prerender-fire.mjs # in sẵn biểu phí cháy nổ (59 dòng Phụ lục VI) vào HTML cho bot không chạy JS; chạy lại khi đổi tariff-data.js
+node tools/gen-chay-no-tra-cuu.mjs # bộ tra cứu tài sản + ước tính phí cháy nổ (theo baohiempvi-vn, 16/11/2026), đặt TRƯỚC phần Nghị định; chỉ thay khối giữa <!-- chay-no-tra-cuu:start/end -->. JS dist/chay-no/tra-cuu.js, dữ liệu tools/data/fire.mjs + property-asset-*.{mjs,js} + chay-no-icons.js (chép nguyên văn); CSS dist/chay-no.css trích bằng tools/extract-chay-no-css.cjs (lõi chung tools/extract-bhvn-css.cjs), không sửa tay. page.js của trang cháy nổ giờ chỉ còn bảng biểu phí chia tab và thanh điều hướng
 node tools/gen-news.mjs       # mục Tin tức và các bài
 node tools/gen-why-pvi.mjs    # khối "Vì sao chọn PVI" trên trang chủ (chép từ baohiempvi-vn: thị phần, AM Best, công trình)
 node tools/gen-hero-bento.mjs  # lưới bento sản phẩm ở đầu trang chủ (thay vòng xoay từ 03/11/2026); thêm sản phẩm: sửa tools/data/hero-products.mjs và chọn ô trong SLOTS của script

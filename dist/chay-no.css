@@ -1,0 +1,552 @@
+/* ═══════════════════════════════════════════════════════════════════
+   BỘ TRA CỨU TÀI SẢN VÀ ƯỚC TÍNH PHÍ CHÁY NỔ: giao diện theo trang
+   /bao-hiem-chay-no-bat-buoc của baohiempvi-vn (chủ site yêu cầu 16/11/2026).
+   Markup do dist/chay-no/tra-cuu.js vẽ (tools/gen-chay-no-tra-cuu.mjs in sẵn).
+   File này do tools/extract-chay-no-css.cjs sinh ra, đừng sửa tay: sửa riêng
+   của pvihcm đặt trong khối FOOT của công cụ đó.
+   ═══════════════════════════════════════════════════════════════════ */
+/* Đặt lại giống phần nền của baohiempvi-vn, độ ưu tiên thấp nhất (:where) */
+:where(.cn-page .auto-page){display:block;background:#f7fbff;color:var(--ink);overflow:hidden;line-height:1.6}
+:where(.cn-page .auto-page) a{color:inherit;text-decoration:none}
+:where(.cn-page .auto-page) img{display:block;width:auto;max-width:100%}
+:where(.cn-page .auto-page) button,:where(.cn-page .auto-page) input,:where(.cn-page .auto-page) select,:where(.cn-page .auto-page) textarea{font:inherit}
+:where(.cn-page .auto-page) button{cursor:pointer}
+.cn-page .auto-page [hidden]{display:none!important}
+.cn-page .auto-page a:hover i[aria-hidden],.cn-page .auto-page a:focus-visible i[aria-hidden]{color:inherit}
+
+
+.cn-page .auto-page {
+  --navy: #071a38;
+  --navy-2: #0c2b5a;
+  --blue: #1262df;
+  --cyan: #17b7e8;
+  --red: #e52b36;
+  --ice: #eaf7ff;
+  --ink: #10223d;
+  --muted: #66778e;
+  --line: rgba(14, 45, 88, .13);
+  --shadow: 0 30px 80px rgba(12, 48, 98, .16);
+}
+.cn-page .shell { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
+@media (max-width: 760px) {
+  .cn-page .shell { width: min(100% - 28px, 1180px); }
+}
+@media (max-width: 680px) {
+  .cn-page .shell { width: min(100% - 30px,1180px); }
+}
+.cn-page .auto-page { --muted: #49657f; }
+.cn-page .auto-page { --auto-ink: #09264c; --auto-blue: #1465d9; --auto-blue-deep: #073b8f; --auto-red: #e33b42; --auto-cyan: #2aabd5; background: #f5f9fd; color: var(--auto-ink); min-height: 100vh; overflow: clip; }
+.cn-page .auto-page h1, .cn-page .auto-page h2, .cn-page .auto-page h3, .cn-page .auto-page p { margin-top: 0; }
+.cn-page .auto-product-surface { margin-top: -116px; position: relative; z-index: 4; }
+.cn-page .auto-experience { display: grid; gap: 20px; }
+.cn-page .auto-dashboard { background: rgba(255,255,255,.8); border: 1px solid rgba(22,92,159,.14); border-radius: 21px; box-shadow: 0 24px 55px rgba(11,68,125,.1); display: grid; gap: 15px; grid-template-columns: minmax(0,1fr) 270px; padding: 16px; }
+.cn-page .auto-dashboard-main { background: linear-gradient(145deg, #fff, #f3f9fe); border: 1px solid #ddebf5; border-radius: 16px; padding: 25px; }
+.cn-page .auto-limit-card > span { color: #1769c9; display: block; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .12em; }
+.cn-page .auto-rule-chip { align-items: center; background: rgba(255,255,255,.65); border-top: 1px solid #dbeaf3; display: flex; gap: 9px; margin: 15px -18px -18px; padding: 10px 18px; position: relative; z-index: 1; }
+.cn-page .auto-rule-chip > span { align-items: center; background: #e3f3ff; border-radius: 8px; color: #1975d2; display: flex; height: 29px; justify-content: center; width: 29px; }
+.cn-page .auto-rule-chip p { display: flex; flex: 1; flex-direction: column; gap: 2px; margin: 0; }
+.cn-page .auto-rule-chip b { color: #355a7c; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.cn-page .auto-rule-chip small { color: #8196a9; font-size: 13px; }
+.cn-page .auto-rule-chip a { color: #1469c9; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.cn-page .auto-dashboard-aside { display: grid; gap: 15px; }
+.cn-page .auto-limit-card { background: #fff; border: 1px solid #deebf4; border-radius: 16px; box-shadow: 0 10px 26px rgba(20,79,132,.05); padding: 20px; }
+.cn-page .auto-limit-card > span { margin-bottom: 15px; }
+.cn-page .auto-limit-card > div { align-items: center; display: flex; gap: 11px; margin-top: 17px; }
+.cn-page .auto-limit-card i { align-items: center; background: #e9f4ff; border-radius: 12px; color: #0d68da; display: flex; font-size: 21px; height: 42px; justify-content: center; width: 42px; }
+.cn-page .auto-limit-card div:nth-child(3) i { background: #fff0f0; color: #df3e45; }
+.cn-page .auto-limit-card p { color: #5b7188; display: flex; flex: 1; flex-direction: column; font-size: 13px; line-height: 1.45; margin: 0; }
+.cn-page .auto-limit-card b { color: #173b66; font: 800 13px/1.35 "Be Vietnam Pro","BVP Fallback",sans-serif; margin-top: 3px; }
+.cn-page .auto-limit-card b small { color: #6e839a; font-size: 13px; }
+@media (max-width: 960px) {
+  .cn-page .auto-dashboard { grid-template-columns: 1fr; }
+  .cn-page .auto-dashboard-aside { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 700px) {
+  .cn-page .auto-product-surface { margin-top: -76px; }
+  .cn-page .auto-dashboard { border-radius: 16px; padding: 8px; }
+  .cn-page .auto-dashboard-main { border-radius: 12px; padding: 17px; }
+  .cn-page .auto-rule-chip { align-items: flex-start; }
+  .cn-page .auto-rule-chip a { display: none; }
+  .cn-page .auto-dashboard-aside { grid-template-columns: 1fr; }
+}
+.cn-page .auto-page .auto-product-surface { margin-top: 0; padding-bottom: 8px; }
+.cn-page .auto-page .auto-dashboard { align-items: start; grid-template-columns: minmax(0, 1fr) 300px; }
+.cn-page .auto-page .auto-dashboard-aside { align-content: start; grid-auto-rows: max-content; gap: 12px; }
+.cn-page .auto-page .auto-side-card, .cn-page .auto-page .auto-sidebar-consult { border-radius: 14px; box-shadow: 0 10px 24px rgba(20, 79, 132, .06); padding: 17px; }
+.cn-page .auto-page .auto-limit-card > div { margin-top: 14px; }
+.cn-page .auto-page .auto-limit-card > span, .cn-page .auto-page .auto-side-card > span, .cn-page .auto-page .auto-sidebar-consult > span { color: #1265c3; display: block; font: 900 13px "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: .12em; margin-bottom: 12px; }
+.cn-page .auto-page .auto-sidebar-docs { background: #fff; border: 1px solid #deebf4; }
+.cn-page .auto-page .auto-sidebar-docs > a { align-items: center; border-top: 1px solid #e7f0f6; color: #133c67; display: grid; gap: 8px; grid-template-columns: 18px minmax(0, 1fr) 13px; padding: 10px 0; transition: color .22s ease, transform .22s ease; }
+.cn-page .auto-page .auto-sidebar-docs > a:first-of-type { border-top: 0; }
+.cn-page .auto-page .auto-sidebar-docs > a:hover { color: #1068cc; transform: translateX(2px); }
+.cn-page .auto-page .auto-sidebar-docs a > i { color: #1473d8; font-size: 15px; font-style: normal; }
+.cn-page .auto-page .auto-sidebar-docs a p { display: flex; flex-direction: column; gap: 3px; margin: 0; }
+.cn-page .auto-page .auto-sidebar-docs a small { color: #6c869d; font: 700 13px "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.cn-page .auto-page .auto-sidebar-docs a b { font: 800 13px/1.35 "Be Vietnam Pro","BVP Fallback",sans-serif; }
+.cn-page .auto-page .auto-sidebar-docs a em { color: #1473d8; font-size: 13px; font-style: normal; }
+.cn-page .auto-page .auto-sidebar-faqs { background: #fff; border: 1px solid #deebf4; }
+.cn-page .auto-page .auto-sidebar-faqs details { border-top: 1px solid #e7f0f6; }
+.cn-page .auto-page .auto-sidebar-faqs summary { align-items: center; color: #274a70; cursor: pointer; display: flex; font: 800 13px/1.45 "Be Vietnam Pro","BVP Fallback",sans-serif; gap: 10px; justify-content: space-between; list-style: none; padding: 10px 0; }
+.cn-page .auto-page .auto-sidebar-faqs summary::-webkit-details-marker { display: none; }
+.cn-page .auto-page .auto-sidebar-faqs summary i { align-items: center; border: 1px solid #c8dfef; border-radius: 50%; color: #176ccd; display: flex; flex: none; font-size: 14px; font-style: normal; height: 20px; justify-content: center; transition: transform .2s ease; width: 20px; }
+.cn-page .auto-page .auto-sidebar-faqs details[open] summary i { transform: rotate(45deg); }
+.cn-page .auto-page .auto-sidebar-faqs details > p { color: #627d95; font-size: 13px; line-height: 1.6; margin: 0 30px 11px 0; }
+.cn-page .auto-page .auto-sidebar-more { color: #126acd; display: inline-flex; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; margin-top: 12px; }
+.cn-page .auto-page .auto-sidebar-more i { font-size: 14px; font-style: normal; margin-left: 5px; }
+.cn-page .auto-page .auto-sidebar-consult { background: linear-gradient(135deg, #eef6ff, #fff); border: 1px solid #cfe2f6; }
+.cn-page .auto-page .auto-sidebar-consult > span { color: #1769c9; }
+.cn-page .auto-page .auto-sidebar-consult h3 { color: #0c386d; font: 800 20px/1.12 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.045em; margin: 0 0 7px; }
+.cn-page .auto-page .auto-sidebar-consult p { color: #53718d; font-size: 13px; line-height: 1.55; margin: 0 0 12px; }
+.cn-page .auto-page .auto-sidebar-consult a { align-items: center; background: #126bd3; border-radius: 8px; color: #fff; display: inline-flex; font: 800 13px "Be Vietnam Pro","BVP Fallback",sans-serif; padding: 10px 12px; }
+.cn-page .auto-page .auto-sidebar-consult a i { font-size: 14px; font-style: normal; margin-left: 5px; }
+@media (max-width: 960px) {
+  .cn-page .auto-page .auto-dashboard { grid-template-columns: 1fr; }
+  .cn-page .auto-page .auto-dashboard-aside { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cn-page .auto-page .auto-sidebar-consult { align-self: start; }
+}
+@media (max-width: 700px) {
+  .cn-page .auto-page .auto-dashboard-aside { grid-template-columns: 1fr; }
+}
+.cn-page .auto-page {
+  --pvi-readable-body: 16px;
+  --pvi-readable-secondary: 15px;
+  --pvi-readable-ui: 14px;
+  --pvi-readable-caption: 13px;
+  --pvi-readable-ink: #173d66;
+  --pvi-readable-muted: #486783;
+  --pvi-readable-link: #075fae;
+  --pvi-readable-on-dark: #edf8ff;
+  --pvi-readable-on-dark-muted: #d1ebfb;
+}
+.cn-page :is(.v4-home, .detail-page, .auto-page, .content-page, .knowledge-article-page) :is(p, li) {
+  color: var(--pvi-readable-muted);
+  font-size: var(--pvi-readable-secondary) !important;
+  line-height: 1.62 !important;
+}
+.cn-page :is(.v4-home, .detail-page, .auto-page, .content-page, .knowledge-article-page) :is(a, button, label, input, select, textarea, summary) {
+  font-size: var(--pvi-readable-ui) !important;
+  line-height: 1.42 !important;
+}
+.cn-page :is(.v4-home, .detail-page, .auto-page, .content-page, .knowledge-article-page) :is(small, caption) {
+  font-size: var(--pvi-readable-caption) !important;
+  line-height: 1.45 !important;
+}
+.cn-page :is(.v4-home, .detail-page, .auto-page, .content-page, .knowledge-article-page) :is(th, td) {
+  font-size: var(--pvi-readable-ui) !important;
+  line-height: 1.5 !important;
+}
+.cn-page :is(.v4-home, .detail-page, .auto-page, .content-page, .knowledge-article-page) :is(h1, h2, h3, h4) {
+  line-height: 1.17;
+}
+.cn-page :is(.v4-home, .detail-page, .auto-page, .content-page, .knowledge-article-page) :is(p, a, b, small, span, em, strong, summary, th, td) {
+  overflow-wrap: anywhere;
+}
+.cn-page .auto-page :is(.auto-kicker, .auto-trust-line, .auto-dashboard-heading > span, .auto-section-heading > span, .auto-limit-card > span, .auto-side-card > span, .auto-sidebar-consult > span, .auto-damage-prompt > span, .auto-docs > span, .auto-pillar-source small, .auto-choice-price-prefix, .auto-choice-price > span) {
+  color: var(--pvi-readable-muted) !important;
+  font-size: var(--pvi-readable-caption) !important;
+  line-height: 1.45 !important;
+}
+.cn-page .auto-page :is(.auto-header nav a, .auto-header-call, .auto-dashboard-heading > a, .auto-progress b, .auto-segment-group > small, .auto-segment-group button, .auto-rule-chip :is(b, small, a), .auto-sidebar-docs a :is(small, b), .auto-sidebar-faqs summary, .auto-sidebar-more, .auto-sidebar-consult a, .auto-document-grid a :is(small, b), .auto-back-link, .auto-hero-solid-link) {
+  font-size: var(--pvi-readable-ui) !important;
+  line-height: 1.42 !important;
+}
+.cn-page .auto-page :is(.auto-choice-copy em, .auto-fee-value > span, .auto-fee-value > small, .auto-fee-value > p, .auto-fee-line :is(span, b), .auto-limit-card p, .auto-limit-card b, .auto-sidebar-faqs details > p, .auto-sidebar-consult p, .auto-pillar-hero p, .auto-reference-note p) {
+  font-size: var(--pvi-readable-ui) !important;
+  line-height: 1.52 !important;
+}
+.cn-page :is(.v4-home, .detail-page, .auto-page, .content-page, .knowledge-article-page) :is(.v4-official-note, .v4-no-form-note, .auto-reference-note, .auto-rule-chip, .content-note, .knowledge-price-note, .knowledge-aside-note) {
+  color: var(--pvi-readable-ink) !important;
+}
+.cn-page :is(.v4-home, .detail-page, .auto-page, .content-page, .knowledge-article-page) a:not(.pill-glass):not(.detail-brand):not(.knowledge-brand) {
+  color: var(--pvi-readable-link);
+}
+.cn-page .auto-page .auto-limit-card p > span,
+.cn-page .auto-page .auto-sidebar-docs a :is(small, b),
+.cn-page .auto-page .auto-rule-chip :is(b, small, a) {
+  font-size: var(--pvi-readable-caption) !important;
+  line-height: 1.45 !important;
+}
+.cn-page .auto-page .auto-limit-card b,
+.cn-page .auto-page .auto-sidebar-docs a b {
+  font-size: var(--pvi-readable-ui) !important;
+  line-height: 1.42 !important;
+}
+.cn-page .auto-page .auto-rule-chip > span { background: #0a5da8; color: #ffffff !important; }
+.cn-page .auto-page .auto-limit-card b small { color: #355f84 !important; }
+.cn-page .auto-page .auto-sidebar-docs a small { color: #3f617e !important; }
+.cn-page .auto-page .auto-sidebar-consult a,
+.cn-page .auto-page .auto-sidebar-consult a i { color: #ffffff !important; }
+.cn-page .auto-page {
+  --fs-eyebrow: 13px;   /* nhãn chữ hoa có letter-spacing */
+  --fs-caption: 14px;   /* helper, meta, ghi chú nguồn */
+  --fs-label:   15px;   /* label form/filter, nút, bảng */
+  --fs-card:    15px;   /* mô tả card, body phụ */
+  --fs-body:    16px;   /* body chính, FAQ */
+  --fs-lead:    17px;   /* đoạn dẫn dưới H1 */
+}
+.cn-page .auto-page .auto-limit-card > span,
+.cn-page .auto-page .auto-side-card > span,
+.cn-page .auto-page .auto-sidebar-consult > span,
+.cn-page .auto-page .auto-rule-chip small,
+.cn-page .auto-page .auto-sidebar-docs a small { font-size: var(--fs-eyebrow); letter-spacing: .07em; }
+.cn-page .auto-page .auto-rule-chip b,
+.cn-page .auto-page .auto-rule-chip a,
+.cn-page .auto-page .auto-limit-card b small,
+.cn-page .auto-page .fire-note-inline { font-size: var(--fs-caption); letter-spacing: normal; }
+.cn-page .auto-page .auto-sidebar-more,
+.cn-page .auto-page .auto-sidebar-consult a,
+.cn-page .auto-page .auto-sidebar-docs a b { font-size: var(--fs-label); letter-spacing: normal; }
+.cn-page .auto-page .auto-limit-card p,
+.cn-page .auto-page .auto-sidebar-consult p { font-size: var(--fs-card); line-height: 1.65; }
+.cn-page .auto-page .auto-sidebar-faqs summary,
+.cn-page .auto-page .auto-sidebar-faqs details > p { font-size: var(--fs-body); line-height: 1.7; }
+.cn-page .auto-page .auto-limit-card b { font-size: var(--fs-body); }
+.cn-page .fire-note-inline { color: #5c7690; line-height: 1.65; margin: 12px 0 0; }
+.cn-page .fire-tariff-source {
+  border: 1px solid #dbe8f3;
+  border-radius: 11px;
+  margin: 14px 0 0;
+  padding: 11px 14px;
+}
+.cn-page .auto-page {
+  --pvi-readable-secondary: 16px;
+  --pvi-readable-ui: 15px;
+  --pvi-readable-caption: 13px;
+  --pvi-on-dark-text: #f4faff;
+  --pvi-on-dark-body: #e3f0fb;
+  --pvi-on-dark-link: #a9dcff;
+}
+@media (max-width: 700px) {
+  .cn-page .auto-page {
+    --pvi-readable-ui: 16px;
+    --pvi-readable-caption: 14px;
+  }
+}
+.cn-page .auto-page {
+  --pvi-readable-caption: 14px;
+}
+@media (max-width: 700px) {
+.cn-page :is(div.shell b > span),
+.cn-page :is(section.auto-sidebar-docs.auto-side-card a > em) {
+  font-size: 14px !important;
+}
+}
+@media (min-width: 701px) {
+.cn-page :is(div.shell b > span),
+.cn-page :is(section.auto-limit-card.auto-side-card > span),
+.cn-page :is(section.auto-limit-card.auto-side-card b > small),
+.cn-page :is(section.auto-sidebar-consult > span),
+.cn-page :is(section.auto-sidebar-docs.auto-side-card > span),
+.cn-page :is(section.auto-sidebar-docs.auto-side-card a > em),
+.cn-page :is(section.auto-sidebar-faqs.auto-side-card > span) {
+  font-size: 14px !important;
+}
+}
+/* ── property-asset-lookup.module.css ── */
+.cn-page .pal-dashboard.pal-dashboard { display: block; }
+.cn-page .pal-dashboard > :first-child { min-width: 0; padding: 40px 34px; }
+.cn-page .pal-dashboard > aside { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-left: 0; border-top: 1px solid #dce8f5; }
+.cn-page .pal-lookup { --lookup-blue: #075ab7; --lookup-navy: #071a38; --lookup-muted: #58708d; --pvi-readable-ui: 15px; --pvi-readable-caption: 14px; --pvi-readable-secondary: 16px; color: var(--lookup-navy); min-width: 0; }
+.cn-page .pal-intro h2 { font: 800 clamp(28px, 3.3vw, 44px)/1.2 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.04em; margin: 0 0 14px; }
+.cn-page .pal-intro h2 span { color: #0759bb; }
+.cn-page .pal-intro > p { --pvi-readable-secondary: 19px; color: var(--lookup-muted); font-size: 19px; line-height: 1.55; margin: 0; }
+.cn-page .pal-searchArea { margin: 38px auto 40px; max-width: 1020px; }
+.cn-page .pal-searchArea > label { --pvi-readable-ui: clamp(19px, 2vw, 25px); display: block; text-align: center; font: 700 clamp(19px, 2vw, 25px)/1.35 "Be Vietnam Pro","BVP Fallback",sans-serif; margin-bottom: 18px; }
+.cn-page .pal-searchBar { display: flex; align-items: center; gap: 18px; border: 2px solid #8eafd3; border-radius: 12px; padding: 8px 8px 8px 23px; min-height: 88px; box-shadow: 0 7px 22px #1646740b; background: #fff; transition: border-color .18s, box-shadow .18s; }
+.cn-page .pal-searchBar:focus-within { border-color: #1672d8; box-shadow: 0 0 0 4px #1672d81a, 0 7px 22px #1646740b; }
+.cn-page .pal-searchBar > svg { color: #1672d8; flex-shrink: 0; }
+.cn-page .pal-searchBar input { --pvi-readable-ui: 22px; border: 0; outline: 0; background: transparent; color: var(--lookup-navy); min-width: 0; flex: 1; font-size: 22px; height: 64px; padding: 0; }
+.cn-page .pal-searchBar input::placeholder { color: #7b8ca2; opacity: 1; }
+.cn-page .pal-searchBar input::-webkit-search-cancel-button { display: none; }
+.cn-page .pal-searchButton { --pvi-readable-ui: 20px; flex-shrink: 0; border: 0; background: #d62937; color: #fff; min-height: 68px; padding: 0 32px; border-radius: 8px; font-size: 20px; font-weight: 700; transition: background .18s, transform .18s; }
+.cn-page .pal-searchButton:hover { background: #b81c2b; transform: translateY(-1px); }
+.cn-page .pal-clear { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 38px; height: 38px; border: 0; border-radius: 50%; color: #58708d; background: #eaf1f9; }
+.cn-page .pal-suggestions { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 14px; font-size: 14px; color: var(--lookup-muted); }
+.cn-page .pal-suggestions button { border: 0; background: transparent; color: #0759bb; font-weight: 600; padding: 6px 2px; text-decoration: underline; text-underline-offset: 4px; font-size: 14px; }
+.cn-page .pal-columns { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 28px; }
+.cn-page .pal-browse { min-width: 0; padding-right: 27px; border-right: 1px solid #e4edf7; }
+.cn-page .pal-selection { min-width: 0; }
+.cn-page .pal-columnHeading { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 18px; min-height: 36px; }
+.cn-page .pal-columnHeading h3 { font: 750 clamp(20px, 1.9vw, 24px)/1.3 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.035em; margin: 0; }
+.cn-page .pal-columnHeading > span { color: var(--lookup-muted); font-size: 14px; flex-shrink: 0; padding-top: 4px; }
+.cn-page .pal-columnHeading > button { border: 0; padding: 4px 0; font-size: 14px; font-weight: 600; background: none; color: #0759bb; text-decoration: underline; text-underline-offset: 4px; }
+.cn-page .pal-browseHeading { flex-direction: column; gap: 6px; margin-bottom: 8px; }
+.cn-page .pal-columnHeading h3.pal-stepHeading { color: #e21d2f; font-weight: 800; }
+.cn-page .pal-selectionLimit { --pvi-readable-secondary: 15px; color: var(--lookup-muted); font-size: 15px; line-height: 1.5; margin: 0 0 18px; }
+.cn-page .pal-groupList { max-height: 690px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: #bad1e9 transparent; padding-right: 4px; }
+.cn-page .pal-group { margin-bottom: 12px; }
+.cn-page .pal-groupRow { display: grid; grid-template-columns: 24px 40px minmax(0, 1fr) 22px; gap: 18px; align-items: center; padding: 18px; min-height: 78px; background: #f6f9fd; border: 1px solid #e6eef7; border-radius: 8px; cursor: pointer; transition: background .18s; }
+.cn-page .pal-groupRow:hover, .cn-page .pal-assetRow:not(.pal-assetUnavailable):hover { background: #f0f7fe; }
+.cn-page .pal-groupRow > svg, .cn-page .pal-assetRow > svg { color: #0759bb; }
+.cn-page .pal-groupRow strong { font-size: 20px; font-weight: 700; }
+.cn-page .pal-groupRow small { display: block; color: var(--lookup-muted); font-size: 14px; line-height: 1.45; margin-top: 4px; }
+.cn-page .pal-groupRow > svg:last-child { color: #49668d; transition: transform .18s; }
+.cn-page .pal-groupRow > .pal-openCaret { transform: rotate(180deg); }
+.cn-page .pal-lookup input[type="checkbox"], .cn-page .pal-lookup input[type="radio"] { appearance: auto; accent-color: #075ab7; width: 24px; height: 24px; margin: 0; cursor: pointer; flex-shrink: 0; }
+.cn-page .pal-groupRow.pal-active, .cn-page .pal-assetRow.pal-active { background: #e6f3ff; border-color: #e6f3ff; }
+.cn-page .pal-children { animation: pal-reveal .2s ease-out; }
+.cn-page .pal-childIntro { border-left: 2px dashed #d7e6f6; padding: 20px 16px 18px 25px; margin-left: 27px; }
+.cn-page .pal-childIntro h4 { margin: 0 0 5px; font-size: 18px; line-height: 1.4; }
+.cn-page .pal-childIntro p { font-size: 14px; color: var(--lookup-muted); margin: 0; line-height: 1.5; }
+.cn-page .pal-assetRow { display: grid; grid-template-columns: 24px 34px 66px minmax(0, 1fr); gap: 14px; align-items: center; padding: 18px 16px; min-height: 78px; border: 1px solid transparent; border-top-color: #e1eaf4; cursor: pointer; transition: background .18s; }
+.cn-page .pal-assetRow.pal-active { border-radius: 8px; }
+.cn-page .pal-code { color: #49668d; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.cn-page .pal-assetName strong { font-size: 17px; line-height: 1.45; font-weight: 600; }
+.cn-page .pal-assetName small { display: block; color: var(--lookup-muted); font-size: 14px; line-height: 1.5; margin-top: 5px; }
+.cn-page .pal-showMore { display: flex; align-items: center; gap: 10px; color: #0759bb; border: 0; background: transparent; padding: 16px 18px; font-size: 15px; font-weight: 600; width: 100%; }
+.cn-page .pal-tableWrap { border: 1px solid #d5e5f7; border-radius: 10px; overflow: hidden; }
+.cn-page .pal-selectedTable { border-collapse: collapse; width: 100%; font-size: 15px; table-layout: fixed; }
+.cn-page .pal-selectedTable th { text-align: left; background: #f1f7fd; color: #405d80; font-size: 14px; font-weight: 700; line-height: 1.4; padding: 17px 12px; }
+.cn-page .pal-selectedTable th:nth-child(1) { width: 19%; }
+.cn-page .pal-selectedTable th:nth-child(2) { width: 38%; }
+.cn-page .pal-selectedTable th:nth-child(3) { width: 24%; }
+.cn-page .pal-selectedTable th:nth-child(4) { width: 19%; }
+.cn-page .pal-selectedTable td { padding: 19px 12px; line-height: 1.45; vertical-align: middle; border-top: 1px solid #e1ecf8; overflow-wrap: anywhere; }
+.cn-page .pal-selectedTable th + th, .cn-page .pal-selectedTable td + td { border-left: 1px solid #e1ecf8; }
+.cn-page .pal-selectedTable td strong { font-weight: 650; font-size: 15px; }
+.cn-page .pal-selectedTable td small { display: block; color: var(--lookup-muted); font-size: 14px; margin-top: 7px; }
+.cn-page .pal-rate { color: #0759bb; font-size: 21px; font-weight: 750; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cn-page .pal-unconfirmedRate { color: #58708d; font-size: 15px; }
+.cn-page .pal-remove { display: inline-flex; align-items: center; gap: 4px; padding: 7px 0 0; font-size: 14px; border: 0; background: none; color: #5b7491; }
+.cn-page .pal-remove:hover { color: #b81c2b; }
+.cn-page .pal-empty { padding: 36px 18px; text-align: center; color: var(--lookup-muted); }
+.cn-page .pal-empty svg { margin: 0 auto 14px; color: #7a9bbc; }
+.cn-page .pal-empty strong { display: block; color: var(--lookup-navy); font-size: 17px; }
+.cn-page .pal-empty p { margin: 9px auto 0; font-size: 15px; line-height: 1.6; max-width: 340px; }
+.cn-page .pal-empty button { padding: 12px 0 0; border: 0; background: transparent; color: #0759bb; font-size: 15px; text-decoration: underline; }
+.cn-page .pal-notice { display: flex; gap: 14px; align-items: center; background: #eaf4ff; border-radius: 10px; padding: 18px; margin-top: 18px; }
+.cn-page .pal-notice svg { flex-shrink: 0; color: #3184cf; }
+.cn-page .pal-notice p { font-size: 14px; line-height: 1.5; color: #405d80; margin: 0; }
+.cn-page .pal-source { font-size: 14px; line-height: 1.6; color: var(--lookup-muted); margin: 14px 0 24px; }
+.cn-page .pal-purposes { border: 0; margin: 0; padding: 0; min-width: 0; }
+.cn-page .pal-purposes legend { font-size: 17px; font-weight: 700; padding: 0; margin-bottom: 14px; }
+.cn-page .pal-purposes legend span { color: var(--lookup-muted); font-size: 15px; font-weight: 500; }
+.cn-page .pal-purposeGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.cn-page .pal-purpose { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 13px; border: 1px solid #d7e5f4; border-radius: 8px; padding: 16px 12px; min-height: 124px; font-size: 15px; font-weight: 600; line-height: 1.4; cursor: pointer; transition: background .18s, border-color .18s; }
+.cn-page .pal-purpose:hover { border-color: #75a9de; background: #f4f9ff; }
+.cn-page .pal-purpose > input { position: absolute; right: 10px; top: 14px; }
+.cn-page .pal-purpose > svg { color: #0759bb; }
+.cn-page .pal-purposeSelected { background: #eaf5ff; border-color: #1672d8; }
+.cn-page .pal-purposeDescription { color: var(--lookup-muted); margin: 14px 0 0; font-size: 14px; line-height: 1.6; }
+.cn-page .pal-invalidPurposes .pal-purpose { border-color: #d68c96; }
+.cn-page .pal-calcButton { --pvi-readable-ui: 20px; display: flex; justify-content: center; align-items: center; gap: 12px; width: 100%; min-height: 68px; margin-top: 24px; padding: 18px 16px; border: 0; border-radius: 15px; background: #0861bd; color: #fff; font-size: 20px; font-weight: 800; line-height: 1.3; box-shadow: 0 8px 20px #0861bd33; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+.cn-page .pal-calcButton:hover { background: #004d9e; }
+.cn-page .pal-calcButton:active { transform: translateY(1px); box-shadow: inset 0 2px 5px #0e396c26; }
+.cn-page .pal-calcButtonHint { color: var(--lookup-muted); font-size: 14px; line-height: 1.55; margin: 12px 0 0; }
+@media (hover: hover) and (pointer: fine) { .cn-page .pal-calcButton:hover { transform: translateY(-2px); box-shadow: 0 12px 24px #0861bd3d; } }
+.cn-page .pal-calculation { margin-top: 44px; scroll-margin-top: 96px; border: 1px solid #cfe0f3; border-radius: 22px; background: linear-gradient(180deg, #f3f8ff 0, #fff 220px); box-shadow: 0 18px 44px #0e396c14; padding: 34px; animation: pal-reveal .3s ease-out; }
+.cn-page .pal-calcHead { max-width: 760px; margin-bottom: 26px; }
+.cn-page .pal-calcStep { display: inline-block; background: #0759bb; color: #fff; font-size: 14px; font-weight: 700; letter-spacing: .02em; border-radius: 999px; padding: 6px 15px; margin-bottom: 14px; }
+.cn-page .pal-calculation h3 { font: 800 clamp(23px, 2.4vw, 32px)/1.3 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.035em; margin: 0 0 10px; }
+.cn-page .pal-calcHead p { font-size: 16px; line-height: 1.65; color: var(--lookup-muted); margin: 0; }
+.cn-page .pal-calcBody { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr); gap: 24px; align-items: start; }
+.cn-page .pal-calcRows { display: grid; gap: 16px; min-width: 0; }
+.cn-page .pal-calcCard { background: #fff; border: 1px solid #d9e6f5; border-radius: 16px; padding: 22px; box-shadow: 0 3px 10px #0e396c08; transition: border-color .2s, box-shadow .2s; }
+.cn-page .pal-calcCardDone { border-color: #8fbbe8; box-shadow: 0 6px 18px #0e396c12; }
+.cn-page .pal-calcAsset { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; gap: 16px; align-items: center; }
+.cn-page .pal-calcIcon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 14px; background: #eaf4ff; color: #0759bb; }
+.cn-page .pal-calcIcon svg { width: 30px; height: 30px; }
+.cn-page .pal-calcAsset label { display: block; min-width: 0; font-size: 17px; line-height: 1.45; }
+.cn-page .pal-calcAsset label strong { font-weight: 700; display: block; }
+.cn-page .pal-calcAsset label small { --pvi-readable-caption: 14px; display: block; color: var(--lookup-muted); font-size: 14px; line-height: 1.5; margin-top: 3px; }
+.cn-page .pal-rateChip { background: #eaf4ff; color: #0759bb; font-size: 18px; font-weight: 800; border-radius: 999px; padding: 8px 15px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.cn-page .pal-rateChip small { --pvi-readable-caption: 14px; font-size: 14px; font-weight: 600; }
+.cn-page .pal-calcInputRow { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 190px); gap: 20px; align-items: end; margin-top: 18px; }
+.cn-page .pal-sumInput { display: flex; align-items: center; gap: 10px; border: 2px solid #b6cee7; border-radius: 14px; padding: 0 16px; min-height: 62px; background: #fff; transition: border-color .18s, box-shadow .18s; }
+.cn-page .pal-lookup .pal-sumInput input:focus-visible { outline: 0; }
+.cn-page .pal-sumInput:focus-within { border-color: #0759bb; box-shadow: 0 0 0 4px #1672d81a; }
+.cn-page .pal-sumInput input { width: 100%; min-width: 0; border: 0; background: transparent; color: var(--lookup-navy); font-size: 20px; font-weight: 700; outline: 0; height: 58px; font-variant-numeric: tabular-nums; }
+.cn-page .pal-sumInput input::placeholder { color: #7b8ca2; font-size: 16px; font-weight: 500; opacity: 1; }
+.cn-page .pal-sumInput span { flex-shrink: 0; color: var(--lookup-muted); font-size: 15px; font-weight: 600; }
+.cn-page .pal-calcFee { margin: 0; text-align: right; }
+.cn-page .pal-calcFee small { --pvi-readable-caption: 14px; display: block; color: var(--lookup-muted); font-size: 14px; line-height: 1.4; }
+.cn-page .pal-calcFee b { display: block; white-space: nowrap; font-size: 22px; line-height: 1.3; color: #0759bb; margin-top: 4px; font-variant-numeric: tabular-nums; }
+.cn-page .pal-calculation .pal-calcWarn { margin: 14px 0 0; background: #f3f8ff; border-radius: 10px; padding: 11px 14px; font-size: 14px; line-height: 1.5; color: #405d80; }
+.cn-page .pal-calcSummary { position: sticky; top: 100px; display: grid; gap: 10px; border-radius: 18px; padding: 28px 26px; color: #fff; background: linear-gradient(155deg, #0861bd 0, #07346f 100%); box-shadow: 0 16px 34px #07346f3d; }
+.cn-page .pal-summaryEyebrow { font-size: 15px; font-weight: 600; color: #cfe3fb; }
+.cn-page .pal-summaryTotal { font: 800 clamp(30px, 3.2vw, 40px)/1.15 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.cn-page .pal-calcSummary .pal-summaryHint { --pvi-readable-secondary: 15px; margin: 4px 0 0; font-size: 15px; line-height: 1.6; color: #dbe9fb; }
+.cn-page .pal-totals { display: grid; gap: 0; margin: 8px 0 0; border-top: 1px solid #ffffff33; }
+.cn-page .pal-totals div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 0; border-bottom: 1px solid #ffffff1f; }
+.cn-page .pal-totals dt { font-size: 15px; color: #cfe3fb; }
+.cn-page .pal-totals dd { font-size: 18px; font-weight: 700; color: #fff; margin: 0; font-variant-numeric: tabular-nums; }
+.cn-page .pal-summaryLive { display: grid; gap: 10px; }
+.cn-page .pal-calcSummary .pal-summaryPurpose { --pvi-readable-secondary: 15px; display: inline-flex; align-items: center; gap: 8px; justify-self: start; margin: 8px 0 0; padding: 8px 14px; border-radius: 999px; background: #ffffff24; font-size: 15px; font-weight: 600; line-height: 1.4; color: #fff; }
+.cn-page .pal-leadLeft { margin-top: 2px; }
+.cn-page .pal-leadAdvice { display: flex; align-items: center; justify-content: center; gap: 14px; width: 100%; min-height: 76px; padding: 14px 20px; border: 2px solid #0861bd; border-radius: 18px; background: #fff; color: #0861bd; text-align: left; cursor: pointer; box-shadow: 0 8px 20px #0861bd1f; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+.cn-page .pal-leadAdvice > svg { flex-shrink: 0; }
+.cn-page .pal-leadAdvice strong { display: block; font-size: 19px; font-weight: 800; line-height: 1.3; }
+.cn-page .pal-leadAdvice small { --pvi-readable-caption: 14px; display: block; margin-top: 2px; font-size: 14px; font-weight: 500; color: var(--lookup-muted); line-height: 1.4; }
+.cn-page .pal-leadAdvice:hover { background: #eef6ff; transform: translateY(-2px); box-shadow: 0 12px 24px #0861bd2e; }
+.cn-page .pal-leadQuote { --pvi-readable-ui: 17px; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 64px; margin-top: 12px; padding: 12px 16px; border: 0; border-radius: 16px; background: #fff; color: #064a9c; font-size: 17px; font-weight: 800; line-height: 1.3; cursor: pointer; box-shadow: 0 10px 22px #021b4259; transition: transform .2s ease, box-shadow .2s ease; }
+.cn-page .pal-leadQuote:hover { transform: translateY(-2px); box-shadow: 0 14px 28px #021b4273; }
+.cn-page .pal-leadQuote:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.cn-page .pal-calculation .pal-calcNote { --pvi-readable-secondary: 14px; font-size: 14px; line-height: 1.6; color: var(--lookup-muted); margin: 22px 0 0; }
+.cn-page .pal-calcActions { margin: 16px 0 6px; }
+.cn-page .pal-calcActions button { --pvi-readable-ui: 15px; display: inline-flex; align-items: center; gap: 8px; border: 1px solid #b6cee7; background: #fff; color: #0759bb; font-size: 15px; font-weight: 700; border-radius: 999px; padding: 11px 20px; min-height: 46px; transition: background .18s, border-color .18s; }
+.cn-page .pal-calcActions button:hover { background: #eaf4ff; border-color: #75a9de; }
+.cn-page .pal-srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.cn-page .pal-lookup button:focus-visible, .cn-page .pal-lookup input:focus-visible, .cn-page .pal-lookup label:has(input:focus-visible) { outline: 3px solid #1672d8; outline-offset: 4px; }
+.cn-page .pal-lookup h3:focus { outline: 0; }
+.cn-page .pal-lookup .pal-validationError { --pvi-readable-secondary: 15px; color: #b11f30; background: #fff2f3; border-radius: 12px; padding: 12px 15px; margin: 12px 0 0; font-size: 15px; line-height: 1.5; }
+.cn-page .pal-lookup .pal-searchBar { border-radius: 20px; }
+.cn-page .pal-lookup .pal-searchButton { border-radius: 15px; box-shadow: 0 5px 12px #0e396c16; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+.cn-page .pal-lookup .pal-groupRow, .cn-page .pal-lookup .pal-assetRow.pal-active, .cn-page .pal-lookup .pal-tableWrap, .cn-page .pal-lookup .pal-notice { border-radius: 14px; }
+.cn-page .pal-lookup .pal-purpose { border-radius: 16px; box-shadow: 0 2px 5px #0e396c06; transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease; }
+.cn-page .pal-lookup .pal-groupRow, .cn-page .pal-lookup .pal-assetRow { transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+@media (hover: hover) and (pointer: fine) {
+  .cn-page .pal-lookup .pal-purpose:hover { transform: translateY(-3px); box-shadow: 0 8px 18px #0e396c14; }
+  .cn-page .pal-lookup .pal-groupRow:hover, .cn-page .pal-lookup .pal-assetRow:not(.pal-assetUnavailable):hover { transform: translateY(-1px); box-shadow: 0 5px 12px #0e396c0b; }
+  .cn-page .pal-lookup .pal-searchButton:hover { transform: translateY(-2px); box-shadow: 0 9px 18px #0e396c24; }
+}
+.cn-page .pal-lookup .pal-purpose:active, .cn-page .pal-lookup .pal-groupRow:active, .cn-page .pal-lookup .pal-assetRow:not(.pal-assetUnavailable):active, .cn-page .pal-lookup .pal-searchButton:active { transform: translateY(1px); box-shadow: inset 0 2px 5px #0e396c15; }
+.cn-page .pal-lookup .pal-source, .cn-page .pal-lookup .pal-notice p, .cn-page .pal-lookup .pal-childIntro p, .cn-page .pal-lookup .pal-purposeDescription { --pvi-readable-secondary: 14px; }
+@keyframes pal-reveal { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 1020px) {
+  .cn-page .pal-dashboard > :first-child { padding: 30px 24px; }
+  .cn-page .pal-columns { grid-template-columns: 1fr; gap: 32px; }
+  .cn-page .pal-browse { border-right: 0; padding-right: 0; }
+  .cn-page .pal-groupList { max-height: 590px; }
+  .cn-page .pal-calcBody { grid-template-columns: 1fr; }
+  .cn-page .pal-calcSummary { position: static; }
+  .cn-page .pal-selectedTable th:nth-child(2) { width: 42%; }
+  .cn-page .pal-selectedTable th:nth-child(3) { width: 20%; }
+  .cn-page .pal-columnHeading h3 { font-size: 23px; }
+}
+@media (max-width: 600px) {
+  .cn-page .pal-dashboard > :first-child { padding: 28px 18px; }
+  .cn-page .pal-dashboard > aside { grid-template-columns: 1fr; }
+  .cn-page .pal-intro h2 { font-size: clamp(27px, 7.2vw, 35px); line-height: 1.25; }
+  .cn-page .pal-intro > p { --pvi-readable-secondary: 16px; font-size: 16px; }
+  .cn-page .pal-searchArea { margin: 30px auto; }
+  .cn-page .pal-searchArea > label { --pvi-readable-ui: 20px; font-size: 20px; margin-bottom: 16px; }
+  .cn-page .pal-searchBar { display: grid; grid-template-columns: 24px minmax(0, 1fr) 30px; gap: 10px; padding: 16px 12px 12px; }
+  .cn-page .pal-searchBar > svg { width: 24px; height: 24px; }
+  .cn-page .pal-searchBar input { --pvi-readable-ui: 17px; font-size: 17px; height: 42px; }
+  .cn-page .pal-searchBar input::placeholder { font-size: 15px; }
+  .cn-page .pal-clear { width: 30px; height: 30px; }
+  .cn-page .pal-searchButton { --pvi-readable-ui: 19px; grid-column: 1 / -1; min-height: 58px; font-size: 19px; margin-top: 4px; }
+  .cn-page .pal-suggestions { gap: 13px; }
+  .cn-page .pal-columnHeading { flex-wrap: wrap; gap: 8px; }
+  .cn-page .pal-columnHeading h3 { font-size: 21px; }
+  .cn-page .pal-groupRow { padding: 15px 12px; gap: 12px; grid-template-columns: 24px 34px minmax(0, 1fr) 20px; }
+  .cn-page .pal-groupRow > svg { width: 34px; }
+  .cn-page .pal-groupRow > svg:last-child { width: 20px; height: 20px; }
+  .cn-page .pal-groupRow strong { font-size: 18px; }
+  .cn-page .pal-childIntro { margin-left: 23px; padding: 17px 10px 17px 20px; }
+  .cn-page .pal-childIntro h4 { font-size: 17px; }
+  .cn-page .pal-groupList { max-height: none; overflow: visible; padding-right: 0; }
+  .cn-page .pal-assetRow { grid-template-columns: 24px 32px minmax(0, 1fr); gap: 5px 12px; padding: 17px 12px; }
+  .cn-page .pal-assetRow > input { grid-row: 1 / 3; }
+  .cn-page .pal-assetRow > svg { grid-row: 1 / 3; width: 32px; }
+  .cn-page .pal-code { grid-column: 3; grid-row: 1; font-size: 14px; }
+  .cn-page .pal-assetName { grid-column: 3; grid-row: 2; }
+  .cn-page .pal-assetName strong { font-size: 16px; }
+  .cn-page .pal-selectedTable thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .cn-page .pal-selectedTable, .cn-page .pal-selectedTable tbody, .cn-page .pal-selectedTable tr, .cn-page .pal-selectedTable td { display: block; width: 100%; }
+  .cn-page .pal-selectedTable td { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 8px; padding: 12px 16px; border: 0; }
+  .cn-page .pal-selectedTable td::before { content: attr(data-label); color: #58708d; font-size: 14px; }
+  .cn-page .pal-selectedTable td + td { border-left: 0; }
+  .cn-page .pal-selectedTable td small, .cn-page .pal-selectedTable td .pal-remove { grid-column: 2; margin: 0; }
+  .cn-page .pal-selectedTable tr + tr { border-top: 1px solid #d5e5f7; }
+  .cn-page .pal-selectedTable tr { padding: 10px 0; }
+  .cn-page .pal-selectedTable td[colspan] { display: block; }
+  .cn-page .pal-selectedTable td[colspan]::before { display: none; }
+  .cn-page .pal-selectedTable td strong { font-size: 16px; }
+  .cn-page .pal-rate { font-size: 22px; }
+  .cn-page .pal-empty { padding: 24px 10px; }
+  .cn-page .pal-notice { padding: 16px; }
+  .cn-page .pal-calculation { margin-top: 32px; padding: 22px 16px; border-radius: 18px; }
+  .cn-page .pal-calcCard { padding: 16px; }
+  .cn-page .pal-calcAsset { grid-template-columns: 44px minmax(0, 1fr); gap: 12px; }
+  .cn-page .pal-calcIcon { width: 44px; height: 44px; }
+  .cn-page .pal-rateChip { grid-column: 1 / -1; justify-self: start; }
+  .cn-page .pal-calcInputRow { grid-template-columns: 1fr; gap: 14px; }
+  .cn-page .pal-calcFee { display: flex; align-items: center; justify-content: space-between; gap: 12px; text-align: left; }
+  .cn-page .pal-calcFee b { font-size: 21px; margin-top: 0; }
+  .cn-page .pal-calcSummary { padding: 22px 18px; }
+  .cn-page .pal-purposeGrid { gap: 7px; }
+  .cn-page .pal-purpose { min-height: 137px; padding: 16px 10px 12px; font-size: 15px; }
+  .cn-page .pal-purpose > input { width: 19px !important; height: 19px !important; right: 7px; top: 16px; }
+  .cn-page .pal-purpose > svg { width: 23px; height: 23px; }
+}
+@media (prefers-reduced-motion: reduce) { .cn-page .pal-lookup *, .cn-page .pal-lookup *::before, .cn-page .pal-lookup *::after { animation: none !important; transition: none !important; } }
+
+/* ── fire-lead-dialog.module.css ── */
+.cn-page .fld-dialog { --lead-blue: #075ab7; --lead-navy: #071a38; --lead-muted: #58708d; border: 0; padding: 0; margin: auto; width: min(540px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); overflow: auto; border-radius: 24px; color: var(--lead-navy); background: #fff; box-shadow: 0 30px 80px #071a3859; animation: fld-pop .22s ease-out; }
+.cn-page .fld-dialog::backdrop { background: #071a388c; backdrop-filter: blur(3px); animation: fld-fade .2s ease-out; }
+.cn-page .fld-panel { position: relative; padding: 34px 32px 30px; }
+.cn-page .fld-close { position: absolute; top: 14px; right: 14px; display: grid; place-items: center; width: 42px; height: 42px; border: 0; border-radius: 50%; background: #eef4fb; color: #3b5879; cursor: pointer; transition: background .18s; }
+.cn-page .fld-close:hover { background: #dce9f7; }
+.cn-page .fld-head { text-align: center; margin-bottom: 20px; }
+.cn-page .fld-badge { display: grid; place-items: center; width: 60px; height: 60px; margin: 0 auto 14px; border-radius: 20px; background: linear-gradient(145deg, #0a68cc, #07346f); color: #fff; box-shadow: 0 10px 22px #07346f33; }
+.cn-page .fld-head h3, .cn-page .fld-done h3 { font: 800 clamp(23px, 3vw, 28px)/1.25 "Be Vietnam Pro","BVP Fallback",sans-serif; letter-spacing: -.03em; margin: 0 0 8px; }
+.cn-page .fld-dialog .fld-head p { --pvi-readable-secondary: 16px; font-size: 16px; line-height: 1.6; color: var(--lead-muted); margin: 0 auto; max-width: 420px; }
+.cn-page .fld-dialog .fld-context { background: #f1f7fd; border-radius: 12px; padding: 12px 14px; margin: 0 0 20px; font-size: 15px; line-height: 1.5; color: #35506f; }
+.cn-page .fld-fields { display: grid; gap: 16px; }
+.cn-page .fld-field label { --pvi-readable-ui: 15px; display: block; font-size: 15px; font-weight: 700; margin-bottom: 7px; }
+.cn-page .fld-field input { --pvi-readable-ui: 17px; width: 100%; min-height: 56px; padding: 0 16px; border: 2px solid #c3d6ea; border-radius: 14px; background: #fff; color: var(--lead-navy); font-size: 17px; font-family: inherit; outline: 0; transition: border-color .18s, box-shadow .18s; }
+.cn-page .fld-field input::placeholder { color: #7b8ca2; opacity: 1; }
+.cn-page .fld-field input:focus { border-color: var(--lead-blue); box-shadow: 0 0 0 4px #1672d81f; }
+.cn-page .fld-field input[aria-invalid="true"] { border-color: #d98592; background: #fff9fa; }
+.cn-page .fld-field input[data-valid="true"]:not(:placeholder-shown) { border-color: #4f9be0; }
+.cn-page .fld-dialog .fld-error { --pvi-readable-secondary: 14px; margin: 7px 2px 0; font-size: 14px; line-height: 1.5; color: #b11f30; }
+.cn-page .fld-consent { --pvi-readable-ui: 15px; display: flex; gap: 12px; align-items: flex-start; margin-top: 20px; font-size: 15px; line-height: 1.55; color: #35506f; cursor: pointer; }
+.cn-page .fld-consent input { appearance: auto; accent-color: var(--lead-blue); flex-shrink: 0; width: 24px; height: 24px; margin: 0; cursor: pointer; }
+.cn-page .fld-dialog .fld-formError { margin: 16px 0 0; padding: 12px 14px; border-radius: 12px; background: #fff2f3; color: #b11f30; font-size: 15px; line-height: 1.5; }
+.cn-page .fld-actions { margin-top: 22px; min-height: 62px; display: grid; align-items: center; }
+.cn-page .fld-dialog .fld-hint { --pvi-readable-secondary: 15px; margin: 0; text-align: center; font-size: 15px; line-height: 1.5; color: var(--lead-muted); background: #f5f8fc; border-radius: 12px; padding: 16px 14px; }
+.cn-page .fld-send, .cn-page .fld-zaloButton { --pvi-readable-ui: 18px; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 62px; padding: 0 20px; border: 0; border-radius: 16px; background: linear-gradient(145deg, #0a68cc, #064a9c); color: #fff; font-size: 18px; font-weight: 800; text-decoration: none; cursor: pointer; box-shadow: 0 10px 24px #0861bd47; animation: fld-rise .25s ease-out; transition: transform .2s ease, box-shadow .2s ease; }
+.cn-page .fld-dialog a.fld-zaloButton, .cn-page .fld-dialog a.fld-zaloButton:hover, .cn-page .fld-dialog a.fld-zaloButton:visited { color: #fff !important; text-decoration: none; }
+.cn-page .fld-send:hover:enabled, .cn-page .fld-zaloButton:hover { transform: translateY(-2px); box-shadow: 0 14px 28px #0861bd57; }
+.cn-page .fld-send:disabled { opacity: .7; cursor: progress; }
+.cn-page .fld-done { text-align: center; padding: 10px 4px 0; }
+.cn-page .fld-doneIcon { display: block; color: #1a8a5a; margin-bottom: 10px; }
+.cn-page .fld-dialog .fld-done p { --pvi-readable-secondary: 16px; font-size: 16px; line-height: 1.6; color: var(--lead-muted); margin: 0 0 8px; }
+.cn-page .fld-dialog .fld-done p.fld-code { --pvi-readable-secondary: 15px; margin: 14px 0 22px; font-size: 15px; }
+.cn-page .fld-code b { color: var(--lead-navy); letter-spacing: .02em; }
+.cn-page .fld-ghost { --pvi-readable-ui: 16px; margin-top: 12px; border: 0; background: transparent; color: var(--lead-blue); font-size: 16px; font-weight: 700; padding: 12px 18px; cursor: pointer; }
+.cn-page .fld-dialog button:focus-visible, .cn-page .fld-dialog a:focus-visible, .cn-page .fld-dialog input:focus-visible { outline: 3px solid #1672d8; outline-offset: 3px; }
+.cn-page .fld-field input:focus-visible { outline: 0; }
+@keyframes fld-pop { from { opacity: 0; transform: translateY(14px) scale(.98); } to { opacity: 1; transform: none; } }
+@keyframes fld-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fld-rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (max-width: 600px) {
+  .cn-page .fld-dialog { width: 100vw; max-width: 100vw; margin: auto 0 0; border-radius: 24px 24px 0 0; max-height: 94dvh; animation: fld-sheet .28s ease-out; }
+  .cn-page .fld-panel { padding: 28px 18px calc(24px + env(safe-area-inset-bottom)); }
+}
+@keyframes fld-sheet { from { transform: translateY(40px); opacity: .6; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .cn-page .fld-dialog, .cn-page .fld-dialog::backdrop, .cn-page .fld-send, .cn-page .fld-zaloButton { animation: none !important; transition: none !important; } }
+
+/* pvihcm: biểu tượng SVG vẽ từ chuỗi (bản gốc là component Phosphor), giữ không co lại trong hàng flex. */
+.cn-page .auto-page svg.ph{flex:none}
+/* pvihcm: style.css có luật chung "header{height:78px;display:flex…}" dành cho thanh đầu trang của site,
+   lan vào các thẻ <header> trong bộ tra cứu (tiêu đề bị ép 2 cột). Trả về như bản gốc; luật module
+   (.cn-page .pal-…) cụ thể hơn nên vẫn thắng. */
+.cn-page header{height:auto;max-width:none;margin:0;padding:0;display:block;gap:normal}
+/* pvihcm: product.css tô màu ".fire h2"; bản gốc tiêu đề lấy màu chữ của khối (xanh đậm #071a38). */
+.cn-page :is(h2,h3,h4){color:inherit}
+
+/* pvihcm: hiệu ứng ô "Bạn đang muốn bảo hiểm tài sản nào?" (chủ site yêu cầu 16/11/2026).
+   Viền chạy vòng theo 2 màu logo PVI (giống CTA chung trong cta.css), kính lúp nhấp nháy nhẹ
+   gợi ý chỗ gõ, bấm vào ô thì viền sáng và có quầng xanh. Giảm chuyển động thì đứng yên. */
+@property --cn-a{syntax:'<angle>';inherits:false;initial-value:0deg}
+.cn-page .pal-searchBar{border-color:transparent;
+  background:linear-gradient(#fff,#fff) padding-box,
+    conic-gradient(from var(--cn-a),#8eafd3 0deg,#E31F26 70deg,#ff8a8f 110deg,#8eafd3 170deg,#1F4A8C 240deg,#5b86c8 290deg,#8eafd3 360deg) border-box;
+  box-shadow:0 7px 22px #1646740b,0 0 0 0 rgba(7,90,183,0);
+  animation:cn-spin 4.5s linear infinite,cn-breathe 3s ease-in-out infinite}
+.cn-page .pal-searchBar:focus-within{
+  background:linear-gradient(#fff,#fff) padding-box,
+    conic-gradient(from var(--cn-a),#1F4A8C 0deg,#E31F26 90deg,#1F4A8C 180deg,#E31F26 270deg,#1F4A8C 360deg) border-box;
+  box-shadow:0 10px 28px #16467422,0 0 0 6px rgba(7,90,183,.14);animation-duration:2.2s,3s}
+/* Ô ngoài đã có viền + quầng báo đang nhập; bỏ viền focus chung của site ở ô nhập bên trong cho khỏi 2 lớp viền. */
+.cn-page .pal-searchBar input:focus,.cn-page .pal-searchBar input:focus-visible{outline:none;box-shadow:none}
+.cn-page .pal-searchBar > svg.ph:first-child{color:#075ab7;animation:cn-lens 2.4s ease-in-out infinite;transform-origin:50% 50%}
+.cn-page .pal-searchBar:focus-within > svg.ph:first-child{animation:none}
+@keyframes cn-spin{to{--cn-a:360deg}}
+@keyframes cn-breathe{0%,100%{box-shadow:0 7px 22px #1646740b,0 0 0 0 rgba(227,31,38,0)}50%{box-shadow:0 7px 22px #1646740b,0 0 0 5px rgba(227,31,38,.10)}}
+@keyframes cn-lens{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.12) rotate(-8deg)}}
+@media (prefers-reduced-motion:reduce){
+  .cn-page .pal-searchBar,.cn-page .pal-searchBar > svg.ph:first-child{animation:none}
+}
