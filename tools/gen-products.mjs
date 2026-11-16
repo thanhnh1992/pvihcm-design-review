@@ -211,8 +211,8 @@ ${faqBlock([...tn.tndsFaqs, car.faqs[2]])}`;
     head: faqJsonLd(ac.faqs) + breadcrumbJsonLd(P, 'Bảo hiểm tai nạn') + taiNanJsonLd(ac, 'https://pvihcm.com' + P),
     main: taiNanMain(ac, acUp),
     bodyClass: 'tn-page',
-    extraCss: '<link rel="stylesheet" href="/tai-nan.css">',
-    scripts: '<script src="page.js" defer></script>',
+    extraCss: '<link rel="stylesheet" href="/tai-nan.css"><link rel="stylesheet" href="/product-reviews.css">',
+    scripts: '<script src="page.js" defer></script><script src="/product-reviews.js" defer></script>',
   });
   write('san-pham/bao-hiem-tai-nan/index.html', html);
   write('san-pham/bao-hiem-tai-nan/page.js', taiNanJs(ac, clean));

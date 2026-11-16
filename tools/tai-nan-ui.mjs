@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { t, esc } from './chrome.mjs';
+import { accidentReviews } from './product-reviews.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.resolve(HERE, '../dist');
@@ -275,6 +276,7 @@ ${hero(ac)}
 <section class="auto-section auto-soft-section"><div class="shell accident-stack">${feeTable(ac)}${comparison(ac)}</div></section>
 <section class="auto-section"><div class="shell accident-stack">${buy(ac)}${claim(ac)}</div></section>
 <section class="auto-section auto-soft-section"><div class="shell">${faqs(ac)}</div></section>
+<section class="auto-section"><div class="shell">${accidentReviews()}</div></section>
 <section class="auto-section"><div class="shell accident-stack">${contact(ac)}${related(ac)}</div></section>
 ${cta(ac)}
 </div>`;
@@ -284,7 +286,7 @@ ${cta(ac)}
 export function taiNanJsonLd(ac, url) {
   const data = [
     {
-      '@context': 'https://schema.org', '@type': 'Product', name: 'Bảo hiểm Tai nạn 24/24 PVI',
+      '@context': 'https://schema.org', '@type': 'Product', '@id': url + '#product', name: 'Bảo hiểm Tai nạn 24/24 PVI',
       description: 'Bảo hiểm tai nạn 24/24 cho cá nhân, nhóm nhân sự và người lao động thi công trên công trường, chi trả tử vong và thương tật do tai nạn trong và ngoài giờ làm việc.',
       url, category: 'Bảo hiểm con người', brand: { '@type': 'Brand', name: 'PVI' },
       // Google bắt buộc trường image cho dữ liệu sản phẩm: dùng đúng 3 ảnh thẻ đối tượng đang hiện trên trang.
