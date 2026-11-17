@@ -53,7 +53,7 @@ export function renderLookup(st) {
   const v = view(st);
   const err = st.selectionError;
   let h = `<section class="pal-lookup" aria-labelledby="${uid}-title" data-testid="property-asset-lookup">`
-    + `<header class="pal-intro"><h2 id="${uid}-title">Chọn đúng tài sản. <span>Xem rõ tỷ lệ phí.</span></h2><p>Gõ tên tài sản, tick nhóm phù hợp rồi chọn loại cụ thể bên dưới.</p></header>`
+    + `<header class="pal-intro"><h2 id="${uid}-title">Chọn đúng loại tài sản, <span>giúp bạn tính phí bảo hiểm chính xác hơn</span></h2><p>Gõ tên tài sản, tick nhóm phù hợp rồi chọn loại cụ thể bên dưới.</p></header>`
     + `<form class="pal-searchArea" role="search" aria-label="Tìm loại tài sản" data-act="search"><label for="${uid}-search">Bạn đang muốn bảo hiểm tài sản nào?</label><div class="pal-searchBar">${ic('MagnifyingGlass', 30)}`
     + `<input id="${uid}-search" autocomplete="off" type="search"${err === 'asset' ? ` aria-invalid="true" aria-describedby="${uid}-asset-error"` : ''} placeholder="Ví dụ: kho, nhà xưởng, văn phòng…" value="${esc(st.query)}" data-in="query">`
     + (st.query ? `<button class="pal-clear" type="button" aria-label="Xóa từ khóa tìm kiếm" data-act="clear">${ic('X', 20)}</button>` : '')
