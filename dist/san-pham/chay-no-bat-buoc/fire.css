@@ -245,3 +245,10 @@
   .fx-photo-pair img{aspect-ratio:4/3}
   .fx-photo figcaption{font-size:12px}
 }
+
+/* Quy trình khi xảy ra sự cố: 6 bước, 3 cột (2 hàng) trên máy tính và máy tính bảng, 1 cột trên điện thoại (17/11/2026). */
+@media (min-width:761px){
+  .fire-claim .fire-steps{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .fire-claim .fire-steps article:nth-child(3n+1){border-left:0;padding-left:0}
+  .fire-claim .fire-steps article:nth-child(n+4){border-top:1px solid var(--rail)}
+}
