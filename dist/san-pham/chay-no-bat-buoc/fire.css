@@ -225,3 +225,6 @@
   .fx-hero-photo{aspect-ratio:16/10}
   .fx-hero-photo img{object-position:62% 45%}
 }
+
+/* Tiêu đề nhóm hồ sơ (Hồ sơ pháp lý, Danh mục tài sản) màu #193665 theo chủ site 17/11/2026 */
+.fire-docs-grid h3{color:#193665}
