@@ -48,3 +48,21 @@ export function orderCode(prefix = 'OT') {
   const stamp = [now.getUTCFullYear() % 100, now.getUTCMonth() + 1, now.getUTCDate()].map((p) => String(p).padStart(2, '0')).join('');
   return `${prefix}${stamp}-${crypto.randomInt(1000, 10000)}`;
 }
+
+/* ── Yêu cầu tư vấn / bảng chào cháy nổ bắt buộc (bản chuyển pushCnbbLead trong order-pipeline.ts của baohiempvi-vn):
+   ghi vào tab "CNBB" của cùng Google Sheet (action "cnbb"); Apps Script chưa có tab đó thì ghi sang tab đơn hàng. ── */
+export async function pushCnbbLead(lead) {
+  const endpoint = process.env.ORDER_SHEET_WEBHOOK, secret = process.env.ORDER_SHEET_SECRET;
+  if (!endpoint || !secret) return { saved: false, reason: 'Chưa cấu hình ORDER_SHEET_WEBHOOK / ORDER_SHEET_SECRET trên Vercel.' };
+  try {
+    const r = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'cnbb', cnbbSecret: secret, ...lead }) });
+    if (r.ok) { const j = await r.json(); if (j.ok) return { saved: true, tab: 'CNBB' }; }
+  } catch { /* rơi xuống đường dự phòng */ }
+  const kindLabel = lead.kind === 'bang-chao' ? 'Nhận bảng chào' : 'Nhận tư vấn';
+  const fb = await pushToSheet({
+    code: lead.code, product: `Bảo hiểm cháy nổ bắt buộc, ${kindLabel}`, name: lead.company, phone: lead.phone, subject: lead.company,
+    detail: [`Email: ${lead.email}`, lead.detail].filter(Boolean).join(' · '),
+    note: 'Yêu cầu từ công cụ cháy nổ bắt buộc (chưa có tab CNBB), chưa phát hành đơn', source: lead.source,
+  });
+  return fb.saved ? { saved: true, tab: 'don-hang' } : { saved: false, reason: fb.reason };
+}
