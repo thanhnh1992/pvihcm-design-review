@@ -41,7 +41,7 @@ const write = (rel, html) => { const f = path.join(DIST, rel); fs.mkdirSync(path
 <h1>TNDS ô tô bắt buộc, <em>tra phí đúng loại xe.</em></h1>
 <p>${t(tn.tndsAssistantFacts.definition)} Biểu phí theo ${t(ref.legalBasis)}, tách phí cơ bản và ${t(ref.vat)}.</p>
 <div class="fire-actions"><a class="fire-btn fire-btn-red" href="#tinh-phi">Tính phí xe của tôi</a><a class="fire-btn fire-btn-line" href="#cong-truong">Người lao động công trường</a></div>
-</div><figure class="fire-hero-art"><img src="/assets/section-bat-buoc.webp" width="1280" height="853" alt="Chủ xe trao đổi hồ sơ bảo hiểm bắt buộc với tư vấn viên"></figure></div></section>
+</div><figure class="fire-hero-art"><img src="/assets/bao-hiem-bat-buoc/section-bat-buoc.webp" srcset="/assets/bao-hiem-bat-buoc/section-bat-buoc-480.webp 480w, /assets/bao-hiem-bat-buoc/section-bat-buoc-800.webp 800w, /assets/bao-hiem-bat-buoc/section-bat-buoc.webp 1280w" sizes="(max-width:1000px) 1px, 560px" width="1280" height="853" alt="Ba người trao đổi cạnh hai ô tô bị trầy cản, ảnh minh họa"></figure></div></section>
 
 <section class="fire-tool" id="tinh-phi"><div class="fire-wrap">
 <h2>Tính phí TNDS theo loại xe</h2>
