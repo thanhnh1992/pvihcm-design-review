@@ -14,6 +14,7 @@ import { assetDisplayName, assetPremium, formatAssetRate, insurancePurposes, pro
 import { CNBB_LEAD_FIELDS, cnbbLeadFieldErrors, normalizeCompanyName, normalizeEmail, normalizePhone } from '../o-to/order-input-rules.js';
 
 export const ZALO_URL = 'https://zalo.me/2076363329232219188?src=qr&f=1';
+const ZALO_PERSONAL_URL = 'https://zalo.me/thanhnguyenhoang';
 const uid = 'cn';
 const esc = (s) => String(s ?? '').replace(/\s+—\s+/g, ', ').replace(/—/g, ', ').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const ICON_OF_GROUP = { warehouse: 'Warehouse', factory: 'Factory', office: 'Buildings', home: 'House', store: 'Storefront', hotel: 'Bed', health: 'FirstAid', education: 'GraduationCap', energy: 'Lightning', transport: 'Train', building: 'Building', file: 'FileText', shield: 'ShieldCheck', both: 'Checks' };
@@ -39,6 +40,12 @@ function view(st) {
   const complete = lines.length > 0 && lines.every((l) => l.fee !== null);
   const totalNet = lines.reduce((t, l) => t + (l.fee ?? 0), 0);
   return { matches, assets, selectedPurpose, lines, complete, totalNet };
+}
+
+function renderSummary(v) {
+  return `<span class="pal-summaryEyebrow">Phí năm tham khảo (gồm VAT)</span><strong class="pal-summaryTotal">${v.complete ? esc(formatMillions(v.totalNet * (1 + VAT_RATE))) : '—'}</strong>`
+    + (v.complete ? `<dl class="pal-totals"><div><dt>Phí chưa VAT</dt><dd>${esc(formatMillions(v.totalNet))}</dd></div><div><dt>VAT ${VAT_RATE * 100}%</dt><dd>${esc(formatMillions(v.totalNet * VAT_RATE))}</dd></div></dl>` : '<p class="pal-summaryHint">Nhập giá trị tài sản để xem phí.</p>')
+    + (v.selectedPurpose ? `<p class="pal-summaryPurpose">${ic('Checks', 18)}Mục đích: ${esc(v.selectedPurpose.label)}</p>` : '');
 }
 
 /** HTML của toàn bộ khối tra cứu, giống JSX trong property-asset-lookup.tsx. */
@@ -102,10 +109,8 @@ export function renderLookup(st) {
         + `<div class="pal-calcInputRow"><div class="pal-sumInput"><input id="${uid}-sum-${esc(asset.id)}" type="number" min="0" step="any" inputmode="decimal" placeholder="Nhập giá trị tài sản" value="${esc(st.sums[asset.id] ?? '')}" data-sum="${esc(asset.id)}"><span>triệu đồng</span></div><p class="pal-calcFee"><small>Phí / năm chưa VAT</small><b>${fee !== null ? esc(formatMillions(fee)) : '—'}</b></p></div>`
         + (asset.rate === null ? '<p class="pal-calcWarn">Loại này chưa có tỷ lệ cố định, phí cần được PVI xác nhận theo hồ sơ.</p>' : '') + '</div>';
     }
-    h += `<div class="pal-leadLeft"><button class="pal-leadAdvice" type="button" data-lead="tu-van">${ic('ChatCircleDots', 28, 'fill')}<span><strong>Nhận tư vấn miễn phí ngay</strong><small>Chuyên viên chat Zalo với bạn ngay</small></span></button></div></div>`
-      + `<aside class="pal-calcSummary" aria-label="Tổng phí tham khảo"><div class="pal-summaryLive" aria-live="polite"><span class="pal-summaryEyebrow">Phí năm tham khảo (gồm VAT)</span><strong class="pal-summaryTotal">${v.complete ? esc(formatMillions(v.totalNet * (1 + VAT_RATE))) : '—'}</strong>`
-      + (v.complete ? `<dl class="pal-totals"><div><dt>Phí chưa VAT</dt><dd>${esc(formatMillions(v.totalNet))}</dd></div><div><dt>VAT ${VAT_RATE * 100}%</dt><dd>${esc(formatMillions(v.totalNet * VAT_RATE))}</dd></div></dl>` : '<p class="pal-summaryHint">Nhập giá trị tài sản để xem phí.</p>')
-      + (v.selectedPurpose ? `<p class="pal-summaryPurpose">${ic('Checks', 18)}Mục đích: ${esc(v.selectedPurpose.label)}</p>` : '')
+    h += `<div class="pal-leadLeft"><a class="pal-leadAdvice" href="${ZALO_PERSONAL_URL}">${ic('ChatCircleDots', 28, 'fill')}<span><strong>Nhận tư vấn miễn phí ngay</strong><small>Chuyên viên chat Zalo với bạn ngay</small></span></a></div></div>`
+      + `<aside class="pal-calcSummary" aria-label="Tổng phí tham khảo"><div class="pal-summaryLive" aria-live="polite">${renderSummary(v)}`
       + `</div><button class="pal-leadQuote" type="button" data-lead="bang-chao">Nhận bảng chào miễn phí ngay${ic('ArrowRight', 22, 'bold')}</button></aside></div>`
       + '<p class="pal-calcNote">Mục đích đã chọn không làm thay đổi tỷ lệ phí trong danh mục. Phạm vi bảo hiểm và báo giá chính thức cần được tư vấn riêng theo hồ sơ.</p>'
       + `<div class="pal-calcActions"><button type="button" data-act="more">${ic('ArrowUp', 18)}Đổi tài sản đã chọn</button></div></section>`;
@@ -160,11 +165,24 @@ function mount(box) {
   box.addEventListener('input', (e) => {
     const t = e.target;
     if (t.dataset.in === 'query') { st.query = t.value; st.showAll = []; render(); }
-    else if (t.dataset.sum) { st.sums = { ...st.sums, [t.dataset.sum]: t.value }; render(); }
+    else if (t.dataset.sum) {
+      st.sums = { ...st.sums, [t.dataset.sum]: t.value };
+      const v = view(st);
+      const { fee } = v.lines.find((line) => line.asset.id === t.dataset.sum);
+      const card = t.closest('.pal-calcCard');
+      // Chỉ cập nhật kết quả để giữ ô nhập và vị trí con trỏ khi đang gõ số.
+      card.classList.toggle('pal-calcCardDone', fee !== null);
+      card.querySelector('.pal-calcFee b').textContent = fee !== null ? formatMillions(fee) : '—';
+      $('.pal-summaryLive').innerHTML = renderSummary(v);
+    }
   });
   box.addEventListener('change', (e) => {
     const t = e.target;
-    if (t.dataset.groupToggle) { const g = t.dataset.groupToggle; st.expanded = st.expanded.includes(g) ? st.expanded.filter((x) => x !== g) : [...st.expanded, g]; render(); }
+    if (t.dataset.sum && t.value !== '' && Number.isFinite(Number(t.value))) {
+      t.value = String(Number(t.value));
+      st.sums = { ...st.sums, [t.dataset.sum]: t.value };
+    }
+    else if (t.dataset.groupToggle) { const g = t.dataset.groupToggle; st.expanded = st.expanded.includes(g) ? st.expanded.filter((x) => x !== g) : [...st.expanded, g]; render(); }
     else if (t.dataset.asset && t.type === 'checkbox') toggleAsset(t.dataset.asset);
     else if (t.dataset.purpose) { st.purpose = t.dataset.purpose; st.calculated = false; if (st.selectionError === 'purpose') st.selectionError = null; render(); }
   });
