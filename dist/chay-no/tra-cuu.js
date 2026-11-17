@@ -99,7 +99,7 @@ export function renderLookup(st) {
     for (const { asset, fee } of v.lines) {
       const name = assetDisplayName(asset.name);
       h += `<div class="pal-calcCard${fee !== null ? ' pal-calcCardDone' : ''}"><div class="pal-calcAsset"><span class="pal-calcIcon">${assetIcon(asset)}</span><label for="${uid}-sum-${esc(asset.id)}"><strong>${esc(name.title)}</strong><small>Mã ${esc(asset.code)} · ${esc(groupLabels.get(asset.group))}</small></label><span class="pal-rateChip">${esc(formatAssetRate(asset))}${asset.rate !== null || asset.rateText ? '<small> / năm</small>' : ''}</span></div>`
-        + `<div class="pal-calcInputRow"><div class="pal-sumInput"><input id="${uid}-sum-${esc(asset.id)}" type="number" min="0" step="any" inputmode="decimal" placeholder="Nhập giá trị tài sản" value="${esc(st.sums[asset.id] ?? '')}" data-sum="${esc(asset.id)}"><span>triệu đồng</span></div><p class="pal-calcFee"><small>Phí / năm chưa VAT</small><b>${fee !== null ? esc(formatMillions(fee)) : '—'}</b></p></div>`
+        + `<div class="pal-calcInputRow"><div class="pal-sumField"><label class="pal-sumLabel" for="${uid}-sum-${esc(asset.id)}">Nhập giá trị tài sản cần bảo hiểm</label><div class="pal-sumInput${st.sums[asset.id] ? '' : ' pal-sumEmpty'}"><input id="${uid}-sum-${esc(asset.id)}" type="text" inputmode="numeric" autocomplete="off" placeholder="Ví dụ: 5000" value="${esc(st.sums[asset.id] ?? '')}" data-sum="${esc(asset.id)}"><span>triệu đồng</span></div><small class="pal-sumEcho" data-echo="${esc(asset.id)}">${st.sums[asset.id] ? '= ' + esc(formatMillions(Number(st.sums[asset.id]))).replace(/ đ$/, ' đồng') : 'Ví dụ 5000 triệu đồng = 5 tỷ đồng'}</small></div><p class="pal-calcFee"><small>Phí / năm chưa VAT</small><b>${fee !== null ? esc(formatMillions(fee)) : '—'}</b></p></div>`
         + (asset.rate === null ? '<p class="pal-calcWarn">Loại này chưa có tỷ lệ cố định, phí cần được PVI xác nhận theo hồ sơ.</p>' : '') + '</div>';
     }
     h += `<div class="pal-leadLeft"><button class="pal-leadAdvice" type="button" data-lead="tu-van">${ic('ChatCircleDots', 28, 'fill')}<span><strong>Nhận tư vấn miễn phí ngay</strong><small>Chuyên viên chat Zalo với bạn ngay</small></span></button></div></div>`
@@ -160,7 +160,21 @@ function mount(box) {
   box.addEventListener('input', (e) => {
     const t = e.target;
     if (t.dataset.in === 'query') { st.query = t.value; st.showAll = []; render(); }
-    else if (t.dataset.sum) { st.sums = { ...st.sums, [t.dataset.sum]: t.value }; render(); }
+    else if (t.dataset.sum) {
+      // Chỉ nhận chữ số, bỏ số 0 ở đầu. Không vẽ lại ô đang gõ (vẽ lại làm con trỏ nhảy, số bị đảo): chỉ cập nhật phí và tổng.
+      const clean = t.value.replace(/\D/g, '').replace(/^0+(?=\d)/, '').replace(/^0$/, '');
+      if (clean !== t.value) t.value = clean;
+      st.sums = { ...st.sums, [t.dataset.sum]: clean };
+      const tpl = document.createElement('div'); tpl.innerHTML = renderLookup(st);
+      const cards = box.querySelectorAll('.pal-calcCard'), next = tpl.querySelectorAll('.pal-calcCard');
+      cards.forEach((c, i) => { const n = next[i]; if (!n) return;
+        c.className = n.className;
+        c.querySelector('.pal-sumInput').className = n.querySelector('.pal-sumInput').className;
+        c.querySelector('.pal-sumEcho').innerHTML = n.querySelector('.pal-sumEcho').innerHTML;
+        c.querySelector('.pal-calcFee').innerHTML = n.querySelector('.pal-calcFee').innerHTML; });
+      const live = box.querySelector('.pal-summaryLive'), nlive = tpl.querySelector('.pal-summaryLive');
+      if (live && nlive) live.innerHTML = nlive.innerHTML;
+    }
   });
   box.addEventListener('change', (e) => {
     const t = e.target;
