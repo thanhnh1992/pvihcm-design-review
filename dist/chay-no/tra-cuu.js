@@ -121,7 +121,7 @@ export function renderLookup(st) {
 /* ── Hộp thoại nhận tư vấn / bảng chào (fire-lead-dialog.tsx) ── */
 const COPY = {
   'tu-van': { title: 'Nhận tư vấn miễn phí', lead: 'Để lại 3 thông tin, chuyên viên PVI Thành Đô sẽ chat với bạn qua Zalo ngay.', send: 'Gửi và chat Zalo ngay' },
-  'bang-chao': { title: 'Nhận bảng chào miễn phí', lead: 'Để lại 3 thông tin, chuyên viên lập bảng chào theo tài sản của bạn và chat Zalo ngay.', send: 'Gửi và nhận bảng chào' },
+  'bang-chao': { title: 'Nhận bảng chào miễn phí', lead: 'Điền thông tin bên dưới rồi gửi qua Zalo để nhân viên PVI xem hồ sơ và báo phí cho bạn.', send: 'Gởi đến nhân viên PVI tiếp nhận' },
 };
 const LABELS = { phone: 'Số điện thoại', email: 'Email', company: 'Tên đơn vị' };
 const FIELD = {
@@ -132,10 +132,10 @@ const FIELD = {
 function renderDialogPanel(d, ctx) {
   const c = COPY[d.kind];
   if (d.sent) {
-    return `<button class="fld-close" type="button" aria-label="Đóng" data-dlg="close">${ic('X', 22)}</button><div class="fld-done" role="status"><span class="fld-doneIcon">${ic('CheckCircle', 54, 'fill')}</span><h3 id="${uid}-dlg-title">Đã chép thông tin của bạn</h3>`
-      + `<p>${d.copied ? 'Thông tin đã được chép. Dán vào khung chat Zalo vừa mở để gửi chuyên viên PVI Thành Đô.' : 'Trình duyệt chặn chép tự động. Bạn chép phần bên dưới rồi dán vào Zalo vừa mở.'}</p>`
+    return `<button class="fld-close" type="button" aria-label="Đóng" data-dlg="close">${ic('X', 22)}</button><div class="fld-done"><span class="fld-doneIcon">${ic('CheckCircle', 54, 'fill')}</span><h3 id="${uid}-dlg-title">${d.copied ? 'Đã chép thông tin của bạn' : 'Nội dung yêu cầu báo phí'}</h3>`
+      + `<p>${d.copied ? 'Dán nội dung đã sao chép vào khung chat Zalo và bấm Gửi để nhân viên PVI nhận yêu cầu.' : 'Sao chép nội dung bên dưới, dán vào khung chat Zalo rồi bấm Gửi để nhân viên PVI nhận yêu cầu.'}</p>`
       + `<pre class="fld-context" style="white-space:pre-wrap;text-align:left">${esc(d.text)}</pre>`
-      + `<a class="fld-zaloButton" href="${ZALO_URL}" target="_blank" rel="noopener noreferrer">${ic('ChatCircleDots', 24, 'fill')}Mở Zalo chat với chuyên viên</a><button class="fld-ghost" type="button" data-dlg="close">Đóng</button></div>`;
+      + `<a class="fld-zaloButton" href="${ZALO_URL}" target="_blank" rel="noopener noreferrer">${ic('ChatCircleDots', 24, 'fill')}Mở Zalo chat với chuyên viên</a><p role="status" data-dlg-reminder></p><button class="fld-ghost" type="button" data-dlg="close">Đóng</button></div>`;
   }
   const errors = cnbbLeadFieldErrors(d.values);
   const ready = CNBB_LEAD_FIELDS.every((f) => !errors[f]) && d.consent;
@@ -223,8 +223,10 @@ function mount(box) {
   dlg.setAttribute('aria-labelledby', `${uid}-dlg-title`);
   box.after(dlg);
   let d = null, ctx = null;
+  let reminderTimer;
   const track = (event, payload = {}) => { if (Array.isArray(window.dataLayer)) window.dataLayer.push({ event, ...payload }); };
   const drawDlg = () => {
+    if (!d) return;
     const act = document.activeElement, id = act && act.id, pos = act && 'selectionStart' in act ? act.selectionStart : null;
     dlg.innerHTML = `<div class="fld-panel">${renderDialogPanel(d, ctx)}</div>`;
     if (id && dlg.contains(document.getElementById(id))) { const el = document.getElementById(id); el.focus(); try { if (pos != null) el.setSelectionRange(pos, pos); } catch {} }
@@ -238,7 +240,11 @@ function mount(box) {
     if (!dlg.open) dlg.showModal();
     track('cnbb_lead_open', { kind });
   }
-  dlg.addEventListener('close', () => { d = null; dlg.innerHTML = ''; });
+  dlg.addEventListener('close', () => {
+    clearTimeout(reminderTimer);
+    d = null;
+    dlg.innerHTML = '';
+  });
   dlg.addEventListener('click', (e) => {
     if (e.target === dlg) { dlg.close(); return; }
     if (e.target.closest('[data-dlg=close]')) dlg.close();
@@ -248,9 +254,11 @@ function mount(box) {
   dlg.addEventListener('change', (e) => { if (e.target.matches('[data-dlg-consent]') && d) { d.consent = e.target.checked; drawDlg(); } });
   dlg.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!d) return;
+    if (!d || d.sending || d.sent) return;
     const errors = cnbbLeadFieldErrors(d.values);
     if (!CNBB_LEAD_FIELDS.every((f) => !errors[f]) || !d.consent) return;
+    d.sending = true;
+    const requestContext = ctx;
     // Mở Zalo ngay trong lượt bấm (trình duyệt chỉ cho mở cửa sổ mới lúc này).
     window.open(ZALO_URL, '_blank', 'noopener,noreferrer');
     const text = [
@@ -266,9 +274,14 @@ function mount(box) {
     ].filter(Boolean).join('\n');
     let copied = false;
     try { await navigator.clipboard.writeText(text); copied = true; } catch {}
+    if (!d || !dlg.open || ctx !== requestContext) return;
     d = { ...d, sent: true, text, copied };
     track('cnbb_lead_submit', { kind: d.kind });
     drawDlg();
+    reminderTimer = setTimeout(() => {
+      const reminder = dlg.querySelector('[data-dlg-reminder]');
+      if (dlg.open && reminder) reminder.textContent = 'Nếu chưa gửi trên Zalo, bạn bấm Gửi để nhân viên PVI nhận yêu cầu nhé.';
+    }, 20_000);
   });
 
   render();
