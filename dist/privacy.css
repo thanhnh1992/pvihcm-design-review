@@ -8,6 +8,9 @@
 .privacy-dialog[open]{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px 30px}
 .privacy-dialog .privacy-close{position:absolute;top:6px;right:8px;display:grid;place-items:center;width:44px;height:44px;border:0;background:none;color:#17212e;cursor:pointer;font:400 26px/1 sans-serif}
 .privacy-dialog .privacy-copy{min-width:0}
+.privacy-dialog:not(.is-settings) .privacy-copy{min-height:0;max-height:calc(25dvh - 37px);overflow:auto;overscroll-behavior:contain}
+.privacy-dialog .privacy-copy:focus-visible{outline:2px solid #2679c5;outline-offset:-2px}
+.privacy-dialog .privacy-policy-link{display:inline-block;margin-top:4px;font-size:14px;line-height:1.5}
 .privacy-dialog h2{margin:0 0 6px;font-size:18px;font-weight:700;line-height:1.45;letter-spacing:-.02em;color:#17212e}
 .privacy-dialog #privacy-title:focus{outline:none}
 .privacy-dialog p{margin:0;font-size:16px;line-height:1.6;color:#394657}
@@ -32,11 +35,12 @@
  .privacy-dialog{padding:12px 20px}
  .privacy-dialog[open]{grid-template-columns:1fr;gap:8px}
  .privacy-dialog .privacy-copy{padding-right:30px}
+ .privacy-dialog:not(.is-settings) .privacy-copy{max-height:calc(25dvh - 81px)}
  .privacy-dialog .privacy-actions{grid-template-columns:repeat(3,1fr)}
  .privacy-dialog .privacy-actions button{padding:10px 12px}
  .privacy-dialog:not(.is-settings) h2{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 }
-@media(max-width:480px){.privacy-dialog{padding:10px 15px}.privacy-dialog p{line-height:1.5}.privacy-dialog .privacy-actions{gap:8px}}
+@media(max-width:480px){.privacy-dialog{padding:10px 15px}.privacy-dialog p{line-height:1.5}.privacy-dialog .privacy-actions{gap:8px}.privacy-dialog:not(.is-settings) .privacy-copy{max-height:calc(25dvh - 77px)}}
 .privacy-embed{position:relative;width:100%;height:100%;min-height:160px;background:#edf3f9;border-radius:12px;overflow:hidden}
 .privacy-embed-cover{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:160px;height:100%;padding:20px;gap:12px;text-align:center}
 .privacy-embed-cover p{margin:0;font-size:14px;line-height:1.7;color:#394657}

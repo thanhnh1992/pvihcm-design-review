@@ -9,9 +9,10 @@ export function privacyLinks() {
 export function privacyUi() {
   return `<link rel="stylesheet" href="/privacy.css"><dialog class="privacy-dialog privacy-banner" id="privacy-dialog" aria-labelledby="privacy-title" aria-describedby="privacy-description">
 <button class="privacy-close" type="button" data-privacy-close aria-label="Đóng thông báo, chưa đồng ý">×</button>
-<div class="privacy-copy">
+<div class="privacy-copy" tabindex="0" role="region" aria-labelledby="privacy-title">
 <h2 id="privacy-title" tabindex="-1">Trung tâm ưu tiên quyền riêng tư</h2>
-<p id="privacy-description">Bạn có thể cho phép cookie phân tích, quảng cáo và bản đồ/video. <a href="${PRIVACY_PATH}" data-same-tab>Chính sách</a>.</p>
+<p id="privacy-description">Bằng cách nhấp vào "Đồng ý", bạn đồng ý với việc lưu trữ cookie trên thiết bị của mình để nâng cao khả năng điều hướng trang web, phân tích việc sử dụng trang web và hỗ trợ các nỗ lực tiếp thị của chúng tôi.</p>
+<a class="privacy-policy-link" href="${PRIVACY_PATH}" data-same-tab>Chính sách</a>
 </div>
 <div class="privacy-actions"><button type="button" class="privacy-accept" data-privacy-accept>Đồng ý</button><button type="button" class="privacy-reject" data-privacy-reject>Từ chối</button><button type="button" class="privacy-customize" data-privacy-options aria-expanded="false" aria-controls="privacy-options">Tùy chọn</button></div>
 <details class="privacy-options" id="privacy-options" hidden><summary>Tùy chọn cookie và nội dung bên ngoài</summary>

@@ -30,6 +30,7 @@ try {
  await page.goto('https://pvihcm.com/san-pham/bao-hiem-tai-nan/',{waitUntil:'load'});
  await page.evaluate(()=>document.fonts.ready);
  await page.locator('#privacy-dialog').waitFor({state:'visible'});
+ assert.equal(await page.locator('#privacy-description').textContent(), 'Bằng cách nhấp vào "Đồng ý", bạn đồng ý với việc lưu trữ cookie trên thiết bị của mình để nâng cao khả năng điều hướng trang web, phân tích việc sử dụng trang web và hỗ trợ các nỗ lực tiếp thị của chúng tôi.');
  assert.equal(requests.length,0,'No third-party request before consent');
  assert.equal(await page.locator('script[src*="googletagmanager"]').count(),0);
  assert.equal(await page.locator('.accident-consent input:checked').count(),0,'Form consents remain independent and unchecked');
@@ -40,7 +41,15 @@ try {
   assert(m.height<=m.viewport*.25+1,'Banner stays below one quarter of viewport');
   assert(Math.abs(m.bottom-m.viewport)<=1,'Banner stays at bottom');
   assert.equal(m.modal,false,'Banner does not block the page');
-  assert(m.scrollHeight<=m.clientHeight+1,'Initial banner text/buttons are not clipped');
+  assert(m.scrollHeight<=m.clientHeight+1,'Action row stays in the banner viewport');
+  const readable=await page.locator('.privacy-copy').evaluate(copy=>{
+   copy.scrollTop=copy.scrollHeight;
+   const linkBottom=copy.querySelector('.privacy-policy-link').getBoundingClientRect().bottom;
+   const fits=linkBottom<=copy.getBoundingClientRect().bottom+1;
+   copy.scrollTop=0;
+   return fits;
+  });
+  assert(readable,'Full text and policy link are reachable at '+width);
   if(width===1440||width===390){
    await page.locator('.accident-hero-frame img').evaluate(el=>el.decode());
    await page.screenshot({path:path.join(ROOT,'../privacy-preview-'+(width===1440?'desktop':'mobile')+'.png')});
