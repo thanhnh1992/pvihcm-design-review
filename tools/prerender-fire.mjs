@@ -1,4 +1,4 @@
-// In sẵn bảng "Biểu phí đầy đủ theo nhóm ngành" (59 dòng Phụ lục VI) vào #fire-ref của trang cháy nổ,
+// In sẵn bảng "Biểu phí bảo hiểm cháy nổ đầy đủ theo từng ngành nghề kinh doanh" (59 dòng Phụ lục VI) vào #fire-ref của trang cháy nổ,
 // để Google và bot AI không chạy JavaScript vẫn đọc được biểu phí.
 // Số liệu lấy nguyên từ dist/san-pham/chay-no-bat-buoc/tariff-data.js, không gõ tay.
 // Khi trang tải xong, page.js vẫn vẽ lại bảng theo từng tab như cũ (không sửa page.js).
