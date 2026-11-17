@@ -3,6 +3,8 @@
 // chuyển sang HTML tĩnh: HTML in sẵn SỐ CUỐI để Google/AI đọc được; dist/why-pvi.js chỉ thêm hiệu ứng.
 // Sửa số liệu/ảnh: sửa hằng số dưới đây rồi chạy `node tools/gen-why-pvi.mjs` (ghi vào dist/index.html,
 // giữa hai dấu <!-- why-pvi:start --> và <!-- why-pvi:end -->).
+// Từ 17/11/2026 (chủ site yêu cầu): cùng khối này + khối "Báo chí nói về Bảo hiểm PVI" (chép từ online.pvi.com.vn)
+// đặt ngay sau bộ tra cứu trên trang /san-pham/chay-no-bat-buoc/, giữa <!-- uy-tin-pvi:start/end -->.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -46,6 +48,17 @@ const PROJECTS = [
 ];
 const SLOGAN = 'Cùng tỷ lệ phí, tại sao không chọn doanh nghiệp tốt nhất?';
 
+/* 4. Báo chí nói về Bảo hiểm PVI: chép nguyên tiêu đề, lời dẫn, 4 bài và logo từ online.pvi.com.vn (17/11/2026).
+   Logo tải từ online.pvi.com.vn/images/home/press/, đổi sang webp cao 120px, lưu ở dist/assets/press/. */
+const PRESS_TITLE = 'Báo chí nói về Bảo hiểm PVI';
+const PRESS_LEAD = 'Bảo hiểm PVI được các cơ quan báo chí uy tín ghi nhận và phân tích qua nhiều góc nhìn về tài chính, quản trị và năng lực phát triển.';
+const PRESS = [
+  { name: 'VnExpress', logo: 'vnexpress', w: 615, href: 'https://vnexpress.net/bao-hiem-pvi-5-nam-lien-tiep-vao-top-50-doanh-nghiep-loi-nhuan-xuat-sac-4958128.html', text: 'Bảo hiểm PVI năm thứ 5 liên tiếp được vinh danh trong bảng xếp hạng "Top 50 doanh nghiệp Lợi nhuận xuất sắc Việt Nam năm 2025"' },
+  { name: 'Tiền Phong', logo: 'tien-phong', w: 421, href: 'https://tienphong.vn/bao-hiem-pvi-dinh-vi-thuong-hieu-bang-noi-luc-niem-tin-va-doi-moi-post1766254.tpo', text: 'Năm thứ hai liên tiếp Tổng Công ty Bảo hiểm PVI được vinh danh dẫn đầu danh sách "Top 10 Công ty bảo hiểm phi nhân thọ uy tín Việt Nam năm 2025"' },
+  { name: 'Công lý', logo: 'cong-ly', w: 379, href: 'https://doanhnhan.congly.vn/bao-hiem-pvi-duoc-vinh-danh-tai-hai-hang-muc-giai-thuong-quoc-te-danh-gia-503310.html', text: 'Bảo hiểm PVI không chỉ giữ vững vị thế số 1 tại Việt Nam, mà còn vươn lên trở thành một trong những doanh nghiệp bảo hiểm dẫn đầu khu vực châu Á – Thái Bình Dương.' },
+  { name: 'Đầu tư online', logo: 'dau-tu', w: 386, href: 'https://baodautu.vn/bao-hiem-pvi-tu-thi-truong-viet-den-ban-do-bao-hiem-toan-cau-d374683.html', text: 'Trong 6 tháng đầu năm 2025, PVI vượt xa các chỉ tiêu kinh doanh, khẳng định vai trò tiên phong trong đổi mới công nghệ, quản trị rủi ro và hội nhập quốc tế.' },
+];
+
 /* ── Hình học biểu đồ (giống why-pvi-market.tsx) ── */
 const R = 70, CIRC = 2 * Math.PI * R, GAP = 2.5, POP = 10;
 const pct = (n) => `${n.toFixed(2).replace('.', ',')}%`;
@@ -87,6 +100,29 @@ const html = `<!-- why-pvi:start -->
 <div class="wp-slogan"><div class="wp-slogan-track"><span>${esc(SLOGAN)}</span><span aria-hidden="true">${esc(SLOGAN)}</span></div></div></div>
 </div></div></section>
 <!-- why-pvi:end -->`;
+
+const press = `<section class="pvi-press" aria-labelledby="bao-chi-pvi"><div class="pp-inner">
+<h2 id="bao-chi-pvi">${esc(PRESS_TITLE)}</h2><p class="pp-lead">${esc(PRESS_LEAD)}</p>
+<ul class="pp-list">${PRESS.map((x) => `<li><a href="${x.href}" target="_blank" rel="noopener noreferrer"><img src="/assets/press/${x.logo}.webp" width="${x.w}" height="120" loading="lazy" decoding="async" alt="${esc(x.name)}"><p>${esc(x.text)}</p><span class="pp-more">Đọc bài trên ${esc(x.name)} <i aria-hidden="true">↗</i></span></a></li>`).join('')}</ul>
+<p class="pp-source">Nguồn: <a href="https://online.pvi.com.vn/" target="_blank" rel="noopener noreferrer">online.pvi.com.vn</a>. Bấm từng thẻ để đọc bài gốc.</p>
+</div></section>`;
+
+/* Trang cháy nổ: khối Vì sao chọn PVI + Báo chí, ngay sau bộ tra cứu (trước phần Nghị định). */
+{
+  const CN = path.resolve(HERE, '../dist/san-pham/chay-no-bat-buoc/index.html');
+  const block = `<!-- uy-tin-pvi:start -->\n${html.replace('<!-- why-pvi:start -->\n', '').replace('\n<!-- why-pvi:end -->', '').replace('id="ve-pvi"', 'id="vi-sao-pvi"')}\n${press}\n<!-- uy-tin-pvi:end -->`;
+  let cn = fs.readFileSync(CN, 'utf8');
+  const mk = /<!-- uy-tin-pvi:start -->[\s\S]*?<!-- uy-tin-pvi:end -->/;
+  if (mk.test(cn)) cn = cn.replace(mk, block);
+  else {
+    if (!cn.includes('<!-- chay-no-tra-cuu:end -->')) throw new Error('Không thấy khối tra cứu trên trang cháy nổ');
+    cn = cn.replace('<!-- chay-no-tra-cuu:end -->', '<!-- chay-no-tra-cuu:end -->\n' + block);
+  }
+  if (!cn.includes('href="/why-pvi.css"')) cn = cn.replace('<link rel="stylesheet" href="/chay-no.css">', '<link rel="stylesheet" href="/chay-no.css">\n<link rel="stylesheet" href="/why-pvi.css">');
+  if (!cn.includes('src="/why-pvi.js"')) cn = cn.replace('<script src="page.js" defer></script>', '<script src="page.js" defer></script><script src="/why-pvi.js" defer></script>');
+  fs.writeFileSync(CN, cn);
+  console.log('wrote dist/san-pham/chay-no-bat-buoc/index.html (uy-tin-pvi)');
+}
 
 let page = fs.readFileSync(FILE, 'utf8');
 const re = /<!-- why-pvi:start -->[\s\S]*?<!-- why-pvi:end -->/;

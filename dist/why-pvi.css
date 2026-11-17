@@ -104,3 +104,28 @@
   .wp-market{gap:8px}
   .wp-legend li{gap:3px 6px;padding:3px 5px 4px}
 }
+
+/* Khối "Báo chí nói về Bảo hiểm PVI" (trang cháy nổ, 17/11/2026; nội dung chép từ online.pvi.com.vn, HTML sinh bằng tools/gen-why-pvi.mjs).
+   Máy tính: 4 thẻ một hàng. Điện thoại: vuốt ngang, mỗi thẻ gần hết bề rộng. Không cần JS. */
+.pvi-press{background:#f8f8f8;padding:48px 0 52px;scroll-margin-top:84px}
+.pp-inner{max-width:var(--content,1220px);margin:0 auto;padding:0 28px}
+.pvi-press h2{color:#193665;font-size:clamp(24px,2.8vw,34px);font-weight:800;line-height:1.25;letter-spacing:-.02em;margin:0;text-align:center}
+.pvi-press .pp-lead{color:#4f4f4f;font-size:16px;line-height:1.65;margin:12px auto 0;max-width:760px;text-align:center}
+.pp-list{display:grid;gap:18px;grid-template-columns:repeat(4,minmax(0,1fr));list-style:none;margin:28px 0 0;padding:0}
+.pp-list a{background:#fff;border:1px solid #e3e9f0;border-radius:16px;box-shadow:0 10px 26px rgba(25,54,101,.06);color:inherit;display:flex;flex-direction:column;gap:14px;height:100%;padding:22px 22px 18px;text-decoration:none;transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease}
+.pp-list a:hover,.pp-list a:focus-visible{border-color:#9fbbe0;box-shadow:0 16px 34px rgba(25,54,101,.12);transform:translateY(-2px)}
+.pp-list img{display:block;height:48px;margin:0 auto;max-width:100%;object-fit:contain;width:auto}
+.pp-list p{color:#33475c;font-size:15px;line-height:1.6;margin:0;flex:1}
+.pp-more{color:#193665;font-size:14px;font-weight:700}
+.pp-more i{font-style:normal}
+.pp-source{color:#5b6f86;font-size:13px;margin:18px 0 0;text-align:center}
+.pp-source a{color:#193665;text-decoration:underline}
+@media (max-width:1100px){.pp-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){
+  .pvi-press{padding:36px 0 40px}
+  .pp-inner{padding:0 20px}
+  .pp-list{display:flex;gap:14px;overflow-x:auto;padding:4px 0 10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .pp-list::-webkit-scrollbar{display:none}
+  .pp-list li{flex:0 0 84%;scroll-snap-align:start}
+}
+@media (prefers-reduced-motion:reduce){.pp-list a{transition:none}.pp-list a:hover{transform:none}}
