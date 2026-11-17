@@ -1,0 +1,292 @@
+{
+  "source": "https://online.pvi.com.vn/chinh-sach-bao-ve-du-lieu-ca-nhan",
+  "pdfSource": "https://gw.pvi.digital/public/contract/ChinhSachBaoVeDuLieuCaNhan032026.pdf",
+  "retrievedAt": "2026-11-17",
+  "title": "Chính sách Bảo vệ Dữ liệu Cá nhân",
+  "decision": "Ban hành kèm theo Quyết định số 351/QĐ-PVIBH ngày 30 tháng 3 năm 2026 của Tổng giám đốc Tổng công ty Bảo hiểm PVI",
+  "content": {
+    "introTitle": "LỜI MỞ ĐẦU",
+    "introLines": [
+      "Tổng công ty Bảo hiểm PVI (“Bảo hiểm PVI”) cam kết bảo vệ thông tin cá nhân của các cá nhân mà Chúng tôi thu thập và xử lý trong quá trình hoạt động, bao gồm nhưng không giới hạn ở khách hàng tham gia bảo hiểm, người được bảo hiểm, người truy cập website, đối tác, nhà cung ứng và các đại diện của họ.",
+      "Chính sách Bảo vệ Dữ liệu cá nhân (sau đây gọi tắt là \"Chính sách\") quy định nguyên tắc và cách thức Bảo hiểm PVI thu thập, sử dụng, lưu trữ, xử lý và bảo vệ thông tin cá nhân của các cá nhân mà Bảo hiểm PVI thu thập và xử lý dữ liệu trong quá trình hoạt động kinh doanh và cung cấp dịch vụ, bao gồm nhưng không giới hạn ở Khách hàng, Người được bảo hiểm, Người thụ hưởng, Người truy cập website, Đối tác, Nhà cung cấp và các đại diện của họ.",
+      "Bảo hiểm PVI có quyền điều chỉnh Chính sách vào bất kỳ thời điểm nào và sẽ đăng bất kỳ sửa đổi nào trên trang web chính thức. Những thay đổi sẽ có hiệu lực ngay lập tức sau khi được đăng trên trang web: www.pvi.com.vn."
+    ],
+    "purposeTitle": "Mục đích của Chính sách Bảo vệ Dữ liệu cá nhân",
+    "purposeLines": [
+      "Vui lòng đọc cẩn thận Chính sách này. Nó giải thích cách Bảo hiểm PVI thu thập, sử dụng và chia sẻ dữ liệu cá nhân trong hoạt động kinh doanh, bao gồm:",
+      "- Những dữ liệu nào được thu thập, khi nào và tại sao Bảo hiểm PVI sử dụng các dữ liệu đó;",
+      "- Cách Bảo hiểm PVI chia sẻ dữ liệu cá nhân trong phạm vi nội bộ Bảo hiểm PVI và với các bên đối tác cung cấp dịch vụ của Bảo hiểm PVI, với các cơ quan quản lý nhà nước và các bên thứ ba khác;",
+      "- Giải thích về hoạt động tiếp thị trực tiếp;",
+      "- Cách Bảo hiểm PVI bảo vệ và lưu trữ dữ liệu cá nhân;",
+      "- Các quyền theo quy định pháp luật giúp Khách hàng kiểm soát và quản lý thông tin cá nhân của mình;",
+      "- Cách Khách hàng có thể liên hệ với Bảo hiểm PVI để có thể được hỗ trợ thêm.",
+      "Chính sách này mô tả cách Bảo hiểm PVI xử lý Thông tin Cá nhân thu thập thông qua:",
+      "- Các trang Web, phần mềm ứng dụng được Bảo hiểm PVI cung cấp để sử dụng trên máy tính, thiết bị di động hoặc các thiết bị kết nối Internet khác, các trang mạng xã hội của Bảo hiểm PVI được liệt kê tại các liên kết ở phần chân trang trên Website của Bảo hiểm PVI;",
+      "- Các phương tiện khác (ví dụ: Giấy yêu cầu bảo hiểm, Giấy khiếu nại bảo hiểm, các cuộc điện thoại, e-mails và các hình thức giao tiếp khác với Bảo hiểm PVI, cũng như từ các giám định viên tổn thất, các chuyên gia y tế, nhân chứng hoặc các bên thứ ba khác liên quan đến giao dịch giữa Bảo hiểm PVI và Khách hàng)."
+    ],
+    "updateTitle": "Cập nhật",
+    "updateLines": [
+      "Bảo hiểm PVI có thể điều chỉnh Chính sách Bảo vệ Dữ liệu Cá nhân này theo thời gian và sẽ đăng bản cập nhật trên trang Web này. Vui lòng kiểm tra thường xuyên trang Web này để có phiên bản Chính sách mới nhất. Chính sách này đã được cập nhật lần cuối vào ngày được nêu ở trên. Nếu Bảo hiểm PVI thực hiện những thay đổi cơ bản đối với Chính sách này, Bảo hiểm PVI sẽ nỗ lực hợp lý để thông báo cho Khách hàng thông qua việc đăng thông báo trên trang web này hoặc qua email, khi phù hợp."
+    ],
+    "articles": [
+      {
+        "key": "1",
+        "title": "# Điều 1: Định nghĩa và Giải thích từ ngữ",
+        "lines": [
+          "1.1. Bảo hiểm PVI là Tổng công ty Bảo hiểm PVI, được thành lập hợp pháp và hoạt động theo Giấy phép thành lập và hoạt động số 63 GP/KDBH ngày 28/6/2011 do Bộ Tài chính cấp.",
+          "1.2. Đơn vị là các công ty/chi nhánh, các văn phòng đại diện có chức năng chăm sóc khách hàng và giải quyết khiếu nại trực thuộc Bảo hiểm PVI.",
+          "1.3. Thông báo Xử lý Dữ liệu Cá nhân là Thông báo xử lý dữ liệu cá nhân được Bảo hiểm PVI thông báo cho khách hàng, cá nhân và đối tác đối với hoạt động xử lý dữ liệu cá nhân của khách hàng, cá nhân và đối tác tại Bảo hiểm PVI.",
+          "1.4. Khách hàng là cá nhân, tổ chức sử dụng hoặc có nhu cầu sử dụng các dịch vụ bảo hiểm do Bảo hiểm PVI cung cấp, trong đó Khách hàng cá nhân có thể đồng thời là Chủ thể Dữ liệu Cá nhân.",
+          "1.5. Chủ thể Dữ liệu Cá nhân là mọi cá nhân mà Bảo hiểm PVI thu thập và xử lý thông tin cá nhân, bao gồm nhưng không giới hạn ở khách hàng, người được bảo hiểm, người thụ hưởng bảo hiểm, người khiếu nại, người đại diện hay nhân viên của khách hàng doanh nghiệp và các cá nhân khác mà dữ liệu cá nhân của họ được Bảo hiểm PVI xử lý trong quá trình hoạt động kinh doanh.",
+          "1.6. Hợp đồng bảo hiểm: là các thỏa thuận bằng văn bản được ký kết giữa Bảo hiểm PVI với Khách hàng, kể cả các phụ lục, tài liệu, văn bản đính kèm hợp đồng này, là cơ sở để Bảo hiểm PVI cung cấp sản phẩm, dịch vụ bảo hiểm cho Khách hàng, bao gồm nhưng không giới hạn ở Hợp đồng bảo hiểm, Giấy chứng nhận bảo hiểm, Sửa đổi bổ sung, Giấy yêu cầu bảo hiểm, Giấy yêu cầu bồi thường … (hoặc mẫu biểu có tên gọi tương đương).",
+          "1.7. Sản phẩm và Dịch vụ: là các sản phẩm, dịch vụ mà Bảo hiểm PVI thực hiện, cung cấp cho Khách hàng theo Giấy phép thành lập và hoạt động đã được Bộ Tài chính cấp, bao gồm kinh doanh bảo hiểm gốc (gồm tất cả các nghiệp vụ bảo hiểm phi nhân thọ), tái bảo hiểm, giám định tổn thất, quản lý quỹ, đầu tư vốn và các hoạt động khác theo quy định của pháp luật.",
+          "1.8. Dữ liệu Cá nhân: là dữ liệu số hoặc thông tin dưới dạng khác xác định hoặc giúp xác định một con người cụ thể, bao gồm: dữ liệu cá nhân cơ bản và dữ liệu cá nhân nhạy cảm. Dữ liệu cá nhân sau khi khử nhận dạng không còn là dữ liệu cá nhân.",
+          "1.9. Dữ liệu cá nhân cơ bản: là dữ liệu cá nhân phản ánh các yếu tố nhân thân, lai lịch phổ biến, thường xuyên sử dụng trong các giao dịch, quan hệ xã hội, thuộc danh mục sau đây:",
+          "a. Họ, chữ đệm và tên khai sinh, tên gọi khác (nếu có);",
+          "b. Ngày, tháng, năm sinh; ngày, tháng, năm chết hoặc mất tích;",
+          "c. Giới tính;",
+          "d. Nơi sinh, nơi đăng ký khai sinh, nơi đăng ký thường trú, nơi đăng ký tạm trú, nơi ở hiện tại, quê quán, địa chỉ liên hệ.",
+          "e. Quốc tịch;",
+          "f. Hình ảnh của cá nhân;",
+          "g. Số điện thoại, số định danh cá nhân, số hộ chiếu, số giấy phép lái xe, số biển số xe;",
+          "h. Tình trạng hôn nhân;",
+          "i. Thông tin về mối quan hệ gia đình (cha mẹ, con, vợ, chồng);",
+          "j. Thông tin về tài khoản số của cá nhân;",
+          "k. Các thông tin khác gắn liền với một con người cụ thể hoặc giúp xác định một con người cụ thể mà không phải là dữ liệu cá nhân nhạy cảm.",
+          "1.10. Dữ liệu Cá nhân Nhạy cảm",
+          "Dữ liệu cá nhân nhạy cảm là dữ liệu cá nhân gắn liền với quyền riêng tư của cá nhân, khi bị xâm phạm sẽ gây ảnh hưởng trực tiếp đến quyền, lợi ích hợp pháp cá nhân, bao gồm:",
+          "a. Dữ liệu tiết lộ nguồn gốc chủng tộc, nguồn gốc dân tộc;",
+          "b. Quan điểm về chính trị, tôn giáo, tín ngưỡng;",
+          "c. Thông tin về đời sống riêng tư, bí mật cá nhân, bí mật gia đình;",
+          "d. Tình trạng sức khỏe;",
+          "e. Dữ liệu sinh trắc học, đặc điểm di truyền;",
+          "f. Dữ liệu tiết lộ đời sống tình dục, xu hướng tình dục của cá nhân;",
+          "g. Dữ liệu về tội phạm, vi phạm pháp luật được thu thập, lưu trữ bởi các cơ quan thực thi pháp luật;",
+          "h. Vị trí của cá nhân được xác định qua dịch vụ định vị;",
+          "i. Thông tin tên đăng nhập và mật khẩu truy cập tài khoản định danh điện tử của cá nhân; hình ảnh thẻ căn cước, thẻ căn cước công dân;",
+          "j. Tên đăng nhập, mật khẩu truy cập của tài khoản ngân hàng; thông tin thẻ ngân hàng, dữ liệu về lịch sử giao dịch của tài khoản ngân hàng; thông tin tài chính, tín dụng và các thông tin về hoạt động, lịch sử giao dịch tài chính, chứng khoán, bảo hiểm của khách hàng tại các tổ chức tín dụng, chi nhánh ngân hàng nước ngoài, tổ chức cung ứng dịch vụ trung gian thanh toán, chứng khoán, bảo hiểm và các tổ chức được phép khác;",
+          "k. Dữ liệu theo dõi hành vi, hoạt động sử dụng dịch vụ viễn thông, mạng xã hội, dịch vụ truyền thông trực tuyến và các dịch vụ khác trên không gian mạng;",
+          "l. Dữ liệu cá nhân khác được pháp luật quy định cần giữ bí mật hoặc cần có biện pháp bảo mật chặt chẽ.",
+          "1.11. Xử lý Dữ liệu Cá nhân: là hoạt động tác động đến dữ liệu cá nhân, bao gồm một hoặc nhiều hoạt động như sau: thu thập, phân tích, tổng hợp, mã hóa, giải mã, chỉnh sửa, xóa, hủy, khử nhận dạng, cung cấp, công khai, chuyển giao dữ liệu cá nhân và hoạt động khác tác động đến dữ liệu cá nhân.",
+          "1.12. Bên kiểm soát dữ liệu cá nhân: là cơ quan, tổ chức, cá nhân quyết định mục đích và phương tiện xử lý dữ liệu cá nhân.",
+          "1.13. Bên xử lý Dữ liệu Cá nhân: là cơ quan, tổ chức, cá nhân thực hiện việc xử lý dữ liệu cá nhân theo yêu cầu của Bên kiểm soát dữ liệu cá nhân hoặc Bên kiểm soát và xử lý dữ liệu cá nhân thông qua hợp đồng.",
+          "1.14. Bên Kiểm soát và Xử lý Dữ liệu Cá nhân: là cơ quan, tổ chức, cá nhân quyết định mục đích, phương tiện và trực tiếp xử lý dữ liệu cá nhân.",
+          "1.15. Bên thứ ba: là tổ chức, cá nhân ngoài chủ thể dữ liệu cá nhân, bên kiểm soát dữ liệu cá nhân, bên kiểm soát và xử lý dữ liệu cá nhân, bên xử lý dữ liệu cá nhân tham gia vào việc xử lý dữ liệu cá nhân theo quy định của pháp luật."
+        ]
+      },
+      {
+        "key": "2",
+        "title": "# Điều 2: Các loại dữ liệu được thu thập",
+        "lines": [
+          "2.1. Dữ liệu Cá nhân",
+          "Các loại dữ liệu cá nhân Bảo hiểm PVI thu thập nêu tại Điều 1 sẽ phụ thuộc vào hoàn cảnh mà thông tin đó được thu thập (ví dụ, là người ký hợp đồng bảo hiểm, người được bảo hiểm hoặc người khiếu nại bảo hiểm, nhân chứng, các trung gian bảo hiểm, đại diện được chỉ định hoặc bất kỳ ai có liên quan đến hoạt động kinh doanh của Bảo hiểm PVI).",
+          "2.2. Các dữ liệu thông tin khác được Bảo hiểm PVI thu thập",
+          "Ngoài dữ liệu cá nhân, Bảo hiểm PVI thu thập các dữ liệu khác thông qua website. Bảo hiểm PVI và các đối tác cung cấp dịch vụ Bên thứ ba có thể thu thập các thông tin theo nhiểu cách, bao gồm:",
+          "a. Sử dụng Cookies: Cookies là các thông tin được lưu trữ trực tiếp trên máy tính chủ thể dữ liệu cá nhân đang sử dụng. Cookies cho phép Bảo hiểm PVI nhận ra máy tính của chủ thể dữ liệu cá nhân và thu thập thông tin như loại trình duyệt internet, thời gian truy cập trang web, các trang đã truy cập và ngôn ngữ sử dụng. Bảo hiểm PVI có thể sử dụng thông tin này cho mục đích bảo mật, tạo điều kiện thuận lợi cho việc duyệt web, hiển thị thông tin hiệu quả hơn, cá nhân hóa trải nghiệm của chủ thể dữ liệu cá nhân khi truy cập trang web hoặc thu thập thông tin thống kê về việc sử dụng trang web.",
+          "b. Sử dụng các công nghệ theo dõi hành vi người duyệt web hoặc email: Những công nghệ này có thể được sử dụng liên quan đến một số trang trên trang web và trong các email được định dạng bằng HTML, nhằm theo dõi hành động của người dùng trang web và người nhận email, đo lường hiệu quả của các chiến dịch tiếp thị của Bảo hiểm PVI và tổng hợp thống kê về việc sử dụng trang web và tỷ lệ phản hồi."
+        ]
+      },
+      {
+        "key": "3",
+        "title": "# Điều 3: Cách thức Thu thập Dữ liệu Cá nhân",
+        "lines": [
+          "Bảo hiểm PVI (bao gồm cả Bên xử lý dữ liệu được Bảo hiểm PVI sử dụng) chủ yếu thu thập dữ liệu cá nhân của Khách hàng thông qua các Giấy yêu cầu bảo hiểm được gửi trực tiếp cho Bảo hiểm PVI hoặc thông qua trung gian có giấy phép hoạt động / chứng chỉ hành nghề mà Bảo hiểm PVI có hợp tác/ủy quyền (Môi giới, đại lý bảo hiểm), qua các hồ sơ giải quyết khiếu nại bảo hiểm hoặc quá trình tiếp xúc với Khách hàng để giải quyết khiếu nại bảo hiểm, hoặc thông qua các trang mạng hay ứng dụng, bao gồm nhưng không giới hạn ở:",
+          "a. Các nhà cung cấp, bên cung cấp dịch vụ, đối tác và các bên thứ ba, bao gồm nhưng không giới hạn ở các bên tư vấn về khảo sát, truyền thông mạng xã hội, tiếp thị, ngăn ngừa gian lận, tập hợp dữ liệu, các bên hỗ trợ cơ sở hạ tầng/trang thiết bị, và các bên thứ ba khác liên quan đến hoạt động kinh doanh của Bảo hiểm PVI.",
+          "b. Các Bên thứ ba khác có quan hệ với Khách hàng, như người sử dụng lao động, đồng sở hữu tài khoản.",
+          "c. Bất kỳ bên cung cấp thông tin tham chiếu, các cơ quan nhà nước,  hoặc từ bất kỳ nguồn thông tin công cộng có sẵn nào khác.",
+          "Các tập tin được tạo ra bởi trang mạng mà Khách hàng truy cập (Cookie).",
+          "d. “Cookie\" được sử dụng để thu thập thông tin thống kê về lưu lượng truy cập và các mẫu sử dụng trang web. “Cookie” không theo dõi tên của người truy cập, địa chỉ email hoặc thông tin cá nhân tương tự.",
+          "e. Các nguồn thông tin của bên thứ ba mà Khách hàng đồng ý thu thập hoặc những nguồn mà việc thu thập thông tin được pháp luật yêu cầu hoặc cho phép."
+        ]
+      },
+      {
+        "key": "4",
+        "title": "# Điều 4: Mục đích Xử lý Dữ liệu Cá nhân",
+        "lines": [
+          "4.1. Đối với khách hàng: Bảo hiểm PVI chỉ thu thập dữ liệu cá nhân nêu trên để thực hiện hoạt động kinh doanh, hiểu nhu cầu bảo hiểm của khách hàng và cung cấp dịch vụ và sản phẩm tốt hơn cho Khách hàng.",
+          "Bảo hiểm PVI thu thập và sử dụng dữ liệu cá nhân bao gồm nhưng không giới hạn ở những mục đích sau:",
+          "a. Cung cấp bảo hiểm, dịch vụ tài chính hoặc các sản phẩm và dịch vụ liên quan cho Khách hàng và quản lý, duy trì, vận hành các sản phẩm và/hoặc dịch vụ đó.",
+          "b. Xử lý, đánh giá và xác định các đơn đăng ký hoặc yêu cầu của Khách hàng về các sản phẩm hoặc dịch vụ bảo hiểm.",
+          "c. Bất kỳ mục đích nào liên quan đến bất kỳ yêu cầu bồi thường nào đối với bất kỳ sản phẩm bảo hiểm nào hoặc bất kỳ dịch vụ nào do Bảo hiểm PVI hoặc các đơn vị liên kết của Bảo hiểm PVI cung cấp, bao gồm nhưng không giới hạn ở việc tiến hành, bảo vệ, phân tích, điều tra, giám định, xử lý, đánh giá, xác định hoặc phản hồi các yêu cầu bồi thường đó.",
+          "d. Gửi thông tin quan trọng cho Khách hàng liên quan đến những thay đổi về các chính sách của Bảo hiểm PVI, các điều khoản và điều kiện khác, các trang web và thông tin quản lý khác;",
+          "e. Thực hiện bất kỳ chức năng và hành động nào liên quan đến các sản phẩm bảo hiểm và/hoặc dịch vụ do Bảo hiểm PVI cung cấp, bao gồm nhưng không giới hạn ở việc thu xếp tái bảo hiểm, kiểm toán, báo cáo, nghiên cứu thị trường, quản lý dịch vụ sau khi cấp đơn bảo hiểm, duy trì và bảo trì các dịch vụ trưc tuyến và các dịch vụ khác;",
+          "f. Quản lý cơ sở hạ tầng và hoạt động kinh doanh của Bảo hiểm PVI, tuân thủ các chính sách và quy trình, quy định nội bộ, bao gồm các quy định liên quan đến kiểm toán, tài chính-kế toán, lập hóa đơn và thu phí, hệ thống CNTT, lưu trữ dữ liệu và trang web; Quản lý bảo đảm kinh doanh liên tục; Quản lý hồ sơ, tài liệu và in ấn;",
+          "g. Tuân thủ các nghĩa vụ theo quy định pháp luật hiện hành, như các luật liên quan đến chống rửa tiền và chống khủng bố cũng như các quy trình pháp lý; đáp ứng các yêu cầu từ các cơ quan công quyền;",
+          "h. Đáp ứng các yêu cầu khai báo theo quy định của bất kỳ quy định pháp luật nào ràng buộc trách nhiệm của Bảo hiểm PVI hoặc vì mục đích tuân thủ các quy định hoặc hướng dẫn được ban hành bởi bất kỳ cơ quan quản lý nhà nước có thẩm quyền đối với Bảo hiểm PVI;",
+          "i. Thực hiện bất kỳ quyền nào mà Bảo hiểm PVI hoặc các đơn vị liên kết của Bảo hiểm PVI có thể có liên quan đến việc cung cấp các sản phẩm và dịch vụ bảo hiểm cho Khách hàng;",
+          "j. Tiến hành kiểm tra danh tính, như với mục đích xác minh danh tính Khách hàng để đáp ứng yêu cầu của Khách hàng về việc cung cấp chính sách, quy tắc bảo hiểm hoặc các tài liệu khác, thông tin thay đổi địa chỉ của Khách hàng trong hồ sơ lưu tại Bảo hiểm PVI, hoặc thay đổi thông tin tài khoản ngân hàng hoặc thông tin thanh toán hay các thông tin khác trong hồ sơ của Bảo hiểm PVI;",
+          "k. Tiến hành kiểm tra tín dụng của Khách hàng như phân tích, xác minh và/hoặc kiểm tra tín dụng, thanh toán và/hoặc tình trạng của Khách hàng liên quan đến khả năng sử dụng dịch vụ;",
+          "l. Xác định bất kỳ khoản nợ phải trả cho hoặc phải thu từ Khách hàng, và thu phí, thu đòi bất kỳ khoản phí nợ nào từ Khách hàng hay bất kỳ ai đã cung cấp tài sản đảm bảo hoặc cam kết cho các khoản nợ của Khách hàng;",
+          "m. Nâng cao chất lượng dịch vụ, hoản thiện sản phẩm, đào tạo và bảo mật phòng chống rủi ro;",
+          "n. Giải quyết các khiếu nại, xử lý các yêu cầu về truy cập hoặc chỉnh sửa dữ liệu;",
+          "o. Ngăn chặn, phát hiện và điều tra các hành vi phạm tội, bao gồm gian lận và rửa tiền; Phân tích và quản lý các rủi ro thương mại khác;",
+          "p. Tiếp thị các sản phẩm và dịch vụ sau tới Khách hàng:",
+          "- Sản phẩm và dịch vụ liên quan đến bảo hiểm; và",
+          "- Chương trình thưởng, tri ân hoặc ưu tiên và các sản phẩm, dịch vụ liên quan",
+          "- Những sản phẩm và dịch vụ này có thể cung cấp bởi Bảo hiểm PVI và/hoặc các công ty tiếp thị được ủy quyền.",
+          "q. Bất kỳ mục đích nào liên quan đến những mục đích ở trên hay mục đích khác phù hợp với chinh sách chung của Bảo hiểm PVI liên quan đến các dịch vụ bảo hiểm và tài chính được nêu trong các tuyên bố, thông điệp, thông báo hoặc các điều khoản, điều kiện khác mà Bảo hiểm PVI cung cấp cho Khách hàng;",
+          "r. Để đáp ứng hoặc tuân thủ các chính sách nội bộ của Bảo hiểm PVI và các quy định pháp luật, yêu cầu bằng văn bản, quyết định được ban hành bởi tòa án, các cơ quan nhà nước có thẩm quyền hoặc cơ quan, tổ chức quản lý khác mà trong đó Bảo hiểm PVI là thành viên tham gia hoặc Việt Nam là quốc gia thành viên (bao gồm nhưng không giới hạn việc tiết lộ thông tin cho các cơ quan quản lý, thanh tra, giám sát hoặc kiểm toán);",
+          "s. Bất kỳ mục đích nào khác được yêu cầu hoặc cho phép bởi quy định pháp luật",
+          "4.2. Đối với đối tác: Mục đích của việc thu thập dữ liệu cá nhân của đối tác để thực hiện công tác quản lý hợp đồng hợp tác và cung cấp thông tin cho các cơ quan quản lý nhà nước theo các quy định hiện hành của pháp luật."
+        ]
+      },
+      {
+        "key": "5",
+        "title": "# Điều 5: Cách thức Xử lý Dữ liệu Cá nhân",
+        "lines": [
+          "5.1. Bảo hiểm PVI và/hoặc các Bên liên quan có xử lý dữ liệu cá nhân theo sự đồng ý của Chủ thể Dữ liệu cá nhân sẽ thực hiện các hoạt động thu thập, ghi, phân tích, xác nhận, lưu trữ, chỉnh sửa, công khai, kết hợp, truy cập, truy xuất, thu hồi, mã hóa, giải mã, sao chép, chia sẻ, truyền đưa, cung cấp, chuyển giao, xóa, hủy dữ liệu cá nhân hoặc các hành động khác có liên quan theo quy định pháp luật nhằm thực hiện các mục đích theo quy định tại Điều 4 trên đây.",
+          "5.2.Chủ thể Dữ liệu Cá nhân đồng ý rằng trong quá trình giao dịch tại các địa điểm kinh doanh của Bảo hiểm PVI và/hoặc thông qua các kênh liên lạc khác như đường dây nóng (hotline) của Bảo hiểm PVI, các ứng dụng bán hàng trưc tuyến, Bảo hiểm PVI có thể sẽ ghi lại hình ảnh và/hoặc giọng nói của Chủ thể Dữ liệu Cá nhân nhằm thực hiện các mục đích theo quy định tại Điều 4 trên đây."
+        ]
+      },
+      {
+        "key": "6",
+        "title": "# Điều 6: Các chủ thể liên quan đến mục đích xử lý dữ liệu cá nhân",
+        "lines": [
+          "a. Cán bộ nhân viên của Bảo hiểm PVI;",
+          "b. Các đơn vị trực thuộc Bảo hiểm PVI;",
+          "c. Các công ty và/hoặc các tổ chức đóng vai trò là các bên cung cấp, đối tác, đại lý, môi giới và/hoặc các cố vấn, tư vấn chuyên nghiệp của Bảo hiểm PVI, bao gồm nhưng không giới hạn ở các công ty cung cấp dịch vụ hành chính, bưu chính, tiếp thị, bán hàng, trung tâm chăm sóc khách hàng, quản trị nhân sự, xử lý dữ liệu, công nghệ thông tin, máy tính, thanh toán, và các công ty thực hiện dịch vụ định danh khách hàng, nghiên cứu trị trường, mô hình hóa dữ liệu, lưu trữ và quản lý hồ sơ, nhập liệu, pháp lý, mạng xã hội, viễn thông, kết nối mạng, điện thoại, cơ sở hạ tầng và hỗ trợ công nghệ, báo cáo rủi ro, an toàn thông tin, trung tâm dữ liệu, hội thảo, các dịch vụ tư vấn, và/hoặc các dịch vụ khác có liên quan đến, hoặc để hỗ trợ, cho việc vận hành hoạt động kinh doanh của Bảo hiểm PVI;",
+          "d. Bộ Tài chính, Tòa án, các cơ quan nhà nước có thẩm quyền, các cơ quan, tổ chức mà Bảo hiểm PVI được phép hoặc có nghĩa vụ phải tiết lộ, cung cấp thông tin theo quy định pháp luật, hoặc theo các hợp đồng, cam kết nào khác giữa Bảo hiểm PVI với các bên này;",
+          "e. Bất kỳ cá nhân, cơ quan có thẩm quyền hoặc cơ quan quản lý hoặc bên thứ ba mà Bảo hiểm PVI được quyền hoặc bắt buộc phải tiết lộ theo quy định của pháp luật hoặc theo bất kỳ hợp đồng, cam kết giữa bên thứ ba với Bảo hiểm PVI;",
+          "f. Bất kỳ cá nhân, tổ chức nào thanh toán/sẽ thực hiện thanh toán bất kỳ khoản tiền nào chưa thanh toán bằng bất kỳ tài khoản thanh toán nào của Khách hàng với Bảo hiểm PVI;",
+          "g. Bất kỳ cá nhân nào có liên quan đến việc thực thi, duy trì, bảo vệ bất kỳ quyền nào của Bảo hiểm PVI theo Hợp đồng sản phẩm, dịch vụ, các thỏa thuận giữa Bảo hiểm PVI với Khách hàng."
+        ]
+      },
+      {
+        "key": "7",
+        "title": "# Điều 7: Hậu quả, thiệt hại không mong muốn có khả năng xảy ra",
+        "lines": [
+          "Trong quá trình xử lý dữ liệu, Bảo hiểm PVI luôn cố gắng tuân thủ các quy định pháp luật, đảm bảo các hàng rào bảo mật, áp dụng các biện pháp đảm bảo an toàn hệ thống thông tin hết mức có thể nhằm bảo mật dữ  liệu cá nhân của Khách hàng ở mức cao nhất. Tuy nhiên, vì lý do kỹ thuật hoặc các lý do khác nằm ngoài sự kiểm soát của Bảo hiểm PVI, việc thất thoát dữ liệu, rò rỉ thông tin vẫn có thể xảy ra và gây nên các hậu quả, thiệt hại không muốn đối với chủ thể dữ liệu cá nhân và/hoặc Bảo hiểm PVI. Trong trường hợp này, Bảo hiểm PVI sẽ cố gắng hết mức có thể để sửa chữa và củng cố hệ thống bảo mật, giảm thiểu thiệt hại phát sinh cho Khách hàng."
+        ]
+      },
+      {
+        "key": "8",
+        "title": "# Điều 8: Quyền và Nghĩa vụ của Khách hàng",
+        "lines": [
+          "Các Khách hàng của Bảo hiểm PVI có các quyền sau liên quan đến dữ liệu cá nhân đã cung cấp cho Bảo hiểm PVI.",
+          "a. Được biết về hoạt động xử lý dữ liệu cá nhân.",
+          "b. Đồng ý hoặc không đồng ý, yêu cầu rút lại sự đồng ý cho phép xử lý dữ liệu cá nhân;",
+          "c. Xem, chỉnh sửa hoặc yêu cầu chỉnh sửa dữ liệu cá nhân.",
+          "d. Yêu cầu Bảo hiểm PVI cung cấp, xóa, hạn chế xử lý dữ liệu cá nhân; gửi yêu cầu phản đối xử lý dữ liệu cá nhân.",
+          "e. Yêu cầu cơ quan có thẩm quyền hoặc cơ quan, tổ chức, cá nhân liên quan đến xử lý dữ liệu cá nhân thực hiện các biện pháp, giải pháp bảo vệ dữ liệu cá nhân của mình theo quy định của pháp luật.",
+          "8.2. Các Khách hàng của Bảo hiểm PVI có các nghĩa vụ sau liên quan đến dữ liệu cá nhân đã cung cấp cho Bảo hiểm PVI:",
+          "a. Tự bảo vệ dữ liệu cá nhân của mình;",
+          "b. Cung cấp đầy đủ, chính xác dữ liệu cá nhân của mình theo quy định của pháp luật, theo hợp đồng hoặc khi đồng ý cho phép xử lý dữ liệu cá nhân của mình.",
+          "8.3. Khách hàng khi thực hiện quyền và nghĩa vụ của mình phải tuân thủ đầy đủ các nguyên tắc sau đây:",
+          "a. Thực hiện theo quy định của pháp luật, của chính sách này; tuân thủ nghĩa vụ của Khách hàng theo hợp đồng. Việc thực hiện quyền và nghĩa vụ của Khách hàng phải nhằm mục đích bảo vệ quyền, lợi ích hợp pháp của Khách hàng;",
+          "b. Không được gây khó khăn, cản trở việc thực hiện quyền, nghĩa vụ pháp lý của Bảo hiểm PVI và bên thứ ba."
+        ]
+      },
+      {
+        "key": "9",
+        "title": "# Điều 9: Truy cập và Chỉnh sửa Dữ liệu Cá nhân",
+        "lines": [
+          "Khách hàng được tự mình chỉnh sửa dữ liệu cá nhân của mình đối với một số loại dữ liệu cá nhân theo thỏa thuận với Bảo hiểm PVI hoặc đề nghị Bảo hiểm PVI chỉnh sửa dữ liệu cá nhân của mình bằng việc gửi yêu cầu chỉnh sửa tới Bảo hiểm PVI theo địa chỉ sau:",
+          "Tổng công ty Bảo hiểm PVI / PVI Insurance Corporation",
+          "- Địa chỉ: Tầng 23-24, PVI Tower, 1 Phạm Văn Bạch, Cầu Giấy. Hà Nội",
+          "- Hotline: 1900 545458",
+          "- E-mail: contactcenter@pvi.com.vn"
+        ]
+      },
+      {
+        "key": "10",
+        "title": "# Điều 10: Tiết lộ thông tin",
+        "lines": [
+          "Dù dữ liệu cá nhân mà Bảo hiểm PVI lưu trữ được bảo mật, Bảo hiểm PVI có thể tiết lộ hoặc chuyển giao dữ liệu đó cho bất kỳ một trong những nhóm người sau đây để thực hiện mục đích được liệt kê ở Điều 4 trên đây với những điều kiện bảo vệ dữ liệu cá nhân tương tự.",
+          "a. Các môi giới bảo hiểm có giấy phép hoạt động;",
+          "b. Các đại lý bảo hiểm và tư vấn chuyên nghiệp;",
+          "c. Các công ty kinh doanh bảo hiểm và/hoặc tái bảo hiểm;",
+          "d. Các công ty giám định tổn thất độc lập;",
+          "e. Hiệp hội các doanh nghiệp bảo hiểm;",
+          "f. Các nhà cung cấp dịch vụ khác liên quan đến bảo hiểm và tái bảo hiểm;",
+          "g. Các công ty tiếp thị được Bảo hiểm PVI ủy quyền tiến hành các hoạt động tiếp thị liên quan đến các sản phẩm của Bảo hiểm PVI;",
+          "h. Bất kỳ đại lý, nhà thầu hay nhà cung cấp dịch vụ nào cung cấp các dịch vụ hành chính, viến thông, máy tính, thanh toán, xử lý hoặc lưu trữ dữ liệu, mạng xã hội hay các dịch vụ khác cho Bảo hiểm PVI liên quan đến hoạt động kinh doanh của Bảo hiểm PVI;",
+          "i. Bất kỳ cá nhân nào có nghĩa vụ bảo mật thông tin đối với Bảo hiểm PVI và đã có cam kết bảo mật dữ liệu đó;",
+          "j. Bất kỳ cá nhân nào mà Bảo hiểm PVI có nghĩa vụ tiết lộ thông tin theo yêu cầu của luật, quy chế, quy định, các nguyên tắc, tiêu chuẩn thực hành và hướng dẫn phải tuân thủ trong hoạt động kinh doanh của Bảo hiểm PVI, bao gồm nhưng không giới hạn ở bất kỳ cơ quan quản lý nhà nước có thẩm quyền nào, và những trường hợp khác theo quy định của pháp luật;",
+          "k. Bất kỳ hồ sơ khiếu nại bảo hiểm nào chia sẻ với các công ty bảo hiểm khác nhằm mục đích phát hiện, ngăn chặn hoặc điều tra các khiếu nại gian lạn (và với mục đích này, Bảo hiểm PVI có thể tìm kiếm những hồ sơ như vậy)."
+        ]
+      },
+      {
+        "key": "11",
+        "title": "# Điều 11: Chuyển dữ liệu cá nhân xuyên biên giới",
+        "lines": [
+          "Bởi vì tính chất quốc tế của hoạt động kinh doanh của Bảo hiểm PVI, vì các mục đích nêu trên, Bảo hiểm PVI có thể chuyển dữ liệu thông tin cá nhân sang các bên có liên quan đến hoạt động kinh doanh của Bảo hiểm PVI ở quốc gia khác. Ví dụ, Bảo hiểm PVI có thể chuyển thông tin cá nhân để xử lý các yêu cầu bồi thường bảo hiểm du lịch quốc tế và cung cấp các dịch vụ cấp cứu y tế khi Khách hàng đang ở nước ngoài. Bảo hiểm PVI cũng có thể chuyển thông tin cho các đối tác kinh doanh tái bảo hiểm ở nước ngoài."
+        ]
+      },
+      {
+        "key": "12",
+        "title": "# Điều 12: Bảo vệ Dữ liệu Cá nhân",
+        "lines": [
+          "Bảo hiểm PVI thực hiện các biện pháp cần thiết về kỹ thuật, vật lý, pháp lý và tổ chức để quản lý bảo vệ dữ liệu cá nhân một cách an toàn và phù hợp với quy định của pháp luật. Tuy nhiên, không có hệ thống truyền dữ liệu qua internet hoặc hệ thống lưu trữ dữ liệu nào được đảm bảo 100% an toàn. Nếu Khách hàng có lý do tin rằng việc tương tác với Bảo hiểm PVI không còn an toàn nữa, vui lòng ngay lập tức thông báo cho Bảo hiểm PVI như nêu ở Điều 9 trên đây."
+        ]
+      },
+      {
+        "key": "13",
+        "title": "# Điều 13: Xóa, Hủy, Khử nhận dạng Dữ liệu Cá nhân",
+        "lines": [
+          "13.1. Bảo hiểm PVI sẽ thực hiện tất cả các biện pháp hợp lý và thực tế để xoá, hủy, khử nhận dạng dữ liệu cá nhân đang nắm giữ về Chủ thể dữ liệu cá nhân trong các trường hợp sau đây:",
+          "a. Chủ thể Dữ liệu cá nhân có yêu cầu và chấp nhận các rủi ro, thiệt hại có thể xảy ra đối với mình. Yêu cầu của Chủ thể Dữ liệu cá nhân trong trường hợp này phải tuân thủ đầy đủ các nguyên tắc quy định tại Mục 8.3 của Chính sách này;",
+          "b. Đã hoàn thành mục đích xử lý dữ liệu cá nhân;",
+          "c. Hết thời hạn lưu trữ theo quy định của pháp luật;",
+          "d. Thực hiện theo quyết định của cơ quan nhà nước có thẩm quyền;",
+          "e. Thực hiện theo thỏa thuận;",
+          "f. Trường hợp khác theo quy định của pháp luật.",
+          "13.2. Không thực hiện yêu cầu của Chủ thể dữ liệu cá nhân về việc xóa, hủy dữ liệu cá nhân trong các trường hợp quy định tại Điều 14.4 của Chính sách này hoặc việc xóa, hủy dữ liệu cá nhân vi phạm quy định tại Điều 8.3 của Chính sách này.",
+          "13.3. Việc xóa, hủy dữ liệu cá nhân sẽ được thực hiện bằng các biện pháp an toàn, ngăn chặn hoạt động xâm nhập và khôi phục trái phép dữ liệu cá nhân đã bị xóa, hủy.",
+          "13.4. Bảo hiểm PVI cam kết không khôi phục dữ liệu cá nhân đã bị xóa, hủy theo yêu cầu của Chủ thể Dữ liệu cá nhân hoặc quy định pháp luật.",
+          "13.5. Trường hợp không thể xóa, hủy dữ liệu cá nhân vì lý do chính đáng sau khi nhận được yêu cầu của chủ thể dữ liệu cá nhân, Bảo hiểm PVI sẽ thông báo để chủ thể dữ liệu cá nhân biết.",
+          "13.6. Việc khử nhận dạng dữ liệu cá nhân được thực hiện như sau:",
+          "a. Bảo hiểm PVI sẽ kiểm soát và giám sát chặt chẽ quá trình khử nhận dạng dữ liệu cá nhân, không để việc truy cập trái phép, sao chép, chiếm đoạt, làm lộ, làm mất dữ liệu cá nhân trong quá trình khử nhận dạng.",
+          "b. Bảo hiểm PVI không tái nhận dạng dữ liệu cá nhân sau khi đã được khử nhận dạng, trừ trường hợp pháp luật có quy định khác.",
+          "c. Bảo hiểm PVI cam kết tuân thủ quy định của Luật Bảo vệ Dữ liệu cá nhân hiện hành và quy định khác của pháp luật có liên quan về việc khử nhận dạng dữ liệu cá nhân."
+        ]
+      },
+      {
+        "key": "14",
+        "title": "# Điều 14: Sự đồng ý của Chủ thể Dữ liệu Cá nhân",
+        "lines": [
+          "14.1. Sự đồng ý của Chủ thể Dữ liệu Cá nhân là việc Chủ thể Dữ liệu Cá nhân cho phép Bảo hiểm PVI xử lý dữ liệu cá nhân của mình, trừ trường hợp pháp luật có quy định khác.",
+          "14.2. Sự đồng ý của Chủ thể Dữ liệu Cá nhân chỉ có hiệu lực khi dựa trên sự tự nguyện và biết rõ các thông tin sau đây:",
+          "- Loại dữ liệu cá nhân được xử lý, mục đích xử lý dữ liệu cá nhân",
+          "- Bảo hiểm PVI là Bên Kiểm soát và Xử lý dữ liệu cá nhân",
+          "- Các quyền, nghĩa vụ của Chủ thể Dữ liệu Cá nhân",
+          "14.3. Nếu Bạn cung cấp thông tin cá nhân của người khác cho Bảo hiểm PVI, thì Bạn đồng ý rằng: (a) thông báo cho người đó về nội dung Chính sách này và bất kỳ Chính sách bảo mật nào khác của Bảo hiểm PVI cung cấp cho Chủ thể Dữ liệu cá nhân; và (b) thu thập mọi sự đồng ý cần thiết theo luật pháp về việc thu thập thông tin cá nhân của người đó theo Chính sách này và các Thông báo Bảo mật khác.",
+          "14.4. Bảo hiểm PVI có thể xử lý dữ liệu cá nhân mà không cần sự đồng ý của Chủ thể Dữ liệu cá nhân trong các trường hợp sau:",
+          "a. Để bảo vệ tính mạng, sức khỏe, danh dự, nhân phẩm, quyền, lợi ích hợp pháp của chủ thể dữ liệu cá nhân hoặc người khác trong trường hợp cấp bách; bảo vệ quyền hoặc lợi ích chính đáng của Bảo hiểm PVI, của người khác hoặc lợi ích của Nhà nước, của cơ quan tổ chức một cách cần thiết trước hành vi xâm phạm lợi ích nói trên. Bảo hiểm PVI và bên thứ ba có trách nhiệm chứng minh trường hợp này;",
+          "b. Để giải quyết tình trạng khẩn cấp; nguy cơ đe dọa an ninh quốc gia nhưng chưa đến mức ban bố tình trạng khẩn cấp; phòng, chống bạo loạn, khủng bố, phòng, chống tội phạm và vi phạm pháp luật;",
+          "c. Phục vụ hoạt động của cơ quan nhà nước, hoạt động quản lý nhà nước theo quy định của pháp luật;",
+          "d. Thực hiện thỏa thuận của Chủ thể Dữ liệu Cá nhân với Bảo hiểm PVI, cơ quan, tổ chức, cá nhân có liên quan theo quy định của pháp luật;",
+          "e. Trường hợp khác theo quy định của pháp luật."
+        ]
+      },
+      {
+        "key": "15",
+        "title": "# Điều 15: Yêu cầu Rút lại sự Đồng ý, yêu cầu Hạn chế Xử lý Dữ liệu Cá nhân",
+        "lines": [
+          "15.1. Khi việc xử lý dữ liệu cá nhân của Chủ thể Dữ liệu cá nhân được thực hiện dựa trên sự đồng ý trước của Chủ thể Dữ liệu cá nhân, Chủ thể Dữ liệu cá nhân có quyền rút lại sự đồng ý của mình khi có nghi ngờ phạm vi, mục đích xử lý dữ liệu cá nhân hoặc tính chính xác của dữ liệu cá nhân, trừ trường hợp quy định tại điều 14.4 của Chính sách này hoặc trường hợp pháp luật có quy định khác. Tuy nhiên, việc rút lại sự đồng ý này sẽ không ảnh hưởng đến tính hợp pháp của việc xử lý dữ liệu trước đó.",
+          "15.2. Chủ thể Dữ liệu Cá nhân thực hiện việc rút sự đồng ý, yêu cầu hạn chế xử lý dữ liệu cá nhân phải bằng văn bản, bao gồm cả dạng điện tử hoặc định dạng kiểm chứng được và được gửi cho Bảo hiểm PVI theo địa chỉ liên lạc nêu ở Điều 9 trên đây.",
+          "15.3. Trong trường hợp Khách hàng rút lại sự đồng ý, Bảo hiểm PVI có thể sẽ không cung cấp cho Khách hàng các dịch vụ đầy đủ và chất lượng như yêu cầu nếu các thông tin bị rút lại sự đồng ý gây ảnh hưởng trực tiếp tới việc cung cấp dịch vụ hoặc chất lượng dịch vụ.",
+          "15.4. Trong trường hợp đối tác rút lại sự đồng ý, Bảo hiểm PVI có thể sẽ không hợp tác hoặc giới hạn hợp tác một phần với đối tác như thỏa thuận trong hợp đồng hợp tác nếu các thông tin bị rút lại sự đồng ý gây ảnh hưởng trực tiếp tới mục đích xử lý dữ liệu cá nhân của đối tác quy định tại Điều 4.3 của Chính sách này."
+        ]
+      },
+      {
+        "key": "16",
+        "title": "# Điều 16: Công khai Dữ liệu Cá nhân",
+        "lines": [
+          "16.1. Dữ liệu cá nhân chỉ được công khai với mục đích cụ thể và hợp pháp. Phạm vi công khai, loại dữ liệu cá nhân được công khai phải phù hợp với mục đích công khai. Việc công khai dữ liệu cá nhân không được xâm phạm đến quyền, lợi ích hợp pháp của chủ thể dữ liệu cá nhân",
+          "16.2. Dữ liệu cá nhân chỉ được công khai trong các trường hợp sau đây:",
+          "a. Khi có sự đồng ý của Chủ thể Dữ liệu Cá nhân;",
+          "b. Thực hiện theo quy định của pháp luật;",
+          "c. Trường hợp quy định tại Điểm d Điều 14.4 của Chính sách này;",
+          "d. Thực hiện nghĩa vụ theo hợp đồng."
+        ]
+      },
+      {
+        "key": "17",
+        "title": "# Điều 17: Ngôn ngữ ưu tiên",
+        "lines": [
+          "Chính sách Bảo vệ Dữ liệu Cá nhân này được lập song ngữ bằng tiếng Việt và tiếng Anh. Trường hợp có bât kỳ sai khác nào giữa phiên bản tiếng Anh và tiếng Việt thì phiên bản tiếng Việt sẽ được ưu tiên áp dụng."
+        ]
+      }
+    ]
+  }
+}

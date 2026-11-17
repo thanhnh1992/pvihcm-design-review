@@ -1,0 +1,75 @@
+.privacy-footer-links{display:flex;flex:0 0 100%;flex-wrap:wrap;align-items:center;gap:8px 24px;margin-bottom:12px}
+.privacy-footer-links a,.privacy-footer-links button{display:inline-flex;align-items:center;min-height:44px;color:#1f4a8c;font:600 14px/1.6 "Be Vietnam Pro",sans-serif;text-decoration:underline;text-underline-offset:3px}
+.privacy-footer-links button{padding:0;border:0;background:none;cursor:pointer;text-align:left}
+.privacy-banner-open{scroll-padding-bottom:var(--privacy-banner-height,160px)}
+.privacy-banner-open body{padding-bottom:var(--privacy-banner-height,160px)}
+.privacy-dialog{box-sizing:border-box;position:fixed;inset:auto 0 0;z-index:100000;width:100%;max-width:none;max-height:25dvh;margin:0;padding:18px max(32px,calc((100vw - 1180px)/2));padding-right:max(68px,calc((100vw - 1180px)/2));border:0;border-top:1px solid #dbe2ea;border-radius:0;background:#fff;color:#17212e;box-shadow:0 -8px 32px #1836651a;overflow:auto;font-family:"Be Vietnam Pro",sans-serif}
+.privacy-dialog:not([open]){display:none}
+.privacy-dialog[open]{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px 30px}
+.privacy-dialog .privacy-close{position:absolute;top:6px;right:8px;display:grid;place-items:center;width:44px;height:44px;border:0;background:none;color:#17212e;cursor:pointer;font:400 26px/1 sans-serif}
+.privacy-dialog .privacy-copy{min-width:0}
+.privacy-dialog h2{margin:0 0 6px;font-size:18px;font-weight:700;line-height:1.45;letter-spacing:-.02em;color:#17212e}
+.privacy-dialog #privacy-title:focus{outline:none}
+.privacy-dialog p{margin:0;font-size:16px;line-height:1.6;color:#394657}
+.privacy-dialog a{color:#1f4a8c;text-decoration:underline;text-underline-offset:3px}
+.privacy-dialog .privacy-options{grid-column:1/-1;margin:4px 0 0;border-top:1px solid #e1e6ec;padding-top:8px}
+.privacy-dialog [hidden]{display:none!important}
+.privacy-dialog .privacy-options summary{display:list-item;min-height:44px;padding:12px 0;font-size:14px;line-height:1.5;color:#1f4a8c;font-weight:600;cursor:pointer}
+.privacy-dialog .privacy-options p{font-size:14px;line-height:1.7}
+.privacy-dialog .privacy-options label{display:flex;gap:12px;min-height:44px;margin:16px 0;align-items:flex-start;cursor:pointer}
+.privacy-dialog .privacy-options input{flex:none;accent-color:#1f4a8c;width:20px;height:20px;margin:3px 0 0}
+.privacy-dialog .privacy-options strong{display:block;font-size:15px;line-height:1.6}
+.privacy-dialog .privacy-options small{display:block;margin-top:4px;font-size:13px;line-height:1.65;color:#586574}
+.privacy-dialog .privacy-actions{display:grid;grid-template-columns:repeat(3,auto);gap:10px}
+.privacy-dialog .privacy-actions button,.privacy-dialog .privacy-save{display:flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border:1.5px solid #213a63;border-radius:8px;font:600 15px/1.4 "Be Vietnam Pro",sans-serif;cursor:pointer;white-space:nowrap}
+.privacy-dialog .privacy-accept{background:#213a63;color:#fff}
+.privacy-dialog .privacy-reject,.privacy-dialog .privacy-customize,.privacy-dialog .privacy-save{background:#fff;color:#213a63}
+.privacy-dialog .privacy-save{margin:16px 0}
+.privacy-dialog .privacy-note{grid-column:1/-1;margin:4px 0 0;font-size:13px;line-height:1.7;color:#586574}
+.privacy-dialog.is-settings{max-height:75dvh}
+.privacy-dialog button:focus-visible,.privacy-dialog a:focus-visible,.privacy-dialog summary:focus-visible,.privacy-footer-links button:focus-visible{outline:3px solid #2679c5;outline-offset:3px}
+@media(max-width:820px){
+ .privacy-dialog{padding:12px 20px}
+ .privacy-dialog[open]{grid-template-columns:1fr;gap:8px}
+ .privacy-dialog .privacy-copy{padding-right:30px}
+ .privacy-dialog .privacy-actions{grid-template-columns:repeat(3,1fr)}
+ .privacy-dialog .privacy-actions button{padding:10px 12px}
+ .privacy-dialog:not(.is-settings) h2{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+}
+@media(max-width:480px){.privacy-dialog{padding:10px 15px}.privacy-dialog p{line-height:1.5}.privacy-dialog .privacy-actions{gap:8px}}
+.privacy-embed{position:relative;width:100%;height:100%;min-height:160px;background:#edf3f9;border-radius:12px;overflow:hidden}
+.privacy-embed-cover{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:160px;height:100%;padding:20px;gap:12px;text-align:center}
+.privacy-embed-cover p{margin:0;font-size:14px;line-height:1.7;color:#394657}
+.privacy-embed-cover button{min-height:44px;padding:10px 14px;border:1px solid #1f4a8c;border-radius:8px;background:#fff;color:#1f4a8c;font:600 14px/1.5 "Be Vietnam Pro",sans-serif;cursor:pointer}
+.privacy-embed [hidden]{display:none!important}
+.kb-video-embed .privacy-embed{aspect-ratio:16/9}
+.privacy-page{background:#f5f7f9;padding:48px 24px 64px}
+.privacy-page .privacy-document{max-width:1100px;margin:auto;color:#17212e}
+.privacy-page .privacy-breadcrumb{margin:0 0 28px;font-size:14px;line-height:1.6;color:#586574}
+.privacy-page h1{max-width:900px;margin:0 0 20px;font-size:clamp(30px,4vw,46px);line-height:1.2;letter-spacing:-.04em;color:#183665}
+.privacy-page .privacy-decision{max-width:860px;margin-bottom:28px;font-size:16px;line-height:1.8;color:#586574}
+.privacy-page .privacy-document-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:32px}
+.privacy-page .privacy-document-actions a,.privacy-page .privacy-document-actions button{display:inline-flex;align-items:center;min-height:44px;border:1px solid #cbd8e7;border-radius:8px;padding:10px 16px;background:#fff;color:#1f4a8c;font:600 14px/1.5 "Be Vietnam Pro",sans-serif;cursor:pointer}
+.privacy-page .privacy-intro,.privacy-page .privacy-article,.privacy-page .privacy-toc{padding:28px;background:#fff;border:1px solid #e0e6ec;border-radius:12px;margin-bottom:16px}
+.privacy-page h2{margin:26px 0 14px;font-size:22px;line-height:1.5;font-weight:600;color:#183665}
+.privacy-page h2:first-child{margin-top:0}
+.privacy-page p,.privacy-page li{font-size:16px;line-height:1.85;margin:0 0 14px;overflow-wrap:anywhere}
+.privacy-page p:last-child{margin-bottom:0}
+.privacy-page ul{padding-left:24px;margin:0 0 18px}
+.privacy-page .privacy-toc{display:grid;grid-template-columns:1fr 1fr;gap:8px 24px}
+.privacy-page .privacy-toc strong{grid-column:1/-1;font-size:18px;margin-bottom:8px}
+.privacy-page .privacy-toc a{display:flex;align-items:center;min-height:44px;color:#1f4a8c;font-size:14px;line-height:1.7;text-decoration:underline;text-underline-offset:3px}
+.privacy-page .privacy-article{scroll-margin-top:100px}
+.privacy-page .privacy-article summary{display:flex;align-items:center;justify-content:space-between;gap:20px;cursor:pointer;list-style:none;min-height:44px}
+.privacy-page .privacy-article summary::-webkit-details-marker{display:none}
+.privacy-page .privacy-article summary::after{content:'+';font-size:28px;color:#1f4a8c;flex:none}
+.privacy-page .privacy-article[open] summary::after{content:'−'}
+.privacy-page .privacy-article h2{font-size:20px;line-height:1.6;margin:0}
+.privacy-page .privacy-article-body{padding-top:24px}
+@media(max-width:600px){
+ .privacy-page{padding:28px 15px 40px}
+ .privacy-page .privacy-intro,.privacy-page .privacy-article,.privacy-page .privacy-toc{padding:20px}
+ .privacy-page .privacy-toc{grid-template-columns:1fr}
+ .privacy-page .privacy-article h2{font-size:18px}
+ .privacy-footer-links{align-items:flex-start;flex-direction:column;gap:4px}
+}

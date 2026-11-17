@@ -153,20 +153,33 @@ if (searchBtn) {
   });
 }
 
-// GA4 site tag and contact intent events; never send personal details.
+// Basic Consent Mode: no Google tag/request until an optional purpose is accepted.
+// The privacy notice is independent of consent to submit personal data in forms.
 window.dataLayer = window.dataLayer || [];
 function gtag() { window.dataLayer.push(arguments); }
-// Chỉ đo trên tên miền thật: bản xem thử *.vercel.app, máy chạy thử không gửi số liệu (không lẫn vào GA4/Ads).
-if (/(^|\.)pvihcm\.com$/.test(location.hostname)) {
-  gtag('js', new Date());
-  gtag('config', 'G-HYEVLMD710');
-  // Google Ads (remarketing, chuyển đổi); dùng chung một gtag.js với GA4.
-  gtag('config', 'AW-18556160976');
-  const analyticsScript = document.createElement('script');
-  analyticsScript.async = true;
-  analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-HYEVLMD710';
-  document.head.append(analyticsScript);
-}
+let privacyAnalytics = false;
+let privacyGoogleLoaded = false;
+let privacyGaConfigured = false;
+let privacyAdsConfigured = false;
+window['ga-disable-G-HYEVLMD710'] = true;
+gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+window.addEventListener('pvi:privacy-change', ({ detail }) => {
+  privacyAnalytics = detail.analytics === true;
+  window['ga-disable-G-HYEVLMD710'] = !privacyAnalytics;
+  gtag('consent', 'update', { analytics_storage: privacyAnalytics ? 'granted' : 'denied', ad_storage: detail.marketing ? 'granted' : 'denied', ad_user_data: detail.marketing ? 'granted' : 'denied', ad_personalization: detail.marketing ? 'granted' : 'denied' });
+  // Bản xem thử và máy chạy thử không gửi số liệu vào GA4/Ads.
+  if (!/(^|\.)pvihcm\.com$/.test(location.hostname) || (!privacyAnalytics && !detail.marketing)) return;
+  if (!privacyGoogleLoaded) {
+    privacyGoogleLoaded = true;
+    gtag('js', new Date());
+    const analyticsScript = document.createElement('script');
+    analyticsScript.async = true;
+    analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + (privacyAnalytics ? 'G-HYEVLMD710' : 'AW-18556160976');
+    document.head.append(analyticsScript);
+  }
+  if (privacyAnalytics && !privacyGaConfigured) { privacyGaConfigured = true; gtag('config', 'G-HYEVLMD710', { allow_google_signals: !!detail.marketing, allow_ad_personalization_signals: !!detail.marketing }); }
+  if (detail.marketing && !privacyAdsConfigured) { privacyAdsConfigured = true; gtag('config', 'AW-18556160976'); }
+});
 
 document.addEventListener('click', (event) => {
   const link = event.target.closest?.('a[href]');
@@ -175,5 +188,5 @@ document.addEventListener('click', (event) => {
   const method = /^tel:(?:0938072236|0918981869)$/.test(href)
     ? 'phone'
     : href.startsWith('https://zalo.me/') ? 'zalo' : null;
-  if (method) gtag('event', 'contact_click', { contact_method: method });
+  if (method && privacyAnalytics && /(^|\.)pvihcm\.com$/.test(location.hostname)) gtag('event', 'contact_click', { contact_method: method });
 });

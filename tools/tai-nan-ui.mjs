@@ -116,7 +116,7 @@ ${seg('04. Số người và thời hạn', `<div class="accident-field-row"><di
 <div class="accident-calc-actions"><button type="button" class="accident-primary" data-tn-share>Mua ngay <i aria-hidden="true">→</i></button><button type="button" class="accident-secondary" data-tn-detail aria-expanded="false" aria-controls="tn-detail">Nhận báo giá chi tiết</button></div>
 <form class="accident-detail" id="tn-detail" novalidate hidden><p class="accident-detail-lead"><b>Nhận báo giá chi tiết theo đúng lựa chọn ở trên.</b> Để lại họ tên và số điện thoại, nhân viên PVI Thành Đô gửi báo giá chính thức và gọi lại tư vấn.</p>
 <div class="accident-field-row"><div class="accident-field"><label for="tn-detail-name">Họ và tên</label><input id="tn-detail-name" name="name" autocomplete="name" maxlength="120"></div><div class="accident-field"><label for="tn-detail-phone">Số điện thoại</label><input id="tn-detail-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20"></div></div>
-<label class="accident-consent"><input type="checkbox" name="consent"><span>Tôi đồng ý để Bảo hiểm PVI Thành Đô liên hệ và xử lý thông tin trên cho mục đích báo giá, tư vấn bảo hiểm.</span></label>
+<label class="accident-consent"><input type="checkbox" name="consent"><span>Tôi đồng ý để Bảo hiểm PVI Thành Đô liên hệ và xử lý thông tin trên cho mục đích báo giá, tư vấn bảo hiểm. Tôi đã đọc <a href="/chinh-sach-bao-ve-du-lieu-ca-nhan/" target="_blank" rel="noopener">Chính sách Bảo vệ Dữ liệu Cá nhân</a>.</span></label>
 <p class="accident-form-error" role="alert" hidden></p>
 <button type="submit" class="accident-primary">Gửi yêu cầu báo giá <i aria-hidden="true">→</i></button>
 <p class="accident-form-ok" role="status" hidden></p></form>
@@ -250,7 +250,7 @@ ${heading('LIÊN HỆ', 'accident-contact-title', 'Gọi kênh nào cho đúng v
 <div class="accident-field"><label for="accident-phone">Số điện thoại</label><input id="accident-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"></div>
 <div class="accident-field"><label for="accident-people">Số người cần bảo hiểm</label><input id="accident-people" name="people" type="number" min="1" inputmode="numeric"></div>
 <div class="accident-field"><label for="accident-plan">Gói quan tâm</label><select id="accident-plan" name="plan">${ac.accidentPlans.map((p) => `<option value="${p.id}">${t(p.label)}</option>`).join('')}<option value="khac">Chưa rõ, cần tư vấn</option></select></div>
-<label class="accident-consent"><input type="checkbox" name="consent"><span>Tôi đồng ý để Bảo hiểm PVI Thành Đô liên hệ và xử lý thông tin trên cho mục đích tư vấn bảo hiểm.</span></label>
+<label class="accident-consent"><input type="checkbox" name="consent"><span>Tôi đồng ý để Bảo hiểm PVI Thành Đô liên hệ và xử lý thông tin trên cho mục đích tư vấn bảo hiểm. Tôi đã đọc <a href="/chinh-sach-bao-ve-du-lieu-ca-nhan/" target="_blank" rel="noopener">Chính sách Bảo vệ Dữ liệu Cá nhân</a>.</span></label>
 <p class="accident-form-error" role="alert" hidden></p>
 <button type="submit" class="accident-primary">Gửi yêu cầu báo phí <i aria-hidden="true">→</i></button>
 <p class="accident-field-help">Trang không lưu thông tin này trên máy anh/chị và không đưa số điện thoại lên đường dẫn. Nút gửi chép thông tin rồi mở Zalo để anh/chị gửi trực tiếp cho nhân viên.</p>
