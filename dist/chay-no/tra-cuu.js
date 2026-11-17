@@ -6,8 +6,9 @@
    Biểu tượng: ./icons.js (SVG Phosphor xuất từ bản gốc).
    File dùng ở 2 nơi: tools/gen-chay-no-tra-cuu.mjs gọi renderLookup() để in sẵn HTML, trình duyệt nạp
    (type=module) để cập nhật khi khách bấm.
-   Khác bản gốc: pvihcm không lưu yêu cầu tư vấn lên máy chủ (chủ site chốt không cần Google Sheet);
-   hộp thoại chép thông tin khách nhập rồi mở Zalo để khách gửi cho chuyên viên. */
+   Từ 17/11/2026 (chủ site yêu cầu): bấm gửi trong hộp thoại thì ghi yêu cầu vào Google Sheet (tab CNBB,
+   bảo hiểm cháy nổ bắt buộc) qua /api/chay-no-lead, giống baohiempvi-vn. Chưa lưu được Sheet thì vẫn chép
+   thông tin khách nhập để khách dán vào Zalo gửi chuyên viên. */
 import ICONS from './icons.js';
 import { VAT_RATE, formatMillions } from './fire-data.js';
 import { assetDisplayName, assetPremium, formatAssetRate, insurancePurposes, propertyAssets, propertyGroups, searchPropertyAssets, togglePropertyAssetSelection } from './property-asset-data.js';
@@ -131,6 +132,12 @@ const FIELD = {
 };
 function renderDialogPanel(d, ctx) {
   const c = COPY[d.kind];
+  if (d.sent && d.saved) {
+    return `<button class="fld-close" type="button" aria-label="Đóng" data-dlg="close">${ic('X', 22)}</button><div class="fld-done" role="status"><span class="fld-doneIcon">${ic('CheckCircle', 54, 'fill')}</span><h3 id="${uid}-dlg-title">Đã nhận thông tin của bạn</h3>`
+      + `<p>${d.kind === 'bang-chao' ? 'Chuyên viên sẽ lập bảng chào theo tài sản bạn đã chọn và gửi qua email, Zalo.' : 'Chuyên viên PVI Thành Đô sẽ liên hệ tư vấn cho bạn ngay.'}</p>`
+      + `<p class="fld-code">Mã yêu cầu: <b>${esc(d.code)}</b></p>`
+      + `<a class="fld-zaloButton" href="${ZALO_URL}" target="_blank" rel="noopener noreferrer">${ic('ChatCircleDots', 24, 'fill')}Mở Zalo chat với chuyên viên</a><button class="fld-ghost" type="button" data-dlg="close">Đóng</button></div>`;
+  }
   if (d.sent) {
     return `<button class="fld-close" type="button" aria-label="Đóng" data-dlg="close">${ic('X', 22)}</button><div class="fld-done"><span class="fld-doneIcon">${ic('CheckCircle', 54, 'fill')}</span><h3 id="${uid}-dlg-title">${d.copied ? 'Đã chép thông tin của bạn' : 'Nội dung yêu cầu báo phí'}</h3>`
       + `<p>${d.copied ? 'Dán nội dung đã sao chép vào khung chat Zalo và bấm Gửi để nhân viên PVI nhận yêu cầu.' : 'Sao chép nội dung bên dưới, dán vào khung chat Zalo rồi bấm Gửi để nhân viên PVI nhận yêu cầu.'}</p>`
@@ -146,7 +153,8 @@ function renderDialogPanel(d, ctx) {
       return `<div class="fld-field"><label for="${uid}-dlg-${f}">${LABELS[f]}</label><input id="${uid}-dlg-${f}" name="${f}" value="${esc(d.values[f])}" data-dlg-field="${f}"${show ? ` aria-invalid="true" aria-describedby="${uid}-dlg-${f}-error"` : ''}${!errors[f] ? ' data-valid="true"' : ''} maxlength="${p.max}" required type="${p.type}" autocomplete="${p.ac}"${p.im ? ` inputmode="${p.im}"` : ''} placeholder="${p.ph}">${show ? `<p class="fld-error" id="${uid}-dlg-${f}-error" role="alert">${esc(errors[f])}</p>` : ''}</div>`;
     }).join('') + '</div>'
     + `<label class="fld-consent"><input type="checkbox"${d.consent ? ' checked' : ''} data-dlg-consent><span>Tôi đồng ý để PVI Thành Đô liên hệ tư vấn qua số điện thoại, email và Zalo ở trên.</span></label>`
-    + `<div class="fld-actions" aria-live="polite">${ready ? `<button class="fld-send" type="submit">${ic('PaperPlaneTilt', 24, 'fill')}${c.send}</button>` : '<p class="fld-hint">Nhập đủ 3 thông tin và tích đồng ý, nút Gửi sẽ hiện ra.</p>'}</div></form>`;
+    + (d.error ? `<p class="fld-formError" role="alert">${esc(d.error)}</p>` : '')
+    + `<div class="fld-actions" aria-live="polite">${ready ? `<button class="fld-send" type="submit"${d.sending ? ' disabled' : ''}>${ic('PaperPlaneTilt', 24, 'fill')}${d.sending ? 'Đang gửi…' : c.send}</button>` : '<p class="fld-hint">Nhập đủ 3 thông tin và tích đồng ý, nút Gửi sẽ hiện ra.</p>'}</div></form>`;
 }
 
 /* ───────────── Trình duyệt ───────────── */
@@ -257,10 +265,24 @@ function mount(box) {
     if (!d || d.sending || d.sent) return;
     const errors = cnbbLeadFieldErrors(d.values);
     if (!CNBB_LEAD_FIELDS.every((f) => !errors[f]) || !d.consent) return;
-    d.sending = true;
+    d.sending = true; d.error = '';
     const requestContext = ctx;
     // Mở Zalo ngay trong lượt bấm (trình duyệt chỉ cho mở cửa sổ mới lúc này).
     window.open(ZALO_URL, '_blank', 'noopener,noreferrer');
+    drawDlg();
+    // Ghi yêu cầu vào Google Sheet (tab CNBB, bảo hiểm cháy nổ bắt buộc) qua /api/chay-no-lead (17/11/2026).
+    let saved = false, code = '';
+    try {
+      const res = await fetch('/api/chay-no-lead', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true,
+        body: JSON.stringify({ kind: d.kind, phone: normalizePhone(d.values.phone), email: normalizeEmail(d.values.email), company: normalizeCompanyName(d.values.company), consent: true, assetCode: ctx.assetCode, assetName: ctx.assetName, sum: String(ctx.sum), fee: ctx.fee, purpose: ctx.purpose }),
+      });
+      const j = await res.json().catch(() => null);
+      if (!d || !dlg.open || ctx !== requestContext) return;
+      if (res.status === 400 || res.status === 429) { d = { ...d, sending: false, error: (j && j.error) || 'Thông tin chưa hợp lệ, bạn kiểm tra lại giúp.' }; drawDlg(); return; }
+      if (res.ok && j && j.ok) { code = j.code || ''; saved = !!(j.sheet && j.sheet.saved); }
+    } catch { /* không gọi được máy chủ: dùng cách chép nội dung gửi Zalo bên dưới */ }
+    if (!d || !dlg.open || ctx !== requestContext) return;
     const text = [
       d.kind === 'bang-chao' ? 'Tôi cần bảng chào bảo hiểm cháy nổ PVI.' : 'Tôi cần tư vấn bảo hiểm cháy nổ PVI.',
       `Tài sản: ${ctx.assetName} (mã ${ctx.assetCode})`,
@@ -275,8 +297,8 @@ function mount(box) {
     let copied = false;
     try { await navigator.clipboard.writeText(text); copied = true; } catch {}
     if (!d || !dlg.open || ctx !== requestContext) return;
-    d = { ...d, sent: true, text, copied };
-    track('cnbb_lead_submit', { kind: d.kind });
+    d = { ...d, sending: false, sent: true, text, copied, saved, code };
+    track('cnbb_lead_submit', { kind: d.kind, code, saved });
     drawDlg();
     reminderTimer = setTimeout(() => {
       const reminder = dlg.querySelector('[data-dlg-reminder]');
