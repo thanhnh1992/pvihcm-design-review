@@ -53,7 +53,7 @@ export function renderLookup(st) {
   const v = view(st);
   const err = st.selectionError;
   let h = `<section class="pal-lookup" aria-labelledby="${uid}-title" data-testid="property-asset-lookup">`
-    + `<header class="pal-intro"><h2 id="${uid}-title">Chọn đúng loại tài sản, <span>giúp bạn tính phí bảo hiểm chính xác hơn</span></h2><p>Gõ tên tài sản, tick nhóm phù hợp rồi chọn loại cụ thể bên dưới.</p></header>`
+    + `<header class="pal-intro"><h2 id="${uid}-title">Chọn đúng loại tài sản, <span>PVI giúp bạn tính phí bảo hiểm cháy nổ chính xác hơn</span></h2><p>Gõ tên tài sản, tick nhóm phù hợp rồi chọn loại cụ thể bên dưới.</p></header>`
     + `<form class="pal-searchArea" role="search" aria-label="Tìm loại tài sản" data-act="search"><label for="${uid}-search">Bạn đang muốn bảo hiểm tài sản nào?</label><div class="pal-searchBar">${ic('MagnifyingGlass', 30)}`
     + `<input id="${uid}-search" autocomplete="off" type="search"${err === 'asset' ? ` aria-invalid="true" aria-describedby="${uid}-asset-error"` : ''} placeholder="Ví dụ: kho, nhà xưởng, văn phòng…" value="${esc(st.query)}" data-in="query">`
     + (st.query ? `<button class="pal-clear" type="button" aria-label="Xóa từ khóa tìm kiếm" data-act="clear">${ic('X', 20)}</button>` : '')
@@ -62,7 +62,7 @@ export function renderLookup(st) {
     + `<div class="pal-suggestions"><span>Gợi ý:</span>${[['Kho', 'kho'], ['Nhà xưởng', 'san-xuat'], ['Văn phòng', 'van-phong']].map(([t, g]) => `<button type="button" data-suggest="${esc(t)}" data-group="${g}">${t}</button>`).join('')}</div></form>`;
 
   // Cột trái: nhóm tài sản
-  h += `<div class="pal-columns"><div class="pal-browse"><div class="pal-columnHeading pal-browseHeading"><h3 class="pal-stepHeading" id="${uid}-results" tabindex="-1">Bước 1 chọn loại hình tài sản cần mua bảo hiểm:</h3><span aria-live="polite">${v.matches.length} nhóm phù hợp</span></div>`
+  h += `<div class="pal-columns"><div class="pal-browse"><div class="pal-columnHeading pal-browseHeading"><h3 class="pal-stepHeading" id="${uid}-results" tabindex="-1">Bước 1: chọn loại hình tài sản cần mua bảo hiểm cháy nổ</h3><span aria-live="polite">${v.matches.length} nhóm phù hợp</span></div>`
     + `<p class="pal-selectionLimit" id="${uid}-selection-limit" role="status">${st.selected.length === 0 ? 'Chọn 1 loại tài sản. Tick loại khác sẽ thay thế loại đang chọn.' : 'Đã chọn 1 loại tài sản. Tick loại khác để đổi, hoặc bỏ tick để chọn lại.'}</p><div class="pal-groupList">`;
   if (v.matches.length === 0) {
     h += `<div class="pal-empty">${ic('MagnifyingGlass', 38)}<strong>Chưa tìm thấy loại tài sản phù hợp</strong><p>Thử tên ngắn hơn, từ khóa không dấu hoặc mã tài sản.</p><button type="button" data-suggest="">Xem tất cả nhóm</button></div>`;
