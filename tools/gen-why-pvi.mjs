@@ -103,7 +103,7 @@ const html = `<!-- why-pvi:start -->
 
 const press = `<section class="pvi-press" aria-labelledby="bao-chi-pvi"><div class="pp-inner">
 <h2 id="bao-chi-pvi">${esc(PRESS_TITLE)}</h2><p class="pp-lead">${esc(PRESS_LEAD)}</p>
-<ul class="pp-list">${PRESS.map((x) => `<li><a href="${x.href}" target="_blank" rel="noopener noreferrer"><img src="/assets/press/${x.logo}.webp" width="${x.w}" height="120" loading="lazy" decoding="async" alt="${esc(x.name)}"><p>${esc(x.text)}</p><span class="pp-more">Đọc bài trên ${esc(x.name)} <i aria-hidden="true">↗</i></span></a></li>`).join('')}</ul>
+<ul class="pp-list">${PRESS.map((x) => `<li><a href="${x.href}" target="_blank" rel="nofollow noopener noreferrer"><img src="/assets/press/${x.logo}.webp" width="${x.w}" height="120" loading="lazy" decoding="async" alt="${esc(x.name)}"><p>${esc(x.text)}</p><span class="pp-more">Đọc bài trên ${esc(x.name)} <i aria-hidden="true">↗</i></span></a></li>`).join('')}</ul>
 <p class="pp-source">Nguồn báo chí: ${PRESS.map((x) => esc(x.name)).join(', ')}.</p>
 </div></section>`;
 
