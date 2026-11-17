@@ -164,10 +164,10 @@
 .fire-steps h3{font-size:17px;margin-bottom:8px}
 .fire-steps p{font-size:15px}
 .fire-hotline{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-top:34px;
-  padding:22px 26px;background:var(--ink);border-radius:var(--r-card,16px);color:#fff}
-.fire-hotline p{color:#b9cde3;font-size:15px;margin:0}
+  padding:22px 26px;background:#193665;border-radius:var(--r-card,16px);color:#fff}
+.fire-hotline p{color:#d3e1f2;font-size:15px;margin:0}
 .fire-hotline strong{font-size:15px;color:#fff;display:block;margin-bottom:3px}
-.fire-hotline a{margin-left:auto;background:#fff;color:var(--ink);font-weight:700;font-size:18px;
+.fire-hotline a{margin-left:auto;background:#fff;color:#193665;font-weight:700;font-size:18px;
   padding:0 24px;min-height:var(--tap,44px);display:inline-flex;align-items:center;
   border-radius:var(--r-pill,999px);font-variant-numeric:tabular-nums;letter-spacing:.01em}
 
