@@ -86,7 +86,7 @@ export function renderArea(A, { page, write, units }) {
   const cover = isThuDuc ? `${THU_DUC_PHOTOS}/bia-an-khanh` : null;
   const socialImage = cover ? `/assets/${cover}.jpg` : '/assets/tru-so-pvi-thanh-do.webp';
   const description = isThuDuc
-    ? 'Có thể mua bảo hiểm PVI tại 37 Đường số 2, phường An Khánh, TP Thủ Đức cũ. Xem ảnh nhận biết địa chỉ và giấy tờ cần chuẩn bị cho từng loại bảo hiểm.'
+    ? 'Mua bảo hiểm PVI tại 37 Đường số 2, An Khánh, TP Thủ Đức cũ. Xem đường đi và giấy tờ mua bảo hiểm ô tô, con người, tài sản qua PVI Thành Đô.'
     : A.description;
   const faq = isThuDuc ? [
     { q: 'Có thể đến số 37 Đường số 2 để mua bảo hiểm PVI không?', a: 'Có. Bạn có thể đến 37 Đường số 2, phường An Khánh, khu vực TP Thủ Đức cũ để được tư vấn và mua bảo hiểm PVI. Nếu đi từ xa, nên liên hệ 0938 072 236 trước để hẹn nhân viên và biết cần mang giấy tờ gì.' },
@@ -126,7 +126,7 @@ ${cover ? '' : `<p class="kv-pin">${ICON.pin}<span>${esc(A.nhan)}<small>${esc(A.
 </div></div>
 
 <div class="kv-shell"><div class="kv-answer">
-<p class="kv-lead">${isThuDuc ? `Bạn có thể đến <strong>${esc(THU_DUC_ADDRESS)}</strong> để mua bảo hiểm PVI. Nếu cần xem phí trước, hãy nhắn Zalo 0938 072 236 và cho biết bạn muốn bảo hiểm ô tô, con người hay tài sản. Nhân viên sẽ hướng dẫn giấy tờ cần chuẩn bị.` : t(A.lead)}</p>
+<p class="kv-lead">${isThuDuc ? `Bạn có thể đến <strong>${esc(THU_DUC_ADDRESS)}</strong> để mua bảo hiểm PVI. Nếu muốn hỏi phí trước, hãy nhắn Zalo 0938 072 236 cho nhân viên Bảo hiểm PVI Thành Đô và cho biết bạn cần bảo hiểm ô tô, con người hay tài sản.` : t(A.lead)}</p>
 <p class="kv-byline">Công ty Bảo hiểm PVI Thành Đô · <time datetime="${A.reviewedAt}">Đối chiếu nguồn ngày ${dateVn(A.reviewedAt)}</time> · Tư vấn: <a href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Zalo 0938 072 236</a></p>
 </div></div>
 
@@ -226,7 +226,8 @@ ${faq.map((f, i) => `<details${i === 0 ? ' open' : ''}><summary>${t(f.q)}</summa
   write(`tin-tuc/${A.slug}/index.html`, page({
     path: P,
     canonical,
-    title: `${A.title} | PVI Thành Đô`.length > 70 ? A.title : `${A.title} | PVI Thành Đô`,
+    title: isThuDuc ? 'Mua bảo hiểm PVI tại Thủ Đức | Bảo hiểm PVI Thành Đô'
+      : `${A.title} | PVI Thành Đô`.length > 70 ? A.title : `${A.title} | PVI Thành Đô`,
     description,
     image: socialImage,
     head: (cover ? `<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="${esc(THU_DUC_COVER_ALT)}"><meta name="twitter:image" content="${SITE}${socialImage}"><meta name="twitter:image:alt" content="${esc(THU_DUC_COVER_ALT)}">` : '') +
