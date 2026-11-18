@@ -275,3 +275,6 @@
   .fx-intro-alt .fx-intro-row:has(.fx-intro-media) .fx-intro-media{order:0}
   .fx-intro p{font-size:16px}
 }
+
+/* Dòng mô tả dưới câu hỏi ô tìm tài sản (18/11/2026) */
+.cn-page .pal-searchArea .pal-searchHint{margin:-6px 0 14px;text-align:center;color:#5b6f86;font-size:15px;line-height:1.5}
