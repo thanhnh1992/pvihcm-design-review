@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { header, footer } from './chrome.mjs';
+import { nofollowExternal } from './link-out.mjs';
 import { stripPrivacyUi, protectExternalEmbeds } from './privacy-ui.mjs';
 const DIST = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../dist');
 for (const [rel, p] of [['index.html', '/'], ['san-pham/chay-no-bat-buoc/index.html', '/san-pham/chay-no-bat-buoc/']]) {
@@ -13,6 +14,6 @@ for (const [rel, p] of [['index.html', '/'], ['san-pham/chay-no-bat-buoc/index.h
   if (a < 0 || b < 0) throw new Error('không thấy header trong ' + rel);
   h = h.slice(0, a) + header(p) + h.slice(b + '</header>'.length);
   h = h.replace(/<footer id="lien-he"[\s\S]*?<\/footer>/, footer());
-  fs.writeFileSync(f, protectExternalEmbeds(h));
+  fs.writeFileSync(f, nofollowExternal(protectExternalEmbeds(h)));
   console.log('patched', rel);
 }
