@@ -34,6 +34,9 @@ const ICON = {
 const srcset = (name, w = 1280, h = 853, sizes = '100vw', eager = false, alt = '') =>
   `<img src="/assets/${name}.webp" srcset="/assets/${name}-480.webp 480w, /assets/${name}-800.webp 800w, /assets/${name}.webp ${w}w" sizes="${sizes}" width="${w}" height="${h}" alt="${esc(alt)}"${eager ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"'}>`;
 
+const THU_DUC_COVER = 'bai-viet/thu-duc-20261118/bia-thu-duc';
+const THU_DUC_COVER_ALT = 'Văn phòng PVI Thành Đô tại 194 Golden Building. Tư vấn từ xa cho khách Thủ Đức, chuẩn bị hồ sơ theo địa chỉ mới.';
+
 // Sản phẩm có trang riêng trên pvihcm.com (mua, tính phí đều đi về đây).
 const PRODUCTS = [
   { href: '/san-pham/bao-hiem-bat-buoc/', ten: 'Bảo hiểm TNDS ô tô bắt buộc', moTa: 'Biểu phí theo loại xe, tính phí tham khảo ngay trên trang.', img: 'section-bat-buoc', alt: 'Hình ảnh minh họa: chuyên viên tư vấn trao đổi với chủ xe bên cạnh ô tô' },
@@ -66,6 +69,8 @@ const zaloBtn = (label, cls = 'kv-btn kv-btn-red') => `<a class="${cls}" href="$
 
 export function renderArea(A, { page, write, units }) {
   const P = `/tin-tuc/${A.slug}/`;
+  const cover = A.slug === 'mua-bao-hiem-pvi-thu-duc' ? THU_DUC_COVER : null;
+  const socialImage = cover ? `/assets/${cover}.jpg` : '/assets/tru-so-pvi-thanh-do.webp';
   // Khu vực lớn: dòng có "nhom" (thành phố, huyện cũ) thì gom nhóm trong bảng và chip.
   const groups = [];
   for (const r of A.phuong.rows) {
@@ -90,8 +95,10 @@ export function renderArea(A, { page, write, units }) {
 <p class="kv-sub">${t(A.heroSubPvihcm || A.heroSub)}</p>
 <ul class="kv-features">${FEATURES.map(([i, s]) => `<li><i>${i}</i><span>${esc(s)}</span></li>`).join('')}</ul>
 </div>
-<figure class="kv-hero-media">${srcset('tru-so-pvi-thanh-do', 1200, 900, '(max-width:860px) 100vw, 600px', true, 'Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, trụ sở Công ty Bảo hiểm PVI Thành Đô')}
-<p class="kv-pin">${ICON.pin}<span>${esc(A.nhan)}<small>${esc(A.thuocVe)}</small></span></p>
+<figure class="kv-hero-media${cover ? ' kv-hero-cover' : ''}">${cover
+    ? srcset(cover, 1200, 630, '(max-width:860px) 100vw, 600px', true, THU_DUC_COVER_ALT)
+    : srcset('tru-so-pvi-thanh-do', 1200, 900, '(max-width:860px) 100vw, 600px', true, 'Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, trụ sở Công ty Bảo hiểm PVI Thành Đô')}
+${cover ? '' : `<p class="kv-pin">${ICON.pin}<span>${esc(A.nhan)}<small>${esc(A.thuocVe)}</small></span></p>`}
 <figcaption>Ảnh thực tế: tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô.</figcaption></figure>
 </div>
 </div></div>
@@ -186,8 +193,9 @@ ${A.faq.map((f, i) => `<details${i === 0 ? ' open' : ''}><summary>${t(f.q)}</sum
     canonical,
     title: `${A.title} | PVI Thành Đô`.length > 70 ? A.title : `${A.title} | PVI Thành Đô`,
     description: A.description,
-    image: '/assets/tru-so-pvi-thanh-do.webp',
-    head: articleJsonLd({ path: P, canonical, title: A.title, description: A.description, image: '/assets/tru-so-pvi-thanh-do.webp', date: A.reviewedAt }) + ld({
+    image: socialImage,
+    head: (cover ? `<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="${esc(THU_DUC_COVER_ALT)}"><meta name="twitter:image" content="${SITE}${socialImage}"><meta name="twitter:image:alt" content="${esc(THU_DUC_COVER_ALT)}">` : '') +
+      articleJsonLd({ path: P, canonical, title: A.title, description: A.description, image: socialImage, date: A.reviewedAt }) + ld({
       '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: SITE + '/' },
         { '@type': 'ListItem', position: 2, name: 'Tin tức', item: SITE + '/tin-tuc/' },

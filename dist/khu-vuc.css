@@ -18,6 +18,7 @@
 .kv-features i{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:#e5f0fc;color:var(--kv-blue);font-size:22px}
 .kv-hero-media{position:relative;margin:0}
 .kv-hero-media img{aspect-ratio:16/10;object-fit:cover;border-radius:18px;box-shadow:0 24px 60px rgba(7,31,67,.18)}
+.kv-hero-cover img{aspect-ratio:1200/630}
 .kv-pin{position:absolute;right:16px;top:16px;margin:0;display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:14px;background:rgba(255,255,255,.95);box-shadow:0 10px 30px rgba(7,31,67,.2);font-size:15px;font-weight:700;color:var(--kv-navy)}
 .kv-pin svg{color:var(--kv-red);font-size:24px}
 .kv-pin small{display:block;font-size:14px;font-weight:500;color:var(--kv-muted)}
