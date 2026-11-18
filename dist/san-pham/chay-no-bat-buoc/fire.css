@@ -278,3 +278,6 @@
 
 /* Dòng mô tả dưới câu hỏi ô tìm tài sản (18/11/2026) */
 .cn-page .pal-searchArea .pal-searchHint{margin:-6px 0 14px;text-align:center;color:#5b6f86;font-size:15px;line-height:1.5}
+/* "Giới thiệu về Bảo hiểm PVI": hình nằm bên phải chữ trên máy tính (chủ site chốt 18/11/2026). */
+@media (min-width:761px){.fx-intro-alt.fx-media-right .fx-intro-row:has(.fx-intro-media){grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}}
+.fx-intro-alt.fx-media-right .fx-intro-row:has(.fx-intro-media) .fx-intro-media{order:0}
