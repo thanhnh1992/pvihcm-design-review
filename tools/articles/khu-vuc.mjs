@@ -34,8 +34,21 @@ const ICON = {
 const srcset = (name, w = 1280, h = 853, sizes = '100vw', eager = false, alt = '') =>
   `<img src="/assets/${name}.webp" srcset="/assets/${name}-480.webp 480w, /assets/${name}-800.webp 800w, /assets/${name}.webp ${w}w" sizes="${sizes}" width="${w}" height="${h}" alt="${esc(alt)}"${eager ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"'}>`;
 
-const THU_DUC_COVER = 'bai-viet/thu-duc-20261118/bia-thu-duc';
-const THU_DUC_COVER_ALT = 'Văn phòng PVI Thành Đô tại 194 Golden Building. Tư vấn từ xa cho khách Thủ Đức, chuẩn bị hồ sơ theo địa chỉ mới.';
+const THU_DUC_PHOTOS = 'bai-viet/thu-duc-an-khanh';
+const THU_DUC_COVER_ALT = 'Mặt tiền có biển PVI Thành Đô và biển số nhà 37 Đường số 2, An Khánh';
+const THU_DUC_ADDRESS = '37 Đường số 2, phường An Khánh, khu vực TP Thủ Đức cũ, TP.HCM';
+const THU_DUC_PRODUCTS = [
+  ['TNDS ô tô bắt buộc', '/san-pham/bao-hiem-bat-buoc/', 'Chuẩn bị đăng ký xe và nói rõ xe có dùng để kinh doanh vận tải hay không.'],
+  ['Vật chất xe ô tô', '/san-pham/bao-hiem-vat-chat-xe/', 'Gửi thông tin xe và ảnh hiện trạng. Khi xem báo phí, hỏi rõ mức khấu trừ và điều khoản bổ sung.'],
+  ['Tài sản nhà xưởng', '/san-pham/chay-no-bat-buoc/#ba-lop', 'Tách giá trị nhà xưởng, máy móc và hàng tồn kho để tiện đối chiếu khi báo phí.'],
+  ['Cháy nổ bắt buộc cho kho, xưởng', '/san-pham/chay-no-bat-buoc/', 'Chuẩn bị địa chỉ, công năng, danh mục tài sản và hồ sơ PCCC đang có để đối chiếu loại cơ sở.'],
+  ['Bảo hiểm cho người thi công', '/tin-tuc/bao-hiem-tai-nan-cong-trinh-pvi/', 'Ghi tên công trình, hạng mục, danh sách người thi công và khoảng thời gian làm việc.'],
+  ['Tai nạn 24/24', '/san-pham/bao-hiem-tai-nan/', 'Chuẩn bị danh sách người tham gia và mô tả công việc thực tế của từng nhóm.'],
+  ['Công trình và lắp đặt', '/san-pham/bao-hiem-cong-trinh/', 'Gửi dự toán, tiến độ và danh mục thiết bị lắp đặt nếu có.'],
+  ['Hàng hóa xuất nhập khẩu', '/san-pham/hang-hoa-xuat-nhap-khau/', 'Ghi tên hàng, giá trị lô hàng, phương tiện và hành trình. Nếu hàng qua cảng Cát Lái, cho biết cả chặng trước và sau cảng.'],
+  ['Sức khỏe PVI Care', '/san-pham/bao-hiem-suc-khoe/', 'Cho biết độ tuổi người tham gia, nhu cầu nội trú hoặc ngoại trú và cơ sở y tế thường đến.'],
+  ['Du lịch quốc tế', '/san-pham/bao-hiem-du-lich/', 'Chuẩn bị điểm đến, ngày đi, ngày về và yêu cầu về giấy chứng nhận nếu cần nộp hồ sơ visa.'],
+];
 
 // Sản phẩm có trang riêng trên pvihcm.com (mua, tính phí đều đi về đây).
 const PRODUCTS = [
@@ -69,8 +82,17 @@ const zaloBtn = (label, cls = 'kv-btn kv-btn-red') => `<a class="${cls}" href="$
 
 export function renderArea(A, { page, write, units }) {
   const P = `/tin-tuc/${A.slug}/`;
-  const cover = A.slug === 'mua-bao-hiem-pvi-thu-duc' ? THU_DUC_COVER : null;
+  const isThuDuc = A.slug === 'mua-bao-hiem-pvi-thu-duc';
+  const cover = isThuDuc ? `${THU_DUC_PHOTOS}/bia-an-khanh` : null;
   const socialImage = cover ? `/assets/${cover}.jpg` : '/assets/tru-so-pvi-thanh-do.webp';
+  const description = isThuDuc
+    ? 'Có thể mua bảo hiểm PVI tại 37 Đường số 2, phường An Khánh, TP Thủ Đức cũ. Xem ảnh nhận biết địa chỉ và giấy tờ cần chuẩn bị cho từng loại bảo hiểm.'
+    : A.description;
+  const faq = isThuDuc ? [
+    { q: 'Có thể đến số 37 Đường số 2 để mua bảo hiểm PVI không?', a: 'Có. Bạn có thể đến 37 Đường số 2, phường An Khánh, khu vực TP Thủ Đức cũ để được tư vấn và mua bảo hiểm PVI. Nếu đi từ xa, nên liên hệ 0938 072 236 trước để hẹn nhân viên và biết cần mang giấy tờ gì.' },
+    { q: 'Ở Thủ Đức có thể gửi hồ sơ và nhận báo phí qua Zalo không?', a: 'Có. Bạn có thể nhắn Zalo 0938 072 236, cho biết loại bảo hiểm cần mua và thông tin xe, người tham gia hoặc tài sản. Nhân viên sẽ hướng dẫn gửi hồ sơ. Một số trường hợp cần thêm ảnh hiện trạng hoặc khảo sát trước khi chốt phí.' },
+    { q: 'Địa chỉ trên giấy tờ ghi TP Thủ Đức cũ thì gửi thế nào?', a: 'Bạn gửi thông tin theo giấy tờ đang sử dụng. Nếu địa chỉ trên giấy tờ khác tên phường hiện nay, gửi thêm địa chỉ hiện tại để nhân viên đối chiếu trước khi ghi trên hồ sơ. Với bảo hiểm tài sản, cần nói rõ địa chỉ nơi đặt tài sản.' },
+  ] : A.faq;
   // Khu vực lớn: dòng có "nhom" (thành phố, huyện cũ) thì gom nhóm trong bảng và chip.
   const groups = [];
   for (const r of A.phuong.rows) {
@@ -92,25 +114,38 @@ export function renderArea(A, { page, write, units }) {
 <div class="kv-hero-text">
 <p class="kv-eyebrow">PVI Thành Đô · Khu vực ${esc(A.nhan)}</p>
 <h1><span>Mua bảo hiểm PVI</span> <em>tại ${esc(A.ten)}</em></h1>
-<p class="kv-sub">${t(A.heroSubPvihcm || A.heroSub)}</p>
+<p class="kv-sub">${t(isThuDuc ? 'Ghé điểm mua tại An Khánh hoặc gửi giấy tờ qua Zalo để được tư vấn trước khi đến.' : A.heroSubPvihcm || A.heroSub)}</p>
 <ul class="kv-features">${FEATURES.map(([i, s]) => `<li><i>${i}</i><span>${esc(s)}</span></li>`).join('')}</ul>
 </div>
 <figure class="kv-hero-media${cover ? ' kv-hero-cover' : ''}">${cover
     ? srcset(cover, 1200, 630, '(max-width:860px) 100vw, 600px', true, THU_DUC_COVER_ALT)
     : srcset('tru-so-pvi-thanh-do', 1200, 900, '(max-width:860px) 100vw, 600px', true, 'Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, trụ sở Công ty Bảo hiểm PVI Thành Đô')}
 ${cover ? '' : `<p class="kv-pin">${ICON.pin}<span>${esc(A.nhan)}<small>${esc(A.thuocVe)}</small></span></p>`}
-<figcaption>Ảnh thực tế: tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô.</figcaption></figure>
+<figcaption>${isThuDuc ? `Ảnh thực tế: mặt tiền tại ${esc(THU_DUC_ADDRESS)}. Nguồn: ảnh do chủ website cung cấp.` : 'Ảnh thực tế: tòa nhà 194 Golden Building, 473 Điện Biên Phủ, nơi đặt văn phòng PVI Thành Đô · Nguồn: PVI Thành Đô.'}</figcaption></figure>
 </div>
 </div></div>
 
 <div class="kv-shell"><div class="kv-answer">
-<p class="kv-lead">${t(A.lead)}</p>
+<p class="kv-lead">${isThuDuc ? `Bạn có thể đến <strong>${esc(THU_DUC_ADDRESS)}</strong> để mua bảo hiểm PVI. Nếu cần xem phí trước, hãy nhắn Zalo 0938 072 236 và cho biết bạn muốn bảo hiểm ô tô, con người hay tài sản. Nhân viên sẽ hướng dẫn giấy tờ cần chuẩn bị.` : t(A.lead)}</p>
 <p class="kv-byline">Công ty Bảo hiểm PVI Thành Đô · <time datetime="${A.reviewedAt}">Đối chiếu nguồn ngày ${dateVn(A.reviewedAt)}</time> · Tư vấn: <a href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Zalo 0938 072 236</a></p>
 </div></div>
 
+${isThuDuc ? `<section class="kv-block" aria-labelledby="an-khanh"><div class="kv-shell kv-online">
+<div class="kv-prose">
+<h2 id="an-khanh">Địa chỉ mua bảo hiểm PVI tại An Khánh</h2>
+<p><strong>${esc(THU_DUC_ADDRESS)}.</strong> Khi tới Đường số 2, tìm biển số nhà màu xanh có số 37 ở cột đá bên phải mặt tiền.</p>
+<p>Trước khi đến, gọi hoặc nhắn 0938 072 236 để hẹn nhân viên. Nếu mua cho doanh nghiệp, cho biết trước tên đơn vị và loại tài sản hoặc công trình cần bảo hiểm.</p>
+</div>
+<figure class="kv-hero-media">${srcset(`${THU_DUC_PHOTOS}/bien-so-nha-37`, 960, 600, '(max-width:860px) 100vw, 530px', false, 'Biển xanh ghi số nhà 37 Đường số 2, An Khánh, trên cột đá cạnh lối vào')}
+<figcaption>Ảnh thực tế: biển số nhà 37, Đường số 2, phường An Khánh. Nguồn: ảnh do chủ website cung cấp.</figcaption></figure>
+</div></section>` : ''}
+
 <section class="kv-block" aria-labelledby="san-pham"><div class="kv-shell">
+ ${isThuDuc ? `<div class="kv-prose"><h2 id="san-pham">Chọn loại bảo hiểm và chuẩn bị giấy tờ</h2>
+<p>Nếu chỉ cần báo phí, chuẩn bị trước thông tin ở dòng phù hợp bên dưới. Mỗi loại bảo hiểm cần một bộ hồ sơ khác nhau.</p>
+<ul>${THU_DUC_PRODUCTS.map(([label, href, detail]) => `<li><strong><a href="${href}">${esc(label)}</a></strong>. ${esc(detail)}</li>`).join('')}</ul></div>` : `
 <div class="kv-block-head"><h2 id="san-pham">Các sản phẩm bảo hiểm PVI phổ biến tại ${esc(A.ten)}</h2><a class="kv-head-link" href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Tư vấn theo nhu cầu của bạn ${ICON.arrow}</a></div>
-<ul class="kv-products">${PRODUCTS.map((p) => `<li><a href="${p.href}">${srcset(p.img, 1280, 853, '(max-width:640px) 50vw, 230px', false, p.alt)}<span class="kv-product-body"><strong>${esc(p.ten)}</strong><small>${esc(p.moTa)}</small></span></a></li>`).join('')}</ul>
+<ul class="kv-products">${PRODUCTS.map((p) => `<li><a href="${p.href}">${srcset(p.img, 1280, 853, '(max-width:640px) 50vw, 230px', false, p.alt)}<span class="kv-product-body"><strong>${esc(p.ten)}</strong><small>${esc(p.moTa)}</small></span></a></li>`).join('')}</ul>`}
 </div></section>
 
 <section class="kv-block" aria-labelledby="nhu-cau"><div class="kv-shell kv-prose">
@@ -120,8 +155,8 @@ ${A.nhuCau.items.length ? `<ul>${A.nhuCau.items.map((x) => `<li>${t(x)}</li>`).j
 </div></section>
 
 <section class="kv-block" aria-labelledby="van-phong"><div class="kv-shell">
-<h2 id="van-phong"><b>1.</b> Văn phòng Bảo hiểm PVI cho khách hàng ${esc(A.ten)}</h2>
-<p class="kv-intro">${t(A.vanPhongIntro)}</p>
+<h2 id="van-phong"><b>1.</b> ${isThuDuc ? 'Địa chỉ trụ sở theo danh bạ PVI' : `Văn phòng Bảo hiểm PVI cho khách hàng ${esc(A.ten)}`}</h2>
+<p class="kv-intro">${t(isThuDuc ? 'Danh bạ Tổng công ty Bảo hiểm PVI ghi địa chỉ của PVI Thành Đô và Bảo hiểm PVI Thủ Đức như dưới đây. Nếu muốn đến điểm mua tại An Khánh, xem địa chỉ số 37 và ảnh nhận biết ở phần trên.' : A.vanPhongIntro)}</p>
 <div class="kv-offices">
 <div class="kv-office">${srcset('tru-so-pvi-thanh-do', 1200, 900, '(max-width:640px) 100vw, 200px', false, 'Tòa nhà 194 Golden Building, nơi đặt văn phòng PVI Thành Đô')}
 <div><h3>Công ty Bảo hiểm PVI Thành Đô</h3>
@@ -168,7 +203,7 @@ ${A.phuong.note ? `<p class="kv-note">${t(A.phuong.note)}</p>` : ''}
 <thead><tr><th scope="col">Đơn vị mới (từ 01/07/2025)</th><th scope="col">Hình thành từ (trước 01/07/2025)</th></tr></thead>
 ${groups.map((g) => `<tbody>${g.nhom ? `<tr class="kv-group"><th scope="colgroup" colspan="2">${esc(g.nhom)}</th></tr>` : ''}${g.rows.map((r) => `<tr><th scope="row">${esc(r.ten)}</th><td>${t(r.tu)}</td></tr>`).join('')}</tbody>`).join('')}</table></div></div>
 <div class="kv-faq" id="cau-hoi"><h2>Câu hỏi thường gặp</h2>
-${A.faq.map((f, i) => `<details${i === 0 ? ' open' : ''}><summary>${t(f.q)}</summary><p>${t(f.a)}</p></details>`).join('')}
+${faq.map((f, i) => `<details${i === 0 ? ' open' : ''}><summary>${t(f.q)}</summary><p>${t(f.a)}</p></details>`).join('')}
 </div>
 </div></section>
 
@@ -192,17 +227,17 @@ ${A.faq.map((f, i) => `<details${i === 0 ? ' open' : ''}><summary>${t(f.q)}</sum
     path: P,
     canonical,
     title: `${A.title} | PVI Thành Đô`.length > 70 ? A.title : `${A.title} | PVI Thành Đô`,
-    description: A.description,
+    description,
     image: socialImage,
     head: (cover ? `<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="${esc(THU_DUC_COVER_ALT)}"><meta name="twitter:image" content="${SITE}${socialImage}"><meta name="twitter:image:alt" content="${esc(THU_DUC_COVER_ALT)}">` : '') +
-      articleJsonLd({ path: P, canonical, title: A.title, description: A.description, image: socialImage, date: A.reviewedAt }) + ld({
+      articleJsonLd({ path: P, canonical, title: A.title, description, image: socialImage, date: A.reviewedAt, updated: isThuDuc ? '2026-11-18' : undefined }) + ld({
       '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: SITE + '/' },
         { '@type': 'ListItem', position: 2, name: 'Tin tức', item: SITE + '/tin-tuc/' },
         { '@type': 'ListItem', position: 3, name: A.title, item: SITE + P }],
     }) + ld({
       '@context': 'https://schema.org', '@type': 'FAQPage',
-      mainEntity: A.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
     }),
     // Mục lục ngay dưới đoạn mở đầu, dựng từ các H2 của trang (tools/toc.mjs).
     main: withInlineToc(main, '</div></div>', { from: 'class="kv-answer"' }),
