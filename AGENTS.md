@@ -122,6 +122,13 @@ Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist
 - Thêm dịch vụ ngoài mới (pixel quảng cáo, chat, video nhúng, bản đồ khác…) thì phải thêm tên miền của nó vào đúng mục CSP (`script-src`, `connect-src`, `img-src`, `frame-src`), rồi mở trang kiểm tra console không có dòng "Refused to…".
 - `api/nhan-xet.js` chỉ nhận POST dạng `application/json` (chặn site lạ gửi nhận xét rác). Không nới điều kiện này.
 
+**Ảnh chủ site render (chủ site yêu cầu 18/11/2026)**
+- Ảnh chủ site gửi đã điền metadata (tiêu đề, mô tả, từ khóa, tác giả, credit, GPS, rating) khi render: **bắt buộc giữ nguyên** khi cắt, nén, đổi sang webp. Pillow mặc định xóa hết: phải truyền `xmp=` (và `icc_profile=`) của ảnh gốc khi `save()`; WebP không có khối IPTC riêng, phần IPTC đã có bản trong XMP. Nén xong kiểm tra lại file có XMP. Không tự sửa nội dung metadata (kể cả lỗi chính tả) khi chưa được yêu cầu, chỉ báo chủ site.
+- **Mỗi khi thêm hoặc sửa bài/trang có ảnh minh họa: nhắc chủ site render hình kèm metadata cho bài đó** (gợi ý tiêu đề, mô tả, từ khóa theo nội dung bài để chủ site điền). Không tự lấy ảnh stock hay ảnh AI thay khi chủ site chưa duyệt.
+
+**Favicon (chủ site chốt 18/11/2026)**
+- Mọi trang dùng đúng 2 thẻ: `<link rel="icon" href="https://pvihcm.com/pvihcm.ico?v=2" sizes="48x48 96x96 144x144">` và `<link rel="apple-touch-icon" href="https://pvihcm.com/apple-touch-icon.png" sizes="180x180">`. Trang sinh bằng script lấy từ `tools/chrome.mjs`; trang sửa tay (trang chủ, cháy nổ) sửa trực tiếp. `dist/pvihcm.ico` chứa các khung 16/32/48/96/144/256. Đổi icon thì tăng `?v=` để trình duyệt tải lại.
+
 **Git**
 - Commit tiếng Việt, mô tả ngắn điều đã đổi.
 - Không force-push `main`.
