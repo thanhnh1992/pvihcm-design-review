@@ -17,6 +17,7 @@ import * as kbDonVi from './articles/don-vi-thanh-vien-pvi.mjs';
 import * as kbPvi27045 from './articles/bao-hiem-pvi-ve-dich-som-2026.mjs';
 import { binhDuongGuides } from './articles/binh-duong-guides.mjs';
 import { taiNanSeo } from './articles/tai-nan-seo.mjs';
+import { doiTacPvi } from './articles/doi-tac-pvi.mjs';
 import { HUBS, STREAMS, POST_HUB, hubOf } from './data/kien-thuc-hub.mjs';
 import * as kbCnMuaODau from './articles/cn-mua-o-dau.mjs';
 import * as kbCnBaoNhieu from './articles/cn-bao-nhieu-tien.mjs';
@@ -50,6 +51,7 @@ const write = (rel, html) => {
 export const posts = [
   kbTnNd220.post,
   ...taiNanSeo.map(({ post }) => post),
+  ...doiTacPvi.map(({ post }) => post),
   kbCnMuaODau.post,
   kbCnBaoNhieu.post,
   kbCnChungCu.post,
@@ -135,6 +137,7 @@ const POST_GROUP = {
   'quy-dinh-mua-bao-hiem-chay-no-bat-buoc': 'phap-ly',
   ...Object.fromEntries(binhDuongGuides.map(({ post }) => [post.slug, 'san-pham'])),
   ...Object.fromEntries(taiNanSeo.map(({ post }) => [post.slug, 'san-pham'])),
+  ...Object.fromEntries(doiTacPvi.map(({ post }) => [post.slug, 'chung'])),
   'loi-ich-bao-hiem-tai-nan-ca-nhan': 'san-pham',
   'bao-hiem-tai-nan-cong-trinh-pvi': 'san-pham',
   'nghi-dinh-347-2026-chay-no-bat-buoc': 'phap-ly',
@@ -436,7 +439,7 @@ function renderKb(A) {
   // Mục lục dựng từ chính các H2 trong bài (tools/toc.mjs), giữ tên ngắn người viết đã khai trong A.toc.
   const bodyHtml = ensureH2Ids(A.body({ img, pic, ctaRow }));
   const endHtml = A.endMatter ? ensureH2Ids(A.endMatter()) : '';
-  const faq = `<h2 id="cau-hoi">Câu hỏi thường gặp</h2><div class="kb-faq">${A.faqs.map((f) => `<details><summary>${t(f.question)}</summary><p>${t(f.answer)}</p></details>`).join('')}</div>`;
+  const faq = !A.faqs.length ? '' : `<h2 id="cau-hoi">Câu hỏi thường gặp</h2><div class="kb-faq">${A.faqs.map((f) => `<details><summary>${t(f.question)}</summary><p>${t(f.answer)}</p></details>`).join('')}</div>`;
   const main = `
 <article class="kb">
 <div class="kb-head"><div class="kb-shell">
@@ -478,7 +481,7 @@ ${feedbackBlock(p)}
         { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: SITE + '/' },
         ...crumbs.map(([n, h], i) => ({ '@type': 'ListItem', position: i + 2, name: n, item: SITE + h })),
         { '@type': 'ListItem', position: crumbs.length + 2, name: p.title, item: SITE + P }],
-    })}</script>${faqJsonLd(A.faqs)}`,
+    })}</script>${A.faqs.length ? faqJsonLd(A.faqs) : ''}`,
     main,
     scripts: feedbackScript(),
     extraCss: '<link rel="stylesheet" href="/news.css">',
@@ -503,6 +506,7 @@ renderKb(kbDonVi);
 renderKb(kbPvi27045);
 for (const article of binhDuongGuides) renderKb(article);
 for (const article of taiNanSeo) renderKb(article);
+for (const article of doiTacPvi) renderKb(article);
 
 /* ── Khu Kiến thức theo sản phẩm (chủ site yêu cầu 16/11/2026, mô hình baohiempvi-vn.com/kien-thuc/san-pham/<sp>) ──
    /kien-thuc/: danh sách sản phẩm; /kien-thuc/<hub>/: ba mảng Kiến thức, Trải nghiệm thực tế, Tin tức.
