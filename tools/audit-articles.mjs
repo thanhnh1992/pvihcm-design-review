@@ -51,7 +51,12 @@ for (const slug of fs.readdirSync(ROOT)) {
     if (miss.length) r.issues.push(`toc-thieu=${miss.join(',')}`);
     const h2NoId = (after.match(/<h2(?![^>]*\sid=)[\s>]/g) || []).length;
     if (h2NoId) r.issues.push(`h2-khong-id=${h2NoId}`);
-  } else r.issues.push('khong-co-toc');
+  } else {
+    // Bài tin ngắn không có H2 nội dung riêng (chỉ có Sản phẩm liên quan, Nguồn, nhận xét) thì không cần mục lục.
+    const after = main.slice(main.indexOf('kb-main'));
+    const ownH2 = [...after.matchAll(/<h2 id="([^"]+)"/g)].map((m) => m[1]).filter((id) => !['fb-h', 'san-pham', 'nguon', 'nguon-tham-chieu', 'cau-hoi'].includes(id));
+    if (ownH2.length) r.issues.push('khong-co-toc');
+  }
   // JSON-LD
   const types = [];
   for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
