@@ -124,7 +124,7 @@ Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist
 - `api/nhan-xet.js` chỉ nhận POST dạng `application/json` (chặn site lạ gửi nhận xét rác). Không nới điều kiện này.
 
 **Ảnh chủ site render (chủ site yêu cầu 18/11/2026)**
-- Ảnh chủ site gửi đã điền metadata (tiêu đề, mô tả, từ khóa, tác giả, credit, GPS, rating) khi render: **bắt buộc giữ nguyên** khi cắt, nén, đổi sang webp. Pillow mặc định xóa hết: phải truyền `xmp=` (và `icc_profile=`) của ảnh gốc khi `save()`; WebP không có khối IPTC riêng, phần IPTC đã có bản trong XMP. Nén xong kiểm tra lại file có XMP. Không tự sửa nội dung metadata (kể cả lỗi chính tả) khi chưa được yêu cầu, chỉ báo chủ site.
+- Ảnh chủ site gửi đã điền metadata (tiêu đề, mô tả, từ khóa, tác giả, credit, GPS, rating) khi render: **bắt buộc giữ nguyên** khi cắt, nén, đổi sang webp. Pillow mặc định xóa hết: phải truyền `xmp=` (và `icc_profile=`) của ảnh gốc khi `save()`; sharp cũng xóa hết: phải gọi `.keepMetadata()` trước `.webp()`. Luôn làm từ **file gốc** chủ site gửi (ảnh dán vào khung chat có thể đã mất bớt metadata), không sửa, không xóa trường nào (kể cả tên máy ảnh, ống kính); WebP không có khối IPTC riêng, phần IPTC đã có bản trong XMP. Nén xong kiểm tra lại file có XMP. Không tự sửa nội dung metadata (kể cả lỗi chính tả) khi chưa được yêu cầu, chỉ báo chủ site.
 - **Mỗi khi thêm hoặc sửa bài/trang có ảnh minh họa: nhắc chủ site render hình kèm metadata cho bài đó** (gợi ý tiêu đề, mô tả, từ khóa theo nội dung bài để chủ site điền). Không tự lấy ảnh stock hay ảnh AI thay khi chủ site chưa duyệt.
 
 **Link ra ngoài (chủ site chốt 18/11/2026)**
