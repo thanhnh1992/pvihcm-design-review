@@ -726,3 +726,10 @@
 .kt-back .nl-kicker{color:#bcd3f2}
 .kt-back-btn{display:inline-flex;align-items:center;gap:6px;min-height:46px;padding:0 20px;border-radius:999px;background:#fff;color:var(--ink);font-weight:700;text-decoration:none}
 @media (max-width:600px){.kt-list .kt-lead{display:none}.kt-back{padding:18px}.kt-back-btn{width:100%;justify-content:center}}
+
+.kb-layout-inline{grid-template-columns:minmax(0,1fr)}
+.kb-layout-inline .kb-col{margin-inline:auto}
+.kb .kb-rating{display:flex;align-items:center;flex-wrap:wrap;gap:0 12px;margin:14px 0 0;font-size:14px;color:#5b6f86}
+.kb-rating strong,.kb-rating a{color:var(--ink)}
+.kb-rating a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:3px}
+.kb-rating a[hidden]{display:none}

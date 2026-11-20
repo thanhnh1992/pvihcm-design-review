@@ -431,6 +431,7 @@ const img = (name, alt, sizes, eager = false) => pic(name, { alt, sizes, eager }
 function renderKb(A) {
   const p = A.post;
   const P = postUrl(p);
+  const topTools = P.startsWith('/kien-thuc/');
   // Khu Kiến thức theo sản phẩm (16/11/2026): bài kiến thức, trải nghiệm hiện đường dẫn Kiến thức › Sản phẩm; bài tin giữ Tin tức.
   const HB = hubOf(p.slug);
   const kn = HB && HB.stream !== 'tin-tuc';
@@ -444,21 +445,23 @@ function renderKb(A) {
   const bodyHtml = ensureH2Ids(A.body({ img, pic, ctaRow }));
   const endHtml = A.endMatter ? ensureH2Ids(A.endMatter()) : '';
   const faq = !A.faqs.length ? '' : `<h2 id="cau-hoi">Câu hỏi thường gặp</h2><div class="kb-faq">${A.faqs.map((f) => `<details><summary>${t(f.question)}</summary><p>${t(f.answer)}</p></details>`).join('')}</div>`;
+  const toc = tocHtml(tocEntries(bodyHtml + '<h2 id="san-pham">Sản phẩm liên quan</h2>' + (A.faqs.length ? '<h2 id="cau-hoi">Câu hỏi thường gặp</h2>' : '') + endHtml, A.toc.map(([id, label]) => [id, clean(label)])), { inline: topTools });
+  const tocScript = '<script>(function(){var d=document.querySelector(\'.kb-toc details\');if(d&&window.matchMedia(\'(min-width:901px)\').matches)d.open=true;})();</script>';
+  const rating = topTools ? `<p class="kb-rating" data-rating-top><strong>Đánh giá bài viết</strong><span data-rating-status role="status">Đang tải đánh giá…</span><a href="#fb-h" data-rating-link hidden>Gửi đánh giá</a></p>` : '';
   const main = `
 <article class="kb">
 <div class="kb-head"><div class="kb-shell">
 ${crumbHtml}
 <h1>${t(p.title)}</h1>
 <p class="kb-lead">${t(p.lead)}</p>
-<p class="kb-meta"><span>Công ty Bảo hiểm PVI Thành Đô</span><time datetime="${p.date}">${esc(p.dateText)}</time>${p.updated ? `<time datetime="${p.updated}">Cập nhật ${esc(p.updatedText)}</time>` : ''}<span>${p.readMin} phút đọc</span></p>
+<p class="kb-meta"><span>Công ty Bảo hiểm PVI Thành Đô</span><time datetime="${p.date}">${esc(p.dateText)}</time>${p.updated ? `<time datetime="${p.updated}">Cập nhật ${esc(p.updatedText)}</time>` : ''}<span>${p.readMin} phút đọc</span></p>${topTools ? '\n' + rating + '\n' + toc : ''}
 </div></div>
 
 <figure class="kb-hero"${H.position ? ` style="--pos:${H.position}"` : ''}>${pic(H.name, { w: H.w, h: H.h, alt: p.alt, sizes: '(max-width:820px) 100vw, 1160px', eager: true })}
 <figcaption>${t(H.caption)}</figcaption></figure>
 
-<div class="kb-shell kb-layout">
-${tocHtml(tocEntries(bodyHtml + '<h2 id="san-pham">Sản phẩm liên quan</h2>' + (A.faqs.length ? '<h2 id="cau-hoi">Câu hỏi thường gặp</h2>' : '') + endHtml, A.toc.map(([id, label]) => [id, clean(label)])))}
-<script>(function(){var d=document.querySelector('.kb-toc details');if(d&&window.matchMedia('(min-width:901px)').matches)d.open=true;})();</script>
+<div class="kb-shell kb-layout${topTools ? ' kb-layout-inline' : ''}">
+${topTools ? '' : toc + '\n' + tocScript}
 <div class="kb-main">
 <div class="kb-col">
 ${bodyHtml}

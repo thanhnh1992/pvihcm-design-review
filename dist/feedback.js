@@ -1,4 +1,4 @@
-/* Nhận xét, đánh giá của bạn đọc cuối mỗi bài Tin tức.
+/* Nhận xét, đánh giá của bạn đọc trên trang bài viết.
    Dữ liệu lưu ở Vercel Blob qua /api/nhan-xet (api/nhan-xet.js); gửi là hiện ngay.
    Chế độ quản trị: mở bài với ?quantri, nhập ADMIN_KEY một lần, mỗi nhận xét có nút Xóa.
    Nội dung người dùng luôn gán bằng textContent, không bao giờ chèn HTML. */
@@ -17,6 +17,15 @@
   var btn = form.querySelector('button[type=submit]');
   var list = box.querySelector('.fb-list');
   var summary = box.querySelector('.fb-summary');
+  var top = document.querySelector('[data-rating-top]');
+  var topStatus = top && top.querySelector('[data-rating-status]');
+  var topLink = top && top.querySelector('[data-rating-link]');
+
+  function showTopStatus(text, canRate) {
+    if (!topStatus || !topLink) return;
+    topStatus.textContent = text;
+    topLink.hidden = !canRate;
+  }
   var count = form.querySelector('.fb-count');
   var area = form.querySelector('textarea');
   var HINTS = ['', 'Chưa hữu ích', 'Ít hữu ích', 'Tạm được', 'Hữu ích', 'Rất hữu ích'];
@@ -99,7 +108,12 @@
     }
   }
   function showSummary() {
-    if (!all.count) { summary.hidden = true; syncRatingLd(0); return; }
+    if (!all.count) {
+      summary.hidden = true;
+      showTopStatus('Chưa có đánh giá', true);
+      syncRatingLd(0);
+      return;
+    }
     var avg = Math.round((all.sum / all.count) * 10) / 10;
     syncRatingLd(all.count, avg);
     summary.querySelector('.fb-avg').textContent = avg.toFixed(1).replace('.', ',');
@@ -108,6 +122,7 @@
     avgStars.setAttribute('aria-label', 'Trung bình ' + avg.toFixed(1).replace('.', ',') + ' trên 5 sao');
     summary.querySelector('.fb-total').textContent = all.count + ' đánh giá';
     summary.hidden = false;
+    showTopStatus(avg.toFixed(1).replace('.', ',') + '/5 · ' + all.count + ' đánh giá', true);
   }
   function item(r) {
     var li = document.createElement('li');
@@ -139,11 +154,14 @@
   fetch(url + (url.indexOf('?') < 0 ? '?' : '&') + 'slug=' + encodeURIComponent(slug), adminKey ? { cache: 'no-store' } : undefined)
     .then(function (r) { return r.json(); })
     .then(function (d) {
-      if (!d || !d.ok || d.disabled) return;
+      if (!d || !d.ok || d.disabled) {
+        showTopStatus(d && d.disabled ? 'Chức năng đánh giá chưa được bật' : 'Chưa tải được đánh giá', false);
+        return;
+      }
       box.hidden = false;
       all.count = d.count; all.sum = d.average * d.count; showSummary();
       (d.reviews || []).forEach(function (r) { list.appendChild(item(r)); });
       list.hidden = !list.children.length;
     })
-    .catch(function () { /* API lỗi hoặc chưa bật: giữ khối nhận xét ẩn */ });
+    .catch(function () { showTopStatus('Chưa tải được đánh giá', false); });
 })();

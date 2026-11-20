@@ -96,6 +96,10 @@ Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist
 - Bài "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI" (`/tin-tuc/don-vi-thanh-vien-pvi/`, chủ site giao 04/11/2026, mục Tin tức chung): `tools/articles/don-vi-thanh-vien-pvi.mjs`, canonical về `https://www.baohiempvi-vn.com/don-vi-thanh-vien-pvi`. Dữ liệu `tools/data/don-vi-thanh-vien-pvi.json` chép nguyên `app/pvi-member-directory.json` của baohiempvi-vnwebsite (có mã số thuế `taxCode`); sửa bên đó thì chép lại, không gõ tay.
 - Đăng lại bài đã có bản chuẩn ở site khác: thêm `canonical: 'https://...'` vào `post` của module bài. `renderKb()` in canonical đó, `gen-sitemap.mjs` tự bỏ trang khỏi sitemap.
 
+**Đầu bài kiến thức trên pvihcm.com**
+- Với bài ở `/kien-thuc/<slug>/`, đặt dòng đánh giá bạn đọc và mục lục sau thông tin bài, trước ảnh đại diện. Mục lục lấy tự động từ các H2, giữ thứ tự trong bài và cho phép thu gọn.
+- Hiển thị điểm trung bình và số lượt từ hệ thống nhận xét của bài. Khi chưa có lượt, ghi “Chưa có đánh giá”. Khi hệ thống tắt, ghi rõ trạng thái. Khi hệ thống hoạt động, liên kết đầu bài dẫn tới biểu mẫu gửi đánh giá.
+
 **Link ra ngoài (chủ site chốt 05/10/2026, bắt buộc)**
 - Bài viết (mục Tin tức và mọi bài nội dung) **TUYỆT ĐỐI không có link ra ngoài**, đặc biệt không bao giờ link hay nhắc tên website của công ty bảo hiểm khác (đối thủ). Chỉ được: link nội bộ pvihcm.com, `tel:`, `mailto:` và Zalo OA của đơn vị.
 - Nguồn tham chiếu ghi bằng chữ (tên tài liệu + đơn vị phát hành), không gắn link, không để URL trong HTML.
