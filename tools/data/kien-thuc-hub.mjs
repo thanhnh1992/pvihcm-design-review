@@ -21,6 +21,9 @@ export const STREAMS = [
 
 // slug bài → danh sách [hub, mảng]. Phần tử đầu là hub chính (dùng cho khối "Thuộc sản phẩm" và đường dẫn trên bài).
 export const POST_HUB = {
+  'thoi-diem-phat-sinh-trach-nhiem-bao-hiem': [['chay-no-bat-buoc', 'kien-thuc']],
+  'cac-loai-bao-hiem-xe-o-to': [['bao-hiem-o-to', 'kien-thuc']],
+  'dong-phi-bao-hiem-tre-han': [['chay-no-bat-buoc', 'kien-thuc']],
   // Tai nạn 24/24
   'bao-hiem-tai-nan-la-gi': [['tai-nan-24-24', 'kien-thuc']],
   'bao-hiem-tai-nan-bao-nhieu-tien': [['tai-nan-24-24', 'kien-thuc']],

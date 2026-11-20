@@ -18,6 +18,7 @@ import * as kbPvi27045 from './articles/bao-hiem-pvi-ve-dich-som-2026.mjs';
 import { binhDuongGuides } from './articles/binh-duong-guides.mjs';
 import { taiNanSeo } from './articles/tai-nan-seo.mjs';
 import { doiTacPvi } from './articles/doi-tac-pvi.mjs';
+import { kienThucBaoHiem } from './articles/kien-thuc-bao-hiem-2026-11-20.mjs';
 import { HUBS, STREAMS, POST_HUB, hubOf } from './data/kien-thuc-hub.mjs';
 import * as kbCnMuaODau from './articles/cn-mua-o-dau.mjs';
 import * as kbCnBaoNhieu from './articles/cn-bao-nhieu-tien.mjs';
@@ -48,7 +49,10 @@ const write = (rel, html) => {
 };
 
 /* ── Danh sách bài, mới nhất lên đầu ── */
+const postUrl = (post) => post.path || `/tin-tuc/${post.slug}/`;
+
 export const posts = [
+  ...kienThucBaoHiem.map(({ post }) => post),
   kbTnNd220.post,
   ...taiNanSeo.map(({ post }) => post),
   ...doiTacPvi.map(({ post }) => post),
@@ -151,7 +155,7 @@ const POST_GROUP = {
   'don-vi-thanh-vien-pvi': 'chung',
   'bao-hiem-pvi-ve-dich-som-vuot-ke-hoach-2026': 'chung',
 };
-for (const p of posts) {
+for (const p of posts.filter((post) => !post.path?.startsWith('/kien-thuc/'))) {
   if (!GROUPS.some((g) => g.key === POST_GROUP[p.slug])) throw new Error(`Bài ${p.slug} chưa được xếp vào mục nào (POST_GROUP trong gen-news.mjs)`);
 }
 
@@ -165,7 +169,7 @@ for (const p of posts) {
   // Ảnh bài có sẵn bản -480/-800 trong /assets (xem AGENTS.md mục Hiệu năng).
   const cover = (p, sizes) => {
     const base = p.image.replace(/\.webp$/, '');
-    return `<img src="${p.image}" srcset="${base}-480.webp 480w, ${base}-800.webp 800w, ${p.image} 1280w" sizes="${sizes}" width="1280" height="853" alt="${esc(p.alt)}" loading="lazy" decoding="async">`;
+    return `<img src="${p.image}" srcset="${base}-480.webp 480w, ${base}-800.webp 800w, ${p.image} ${p.imageWidth || 1280}w" sizes="${sizes}" width="${p.imageWidth || 1280}" height="${p.imageHeight || 853}" alt="${esc(p.alt)}" loading="lazy" decoding="async">`;
   };
   const time = (p) => `<time class="nl-date" datetime="${p.date}">${esc(p.dateText)}</time>`;
   const head = (g, i) => `<div class="nl-head">
@@ -178,10 +182,10 @@ for (const p of posts) {
     return `
 <section class="nl-section" id="${g.id}" aria-labelledby="${g.id}-h"><div class="fire-wrap">
 ${head(g, i)}
-<a class="nl-feature" href="/tin-tuc/${first.slug}/"><span class="nl-photo">${cover(first, '(max-width:760px) calc(100vw - 40px), (max-width:1288px) 50vw, 620px')}</span>
+<a class="nl-feature" href="${postUrl(first)}"><span class="nl-photo">${cover(first, '(max-width:760px) calc(100vw - 40px), (max-width:1288px) 50vw, 620px')}</span>
 <span class="nl-feature-copy"><span class="nl-label">${esc(first.cat)}</span><h3>${t(first.title)}</h3><p>${t(first.lead)}</p>
 <span class="nl-meta">${time(first)}<b>Đọc bài <i aria-hidden="true">&rarr;</i></b></span></span></a>
-${rest.length ? `<ul class="nl-photos">${rest.map((p) => `<li><a class="nl-card" href="/tin-tuc/${p.slug}/"><span class="nl-photo">${cover(p, '(max-width:600px) 120px, (max-width:960px) 50vw, 400px')}</span>
+${rest.length ? `<ul class="nl-photos">${rest.map((p) => `<li><a class="nl-card" href="${postUrl(p)}"><span class="nl-photo">${cover(p, '(max-width:600px) 120px, (max-width:960px) 50vw, 400px')}</span>
 <span class="nl-card-copy"><span class="nl-label">${esc(p.cat)}</span><h3>${t(p.title)}</h3>${time(p)}</span></a></li>`).join('')}</ul>` : ''}
 </div></section>`;
   };
@@ -191,10 +195,10 @@ ${rest.length ? `<ul class="nl-photos">${rest.map((p) => `<li><a class="nl-card"
 <section class="nl-section" id="${g.id}" aria-labelledby="${g.id}-h"><div class="fire-wrap">
 ${head(g, i)}
 <div class="nl-news${rest.length ? '' : ' nl-solo'}">
-<a class="nl-latest" href="/tin-tuc/${first.slug}/"><span class="nl-photo">${cover(first, '(max-width:900px) 100vw, 520px')}</span>
+<a class="nl-latest" href="${postUrl(first)}"><span class="nl-photo">${cover(first, '(max-width:900px) 100vw, 520px')}</span>
 <span class="nl-latest-copy"><span class="nl-badge">Mới nhất</span><span class="nl-label">${esc(first.cat)}</span><h3>${t(first.title)}</h3><p>${t(first.lead)}</p>
 <span class="nl-meta">${time(first)}<b>Đọc bài <i aria-hidden="true">&rarr;</i></b></span></span></a>
-${rest.length ? `<ol class="nl-timeline">${rest.map((p) => `<li>${time(p)}<a href="/tin-tuc/${p.slug}/"><span class="nl-label">${esc(p.cat)}</span><h3>${t(p.title)}</h3><p>${t(p.lead)}</p></a></li>`).join('')}</ol>` : ''}
+${rest.length ? `<ol class="nl-timeline">${rest.map((p) => `<li>${time(p)}<a href="${postUrl(p)}"><span class="nl-label">${esc(p.cat)}</span><h3>${t(p.title)}</h3><p>${t(p.lead)}</p></a></li>`).join('')}</ol>` : ''}
 </div>${g.key === 'chung' ? areaIndex() : ''}
 </div></section>`;
   };
@@ -421,12 +425,12 @@ ${feedbackBlock(p)}
    Mục lục bám theo khi cuộn trên máy tính, cột chữ 700px, khối rộng xen giữa.
    Mỗi module bài khai báo: post, seo, crumb, hero, toc, body(ctx), related, faqs, sources. */
 const pic = (name, { w = 1280, h = 853, alt = '', sizes = '100vw', eager = false } = {}) =>
-  `<img src="/assets/${name}.webp${av(name)}" srcset="/assets/${name}-480.webp${av(name)} 480w, /assets/${name}-800.webp${av(name)} 800w, /assets/${name}.webp${av(name)} ${w}w" sizes="${sizes}" width="${w}" height="${h}" alt="${esc(alt)}"${eager ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"'}>`;
+  `<img src="/assets/${name}.webp${av(name)}" srcset="/assets/${name}-480.webp${av(name)} 480w, ${w > 800 ? `/assets/${name}-800.webp${av(name)} 800w, ` : ''}/assets/${name}.webp${av(name)} ${w}w" sizes="${sizes}" width="${w}" height="${h}" alt="${esc(alt)}"${eager ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"'}>`;
 const img = (name, alt, sizes, eager = false) => pic(name, { alt, sizes, eager });
 
 function renderKb(A) {
   const p = A.post;
-  const P = `/tin-tuc/${p.slug}/`;
+  const P = postUrl(p);
   // Khu Kiến thức theo sản phẩm (16/11/2026): bài kiến thức, trải nghiệm hiện đường dẫn Kiến thức › Sản phẩm; bài tin giữ Tin tức.
   const HB = hubOf(p.slug);
   const kn = HB && HB.stream !== 'tin-tuc';
@@ -470,7 +474,7 @@ ${feedbackBlock(p)}
 </div>
 </article>`;
 
-  write(`tin-tuc/${p.slug}/index.html`, page({
+  write(`${P.slice(1)}index.html`, page({
     path: P,
     title: A.seo.title,
     description: A.seo.description,
@@ -507,6 +511,7 @@ renderKb(kbPvi27045);
 for (const article of binhDuongGuides) renderKb(article);
 for (const article of taiNanSeo) renderKb(article);
 for (const article of doiTacPvi) renderKb(article);
+for (const article of kienThucBaoHiem) renderKb(article);
 
 /* ── Khu Kiến thức theo sản phẩm (chủ site yêu cầu 16/11/2026, mô hình baohiempvi-vn.com/kien-thuc/san-pham/<sp>) ──
    /kien-thuc/: danh sách sản phẩm; /kien-thuc/<hub>/: ba mảng Kiến thức, Trải nghiệm thực tế, Tin tức.
@@ -515,7 +520,7 @@ for (const article of doiTacPvi) renderKb(article);
   for (const slug of Object.keys(POST_HUB)) if (!posts.some((p) => p.slug === slug)) throw new Error(`kien-thuc-hub: không có bài ${slug}`);
   const cover = (p, sizes) => {
     const base = p.image.replace(/\.webp$/, '');
-    return `<img src="${p.image}${av(base.replace('/assets/', ''))}" srcset="${base}-480.webp 480w, ${base}-800.webp 800w, ${p.image} 1280w" sizes="${sizes}" width="1280" height="853" alt="${esc(p.alt)}" loading="lazy" decoding="async">`;
+    return `<img src="${p.image}${av(base.replace('/assets/', ''))}" srcset="${base}-480.webp 480w, ${base}-800.webp 800w, ${p.image} ${p.imageWidth || 1280}w" sizes="${sizes}" width="${p.imageWidth || 1280}" height="${p.imageHeight || 853}" alt="${esc(p.alt)}" loading="lazy" decoding="async">`;
   };
   const time = (p) => `<time class="nl-date" datetime="${p.date}">${esc(p.dateText)}</time>`;
   const byDate = (a, b) => b.date.localeCompare(a.date);
@@ -567,7 +572,7 @@ for (const article of doiTacPvi) renderKb(article);
     const section = (st, i) => {
       const id = `${st.key}`;
       const body = st.items.length
-        ? `<ul class="nl-photos kt-list">${st.items.map((p) => `<li><a class="nl-card" href="/tin-tuc/${p.slug}/"><span class="nl-photo">${cover(p, '(max-width:600px) 120px, (max-width:960px) 50vw, 400px')}</span>
+        ? `<ul class="nl-photos kt-list">${st.items.map((p) => `<li><a class="nl-card" href="${postUrl(p)}"><span class="nl-photo">${cover(p, '(max-width:600px) 120px, (max-width:960px) 50vw, 400px')}</span>
 <span class="nl-card-copy"><span class="nl-label">${esc(p.cat)}</span><h3>${t(p.title)}</h3><p class="kt-lead">${t(p.lead)}</p>${time(p)}</span></a></li>`).join('')}</ul>`
         : `<p class="kt-empty">Mảng này đang biên soạn. Cần hỏi ngay, nhắn <a href="https://zalo.me/0938072236" target="_blank" rel="noopener">Zalo 0938 072 236</a>.</p>`;
       return `
