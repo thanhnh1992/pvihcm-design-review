@@ -1,11 +1,14 @@
 import fs from 'node:fs';
-import { page, esc, SITE, ZALO, faqJsonLd, breadcrumbJsonLd } from './chrome.mjs';
+import { page, esc, SITE, ORG_ID, ZALO, faqJsonLd, breadcrumbJsonLd } from './chrome.mjs';
+import { localityForPath } from './locality-footer.mjs';
+import { localProductCopy } from './data/binh-duong-product-copy.mjs';
 import { formatVnd, tndsVehicleClasses } from './data/tnds.mjs';
 import { binhDuongGuides, binhDuongOffice, binhDuongOfficeSources } from './articles/binh-duong-guides.mjs';
 
 const route = '/binhduong/';
 const catalog = route + 'sanpham/';
 const overview = '/tin-tuc/mua-bao-hiem-pvi-binh-duong/';
+const onlyProductPages = process.argv.includes('--products-only');
 const title = 'Mua bảo hiểm tại Bình Dương | Uy tín, báo phí nhanh';
 const description = 'Mua bảo hiểm tại Bình Dương. Tra biểu phí PVI 2026 theo sản phẩm, nhận báo phí, hỏi ưu đãi đang áp dụng và xem địa chỉ tư vấn tại Thủ Dầu Một.';
 const groups = [
@@ -191,15 +194,16 @@ function subpageCrumb(label, isProduct = false) {
   </nav>`;
 }
 
-function writePage({ url, title, description, image, main, type = 'WebPage', extraHead = '' }) {
+function writePage({ url, title, description, image, main, type = 'WebPage', extraHead = '', structured = {}, extraCss = '' }) {
   const jsonLd = JSON.stringify({
     '@context': 'https://schema.org', '@type': type, name: title, description,
     url: SITE + url,
     about: { '@type': 'Place', name: 'Khu vực Bình Dương, TP.HCM' },
+    ...structured,
   }).replace(/</g, '\\u003c');
   const html = page({
     path: url, title, description, image, main, bodyClass: 'fire bd-page',
-    extraCss: '<link rel="stylesheet" href="/binhduong/landing.css">',
+    extraCss: '<link rel="stylesheet" href="/binhduong/landing.css">' + extraCss,
     head: `<script type="application/ld+json">${jsonLd}</script>${extraHead}`,
   });
   const output = new URL('../dist' + url, import.meta.url);
@@ -220,6 +224,7 @@ function subpageBreadcrumbJsonLd(url, name, isProduct = false) {
   }).replace(/</g, '\\u003c')}</script>`;
 }
 
+if (!onlyProductPages) {
 writePage({ url: route, title, description, image: heroImage, main,
   extraHead: breadcrumbJsonLd(route, localName) + faqJsonLd(faqs) });
 
@@ -236,43 +241,151 @@ writePage({
     <div class="bd-actions"><a class="bd-button" href="${route}#bieu-phi">Xem biểu phí 2026</a><a class="bd-button bd-secondary" href="${route}#nhan-bao-phi">Nhận báo phí</a></div>
   </div></div>`,
 });
+}
+
+
+const branchId = SITE + route + '#dia-chi-pvi-binh-duong';
+const localAddress = localityForPath(route + 'tndsoto/').unit;
+const areaName = 'Khu vực Bình Dương, Thành phố Hồ Chí Minh';
+const tndsCover = 'tnds-pvi-thu-dau-mot';
+const tndsCaption = 'Xe gia đình chuẩn bị khởi hành trên một tuyến phố có hàng cây.';
+const tndsPhases = tndsVehicleClasses.find(({ id }) => id === 'passenger').usages;
+const tndsFeeRows = [
+  [tndsPhases[0].label, tndsPhases[0].rows[0]],
+  [tndsPhases[0].label, tndsPhases[0].rows[1]],
+  [tndsPhases[1].label, tndsPhases[1].rows[0]],
+  [tndsPhases[1].label, tndsPhases[1].rows[2]],
+];
+const tndsFeeTable = `<div class="bd-detail-fees">
+  <table><caption>Ví dụ phí cơ sở TNDS ô tô một năm, chưa gồm VAT</caption>
+    <thead><tr><th scope="col">Mục đích sử dụng</th><th scope="col">Số chỗ</th><th scope="col">Phí cơ sở</th></tr></thead>
+    <tbody>${tndsFeeRows.map(([label, row]) => `<tr><th scope="row">${esc(label)}</th><td>${esc(row.id === 'business-7' ? '7 chỗ' : row.label)}</td><td>${formatVnd(row.baseFee)}</td></tr>`).join('')}</tbody>
+  </table>
+  <p class="bd-source">Nguồn: Phụ lục I, Văn bản hợp nhất 64/2026/VBHN-NĐ-BTC ngày 05/11/2026 của Bộ Tài chính.</p>
+</div>`;
+
+function productSchema(heading, description, url, cover) {
+  return {
+    '@id': SITE + url + '#webpage',
+    inLanguage: 'vi-VN',
+    publisher: { '@id': ORG_ID },
+    primaryImageOfPage: { '@type': 'ImageObject', contentUrl: SITE + cover },
+    mainEntity: {
+      '@type': 'Service',
+      '@id': SITE + url + '#dich-vu',
+      name: heading,
+      description,
+      url: SITE + url,
+      areaServed: { '@type': 'Place', name: areaName },
+      provider: { '@type': 'Organization', name: 'Tổng công ty Bảo hiểm PVI' },
+    },
+    mentions: {
+      '@type': 'InsuranceAgency',
+      '@id': branchId,
+      name: 'Chi nhánh Bảo hiểm PVI Đông Sài Gòn',
+      alternateName: 'Bảo hiểm PVI Bình Dương',
+      telephone: localAddress.phone.replace(/\D/g, ''),
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: localAddress.address.split(', Phường Thủ Dầu Một')[0],
+        addressLocality: 'Phường Thủ Dầu Một',
+        addressRegion: 'Thành phố Hồ Chí Minh',
+        addressCountry: 'VN',
+      },
+    },
+  };
+}
 
 for (const group of productGroups) {
   for (const product of group.products) {
-    const { label, basis, guide, documents, action, destination, slug, url } = product;
-    const heading = label.endsWith('tại Bình Dương') ? label : label + ' tại Bình Dương';
-    const { name, w, h } = guide.hero;
+    const { guide, documents, action, destination, slug, url } = product;
+    const localSlug = url.split('/').at(-2);
+    const copy = localProductCopy[localSlug];
+    const isTnds = localSlug === 'tndsoto';
+    const original = guide.related[0].href;
+    const originalLabel = localSlug === 'taisannhaxuong'
+      ? 'Xem bảo hiểm cháy nổ bắt buộc cho nhà xưởng'
+      : 'Xem chi tiết sản phẩm PVI';
+    const directAction = destination.startsWith(original + '#');
+    const quote = '#lien-he-tu-van';
+    const nextStepHref = isTnds ? original + 'dat-mua/' : 'tel:0938072236';
+    const nextStepLabel = isTnds ? 'Mua ngay' : 'Liên hệ tư vấn ngay';
+    const { heading, intro, sections } = copy;
+    const description = copy.description || intro;
+    const title = copy.title || heading + ' | Hồ sơ và báo phí';
+    const name = isTnds ? tndsCover : guide.hero.name;
+    const { w, h } = isTnds ? { w: 1200, h: 630 } : guide.hero;
+    const alt = isTnds ? tndsCaption : guide.post.alt;
+    const caption = isTnds ? 'Hình ảnh minh họa xe gia đình tại khu dân cư.' : guide.hero.caption;
+    const toc = [
+      ...sections.map(([id, label]) => [id, label]),
+      ['ho-so', 'Hồ sơ cần chuẩn bị'],
+      ['cau-hoi', 'Câu hỏi thường gặp'],
+      ['dia-chi-pvi-binh-duong', 'Địa chỉ PVI Bình Dương'],
+      ['lien-he-tu-van', 'Nhận báo phí'],
+    ];
     writePage({
-      url, title: heading, description: basis + ' Xem hồ sơ và liên hệ tư vấn tại Bình Dương.',
-      image: guide.post.socialImage, extraHead: subpageBreadcrumbJsonLd(url, heading, true),
-      main: `<div class="bd">
+      url, title, description,
+      image: isTnds ? '/assets/' + tndsCover + '-og.jpg' : guide.post.socialImage,
+      structured: productSchema(heading, description, url, '/assets/' + name + '.webp'),
+      extraHead: subpageBreadcrumbJsonLd(url, heading, true),
+      extraCss: '<link rel="stylesheet" href="/binhduong/product-detail.css">',
+      main: `<div class="bd bd-product-page">
   <section class="bd-hero">
     <div class="bd-wrap bd-hero-grid">
       <div class="bd-intro">
         ${subpageCrumb(heading, true)}
         <h1>${esc(heading)}</h1>
-        <p>${esc(basis)}</p>
-        <div class="bd-actions"><a class="bd-button" href="${destination}">${esc(action)}</a><a class="bd-button bd-secondary" href="#ho-so">Xem hồ sơ</a></div>
+        <p>${esc(intro)}</p>
+        <div class="bd-actions"><a class="bd-button" href="${directAction ? destination : quote}">${directAction ? esc(action) : 'Nhận báo phí'}</a><a class="bd-button bd-secondary" href="${nextStepHref}">${nextStepLabel}</a></div>
       </div>
       <figure class="bd-hero-photo">
-        ${photo(name, guide.post.alt, '(max-width:800px) 92vw, 550px', { eager: true, width: w, height: h })}
-        <figcaption>${esc(guide.hero.caption)}</figcaption>
+        ${photo(name, alt, '(max-width:800px) 92vw, 550px', { eager: true, width: w, height: h })}
+        <figcaption>${esc(caption)}</figcaption>
       </figure>
     </div>
   </section>
   <div class="bd-wrap bd-body">
+    <nav aria-label="Mục lục" class="bd-detail-toc">
+      <details open><summary>Mục lục</summary><ol>${toc.map(([id, label]) => `<li><a href="#${id}">${esc(label)}</a></li>`).join('')}</ol></details>
+    </nav>
+    ${sections.map(([id, label, paragraphs]) => `<section class="bd-section bd-guide" aria-labelledby="${id}">
+      <h2 id="${id}">${esc(label)}</h2>
+      ${paragraphs.map((line) => `<p>${esc(line)}</p>`).join('')}
+      ${id === 'pham-vi' ? `<div class="bd-actions"><a class="bd-button bd-secondary" href="${original}">${originalLabel}</a></div>` : ''}
+      ${isTnds && id === 'cach-tra-phi' ? tndsFeeTable : ''}
+      ${id === 'cach-tra-phi' ? `<div class="bd-actions">${directAction ? `<a class="bd-button" href="${destination}">${esc(action)}</a>` : ''}<a class="bd-button${directAction ? ' bd-secondary' : ''}" href="${quote}">Nhận báo phí theo hồ sơ</a></div>` : ''}
+      ${isTnds && id === 'boi-thuong' ? '<p><a class="bd-link" href="tel:1900545458">Gọi tổng đài bồi thường PVI 1900 54 54 58</a></p>' : ''}
+    </section>`).join('\n')}
     <section class="bd-section bd-guide" aria-labelledby="ho-so">
       <h2 id="ho-so">Hồ sơ cần chuẩn bị</h2>
       <ul>${documents.map((item) => `<li>${esc(item)}</li>`).join('')}</ul>
-      <p class="bd-summary"><a class="bd-link" href="/tin-tuc/${slug}/">Đọc hướng dẫn chi tiết tại Bình Dương →</a></p>
+      <div class="bd-actions"><a class="bd-button" href="${esc(ZALO)}">Nhắn Zalo hỏi về hồ sơ</a></div>
+      <p><a class="bd-link" href="/tin-tuc/${slug}/">Đọc hướng dẫn chi tiết tại Bình Dương</a></p>
+    </section>
+    <section class="bd-section bd-guide bd-faq" aria-labelledby="cau-hoi">
+      <h2 id="cau-hoi">Câu hỏi thường gặp</h2>
+      ${guide.faqs.map(({ question, answer }) => `<details><summary>${esc(question)}</summary><p>${esc(answer)}</p></details>`).join('')}
+    </section>
+    <section class="bd-section bd-guide" aria-labelledby="nguon-tham-chieu">
+      <h2 id="nguon-tham-chieu">Nguồn tham chiếu</h2>
+      <ul>${guide.sources.map(([label, , org]) => `<li>${esc(label)} · ${esc(org)}</li>`).join('')}</ul>
+    </section>
+    <section class="bd-section bd-detail-location" aria-labelledby="dia-chi-pvi-binh-duong">
+      ${binhDuongOffice().trim()}
+      <a class="bd-link" href="#lien-he">Xem bản đồ văn phòng ở chân trang</a>
     </section>
     <section class="bd-section bd-quote" aria-labelledby="lien-he-tu-van">
-      <div><h2 id="lien-he-tu-van">Nhận tư vấn tại Bình Dương</h2><p>Liên hệ để kiểm tra hồ sơ, điều kiện và thời điểm có thể phát hành.</p><a class="bd-link" href="${route}#dia-chi-pvi-binh-duong">Xem địa chỉ chi nhánh tại Thủ Dầu Một →</a></div>
+      <div><h2 id="lien-he-tu-van">Nhận báo phí từ PVI Thành Đô</h2><p>Gửi thông tin theo mục hồ sơ để được kiểm tra phương án, biểu phí và thời điểm có thể phát hành.</p></div>
       <div class="bd-actions bd-quote-actions"><a class="bd-button" href="tel:0938072236">Gọi tư vấn 0938 072 236</a><a class="bd-button bd-secondary" href="${esc(ZALO)}">Nhắn Zalo</a></div>
     </section>
-    <p class="bd-return"><a class="bd-link" href="${catalog}">← Xem tất cả sản phẩm bảo hiểm tại Bình Dương</a></p>
+    <nav class="bd-section bd-guide bd-sibling-products" aria-label="Sản phẩm cùng nhóm">
+      <h2>Sản phẩm cùng nhóm tại Bình Dương</h2>
+      <ul>${group.products.filter((sibling) => sibling.url !== url).map((sibling) => `<li><a class="bd-link" href="${sibling.url}">${esc(sibling.label)}</a></li>`).join('')}</ul>
+      <p class="bd-return"><a class="bd-link" href="${catalog}">← Xem danh mục bảo hiểm tại Bình Dương</a></p>
+    </nav>
   </div>
-</div>`,
+</div>`.replace(/^[\t ]+$/gm, ''),
     });
   }
 }

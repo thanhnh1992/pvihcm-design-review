@@ -1,0 +1,27 @@
+.bd-product-page .bd-section { margin-top: clamp(30px, 5vw, 56px); }
+.bd-product-page .bd-guide > p { margin-top: 12px; }
+.bd-product-page nav.bd-detail-toc,
+.bd-product-page nav.bd-sibling-products { display: block; }
+
+.bd-detail-toc,
+.bd-detail-location {
+  max-width: 850px;
+  padding: clamp(16px, 3vw, 26px);
+  border: 1px solid var(--bd-line);
+  border-radius: 14px;
+  background: var(--bd-surface);
+}
+.bd-detail-toc summary { cursor: pointer; font-weight: 750; }
+.bd-detail-toc ol { margin: 10px 0 0; padding-inline-start: 22px; }
+.bd-detail-toc a { display: inline-block; padding-block: 5px; color: var(--bd-blue); text-decoration: underline; text-underline-offset: 3px; }
+.bd-detail-location p { margin-top: 10px; }
+.bd-detail-location > a { display: inline-block; margin-top: 12px; }
+
+.bd-detail-fees { margin-top: 18px; }
+.bd-detail-fees table { width: 100%; border-collapse: collapse; font-size: clamp(14px, 2vw, 16px); }
+.bd-detail-fees caption { margin-bottom: 8px; text-align: left; font-weight: 750; }
+.bd-detail-fees th,
+.bd-detail-fees td { padding: 10px clamp(6px, 2vw, 15px); border-bottom: 1px solid var(--bd-line); text-align: left; }
+.bd-detail-fees thead { background: var(--bd-surface); }
+.bd-detail-fees th:last-child,
+.bd-detail-fees td:last-child { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
