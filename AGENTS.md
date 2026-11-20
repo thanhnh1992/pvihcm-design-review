@@ -115,6 +115,7 @@ Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist
 **Trang và URL**
 - Trang hoặc bài mới: hỏi chủ site gắn ở đâu (URL, mục, link từ đâu) rồi mới push.
 - Không tự đổi URL, xóa trang hay tạo redirect khi chưa được đồng ý.
+- **Sơ đồ trang (cấu trúc cây) đã chốt 20/11/2026: đọc `SO-DO-TRANG.md` trước khi thêm trang hoặc gắn link.** Mỗi trang đúng 1 trang cha; trang con nối lên cha, về trang chủ và ngang với anh em cùng cha; cấm link nội dung sang trang con của chủ đề khác. Không đổi cây khi chưa hỏi chủ site; thêm trang thì cập nhật mục 3 của file đó.
 
 **Hiệu năng** (Lighthouse gần nhất: điện thoại 94–100, máy tính 98–100 trên các trang sản phẩm)
 - Ảnh mới phải có `width`/`height` và bản -480/-800. Chạy `tools/srcset.mjs` để gắn srcset.
