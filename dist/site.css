@@ -306,3 +306,19 @@ a[href^="#"]:hover i[aria-hidden],a[href^="#"]:focus-visible i[aria-hidden]{tran
   .site-footer-local .footer-links{grid-column:1/span 2}
   .site-footer-local .footer-map{grid-column:3}
 }
+
+/* Địa bàn phụ trách trên /gioi-thieu/ (20/11/2026) */
+.db-region{margin-top:26px}
+.db-region h3{margin:0 0 12px;font-size:18px;color:var(--ink)}
+.db-list{list-style:none;margin:0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.db-item{display:flex;flex-wrap:wrap;align-items:center;gap:2px 8px;min-height:56px;padding:10px 14px;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px var(--line,#dde5ef);text-decoration:none;color:var(--ink)}
+.db-item b{font-size:16px;flex:1 1 auto}
+.db-item small{flex-basis:100%;order:3;font-size:14px;color:#5b6f86}
+.db-item i{font-style:normal;color:var(--blue,#1169d1);font-weight:700}
+a.db-item:hover,a.db-item:focus-visible{box-shadow:inset 0 0 0 2px var(--blue,#1169d1)}
+.db-soon{background:#f6f8fb}
+.db-soon b{color:#33475c}
+.db-soon em{font-style:normal;font-size:13px;font-weight:600;color:#5b6f86;background:#e9eef5;border-radius:999px;padding:2px 8px}
+.db-note{margin-top:20px;font-size:15px;color:#33475c}
+.db-note a{color:var(--blue,#1169d1);font-weight:700}
+@media (max-width:600px){.db-list{grid-template-columns:1fr 1fr}.db-item b{font-size:15px}}

@@ -150,6 +150,31 @@ ${faqBlock(faqs, 'Hiểu rõ rồi hãy quyết định')}`;
     ['/san-pham/chay-no-bat-buoc/', 'Bảo hiểm cháy nổ bắt buộc', 'Tra cứu loại cơ sở theo Phụ lục VI Nghị định 105/2025/NĐ-CP và ước tính phí theo hạng mục tài sản.'],
     ['/san-pham/hang-hoa-xuat-nhap-khau/', 'Bảo hiểm hàng hóa xuất nhập khẩu', 'Theo từng chuyến, hợp đồng bao hoặc chuỗi logistics, rà soát theo chứng từ lô hàng.'],
   ];
+  // Địa bàn phụ trách (chủ site giao 20/11/2026): các tỉnh từ Bình Thuận trở vào, tên tỉnh cũ trước sắp xếp 01/7/2025,
+  // cùng quy ước nhánh tỉnh trong SO-DO-TRANG.md (URL /<tinh>/ không gạch nối, ví dụ /binhduong/, /cantho/).
+  // Tỉnh đã có trang trong dist thì thành link; chưa có thì ghi "Đang cập nhật", không để link hỏng.
+  // "Nay thuộc": đơn vị hành chính cấp tỉnh sau sắp xếp theo Nghị quyết 202/2025/QH15, hiệu lực 01/7/2025.
+  const DIA_BAN = [
+    ['Nam Trung Bộ', [['Bình Thuận', 'binhthuan', 'Lâm Đồng']]],
+    ['Đông Nam Bộ', [['TP. Hồ Chí Minh', '', 'TP. Hồ Chí Minh'], ['Bình Dương', 'binhduong', 'TP. Hồ Chí Minh'], ['Bà Rịa – Vũng Tàu', 'bariavungtau', 'TP. Hồ Chí Minh'], ['Đồng Nai', 'dongnai', 'Đồng Nai'], ['Bình Phước', 'binhphuoc', 'Đồng Nai'], ['Tây Ninh', 'tayninh', 'Tây Ninh']]],
+    ['Đồng bằng sông Cửu Long', [['Long An', 'longan', 'Tây Ninh'], ['Tiền Giang', 'tiengiang', 'Đồng Tháp'], ['Đồng Tháp', 'dongthap', 'Đồng Tháp'], ['Bến Tre', 'bentre', 'Vĩnh Long'], ['Vĩnh Long', 'vinhlong', 'Vĩnh Long'], ['Trà Vinh', 'travinh', 'Vĩnh Long'], ['An Giang', 'angiang', 'An Giang'], ['Kiên Giang', 'kiengiang', 'An Giang'], ['Cần Thơ', 'cantho', 'Cần Thơ'], ['Hậu Giang', 'haugiang', 'Cần Thơ'], ['Sóc Trăng', 'soctrang', 'Cần Thơ'], ['Bạc Liêu', 'baclieu', 'Cà Mau'], ['Cà Mau', 'camau', 'Cà Mau']]],
+  ];
+  const DIST_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../dist');
+  const coTrang = (slug) => slug && fs.existsSync(path.join(DIST_DIR, slug, 'index.html'));
+  const diaBan = () => `
+<section class="pd-section db-section" id="dia-ban" aria-labelledby="dia-ban-h"><div class="fire-wrap">
+<h2 id="dia-ban-h">Địa bàn phụ trách</h2>
+<p class="fire-lede" style="margin-top:12px">PVI Thành Đô tư vấn và phát hành bảo hiểm cho khách hàng từ Bình Thuận trở vào. Chọn tỉnh để xem văn phòng, sản phẩm và cách nhận báo phí tại địa phương. Tên tỉnh ghi theo địa giới trước ngày 01/7/2025, kèm tỉnh, thành phố mới sau sắp xếp.</p>
+${DIA_BAN.map(([vung, ds]) => `<div class="db-region"><h3>${vung}</h3><ul class="db-list">${ds.map(([ten, slug, nay]) => {
+    const href = slug === '' ? '/' : coTrang(slug) ? `/${slug}/` : '';
+    const sub = nay === ten ? '' : `<small>Nay thuộc ${nay}</small>`;
+    return href
+      ? `<li><a class="db-item" href="${href}"><b>${ten}</b>${sub}<i aria-hidden="true">&rarr;</i></a></li>`
+      : `<li><span class="db-item db-soon"><b>${ten}</b>${sub}<em>Đang cập nhật</em></span></li>`;
+  }).join('')}</ul></div>`).join('\n')}
+<p class="db-note">Chưa thấy trang tỉnh của anh/chị? Nhắn <a href="${ZALO}" target="_blank" rel="noopener">Zalo</a> hoặc gọi <a href="tel:0938072236">0938 072 236</a>, PVI Thành Đô vẫn tư vấn và báo phí cho mọi tỉnh trong địa bàn.</p>
+</div></section>
+`;
   const main = `
 <section class="fire-hero"><div class="fire-wrap"><div class="fire-hero-copy">
 <span class="fire-eyebrow">Giới thiệu</span>
@@ -172,6 +197,7 @@ ${faqBlock(faqs, 'Hiểu rõ rồi hãy quyết định')}`;
 <div class="pd-rows">${products.map(([href, name, text], i) => `<article class="pd-row" style="grid-template-columns:80px minmax(0,1fr) 180px"><div><span class="flag">${String(i + 1).padStart(2, '0')}</span></div><div><h3>${name}</h3><p>${text}</p></div><div class="price"><a class="fire-btn fire-btn-line" style="color:var(--ink);border:1px solid #c9d6e3;background:#fff" href="${href}">Xem chi tiết</a></div></article>`).join('')}</div>
 </div></section>
 
+${diaBan()}
 <section class="fire-claim pd-paper"><div class="fire-wrap">
 <span class="fire-eyebrow">Cách chúng tôi làm việc</span>
 <h2>Có căn cứ trước khi báo phí</h2>
