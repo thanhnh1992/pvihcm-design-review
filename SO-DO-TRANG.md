@@ -68,6 +68,11 @@ Tầng 3  BÀI HỖ TRỢ (nếu có)      bài viết bổ trợ cho đúng 1 t
   - `/binhduong/tndsoto/` · `/binhduong/vatchatxeoto/` · `/binhduong/chaynobatbuoc/` · `/binhduong/taisannhaxuong/` · `/binhduong/congtrinhlapdat/` · `/binhduong/hanghoaxuatnhapkhau/` · `/binhduong/nguoilaodongthicong/` · `/binhduong/tainan2424/` · `/binhduong/suckhoe/` · `/binhduong/dulichquocte/`
 - Nhánh t2b, **các xã phường, KCN Bình Dương**: hiện chỉ là 2 mục trong trang `/binhduong/` (`#dia-chi-pvi-binh-duong`, `#phi-khu-cong-nghiep`), **chưa có trang riêng**. Khi làm trang riêng, URL theo mẫu `/binhduong/<ten-phuong-hoac-kcn>/`, cha là `/binhduong/`.
 
+**Nhánh các tỉnh từ Bình Thuận trở vào** (chủ site giao 20/11/2026; tên tỉnh cũ trước sắp xếp 01/7/2025; Bình Dương và TP.HCM chủ site tự viết). Dựng bằng `tools/gen-tinh.mjs`, dữ liệu mỗi tỉnh `tools/data/tinh/<slug>.mjs`, câu lệnh tạo ảnh `tools/data/tinh/<slug>-anh-gpt.md`. Mỗi tỉnh cùng một khuôn:
+- `/<tinh>/` trang tỉnh → `/<tinh>/sanpham/` danh mục → 10 trang con: `tndsoto`, `vatchatxeoto`, `chaynobatbuoc`, `taisannhaxuong`, `congtrinhlapdat`, `hanghoaxuatnhapkhau`, `nguoilaodongthicong`, `tainan2424`, `suckhoe`, `dulichquocte`.
+- Trang con nối ngang với 9 sản phẩm cùng tỉnh, dẫn lên trang tỉnh và danh mục; chỉ 1 link sang trang sản phẩm chung `/san-pham/...` (công cụ tra phí). Không link sang tỉnh khác.
+- Đã có: `/cantho/` (TP Cần Thơ cũ, mẫu đầu tiên, chờ chủ site duyệt trước khi làm các tỉnh còn lại).
+
 **Trang đơn vị** (con trực tiếp của trang chủ): `/gioi-thieu/` · `/huong-dan/` · `/tai-nan-doanh-nghiep/` · `/chinh-sach-bao-ve-du-lieu-ca-nhan/`
 
 ## 4. Thêm trang mới: làm đúng thứ tự

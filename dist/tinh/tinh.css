@@ -1,0 +1,26 @@
+/* Trang tỉnh (tools/gen-tinh.mjs): bổ sung cho /binhduong/landing.css. Mục lục, dòng cập nhật, bảng phí, sản phẩm cùng tỉnh. */
+.bd .tn-meta { font-size: 14px; color: var(--bd-muted); margin: 0 0 18px; }
+.tn-article { max-width: 880px; }
+.tn-toc { margin: 0 0 32px; border: 1px solid var(--bd-line); border-radius: 14px; background: var(--bd-surface); }
+.tn-toc summary { display: flex; align-items: center; min-height: 48px; padding: 0 18px; font-weight: 750; cursor: pointer; }
+.tn-toc ol { margin: 0; padding: 0 18px 16px 40px; }
+.tn-toc li { padding: 2px 0; }
+.tn-toc a { display: inline-block; padding: 6px 0; color: var(--bd-blue); text-decoration: underline; text-underline-offset: 3px; font-size: 16px; }
+.tn-sec { margin-top: clamp(32px, 5vw, 52px); }
+.tn-sec h2 { font-size: clamp(24px, 2.6vw, 32px); margin-bottom: 12px; }
+.bd .tn-sec p { line-height: 1.8; max-width: 72ch; }
+.bd .tn-sec p + p { margin-top: 14px; }
+.bd .tn-h-small { font-size: clamp(20px, 2vw, 24px); }
+.tn-table { margin-top: 18px; overflow-x: auto; border: 1px solid var(--bd-line); border-radius: 12px; }
+.tn-table table { width: 100%; border-collapse: collapse; font-size: 16px; }
+.tn-table caption { text-align: left; padding: 12px 14px; font-weight: 750; color: var(--bd-ink); background: var(--bd-surface); }
+.tn-table th, .tn-table td { padding: 10px 14px; border-top: 1px solid var(--bd-line); text-align: left; vertical-align: top; }
+.tn-table thead th { font-size: 15px; color: var(--bd-muted); }
+.tn-table td { font-variant-numeric: tabular-nums; }
+.tn-clauses { margin: 16px 0 0; padding-inline-start: 1.3em; }
+.tn-clauses li + li { margin-top: 8px; }
+.tn-siblings ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; margin: 12px 0 14px; padding: 0; list-style: none; border-top: 1px solid var(--bd-line); }
+.tn-siblings li a { display: flex; align-items: center; min-height: 48px; border-bottom: 1px solid var(--bd-line); color: var(--bd-blue); font-weight: 650; text-decoration: underline; text-underline-offset: 3px; }
+.tn-sources { margin: 8px 0 0; padding-inline-start: 1.3em; color: var(--bd-muted); font-size: 15px; }
+.tn-sources li + li { margin-top: 6px; }
+@media (max-width: 620px) { .tn-siblings ul { grid-template-columns: 1fr; } }
