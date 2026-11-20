@@ -1,3 +1,4 @@
+import { localityForPath } from './locality-footer.mjs';
 import { nofollowExternal } from './link-out.mjs';
 import { privacyLinks, privacyUi, protectExternalEmbeds } from './privacy-ui.mjs';
 import { productCovers } from './data/product-covers.mjs';
@@ -64,9 +65,9 @@ const SITEMAP = [
 // bấm được. Không tự bịa link hay số đăng ký.
 const BCT_URL = '';
 const MAP_QUERY = '194 Golden Building, 473 Điện Biên Phủ, Phường Thạnh Mỹ Tây, Thành phố Hồ Chí Minh';
-function footerMap() {
+function footerMap(query = MAP_QUERY, label = 'Bản đồ trụ sở PVI Thành Đô: 194 Golden Building, 473 Điện Biên Phủ, TP.HCM') {
   const badge = `<img src="/assets/bct-da-thong-bao.webp" width="180" height="55" alt="Đã thông báo Bộ Công Thương" loading="lazy" decoding="async">`;
-  return `<div class="footer-map"><div class="footer-map-frame"><iframe src="https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&amp;hl=vi&amp;z=17&amp;output=embed" title="Bản đồ trụ sở PVI Thành Đô: 194 Golden Building, 473 Điện Biên Phủ, TP.HCM" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>${BCT_URL ? `<a class="footer-bct" href="${BCT_URL}" target="_blank" rel="noopener">${badge}</a>` : `<span class="footer-bct">${badge}</span>`}</div>`;
+  return `<div class="footer-map"><div class="footer-map-frame"><iframe src="https://www.google.com/maps?q=${encodeURIComponent(query)}&amp;hl=vi&amp;z=17&amp;output=embed" title="${esc(label)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>${BCT_URL ? `<a class="footer-bct" href="${BCT_URL}" target="_blank" rel="noopener">${badge}</a>` : `<span class="footer-bct">${badge}</span>`}</div>`;
 }
 
 function footerHq() {
@@ -74,7 +75,23 @@ function footerHq() {
   return `<div class="footer-hq-wrap"><button type="button" class="footer-hq" popovertarget="so-do-site"><span class="footer-hq-media"><img src="/assets/tru-so-pvi-thanh-do-800.webp" srcset="/assets/tru-so-pvi-thanh-do-480.webp 480w, /assets/tru-so-pvi-thanh-do-800.webp 800w, /assets/tru-so-pvi-thanh-do.webp 1200w" sizes="(max-width:820px) 100vw, 340px" width="1200" height="900" alt="Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, trụ sở Công ty Bảo hiểm PVI Thành Đô" loading="lazy" decoding="async"></span><span class="footer-hq-shine" aria-hidden="true"></span><span class="footer-hq-logo"><img src="/assets/pvi-logo.svg" width="132" height="48" alt=""><span>Thành Đô</span></span><span class="footer-hq-cap"><b>Trụ sở 194 Golden Building</b><span>Bấm để xem sơ đồ trang <i aria-hidden="true">&rarr;</i></span></span></button></div><div id="so-do-site" class="sitemap-pop" popover><div class="sitemap-head"><div><span class="footer-label">Sơ đồ trang</span><b>PVI Thành Đô</b></div><button type="button" class="sitemap-close" popovertarget="so-do-site" popovertargetaction="hide" aria-label="Đóng sơ đồ trang">&times;</button></div><nav class="sitemap-grid" aria-label="Sơ đồ trang">${groups}</nav><p class="sitemap-foot">Tư vấn <a href="tel:0938072236">0938 072 236</a> · Bồi thường <a href="tel:1900545458">1900 54 54 58</a></p></div>`;
 }
 
-export function footer() {
+
+// Địa chỉ địa phương tách rõ với đơn vị vận hành website Thành Đô.
+function localityFooter({ name, unit, point }) {
+  let html = footer();
+  html = html.replace('class="site-footer"', 'class="site-footer site-footer-local"');
+  html = html.replace(footerHq(), '');
+  const identity = '<div class="footer-identity"><strong class="footer-label">PVI · ' + esc(name) + '</strong><a class="brand" href="/"><img src="/assets/pvi-logo.svg" width="132" height="48" alt="Bảo hiểm PVI"><span>' + esc(name) + '</span></a><p><strong>' + esc(point ? 'Điểm mua bảo hiểm PVI Thành Đô tại An Khánh' : unit.name) + '</strong></p><p>' + (point ? 'Tiếp nhận tư vấn và hồ sơ bảo hiểm tại khu vực TP Thủ Đức cũ.' : 'Văn phòng PVI tham khảo cho khách hàng khu vực ' + esc(name) + '. Nên gọi trước khi đến.') + '</p></div>';
+  html = html.replace(/<div class="footer-identity">[\s\S]*?<\/div>/, identity);
+  html = html.replace(/<address>[\s\S]*?<\/address>/, '<address><strong>' + (point ? 'Địa chỉ điểm mua' : 'Địa chỉ văn phòng') + '</strong>' + esc(unit.address) + (point ? '' : '<br><a href="tel:' + unit.phone.replace(/\D/g, '') + '">Điện thoại văn phòng: ' + esc(unit.phone) + '</a>') + '</address>');
+  html = html.replace('<strong>Liên hệ tư vấn</strong>', '<strong>Tư vấn PVI Thành Đô</strong>');
+  html = html.replace(footerMap(), footerMap(unit.address, 'Bản đồ: ' + (point ? 'Điểm mua PVI Thành Đô tại An Khánh' : unit.name)));
+  return html;
+}
+
+export function footer(path = '/') {
+  const local = localityForPath(path);
+  if (local) return localityFooter(local);
   return `<footer id="lien-he" class="site-footer"><span id="dong-hanh" class="anchor-alias" aria-hidden="true"></span>${footerHq()}<div class="footer-identity"><strong class="footer-label">Đơn vị</strong><a class="brand" href="/"><img src="/assets/pvi-logo.svg" width="132" height="48" alt="Bảo hiểm PVI"><span>Thành Đô</span></a><p>Đơn vị thuộc hệ thống Bảo hiểm PVI<br>TỔNG CÔNG TY BẢO HIỂM PVI<br><strong>CÔNG TY BẢO HIỂM PVI THÀNH ĐÔ</strong></p><p>Mã số thuế: 0105402531-041</p><p><a href="/gioi-thieu/" style="color:#1F4A8C;font-weight:700">Giới thiệu đơn vị</a></p></div><address><strong>Trụ sở</strong><br>Tầng 12A, Tòa nhà 194 Golden Building<br>Số 473 Điện Biên Phủ, Phường Thạnh Mỹ Tây<br>Thành phố Hồ Chí Minh</address><div class="footer-links"><strong>Sản phẩm</strong><a href="/san-pham/">Tất cả sản phẩm</a><a href="/san-pham/bao-hiem-bat-buoc/">Bảo hiểm bắt buộc</a><a href="/san-pham/bao-hiem-tai-nan/">Bảo hiểm tai nạn</a><a href="/san-pham/chay-no-bat-buoc/">Cháy nổ bắt buộc</a><a href="/san-pham/hang-hoa-xuat-nhap-khau/">Hàng hóa xuất nhập khẩu</a><a href="/san-pham/bao-hiem-suc-khoe/">Chăm sóc sức khỏe</a><a href="/san-pham/bao-hiem-vat-chat-xe/">Vật chất xe ô tô</a><a href="/san-pham/bao-hiem-cong-trinh/">Công trình và lắp đặt</a><a href="/san-pham/bao-hiem-du-lich/">Du lịch quốc tế</a><a href="/tin-tuc/">Tin tức</a><a href="/huong-dan/">Hướng dẫn cho HR</a></div><div class="footer-contact"><strong>Liên hệ tư vấn</strong><a href="tel:0938072236">0938 072 236</a><a href="tel:0918981869">0918 981 869</a><a href="mailto:giadinhpvi@gmail.com">giadinhpvi@gmail.com</a><a href="tel:1900545458">Bồi thường 1900 54 54 58</a></div>${footerMap()}<div class="footer-bottom">${privacyLinks()}<p>Thông tin trên website để tham khảo. Phạm vi, điều kiện và phí chính thức theo quy tắc và hợp đồng Bảo hiểm PVI phát hành.</p><p>© 2026 Công ty Bảo hiểm PVI Thành Đô</p></div></footer>${privacyUi()}`;
 }
 
@@ -104,7 +121,7 @@ export function breadcrumbJsonLd(path, name) {
 }
 
 export function page({ path, title, description, image, canonical, bodyClass = 'fire', head = '', main, scripts = '', extraCss = '' }) {
-  return nofollowExternal(protectExternalEmbeds(`<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}">${seo({ path, title, description, image, canonical })}<link rel="icon" href="https://pvihcm.com/pvihcm.ico?v=2" sizes="48x48 96x96 144x144"><link rel="apple-touch-icon" href="https://pvihcm.com/apple-touch-icon.png" sizes="180x180"><link rel="preload" href="/fonts/bvp-400-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/bvp-400-vietnamese.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/product.css"><link rel="stylesheet" href="/site.css">${extraCss}<link rel="stylesheet" href="/advisor.css"><link rel="stylesheet" href="/cta.css">${head}<script src="/app.js" defer></script>${scripts}<script src="/a11y.js" defer></script><script src="/advisor.js" defer></script></head><body class="${bodyClass}">${header(path)}<main id="main">${main}</main>${footer()}</body></html>`));
+  return nofollowExternal(protectExternalEmbeds(`<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}">${seo({ path, title, description, image, canonical })}<link rel="icon" href="https://pvihcm.com/pvihcm.ico?v=2" sizes="48x48 96x96 144x144"><link rel="apple-touch-icon" href="https://pvihcm.com/apple-touch-icon.png" sizes="180x180"><link rel="preload" href="/fonts/bvp-400-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/bvp-400-vietnamese.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/product.css"><link rel="stylesheet" href="/site.css">${extraCss}<link rel="stylesheet" href="/advisor.css"><link rel="stylesheet" href="/cta.css">${head}<script src="/app.js" defer></script>${scripts}<script src="/a11y.js" defer></script><script src="/advisor.js" defer></script></head><body class="${bodyClass}">${header(path)}<main id="main">${main}</main>${footer(path)}</body></html>`));
 }
 
 export const faqBlock = (faqs, heading = 'Câu hỏi thường gặp') => `<section class="fire-faq" id="cau-hoi"><div class="fire-wrap"><h2>${heading}</h2><div class="qa">${faqs.map((f) => `<details><summary>${t(f.question)}</summary><div class="ans">${t(f.answer)}</div></details>`).join('')}</div></div></section>`;
