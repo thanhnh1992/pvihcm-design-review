@@ -52,6 +52,7 @@ Tầng 3  BÀI HỖ TRỢ (nếu có)      bài viết bổ trợ cho đúng 1 t
 - `/san-pham/chay-no-bat-buoc/`
 - `/san-pham/bao-hiem-tai-nan/`
 - `/san-pham/bao-hiem-suc-khoe/`
+- `/san-pham/bao-hiem-y-te/` BHYT hộ gia đình và BHXH tự nguyện
 - `/san-pham/bao-hiem-cong-trinh/`
 - `/san-pham/bao-hiem-du-lich/`
 - `/san-pham/hang-hoa-xuat-nhap-khau/`
