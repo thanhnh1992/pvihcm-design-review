@@ -76,6 +76,35 @@ function footerHq() {
 }
 
 
+const THANH_DO_NAME = 'Công ty Bảo hiểm PVI Thành Đô';
+const PVI_PARENT = 'Tổng Công ty Bảo hiểm PVI';
+const THANH_DO_LABEL = PVI_PARENT + ' - PVI Thành Đô';
+const THANH_DO_STREET = 'Tầng 12A, Tòa nhà 194 Golden Building, số 473 Điện Biên Phủ';
+const THANH_DO_WARD = 'Phường Thạnh Mỹ Tây';
+const THANH_DO_CITY = 'Thành phố Hồ Chí Minh';
+
+function footerSiteOffice() {
+  const description = THANH_DO_NAME + ' là đơn vị thành viên của ' + PVI_PARENT + ' và vận hành website pvihcm.com.';
+  const organization = {
+    '@context': 'https://schema.org',
+    '@type': 'InsuranceAgency',
+    '@id': ORG_ID,
+    name: THANH_DO_NAME,
+    alternateName: THANH_DO_LABEL,
+    description,
+    url: SITE + '/',
+    parentOrganization: { '@type': 'Organization', name: PVI_PARENT },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: THANH_DO_STREET,
+      addressLocality: THANH_DO_WARD,
+      addressRegion: THANH_DO_CITY,
+      addressCountry: 'VN',
+    },
+  };
+  return `<section class="footer-site-office" aria-labelledby="footer-site-office-title"><h2 id="footer-site-office-title">${esc(THANH_DO_LABEL)}</h2><p>${esc(description)}</p><address>${esc(`${THANH_DO_STREET}, ${THANH_DO_WARD}, ${THANH_DO_CITY}`)}</address><a href="/gioi-thieu/">Giới thiệu PVI Thành Đô</a><script type="application/ld+json">${JSON.stringify(organization).replace(/</g, '\\u003c')}</script></section>`;
+}
+
 // Địa chỉ địa phương tách rõ với đơn vị vận hành website Thành Đô.
 function localityFooter({ name, unit, point }) {
   let html = footer();
@@ -85,6 +114,7 @@ function localityFooter({ name, unit, point }) {
   html = html.replace(/<div class="footer-identity">[\s\S]*?<\/div>/, identity);
   html = html.replace(/<address>[\s\S]*?<\/address>/, '<address><strong>' + (point ? 'Địa chỉ điểm mua' : 'Địa chỉ văn phòng') + '</strong>' + esc(unit.address) + (point ? '' : '<br><a href="tel:' + unit.phone.replace(/\D/g, '') + '">Điện thoại văn phòng: ' + esc(unit.phone) + '</a>') + '</address>');
   html = html.replace('<strong>Liên hệ tư vấn</strong>', '<strong>Tư vấn PVI Thành Đô</strong>');
+  html = html.replace('</div><div class="footer-contact">', () => footerSiteOffice() + '</div><div class="footer-contact">');
   html = html.replace(footerMap(), footerMap(unit.address, 'Bản đồ: ' + (point ? 'Điểm mua PVI Thành Đô tại An Khánh' : unit.name)));
   return html;
 }

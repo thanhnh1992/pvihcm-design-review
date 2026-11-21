@@ -2,9 +2,11 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import { footer, page } from './chrome.mjs';
 import { localityPaths, localityForPath } from './locality-footer.mjs';
+import { localProductCopy } from './data/binh-duong-product-copy.mjs';
 import { protectExternalEmbeds } from './privacy-ui.mjs';
 import { nofollowExternal } from './link-out.mjs';
-for (const path of localityPaths) {
+const paths = [...localityPaths, '/binhduong/', ...Object.keys(localProductCopy).map((slug) => '/binhduong/' + slug + '/')];
+for (const path of paths) {
   const file = 'dist' + path + 'index.html';
   assert(fs.existsSync(file), file);
   const before = fs.readFileSync(file, 'utf8');
@@ -25,5 +27,5 @@ for (const path of localityPaths) {
 assert(!footer('/').includes('site-footer-local'));
 assert(footer('/').includes('473 Điện Biên Phủ'));
 assert(!footer('/san-pham/chay-no-bat-buoc/').includes('site-footer-local'));
-console.log('PASS: ' + localityPaths.length + ' bài địa phương; chỉ đổi footer, đúng địa chỉ/điện thoại/bản đồ; nguồn sinh giữ thay đổi.');
+console.log('PASS: ' + paths.length + ' trang địa phương; chỉ đổi footer, đúng địa chỉ/điện thoại/bản đồ; nguồn sinh giữ thay đổi.');
 
