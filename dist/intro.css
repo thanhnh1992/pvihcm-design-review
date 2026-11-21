@@ -108,3 +108,8 @@
   .intro-scene{transform:none;animation-name:intro-drift-m}
 }
 @keyframes intro-drift-m{from{transform:scale(1) translate3d(0,0,0)}to{transform:scale(1.04) translate3d(-1%,-.6%,0)}}
+
+/* Nhấn "PVI" và "Top 1" trong tiêu đề (chủ site yêu cầu 21/11/2026): nền màu bọc chữ để nổi trên cả ảnh sáng lẫn nền xanh điện thoại */
+.intro-hl{display:inline-block;padding:0 .22em;border-radius:.18em;line-height:1.08;text-shadow:none;box-shadow:0 4px 18px rgba(0,0,0,.28)}
+.intro-hl.is-pvi{background:#E31F26;color:#fff}
+.intro-hl.is-top{background:#ffd75e;color:#0b2a4a}
