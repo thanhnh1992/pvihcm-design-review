@@ -171,7 +171,7 @@ const main = `
       <div><dt>Tổng đài hỗ trợ của BHXH</dt><dd><a href="tel:19009068">${DIEM_THU.bhxhHotline}</a></dd></div>
     </dl>
     </div>
-    <figure class="bh-photo">${pic('the-nhan-vien-thu-bhxh', 1200, 685, '(max-width:860px) 100vw, 460px', 'Thẻ nhân viên thu bảo hiểm xã hội, bảo hiểm y tế do Bảo hiểm xã hội TP. Hồ Chí Minh cấp, đã che số căn cước công dân')}<figcaption>Thẻ nhân viên thu BHXH, BHYT do Bảo hiểm xã hội TP. Hồ Chí Minh cấp, thời hạn từ ngày 10/12/2025. Đã che số căn cước công dân.</figcaption></figure>
+    <figure class="bh-photo">${pic('the-nhan-vien-thu-bhxh', 1200, 685, '(max-width:860px) 100vw, 460px', 'Thẻ nhân viên thu bảo hiểm xã hội, bảo hiểm y tế do Bảo hiểm xã hội TP. Hồ Chí Minh cấp, đã che số căn cước công dân')}<figcaption><b>Thẻ nhân viên thu BHXH, BHYT số NV••••••••6029</b>, do Bảo hiểm xã hội TP. Hồ Chí Minh cấp, thời hạn từ ngày 10/12/2025. Đã che số căn cước công dân.</figcaption></figure>
   </div>
 </section>
 
