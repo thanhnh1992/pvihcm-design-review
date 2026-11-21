@@ -112,3 +112,5 @@
 /* Nhấn "PVI" và "Top 1" trong tiêu đề (chủ site chốt 21/11/2026): chỉ đổi màu chữ, không nền bọc; giữ bóng chữ của tiêu đề để đọc được trên ảnh sáng */
 .intro-hl.is-pvi{color:#E31F26}
 .intro-hl.is-top{color:#ffd75e}
+/* Máy tính: "Top 1" màu xanh logo cho nổi trên trời hoàng hôn; điện thoại giữ vàng (chủ site chốt 21/11/2026) */
+@media (min-width:701px){.intro-hl.is-top{color:#1F4A8C}}
