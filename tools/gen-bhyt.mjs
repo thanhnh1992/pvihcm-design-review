@@ -48,7 +48,7 @@ const main = `
       <p class="bh-kicker">BHYT hộ gia đình · BHXH tự nguyện · TP. Hồ Chí Minh</p>
       <h1>Bảo hiểm y tế hộ gia đình và BHXH tự nguyện tại TP.HCM</h1>
       <p class="bh-lead bh-collector">Mã nhân viên thu BHXH, BHYT của anh Khoa <a href="#ma-nhan-vien-thu-khoa">${MA_NHAN_VIEN_THU}</a></p>
-      <p class="bh-lead">Công ty Bảo hiểm PVI Thành Đô là đơn vị thu BHXH, BHYT được cơ quan Bảo hiểm xã hội ủy quyền. Khách ở mọi phường TP.HCM đăng ký online, chuyển khoản vào tài khoản công ty và nhận biên lai thu.</p>
+      <p class="bh-lead">Công ty Bảo hiểm PVI Thành Đô là đơn vị thu BHXH, BHYT được cơ quan Bảo hiểm xã hội ủy quyền. Khách ở <strong class="bh-coverage">tất cả các phường của TP.HCM mới</strong>, bao gồm các phường thuộc Bình Dương và Bà Rịa – Vũng Tàu trước đây, có thể đăng ký online, chuyển khoản vào tài khoản công ty và nhận biên lai thu.</p>
       <ul class="bh-facts">
         <li><b>${vnd(first * 12)}</b><span>BHYT người thứ nhất, 12 tháng</span></li>
         <li><b>Từ ${vnd(tnLowest)}</b><span>BHXH tự nguyện mỗi tháng</span></li>
