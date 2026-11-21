@@ -15,6 +15,10 @@
 .bh-kicker{font-size:13px !important;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--bh-red) !important;margin:0 0 12px !important}
 .bh h1{font-size:clamp(34px,4.4vw,54px);line-height:1.1;margin:0 0 16px}
 .bh-lead{font-size:18px !important;max-width:600px}
+.bh .bh-collector{display:flex;flex-wrap:wrap;align-items:center;gap:0 8px;margin-bottom:4px}
+.bh-collector a{display:inline-flex;align-items:center;min-height:44px;color:var(--bh-navy);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+#ma-nhan-vien-thu-khoa{scroll-margin-top:96px}
+#ma-nhan-vien-thu-khoa:target img{outline:2px solid var(--bh-navy);outline-offset:3px}
 .bh-facts{list-style:none;padding:0;margin:22px 0 26px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .bh-facts li{background:#fff;border:1px solid var(--bh-line);border-radius:14px;padding:14px 16px;box-shadow:0 8px 20px rgba(25,54,101,.06)}
 .bh-facts b{display:block;color:var(--bh-navy);font-size:19px;line-height:1.25}

@@ -14,6 +14,7 @@ import {
 
 const DIST = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../dist');
 const P = '/san-pham/bao-hiem-y-te/';
+const MA_NHAN_VIEN_THU = 'NV••••••••6029';
 const vnd = (n) => Math.round(n).toLocaleString('vi-VN').replace(/,/g, '.') + ' đ';
 const pct = (x) => `${String(Math.round(x * 1000) / 10).replace('.', ',')}%`;
 const ORD = ['Người thứ nhất', 'Người thứ hai', 'Người thứ ba', 'Người thứ tư', 'Từ người thứ năm'];
@@ -46,6 +47,7 @@ const main = `
     <div class="bh-hero-copy">
       <p class="bh-kicker">BHYT hộ gia đình · BHXH tự nguyện · TP. Hồ Chí Minh</p>
       <h1>Bảo hiểm y tế hộ gia đình và BHXH tự nguyện tại TP.HCM</h1>
+      <p class="bh-lead bh-collector">Mã nhân viên thu BHXH, BHYT của anh Khoa <a href="#ma-nhan-vien-thu-khoa">${MA_NHAN_VIEN_THU}</a></p>
       <p class="bh-lead">Công ty Bảo hiểm PVI Thành Đô là đơn vị thu BHXH, BHYT được cơ quan Bảo hiểm xã hội ủy quyền. Khách ở mọi phường TP.HCM đăng ký online, chuyển khoản vào tài khoản công ty và nhận biên lai thu.</p>
       <ul class="bh-facts">
         <li><b>${vnd(first * 12)}</b><span>BHYT người thứ nhất, 12 tháng</span></li>
@@ -171,7 +173,7 @@ const main = `
       <div><dt>Tổng đài hỗ trợ của BHXH</dt><dd><a href="tel:19009068">${DIEM_THU.bhxhHotline}</a></dd></div>
     </dl>
     </div>
-    <figure class="bh-photo">${pic('the-nhan-vien-thu-bhxh', 1200, 685, '(max-width:860px) 100vw, 460px', 'Thẻ nhân viên thu bảo hiểm xã hội, bảo hiểm y tế do Bảo hiểm xã hội TP. Hồ Chí Minh cấp, đã che số căn cước công dân')}<figcaption><b>Thẻ nhân viên thu BHXH, BHYT số NV••••••••6029</b>, do Bảo hiểm xã hội TP. Hồ Chí Minh cấp, thời hạn từ ngày 10/12/2025. Đã che số căn cước công dân.</figcaption></figure>
+    <figure class="bh-photo" id="ma-nhan-vien-thu-khoa" tabindex="-1">${pic('the-nhan-vien-thu-bhxh', 1200, 685, '(max-width:860px) 100vw, 460px', 'Thẻ nhân viên thu bảo hiểm xã hội, bảo hiểm y tế do Bảo hiểm xã hội TP. Hồ Chí Minh cấp, đã che số căn cước công dân')}<figcaption><b>Thẻ nhân viên thu BHXH, BHYT của Nguyễn Vũ Anh Khoa, số ${MA_NHAN_VIEN_THU}</b>, do Bảo hiểm xã hội TP. Hồ Chí Minh cấp, thời hạn từ ngày 10/12/2025. Đã che số căn cước công dân.</figcaption></figure>
   </div>
 </section>
 
