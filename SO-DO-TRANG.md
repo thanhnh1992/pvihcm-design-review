@@ -74,6 +74,11 @@ Tầng 3  BÀI HỖ TRỢ (nếu có)      bài viết bổ trợ cho đúng 1 t
 - Đã có: `/cantho/` (TP Cần Thơ cũ, mẫu đầu tiên, chờ chủ site duyệt trước khi làm các tỉnh còn lại).
 - Đã có: `/vungtau/` (tỉnh Bà Rịa – Vũng Tàu cũ, chủ site giao 21/11/2026). Cuối mỗi trang tỉnh có 2 khối như `/binhduong/`: khu công nghiệp (`#khu-cong-nghiep`, dữ liệu `kcn`: tên, vị trí, ngành nghề) và phường, xã lớn (`#phuong-xa`, dữ liệu `hanhChinh.viDu`: tên mới kèm đơn vị cũ hợp thành).
 
+**`/tphcm/` Mua bảo hiểm PVI tại TP.HCM** (sinh bằng `node tools/gen-tphcm.mjs`, dữ liệu `tools/data/tphcm.mjs`).
+- Vị trí dẫn vào do chủ site chọn: ô **TP. Hồ Chí Minh** trong nhóm Đông Nam Bộ của `/gioi-thieu/#dia-ban`.
+- Trang TP.HCM dẫn xuống `/tphcm/sanpham/` và 10 trang sản phẩm tương ứng với nhánh Bình Dương. Các trang sản phẩm nối ngang và dẫn lên trang TP.HCM, danh mục.
+- Mục quận, huyện cũ dẫn xuống 22 bài khu vực đang có trong `/tin-tuc/`. Quận 2, Quận 9 và quận Thủ Đức cũ dùng chung bài Thủ Đức. Giữ URL, breadcrumb và canonical của các bài hiện có.
+
 **Trang đơn vị** (con trực tiếp của trang chủ): `/gioi-thieu/` · `/huong-dan/` · `/tai-nan-doanh-nghiep/` · `/chinh-sach-bao-ve-du-lieu-ca-nhan/`
 
 ## 4. Thêm trang mới: làm đúng thứ tự
@@ -94,4 +99,4 @@ Các điểm dưới đây có sẵn từ trước khi chốt sơ đồ. Ghi l�
 1. **Bình Dương có 2 bộ trang cùng chủ đề.** 10 trang `/binhduong/<dịch vụ>/` và 10 bài `/tin-tuc/bao-hiem-<dịch vụ>-binh-duong/` nói cùng một việc, ví dụ `/binhduong/tndsoto/` và `/tin-tuc/bao-hiem-tnds-o-to-binh-duong/`. Thêm cặp `/binhduong/` và `/tin-tuc/mua-bao-hiem-pvi-binh-duong/`. Google có thể coi là trùng và để 2 trang tranh nhau một từ khóa. Hướng đề xuất: coi bài `/tin-tuc/` là **bài hỗ trợ tầng 3** của trang `/binhduong/` tương ứng (đổi góc viết cho khác), hoặc chọn 1 trang làm bản chuẩn.
 2. **Trang con Bình Dương chưa nối ngang với nhau.** Ví dụ `/binhduong/tndsoto/` chỉ dẫn về `/binhduong/` và `/binhduong/sanpham/`, chưa dẫn sang các dịch vụ anh em (sơ đồ yêu cầu nối ngang).
 3. **Link chéo nhánh:** `/kien-thuc/bao-hiem-o-to/` đang dẫn sang các bài Bình Dương (`/tin-tuc/bao-hiem-tnds-o-to-binh-duong/`, `/tin-tuc/bao-hiem-vat-chat-xe-o-to-binh-duong/`).
-4. **Khu vực khác chưa có nhánh riêng:** bài các quận TP.HCM, Đồng Nai, Vũng Tàu nằm trong `/tin-tuc/`. Nếu làm theo mô hình Bình Dương thì mỗi khu vực là 1 nhánh tầng 1 riêng, phải hỏi chủ site trước.
+4. **Đồng Nai chưa có nhánh riêng:** bài Đồng Nai nằm trong `/tin-tuc/`. Nếu làm nhánh theo mô hình Bình Dương thì phải hỏi chủ site trước.
