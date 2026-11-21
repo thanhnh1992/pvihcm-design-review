@@ -111,7 +111,7 @@ function footerSiteOffice() {
   const rows = [
     ['MST', esc(THANH_DO_MST)],
     ['Địa chỉ', `<address>${esc(address)}</address>`],
-    ['SĐT', '<a href="tel:0938072236">0938 072 236</a> · <a href="tel:0918981869">0918 981 869</a>'],
+    ['SĐT', '<a href="tel:0938072236">0938 072 236</a>'],
     ['Website', '<a href="/">pvihcm.com</a>'],
     ['Email', `<a href="mailto:${THANH_DO_EMAIL}">${esc(THANH_DO_EMAIL)}</a>`],
   ];
