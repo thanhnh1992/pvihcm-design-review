@@ -82,16 +82,22 @@ const THANH_DO_LABEL = PVI_PARENT + ' - PVI Thành Đô';
 const THANH_DO_STREET = 'Tầng 12A, Tòa nhà 194 Golden Building, số 473 Điện Biên Phủ';
 const THANH_DO_WARD = 'Phường Thạnh Mỹ Tây';
 const THANH_DO_CITY = 'Thành phố Hồ Chí Minh';
+const THANH_DO_ENTITY = PVI_PARENT + ' - ' + THANH_DO_NAME + ', TP.HCM';
+const THANH_DO_MST = '0105402531-041';
+const THANH_DO_EMAIL = 'giadinhpvi@gmail.com';
 
 function footerSiteOffice() {
-  const description = THANH_DO_NAME + ' là đơn vị thành viên của ' + PVI_PARENT + ' và vận hành website pvihcm.com.';
+  // Thông tin pháp nhân dạng danh sách (chủ site yêu cầu 21/11/2026): tên, MST, địa chỉ, SĐT, website, email.
+  const address = `${THANH_DO_STREET}, ${THANH_DO_WARD}, ${THANH_DO_CITY}`;
   const organization = {
     '@context': 'https://schema.org',
     '@type': 'InsuranceAgency',
     '@id': ORG_ID,
     name: THANH_DO_NAME,
-    alternateName: THANH_DO_LABEL,
-    description,
+    alternateName: THANH_DO_ENTITY,
+    taxID: THANH_DO_MST,
+    telephone: '+84938072236',
+    email: THANH_DO_EMAIL,
     url: SITE + '/',
     parentOrganization: { '@type': 'Organization', name: PVI_PARENT },
     address: {
@@ -102,7 +108,14 @@ function footerSiteOffice() {
       addressCountry: 'VN',
     },
   };
-  return `<section class="footer-site-office" aria-labelledby="footer-site-office-title"><h2 id="footer-site-office-title">${esc(THANH_DO_LABEL)}</h2><p>${esc(description)}</p><address>${esc(`${THANH_DO_STREET}, ${THANH_DO_WARD}, ${THANH_DO_CITY}`)}</address><a href="/gioi-thieu/">Giới thiệu PVI Thành Đô</a><script type="application/ld+json">${JSON.stringify(organization).replace(/</g, '\\u003c')}</script></section>`;
+  const rows = [
+    ['MST', esc(THANH_DO_MST)],
+    ['Địa chỉ', `<address>${esc(address)}</address>`],
+    ['SĐT', '<a href="tel:0938072236">0938 072 236</a> · <a href="tel:0918981869">0918 981 869</a>'],
+    ['Website', '<a href="/">pvihcm.com</a>'],
+    ['Email', `<a href="mailto:${THANH_DO_EMAIL}">${esc(THANH_DO_EMAIL)}</a>`],
+  ];
+  return `<section class="footer-site-office" aria-labelledby="footer-site-office-title"><h2 id="footer-site-office-title">${esc(THANH_DO_ENTITY)}</h2><dl class="footer-entity">${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl><a class="footer-entity-more" href="/gioi-thieu/">Giới thiệu PVI Thành Đô</a><script type="application/ld+json">${JSON.stringify(organization).replace(/</g, '\\u003c')}</script></section>`;
 }
 
 // Địa chỉ địa phương tách rõ với đơn vị vận hành website Thành Đô.
