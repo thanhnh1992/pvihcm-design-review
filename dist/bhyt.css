@@ -1,0 +1,121 @@
+/* Trang Bảo hiểm y tế hộ gia đình (/san-pham/bao-hiem-y-te/), HTML sinh bằng tools/gen-bhyt.mjs (21/11/2026).
+   Màu chính #193665 (navy chủ site chọn), điểm nhấn đỏ PVI. Ưu tiên điện thoại: nút cao từ 48px, chữ thân 16–17px. */
+.bh{--bh-navy:#193665;--bh-red:#cb2530;--bh-ink:#17212e;--bh-muted:#4f6276;--bh-line:#dde6f0;--bh-tint:#f4f8fc;color:var(--bh-ink)}
+.bh-wrap{width:min(1180px,calc(100% - 48px));margin-inline:auto}
+.bh h1,.bh h2,.bh h3{color:var(--bh-navy);letter-spacing:-.02em}
+.bh h2{font-size:clamp(26px,3vw,36px);line-height:1.2;margin:0 0 12px}
+.bh h3{font-size:19px;line-height:1.35;margin:0 0 8px}
+.bh p{font-size:17px;line-height:1.75;color:#33475c;margin:0 0 14px}
+.bh-sub{max-width:760px}
+.bh-note{font-size:14px !important;color:var(--bh-muted) !important;margin-top:14px !important}
+
+/* Đầu trang */
+.bh-hero{background:linear-gradient(180deg,#f3f7fc 0%,#fff 100%);padding:48px 0 56px;border-bottom:1px solid var(--bh-line)}
+.bh-hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px;align-items:center}
+.bh-kicker{font-size:13px !important;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--bh-red) !important;margin:0 0 12px !important}
+.bh h1{font-size:clamp(34px,4.4vw,54px);line-height:1.1;margin:0 0 16px}
+.bh-lead{font-size:18px !important;max-width:600px}
+.bh-facts{list-style:none;padding:0;margin:22px 0 26px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.bh-facts li{background:#fff;border:1px solid var(--bh-line);border-radius:14px;padding:14px 16px;box-shadow:0 8px 20px rgba(25,54,101,.06)}
+.bh-facts b{display:block;color:var(--bh-navy);font-size:19px;line-height:1.25}
+.bh-facts span{display:block;color:var(--bh-muted);font-size:14px;line-height:1.45;margin-top:4px}
+.bh-cta{display:flex;flex-wrap:wrap;gap:12px}
+.bh-btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;transition:background-color .2s ease,box-shadow .2s ease,transform .2s ease}
+.bh-btn-main{background:var(--bh-navy);color:#fff}
+.bh-btn-main:hover,.bh-btn-main:focus-visible{background:#10264a;box-shadow:0 10px 24px rgba(25,54,101,.25);transform:translateY(-1px)}
+.bh-btn-line{border:1.5px solid var(--bh-navy);color:var(--bh-navy);background:#fff}
+.bh-btn-line:hover,.bh-btn-line:focus-visible{background:#eef3fa}
+.bh-btn-full{width:100%;margin-top:18px}
+.bh-hero-photo,.bh-photo{margin:0}
+.bh-hero-photo img,.bh-photo img{display:block;width:100%;height:auto;border-radius:20px;box-shadow:0 22px 44px rgba(25,54,101,.14)}
+.bh-hero-photo figcaption,.bh-photo figcaption{font-size:13px;line-height:1.5;color:var(--bh-muted);margin-top:10px}
+
+/* Khối */
+.bh-sec{padding:64px 0;scroll-margin-top:84px}
+.bh-sec-alt{background:var(--bh-tint)}
+
+/* Bộ tính */
+.bh-calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;margin-top:24px;border-radius:22px;overflow:hidden;border:1px solid var(--bh-line);box-shadow:0 20px 44px rgba(25,54,101,.09);background:#fff}
+.bh-calc-in{padding:28px;display:grid;gap:24px;align-content:start}
+.bh-field{border:0;margin:0;padding:0;min-width:0}
+.bh-label{display:block;font-weight:700;font-size:15px;color:var(--bh-navy);margin-bottom:10px;padding:0}
+.bh-stepper{display:inline-flex;align-items:center;border:1.5px solid var(--bh-line);border-radius:16px;overflow:hidden}
+.bh-stepper button{width:54px;height:54px;border:0;background:#fff;color:var(--bh-navy);font-size:26px;font-weight:700;cursor:pointer}
+.bh-stepper button:hover:not(:disabled){background:#eef3fa}
+.bh-stepper button:disabled{color:#b6c3d1;cursor:not-allowed}
+.bh-stepper output{min-width:64px;text-align:center;font-size:24px;font-weight:800;color:var(--bh-ink)}
+.bh-terms{display:flex;flex-wrap:wrap;gap:10px}
+.bh-terms legend{width:100%}
+.bh-terms label{position:relative;cursor:pointer}
+.bh-terms input{position:absolute;opacity:0;width:1px;height:1px}
+.bh-terms span{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border:1.5px solid var(--bh-line);border-radius:999px;font-weight:600;color:var(--bh-ink);background:#fff}
+.bh-terms input:checked+span{background:var(--bh-navy);border-color:var(--bh-navy);color:#fff}
+.bh-terms input:focus-visible+span{outline:3px solid rgba(25,54,101,.35);outline-offset:2px}
+.bh-calc-out{background:linear-gradient(160deg,#193665 0%,#0f2547 100%);color:#fff;padding:28px}
+.bh-calc-out .bh-total-l{color:#cfe0f5 !important;font-size:15px !important;margin:0 0 4px !important}
+.bh-calc-out .bh-total{color:#fff !important;font-size:clamp(34px,4vw,44px) !important;font-weight:800;line-height:1.1;margin:0 0 18px !important;letter-spacing:-.02em}
+.bh-break{list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.18)}
+.bh-break li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:15px;color:#e3ecf7}
+.bh-break b{color:#fff}
+.bh-calc-out .bh-btn-main{background:#fff;color:var(--bh-navy)}
+.bh-calc-out .bh-btn-main:hover,.bh-calc-out .bh-btn-main:focus-visible{background:#eef3fa}
+
+/* Bảng mức đóng */
+.bh-table{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:20px;border-radius:16px;border:1px solid var(--bh-line);background:#fff}
+.bh-table table{width:100%;border-collapse:collapse;min-width:640px;font-size:15px}
+.bh-table th,.bh-table td{padding:14px 16px;text-align:right;border-top:1px solid var(--bh-line)}
+.bh-table thead th{background:var(--bh-navy);color:#fff;border-top:0;font-weight:700;font-size:14px}
+.bh-table th[scope=row],.bh-table thead th:first-child,.bh-table td:nth-child(2){text-align:left}
+.bh-table th[scope=row]{color:var(--bh-navy)}
+.bh-table td b{color:var(--bh-navy)}
+
+/* Điểm thu */
+.bh-two{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center}
+.bh-dl{margin:20px 0 0;display:grid;gap:12px}
+.bh-dl div{display:grid;grid-template-columns:180px minmax(0,1fr);gap:12px;padding:12px 0;border-top:1px solid var(--bh-line)}
+.bh-dl dt{color:var(--bh-muted);font-size:15px}
+.bh-dl dd{margin:0;font-weight:600;color:var(--bh-ink);font-size:16px}
+.bh-dl a{color:var(--bh-navy);text-decoration:underline;text-underline-offset:3px}
+
+/* Lưu ý, các bước */
+.bh-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px}
+.bh-cards article{background:#fff;border:1px solid var(--bh-line);border-radius:18px;padding:24px}
+.bh-cards p{font-size:16px;margin:0}
+.bh-steps{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:2px solid var(--bh-navy)}
+.bh-steps li{padding:22px 24px;border-left:1px solid var(--bh-line)}
+.bh-steps li:first-child{border-left:0;padding-left:0}
+.bh-steps b{color:var(--bh-red);font-size:14px;letter-spacing:.08em}
+.bh-steps p{font-size:16px;margin:0}
+
+/* Câu hỏi, căn cứ */
+.bh-faq{margin-top:20px;border-top:1px solid var(--bh-line)}
+.bh-faq details{border-bottom:1px solid var(--bh-line)}
+.bh-faq summary{cursor:pointer;list-style:none;padding:18px 40px 18px 0;font-weight:700;color:var(--bh-navy);font-size:17px;position:relative;min-height:48px}
+.bh-faq summary::-webkit-details-marker{display:none}
+.bh-faq summary::after{content:"+";position:absolute;right:6px;top:14px;font-size:24px;color:var(--bh-navy)}
+.bh-faq details[open] summary::after{content:"−"}
+.bh-faq details p{padding:0 0 18px;margin:0}
+.bh-h-small{font-size:20px !important;margin-top:40px !important}
+.bh-src{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:10px}
+.bh-src li{display:grid;gap:2px;font-size:15px}
+.bh-src span{color:var(--bh-muted);font-size:14px}
+
+@media (max-width:860px){
+  .bh-wrap{width:calc(100% - 40px)}
+  .bh-hero{padding:32px 0 40px}
+  .bh-hero-grid,.bh-two,.bh-calc{grid-template-columns:minmax(0,1fr);gap:28px}
+  .bh-calc{gap:0}
+  .bh-facts{grid-template-columns:minmax(0,1fr)}
+  .bh-facts li{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+  .bh-facts span{margin:0;text-align:right}
+  .bh-cta .bh-btn{flex:1 1 100%}
+  .bh-sec{padding:44px 0}
+  .bh-cards,.bh-steps{grid-template-columns:minmax(0,1fr)}
+  .bh-steps li{border-left:0;border-top:1px solid var(--bh-line);padding:20px 0}
+  .bh-steps li:first-child{border-top:0}
+  .bh-dl div{grid-template-columns:minmax(0,1fr);gap:2px}
+  .bh p{font-size:16px}
+  .bh-calc-in,.bh-calc-out{padding:22px}
+}
+@media (prefers-reduced-motion:reduce){.bh-btn{transition:none}.bh-btn-main:hover{transform:none}}
+.bh-narrow{max-width:820px}

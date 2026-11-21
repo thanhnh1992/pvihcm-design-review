@@ -19,6 +19,7 @@ export const products = [
   { href: '/san-pham/chay-no-bat-buoc/', title: 'Bảo hiểm cháy nổ bắt buộc', group: 'bat-buoc', img: 'chay-no', alt: 'Mô hình 3D nhà xưởng có bình chữa cháy, khiên sáng bảo vệ và vòng sáng đỏ trên đế kính' },
   { href: '/san-pham/bao-hiem-tai-nan/', title: 'Bảo hiểm tai nạn 24/24', group: 'con-nguoi', img: 'tai-nan', alt: 'Mô hình 3D mũ bảo hộ đỏ, nhóm nhân viên và vòng sáng đỏ trên đế kính' },
   { href: '/san-pham/bao-hiem-suc-khoe/', title: 'Bảo hiểm sức khỏe PVI Care', group: 'con-nguoi', img: 'hero-suc-khoe', alt: 'Mô hình 3D trái tim đỏ, ống nghe và gia đình nhỏ trên đế kính' },
+  { href: '/san-pham/bao-hiem-y-te/', title: 'Bảo hiểm y tế hộ gia đình', group: 'con-nguoi', img: 'diem-thu-bhxh-bhyt-pvi-thanh-do', alt: 'Bảng điểm thu bảo hiểm xã hội, bảo hiểm y tế do Công ty Bảo hiểm PVI Thành Đô tổ chức tại số 37 Đường số 2' },
   { href: '/san-pham/bao-hiem-du-lich/', title: 'Bảo hiểm du lịch quốc tế', group: 'con-nguoi', img: 'hero-du-lich', alt: 'Mô hình 3D vali đỏ, máy bay và quả địa cầu trên đế kính' },
   { href: '/san-pham/hang-hoa-xuat-nhap-khau/', title: 'Bảo hiểm hàng hóa xuất nhập khẩu', group: 'tai-san', img: 'hang-hoa', alt: 'Mô hình 3D tàu container và máy bay vận tải' },
   { href: '/san-pham/bao-hiem-cong-trinh/', title: 'Bảo hiểm công trình và lắp đặt', group: 'tai-san', img: 'hero-cong-trinh', alt: 'Mô hình 3D tòa nhà đang xây, cần cẩu và vòng sáng đỏ trên đế kính' },
