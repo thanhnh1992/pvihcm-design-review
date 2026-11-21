@@ -185,7 +185,7 @@ document.addEventListener('click', (event) => {
   const link = event.target.closest?.('a[href]');
   if (!link) return;
   const href = link.getAttribute('href') || '';
-  const method = /^tel:(?:0938072236|0918981869)$/.test(href)
+  const method = /^tel:0938072236$/.test(href)
     ? 'phone'
     : href.startsWith('https://zalo.me/') ? 'zalo' : null;
   if (method && privacyAnalytics && /(^|\.)pvihcm\.com$/.test(location.hostname)) gtag('event', 'contact_click', { contact_method: method });

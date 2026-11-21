@@ -177,7 +177,7 @@ ${pic('du-lich-tu-van', 'Chuyên viên tư vấn đeo tai nghe trả lời khác
 <li>${svg('shield', 'tv-ico-sm')}Đồng hành khi có sự cố</li>
 </ul>
 </div>
-<div class="tv-adv-call">${svg('phone', 'tv-ico-xl')}<div><span>Gọi ngay</span><a href="tel:0918981869">0918 981 869</a><a href="tel:0938072236">0938 072 236</a></div><a class="tv-adv-zalo" href="${ZALO_TV}" target="_blank" rel="noopener" aria-label="Nhắn Zalo 0938 072 236">${svg('arrow', 'tv-ico-sm')}</a></div>
+<div class="tv-adv-call">${svg('phone', 'tv-ico-xl')}<div><span>Gọi ngay</span><a href="tel:0938072236">0938 072 236</a></div><a class="tv-adv-zalo" href="${ZALO_TV}" target="_blank" rel="noopener" aria-label="Nhắn Zalo 0938 072 236">${svg('arrow', 'tv-ico-sm')}</a></div>
 </div></div></section>`;
 }
 
@@ -197,6 +197,6 @@ export function tvCta() {
 <section class="tv-cta" aria-labelledby="tv-cta-h"><div class="tv-wrap tv-cta-box">
 <span class="tv-cta-mark">${svg('plane', 'tv-ico-lg')}</span>
 <div class="tv-cta-copy"><h2 id="tv-cta-h">Sắp có chuyến đi?</h2><p>Gửi lịch trình qua Zalo, chúng tôi tư vấn gói phù hợp với bạn.</p></div>
-<div class="tv-cta-actions"><a class="tv-btn tv-btn-phone" href="tel:0918981869">${svg('phone', 'tv-ico-sm')}0918 981 869</a><a class="tv-btn tv-btn-red" href="${ZALO}" target="_blank" rel="noopener">Nhận tư vấn ngay ${svg('arrow', 'tv-ico-sm')}</a></div>
+<div class="tv-cta-actions"><a class="tv-btn tv-btn-phone" href="tel:0938072236">${svg('phone', 'tv-ico-sm')}0938 072 236</a><a class="tv-btn tv-btn-red" href="${ZALO}" target="_blank" rel="noopener">Nhận tư vấn ngay ${svg('arrow', 'tv-ico-sm')}</a></div>
 </div></section>`;
 }

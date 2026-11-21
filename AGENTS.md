@@ -66,7 +66,7 @@ Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist
 - Không tự sửa phí, quyền lợi, điều kiện, loại trừ, căn cứ pháp lý, dữ liệu pháp nhân. Chỉ lấy từ `tools/data` hoặc từ nguồn chính thức PVI. Có mâu thuẫn thì hỏi chủ site.
 - Thông tin liên hệ đã chốt:
   - Tư vấn / Zalo: **0938 072 236**
-  - Số thứ hai: **0918 981 869** (cùng một người với 0938)
+  - Số 0918 981 869: **chủ site bỏ khỏi toàn site ngày 21/11/2026**, không dùng lại ở bất kỳ trang nào.
   - Bồi thường: **1900 54 54 58**, dùng trên toàn site
   - Email: **giadinhpvi@gmail.com**
   - Trụ sở: **Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, P. Thạnh Mỹ Tây, TP.HCM**

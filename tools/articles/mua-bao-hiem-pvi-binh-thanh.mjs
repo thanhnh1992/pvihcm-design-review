@@ -86,8 +86,7 @@ export function body({ pic, ctaRow }) {
 <p class="kb-nap-tax">Mã số thuế 0105402531-041</p>
 </div>
 <dl class="kb-nap-lines">
-<div><dt>Tư vấn cá nhân, ô tô</dt><dd><a href="tel:0938072236">0938 072 236</a></dd></div>
-<div><dt>Doanh nghiệp, công trình</dt><dd><a href="tel:0918981869">0918 981 869</a></dd></div>
+<div><dt>Tư vấn</dt><dd><a href="tel:0938072236">0938 072 236</a></dd></div>
 <div><dt>Điện thoại văn phòng</dt><dd><a href="tel:02835352235">028 3535 2235</a></dd></div>
 <div><dt>Tổng đài bồi thường</dt><dd><a href="tel:1900545458">1900 54 54 58</a></dd></div>
 </dl>

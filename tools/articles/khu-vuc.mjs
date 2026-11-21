@@ -161,7 +161,7 @@ ${A.nhuCau.items.length ? `<ul>${A.nhuCau.items.map((x) => `<li>${t(x)}</li>`).j
 <div class="kv-office">${srcset('tru-so-pvi-thanh-do', 1200, 900, '(max-width:640px) 100vw, 200px', false, 'Tòa nhà 194 Golden Building, nơi đặt văn phòng PVI Thành Đô')}
 <div><h3>Công ty Bảo hiểm PVI Thành Đô</h3>
 <p class="kv-line">${ICON.pin}<span>Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, Phường Thạnh Mỹ Tây, TP.HCM</span></p>
-<p class="kv-line">${ICON.phone}<span>Văn phòng <a href="tel:02835352235">028 3535 2235</a> · Cá nhân, ô tô <a href="tel:0938072236">0938 072 236</a> · Doanh nghiệp, công trình <a href="tel:0918981869">0918 981 869</a></span></p>
+<p class="kv-line">${ICON.phone}<span>Văn phòng <a href="tel:02835352235">028 3535 2235</a> · Tư vấn <a href="tel:0938072236">0938 072 236</a></span></p>
 <p class="kv-service"><strong>Dịch vụ:</strong> tư vấn và cấp đơn bảo hiểm ô tô, tai nạn 24/24, cháy nổ bắt buộc, hàng hóa, công trình và tài sản doanh nghiệp.</p>
 ${zaloBtn('Liên hệ tư vấn qua Zalo')}</div></div>
 ${unit ? `<div class="kv-office"><div class="kv-office-art" aria-hidden="true">${ICON.building}</div>

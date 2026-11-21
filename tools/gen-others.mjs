@@ -186,7 +186,7 @@ ${DIA_BAN.map(([vung, ds]) => `<div class="db-region"><h3>${vung}</h3><ul class=
 <tr><th scope="row">Tên đơn vị</th><td>CÔNG TY BẢO HIỂM PVI THÀNH ĐÔ, thuộc TỔNG CÔNG TY BẢO HIỂM PVI</td></tr>
 <tr><th scope="row">Mã số thuế</th><td class="strong" style="color:var(--ink)">0105402531-041</td></tr>
 <tr><th scope="row">Trụ sở</th><td>Tầng 12A, Tòa nhà 194 Golden Building, số 473 Điện Biên Phủ, Phường Thạnh Mỹ Tây, TP.HCM</td></tr>
-<tr><th scope="row">Tư vấn</th><td><a href="tel:0938072236" style="color:var(--blue);font-weight:700">0938 072 236</a> · <a href="tel:0918981869" style="color:var(--blue);font-weight:700">0918 981 869</a><br><a href="mailto:giadinhpvi@gmail.com" style="color:var(--blue)">giadinhpvi@gmail.com</a></td></tr>
+<tr><th scope="row">Tư vấn</th><td><a href="tel:0938072236" style="color:var(--blue);font-weight:700">0938 072 236</a><br><a href="mailto:giadinhpvi@gmail.com" style="color:var(--blue)">giadinhpvi@gmail.com</a></td></tr>
 <tr><th scope="row">Bồi thường</th><td><a href="tel:1900545458" style="color:var(--blue);font-weight:700">1900 54 54 58</a></td></tr>
 </tbody></table></div>
 </div></section>
