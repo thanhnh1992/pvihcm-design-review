@@ -31,10 +31,23 @@
           <label><input type="radio" name="bh-term" value="3"><span>3 tháng</span></label><label><input type="radio" name="bh-term" value="6"><span>6 tháng</span></label><label><input type="radio" name="bh-term" value="12" checked><span>12 tháng</span></label>
         </fieldset>
       </div>
-      <div class="bh-calc-out" aria-live="polite">
-        <p class="bh-total-l">Tổng tiền đóng <span data-ctx>(1 người · 12 tháng)</span></p>
-        <p class="bh-total" data-total>1.366.200 đ</p>
-        <ul class="bh-break" data-break><li><span>Người thứ nhất</span><b>1.366.200 đ</b></li></ul>
+      <div class="bh-calc-out">
+        <div aria-live="polite">
+          <p class="bh-total-l">Tổng tiền đóng <span data-ctx>(1 người · 12 tháng)</span></p>
+          <p class="bh-total" data-total>1.366.200 đ</p>
+          <ul class="bh-break" data-break><li><span>Người thứ nhất</span><b>1.366.200 đ</b></li></ul>
+        </div>
+        <details class="bh-order" data-bhyt-order hidden>
+          <summary class="bh-btn bh-btn-full">Mua ngay</summary>
+          <form method="post" action="/api/dat-mua-bhyt">
+            <label><span>Số người tham gia</span><input class="bh-input" type="number" name="headcount" value="1" min="1" max="10" step="1" inputmode="numeric" required></label>
+            <label><span>Số điện thoại</span><input class="bh-input" type="tel" name="phone" autocomplete="tel" inputmode="tel" maxlength="24" required></label>
+            <label><span>Email</span><input class="bh-input" type="email" name="email" autocomplete="email" maxlength="120" required></label>
+            <label class="bh-order-consent"><input type="checkbox" name="consent" required><span>Tôi đồng ý để PVI Thành Đô sử dụng thông tin trên để liên hệ và xử lý yêu cầu đăng ký BHYT.</span></label>
+            <button class="bh-btn" type="submit">Gửi yêu cầu mua BHYT</button>
+            <p class="bh-order-status" role="status"></p>
+          </form>
+        </details>
         <a class="bh-btn bh-btn-main bh-btn-full" href="https://zalo.me/2076363329232219188?src=qr&f=1" target="_blank" rel="nofollow noopener">Đăng ký online qua Zalo</a>
       </div>
     </div>

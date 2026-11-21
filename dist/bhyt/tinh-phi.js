@@ -6,10 +6,15 @@
     const M = [113850,79695,68310,56925,45540];
     const ORD = ["Người thứ nhất","Người thứ hai","Người thứ ba","Người thứ tư"];
     const out = box.querySelector('#bh-n');
+    const order = box.querySelector('[data-bhyt-order]');
+    const form = order?.querySelector('form');
+    const count = form?.elements.headcount;
+    const months = () => Number(box.querySelector('input[name="bh-term"]:checked').value);
     let n = 1;
     const render = () => {
-      const k = Number((box.querySelector('input[name="bh-term"]:checked') || {}).value || 12);
+      const k = months();
       out.textContent = n;
+      if (count) count.value = n;
       const rows = Array.from({ length: n }, (_, i) => ({ who: i < 4 ? ORD[i] : 'Người thứ ' + (i + 1), sum: M[Math.min(i, M.length - 1)] * k }));
       box.querySelector('[data-total]').textContent = vnd(rows.reduce((a, r) => a + r.sum, 0));
       box.querySelector('[data-ctx]').textContent = '(' + n + ' người · ' + k + ' tháng)';
@@ -18,7 +23,39 @@
       box.querySelector('[data-step="1"]').disabled = n >= 10;
     };
     box.addEventListener('click', (e) => { const b = e.target.closest('[data-step]'); if (!b) return; n = Math.min(10, Math.max(1, n + Number(b.dataset.step))); render(); });
-    box.addEventListener('change', render);
+    box.addEventListener('change', (e) => { if (e.target.name === 'bh-term') render(); });
+    count?.addEventListener('change', () => {
+      if (!count.validity.valid) return;
+      n = count.valueAsNumber;
+      render();
+    });
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submit = form.querySelector('button[type="submit"]');
+      const status = form.querySelector('[role="status"]');
+      if (submit.disabled) return;
+      n = count.valueAsNumber;
+      render();
+      const data = { headcount: n, term: months(), phone: form.elements.phone.value, email: form.elements.email.value, consent: form.elements.consent.checked };
+      submit.disabled = true;
+      status.textContent = 'Đang gửi yêu cầu…';
+      try {
+        const response = await fetch(form.action, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+        const result = await response.json();
+        if (!response.ok || !result.ok || !result.code) {
+          status.textContent = result.error || 'Chưa xác nhận được yêu cầu. Anh/chị có thể liên hệ qua Zalo.';
+          return;
+        }
+        form.reset();
+        render();
+        status.textContent = 'Đã nhận yêu cầu ' + result.code + '. PVI Thành Đô sẽ liên hệ để hướng dẫn hoàn tất đăng ký.';
+      } catch {
+        status.textContent = 'Chưa xác nhận được yêu cầu. Anh/chị có thể liên hệ qua Zalo.';
+      } finally {
+        submit.disabled = false;
+      }
+    });
+    if (order) order.hidden = false;
     render();
   }
   const tn = document.querySelector('[data-tn-calc]');

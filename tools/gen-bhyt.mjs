@@ -73,10 +73,23 @@ const main = `
           ${TERMS.map((k) => `<label><input type="radio" name="bh-term" value="${k}"${k === 12 ? ' checked' : ''}><span>${k} tháng</span></label>`).join('')}
         </fieldset>
       </div>
-      <div class="bh-calc-out" aria-live="polite">
-        <p class="bh-total-l">Tổng tiền đóng <span data-ctx>(1 người · 12 tháng)</span></p>
-        <p class="bh-total" data-total>${vnd(rows0[0].sum)}</p>
-        <ul class="bh-break" data-break>${rows0.map((r) => `<li><span>${r.who}</span><b>${vnd(r.sum)}</b></li>`).join('')}</ul>
+      <div class="bh-calc-out">
+        <div aria-live="polite">
+          <p class="bh-total-l">Tổng tiền đóng <span data-ctx>(1 người · 12 tháng)</span></p>
+          <p class="bh-total" data-total>${vnd(rows0[0].sum)}</p>
+          <ul class="bh-break" data-break>${rows0.map((r) => `<li><span>${r.who}</span><b>${vnd(r.sum)}</b></li>`).join('')}</ul>
+        </div>
+        <details class="bh-order" data-bhyt-order hidden>
+          <summary class="bh-btn bh-btn-full">Mua ngay</summary>
+          <form method="post" action="/api/dat-mua-bhyt">
+            <label><span>Số người tham gia</span><input class="bh-input" type="number" name="headcount" value="1" min="1" max="10" step="1" inputmode="numeric" required></label>
+            <label><span>Số điện thoại</span><input class="bh-input" type="tel" name="phone" autocomplete="tel" inputmode="tel" maxlength="24" required></label>
+            <label><span>Email</span><input class="bh-input" type="email" name="email" autocomplete="email" maxlength="120" required></label>
+            <label class="bh-order-consent"><input type="checkbox" name="consent" required><span>Tôi đồng ý để PVI Thành Đô sử dụng thông tin trên để liên hệ và xử lý yêu cầu đăng ký BHYT.</span></label>
+            <button class="bh-btn" type="submit">Gửi yêu cầu mua BHYT</button>
+            <p class="bh-order-status" role="status"></p>
+          </form>
+        </details>
         <a class="bh-btn bh-btn-main bh-btn-full" href="${ZALO}" target="_blank" rel="noopener">Đăng ký online qua Zalo</a>
       </div>
     </div>
@@ -222,10 +235,15 @@ fs.writeFileSync(path.join(DIST, 'bhyt/tinh-phi.js'), `/* Bộ tính BHYT hộ g
     const M = ${JSON.stringify(months)};
     const ORD = ${JSON.stringify(ORD.slice(0, 4))};
     const out = box.querySelector('#bh-n');
+    const order = box.querySelector('[data-bhyt-order]');
+    const form = order?.querySelector('form');
+    const count = form?.elements.headcount;
+    const months = () => Number(box.querySelector('input[name="bh-term"]:checked').value);
     let n = 1;
     const render = () => {
-      const k = Number((box.querySelector('input[name="bh-term"]:checked') || {}).value || 12);
+      const k = months();
       out.textContent = n;
+      if (count) count.value = n;
       const rows = Array.from({ length: n }, (_, i) => ({ who: i < 4 ? ORD[i] : 'Người thứ ' + (i + 1), sum: M[Math.min(i, M.length - 1)] * k }));
       box.querySelector('[data-total]').textContent = vnd(rows.reduce((a, r) => a + r.sum, 0));
       box.querySelector('[data-ctx]').textContent = '(' + n + ' người · ' + k + ' tháng)';
@@ -234,7 +252,39 @@ fs.writeFileSync(path.join(DIST, 'bhyt/tinh-phi.js'), `/* Bộ tính BHYT hộ g
       box.querySelector('[data-step="1"]').disabled = n >= 10;
     };
     box.addEventListener('click', (e) => { const b = e.target.closest('[data-step]'); if (!b) return; n = Math.min(10, Math.max(1, n + Number(b.dataset.step))); render(); });
-    box.addEventListener('change', render);
+    box.addEventListener('change', (e) => { if (e.target.name === 'bh-term') render(); });
+    count?.addEventListener('change', () => {
+      if (!count.validity.valid) return;
+      n = count.valueAsNumber;
+      render();
+    });
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submit = form.querySelector('button[type="submit"]');
+      const status = form.querySelector('[role="status"]');
+      if (submit.disabled) return;
+      n = count.valueAsNumber;
+      render();
+      const data = { headcount: n, term: months(), phone: form.elements.phone.value, email: form.elements.email.value, consent: form.elements.consent.checked };
+      submit.disabled = true;
+      status.textContent = 'Đang gửi yêu cầu…';
+      try {
+        const response = await fetch(form.action, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+        const result = await response.json();
+        if (!response.ok || !result.ok || !result.code) {
+          status.textContent = result.error || 'Chưa xác nhận được yêu cầu. Anh/chị có thể liên hệ qua Zalo.';
+          return;
+        }
+        form.reset();
+        render();
+        status.textContent = 'Đã nhận yêu cầu ' + result.code + '. PVI Thành Đô sẽ liên hệ để hướng dẫn hoàn tất đăng ký.';
+      } catch {
+        status.textContent = 'Chưa xác nhận được yêu cầu. Anh/chị có thể liên hệ qua Zalo.';
+      } finally {
+        submit.disabled = false;
+      }
+    });
+    if (order) order.hidden = false;
     render();
   }
   const tn = document.querySelector('[data-tn-calc]');
