@@ -366,9 +366,9 @@ body>.preview,body>header,body>main,body>footer,body>.skip{position:relative;z-i
 .pt-controls button span{font-size:27px;line-height:1}
 .pt-controls button:hover{background:#e9f1fb;border-color:#8aa5c4}
 .pt-controls button:focus-visible,.pt-viewport:focus-visible{outline:2px solid #1f4a8c;outline-offset:2px}
-.pt-viewport{overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;padding:2px 2px 10px;scroll-padding-inline:2px}
+.pt-viewport{overflow-x:auto;overscroll-behavior-inline:contain;padding:2px 2px 10px;scroll-padding-inline:2px}
 .pt-track{display:flex;gap:14px;margin:0;padding:0;list-style:none}
-.pt-track li{display:flex;flex:0 0 min(72vw,276px);min-width:0;scroll-snap-align:start}
+.pt-track li{display:flex;flex:0 0 min(72vw,276px);min-width:0}
 .pt-item{
   position:relative;
   isolation:isolate;
@@ -382,20 +382,20 @@ body>.preview,body>header,body>main,body>footer,body>.skip{position:relative;z-i
   background:#13263e;
   color:#fff;
 }
-.pt-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 42%}
+.pt-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 42%;filter:saturate(1.08)}
 .pt-item::before{
   content:"";
   position:absolute;
   z-index:1;
   inset:0;
-  background:linear-gradient(180deg,#0b192c20 0%,#0b192c9c 32%,#0b192cf7 100%);
+  background:linear-gradient(180deg,transparent 8%,#0b192c2b 27%,#0b192c94 53%,#0b192cf0 100%);
 }
-.pt-body{position:relative;z-index:2;display:flex;width:100%;flex-direction:column;gap:4px;padding:14px 16px}
+.pt-body{position:relative;z-index:2;display:flex;width:100%;flex-direction:column;gap:4px;padding:14px 16px;text-shadow:0 1px 3px #061221}
+.pt-body::before{content:"";position:absolute;z-index:-1;inset:-16px 0 0;background:linear-gradient(180deg,transparent,#0b192c83 26%,#0b192c47)}
 .pt-body strong{color:#fff;font-size:18px;line-height:1.32;overflow-wrap:anywhere}
 .pt-desc{color:#fff;font-size:16px;line-height:1.44}
 .pt-body small{color:#d9e5f5;font-size:13px;line-height:1.45}
 a.pt-item strong{text-decoration:underline;text-underline-offset:3px;text-decoration-color:#ffffff91}
-a.pt-item:hover::before,a.pt-item:focus-visible::before{background:linear-gradient(180deg,#0b192c39 0%,#0b192cb3 32%,#0b192cfb 100%)}
 a.pt-item:focus-visible{outline:2px solid #1f4a8c;outline-offset:1px}
 @media(min-width:760px){.pt-track li{flex-basis:calc((100% - 28px)/3)}}
 @media(min-width:1050px){.pt-track li{flex-basis:calc((100% - 42px)/4)}}
