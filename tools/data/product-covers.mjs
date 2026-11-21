@@ -16,6 +16,10 @@ export const productCovers = {
     "base": "product-covers/suc-khoe",
     "alt": "CHỌN CHƯƠNG TRÌNH CHĂM SÓC SỨC KHỎE. ĐỐI CHIẾU QUYỀN LỢI VÀ ĐIỀU KIỆN."
   },
+  "/san-pham/bao-hiem-y-te/": {
+    "base": "product-covers/bao-hiem-y-te-v2",
+    "alt": "TÍNH MỨC ĐÓNG BHYT HỘ GIA ĐÌNH. XEM HỖ TRỢ ĐÓNG BHXH TỰ NGUYỆN."
+  },
   "/san-pham/bao-hiem-du-lich/": {
     "base": "product-covers/du-lich",
     "alt": "CHỌN BẢO HIỂM THEO CHUYẾN ĐI. TRA PHÍ VÀ PHẠM VI QUYỀN LỢI."
