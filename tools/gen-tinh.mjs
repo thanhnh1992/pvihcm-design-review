@@ -108,23 +108,20 @@ ${crumbNav([['Trang chủ', '/'], [hubName, route]])}
 </div><figure class="bd-hero-photo">${heroImg.html}<figcaption>${esc(heroImg.cap)}</figcaption></figure></div></section>
 <div class="bd-wrap bd-body">
 ${meta(0)}
-<nav class="bd-jumps bd-page-nav" aria-label="Nội dung trang"><a href="#bao-hiem-pvi">PVI tại ${esc(T.ten)}</a><a href="#san-pham">Sản phẩm</a><a href="#khu-cong-nghiep">Khu công nghiệp</a><a href="#rui-ro">Rủi ro địa phương</a><a href="#cach-mua">Cách mua</a><a href="#su-co">Khi có sự cố</a><a href="#dia-chi-pvi">Địa chỉ PVI</a></nav>
+<nav class="bd-jumps bd-page-nav" aria-label="Nội dung trang"><a href="#bao-hiem-pvi">PVI tại ${esc(T.ten)}</a><a href="#san-pham">Sản phẩm</a><a href="#khu-cong-nghiep">Khu công nghiệp</a><a href="#phuong-xa">Phường, xã</a><a href="#rui-ro">Rủi ro địa phương</a><a href="#cach-mua">Cách mua</a><a href="#su-co">Khi có sự cố</a><a href="#dia-chi-pvi">Địa chỉ PVI</a></nav>
 <section class="bd-section" aria-labelledby="bao-hiem-pvi"><h2 id="bao-hiem-pvi">Bảo hiểm PVI tại ${esc(T.ten)}: ai phụ trách, mua ở đâu</h2>
 <div class="bd-local-intro">
 <p>Đầu mối của Bảo hiểm PVI tại ${esc(T.ten)} là <strong>${esc(O.ten)}</strong>, văn phòng ở ${esc(O.diaChi)}, điện thoại <a class="bd-link" href="tel:${O.tel}">${esc(O.dienThoai)}</a>. Khách có thể làm việc trực tiếp tại đây hoặc mua từ xa qua Công ty Bảo hiểm PVI Thành Đô bằng Zalo <a class="bd-link" href="tel:0938072236">0938 072 236</a>.</p>
 <p>${esc(hc.cu)} ${esc(hc.moi)}</p>
-<p>Một số phường mới: ${hc.viDu.map(([n, tu]) => `<strong>${esc(n)}</strong> (${esc(tu)})`).join('; ')}. Các phường khác trên địa bàn cũ gồm ${hc.phuongKhac.map(esc).join(', ')}. Giấy tờ còn ghi địa chỉ cũ vẫn dùng được khi mua bảo hiểm.</p>
+<p>Danh sách phường, xã mới kèm đơn vị cũ hợp thành xem ở mục <a class="bd-link" href="#phuong-xa">phường, xã lớn</a> cuối trang. Giấy tờ còn ghi địa chỉ cũ vẫn dùng được khi mua bảo hiểm.</p>
 </div></section>
 <section class="bd-section" aria-labelledby="san-pham"><h2 id="san-pham">Sản phẩm bảo hiểm PVI tại ${esc(T.ten)}</h2>
 <p class="bd-summary">Chọn sản phẩm để xem phí tham khảo, hồ sơ cần chuẩn bị và lưu ý riêng cho ${esc(T.ten)}.</p>
 ${groups.map((g) => `<section class="bd-group" aria-labelledby="nhom-${g.id}"><h3 id="nhom-${g.id}">${esc(g.title)}</h3><ul>${g.list.map(card).join('\n')}</ul></section>`).join('\n')}
 </section>
-<section class="bd-section bd-industrial" aria-labelledby="khu-cong-nghiep"><h2 id="khu-cong-nghiep">Bảo hiểm cho doanh nghiệp tại các khu công nghiệp ${esc(T.ten)}</h2>
-<p class="bd-summary">Nhà xưởng, kho trong khu công nghiệp thường cần ba lớp bảo hiểm: <a class="bd-link" href="${route}chaynobatbuoc/">cháy nổ bắt buộc</a>, <a class="bd-link" href="${route}taisannhaxuong/">tài sản nhà xưởng</a> cho rủi ro ngoài cháy và <a class="bd-link" href="${route}tainan2424/">tai nạn 24/24 cho công nhân</a>. Phí xác định theo công năng, giá trị tài sản và số người của từng cơ sở.</p>
-<ul class="bd-industrial-list">${T.kcn.map((k) => `<li>Bảo hiểm PVI tại KCN ${esc(k)}, ${esc(T.ten)}</li>`).join('')}</ul></section>
 <section class="bd-section bd-guide" aria-labelledby="rui-ro"><h2 id="rui-ro">Rủi ro riêng ở ${esc(T.ten)} cần tính khi mua bảo hiểm</h2>
 <ul>${T.ruiRo.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>
-<p class="bd-summary">Vì vậy xe ô tô nên có <a class="bd-link" href="${route}vatchatxeoto/">điều khoản thủy kích</a>, nhà xưởng ven sông nên hỏi thêm rủi ro ngập trong <a class="bd-link" href="${route}taisannhaxuong/">bảo hiểm tài sản</a>.</p></section>
+<p class="bd-summary">Vì vậy xe ô tô nên có <a class="bd-link" href="${route}vatchatxeoto/">điều khoản thủy kích</a>, nhà xưởng, kho ở vùng trũng, ven sông hay ven biển nên hỏi thêm rủi ro ngập, giông bão trong <a class="bd-link" href="${route}taisannhaxuong/">bảo hiểm tài sản</a>.</p></section>
 <section class="bd-section bd-guide" aria-labelledby="cach-mua"><h2 id="cach-mua">Ba bước mua bảo hiểm tại ${esc(T.ten)}</h2><ol>
 <li><strong>Gửi nhu cầu.</strong> Chọn sản phẩm, gửi giấy tờ xe, danh mục tài sản hoặc danh sách người qua Zalo hoặc tại văn phòng.</li>
 <li><strong>Đọc báo phí.</strong> Soát phạm vi, quyền lợi, loại trừ và mức khấu trừ. Hỏi lại nếu thông tin chưa khớp giấy tờ.</li>
@@ -138,6 +135,13 @@ ${groups.map((g) => `<section class="bd-group" aria-labelledby="nhom-${g.id}"><h
 <section class="bd-section bd-faq" aria-labelledby="cau-hoi"><h2 id="cau-hoi">Câu hỏi thường gặp</h2>
 ${T.faqs.map((f) => `<details><summary>${esc(f.question)}</summary><p>${esc(f.answer)}</p></details>`).join('\n')}</section>
 <section class="bd-section bd-guide" aria-labelledby="dia-chi-pvi">${officeHtml()}</section>
+<section class="bd-section bd-industrial" aria-labelledby="khu-cong-nghiep"><h2 id="khu-cong-nghiep">Bảo hiểm cho doanh nghiệp tại các khu công nghiệp ${esc(T.ten)}</h2>
+<p class="bd-summary">Nhà xưởng, kho trong khu công nghiệp thường cần ba lớp bảo hiểm: <a class="bd-link" href="${route}chaynobatbuoc/">cháy nổ bắt buộc</a>, <a class="bd-link" href="${route}taisannhaxuong/">tài sản nhà xưởng</a> cho rủi ro ngoài cháy và <a class="bd-link" href="${route}tainan2424/">tai nạn 24/24 cho công nhân</a>. Phí xác định theo công năng, giá trị tài sản và số người của từng cơ sở.</p>
+<ul class="bd-industrial-list">${T.kcn.map((k) => { const K = typeof k === 'string' ? { ten: k } : k; return `<li><strong>Bảo hiểm PVI tại KCN ${esc(K.ten)}</strong>${K.viTri ? `<span>${esc(K.viTri)}</span>` : ''}${K.ghiChu ? `<small>${esc(K.ghiChu)}</small>` : ''}</li>`; }).join('')}</ul></section>
+<section class="bd-section bd-industrial bd-wards" aria-labelledby="phuong-xa"><h2 id="phuong-xa">Bảo hiểm PVI tại các phường, xã lớn của ${esc(T.ten)}</h2>
+<p class="bd-summary">Tên phường, xã theo sắp xếp từ 01/7/2025, kèm đơn vị cũ hợp thành. Giấy tờ còn ghi địa chỉ cũ vẫn dùng được khi mua bảo hiểm.</p>
+<ul class="bd-industrial-list">${T.hanhChinh.viDu.map(([n, tu]) => `<li><strong>${esc(n)}</strong><span>${esc(tu)}</span></li>`).join('')}</ul>
+${T.hanhChinh.phuongKhac && T.hanhChinh.phuongKhac.length ? `<p class="bd-summary">Các phường, xã khác trên địa bàn: ${T.hanhChinh.phuongKhac.map(esc).join(', ')}.</p>` : ''}</section>
 <section class="bd-section" aria-labelledby="nguon"><h2 id="nguon" class="tn-h-small">Nguồn tham khảo</h2><ul class="tn-sources">${T.nguon.map((n) => `<li>${esc(n)}</li>`).join('')}</ul></section>
 </div></div>`;
   const hubTrail = [['Trang chủ', '/'], [hubName, route]];

@@ -72,6 +72,7 @@ Tầng 3  BÀI HỖ TRỢ (nếu có)      bài viết bổ trợ cho đúng 1 t
 - `/<tinh>/` trang tỉnh → `/<tinh>/sanpham/` danh mục → 10 trang con: `tndsoto`, `vatchatxeoto`, `chaynobatbuoc`, `taisannhaxuong`, `congtrinhlapdat`, `hanghoaxuatnhapkhau`, `nguoilaodongthicong`, `tainan2424`, `suckhoe`, `dulichquocte`.
 - Trang con nối ngang với 9 sản phẩm cùng tỉnh, dẫn lên trang tỉnh và danh mục; chỉ 1 link sang trang sản phẩm chung `/san-pham/...` (công cụ tra phí). Không link sang tỉnh khác.
 - Đã có: `/cantho/` (TP Cần Thơ cũ, mẫu đầu tiên, chờ chủ site duyệt trước khi làm các tỉnh còn lại).
+- Đã có: `/vungtau/` (tỉnh Bà Rịa – Vũng Tàu cũ, chủ site giao 21/11/2026). Cuối mỗi trang tỉnh có 2 khối như `/binhduong/`: khu công nghiệp (`#khu-cong-nghiep`, dữ liệu `kcn`: tên, vị trí, ngành nghề) và phường, xã lớn (`#phuong-xa`, dữ liệu `hanhChinh.viDu`: tên mới kèm đơn vị cũ hợp thành).
 
 **Trang đơn vị** (con trực tiếp của trang chủ): `/gioi-thieu/` · `/huong-dan/` · `/tai-nan-doanh-nghiep/` · `/chinh-sach-bao-ve-du-lieu-ca-nhan/`
 

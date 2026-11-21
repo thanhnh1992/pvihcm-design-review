@@ -24,3 +24,8 @@
 .tn-sources { margin: 8px 0 0; padding-inline-start: 1.3em; color: var(--bd-muted); font-size: 15px; }
 .tn-sources li + li { margin-top: 6px; }
 @media (max-width: 620px) { .tn-siblings ul { grid-template-columns: 1fr; } }
+
+/* Khối khu công nghiệp và phường, xã lớn cuối trang tỉnh (21/11/2026) */
+.bd-industrial-list li strong{display:block;font-weight:700}
+.bd-industrial-list li span{display:block;font-size:15px;font-weight:500;color:#4a5d72}
+.bd-industrial-list li small{display:block;font-size:14px;font-weight:500;color:#5b6f86}
