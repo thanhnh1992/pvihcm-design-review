@@ -124,7 +124,11 @@ if (siteHeader && menuToggle) {
     menuToggle.setAttribute('aria-label', open ? 'Đóng menu' : 'Mở menu');
   };
   menuToggle.addEventListener('click', () => setMenu(!siteHeader.classList.contains('nav-open')));
-  siteHeader.querySelectorAll('.site-nav a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
+  // Bấm một trang trong menu thì đóng menu; nút mở danh mục "Sản phẩm" (có aria-expanded) thì không.
+  siteHeader.querySelector('.site-nav')?.addEventListener('click', (event) => {
+    const link = event.target.closest('a');
+    if (link && !link.hasAttribute('aria-expanded')) setMenu(false);
+  });
   addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && siteHeader.classList.contains('nav-open')) { setMenu(false); menuToggle.focus(); }
   });
@@ -133,6 +137,46 @@ if (siteHeader && menuToggle) {
   });
 }
 
+
+/* Mục "Sản phẩm" trên menu: bấm thì mở danh mục sản phẩm (chủ site yêu cầu 21/11/2026).
+   Không có JS thì vẫn là link tới /san-pham/. Danh sách sinh từ tools/data/san-pham.mjs
+   (node tools/gen-san-pham.mjs ghi đè đoạn giữa hai dấu NAV_SAN_PHAM, không sửa tay). */
+/* NAV_SAN_PHAM:start */
+const NAV_SAN_PHAM = [{"label":"Bắt buộc theo luật","items":[{"href":"/san-pham/bao-hiem-bat-buoc/","title":"Bảo hiểm TNDS ô tô bắt buộc","img":"bat-buoc"},{"href":"/san-pham/chay-no-bat-buoc/","title":"Bảo hiểm cháy nổ bắt buộc","img":"chay-no"}]},{"label":"Con người","items":[{"href":"/san-pham/bao-hiem-tai-nan/","title":"Bảo hiểm tai nạn 24/24","img":"tai-nan"},{"href":"/san-pham/bao-hiem-suc-khoe/","title":"Bảo hiểm sức khỏe PVI Care","img":"hero-suc-khoe"},{"href":"/san-pham/bao-hiem-y-te/","title":"BHYT hộ gia đình, BHXH tự nguyện","img":"diem-thu-bhxh-bhyt-pvi-thanh-do"},{"href":"/san-pham/bao-hiem-du-lich/","title":"Bảo hiểm du lịch quốc tế","img":"hero-du-lich"}]},{"label":"Tài sản và doanh nghiệp","items":[{"href":"/san-pham/hang-hoa-xuat-nhap-khau/","title":"Bảo hiểm hàng hóa xuất nhập khẩu","img":"hang-hoa"},{"href":"/san-pham/bao-hiem-cong-trinh/","title":"Bảo hiểm công trình và lắp đặt","img":"hero-cong-trinh"},{"href":"/san-pham/bao-hiem-vat-chat-xe/","title":"Bảo hiểm vật chất xe ô tô","img":"tu-van-xe-o-to"}]}];
+/* NAV_SAN_PHAM:end */
+const productsLink = document.querySelector('.site-nav a[href="/san-pham/"]');
+if (siteHeader && productsLink && NAV_SAN_PHAM.length) {
+  const panel = document.createElement('div');
+  panel.id = 'nav-san-pham';
+  panel.className = 'nav-products';
+  panel.hidden = true;
+  const here = location.pathname;
+  panel.innerHTML = '<div class="nav-products-grid">' + NAV_SAN_PHAM.map((g) => '<div class="nav-products-col"><p class="nav-products-h">' + g.label + '</p><ul>'
+    + g.items.map((p) => '<li><a href="' + p.href + '"' + (p.href === here ? ' aria-current="page"' : '') + '><img src="/assets/' + p.img + '-480.webp" width="56" height="56" alt="" loading="lazy" decoding="async"><span>' + p.title + '</span></a></li>').join('')
+    + '</ul></div>').join('') + '</div><a class="nav-products-all" href="/san-pham/">Xem tất cả sản phẩm <span aria-hidden="true">→</span></a>';
+  productsLink.after(panel);
+  productsLink.setAttribute('aria-expanded', 'false');
+  productsLink.setAttribute('aria-controls', panel.id);
+  productsLink.classList.add('nav-products-toggle');
+  const setProducts = (open) => {
+    panel.hidden = !open;
+    productsLink.setAttribute('aria-expanded', String(open));
+    siteHeader.classList.toggle('products-open', open);
+  };
+  productsLink.addEventListener('click', (event) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    setProducts(panel.hidden);
+  });
+  addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !panel.hidden) { setProducts(false); productsLink.focus(); }
+  });
+  document.addEventListener('click', (event) => {
+    if (!panel.hidden && !panel.contains(event.target) && event.target !== productsLink && !productsLink.contains(event.target)) setProducts(false);
+  });
+  menuToggle?.addEventListener('click', () => { if (!siteHeader.classList.contains('nav-open')) setProducts(false); });
+  addEventListener('pageshow', () => setProducts(false));
+}
 
 /* Nút tìm kiếm trên header: lần bấm đầu mới tải search.js + dữ liệu, trang không nặng thêm. Ctrl/⌘+K cũng mở. */
 const searchBtn = document.querySelector('.search-btn');
