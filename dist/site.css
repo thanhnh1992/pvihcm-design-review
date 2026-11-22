@@ -345,3 +345,33 @@ a.db-item:hover,a.db-item:focus-visible{box-shadow:inset 0 0 0 2px var(--blue,#1
 .site-footer-local .footer-site-office .footer-entity-more{color:#1f4a8c;font-weight:700}
 @media (max-width:600px){.site-footer-local .footer-site-office .footer-entity>div{grid-template-columns:1fr;gap:2px}}
 .site-footer-local .footer-site-office dd a{display:inline;min-height:0;padding:0;margin:0}
+
+/* ═══ Mục "Sản phẩm" trên menu: danh mục thả xuống (app.js, chủ site yêu cầu 21/11/2026) ═══ */
+/* Trang chủ: header nằm trong .intro-sheet nên không ăn quy tắc body>header; thiếu position thì menu thả xuống
+   bám đáy cả tấm .intro-sheet và bị clip-path cắt (menu điện thoại trang chủ mở ra không thấy). */
+.intro-sheet>header.site-header{position:relative;z-index:40}
+.nav-products-toggle::after{content:"";width:7px;height:7px;margin:-3px 0 0 8px;border-right:1.8px solid currentColor;border-bottom:1.8px solid currentColor;transform:rotate(45deg);transition:transform .2s ease}
+.nav-products-toggle[aria-expanded="true"]::after{transform:rotate(-135deg);margin-top:4px}
+.nav-products[hidden]{display:none !important}
+.nav-products-h{margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#cb2530}
+.nav-products ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.site-nav .nav-products a{display:flex;align-items:center;gap:12px;min-height:56px;padding:6px 10px;border:0;border-radius:12px;white-space:normal;font-size:15px;font-weight:600;line-height:1.35;color:var(--ink);background:none;box-shadow:none}
+.site-nav .nav-products a:hover,.site-nav .nav-products a:focus-visible{background:#eef4fb;color:var(--blue);padding-left:10px}
+.site-nav .nav-products a[aria-current]{background:#eaf2fb;color:var(--blue)}
+.nav-products img{width:44px;height:44px;flex:none;object-fit:cover;border-radius:10px;background:#eef3f8}
+.site-nav .nav-products .nav-products-all{justify-content:center;min-height:48px;margin-top:10px;border-top:1px solid #eef2f6;border-radius:0 0 12px 12px;color:var(--blue);font-weight:700}
+@media(min-width:1181px){
+  .nav-products{position:absolute;top:calc(100% - 6px);left:50%;transform:translateX(-50%);width:min(960px,calc(100vw - 48px));padding:22px 22px 10px;
+    background:#fff;border:1px solid #dfe7ef;border-radius:20px;box-shadow:0 28px 60px rgba(15,35,60,.18);animation:navProductsIn .18s ease-out}
+  .nav-products-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+}
+@media(max-width:1180px){
+  .site-nav .nav-products{padding:4px 0 8px;border-top:1px solid #eef2f6}
+  .site-nav .nav-products+a{border-top:1px solid #eef2f6}
+  .site-nav .nav-products-col{padding:8px 6px 0}
+  .site-nav .nav-products a{min-height:52px;font-size:15px}
+  .site-nav .nav-products img{width:40px;height:40px}
+  .site-nav{max-height:calc(100dvh - 90px);overflow-y:auto;overscroll-behavior:contain}
+}
+@keyframes navProductsIn{from{opacity:0;transform:translate(-50%,-6px)}to{opacity:1;transform:translate(-50%,0)}}
+@media(prefers-reduced-motion:reduce){.nav-products{animation:none}.nav-products-toggle::after{transition:none}}

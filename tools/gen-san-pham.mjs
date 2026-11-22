@@ -86,3 +86,14 @@ const html = page({
 fs.mkdirSync(path.join(DIST, 'san-pham'), { recursive: true });
 fs.writeFileSync(path.join(DIST, 'san-pham/index.html'), html);
 console.log('wrote san-pham/index.html', html.length, '·', products.length, 'sản phẩm');
+
+// Danh mục thả xuống của mục "Sản phẩm" trên menu (dist/app.js, giữa hai dấu NAV_SAN_PHAM).
+{
+  const appPath = path.join(DIST, 'app.js');
+  const app = fs.readFileSync(appPath, 'utf8');
+  const data = groups.map((g) => ({ label: g.label, items: products.filter((p) => p.group === g.id).map(({ href, title, img }) => ({ href, title, img })) })).filter((g) => g.items.length);
+  const re = /\/\* NAV_SAN_PHAM:start \*\/[\s\S]*?\/\* NAV_SAN_PHAM:end \*\//;
+  if (!re.test(app)) throw new Error('app.js thiếu dấu NAV_SAN_PHAM');
+  fs.writeFileSync(appPath, app.replace(re, () => `/* NAV_SAN_PHAM:start */\nconst NAV_SAN_PHAM = ${JSON.stringify(data)};\n/* NAV_SAN_PHAM:end */`));
+  console.log('app.js: menu sản phẩm', data.reduce((n, g) => n + g.items.length, 0), 'mục');
+}
