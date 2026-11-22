@@ -103,6 +103,14 @@ const industrialParks = [
   'Nam Tân Uyên', 'Đồng An 2', 'Sóng Thần 3',
 ];
 
+const bhytGuide = `    <aside class="bd-local-intro" aria-labelledby="bao-hiem-y-te-ho-gia-dinh">
+      <h3 id="bao-hiem-y-te-ho-gia-dinh">Bảo hiểm y tế hộ gia đình</h3>
+      <p>Người dân khu vực Bình Dương có thể xem hồ sơ đăng ký lần đầu, cách gia hạn thẻ và mức đóng theo số người trong hộ.</p>
+      <div class="bd-product-links">
+        <a class="bd-product-primary" href="/tin-tuc/mua-bao-hiem-y-te-online/">Đọc hướng dẫn đăng ký BHYT online <span aria-hidden="true">→</span></a>
+      </div>
+    </aside>`;
+
 const main = `<div class="bd">
 <section class="bd-hero">
   <div class="bd-wrap bd-hero-grid">
@@ -136,7 +144,7 @@ const main = `<div class="bd">
     <a href="#xe">Ô tô</a><a href="${fireProduct.url}">Cháy nổ bắt buộc</a><a href="#tai-san">Nhà xưởng và công trình</a><a href="#con-nguoi">Con người và du lịch</a>
   </nav>
   ${productGroups.map((g) => `<section class="bd-group" aria-labelledby="${g.id}">
-    <h2 id="${g.id}">${g.title}</h2>${g.id === 'xe' ? '\n    ' + feeExample : ''}
+    <h2 id="${g.id}">${g.title}</h2>${g.id === 'xe' ? '\n    ' + feeExample : ''}${g.id === 'con-nguoi' ? '\n' + bhytGuide : ''}
     <ul${g.id === 'tai-san' ? ' id="chay-no"' : ''}>${g.products.map(productCard).join('\n')}</ul>
   </section>`).join('\n')}
   <section class="bd-section bd-guide bd-after-products" aria-labelledby="cach-mua">
