@@ -1,5 +1,12 @@
 /* SINH TỰ ĐỘNG bởi tools/danh-gia-sao.mjs từ khối .fb của news.css. Không sửa tay. */
 .dgs{padding:8px 0 56px}
+.gr{padding:0 0 40px}
+.gr-in{width:min(760px,calc(100% - 2*var(--gutter,20px)));margin-inline:auto;padding:18px 22px;border:1px solid #dbe4ec;border-radius:16px;background:#fff}
+.gr-score{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0;font-size:15px;color:#5b6f86}
+.gr-score b{font-size:26px;line-height:1;color:var(--ink,#17212e);font-variant-numeric:tabular-nums}
+.gr .fb-rate{--s:18px}
+.gr-note{margin:8px 0 0;font-size:14px;line-height:1.6;color:#5b6f86}
+.gr-link{color:#1F4A8C;font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .dgs-in{width:min(760px,calc(100% - 2*var(--gutter,20px)));margin-inline:auto}
 .dgs .fb{max-width:none}
 /* ═══════════════════════════════════════════════════════════════════
