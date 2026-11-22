@@ -55,7 +55,8 @@ const TEN_SHEET_DANH_GIA = "Đánh giá"; // tab đánh giá sao từ website, t
 const TIEU_DE_DANH_GIA = [
   "Thời gian", "Số sao", "Nhận xét", "Tên hiển thị", "Loại", "Trang", "Tiêu đề trang", "Mã lưu trữ", "Đã xử lý", "Ghi chú",
 ];
-const MAIL_DANH_GIA_THAP = 2; // báo mail khi khách chấm từ số sao này trở xuống; đặt 0 để tắt
+const MAIL_DANH_GIA_THAP = 2; // báo mail khi khách chấm từ số sao này trở xuống (kể cả không viết gì); đặt 0 để tắt
+// Có bình luận (nhận xét hoặc tên) là luôn báo mail, để chủ site kiểm spam và xóa nhanh.
 const TIEU_DE_CNBB = [
   "Thời gian", "Mã yêu cầu", "Loại yêu cầu", "Số điện thoại", "Email",
   "Tên đơn vị", "Chi tiết (tài sản · giá trị · phí tham khảo)", "Nguồn", "Trạng thái", "Ghi chú",
@@ -162,7 +163,7 @@ function luuDanhGia(data) {
     "",
     "",
   ]);
-  if (MAIL_DANH_GIA_THAP && soSao <= MAIL_DANH_GIA_THAP) guiMailDanhGiaThap(data, soSao, thoiGian);
+  if (data.comment || data.name || (MAIL_DANH_GIA_THAP && soSao <= MAIL_DANH_GIA_THAP)) guiMailDanhGiaThap(data, soSao, thoiGian);
   return { ok: true };
 }
 
@@ -182,12 +183,13 @@ function guiMailDanhGiaThap(data, soSao, thoiGian) {
     .join("");
   const html =
     "<div style='font-family:system-ui,sans-serif;font-size:15px'>" +
-    "<h2 style='color:#b42318;margin:0 0 4px'>Khách chấm " + soSao + " sao trên website</h2>" +
-    "<p style='color:#55718d;margin:0 0 16px'>Xem nhận xét và xử lý sớm. Đánh giá công khai, xoá được bằng chế độ quản trị (?quantri) nếu vi phạm.</p>" +
+    "<h2 style='color:" + (soSao <= 2 ? "#b42318" : "#0b57b6") + ";margin:0 0 4px'>Bình luận mới trên website: " + soSao + " sao</h2>" +
+    "<p style='color:#55718d;margin:0 0 16px'>Nhận xét đã hiện công khai. Nếu là spam: bấm link Xoá bên dưới, nhập mã quản trị (ADMIN_KEY), bấm nút Xoá cạnh nhận xét.</p>" +
     "<table style='border-collapse:collapse;background:#f7fafd;border-radius:8px'>" + dong + "</table>" +
-    "<p style='margin-top:16px'><a href='" + SpreadsheetApp.getActiveSpreadsheet().getUrl() +
+    (data.page ? "<p style='margin-top:16px'><a href='" + data.page + "?quantri' style='color:#b42318;font-weight:600'>Xoá nhận xét này trên trang →</a></p>" : "") +
+    "<p><a href='" + SpreadsheetApp.getActiveSpreadsheet().getUrl() +
     "' style='color:#0b57b6'>Mở bảng →</a></p></div>";
-  MailApp.sendEmail({ to: EMAIL_NHAN, subject: "[Đánh giá " + soSao + " sao] pvihcm.com", htmlBody: html });
+  MailApp.sendEmail({ to: EMAIL_NHAN, subject: "[Bình luận " + soSao + " sao] " + (data.name || "Khách") + " — pvihcm.com", htmlBody: html });
 }
 
 /** Tab CNBB: tạo kèm dòng tiêu đề nếu chưa có. */
