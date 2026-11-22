@@ -23,5 +23,6 @@ export const products = [
   { href: '/san-pham/bao-hiem-du-lich/', title: 'Bảo hiểm du lịch quốc tế', group: 'con-nguoi', img: 'hero-du-lich', alt: 'Mô hình 3D vali đỏ, máy bay và quả địa cầu trên đế kính' },
   { href: '/san-pham/hang-hoa-xuat-nhap-khau/', title: 'Bảo hiểm hàng hóa xuất nhập khẩu', group: 'tai-san', img: 'hang-hoa', alt: 'Mô hình 3D tàu container và máy bay vận tải' },
   { href: '/san-pham/bao-hiem-cong-trinh/', title: 'Bảo hiểm công trình và lắp đặt', group: 'tai-san', img: 'hero-cong-trinh', alt: 'Mô hình 3D tòa nhà đang xây, cần cẩu và vòng sáng đỏ trên đế kính' },
+  { href: '/san-pham/bao-hiem-trach-nhiem/', title: 'Bảo hiểm trách nhiệm', group: 'tai-san', img: 'tu-van-doanh-nghiep', alt: 'Hai chuyên viên trao đổi hồ sơ tại văn phòng doanh nghiệp' },
   { href: '/san-pham/bao-hiem-vat-chat-xe/', title: 'Bảo hiểm vật chất xe ô tô', group: 'tai-san', img: 'tu-van-xe-o-to', alt: 'Chuyên viên trao đổi với chủ xe về phương án bảo hiểm vật chất xe' },
 ];

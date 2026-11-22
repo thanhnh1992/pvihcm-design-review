@@ -56,6 +56,7 @@ Tầng 3  BÀI HỖ TRỢ (nếu có)      bài viết bổ trợ cho đúng 1 t
 - `/san-pham/bao-hiem-cong-trinh/`
 - `/san-pham/bao-hiem-du-lich/`
 - `/san-pham/hang-hoa-xuat-nhap-khau/`
+- `/san-pham/bao-hiem-trach-nhiem/` Danh sách 10 mục bảo hiểm trách nhiệm và giải thưởng golf. Sinh bằng `node tools/gen-trach-nhiem.mjs` trước `node tools/gen-san-pham.mjs`.
 
 **`/kien-thuc/` Kiến thức** (chia theo sản phẩm, dữ liệu `tools/data/kien-thuc-hub.mjs`)
 - `/kien-thuc/bao-hiem-o-to/` · `/kien-thuc/chay-no-bat-buoc/` · `/kien-thuc/tai-nan-24-24/` · `/kien-thuc/suc-khoe/` · `/kien-thuc/cong-trinh-lap-dat/` · `/kien-thuc/du-lich/` · `/kien-thuc/hang-hoa/`

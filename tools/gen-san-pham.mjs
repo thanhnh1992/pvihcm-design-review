@@ -48,7 +48,7 @@ const main = `
 <section class="sp-hero"><div class="sp-wrap">
 <p class="sp-kicker">Sản phẩm · Bảo hiểm PVI</p>
 <h1>Sản phẩm bảo hiểm <em>PVI Thành Đô</em></h1>
-<p class="sp-lead">${products.length} sản phẩm Bảo hiểm PVI do PVI Thành Đô tư vấn tại TP.HCM. Chọn sản phẩm để xem quyền lợi, biểu phí, hồ sơ cần chuẩn bị và cách yêu cầu bồi thường.</p>
+<p class="sp-lead">Tìm sản phẩm bảo hiểm PVI cho cá nhân và doanh nghiệp tại TP.HCM. Chọn sản phẩm để xem thông tin và cách liên hệ tư vấn.</p>
 <div class="sp-filter" role="group" aria-label="Lọc theo nhóm sản phẩm">
 <button type="button" class="is-on" data-filter="all" aria-pressed="true">Tất cả <b>${products.length}</b></button>
 ${groups.map((g) => `<button type="button" data-filter="${g.id}" aria-pressed="false">${esc(g.label)} <b>${count(g.id)}</b></button>`).join('\n')}
@@ -75,7 +75,7 @@ const itemList = {
 const html = page({
   path: P,
   title: 'Sản phẩm bảo hiểm PVI | PVI Thành Đô',
-  description: `${products.length} sản phẩm Bảo hiểm PVI tại TP.HCM: TNDS ô tô và cháy nổ bắt buộc, tai nạn 24/24, sức khỏe PVI Care, du lịch quốc tế, hàng hóa xuất nhập khẩu, công trình, vật chất xe ô tô.`,
+  description: 'Xem sản phẩm Bảo hiểm PVI tại TP.HCM: bảo hiểm trách nhiệm, cháy nổ, hàng hóa, công trình, ô tô, tai nạn, sức khỏe, du lịch và BHYT hộ gia đình.',
   image: `/assets/${products[0].img}.webp`,
   head: breadcrumbJsonLd(P, 'Sản phẩm') + `<script type="application/ld+json">${JSON.stringify(itemList).replace(/</g, '\\u003c')}</script>`,
   main,
