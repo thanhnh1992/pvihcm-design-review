@@ -54,3 +54,13 @@
   .consult-advisor-motion,.consult-advisor-motion::after{animation:none}
 }
 @media print{.consult-stack{display:none}}
+
+/* Nút nổi không được che chỗ khách đang thao tác (22/11/2026):
+   - Bảng cookie đang mở (privacy.js gắn .privacy-banner-open lên <html>): ẩn nút nổi, nếu không ảnh chuyên viên
+     che nút "Tùy chọn" và nút đóng "×" trên điện thoại.
+   - Điện thoại, khách đang gõ vào ô nhập trong nội dung trang (form đặt mua, bộ tính phí): ẩn nút nổi để không che
+     mép phải ô nhập; bấm ra ngoài ô thì nút hiện lại. */
+.privacy-banner-open .consult-stack{opacity:0;pointer-events:none;visibility:hidden}
+@media(max-width:680px){
+  body:has(main :is(input,select,textarea):focus) .consult-stack{opacity:0;pointer-events:none;visibility:hidden}
+}
