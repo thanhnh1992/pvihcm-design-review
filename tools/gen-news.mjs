@@ -8,6 +8,7 @@ import { ensureH2Ids, tocEntries, tocHtml, withInlineToc } from './toc.mjs';
 import * as kbCongTrinh from './articles/tai-nan-cong-trinh.mjs';
 import * as kbTaiNanCaNhan from './articles/loi-ich-tai-nan-ca-nhan.mjs';
 import * as kbBinhDuong from './articles/mua-bao-hiem-pvi-binh-duong.mjs';
+import * as kbBhytOnline from './articles/mua-bao-hiem-y-te-online.mjs';
 import * as kbBinhThanh from './articles/mua-bao-hiem-pvi-binh-thanh.mjs';
 import * as kbChayMassage from './articles/chay-tiem-massage-le-van-luong.mjs';
 import * as kbChayHappyValley from './articles/chay-can-ho-chung-cu-happy-valley.mjs';
@@ -53,6 +54,7 @@ const write = (rel, html) => {
 const postUrl = (post) => post.path || `/tin-tuc/${post.slug}/`;
 
 export const posts = [
+  kbBhytOnline.post,
   ...pcccNoiLamViec.map(({ post }) => post),
   ...kienThucBaoHiem.map(({ post }) => post),
   kbTnNd220.post,
@@ -135,6 +137,7 @@ const GROUPS = [
   { id: 'tin-chung', key: 'chung', name: 'Tin tức chung', hint: 'PVI Thành Đô và khu vực', title: 'Hoạt động của PVI Thành Đô', lead: 'Thông báo của đơn vị và thông tin mua bảo hiểm PVI theo từng khu vực tại TP.HCM.' },
 ];
 const POST_GROUP = {
+  [kbBhytOnline.post.slug]: 'san-pham',
   'nghi-dinh-220-2026-bao-hiem-cong-trinh': 'phap-ly',
   'mua-bao-hiem-chay-no-bat-buoc-o-dau': 'san-pham',
   'bao-hiem-chay-no-bat-buoc-bao-nhieu-tien': 'san-pham',
@@ -449,13 +452,13 @@ function renderKb(A) {
   const faq = !A.faqs.length ? '' : `<h2 id="cau-hoi">Câu hỏi thường gặp</h2><div class="kb-faq">${A.faqs.map((f) => `<details><summary>${t(f.question)}</summary><p>${t(f.answer)}</p></details>`).join('')}</div>`;
   const toc = tocHtml(tocEntries(bodyHtml + '<h2 id="san-pham">Sản phẩm liên quan</h2>' + (A.faqs.length ? '<h2 id="cau-hoi">Câu hỏi thường gặp</h2>' : '') + endHtml, A.toc.map(([id, label]) => [id, clean(label)])), { inline: topTools });
   const tocScript = '<script>(function(){var d=document.querySelector(\'.kb-toc details\');if(d&&window.matchMedia(\'(min-width:901px)\').matches)d.open=true;})();</script>';
-  const rating = topTools ? `<p class="kb-rating" data-rating-top><strong>Đánh giá bài viết</strong><span data-rating-status role="status">Đang tải đánh giá…</span><a href="#fb-h" data-rating-link hidden>Gửi đánh giá</a></p>` : '';
+  const rating = topTools || p.ratingTop ? `<p class="kb-rating" data-rating-top><strong>Đánh giá bài viết</strong>${p.ratingTop ? '<span aria-hidden="true">☆☆☆☆☆</span>' : ''}<span data-rating-status role="status">Đang tải đánh giá…</span><a href="#fb-h" data-rating-link hidden>Gửi đánh giá</a></p>` : '';
   const main = `
 <article class="kb">
 <div class="kb-head"><div class="kb-shell">
 ${crumbHtml}
 <h1>${t(p.title)}</h1>
-<p class="kb-lead">${t(p.lead)}</p>
+${p.ratingTop && !topTools ? rating + '\n' : ''}<p class="kb-lead">${t(p.lead)}</p>
 <p class="kb-meta"><span>Công ty Bảo hiểm PVI Thành Đô</span><time datetime="${p.date}">${esc(p.dateText)}</time>${p.updated ? `<time datetime="${p.updated}">Cập nhật ${esc(p.updatedText)}</time>` : ''}<span>${p.readMin} phút đọc</span></p>${topTools ? '\n' + rating + '\n' + toc : ''}
 </div></div>
 
@@ -472,7 +475,7 @@ ${hubBlock}<h2 id="san-pham">Sản phẩm liên quan</h2>
 ${faq}
 <h2 id="nguon">Nguồn tham chiếu</h2>
 <ul class="art-sources">${A.sources.map(([name, href, org]) => href.startsWith('/') ? `<li><a href="${href}"><b>${esc(name)}</b><span>${esc(org)}</span><i aria-hidden="true">&rarr;</i></a></li>` : `<li><p class="src"><b>${esc(name)}</b><span>${esc(org)}</span></p></li>`).join('')}</ul>
-${endHtml ? endHtml + '\n' : ''}<p class="kb-disclaimer">Bài viết để tham khảo. Phạm vi, điều kiện, quyền lợi và phí chính thức theo quy tắc và hợp đồng Bảo hiểm PVI phát hành.</p>
+${endHtml ? endHtml + '\n' : ''}<p class="kb-disclaimer">${t(A.disclaimer || 'Bài viết để tham khảo. Phạm vi, điều kiện, quyền lợi và phí chính thức theo quy tắc và hợp đồng Bảo hiểm PVI phát hành.')}</p>
 ${feedbackBlock(p)}
 </div>
 </div>
@@ -506,6 +509,7 @@ renderKb(kbCnGcn);
 renderKb(kbCnQuyDinh);
 renderKb(kbTaiNanCaNhan);
 renderKb(kbBinhDuong);
+renderKb(kbBhytOnline);
 renderKb(kbBinhThanh);
 renderKb(kbChayMassage);
 renderKb(kbChayHappyValley);

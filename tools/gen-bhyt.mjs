@@ -169,6 +169,7 @@ const main = `
       <li><b>02</b><h3>Chuyển khoản</h3><p>Nhân viên kê khai theo mẫu của cơ quan BHXH và báo số tiền. Khách chuyển khoản vào tài khoản của Công ty Bảo hiểm PVI Thành Đô.</p></li>
       <li><b>03</b><h3>Nhận biên lai</h3><p>Khách nhận biên lai thu của đơn vị thu. Thẻ BHYT, quá trình đóng BHXH do cơ quan Bảo hiểm xã hội cấp và cập nhật, tra cứu được trên ứng dụng VssID.</p></li>
     </ol>
+    <p class="bh-note">Xem thêm <a href="/tin-tuc/mua-bao-hiem-y-te-online/">hướng dẫn đăng ký và gia hạn BHYT online</a>.</p>
   </div>
 </section>
 

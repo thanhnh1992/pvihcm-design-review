@@ -62,6 +62,7 @@ Tầng 3  BÀI HỖ TRỢ (nếu có)      bài viết bổ trợ cho đúng 1 t
 - Bài kiến thức ở `/kien-thuc/<slug>/` hoặc giữ URL cũ `/tin-tuc/<slug>/`: mỗi bài thuộc đúng 1 nhóm sản phẩm ở trên.
 
 **`/tin-tuc/` Tin tức**: tin đơn vị, pháp lý mới, tin sản phẩm. Bài theo khu vực TP.HCM (`/tin-tuc/mua-bao-hiem-pvi-<quận>/`), Đồng Nai, Vũng Tàu hiện cũng nằm ở đây.
+- `/tin-tuc/mua-bao-hiem-y-te-online/` hướng dẫn đăng ký và gia hạn BHYT hộ gia đình tại TP.HCM, hỗ trợ trang tính mức đóng BHYT.
 
 **`/binhduong/` Bình Dương** (nhánh khu vực, đúng như ví dụ trong sơ đồ, dựng bằng `tools/gen-binhduong.mjs`)
 - Nhánh t2a, **các dịch vụ ở Bình Dương**:
