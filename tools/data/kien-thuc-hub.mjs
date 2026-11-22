@@ -38,6 +38,12 @@ export const POST_HUB = {
   'bao-hiem-tai-nan-cong-nhan-cong-truong-binh-duong': [['tai-nan-24-24', 'kien-thuc'], ['cong-trinh-lap-dat', 'kien-thuc']],
   'bao-hiem-tai-nan-cong-trinh-pvi': [['tai-nan-24-24', 'kien-thuc'], ['cong-trinh-lap-dat', 'kien-thuc']],
   // Cháy nổ, tài sản
+  // Kỹ năng PCCC tại nơi làm việc (chủ site giao 22/11/2026)
+  'neu-dam-chay-lon-khong-kiem-soat-duoc-can-bo-nhan-vien-can-lam-gi': [['chay-no-bat-buoc', 'kien-thuc']],
+  'quy-trinh-xu-ly-khi-co-chay-xay-ra': [['chay-no-bat-buoc', 'kien-thuc']],
+  'cac-nguy-co-chay-no-tai-noi-lam-viec': [['chay-no-bat-buoc', 'kien-thuc']],
+  'khi-co-chay-do-dien-dau-tien-phai-lam-gi': [['chay-no-bat-buoc', 'kien-thuc']],
+  'thuc-hien-tot-nhiem-vu-pccc-tai-co-so': [['chay-no-bat-buoc', 'kien-thuc']],
   'bao-hiem-chay-no-bat-buoc-bao-nhieu-tien': [['chay-no-bat-buoc', 'kien-thuc']],
   'bao-hiem-chay-no-bat-buoc-chung-cu': [['chay-no-bat-buoc', 'kien-thuc']],
   'giay-chung-nhan-bao-hiem-chay-no-bat-buoc': [['chay-no-bat-buoc', 'kien-thuc']],
