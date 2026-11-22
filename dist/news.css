@@ -277,10 +277,10 @@
    Nền nhạt thay cho hộp viền + bóng; sao màu xanh thương hiệu, không thêm màu mới.
    Bộ chọn có tiền tố .fb để thắng luật chung .fire p / .ann-body p / .art-body p.
    ═══════════════════════════════════════════════════════════════════ */
-.fb{--line:#dbe4ec;max-width:700px;margin:48px 0 0;padding-top:28px;border-top:1px solid var(--line)}
+.fb{--line:#dbe4ec;max-width:700px;margin:24px 0 0;padding-top:16px;border-top:1px solid var(--line)}
 .art-body .fb{max-width:72ch}
-.fb .fb-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;margin-bottom:18px}
-.fb .fb-top h2{margin:0;font-size:clamp(22px,2.2vw,26px);line-height:1.3;letter-spacing:-.02em;font-weight:700;color:var(--ink);max-width:none}
+.fb .fb-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 24px;margin-bottom:12px}
+.fb .fb-top h2{margin:0;font-size:clamp(19px,1.8vw,22px);line-height:1.3;letter-spacing:-.02em;font-weight:700;color:var(--ink);max-width:none}
 .fb .fb-summary{display:flex;align-items:center;gap:10px;margin:0;font-size:15px;color:#5b6f86}
 .fb .fb-avg{font-size:24px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
 .fb [hidden]{display:none!important}
@@ -288,12 +288,12 @@
 .fb-rate{--v:0;--s:16px;position:relative;display:inline-block;flex:none;width:calc(var(--s)*5);height:var(--s);
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23cbd6e1' d='M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z'/%3E%3C/svg%3E") 0 0/var(--s) var(--s) repeat-x}
 .fb-rate i{position:absolute;inset:0 auto 0 0;width:calc(var(--v) / 5 * 100%);
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23164f87' d='M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z'/%3E%3C/svg%3E") 0 0/var(--s) var(--s) repeat-x}
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23f5a623' d='M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z'/%3E%3C/svg%3E") 0 0/var(--s) var(--s) repeat-x}
 .fb .fb-summary .fb-rate{--s:18px}
 
 /* Khung gửi nhận xét */
-.fb .fb-form,.fb .fb-done{background:#f4f8fb;border-radius:var(--r-card,16px);padding:24px 24px 20px}
-.fb .fb-field{border:0;margin:0 0 18px;padding:0;min-width:0}
+.fb .fb-form,.fb .fb-done{background:#f4f8fb;border-radius:var(--r-card,16px);padding:18px 20px 16px}
+.fb .fb-field{border:0;margin:0 0 10px;padding:0;min-width:0}
 .fb legend{padding:0;margin-bottom:6px;font-size:17px;font-weight:600;color:var(--ink)}
 .fb .fb-pick{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px}
 .fb-stars{display:flex;margin-left:-7px}
@@ -303,20 +303,32 @@
 .fb-stars label:active svg{transform:scale(.9)}
 .fb-stars input:focus-visible+svg{outline:2px solid var(--blue);outline-offset:3px;border-radius:6px}
 .fb-stars[data-v="1"] label:nth-child(-n+1) svg,.fb-stars[data-v="2"] label:nth-child(-n+2) svg,.fb-stars[data-v="3"] label:nth-child(-n+3) svg,
-.fb-stars[data-v="4"] label:nth-child(-n+4) svg,.fb-stars[data-v="5"] label:nth-child(-n+5) svg{fill:#1F4A8C;stroke:#1F4A8C}
+.fb-stars[data-v="4"] label:nth-child(-n+4) svg,.fb-stars[data-v="5"] label:nth-child(-n+5) svg{fill:#f5a623;stroke:#e0921a}
 .fb .fb-hint{font-size:15px;color:#5b6f86;min-width:9ch}
 .fb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-.fb .fb-label{display:block;margin:14px 0 6px;font-size:15px;font-weight:600;color:var(--ink)}
+.fb .fb-label{display:block;margin:10px 0 4px;font-size:15px;font-weight:600;color:var(--ink)}
 .fb .fb-label span{font-weight:400;color:#5b6f86}
-.fb textarea,.fb input[name=name]{display:block;width:100%;font:inherit;font-size:16px;line-height:1.6;color:var(--ink);background:#fff;
+.fb textarea,.fb input[name=name],.fb input[name=email]{display:block;width:100%;font:inherit;font-size:16px;line-height:1.6;color:var(--ink);background:#fff;
   border:1px solid #c5d3e0;border-radius:10px;padding:11px 14px;transition:border-color .2s,box-shadow .2s}
-.fb textarea{min-height:120px;resize:vertical}
-.fb input[name=name]{max-width:360px;min-height:46px}
-.fb textarea:focus,.fb input[name=name]:focus{outline:none;border-color:#1F4A8C;box-shadow:0 0 0 3px rgba(22,79,135,.15)}
+.fb textarea{min-height:88px;resize:vertical}
+.fb input[name=name],.fb input[name=email]{max-width:none;min-height:44px}
+/* Tên hiển thị và Email chung một hàng (chủ site 23/11/2026); điện thoại xuống dòng */
+.fb .fb-form{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:12px}
+.fb .fb-form>*{grid-column:1/-1}
+.fb .fb-form>label[for=fb-name]{grid-column:1;grid-row:4}
+.fb .fb-form>#fb-name{grid-column:1;grid-row:5}
+.fb .fb-form>label[for=fb-email]{grid-column:2;grid-row:4}
+.fb .fb-form>#fb-email{grid-column:2;grid-row:5}
+/* Xem toàn bộ / xem thêm nhận xét; dòng IP, email chỉ hiện ở chế độ quản trị (23/11/2026) */
+.fb .fb-more{margin:8px 0 0;font-size:15px}
+.fb .fb-more a,.fb .fb-more-btn{color:#1F4A8C;font-weight:700;text-decoration:underline;text-underline-offset:3px;background:none;border:0;padding:6px 0;font:inherit;cursor:pointer;min-height:40px}
+.fb .fb-on{font-size:13px;color:#1F4A8C;background:#eef4fb;border-radius:999px;padding:2px 10px}
+.fb .fb-admin{margin:4px 0 0;font-size:13px;color:#b42318;font-family:ui-monospace,Menlo,monospace}
+.fb textarea:focus,.fb input[name=name]:focus,.fb input[name=email]:focus{outline:none;border-color:#1F4A8C;box-shadow:0 0 0 3px rgba(22,79,135,.15)}
 .fb .fb-honey{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.fb .fb-note{margin:14px 0 0;font-size:14px;line-height:1.6;color:#5b6f86}
-.fb .fb-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}
+.fb .fb-note{margin:10px 0 0;font-size:14px;line-height:1.6;color:#5b6f86}
+.fb .fb-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px}
 .fb .fb-btn{min-height:48px;padding:0 26px;border:0;border-radius:var(--r-pill,999px);background:var(--ink);color:#fff;font:inherit;font-size:16px;font-weight:600;cursor:pointer;transition:background .2s,transform .1s}
 .fb .fb-btn:hover{background:#1F4A8C}
 .fb .fb-btn:active{transform:translateY(1px)}
@@ -326,24 +338,30 @@
 .fb .fb-msg{margin:10px 0 0;font-size:15px;line-height:1.5;color:#5b6f86;min-height:0}
 .fb .fb-msg:empty{display:none}
 .fb .fb-msg.is-err{color:#b42318}
-.fb .fb-done b{display:block;font-size:17px;color:var(--ink)}
-.fb .fb-done p{margin:4px 0 0;font-size:16px;color:#4a5d72}
+/* Gọn lại (chủ site 23/11/2026): báo đã gửi chỉ còn một dòng nhỏ */
+.fb .fb-done{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;padding:10px 14px}
+.fb .fb-done b{display:inline;font-size:15px;color:var(--ink)}
+.fb .fb-done p{margin:0;font-size:14px;color:#4a5d72}
 
 /* Danh sách nhận xét đã duyệt */
-.fb .fb-list{list-style:none;margin:22px 0 0;padding:0}
-.fb .fb-list li{padding:18px 0;border-top:1px solid var(--line)}
-.fb .fb-who{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin:0 0 6px;font-size:15px;color:#5b6f86}
+.fb .fb-list{list-style:none;margin:14px 0 0;padding:0}
+.fb .fb-list li{padding:10px 0;border-top:1px solid var(--line)}
+.fb .fb-who{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin:0 0 2px;font-size:15px;color:#5b6f86}
 .fb .fb-who b{font-size:16px;font-weight:600;color:var(--ink)}
 .fb .fb-who time{font-variant-numeric:tabular-nums}
 .fb .fb-del{margin-left:auto;min-height:36px;padding:0 14px;border:1px solid #e3b4b4;border-radius:var(--r-pill,999px);background:#fff;color:#b42318;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
 .fb .fb-del:hover{background:#fdf1f1}
 .fb .fb-del:disabled{opacity:.5}
-.fb .fb-text{margin:0;font-size:16px;line-height:1.7;color:#33475c;white-space:pre-line;overflow-wrap:anywhere}
+.fb .fb-text{margin:0;font-size:16px;line-height:1.55;color:#33475c;white-space:pre-line;overflow-wrap:anywhere}
 
 @media(max-width:820px){
-  .fb{margin-top:36px;padding-top:22px}
-  .fb .fb-form,.fb .fb-done{padding:20px 16px 16px;margin-inline:-4px}
-  .fb input[name=name]{max-width:none}
+  .fb{margin-top:20px;padding-top:14px}
+  .fb .fb-form{padding:16px 14px 14px;margin-inline:-4px}
+  .fb .fb-done{padding:10px 12px;margin-inline:-4px}
+  .fb input[name=name],.fb input[name=email]{max-width:none}
+  .fb .fb-form{grid-template-columns:minmax(0,1fr)}
+  .fb .fb-form>label[for=fb-email]{grid-column:1;grid-row:6}
+  .fb .fb-form>#fb-email{grid-column:1;grid-row:7}
   .fb .fb-btn{flex:1}
 }
 

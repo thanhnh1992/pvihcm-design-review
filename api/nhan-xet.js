@@ -37,6 +37,23 @@ const clean = (v, max) => String(v == null ? '' : v)
   .replace(/\r\n?/g, '\n').replace(/\n{3,}/g, '\n\n').trim().slice(0, max);
 // Che chuỗi số dài (số điện thoại, số hợp đồng, CCCD) để khách không vô tình lộ thông tin.
 const maskNumbers = (s) => s.replace(/(?:\+?\d[\s.-]?){9,}/g, (m) => m.replace(/\d/g, '*'));
+// Che bớt tên người gửi khi hiện công khai (chủ site 23/11/2026): mỗi chữ trừ chữ cuối còn chữ cái đầu + "***",
+// tên một chữ còn chữ cái đầu + "***". Ví dụ "Nguyễn Văn Minh" → "N*** V*** Minh", "Minh" → "M***".
+// Tên đầy đủ chỉ gửi vào Google Sheet cho chủ site.
+function maskName(name) {
+  const w = String(name || '').trim().split(/\s+/).filter(Boolean);
+  if (!w.length) return '';
+  const hide = (x) => Array.from(x)[0] + '***';
+  if (w.length === 1) return hide(w[0]);
+  return w.slice(0, -1).map(hide).concat(w[w.length - 1]).join(' ');
+}
+// Bản công khai: che tên, bỏ IP và email. Chỉ GET có đúng mã quản trị mới nhận bản đầy đủ.
+const publicView = ({ ip, email, ...x }) => ({ ...x, name: maskName(x.name) });
+function isAdmin(req) {
+  const key = process.env.ADMIN_KEY || '';
+  const given = String(req.headers['x-admin-key'] || '');
+  return key.length >= 8 && given.length === key.length && crypto.timingSafeEqual(Buffer.from(given), Buffer.from(key));
+}
 const today = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' }).format(new Date());
 
 function limited(ip) {
@@ -77,6 +94,9 @@ const REDIS_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_R
 const HAS_BLOB = !!(process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_STORE_ID);
 const HAS_REDIS = !!(REDIS_URL && REDIS_TOKEN);
 const rkey = (slug) => `pvihcm:nhan-xet:${slug}`;
+// Lượt chấm cho sản phẩm (khóa sp-...) được chép thêm vào khóa chung của công ty (chủ site 23/11/2026).
+const COMPANY = 'pvi-thanh-do';
+const isProduct = (slug) => /^sp-[a-z0-9-]+$/.test(slug);
 async function redis(command) {
   const r = await fetch(REDIS_URL.replace(/\/$/, ''), {
     method: 'POST', headers: { Authorization: `Bearer ${REDIS_TOKEN}`, 'Content-Type': 'application/json' },
@@ -87,28 +107,28 @@ async function redis(command) {
   if (d.error) throw new Error('REDIS ' + d.error);
   return d.result;
 }
-async function readAllRedis(slug) {
+async function readAllRedis(slug, admin) {
   const rows = (await redis(['LRANGE', rkey(slug), '0', '4999'])) || [];
   const items = rows.map((x) => { try { return JSON.parse(x); } catch (e) { return null; } }).filter(Boolean);
   const sum = items.reduce((t, x) => t + Number(x.rating || 0), 0);
   return {
     ok: true, count: items.length,
     average: items.length ? Math.round((sum / items.length) * 10) / 10 : 0,
-    reviews: items.filter((x) => x.comment).slice(0, MAX_SHOW),
+    reviews: items.filter((x) => x.comment).slice(0, MAX_SHOW).map(admin ? (x) => x : publicView),
   };
 }
 async function removeRedis(id) {
   const m = /^nhan-xet\/([a-z0-9-]{3,120})\//.exec(id);
-  if (!m) return false;
+  if (!m) return null;
   const rows = (await redis(['LRANGE', rkey(m[1]), '0', '4999'])) || [];
   const hit = rows.find((x) => { try { return JSON.parse(x).id === id; } catch (e) { return false; } });
-  if (!hit) return false;
+  if (!hit) return null;
   await redis(['LREM', rkey(m[1]), '1', hit]);
-  return true;
+  return JSON.parse(hit);
 }
 
-async function readAll(slug) {
-  if (!HAS_BLOB) return readAllRedis(slug);
+async function readAll(slug, admin) {
+  if (!HAS_BLOB) return readAllRedis(slug, admin);
   const blobs = [];
   let cursor;
   do {
@@ -123,7 +143,7 @@ async function readAll(slug) {
     ok: true,
     count: items.length,
     average: items.length ? Math.round((sum / items.length) * 10) / 10 : 0,
-    reviews: items.filter((x) => x.comment).slice(0, MAX_SHOW),
+    reviews: items.filter((x) => x.comment).slice(0, MAX_SHOW).map(admin ? (x) => x : publicView),
   };
 }
 
@@ -139,8 +159,10 @@ module.exports = async function handler(req, res) {
       const slug = String(req.query.slug || '');
       if (!SLUG_RE.test(slug)) return res.status(400).json({ ok: false, error: 'Bài viết không hợp lệ.' });
       // CDN của Vercel giữ kết quả 30 giây: đỡ tốn lượt gọi Blob khi nhiều người đọc.
-      res.setHeader('Cache-Control', 'public, s-maxage=30, stale-while-revalidate=120');
-      return res.status(200).json(await readAll(slug));
+      const admin = isAdmin(req);
+      // Bản quản trị (có IP, email) không bao giờ được CDN giữ lại.
+      res.setHeader('Cache-Control', admin || req.query.admin ? 'no-store' : 'public, s-maxage=30, stale-while-revalidate=120');
+      return res.status(200).json(await readAll(slug, admin));
     }
 
     if (req.method === 'POST') {
@@ -159,6 +181,11 @@ module.exports = async function handler(req, res) {
       if (String(d.comment || '').trim().length > MAX_COMMENT) return res.status(400).json({ ok: false, error: `Nhận xét tối đa ${MAX_COMMENT} ký tự.` });
       const comment = maskNumbers(clean(d.comment, MAX_COMMENT));
       const name = maskNumbers(clean(d.name, MAX_NAME));
+      // Email không bắt buộc, không hiển thị công khai (chỉ chủ site xem ở chế độ quản trị và Google Sheet).
+      const email = clean(d.email, 120);
+      if (email && !/^[^\s@<>"']{1,64}@[^\s@<>"']{1,100}\.[a-z]{2,}$/i.test(email)) {
+        return res.status(400).json({ ok: false, error: 'Email chưa đúng định dạng.' });
+      }
       // Cấm mọi đường link trong nhận xét, tên (chủ site chốt 22/11/2026).
       if (/https?:\/\/|www\.|<\s*a\b|\b[a-z0-9-]+\.(com|vn|net|org|info|io|me|co|xyz|top|shop|site|online|link|ly|asia|biz)\b/i.test(comment + ' ' + name)) {
         return res.status(400).json({ ok: false, error: 'Nhận xét không được chèn đường link.' });
@@ -166,22 +193,27 @@ module.exports = async function handler(req, res) {
       const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
       if (limited(ip)) return res.status(429).json({ ok: false, error: 'Bạn gửi hơi nhiều, vui lòng thử lại sau ít phút.' });
 
-      const review = { rating, name, comment, date: today() };
+      const review = { rating, name, comment, date: today(), ip, email };
+      if (isProduct(slug)) { review.sp = slug; review.on = clean(d.title, 120); }
       const pathname = `${PREFIX}${slug}/${Date.now()}-${crypto.randomBytes(4).toString('hex')}.json`;
+      const copyPath = isProduct(slug) ? pathname.replace(`${PREFIX}${slug}/`, `${PREFIX}${COMPANY}/`) : '';
       if (HAS_BLOB) {
-        await withAccess((a) => put(pathname, JSON.stringify(review), {
+        const save = (pth) => withAccess((a) => put(pth, JSON.stringify(review), {
           access: a, contentType: 'application/json', addRandomSuffix: false, cacheControlMaxAge: 60,
         }));
+        await save(pathname);
+        if (copyPath) await save(copyPath);
       } else {
         await redis(['LPUSH', rkey(slug), JSON.stringify({ id: pathname, ...review })]);
+        if (copyPath) await redis(['LPUSH', rkey(COMPANY), JSON.stringify({ id: copyPath, ...review })]);
       }
       const page = clean(d.page, 200);
       await pushReviewToSheet({
-        id: pathname, rating, comment, name, slug, title: clean(d.title, 200),
+        id: pathname, rating, comment, name, email, ip, slug, title: clean(d.title, 200),
         page: /^\/[a-z0-9\-/]*$/i.test(page) ? 'https://pvihcm.com' + page : '',
-        kind: slug === 'pvi-thanh-do' ? 'Công ty (khối gộp với điểm Google)' : 'Bài viết',
+        kind: slug === COMPANY ? 'Công ty (khối gộp với điểm Google)' : isProduct(slug) ? 'Sản phẩm (cộng vào điểm chung)' : 'Bài viết',
       });
-      return res.status(200).json({ ok: true, review: { id: pathname, ...review } });
+      return res.status(200).json({ ok: true, review: publicView({ id: pathname, ...review }) });
     }
 
     if (req.method === 'DELETE') {
@@ -193,7 +225,15 @@ module.exports = async function handler(req, res) {
       if (!okKey) return res.status(403).json({ ok: false, error: 'Sai mã quản trị.' });
       const id = String(req.query.id || '');
       if (!/^nhan-xet\/[a-z0-9-]{3,120}\/\d+-[a-f0-9]{8}\.json$/.test(id)) return res.status(400).json({ ok: false, error: 'Mã nhận xét không hợp lệ.' });
-      if (HAS_BLOB) await del(id); else await removeRedis(id);
+      // Xóa cả bản chép: lượt của sản phẩm nằm ở sp-... và ở khóa chung, cùng tên tệp. Xóa từ phía nào cũng xóa cả hai.
+      const m = /^nhan-xet\/([a-z0-9-]{3,120})\/(.+)$/.exec(id);
+      let rec = null;
+      if (HAS_BLOB) { rec = await readOne(id).catch(() => null); await del(id); }
+      else rec = await removeRedis(id);
+      let twin = '';
+      if (m && isProduct(m[1])) twin = `${PREFIX}${COMPANY}/${m[2]}`;
+      else if (m && m[1] === COMPANY && rec && rec.sp && isProduct(rec.sp)) twin = `${PREFIX}${rec.sp}/${m[2]}`;
+      if (twin) { if (HAS_BLOB) await del(twin).catch(() => {}); else await removeRedis(twin); }
       return res.status(200).json({ ok: true });
     }
 

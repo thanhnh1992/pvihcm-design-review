@@ -53,7 +53,7 @@ const TEN_SHEET = "Trang tính1"; // đổi nếu bạn đổi tên tab
 const TEN_SHEET_CNBB = "CNBB"; // tab yêu cầu cháy nổ bắt buộc, tự tạo nếu chưa có
 const TEN_SHEET_DANH_GIA = "Đánh giá"; // tab đánh giá sao từ website, tự tạo nếu chưa có
 const TIEU_DE_DANH_GIA = [
-  "Thời gian", "Số sao", "Nhận xét", "Tên hiển thị", "Loại", "Trang", "Tiêu đề trang", "Mã lưu trữ", "Đã xử lý", "Ghi chú",
+  "Thời gian", "Số sao", "Nhận xét", "Tên hiển thị", "Loại", "Trang", "Tiêu đề trang", "Mã lưu trữ", "Đã xử lý", "Ghi chú", "IP", "Email",
 ];
 const MAIL_DANH_GIA_THAP = 2; // báo mail khi khách chấm từ số sao này trở xuống (kể cả không viết gì); đặt 0 để tắt
 // Có bình luận (nhận xét hoặc tên) là luôn báo mail, để chủ site kiểm spam và xóa nhanh.
@@ -150,6 +150,8 @@ function luuDanhGia(data) {
   const soSao = Number(data.rating);
   if (!(soSao >= 1 && soSao <= 5)) return { ok: false, error: "Số sao không hợp lệ." };
   const sheet = laySheetDanhGia();
+  // Tab tạo từ bản cũ chưa có 2 cột IP, Email: thêm tiêu đề (không đụng dữ liệu cũ).
+  if (!sheet.getRange(1, 11).getValue()) sheet.getRange(1, 11, 1, 2).setValues([["IP", "Email"]]).setFontWeight("bold");
   const thoiGian = Utilities.formatDate(new Date(), "Asia/Ho_Chi_Minh", "dd/MM/yyyy HH:mm:ss");
   sheet.appendRow([
     thoiGian,
@@ -162,6 +164,8 @@ function luuDanhGia(data) {
     data.id || "",
     "",
     "",
+    data.ip || "",
+    data.email || "",
   ]);
   if (data.comment || data.name || (MAIL_DANH_GIA_THAP && soSao <= MAIL_DANH_GIA_THAP)) guiMailDanhGiaThap(data, soSao, thoiGian);
   return { ok: true };
@@ -173,6 +177,8 @@ function guiMailDanhGiaThap(data, soSao, thoiGian) {
     ["Số sao", soSao + "/5"],
     ["Nhận xét", data.comment],
     ["Tên hiển thị", data.name],
+    ["Email", data.email],
+    ["IP", data.ip],
     ["Trang", data.page],
   ]
     .filter(function (r) { return r[1]; })
