@@ -21,7 +21,7 @@ const GEND = '<!-- sao-google:end -->';
 // (AGENTS.md) nên chỉ ghi chữ; trang khác có link Google Maps kèm rel="nofollow".
 const gBadge = (withLink) => {
   const num = String(G.rating).replace('.', ',');
-  const label = `${num} trên 5 sao, ${G.count} đánh giá trên Google Maps`;
+  const label = `${num} trên 5 sao, ${G.count} đánh giá trên Google`;
   const more = withLink ? `<a class="gr-link" href="${G.url}" target="_blank" rel="nofollow">Xem và viết đánh giá trên Google Maps</a>` : '';
   // Chủ site yêu cầu bắt buộc 22/11/2026 (đã được báo rủi ro Google bỏ qua hoặc phạt thủ công, chấp nhận):
   // khai điểm Google Maps thật vào JSON-LD InsuranceAgency (cùng @id với thực thể trong chân trang).
@@ -36,7 +36,7 @@ const gBadge = (withLink) => {
   return `${GSTART}
 <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
 <aside class="gr" aria-label="Đánh giá trên Google Maps"><div class="gr-in">
-<p class="gr-score"><b>${num}</b><span class="fb-rate" style="--v:${G.rating}" role="img" aria-label="${label}"><i></i></span><span class="gr-meta">${G.count} đánh giá trên Google Maps · cập nhật ${G.checked}</span></p>
+<p class="gr-score"><b>${num}</b><span class="fb-rate" style="--v:${G.rating}" role="img" aria-label="${label}"><i></i></span><span class="gr-meta">${G.count} đánh giá trên Google · cập nhật ${G.checked}</span></p>
 <p class="gr-note">Công ty Bảo hiểm PVI Thành Đô, 473 Điện Biên Phủ, TP. Hồ Chí Minh. Điểm lấy nguyên từ hồ sơ Google của công ty.${more ? ' ' + more : ''}</p>
 </div></aside>
 ${GEND}`;
