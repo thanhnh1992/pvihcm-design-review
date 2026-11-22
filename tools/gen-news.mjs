@@ -19,6 +19,7 @@ import { binhDuongGuides } from './articles/binh-duong-guides.mjs';
 import { taiNanSeo } from './articles/tai-nan-seo.mjs';
 import { doiTacPvi } from './articles/doi-tac-pvi.mjs';
 import { kienThucBaoHiem } from './articles/kien-thuc-bao-hiem-2026-11-20.mjs';
+import { pcccNoiLamViec } from './articles/pccc-noi-lam-viec.mjs';
 import { HUBS, STREAMS, POST_HUB, hubOf } from './data/kien-thuc-hub.mjs';
 import * as kbCnMuaODau from './articles/cn-mua-o-dau.mjs';
 import * as kbCnBaoNhieu from './articles/cn-bao-nhieu-tien.mjs';
@@ -52,6 +53,7 @@ const write = (rel, html) => {
 const postUrl = (post) => post.path || `/tin-tuc/${post.slug}/`;
 
 export const posts = [
+  ...pcccNoiLamViec.map(({ post }) => post),
   ...kienThucBaoHiem.map(({ post }) => post),
   kbTnNd220.post,
   ...taiNanSeo.map(({ post }) => post),
@@ -515,6 +517,7 @@ for (const article of binhDuongGuides) renderKb(article);
 for (const article of taiNanSeo) renderKb(article);
 for (const article of doiTacPvi) renderKb(article);
 for (const article of kienThucBaoHiem) renderKb(article);
+for (const article of pcccNoiLamViec) renderKb(article);
 
 /* ── Khu Kiến thức theo sản phẩm (chủ site yêu cầu 16/11/2026, mô hình baohiempvi-vn.com/kien-thuc/san-pham/<sp>) ──
    /kien-thuc/: danh sách sản phẩm; /kien-thuc/<hub>/: ba mảng Kiến thức, Trải nghiệm thực tế, Tin tức.
