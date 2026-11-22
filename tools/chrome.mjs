@@ -85,6 +85,8 @@ const THANH_DO_CITY = 'Thành phố Hồ Chí Minh';
 const THANH_DO_ENTITY = PVI_PARENT + ' - ' + THANH_DO_NAME + ', TP.HCM';
 const THANH_DO_MST = '0105402531-041';
 const THANH_DO_EMAIL = 'giadinhpvi@gmail.com';
+// Dùng lại ở tools/danh-gia-sao.mjs (schema điểm Google Maps).
+export const THANH_DO_ORG = { name: THANH_DO_NAME, alternateName: THANH_DO_ENTITY, taxID: THANH_DO_MST, email: THANH_DO_EMAIL, parent: PVI_PARENT, street: THANH_DO_STREET, ward: THANH_DO_WARD, city: THANH_DO_CITY };
 
 function footerSiteOffice() {
   // Thông tin pháp nhân dạng danh sách (chủ site yêu cầu 21/11/2026): tên, MST, địa chỉ, SĐT, website, email.
