@@ -28,6 +28,8 @@ const pages = walk().sort().flatMap((p) => {
   const desc = text(html.match(/<meta name="description" content="([^"]*)"/)?.[1] || '');
   let main = html.match(/<main[^>]*>([\s\S]*)<\/main>/)?.[1] || '';
   // Bỏ phần không phải nội dung: nav và *crumb (đường dẫn, mục lục), dòng tác giả/ngày, chữ trên nút bấm.
+  // Bỏ khối đánh giá sao (tools/danh-gia-sao.mjs) khỏi dữ liệu tìm kiếm.
+  main = main.replace(/<!-- danh-gia-sao:start -->[\s\S]*?<!-- danh-gia-sao:end -->/g, ' ');
   main = main.replace(/<(script|style|svg|template|noscript|select|button|nav)\b[\s\S]*?<\/\1>/gi, ' ').replace(/<!--[\s\S]*?-->/g, ' ')
     .replace(/<(p|div|ol)[^>]*class="[^"]*(?:crumb|kb-meta)[^"]*"[^>]*>[\s\S]*?<\/\1>/gi, ' ');
   // Trang chủ: H1 là khẩu hiệu, nên hiện tên trang trong <title>.
