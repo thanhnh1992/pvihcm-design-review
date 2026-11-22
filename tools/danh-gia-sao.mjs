@@ -42,7 +42,7 @@ const gBadge = (withLink) => {
 ${orgLd()}
 <aside class="gr" aria-label="Đánh giá trên Google Maps"><div class="gr-in">
 <p class="gr-score"><b>${num}</b><span class="fb-rate" style="--v:${G.rating}" role="img" aria-label="${label}"><i></i></span><span class="gr-meta">${G.count} đánh giá trên Google · cập nhật ${G.checked}</span></p>
-<p class="gr-note">Công ty Bảo hiểm PVI Thành Đô, 473 Điện Biên Phủ, TP. Hồ Chí Minh. Điểm lấy nguyên từ hồ sơ Google của công ty.${more ? ' ' + more : ''}</p>
+<p class="gr-note">Điểm lấy nguyên từ hồ sơ Google của Công ty Bảo hiểm PVI Thành Đô.${more ? ' ' + more : ''}</p>
 </div></aside>
 ${GEND}`;
 };
@@ -59,12 +59,15 @@ const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5
   const to = news.lastIndexOf('/*', b);
   const css = `/* SINH TỰ ĐỘNG bởi tools/danh-gia-sao.mjs từ khối .fb của news.css. Không sửa tay. */
 .dgs{padding:8px 0 56px}
-.gr{padding:0 0 40px}
+.gr{padding:0 0 32px}
+/* Bài viết: dòng điểm Google nằm ngay dưới khối nhận xét, gọn (chủ site 23/11/2026) */
+.kb-col .gr,.art-body .gr{padding:14px 0 0}
+.kb-col .gr-in,.art-body .gr-in{width:auto;max-width:700px;margin:0;padding:12px 16px}
 .gr-in{width:min(760px,calc(100% - 2*var(--gutter,20px)));margin-inline:auto;padding:18px 22px;border:1px solid #dbe4ec;border-radius:16px;background:#fff}
 .gr-score{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0;font-size:15px;color:#5b6f86}
-.gr-score b{font-size:26px;line-height:1;color:var(--ink,#17212e);font-variant-numeric:tabular-nums}
+.gr-score b{font-size:22px;line-height:1;color:var(--ink,#17212e);font-variant-numeric:tabular-nums}
 .gr .fb-rate{--s:18px}
-.gr-note{margin:8px 0 0;font-size:14px;line-height:1.6;color:#5b6f86}
+.gr-note{margin:4px 0 0;font-size:13px;line-height:1.6;color:#5b6f86}
 .gr-link{color:#1F4A8C;font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .fb .fb-src{margin:-6px 0 18px;font-size:14px;line-height:1.6;color:#5b6f86}
 .fb .fb-note b{color:#b42318;font-weight:600}
@@ -145,7 +148,10 @@ for (const file of walk(DIST)) {
   if (html.includes(START)) { fs.writeFileSync(file, html); gCount++; continue; } // khối gộp đã chứa điểm Google + schema
   const article = /^(tin-tuc|kien-thuc)\/[^/]+\/index\.html$/.test(rel) && html.includes('data-feedback');
   const badge = gBadge(!article);
-  { const i = html.lastIndexOf('</main>'); html = html.slice(0, i) + badge + '\n' + html.slice(i); }
+  const fbAt = article ? html.indexOf('<section class="fb" data-feedback') : -1;
+  const fbEnd = fbAt >= 0 ? html.indexOf('</section>', fbAt) : -1;
+  if (fbEnd >= 0) { const i = fbEnd + '</section>'.length; html = html.slice(0, i) + '\n' + badge + html.slice(i); }
+  else { const i = html.lastIndexOf('</main>'); html = html.slice(0, i) + badge + '\n' + html.slice(i); }
   if (!html.includes('href="/danh-gia.css"')) html = html.replace('</head>', '<link rel="stylesheet" href="/danh-gia.css"></head>');
   fs.writeFileSync(file, html);
   gCount++;
