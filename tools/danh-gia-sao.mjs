@@ -3,7 +3,7 @@
 // riêng (product-reviews.js). Script này gắn cùng khối nhận xét (/feedback.js + /api/nhan-xet) cho các trang còn lại,
 // chèn trước </main>, giữa <!-- danh-gia-sao:start/end -->, chạy lại bao nhiêu lần cũng được.
 // Không gắn cho: trang noindex (chính sách, form đặt mua), trang không có <main>, file xác minh Google.
-// Không ghi số sao cứng vào HTML. feedback.js chỉ hiện điểm khi đã có đánh giá thật.
+// Điểm tĩnh trong HTML = điểm Google thật (tools/data/google-rating.mjs); feedback.js cộng đánh giá thật của khách.
 // CSS: dist/danh-gia.css cắt nguyên khối .fb từ dist/news.css (một nguồn), cộng phần khung cho trang không phải bài viết.
 // Chạy SAU mọi script sinh trang, TRƯỚC gen-sitemap: node tools/danh-gia-sao.mjs
 import fs from 'node:fs';
@@ -19,12 +19,10 @@ const GSTART = '<!-- sao-google:start -->';
 const GEND = '<!-- sao-google:end -->';
 // Dòng điểm Google Maps thật (tools/data/google-rating.mjs). Bài Tin tức/Kiến thức không được có link ra ngoài
 // (AGENTS.md) nên chỉ ghi chữ; trang khác có link Google Maps kèm rel="nofollow".
-const gBadge = (withLink) => {
-  const num = String(G.rating).replace('.', ',');
-  const label = `${num} trên 5 sao, ${G.count} đánh giá trên Google`;
-  const more = withLink ? `<a class="gr-link" href="${G.url}" target="_blank" rel="nofollow">Xem và viết đánh giá trên Google Maps</a>` : '';
+const orgLd = (attr = '') => {
   // Chủ site yêu cầu bắt buộc 22/11/2026 (đã được báo rủi ro Google bỏ qua hoặc phạt thủ công, chấp nhận):
-  // khai điểm Google Maps thật vào JSON-LD InsuranceAgency (cùng @id với thực thể trong chân trang).
+  // khai điểm thật vào JSON-LD InsuranceAgency (cùng @id với thực thể trong chân trang). HTML tĩnh mang số Google;
+  // trên trang có khối gộp, feedback.js cộng thêm đánh giá thật của khách trên website (script[data-org-rating]).
   const ld = {
     '@context': 'https://schema.org', '@type': 'InsuranceAgency', '@id': ORG_ID,
     name: O.name, alternateName: O.alternateName, url: SITE + '/', image: SITE + '/assets/pvi-logo.svg', telephone: '+84938072236',
@@ -33,8 +31,15 @@ const gBadge = (withLink) => {
     sameAs: [G.url],
     aggregateRating: { '@type': 'AggregateRating', ratingValue: G.rating, bestRating: 5, worstRating: 1, ratingCount: G.count },
   };
+  return `<script type="application/ld+json"${attr}>${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`;
+};
+// Dòng điểm riêng: chỉ còn dùng cho bài Tin tức/Kiến thức (đã có khối nhận xét của bài) và trang tai nạn.
+const gBadge = (withLink) => {
+  const num = String(G.rating).replace('.', ',');
+  const label = `${num} trên 5 sao, ${G.count} đánh giá trên Google`;
+  const more = withLink ? `<a class="gr-link" href="${G.url}" target="_blank" rel="nofollow">Xem và viết đánh giá trên Google Maps</a>` : '';
   return `${GSTART}
-<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
+${orgLd()}
 <aside class="gr" aria-label="Đánh giá trên Google Maps"><div class="gr-in">
 <p class="gr-score"><b>${num}</b><span class="fb-rate" style="--v:${G.rating}" role="img" aria-label="${label}"><i></i></span><span class="gr-meta">${G.count} đánh giá trên Google · cập nhật ${G.checked}</span></p>
 <p class="gr-note">Công ty Bảo hiểm PVI Thành Đô, 473 Điện Biên Phủ, TP. Hồ Chí Minh. Điểm lấy nguyên từ hồ sơ Google của công ty.${more ? ' ' + more : ''}</p>
@@ -61,6 +66,8 @@ const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5
 .gr .fb-rate{--s:18px}
 .gr-note{margin:8px 0 0;font-size:14px;line-height:1.6;color:#5b6f86}
 .gr-link{color:#1F4A8C;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.fb .fb-src{margin:-6px 0 18px;font-size:14px;line-height:1.6;color:#5b6f86}
+.fb .fb-note b{color:#b42318;font-weight:600}
 .dgs-in{width:min(760px,calc(100% - 2*var(--gutter,20px)));margin-inline:auto}
 .dgs .fb{max-width:none}
 ${news.slice(from, to).trim()}
@@ -74,34 +81,38 @@ const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => {
   return e.isDirectory() ? walk(p) : e.name === 'index.html' ? [p] : [];
 });
 
-const slugOf = (rel) => {
-  const s = rel.replace(/(^|\/)index\.html$/, '').replace(/\/+$/, '').replace(/\//g, '-');
-  return 'trang-' + (s || 'chu');
-};
 
-const block = (slug, title) => `${START}
-<section class="dgs" aria-label="Đánh giá trang"><div class="dgs-in">
-<section class="fb" data-feedback data-endpoint="/api/nhan-xet" data-slug="${slug}" data-title="${esc(title)}" aria-labelledby="fb-h" hidden>
-<div class="fb-top"><h2 id="fb-h">Đánh giá của bạn</h2>
-<p class="fb-summary" hidden><b class="fb-avg"></b><span class="fb-rate" role="img"><i></i></span><span class="fb-total"></span></p></div>
+// Khối gộp (chủ site yêu cầu 22/11/2026): điểm Google thật + khách chấm tiếp trên website, chung khóa pvi-thanh-do
+// (đánh giá công ty, không theo từng trang); tổng gộp ghi vào JSON-LD. Nhận xét không bắt buộc, cấm chèn link
+// (chặn ở feedback.js và api/nhan-xet.js).
+const block = (title) => {
+  const num = String(G.rating).replace('.', ',');
+  return `${START}
+${orgLd(' data-org-rating')}
+<section class="dgs" aria-label="Đánh giá Bảo hiểm PVI Thành Đô"><div class="dgs-in">
+<section class="fb" data-feedback data-mode="org" data-base-count="${G.count}" data-base-avg="${G.rating}" data-endpoint="/api/nhan-xet" data-slug="pvi-thanh-do" data-title="${esc(title)}" aria-labelledby="fb-h">
+<div class="fb-top"><h2 id="fb-h">Đánh giá Bảo hiểm PVI Thành Đô</h2>
+<p class="fb-summary"><b class="fb-avg">${num}</b><span class="fb-rate" style="--v:${G.rating}" role="img" aria-label="${num} trên 5 sao, ${G.count} đánh giá"><i></i></span><span class="fb-total">${G.count} đánh giá</span></p></div>
+<p class="fb-src"><span data-site-line>Gồm ${G.count} đánh giá trên Google (cập nhật ${G.checked}).</span> <a class="gr-link" href="${G.url}" target="_blank" rel="nofollow">Xem trên Google Maps</a></p>
 <form class="fb-form" novalidate>
-<fieldset class="fb-field"><legend>Thông tin trên trang này có hữu ích với bạn không?</legend>
+<fieldset class="fb-field"><legend>Bạn đánh giá dịch vụ của PVI Thành Đô bao nhiêu sao?</legend>
 <div class="fb-pick"><div class="fb-stars" data-v="0">${[1, 2, 3, 4, 5].map((n) => `<label data-n="${n}"><input type="radio" name="rating" value="${n}">${STAR}<span class="fb-sr">${n} sao</span></label>`).join('')}</div><span class="fb-hint" aria-live="polite">Chọn số sao</span></div>
 </fieldset>
 <label class="fb-label" for="fb-comment">Nhận xét <span>(không bắt buộc)</span></label>
-<textarea id="fb-comment" name="comment" rows="4" maxlength="1000" placeholder="Thông tin nào hữu ích với bạn, hoặc bạn cần thêm thông tin gì?"></textarea>
+<textarea id="fb-comment" name="comment" rows="3" maxlength="1000" placeholder="Bạn hài lòng điều gì, hoặc PVI Thành Đô cần làm tốt hơn ở đâu?"></textarea>
 <label class="fb-label" for="fb-name">Tên hiển thị <span>(không bắt buộc)</span></label>
 <input id="fb-name" name="name" maxlength="60" autocomplete="nickname">
 <p class="fb-honey" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></p>
-<p class="fb-note">Nhận xét hiển thị công khai ngay sau khi gửi. Không ghi số điện thoại, số hợp đồng hay thông tin cá nhân.</p>
+<p class="fb-note">Chỉ cần chọn số sao là gửi được. Nhận xét hiển thị công khai, <b>không được chèn đường link</b>, không ghi số điện thoại, số hợp đồng hay thông tin cá nhân.</p>
 <div class="fb-actions"><button type="submit" class="fb-btn">Gửi đánh giá</button><span class="fb-count" aria-hidden="true">0/1000</span></div>
 <p class="fb-msg" role="status" aria-live="polite"></p>
 </form>
-<div class="fb-done" role="status" hidden><b>Cảm ơn bạn đã đánh giá.</b><p>Đánh giá của bạn đã được ghi nhận.</p></div>
+<div class="fb-done" role="status" hidden><b>Cảm ơn bạn đã đánh giá.</b><p>Đánh giá của bạn đã được cộng vào điểm chung.</p></div>
 <ul class="fb-list" hidden></ul>
 </section>
 </div></section>
 ${END}`;
+};
 
 let added = 0, kept = 0;
 const skipped = {};
@@ -118,7 +129,7 @@ for (const file of walk(DIST)) {
   const h1 = (html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/) || [])[1];
   const title = (h1 ? h1.replace(/<[^>]+>/g, ' ') : (html.match(/<title>([^<]*)<\/title>/) || [])[1] || rel).replace(/\s+/g, ' ').trim();
   const i = html.lastIndexOf('</main>');
-  html = html.slice(0, i) + block(slugOf(rel), title) + '\n' + html.slice(i);
+  html = html.slice(0, i) + block(title) + '\n' + html.slice(i);
   if (!html.includes('href="/danh-gia.css"')) html = html.replace('</head>', '<link rel="stylesheet" href="/danh-gia.css"></head>');
   if (!html.includes('src="/feedback.js"')) html = html.replace('</head>', '<script src="/feedback.js" defer></script></head>');
   fs.writeFileSync(file, html);
@@ -131,10 +142,10 @@ for (const file of walk(DIST)) {
   let html = fs.readFileSync(file, 'utf8');
   html = html.replace(new RegExp(`\\n?${GSTART}[\\s\\S]*?${GEND}`, 'g'), '');
   if (!html.includes('</main>') || /<meta[^>]+name="robots"[^>]+noindex/i.test(html)) { fs.writeFileSync(file, html); continue; }
-  const article = /^(tin-tuc|kien-thuc)\/[^/]+\/index\.html$/.test(rel) && html.includes('data-feedback') && !html.includes(START);
+  if (html.includes(START)) { fs.writeFileSync(file, html); gCount++; continue; } // khối gộp đã chứa điểm Google + schema
+  const article = /^(tin-tuc|kien-thuc)\/[^/]+\/index\.html$/.test(rel) && html.includes('data-feedback');
   const badge = gBadge(!article);
-  if (html.includes(START)) html = html.replace(START, badge + '\n' + START);
-  else { const i = html.lastIndexOf('</main>'); html = html.slice(0, i) + badge + '\n' + html.slice(i); }
+  { const i = html.lastIndexOf('</main>'); html = html.slice(0, i) + badge + '\n' + html.slice(i); }
   if (!html.includes('href="/danh-gia.css"')) html = html.replace('</head>', '<link rel="stylesheet" href="/danh-gia.css"></head>');
   fs.writeFileSync(file, html);
   gCount++;

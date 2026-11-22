@@ -105,8 +105,9 @@ module.exports = async function handler(req, res) {
       if (String(d.comment || '').trim().length > MAX_COMMENT) return res.status(400).json({ ok: false, error: `Nhận xét tối đa ${MAX_COMMENT} ký tự.` });
       const comment = maskNumbers(clean(d.comment, MAX_COMMENT));
       const name = maskNumbers(clean(d.name, MAX_NAME));
-      if (/https?:\/\/|www\.|\.(com|vn|net|xyz|top)\b/i.test(comment + ' ' + name)) {
-        return res.status(400).json({ ok: false, error: 'Nhận xét không được chứa đường link.' });
+      // Cấm mọi đường link trong nhận xét, tên (chủ site chốt 22/11/2026).
+      if (/https?:\/\/|www\.|<\s*a\b|\b[a-z0-9-]+\.(com|vn|net|org|info|io|me|co|xyz|top|shop|site|online|link|ly|asia|biz)\b/i.test(comment + ' ' + name)) {
+        return res.status(400).json({ ok: false, error: 'Nhận xét không được chèn đường link.' });
       }
       const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
       if (limited(ip)) return res.status(429).json({ ok: false, error: 'Bạn gửi hơi nhiều, vui lòng thử lại sau ít phút.' });

@@ -8,6 +8,14 @@
   var url = box.getAttribute('data-endpoint');
   var slug = box.getAttribute('data-slug');
   var title = box.getAttribute('data-title') || '';
+  /* Chế độ "org" (tools/danh-gia-sao.mjs, chủ site yêu cầu 22/11/2026): khối gộp điểm Google thật
+     (data-base-count/avg) với đánh giá khách gửi trên website (khóa chung pvi-thanh-do), tổng gộp được
+     ghi vào JSON-LD InsuranceAgency (script[data-org-rating]). */
+  var org = box.getAttribute('data-mode') === 'org';
+  var baseCount = Number(box.getAttribute('data-base-count')) || 0;
+  var baseAvg = Number(box.getAttribute('data-base-avg')) || 0;
+  var siteLine = box.querySelector('[data-site-line]');
+  var LINK_RE = /https?:\/\/|www\.|<\s*a\b|\b[a-z0-9-]+\.(com|vn|net|org|info|io|me|co|xyz|top|shop|site|online|link|ly|asia|biz)\b/i;
   if (!url || !slug) return;
 
   var form = box.querySelector('.fb-form');
@@ -28,7 +36,8 @@
   }
   var count = form.querySelector('.fb-count');
   var area = form.querySelector('textarea');
-  var HINTS = ['', 'Chưa hữu ích', 'Ít hữu ích', 'Tạm được', 'Hữu ích', 'Rất hữu ích'];
+  var HINTS = org ? ['', 'Rất không hài lòng', 'Không hài lòng', 'Bình thường', 'Hài lòng', 'Rất hài lòng']
+    : ['', 'Chưa hữu ích', 'Ít hữu ích', 'Tạm được', 'Hữu ích', 'Rất hữu ích'];
   var started = Date.now();
   var sentKey = 'pvi-fb-' + slug;
   var adminKey = '';
@@ -62,6 +71,7 @@
     e.preventDefault();
     var rating = chosen();
     if (!rating) { say('Chọn số sao trước khi gửi.', 'err'); stars.querySelector('input').focus(); return; }
+    if (LINK_RE.test(area.value + ' ' + form.elements.name.value)) { say('Nhận xét không được chèn đường link. Vui lòng xóa link rồi gửi lại.', 'err'); area.focus(); return; }
     if (Date.now() - started < 3000) { say('Vui lòng thử lại sau vài giây.', 'err'); return; }
     btn.disabled = true; btn.textContent = 'Đang gửi…'; say('');
     fetch(url, {
@@ -107,7 +117,30 @@
       return;
     }
   }
+  function syncOrgLd(count, avg) {
+    var node = document.querySelector('script[data-org-rating]');
+    if (!node) return;
+    try {
+      var o = JSON.parse(node.textContent);
+      o.aggregateRating = { '@type': 'AggregateRating', ratingValue: avg, bestRating: 5, worstRating: 1, ratingCount: count };
+      node.textContent = JSON.stringify(o);
+    } catch (e) { /* giữ nguyên số Google tĩnh */ }
+  }
+  function showOrg() {
+    var count = baseCount + all.count;
+    var avg = count ? Math.round(((baseAvg * baseCount + all.sum) / count) * 10) / 10 : 0;
+    var txt = avg.toFixed(1).replace('.', ',');
+    summary.querySelector('.fb-avg').textContent = txt;
+    var avgStars = summary.querySelector('.fb-rate');
+    rate(avgStars, avg);
+    avgStars.setAttribute('aria-label', txt + ' trên 5 sao, ' + count + ' đánh giá');
+    summary.querySelector('.fb-total').textContent = count + ' đánh giá';
+    summary.hidden = false;
+    if (siteLine && all.count) siteLine.textContent = 'Gồm ' + baseCount + ' đánh giá trên Google và ' + all.count + ' đánh giá của khách trên website.';
+    syncOrgLd(count, avg);
+  }
   function showSummary() {
+    if (org) return showOrg();
     if (!all.count) {
       summary.hidden = true;
       showTopStatus('Chưa có đánh giá', true);
@@ -155,6 +188,7 @@
     .then(function (r) { return r.json(); })
     .then(function (d) {
       if (!d || !d.ok || d.disabled) {
+        if (org) { form.hidden = true; }
         showTopStatus(d && d.disabled ? 'Chức năng đánh giá chưa được bật' : 'Chưa tải được đánh giá', false);
         return;
       }
@@ -163,5 +197,5 @@
       (d.reviews || []).forEach(function (r) { list.appendChild(item(r)); });
       list.hidden = !list.children.length;
     })
-    .catch(function () { showTopStatus('Chưa tải được đánh giá', false); });
+    .catch(function () { if (org) form.hidden = true; showTopStatus('Chưa tải được đánh giá', false); });
 })();
