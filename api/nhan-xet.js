@@ -47,7 +47,13 @@ function maskName(name) {
   if (w.length === 1) return hide(w[0]);
   return w.slice(0, -1).map(hide).concat(w[w.length - 1]).join(' ');
 }
-const publicView = (x) => ({ ...x, name: maskName(x.name) });
+// Bản công khai: che tên, bỏ IP và email. Chỉ GET có đúng mã quản trị mới nhận bản đầy đủ.
+const publicView = ({ ip, email, ...x }) => ({ ...x, name: maskName(x.name) });
+function isAdmin(req) {
+  const key = process.env.ADMIN_KEY || '';
+  const given = String(req.headers['x-admin-key'] || '');
+  return key.length >= 8 && given.length === key.length && crypto.timingSafeEqual(Buffer.from(given), Buffer.from(key));
+}
 const today = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' }).format(new Date());
 
 function limited(ip) {
@@ -98,14 +104,14 @@ async function redis(command) {
   if (d.error) throw new Error('REDIS ' + d.error);
   return d.result;
 }
-async function readAllRedis(slug) {
+async function readAllRedis(slug, admin) {
   const rows = (await redis(['LRANGE', rkey(slug), '0', '4999'])) || [];
   const items = rows.map((x) => { try { return JSON.parse(x); } catch (e) { return null; } }).filter(Boolean);
   const sum = items.reduce((t, x) => t + Number(x.rating || 0), 0);
   return {
     ok: true, count: items.length,
     average: items.length ? Math.round((sum / items.length) * 10) / 10 : 0,
-    reviews: items.filter((x) => x.comment).slice(0, MAX_SHOW).map(publicView),
+    reviews: items.filter((x) => x.comment).slice(0, MAX_SHOW).map(admin ? (x) => x : publicView),
   };
 }
 async function removeRedis(id) {
@@ -118,8 +124,8 @@ async function removeRedis(id) {
   return true;
 }
 
-async function readAll(slug) {
-  if (!HAS_BLOB) return readAllRedis(slug);
+async function readAll(slug, admin) {
+  if (!HAS_BLOB) return readAllRedis(slug, admin);
   const blobs = [];
   let cursor;
   do {
@@ -134,7 +140,7 @@ async function readAll(slug) {
     ok: true,
     count: items.length,
     average: items.length ? Math.round((sum / items.length) * 10) / 10 : 0,
-    reviews: items.filter((x) => x.comment).slice(0, MAX_SHOW).map(publicView),
+    reviews: items.filter((x) => x.comment).slice(0, MAX_SHOW).map(admin ? (x) => x : publicView),
   };
 }
 
@@ -150,8 +156,10 @@ module.exports = async function handler(req, res) {
       const slug = String(req.query.slug || '');
       if (!SLUG_RE.test(slug)) return res.status(400).json({ ok: false, error: 'Bài viết không hợp lệ.' });
       // CDN của Vercel giữ kết quả 30 giây: đỡ tốn lượt gọi Blob khi nhiều người đọc.
-      res.setHeader('Cache-Control', 'public, s-maxage=30, stale-while-revalidate=120');
-      return res.status(200).json(await readAll(slug));
+      const admin = isAdmin(req);
+      // Bản quản trị (có IP, email) không bao giờ được CDN giữ lại.
+      res.setHeader('Cache-Control', admin || req.query.admin ? 'no-store' : 'public, s-maxage=30, stale-while-revalidate=120');
+      return res.status(200).json(await readAll(slug, admin));
     }
 
     if (req.method === 'POST') {
@@ -170,6 +178,11 @@ module.exports = async function handler(req, res) {
       if (String(d.comment || '').trim().length > MAX_COMMENT) return res.status(400).json({ ok: false, error: `Nhận xét tối đa ${MAX_COMMENT} ký tự.` });
       const comment = maskNumbers(clean(d.comment, MAX_COMMENT));
       const name = maskNumbers(clean(d.name, MAX_NAME));
+      // Email không bắt buộc, không hiển thị công khai (chỉ chủ site xem ở chế độ quản trị và Google Sheet).
+      const email = clean(d.email, 120);
+      if (email && !/^[^\s@<>"']{1,64}@[^\s@<>"']{1,100}\.[a-z]{2,}$/i.test(email)) {
+        return res.status(400).json({ ok: false, error: 'Email chưa đúng định dạng.' });
+      }
       // Cấm mọi đường link trong nhận xét, tên (chủ site chốt 22/11/2026).
       if (/https?:\/\/|www\.|<\s*a\b|\b[a-z0-9-]+\.(com|vn|net|org|info|io|me|co|xyz|top|shop|site|online|link|ly|asia|biz)\b/i.test(comment + ' ' + name)) {
         return res.status(400).json({ ok: false, error: 'Nhận xét không được chèn đường link.' });
@@ -177,7 +190,7 @@ module.exports = async function handler(req, res) {
       const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
       if (limited(ip)) return res.status(429).json({ ok: false, error: 'Bạn gửi hơi nhiều, vui lòng thử lại sau ít phút.' });
 
-      const review = { rating, name, comment, date: today() };
+      const review = { rating, name, comment, date: today(), ip, email };
       const pathname = `${PREFIX}${slug}/${Date.now()}-${crypto.randomBytes(4).toString('hex')}.json`;
       if (HAS_BLOB) {
         await withAccess((a) => put(pathname, JSON.stringify(review), {
@@ -188,7 +201,7 @@ module.exports = async function handler(req, res) {
       }
       const page = clean(d.page, 200);
       await pushReviewToSheet({
-        id: pathname, rating, comment, name, slug, title: clean(d.title, 200),
+        id: pathname, rating, comment, name, email, ip, slug, title: clean(d.title, 200),
         page: /^\/[a-z0-9\-/]*$/i.test(page) ? 'https://pvihcm.com' + page : '',
         kind: slug === 'pvi-thanh-do' ? 'Công ty (khối gộp với điểm Google)' : 'Bài viết',
       });

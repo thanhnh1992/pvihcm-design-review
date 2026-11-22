@@ -288,7 +288,7 @@
 .fb-rate{--v:0;--s:16px;position:relative;display:inline-block;flex:none;width:calc(var(--s)*5);height:var(--s);
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23cbd6e1' d='M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z'/%3E%3C/svg%3E") 0 0/var(--s) var(--s) repeat-x}
 .fb-rate i{position:absolute;inset:0 auto 0 0;width:calc(var(--v) / 5 * 100%);
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23164f87' d='M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z'/%3E%3C/svg%3E") 0 0/var(--s) var(--s) repeat-x}
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23f5a623' d='M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z'/%3E%3C/svg%3E") 0 0/var(--s) var(--s) repeat-x}
 .fb .fb-summary .fb-rate{--s:18px}
 
 /* Khung gửi nhận xét */
@@ -303,17 +303,21 @@
 .fb-stars label:active svg{transform:scale(.9)}
 .fb-stars input:focus-visible+svg{outline:2px solid var(--blue);outline-offset:3px;border-radius:6px}
 .fb-stars[data-v="1"] label:nth-child(-n+1) svg,.fb-stars[data-v="2"] label:nth-child(-n+2) svg,.fb-stars[data-v="3"] label:nth-child(-n+3) svg,
-.fb-stars[data-v="4"] label:nth-child(-n+4) svg,.fb-stars[data-v="5"] label:nth-child(-n+5) svg{fill:#1F4A8C;stroke:#1F4A8C}
+.fb-stars[data-v="4"] label:nth-child(-n+4) svg,.fb-stars[data-v="5"] label:nth-child(-n+5) svg{fill:#f5a623;stroke:#e0921a}
 .fb .fb-hint{font-size:15px;color:#5b6f86;min-width:9ch}
 .fb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 .fb .fb-label{display:block;margin:10px 0 4px;font-size:15px;font-weight:600;color:var(--ink)}
 .fb .fb-label span{font-weight:400;color:#5b6f86}
-.fb textarea,.fb input[name=name]{display:block;width:100%;font:inherit;font-size:16px;line-height:1.6;color:var(--ink);background:#fff;
+.fb textarea,.fb input[name=name],.fb input[name=email]{display:block;width:100%;font:inherit;font-size:16px;line-height:1.6;color:var(--ink);background:#fff;
   border:1px solid #c5d3e0;border-radius:10px;padding:11px 14px;transition:border-color .2s,box-shadow .2s}
 .fb textarea{min-height:88px;resize:vertical}
-.fb input[name=name]{max-width:360px;min-height:46px}
-.fb textarea:focus,.fb input[name=name]:focus{outline:none;border-color:#1F4A8C;box-shadow:0 0 0 3px rgba(22,79,135,.15)}
+.fb input[name=name],.fb input[name=email]{max-width:360px;min-height:46px}
+/* Xem toàn bộ / xem thêm nhận xét; dòng IP, email chỉ hiện ở chế độ quản trị (23/11/2026) */
+.fb .fb-more{margin:8px 0 0;font-size:15px}
+.fb .fb-more a,.fb .fb-more-btn{color:#1F4A8C;font-weight:700;text-decoration:underline;text-underline-offset:3px;background:none;border:0;padding:6px 0;font:inherit;cursor:pointer;min-height:40px}
+.fb .fb-admin{margin:4px 0 0;font-size:13px;color:#b42318;font-family:ui-monospace,Menlo,monospace}
+.fb textarea:focus,.fb input[name=name]:focus,.fb input[name=email]:focus{outline:none;border-color:#1F4A8C;box-shadow:0 0 0 3px rgba(22,79,135,.15)}
 .fb .fb-honey{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .fb .fb-note{margin:10px 0 0;font-size:14px;line-height:1.6;color:#5b6f86}
 .fb .fb-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px}
@@ -346,7 +350,7 @@
   .fb{margin-top:20px;padding-top:14px}
   .fb .fb-form{padding:16px 14px 14px;margin-inline:-4px}
   .fb .fb-done{padding:10px 12px;margin-inline:-4px}
-  .fb input[name=name]{max-width:none}
+  .fb input[name=name],.fb input[name=email]{max-width:none}
   .fb .fb-btn{flex:1}
 }
 

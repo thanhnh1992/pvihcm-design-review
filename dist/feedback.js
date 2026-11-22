@@ -15,6 +15,10 @@
   var baseCount = Number(box.getAttribute('data-base-count')) || 0;
   var baseAvg = Number(box.getAttribute('data-base-avg')) || 0;
   var siteLine = box.querySelector('[data-site-line]');
+  /* Danh sách (chủ site 23/11/2026): trang thường hiện 3 nhận xét mới nhất; nhiều hơn thì khối công ty có link
+     "Xem toàn bộ đánh giá" sang /danh-gia/, bài viết có nút mở thêm tại chỗ. Trang /danh-gia/ (data-full) hiện 20, bấm xem thêm. */
+  var full = box.hasAttribute('data-full');
+  var SHOW = full ? 20 : 3;
   var LINK_RE = /https?:\/\/|www\.|<\s*a\b|\b[a-z0-9-]+\.(com|vn|net|org|info|io|me|co|xyz|top|shop|site|online|link|ly|asia|biz)\b/i;
   if (!url || !slug) return;
 
@@ -80,6 +84,7 @@
       body: JSON.stringify({
         slug: slug, title: title, rating: rating,
         name: form.elements.name.value, comment: area.value, website: form.elements.website.value,
+        email: form.elements.email ? form.elements.email.value : '',
         page: location.pathname,
       }),
     }).then(function (r) { return r.json(); }).then(function (res) {
@@ -182,10 +187,41 @@
     }
     var body = document.createElement('p'); body.className = 'fb-text'; body.textContent = r.comment;
     li.appendChild(head); li.appendChild(body);
+    // Chế độ quản trị: hiện IP, email đi kèm (chỉ máy chủ trả khi đúng mã quản trị, khách không thấy).
+    if (adminKey && (r.ip || r.email)) {
+      var meta = document.createElement('p'); meta.className = 'fb-admin';
+      meta.textContent = [r.ip ? 'IP: ' + r.ip : '', r.email ? 'Email: ' + r.email : ''].filter(Boolean).join(' · ');
+      li.appendChild(meta);
+    }
     return li;
   }
 
-  fetch(url + (url.indexOf('?') < 0 ? '?' : '&') + 'slug=' + encodeURIComponent(slug), adminKey ? { cache: 'no-store' } : undefined)
+  function paginate() {
+    var items = Array.prototype.slice.call(list.children);
+    var old = box.querySelector('.fb-more'); if (old) old.remove();
+    var shown = 0;
+    items.forEach(function (li) { if (!li.hidden) shown++; });
+    if (items.length <= shown) return;
+    var more = document.createElement('p'); more.className = 'fb-more';
+    if (org && !full) {
+      var a = document.createElement('a'); a.href = '/danh-gia/'; a.setAttribute('data-same-tab', '');
+      a.textContent = 'Xem toàn bộ ' + items.length + ' nhận xét →';
+      more.appendChild(a);
+    } else {
+      var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'fb-more-btn';
+      btn.textContent = full ? 'Xem thêm nhận xét' : 'Xem tất cả ' + items.length + ' nhận xét';
+      btn.addEventListener('click', function () {
+        var n = 0;
+        items.forEach(function (li) { if (li.hidden && (n < 20 || !full)) { li.hidden = false; n++; } });
+        paginate();
+      });
+      more.appendChild(btn);
+    }
+    list.parentNode.insertBefore(more, list.nextSibling);
+  }
+
+  fetch(url + (url.indexOf('?') < 0 ? '?' : '&') + 'slug=' + encodeURIComponent(slug) + (adminKey ? '&admin=1' : ''),
+    adminKey ? { cache: 'no-store', headers: { 'x-admin-key': adminKey } } : undefined)
     .then(function (r) { return r.json(); })
     .then(function (d) {
       if (!d || !d.ok || d.disabled) {
@@ -195,8 +231,9 @@
       }
       box.hidden = false;
       all.count = d.count; all.sum = d.average * d.count; showSummary();
-      (d.reviews || []).forEach(function (r) { list.appendChild(item(r)); });
+      (d.reviews || []).forEach(function (r, i) { var li = item(r); if (i >= SHOW) li.hidden = true; list.appendChild(li); });
       list.hidden = !list.children.length;
+      paginate();
     })
     .catch(function () { if (org) form.hidden = true; showTopStatus('Chưa tải được đánh giá', false); });
 })();

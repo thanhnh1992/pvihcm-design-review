@@ -46,6 +46,7 @@ ${orgLd()}
 </div></aside>
 ${GEND}`;
 };
+const EMAIL_FIELD = '<label class="fb-label" for="fb-email">Email <span>(không bắt buộc, không hiển thị công khai)</span></label>\n<input id="fb-email" name="email" type="email" maxlength="120" autocomplete="email" inputmode="email">\n';
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>';
 
@@ -59,6 +60,10 @@ const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5
   const to = news.lastIndexOf('/*', b);
   const css = `/* SINH TỰ ĐỘNG bởi tools/danh-gia-sao.mjs từ khối .fb của news.css. Không sửa tay. */
 .dgs{padding:0 0 32px}
+.dgs-head{padding:40px 0 4px}
+.dgs-head h1{margin:6px 0 10px;font-size:clamp(28px,3.4vw,40px);line-height:1.15;letter-spacing:-.02em;color:var(--ink,#17212e)}
+.dgs-head p{margin:0;font-size:16px;line-height:1.6;color:#4a5d72}
+.dgs-crumb a{color:#1F4A8C}
 .gr{padding:0 0 24px}
 /* Bài viết: dòng điểm Google nằm ngay dưới khối nhận xét, gọn (chủ site 23/11/2026) */
 .kb-col .gr,.art-body .gr{padding:6px 0 0}
@@ -87,12 +92,12 @@ const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => {
 // Khối gộp (chủ site yêu cầu 22/11/2026): điểm Google thật + khách chấm tiếp trên website, chung khóa pvi-thanh-do
 // (đánh giá công ty, không theo từng trang); tổng gộp ghi vào JSON-LD. Nhận xét không bắt buộc, cấm chèn link
 // (chặn ở feedback.js và api/nhan-xet.js).
-const block = (title) => {
+const block = (title, full = false) => {
   const num = String(G.rating).replace('.', ',');
   return `${START}
 ${orgLd(' data-org-rating')}
 <section class="dgs" aria-label="Đánh giá Bảo hiểm PVI Thành Đô"><div class="dgs-in">
-<section class="fb" data-feedback data-mode="org" data-base-count="${G.count}" data-base-avg="${G.rating}" data-endpoint="/api/nhan-xet" data-slug="pvi-thanh-do" data-title="${esc(title)}" aria-labelledby="fb-h">
+<section class="fb" data-feedback data-mode="org"${full ? ' data-full' : ''} data-base-count="${G.count}" data-base-avg="${G.rating}" data-endpoint="/api/nhan-xet" data-slug="pvi-thanh-do" data-title="${esc(title)}" aria-labelledby="fb-h">
 <div class="fb-top"><h2 id="fb-h">Đánh giá Bảo hiểm PVI Thành Đô</h2>
 <p class="fb-summary"><b class="fb-avg">${num}</b><span class="fb-rate" style="--v:${G.rating}" role="img" aria-label="${num} trên 5 sao, ${G.count} đánh giá"><i></i></span><span class="fb-total">${G.count} đánh giá</span></p></div>
 <p class="fb-src"><span data-site-line>Gồm ${G.count} đánh giá trên Google (cập nhật ${G.checked}).</span> <a class="gr-link" href="${G.url}" target="_blank" rel="nofollow">Xem trên Google Maps</a></p>
@@ -104,6 +109,8 @@ ${orgLd(' data-org-rating')}
 <textarea id="fb-comment" name="comment" rows="3" maxlength="1000" placeholder="Bạn hài lòng điều gì, hoặc PVI Thành Đô cần làm tốt hơn ở đâu?"></textarea>
 <label class="fb-label" for="fb-name">Tên hiển thị <span>(không bắt buộc)</span></label>
 <input id="fb-name" name="name" maxlength="60" autocomplete="nickname">
+<label class="fb-label" for="fb-email">Email <span>(không bắt buộc, không hiển thị công khai)</span></label>
+<input id="fb-email" name="email" type="email" maxlength="120" autocomplete="email" inputmode="email">
 <p class="fb-honey" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></p>
 <div class="fb-actions"><button type="submit" class="fb-btn">Gửi đánh giá</button><span class="fb-count" aria-hidden="true">0/1000</span></div>
 <p class="fb-msg" role="status" aria-live="polite"></p>
@@ -119,7 +126,9 @@ ${END}`;
 for (const file of walk(DIST)) {
   const html = fs.readFileSync(file, 'utf8');
   const out = html.replace(/<p class="fb-note">[\s\S]*?<\/p>\r?\n?/g, '');
-  if (out !== html) fs.writeFileSync(file, out);
+  // Thêm ô email (không bắt buộc, không công khai) vào form nhận xét của bài viết đã sinh sẵn.
+  const out2 = out.includes('id="fb-email"') ? out : out.replace(/(<input id="fb-name"[^>]*>\r?\n)/, `$1${EMAIL_FIELD}`);
+  if (out2 !== html) fs.writeFileSync(file, out2);
 }
 
 let added = 0, kept = 0;
@@ -137,7 +146,7 @@ for (const file of walk(DIST)) {
   const h1 = (html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/) || [])[1];
   const title = (h1 ? h1.replace(/<[^>]+>/g, ' ') : (html.match(/<title>([^<]*)<\/title>/) || [])[1] || rel).replace(/\s+/g, ' ').trim();
   const i = html.lastIndexOf('</main>');
-  html = html.slice(0, i) + block(title) + '\n' + html.slice(i);
+  html = html.slice(0, i) + block(title, rel === 'danh-gia/index.html') + '\n' + html.slice(i);
   if (!html.includes('href="/danh-gia.css"')) html = html.replace('</head>', '<link rel="stylesheet" href="/danh-gia.css"></head>');
   if (!html.includes('src="/feedback.js"')) html = html.replace('</head>', '<script src="/feedback.js" defer></script></head>');
   fs.writeFileSync(file, html);
