@@ -47,6 +47,21 @@ function limited(ip) {
   return arr.length > RATE.max;
 }
 
+// Gửi thêm 1 dòng sang Google Sheet (tab "Đánh giá") qua Apps Script đang nhận đơn của pvihcm
+// (docs/apps-script-don-hang.gs, action "danh-gia"). Dùng lại ORDER_SHEET_WEBHOOK / ORDER_SHEET_SECRET trên Vercel.
+// Lỗi hay chưa cấu hình thì bỏ qua: đánh giá vẫn lưu ở Blob, khách không bị báo lỗi.
+async function pushReviewToSheet(row) {
+  const endpoint = process.env.ORDER_SHEET_WEBHOOK, secret = process.env.ORDER_SHEET_SECRET;
+  if (!endpoint || !secret) return false;
+  try {
+    const r = await fetch(endpoint, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'danh-gia', danhGiaSecret: secret, ...row }), signal: AbortSignal.timeout(6000),
+    });
+    return r.ok;
+  } catch (e) { return false; }
+}
+
 async function readOne(pathname) {
   const r = await withAccess((a) => get(pathname, { access: a }));
   if (!r || r.statusCode !== 200) return null;
@@ -117,6 +132,12 @@ module.exports = async function handler(req, res) {
       await withAccess((a) => put(pathname, JSON.stringify(review), {
         access: a, contentType: 'application/json', addRandomSuffix: false, cacheControlMaxAge: 60,
       }));
+      const page = clean(d.page, 200);
+      await pushReviewToSheet({
+        id: pathname, rating, comment, name, slug, title: clean(d.title, 200),
+        page: /^\/[a-z0-9\-/]*$/i.test(page) ? 'https://pvihcm.com' + page : '',
+        kind: slug === 'pvi-thanh-do' ? 'Công ty (khối gộp với điểm Google)' : 'Bài viết',
+      });
       return res.status(200).json({ ok: true, review: { id: pathname, ...review } });
     }
 
