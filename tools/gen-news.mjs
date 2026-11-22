@@ -28,6 +28,7 @@ import * as kbCnChungCu from './articles/cn-chung-cu.mjs';
 import * as kbCnGcn from './articles/cn-giay-chung-nhan.mjs';
 import * as kbCnQuyDinh from './articles/cn-quy-dinh.mjs';
 import * as kbTnNd220 from './articles/tn-nghi-dinh-220.mjs';
+import * as kbBaiBoTt04 from './articles/bai-bo-thong-tu-04-2021.mjs';
 import { areas, SKIP as AREA_SKIP, renderArea, ZALO_TU_VAN } from './articles/khu-vuc.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -54,6 +55,7 @@ const write = (rel, html) => {
 const postUrl = (post) => post.path || `/tin-tuc/${post.slug}/`;
 
 export const posts = [
+  kbBaiBoTt04.post,
   kbBhytOnline.post,
   ...pcccNoiLamViec.map(({ post }) => post),
   ...kienThucBaoHiem.map(({ post }) => post),
@@ -139,6 +141,7 @@ const GROUPS = [
 const POST_GROUP = {
   [kbBhytOnline.post.slug]: 'san-pham',
   'nghi-dinh-220-2026-bao-hiem-cong-trinh': 'phap-ly',
+  'bai-bo-thong-tu-04-2021-tt-btc-bao-hiem-xe-co-gioi': 'phap-ly',
   'mua-bao-hiem-chay-no-bat-buoc-o-dau': 'san-pham',
   'bao-hiem-chay-no-bat-buoc-bao-nhieu-tien': 'san-pham',
   'bao-hiem-chay-no-bat-buoc-chung-cu': 'san-pham',
@@ -502,6 +505,7 @@ ${feedbackBlock(p)}
 
 renderKb(kbCongTrinh);
 renderKb(kbTnNd220);
+renderKb(kbBaiBoTt04);
 renderKb(kbCnMuaODau);
 renderKb(kbCnBaoNhieu);
 renderKb(kbCnChungCu);
