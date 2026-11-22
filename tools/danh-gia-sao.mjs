@@ -46,7 +46,7 @@ ${orgLd()}
 </div></aside>
 ${GEND}`;
 };
-const EMAIL_FIELD = '<label class="fb-label" for="fb-email">Email <span>(không bắt buộc, không hiển thị công khai)</span></label>\n<input id="fb-email" name="email" type="email" maxlength="120" autocomplete="email" inputmode="email">\n';
+const EMAIL_FIELD = '<label class="fb-label" for="fb-email">Email <span>(không bắt buộc, không công khai)</span></label>\n<input id="fb-email" name="email" type="email" maxlength="120" autocomplete="email" inputmode="email">\n';
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>';
 
@@ -109,7 +109,7 @@ ${orgLd(' data-org-rating')}
 <textarea id="fb-comment" name="comment" rows="3" maxlength="1000" placeholder="Bạn hài lòng điều gì, hoặc PVI Thành Đô cần làm tốt hơn ở đâu?"></textarea>
 <label class="fb-label" for="fb-name">Tên hiển thị <span>(không bắt buộc)</span></label>
 <input id="fb-name" name="name" maxlength="60" autocomplete="nickname">
-<label class="fb-label" for="fb-email">Email <span>(không bắt buộc, không hiển thị công khai)</span></label>
+<label class="fb-label" for="fb-email">Email <span>(không bắt buộc, không công khai)</span></label>
 <input id="fb-email" name="email" type="email" maxlength="120" autocomplete="email" inputmode="email">
 <p class="fb-honey" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></p>
 <div class="fb-actions"><button type="submit" class="fb-btn">Gửi đánh giá</button><span class="fb-count" aria-hidden="true">0/1000</span></div>
@@ -127,7 +127,8 @@ for (const file of walk(DIST)) {
   const html = fs.readFileSync(file, 'utf8');
   const out = html.replace(/<p class="fb-note">[\s\S]*?<\/p>\r?\n?/g, '');
   // Thêm ô email (không bắt buộc, không công khai) vào form nhận xét của bài viết đã sinh sẵn.
-  const out2 = out.includes('id="fb-email"') ? out : out.replace(/(<input id="fb-name"[^>]*>\r?\n)/, `$1${EMAIL_FIELD}`);
+  const out1 = out.replace('(không bắt buộc, không hiển thị công khai)', '(không bắt buộc, không công khai)');
+  const out2 = out1.includes('id="fb-email"') ? out1 : out1.replace(/(<input id="fb-name"[^>]*>\r?\n)/, `$1${EMAIL_FIELD}`);
   if (out2 !== html) fs.writeFileSync(file, out2);
 }
 

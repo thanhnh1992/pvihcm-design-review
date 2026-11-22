@@ -57,7 +57,14 @@
 .fb textarea,.fb input[name=name],.fb input[name=email]{display:block;width:100%;font:inherit;font-size:16px;line-height:1.6;color:var(--ink);background:#fff;
   border:1px solid #c5d3e0;border-radius:10px;padding:11px 14px;transition:border-color .2s,box-shadow .2s}
 .fb textarea{min-height:88px;resize:vertical}
-.fb input[name=name],.fb input[name=email]{max-width:360px;min-height:46px}
+.fb input[name=name],.fb input[name=email]{max-width:none;min-height:44px}
+/* Tên hiển thị và Email chung một hàng (chủ site 23/11/2026); điện thoại xuống dòng */
+.fb .fb-form{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:12px}
+.fb .fb-form>*{grid-column:1/-1}
+.fb .fb-form>label[for=fb-name]{grid-column:1;grid-row:4}
+.fb .fb-form>#fb-name{grid-column:1;grid-row:5}
+.fb .fb-form>label[for=fb-email]{grid-column:2;grid-row:4}
+.fb .fb-form>#fb-email{grid-column:2;grid-row:5}
 /* Xem toàn bộ / xem thêm nhận xét; dòng IP, email chỉ hiện ở chế độ quản trị (23/11/2026) */
 .fb .fb-more{margin:8px 0 0;font-size:15px}
 .fb .fb-more a,.fb .fb-more-btn{color:#1F4A8C;font-weight:700;text-decoration:underline;text-underline-offset:3px;background:none;border:0;padding:6px 0;font:inherit;cursor:pointer;min-height:40px}
@@ -96,5 +103,8 @@
   .fb .fb-form{padding:16px 14px 14px;margin-inline:-4px}
   .fb .fb-done{padding:10px 12px;margin-inline:-4px}
   .fb input[name=name],.fb input[name=email]{max-width:none}
+  .fb .fb-form{grid-template-columns:minmax(0,1fr)}
+  .fb .fb-form>label[for=fb-email]{grid-column:1;grid-row:6}
+  .fb .fb-form>#fb-email{grid-column:1;grid-row:7}
   .fb .fb-btn{flex:1}
 }
