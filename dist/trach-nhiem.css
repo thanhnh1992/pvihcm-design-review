@@ -1,0 +1,34 @@
+.liab-page{background:#f5f7f9;color:#17212e}
+.liab-wrap{width:min(880px,calc(100% - 40px));margin-inline:auto}
+.liab-hero{background:linear-gradient(112deg,#183665,#244d80);padding:24px 0 56px;color:#fff}
+.liab-crumb{display:flex;align-items:center;flex-wrap:wrap;column-gap:10px;color:#e0ebf8;font-size:.875rem}
+.liab-crumb a{display:inline-flex;align-items:center;min-height:44px;color:#fff;text-decoration:underline;text-underline-offset:.18em}
+.liab-hero h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.12;letter-spacing:-.035em;margin:16px 0 10px;color:inherit}
+.liab-hero p{color:#e0ebf8;max-width:38rem;margin:0}
+.liab-list{position:relative;margin-top:-28px}
+.liab-item{background:#fff;border:1px solid #d6e0ec;border-bottom:0;scroll-margin-top:90px}
+.liab-item:first-of-type{border-radius:16px 16px 0 0}
+.liab-item:last-of-type{border-bottom:1px solid #d6e0ec;border-radius:0 0 16px 16px}
+.liab-item summary{display:flex;justify-content:space-between;align-items:center;gap:18px;min-height:60px;padding:13px 22px;cursor:pointer;list-style:none;border-radius:inherit}
+.liab-item summary::-webkit-details-marker{display:none}
+.liab-item summary::after{content:"";width:9px;height:9px;flex:none;border:solid #1f4a8c;border-width:0 2px 2px 0;transform:rotate(45deg);margin:0 4px 4px 0}
+.liab-item[open] summary::after{transform:rotate(225deg);margin-bottom:-4px}
+.liab-item summary:hover,.liab-item[open] summary{background:#edf3fa;color:#183665}
+.liab-item summary:focus-visible{outline:2px solid #1f4a8c;outline-offset:-4px}
+.liab-item h2{margin:0;font-size:clamp(1rem,1.6vw,1.17rem);line-height:1.45}
+.liab-body{padding:8px 22px 22px}
+.liab-body p{margin:0 0 12px;max-width:70ch}
+.liab-body p strong{display:block;margin:4px 0}
+.liab-body p a,.liab-related a{color:#1f4a8c;text-decoration:underline;text-underline-offset:.18em}
+.liab-body .fire-btn{margin-top:4px}
+.liab-note{color:#4b5869;margin:18px 0 28px}
+.liab-related{border-top:1px solid #d6e0ec;padding:24px 0 48px}
+.liab-related h2{font-size:1.25rem;margin:0 0 8px}
+.liab-related ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px}
+.liab-related a{display:inline-flex;align-items:center;min-height:44px}
+.liab-related p{margin:4px 0 0}
+@media(max-width:580px){
+  .liab-wrap{width:calc(100% - 32px)}
+  .liab-item summary,.liab-body{padding-inline:16px}
+  .liab-related ul{grid-template-columns:minmax(0,1fr)}
+}
