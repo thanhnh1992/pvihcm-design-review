@@ -58,18 +58,18 @@ const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5
   const from = news.lastIndexOf('/*', a);
   const to = news.lastIndexOf('/*', b);
   const css = `/* SINH TỰ ĐỘNG bởi tools/danh-gia-sao.mjs từ khối .fb của news.css. Không sửa tay. */
-.dgs{padding:8px 0 56px}
-.gr{padding:0 0 32px}
+.dgs{padding:0 0 32px}
+.gr{padding:0 0 24px}
 /* Bài viết: dòng điểm Google nằm ngay dưới khối nhận xét, gọn (chủ site 23/11/2026) */
-.kb-col .gr,.art-body .gr{padding:14px 0 0}
+.kb-col .gr,.art-body .gr{padding:6px 0 0}
 .kb-col .gr-in,.art-body .gr-in{width:auto;max-width:700px;margin:0;padding:12px 16px}
-.gr-in{width:min(760px,calc(100% - 2*var(--gutter,20px)));margin-inline:auto;padding:18px 22px;border:1px solid #dbe4ec;border-radius:16px;background:#fff}
+.gr-in{width:min(760px,calc(100% - 2*var(--gutter,20px)));margin-inline:auto;padding:12px 16px;border:1px solid #dbe4ec;border-radius:14px;background:#fff}
 .gr-score{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0;font-size:15px;color:#5b6f86}
 .gr-score b{font-size:22px;line-height:1;color:var(--ink,#17212e);font-variant-numeric:tabular-nums}
 .gr .fb-rate{--s:18px}
 .gr-note{margin:4px 0 0;font-size:13px;line-height:1.6;color:#5b6f86}
 .gr-link{color:#1F4A8C;font-weight:600;text-decoration:underline;text-underline-offset:3px}
-.fb .fb-src{margin:-6px 0 18px;font-size:14px;line-height:1.6;color:#5b6f86}
+.fb .fb-src{margin:-4px 0 12px;font-size:14px;line-height:1.6;color:#5b6f86}
 .fb .fb-note b{color:#b42318;font-weight:600}
 .dgs-in{width:min(760px,calc(100% - 2*var(--gutter,20px)));margin-inline:auto}
 .dgs .fb{max-width:none}
