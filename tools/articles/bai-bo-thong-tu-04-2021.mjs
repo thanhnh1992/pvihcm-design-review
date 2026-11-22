@@ -5,7 +5,7 @@
 // Mức phí, mức trách nhiệm đang áp dụng dẫn theo Nghị định 67/2023/NĐ-CP như trang /san-pham/bao-hiem-bat-buoc/.
 // Từ khóa (OpenSEO 22/11/2026, VN): "thông tư 04/2021" 320/tháng KD 0; "nghị định 67/2023" 1.300 KD 7;
 // "bảo hiểm xe máy bắt buộc" 720; "bảo hiểm tnds ô tô" 720.
-// Ảnh: tạm dùng binh-duong-tnds, chủ site sẽ render ảnh thong-tu-04-2021-bai-bo-hero kèm metadata rồi thay.
+// Ảnh: tạo bằng Figma AI 22/11/2026, gắn XMP (tác giả Bảo hiểm PVI Thành Đô (PVIHCM), bản quyền pvihcm.com).
 
 const TNDS = '/san-pham/bao-hiem-bat-buoc/';
 const O_TO = '/san-pham/bao-hiem-o-to/';
@@ -17,13 +17,15 @@ export const post = {
   cat: 'Pháp lý · TNDS xe cơ giới',
   title: 'Từ 15/12/2026 bãi bỏ Thông tư 04/2021/TT-BTC: chủ xe vẫn phải mua bảo hiểm TNDS bắt buộc',
   lead: 'Thông tư 158/2026/TT-BTC của Bộ Tài chính bãi bỏ toàn bộ Thông tư 04/2021/TT-BTC về bảo hiểm bắt buộc trách nhiệm dân sự của chủ xe cơ giới, hiệu lực từ 15/12/2026. Việc bãi bỏ không làm mất nghĩa vụ mua bảo hiểm, cũng không đặt ra mức phí hay mức trách nhiệm mới.',
-  image: '/assets/binh-duong-tnds.webp',
-  alt: 'Ô tô con màu xanh đậm chở gia đình chạy trên đại lộ rợp cây ở TP.HCM',
+  image: '/assets/thong-tu-04-2021-bai-bo-hero.webp',
+  imageWidth: 1200,
+  imageHeight: 630,
+  alt: 'Chủ xe đứng cạnh ô tô trên phố rợp cây ở TP.HCM, kiểm tra giấy chứng nhận bảo hiểm TNDS bắt buộc trên điện thoại',
   readMin: 5,
 };
 
 export const crumb = 'Pháp lý mới';
-export const hero = { name: 'binh-duong-tnds', w: 1280, h: 853, position: '50% 55%', caption: 'Ảnh minh họa: chủ xe ô tô, xe máy vẫn phải có giấy chứng nhận bảo hiểm TNDS bắt buộc còn hiệu lực sau 15/12/2026.' };
+export const hero = { name: 'thong-tu-04-2021-bai-bo-hero', w: 1200, h: 630, position: '60% 50%', caption: 'Ảnh minh họa: chủ xe ô tô, xe máy vẫn phải có giấy chứng nhận bảo hiểm TNDS bắt buộc còn hiệu lực sau 15/12/2026.' };
 export const seo = {
   title: 'Bãi bỏ Thông tư 04/2021/TT-BTC từ 15/12/2026: chủ xe cần biết | PVI',
   description: 'Thông tư 158/2026/TT-BTC bãi bỏ Thông tư 04/2021 về bảo hiểm TNDS xe cơ giới từ 15/12/2026. Chủ xe vẫn phải mua bảo hiểm bắt buộc; phí, mức trách nhiệm theo NĐ 67/2023.',
@@ -60,7 +62,9 @@ export const related = [
   { href: O_TO, img: 'tu-van-xe-o-to', k: 'Cho chủ xe ô tô', title: 'Bảo hiểm ô tô PVI', text: 'TNDS bắt buộc, vật chất xe và bảo hiểm người ngồi trên xe.' },
 ];
 
-export function body() {
+export function body({ pic }) {
+  const fig = pic('thong-tu-04-2021-kiem-tra-giay-chung-nhan', { w: 1280, h: 853, alt: 'Chủ xe cầm điện thoại xem giấy chứng nhận bảo hiểm TNDS bắt buộc điện tử, bên cạnh chìa khóa xe máy và ô tô', sizes: '(max-width:820px) 100vw, 700px' })
+    .replace('<img ', '<img title="Kiểm tra hạn giấy chứng nhận bảo hiểm TNDS bắt buộc xe máy, ô tô" ');
   return `
 <h2 id="tra-loi">Trả lời nhanh</h2>
 <p class="kb-first">Từ ngày <b>15/12/2026</b>, Thông tư 04/2021/TT-BTC bị bãi bỏ toàn bộ theo Thông tư 158/2026/TT-BTC của Bộ Tài chính. Chủ xe ô tô, xe máy <b>vẫn phải mua</b> <a class="kb-link" href="${TNDS}">bảo hiểm trách nhiệm dân sự bắt buộc</a>. Thông tư 158 không bỏ nghĩa vụ này và không đặt ra mức phí hay mức trách nhiệm bảo hiểm mới.</p>
@@ -95,6 +99,7 @@ export function body() {
 <p>Đây là suy luận từ chuỗi văn bản. Thông tư 158 không nêu lý do riêng cho từng văn bản bị bãi bỏ.</p>
 
 <h2 id="chu-xe">Chủ xe và doanh nghiệp cần làm gì?</h2>
+<figure class="kb-fig">${fig}<figcaption>Ảnh minh họa: chủ xe kiểm tra ngày hết hạn trên giấy chứng nhận bảo hiểm TNDS bắt buộc điện tử. Hết hạn thì mua lại, không cần thủ tục gì thêm khi Thông tư 04/2021 bị bãi bỏ.</figcaption></figure>
 <ul>
 <li><b>Chủ xe máy, ô tô:</b> kiểm tra ngày hết hạn trên giấy chứng nhận bảo hiểm TNDS bắt buộc (bản giấy hoặc điện tử). Hết hạn thì mua lại, không cần chờ hay làm thủ tục gì vì việc bãi bỏ Thông tư 04.</li>
 <li><b>Doanh nghiệp có đội xe:</b> rà lại mẫu báo giá, hợp đồng, quy trình nội bộ. Chỗ nào còn ghi căn cứ "Thông tư 04/2021/TT-BTC" thì sửa sang căn cứ đang có hiệu lực trước ngày 15/12/2026.</li>
