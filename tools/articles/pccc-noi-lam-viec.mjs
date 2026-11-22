@@ -1,7 +1,7 @@
 // Cụm 5 bài kỹ năng PCCC tại nơi làm việc (chủ site giao 22/11/2026). Xếp vào danh mục có sẵn:
 // Kiến thức › Cháy nổ, tài sản (hub chay-no-bat-buoc, mảng kien-thuc) trong tools/data/kien-thuc-hub.mjs.
 // Mỗi bài chứa nguyên văn câu chủ site yêu cầu; mỗi link nội bộ chỉ chèn 1 lần trong một bài.
-// Ảnh: tạm dùng ảnh minh họa có sẵn trong dist/assets; chủ site sẽ render ảnh riêng kèm metadata rồi thay.
+// Ảnh: chủ site render 22/11/2026 (pccc-*.webp, giữ XMP/ICC); alt = mô tả, title = tiêu đề lấy từ metadata ảnh.
 // Số liệu, quy định chỉ nêu ở mức đã có căn cứ: số 114, Luật PCCC và CNCH 2024 (55/2024/QH15), NĐ 105/2025/NĐ-CP.
 import { t } from '../chrome.mjs';
 
@@ -14,27 +14,140 @@ const S3 = 'cac-nguy-co-chay-no-tai-noi-lam-viec';
 const S4 = 'khi-co-chay-do-dien-dau-tien-phai-lam-gi';
 const S5 = 'thuc-hien-tot-nhiem-vu-pccc-tai-co-so';
 
-const IMG = {
-  'chay-no-chua-chay-toa-nha': [1280, 853],
-  'chay-no-xe-thang-toa-nha-van-phong': [960, 1200],
-  'binh-duong-chay-no': [1280, 853],
-  'chay-no-hien-truong-sau-vu-no': [1200, 800],
-  'chay-no-dien-tap-binh-chua-chay': [1280, 720],
-  'chay-no': [1280, 853],
-  'fire-layer-pccc': [1280, 853],
-  'section-chay-no': [1280, 853],
-  'kho-ke-hang-cao-tang': [1000, 1333],
-  'kho-trong-kho-hang-bao': [1000, 1333],
-  'binh-duong-tai-san': [1280, 853],
-  'kho-duong-ong-chua-chay': [1000, 750],
-  'fire-layer-property': [1280, 853],
+const META = {
+  "pccc-binh-co2-tu-dien": {
+    "title": "Dùng bình CO2 dập cháy tủ điện",
+    "desc": "Nhân viên dùng bình khí CO2 dập đám cháy nhỏ tại tủ điện sau khi đã ngắt nguồn, cầm tay cầm, không cầm vào loa phun.",
+    "w": 1280,
+    "h": 853
+  },
+  "pccc-chay-do-dien-ngat-cau-dao-hero": {
+    "title": "Khi có cháy do điện, việc đầu tiên là ngắt cầu dao",
+    "desc": "Kỹ thuật viên ngắt aptomat tổng ngay khi phát hiện cháy do điện để cắt nguồn gây cháy và tránh điện giật khi dập lửa.",
+    "w": 1200,
+    "h": 630
+  },
+  "pccc-dam-chay-lon-thoat-nan-hero": {
+    "title": "Nhân viên thoát nạn khi đám cháy lớn không kiểm soát được",
+    "desc": "Cán bộ nhân viên đi theo lối thoát nạn bằng cầu thang bộ, có người hướng dẫn, khi đám cháy vượt khả năng dập bằng bình chữa cháy.",
+    "w": 1200,
+    "h": 630
+  },
+  "pccc-dau-hieu-chap-dien": {
+    "title": "Dấu hiệu sắp cháy do điện: phích cắm nóng chảy, cháy xém",
+    "desc": "Phích cắm và ổ điện biến màu, cháy xém, bốc khói nhẹ là dấu hiệu cần ngắt điện và kiểm tra ngay trước khi xảy ra cháy.",
+    "w": 1280,
+    "h": 853
+  },
+  "pccc-diem-tap-ket-diem-danh": {
+    "title": "Tập trung tại điểm tập kết và điểm danh sau khi thoát nạn",
+    "desc": "Công nhân tập trung tại điểm tập kết ngoài trời, trưởng bộ phận điểm danh để báo người còn thiếu cho lực lượng chữa cháy.",
+    "w": 1280,
+    "h": 853
+  },
+  "pccc-dien-tap-phuong-an": {
+    "title": "Diễn tập phương án chữa cháy tại cơ sở",
+    "desc": "Cơ sở diễn tập phương án chữa cháy: thoát nạn ra điểm tập kết, đội PCCC triển khai vòi chữa cháy từ tủ chữa cháy vách tường.",
+    "w": 1280,
+    "h": 853
+  },
+  "pccc-don-xe-chua-chay": {
+    "title": "Mở cổng, dọn lối đón xe chữa cháy",
+    "desc": "Bảo vệ mở cổng, dọn xe chắn lối để xe chữa cháy vào nhanh, rồi chỉ vị trí cầu dao, nguồn nước cho lực lượng chuyên nghiệp.",
+    "w": 1280,
+    "h": 853
+  },
+  "pccc-giu-hien-truong-sau-chay": {
+    "title": "Giữ nguyên hiện trường và chụp ảnh thiệt hại sau đám cháy",
+    "desc": "Giám định viên bảo hiểm chụp ảnh thiệt hại tại kho hàng sau cháy, hiện trường được giữ nguyên để xác định nguyên nhân và bồi thường.",
+    "w": 1280,
+    "h": 853
+  },
+  "pccc-goi-114": {
+    "title": "Gọi 114 báo cháy, nói rõ địa chỉ và tình hình",
+    "desc": "Người quản lý gọi 114, báo địa chỉ, chất đang cháy và có người mắc kẹt hay không để lực lượng chữa cháy đến nhanh.",
+    "w": 1280,
+    "h": 853
+  },
+  "pccc-han-cat-tia-lua": {
+    "title": "Hàn cắt kim loại có giám sát và che chắn tia lửa",
+    "desc": "Thợ hàn làm việc có người giám sát, tấm che tia lửa và bình chữa cháy đặt sẵn, cách kiểm soát nguồn lửa trần tại xưởng.",
+    "w": 1280,
+    "h": 853
+  },
+  "pccc-ho-so-bao-hiem-chay-no": {
+    "title": "Hồ sơ PCCC và bảo hiểm cháy nổ bắt buộc của cơ sở",
+    "desc": "Chủ cơ sở cùng chuyên viên bảo hiểm rà hồ sơ PCCC và giấy chứng nhận bảo hiểm cháy nổ bắt buộc cho nhà xưởng.",
+    "w": 1280,
+    "h": 853
+  },
+  "pccc-huan-luyen-doi-pccc": {
+    "title": "Huấn luyện đội PCCC cơ sở dùng bình chữa cháy",
+    "desc": "Đội PCCC cơ sở được huấn luyện thao tác rút chốt, hướng loa phun vào gốc lửa, sẵn sàng xử lý trong những phút đầu.",
+    "w": 1280,
+    "h": 853
+  },
+  "pccc-kho-hoa-chat": {
+    "title": "Kho chứa hóa chất, dung môi được sắp xếp an toàn",
+    "desc": "Hóa chất, dung môi được chứa trong kho riêng, đậy kín, có thông gió và bình chữa cháy ở cửa để giảm nguy cơ cháy nổ.",
+    "w": 1280,
+    "h": 853
+  },
+  "pccc-kiem-tra-binh-chua-chay": {
+    "title": "Kiểm tra áp suất bình chữa cháy và ghi sổ theo dõi",
+    "desc": "Nhân viên kiểm tra kim áp suất bình chữa cháy nằm vùng xanh, chốt và kẹp chì còn nguyên, ghi vào sổ theo dõi phương tiện.",
+    "w": 1280,
+    "h": 853
+  },
+  "pccc-kiem-tra-tu-dien": {
+    "title": "Kiểm tra định kỳ tủ điện để phòng cháy do điện",
+    "desc": "Thợ điện dùng camera nhiệt kiểm tra mối nối trong tủ điện nhà xưởng, phát hiện điểm nóng trước khi gây chập cháy.",
+    "w": 1280,
+    "h": 853
+  },
+  "pccc-nguy-co-chay-no-hero": {
+    "title": "Nhận diện nguy cơ cháy nổ tại nơi làm việc",
+    "desc": "Cán bộ an toàn kiểm tra kho hàng, phát hiện ổ cắm quá tải gần hàng hóa dễ cháy, một trong các nguy cơ cháy nổ thường gặp.",
+    "w": 1200,
+    "h": 630
+  },
+  "pccc-nhan-nut-bao-chay": {
+    "title": "Nhấn nút báo cháy khi phát hiện cháy",
+    "desc": "Bước đầu tiên khi phát hiện cháy là báo động: hô to và nhấn nút báo cháy gần nhất để mọi người cùng biết.",
+    "w": 1280,
+    "h": 853
+  },
+  "pccc-nhiem-vu-tai-co-so-hero": {
+    "title": "Thực hiện tốt nhiệm vụ PCCC tại cơ sở",
+    "desc": "Người đứng đầu cơ sở cùng đội an toàn rà soát sơ đồ thoát nạn và kế hoạch chữa cháy tại nhà xưởng.",
+    "w": 1200,
+    "h": 630
+  },
+  "pccc-o-cam-qua-tai": {
+    "title": "Ổ cắm nối dài quá tải, nguy cơ chập cháy",
+    "desc": "Ổ cắm nối dài cắm chồng nhiều thiết bị, có vết cháy xém, đặt gần thùng giấy là nguy cơ cháy do điện tại văn phòng.",
+    "w": 1280,
+    "h": 853
+  },
+  "pccc-quy-trinh-xu-ly-chay-hero": {
+    "title": "Quy trình xử lý khi có cháy xảy ra ở nơi làm việc",
+    "desc": "Đội PCCC cơ sở thực hành quy trình xử lý cháy: báo động, cắt điện, gọi 114, chữa cháy ban đầu bằng phương tiện tại chỗ.",
+    "w": 1200,
+    "h": 630
+  },
+  "pccc-thoat-nan-cui-thap-che-mui": {
+    "title": "Cúi thấp, che mũi miệng khi thoát qua hành lang có khói",
+    "desc": "Nhân viên cúi thấp người, che mũi miệng bằng khăn ướt và men theo tường để thoát khỏi hành lang có khói.",
+    "w": 1280,
+    "h": 853
+  }
 };
 
 // Ảnh trong thân bài: đủ alt, title, width/height, srcset, lazy, figcaption.
-const fig = (pic, name, alt, caption) => {
-  const [w, h] = IMG[name];
-  const img = pic(name, { w, h, alt, sizes: '(max-width:820px) 100vw, 700px' }).replace('<img ', `<img title="${alt.replace(/"/g, '&quot;')}" `);
-  return `<figure class="kb-fig">${img}<figcaption>${t(caption)}</figcaption></figure>`;
+const fig = (pic, name) => {
+  const m = META[name];
+  const img = pic(name, { w: m.w, h: m.h, alt: m.desc, sizes: '(max-width:820px) 100vw, 700px' }).replace('<img ', `<img title="${m.title.replace(/"/g, '&quot;')}" `);
+  return `<figure class="kb-fig">${img}<figcaption>${t('Ảnh minh họa: ' + m.desc)}</figcaption></figure>`;
 };
 
 const SRC_LUAT = ['Luật Phòng cháy, chữa cháy và cứu nạn, cứu hộ số 55/2024/QH15, hiệu lực 01/07/2025', '', 'Quốc hội'];
@@ -44,13 +157,13 @@ const SRC_SP = ['Bảo hiểm cháy nổ bắt buộc: tra cứu và tính phí'
 const REL_SP = { href: CHAY_NO, img: 'section-chay-no', k: 'Sản phẩm chính', title: 'Bảo hiểm cháy nổ bắt buộc', text: 'Tra cứu cơ sở có thuộc diện bắt buộc không, biểu phí và tính phí tham khảo.' };
 const REL_HUB = { href: HUB, img: 'fire-layer-pccc', k: 'Kiến thức', title: 'Kiến thức cháy nổ, tài sản', text: 'Câu hỏi thường gặp, trải nghiệm thực tế và tin tức về bảo hiểm cháy nổ.' };
 
-const base = (slug, date, cat, title, lead, hero, heroAlt, caption, seo, readMin) => ({
+const base = (slug, date, cat, title, lead, hero, seo, readMin) => ({
   post: {
     slug, path: K(slug), date, dateText: date.split('-').reverse().join('/'), cat, title, lead, readMin,
-    image: `/assets/${hero}.webp`, imageWidth: IMG[hero][0], imageHeight: IMG[hero][1], alt: heroAlt,
+    image: `/assets/${hero}.webp`, imageWidth: META[hero].w, imageHeight: META[hero].h, alt: META[hero].desc,
   },
   crumb: 'Kiến thức',
-  hero: { name: hero, w: IMG[hero][0], h: IMG[hero][1], caption },
+  hero: { name: hero, w: META[hero].w, h: META[hero].h, caption: 'Ảnh minh họa: ' + META[hero].desc },
   seo,
   toc: [],
 });
@@ -64,8 +177,7 @@ export const pcccNoiLamViec = [
     ...base(S1, DATE, CAT,
       'Nếu đám cháy lớn không kiểm soát được cán bộ nhân viên cần làm gì?',
       'Khi đám cháy đã vượt khả năng dập của bình chữa cháy và lửa lan nhanh, việc của cán bộ nhân viên không còn là chữa cháy mà là thoát nạn an toàn, báo đúng người và không cản trở lực lượng chữa cháy chuyên nghiệp.',
-      'chay-no-chua-chay-toa-nha', 'Lính cứu hỏa mang bình dưỡng khí phun nước dập cháy trước một tòa nhà nhiều tầng',
-      'Ảnh minh họa: lực lượng chữa cháy chuyên nghiệp phun nước khống chế đám cháy tại tòa nhà.',
+      'pccc-dam-chay-lon-thoat-nan-hero',
       { title: 'Đám cháy lớn không kiểm soát được: nhân viên cần làm gì? | PVI', description: 'Nếu đám cháy lớn không kiểm soát được, cán bộ nhân viên cần thoát nạn, gọi 114, tập kết điểm danh và báo thông tin cho lực lượng chữa cháy. Các bước cụ thể.' }, 6),
     faqs: [
       { question: 'Khi nào phải dừng chữa cháy để thoát nạn?', answer: 'Khi lửa lan rộng hơn khả năng của bình chữa cháy, khói dày làm khó thở hoặc che tầm nhìn, lửa chặn lối thoát phía sau lưng, hoặc đã dùng hết bình mà đám cháy không nhỏ đi. Lúc đó cần rời khu vực ngay.' },
@@ -80,8 +192,8 @@ export const pcccNoiLamViec = [
 <h2 id="nhan-biet">Nhận biết lúc nào đám cháy đã vượt tầm kiểm soát</h2>
 <p>Bình chữa cháy xách tay chỉ dùng cho đám cháy mới bắt đầu. Một bình bột loại thường phun được trong khoảng chục giây, đủ cho một thùng rác, một ổ cắm hay một góc kệ hàng vừa bén lửa. Khi đám cháy đã lớn hơn thế, cố dập tiếp chỉ làm người cầm bình mắc kẹt.</p>
 <p>Có bốn dấu hiệu nên dừng ngay: lửa lan sang vật liệu khác hoặc lên trần; khói đen dày làm cay mắt, khó thở; ngọn lửa nằm giữa bạn và lối thoát; đã dùng hết một đến hai bình mà lửa không nhỏ đi. Chỉ cần gặp một dấu hiệu, việc đúng là rút lui.</p>
-${fig(pic, 'chay-no-xe-thang-toa-nha-van-phong', 'Xe thang chữa cháy vươn lên mặt kính tòa nhà văn phòng nhiều tầng', 'Ảnh minh họa: khi cháy lớn, việc dập lửa thuộc về lực lượng chuyên nghiệp có xe thang và phương tiện chuyên dụng.')}
 
+${fig(pic, 'pccc-thoat-nan-cui-thap-che-mui')}
 <h2 id="thoat-nan">Các bước thoát nạn an toàn</h2>
 <ol>
 <li><b>Báo động:</b> hô to "Cháy!", nhấn nút báo cháy gần nhất để cả tòa nhà biết. Đừng mặc định người khác đã nghe thấy.</li>
@@ -99,8 +211,8 @@ ${fig(pic, 'chay-no-xe-thang-toa-nha-van-phong', 'Xe thang chữa cháy vươn l
 <h2 id="tap-ket">Tại điểm tập kết: điểm danh và cung cấp thông tin</h2>
 <p>Ra khỏi tòa nhà rồi, mọi người tập trung ở điểm tập kết đã quy định, cách xa tòa nhà và không chắn đường xe chữa cháy. Trưởng bộ phận điểm danh theo danh sách ca làm việc. Ai còn thiếu thì báo ngay cho chỉ huy chữa cháy, kèm vị trí làm việc cuối cùng của người đó.</p>
 <p>Người nắm rõ cơ sở (quản lý, bảo vệ, kỹ thuật) nên chủ động gặp lực lượng chữa cháy để chỉ vị trí cầu dao tổng, bể nước, trụ nước, khu chứa hóa chất, bình gas hay hàng dễ cháy. Những thông tin này giúp họ chọn cách dập và tránh nguy cơ nổ.</p>
-${fig(pic, 'binh-duong-chay-no', 'Ba nhân viên đội mũ bảo hộ đi dọc lối đi trong nhà xưởng, cạnh tủ chữa cháy vách tường', 'Ảnh minh họa: lối đi trong nhà xưởng cần luôn thông thoáng để mọi người thoát ra điểm tập kết nhanh nhất.')}
 
+${fig(pic, 'pccc-diem-tap-ket-diem-danh')}
 <h2 id="khong-nen">Những việc không nên làm khi cháy lớn</h2>
 <ul>
 <li>Không đứng xem hoặc quay phim gần đám cháy, không đỗ xe chắn lối vào của xe chữa cháy.</li>
@@ -112,8 +224,8 @@ ${fig(pic, 'binh-duong-chay-no', 'Ba nhân viên đội mũ bảo hộ đi dọc
 <h2 id="sau-dam-chay">Sau đám cháy: giữ hiện trường và báo bảo hiểm</h2>
 <p>Khi lửa đã được dập, cơ sở cần giữ nguyên hiện trường để cơ quan chức năng điều tra nguyên nhân. Chụp ảnh, quay video khu vực thiệt hại từ nhiều góc, lưu lại danh sách tài sản, hàng hóa bị ảnh hưởng và các chứng từ liên quan.</p>
 <p>Nếu cơ sở có <a class="kb-link" href="${CHAY_NO}">bảo hiểm cháy nổ bắt buộc</a> hoặc bảo hiểm tài sản, hãy báo cho doanh nghiệp bảo hiểm ngay khi có thể và làm theo hướng dẫn trên hợp đồng. Khách hàng của PVI Thành Đô gọi tổng đài bồi thường <a class="kb-link" href="tel:1900545458">1900 54 54 58</a>. Không tự dọn dẹp, bán thanh lý hàng cháy trước khi giám định viên đến, vì đây là căn cứ để xác định mức bồi thường.</p>
-${fig(pic, 'chay-no-hien-truong-sau-vu-no', 'Cảnh sát phòng cháy và công an kiểm tra hiện trường đổ nát sau một vụ cháy nổ', 'Ảnh minh họa: hiện trường sau cháy được giữ nguyên để cơ quan chức năng và giám định viên bảo hiểm làm việc.')}
 
+${fig(pic, 'pccc-giu-hien-truong-sau-chay')}
 <h2 id="tap-truoc">Muốn làm đúng khi cháy, phải tập từ trước</h2>
 <p>Không ai nhớ được các bước trên nếu lần đầu nghe đến là lúc khói đã tràn hành lang. Cơ sở nên tổ chức diễn tập thoát nạn định kỳ, cho từng người đi thử lối thoát của khu mình làm việc, biết điểm tập kết nằm ở đâu và ai là người điểm danh. Cách xây dựng lực lượng và kế hoạch được nói rõ trong bài <a class="kb-link" href="${K(S5)}">phải làm gì để thực hiện tốt nhiệm vụ PCCC tại cơ sở</a>.</p>
 <p>Cần tư vấn bảo hiểm cho nhà xưởng, kho hàng, văn phòng? Gọi PVI Thành Đô <a class="kb-link" href="tel:0938072236">0938 072 236</a>.</p>`,
@@ -124,8 +236,7 @@ ${fig(pic, 'chay-no-hien-truong-sau-vu-no', 'Cảnh sát phòng cháy và công 
     ...base(S2, DATE, CAT,
       'Quy trình xử lý khi có cháy xảy ra ở địa phương hay nơi làm việc',
       'Một đám cháy nhỏ thành thảm họa thường vì mất vài phút đầu: không ai báo động, không ai cắt điện, không ai biết bình chữa cháy để đâu. Quy trình dưới đây gồm 7 bước, áp dụng được cho văn phòng, nhà xưởng, kho hàng và khu dân cư.',
-      'chay-no-dien-tap-binh-chua-chay', 'Nhân viên mặc đồ bảo hộ dùng bình chữa cháy dập đám lửa trong buổi diễn tập trước tòa nhà',
-      'Ảnh minh họa: diễn tập dập đám cháy ban đầu bằng bình chữa cháy xách tay trước tòa nhà văn phòng.',
+      'pccc-quy-trinh-xu-ly-chay-hero',
       { title: 'Quy trình xử lý khi có cháy ở địa phương, nơi làm việc | PVI', description: 'Quy trình xử lý khi có cháy xảy ra ở địa phương hay nơi làm việc gồm 7 bước: báo động, cắt điện, gọi 114, cứu người, chữa cháy ban đầu, đón xe chữa cháy, khắc phục.' }, 6),
     faqs: [
       { question: 'Phát hiện cháy thì việc đầu tiên là gì?', answer: 'Báo động cho mọi người xung quanh biết bằng cách hô to và nhấn nút báo cháy. Sau đó cắt điện khu vực cháy, gọi 114 và chữa cháy ban đầu nếu đám cháy còn nhỏ.' },
@@ -140,6 +251,7 @@ ${fig(pic, 'chay-no-hien-truong-sau-vu-no', 'Cảnh sát phòng cháy và công 
 <h2 id="buoc-1">Bước 1: Phát hiện và báo động</h2>
 <p>Người phát hiện cháy hô to "Cháy! Cháy!" và nhấn nút báo cháy gần nhất. Ở khu dân cư chưa có hệ thống báo cháy, có thể dùng kẻng, còi, loa hoặc gõ cửa từng nhà. Mục tiêu là để mọi người trong khu vực biết sớm nhất có thể, vì mỗi phút trôi qua lửa và khói lan nhanh hơn.</p>
 
+${fig(pic, 'pccc-nhan-nut-bao-chay')}
 <h2 id="buoc-2">Bước 2: Cắt điện khu vực cháy</h2>
 <p>Người gần cầu dao, aptomat nhất ngắt điện khu vực đang cháy, hoặc ngắt tổng nếu không rõ đường điện. Cắt điện giúp ngăn chập cháy lan rộng và giúp dùng nước an toàn. Riêng cháy do điện có những lưu ý riêng, đọc kỹ ở bài <a class="kb-link" href="${K(S4)}">khi có cháy xảy ra do điện đầu tiên ta phải làm gì</a>.</p>
 
@@ -152,22 +264,21 @@ ${fig(pic, 'chay-no-hien-truong-sau-vu-no', 'Cảnh sát phòng cháy và công 
 <li>Số điện thoại để lực lượng chữa cháy gọi lại khi cần chỉ đường.</li>
 </ul>
 <p>Đừng nghĩ "chắc có người gọi rồi". Nhiều cuộc gọi về cùng một vụ không sao, không ai gọi mới là vấn đề.</p>
-${fig(pic, 'chay-no', 'Nhân viên kho cúi xuống lấy bình chữa cháy đặt cạnh tủ chữa cháy vách tường', 'Ảnh minh họa: bình chữa cháy và tủ chữa cháy vách tường phải đặt đúng vị trí, dễ thấy, dễ lấy.')}
 
+${fig(pic, 'pccc-goi-114')}
 <h2 id="buoc-4">Bước 4: Cứu người và hướng dẫn thoát nạn</h2>
 <p>Ưu tiên đưa người ra khỏi khu vực nguy hiểm, nhất là người già, trẻ em, người khuyết tật và người đang bị kẹt. Người được phân công hướng dẫn mọi người đi theo lối thoát nạn ra điểm tập kết, không dùng thang máy. Khi đám cháy đã vượt tầm, xem các bước chi tiết ở bài <a class="kb-link" href="${K(S1)}">nếu đám cháy lớn không kiểm soát được cán bộ nhân viên cần làm gì</a>.</p>
 
 <h2 id="buoc-5">Bước 5: Chữa cháy ban đầu bằng phương tiện tại chỗ</h2>
 <p>Khi đám cháy còn nhỏ và lối thoát phía sau lưng vẫn thông, lực lượng tại chỗ dùng bình chữa cháy, tủ chữa cháy vách tường hoặc cát, chăn ướt để dập. Đây là tinh thần "bốn tại chỗ": chỉ huy tại chỗ, lực lượng tại chỗ, phương tiện tại chỗ, hậu cần tại chỗ.</p>
 <p>Cách dùng bình chữa cháy xách tay: rút chốt an toàn, đứng đầu hướng gió, cách đám cháy khoảng một đến hai mét, hướng loa phun vào gốc lửa rồi bóp van, quét qua lại cho đến khi lửa tắt. Đồng thời di chuyển hàng hóa, bình gas, can xăng dầu ra xa để ngăn cháy lan.</p>
-${fig(pic, 'fire-layer-pccc', 'Tủ chữa cháy vách tường màu đỏ và bình chữa cháy treo trên cột trong nhà xưởng sạch', 'Ảnh minh họa: tủ chữa cháy vách tường và bình chữa cháy là phương tiện tại chỗ dùng ngay trong những phút đầu.')}
 
 <h2 id="buoc-6">Bước 6: Đón và hỗ trợ lực lượng chữa cháy</h2>
 <p>Cử người ra đầu đường đón xe chữa cháy, mở cổng, dẹp xe máy, ô tô chắn lối. Khi lực lượng chuyên nghiệp đến, chỉ huy tại chỗ báo cáo tình hình: còn ai bên trong, vị trí cầu dao, nguồn nước, khu chứa chất dễ cháy nổ. Từ lúc này mọi người làm theo chỉ huy của lực lượng chữa cháy.</p>
 
+${fig(pic, 'pccc-don-xe-chua-chay')}
 <h2 id="buoc-7">Bước 7: Bảo vệ hiện trường và khắc phục</h2>
 <p>Sau khi lửa tắt, giữ nguyên hiện trường cho cơ quan chức năng điều tra. Điểm danh lại người, kiểm tra người bị thương, ngạt khói để đưa đi cấp cứu. Chụp ảnh thiệt hại, lập danh sách tài sản hư hỏng và báo ngay cho doanh nghiệp bảo hiểm nếu cơ sở có hợp đồng. Với cơ sở thuộc diện phải mua, đây là lúc <a class="kb-link" href="${CHAY_NO}">bảo hiểm cháy nổ bắt buộc</a> phát huy tác dụng; khách hàng PVI Thành Đô gọi tổng đài bồi thường <a class="kb-link" href="tel:1900545458">1900 54 54 58</a>.</p>
-${fig(pic, 'section-chay-no', 'Chuyên viên đội mũ bảo hộ cùng quản lý kho kiểm tra tủ báo cháy gắn trên cột', 'Ảnh minh họa: kiểm tra tủ báo cháy sau sự cố để khôi phục hệ thống trước khi hoạt động lại.')}
 
 <h2 id="dia-phuong">Ở khu dân cư thì khác gì?</h2>
 <p>Ở khu dân cư, vai trò chỉ huy tại chỗ thường là tổ trưởng tổ dân phố, công an khu vực hoặc đội dân phòng. Người dân hỗ trợ báo động, cắt điện nhà mình và nhà bên cạnh, đưa người già, trẻ em ra ngoài, giữ lối đi trong hẻm thông thoáng cho xe chữa cháy. Đây cũng là lúc thấy rõ giá trị của việc mỗi nhà có một bình chữa cháy và biết cách dùng. Bài học từ các vụ cháy thực tế được tổng hợp trong <a class="kb-link" href="${HUB}">kiến thức cháy nổ, tài sản</a> của PVI Thành Đô.</p>`,
@@ -178,8 +289,7 @@ ${fig(pic, 'section-chay-no', 'Chuyên viên đội mũ bảo hộ cùng quản 
     ...base(S3, DATE, CAT,
       'Các nguy cơ có thể xảy ra cháy nổ tại nơi làm việc và cách phòng ngừa',
       'Phần lớn vụ cháy ở văn phòng, nhà xưởng, kho hàng bắt đầu từ những thứ rất quen: ổ điện quá tải, tàn thuốc, hàng xếp sát bóng đèn, can dung môi để cạnh máy hàn. Nhận ra nguy cơ sớm là cách rẻ nhất để không phải xử lý một vụ cháy.',
-      'kho-ke-hang-cao-tang', 'Kệ thép nhiều tầng chất thùng carton, pallet gỗ xếp chồng ở lối đi trong kho',
-      'Ảnh minh họa: kệ hàng cao tầng và pallet gỗ trong kho là khối chất cháy lớn nếu có nguồn lửa.',
+      'pccc-nguy-co-chay-no-hero',
       { title: 'Các nguy cơ có thể xảy ra cháy nổ tại nơi làm việc | PVI', description: 'Các nguy cơ có thể xảy ra cháy nổ tại nơi làm việc: điện, nguồn lửa trần, hóa chất, bụi, hàng hóa xếp sai, thói quen chủ quan. Cách nhận biết và phòng ngừa.' }, 6),
     faqs: [
       { question: 'Nguyên nhân cháy phổ biến nhất ở nơi làm việc là gì?', answer: 'Sự cố hệ thống điện và thiết bị điện như quá tải, chập mạch, tiếp xúc kém, dây dẫn xuống cấp thường được nhắc đến nhiều nhất. Tiếp theo là nguồn lửa trần, nhiệt từ hàn cắt và việc sử dụng, bảo quản chất dễ cháy không đúng cách.' },
@@ -194,17 +304,18 @@ ${fig(pic, 'section-chay-no', 'Chuyên viên đội mũ bảo hộ cùng quản 
 <h2 id="dien">1. Hệ thống điện và thiết bị điện</h2>
 <p>Đây là nhóm nguy cơ gặp nhiều nhất. Các dấu hiệu cần chú ý: ổ cắm, phích cắm nóng hoặc có vết cháy xém; aptomat hay nhảy; dây điện đi nổi, bị chuột cắn, bị đè dưới hàng hóa; ổ cắm nối dài cắm chồng nhiều thiết bị công suất lớn như ấm siêu tốc, máy sưởi, máy hàn.</p>
 <p>Cách phòng ngừa: dùng dây dẫn và aptomat đúng công suất, không tự đấu nối thêm tải; kiểm tra định kỳ tủ điện, mối nối; tắt thiết bị không cần thiết khi hết ca. Xử lý khi đã xảy ra cháy do điện được hướng dẫn riêng trong bài <a class="kb-link" href="${K(S4)}">khi có cháy do điện đầu tiên phải làm gì</a>.</p>
-${fig(pic, 'binh-duong-tai-san', 'Kỹ sư và nhân viên kiểm tra máy cắt kim loại đang phát tia lửa trong nhà xưởng cơ khí', 'Ảnh minh họa: máy móc dùng điện công suất lớn và tia lửa từ gia công kim loại là nguồn nhiệt cần kiểm soát.')}
 
+${fig(pic, 'pccc-o-cam-qua-tai')}
 <h2 id="nguon-lua">2. Nguồn lửa trần và nhiệt</h2>
 <p>Hàn, cắt kim loại, mài, đun nấu, hút thuốc, thắp hương, đốt rác đều tạo ra lửa hoặc tia lửa. Tia lửa hàn có thể bắn xa vài mét, rơi vào khe kệ hàng và âm ỉ cháy sau khi thợ đã về. Bóng đèn công suất lớn đặt sát hàng hóa cũng đủ nóng để làm vải, giấy, nhựa bén lửa.</p>
 <p>Cách phòng ngừa: hàn cắt phải có người giám sát, che chắn, dọn chất cháy quanh khu vực và kiểm tra lại sau khi xong việc; quy định khu hút thuốc riêng; giữ khoảng cách an toàn giữa đèn chiếu sáng và hàng hóa.</p>
 
+${fig(pic, 'pccc-han-cat-tia-lua')}
 <h2 id="hoa-chat">3. Hóa chất, nhiên liệu, khí đốt</h2>
 <p>Xăng dầu, dung môi sơn, cồn, keo dán, bình gas, bình khí nén là những thứ chỉ cần một tia lửa là bùng cháy hoặc phát nổ. Nguy cơ tăng khi chúng được chiết rót bằng tay, để trong can không nắp, xếp cạnh nguồn nhiệt hay trong phòng kín không thông gió.</p>
 <p>Cách phòng ngừa: chứa trong kho riêng, có biển cảnh báo, thông gió tốt; chỉ để tại khu sản xuất lượng đủ dùng trong ca; đậy kín nắp, không dùng chai nước uống để đựng hóa chất; nhân viên phải biết mình đang dùng chất gì và xử lý ra sao khi bị đổ tràn.</p>
-${fig(pic, 'kho-duong-ong-chua-chay', 'Sân sau nhà xưởng với đường ống chữa cháy sơn đỏ dọc tường và nhiều can nhựa đựng chất lỏng', 'Ảnh minh họa: can chứa chất lỏng để ngoài sân sát tường xưởng cần được sắp xếp, ghi nhãn và tránh xa nguồn nhiệt.')}
 
+${fig(pic, 'pccc-kho-hoa-chat')}
 <h2 id="bui">4. Bụi dễ cháy</h2>
 <p>Xưởng gỗ, xưởng may, nhà máy thực phẩm, xưởng đánh bóng kim loại tạo ra nhiều bụi mịn. Bụi bám trên máy, trần, đường ống là lớp chất cháy rất mỏng, dễ bén. Khi bụi bị thổi tung trong không khí ở nồng độ đủ lớn và gặp tia lửa, có thể gây nổ bụi.</p>
 <p>Cách phòng ngừa: lắp hệ thống hút bụi, vệ sinh định kỳ cả những chỗ khuất như trên xà gồ, trong máng điện; nối đất cho máy móc để tránh tia lửa tĩnh điện; không dùng khí nén thổi bụi bay khắp xưởng.</p>
@@ -212,7 +323,6 @@ ${fig(pic, 'kho-duong-ong-chua-chay', 'Sân sau nhà xưởng với đường �
 <h2 id="hang-hoa">5. Hàng hóa sắp xếp sai</h2>
 <p>Kho hàng thường có rất nhiều chất cháy: thùng carton, màng bọc, pallet gỗ, vải, nhựa. Nguy cơ tăng khi hàng chất quá cao sát trần, che đầu phun chữa cháy tự động, chắn tủ chữa cháy, lấn ra lối thoát nạn; hoặc khi hàng dễ cháy để chung với hàng dễ nổ.</p>
 <p>Cách phòng ngừa: chia lô, chừa lối đi, giữ khoảng cách từ đỉnh hàng tới đầu phun và đèn; không để hàng trước tủ chữa cháy và cửa thoát nạn. Kho có hệ thống chữa cháy tự động còn cần lưu ý rủi ro nước rò rỉ làm hỏng hàng, như trong bài trải nghiệm về kho hàng có sprinkler ở cuối trang.</p>
-${fig(pic, 'kho-trong-kho-hang-bao', 'Hàng bao xếp chồng cao trên pallet nhựa trong nhà kho mái tôn khung thép', 'Ảnh minh họa: hàng bao xếp cao trong kho mái tôn cần chừa lối đi và khoảng cách an toàn tới mái, đèn chiếu sáng.')}
 
 <h2 id="con-nguoi">6. Thói quen chủ quan của con người</h2>
 <p>Nhiều nguy cơ không nằm ở thiết bị mà ở thói quen: sạc xe điện, pin dự phòng qua đêm trong xưởng; khóa cửa thoát nạn cho tiện quản lý; để bình chữa cháy hết hạn; tắt chuông báo cháy vì "hay kêu nhầm"; không ai được giao nhiệm vụ kiểm tra cuối ca. Khi đã thành thói quen, không ai thấy đó là nguy cơ nữa.</p>
@@ -227,8 +337,7 @@ ${fig(pic, 'kho-trong-kho-hang-bao', 'Hàng bao xếp chồng cao trên pallet n
     ...base(S4, DATE, CAT,
       'Khi có cháy xảy ra do điện đầu tiên ta phải làm gì?',
       'Cháy do điện nguy hiểm gấp đôi vì ngoài lửa còn có nguy cơ điện giật. Phản xạ tạt nước vào ổ điện đang cháy có thể khiến người dập lửa bị giật. Việc đầu tiên luôn là ngắt nguồn điện.',
-      'fire-layer-pccc', 'Tủ chữa cháy vách tường màu đỏ và bình chữa cháy treo trên cột trong nhà xưởng',
-      'Ảnh minh họa: bình chữa cháy và tủ chữa cháy đặt gần khu vực có thiết bị điện để xử lý ngay khi có sự cố.',
+      'pccc-chay-do-dien-ngat-cau-dao-hero',
       { title: 'Khi có cháy do điện, đầu tiên ta phải làm gì? | PVI', description: 'Khi có cháy xảy ra do điện đầu tiên ta phải làm gì: ngắt cầu dao, aptomat; báo động, gọi 114; dập bằng bình CO2 hoặc bình bột, không dùng nước khi chưa cắt điện.' }, 5),
     faqs: [
       { question: 'Cháy do điện có dùng nước dập được không?', answer: 'Chỉ khi đã chắc chắn ngắt điện khu vực cháy. Khi điện chưa được cắt, nước dẫn điện có thể khiến người dập lửa bị giật. Lúc đó dùng bình chữa cháy CO2 hoặc bình bột.' },
@@ -253,8 +362,8 @@ ${fig(pic, 'kho-trong-kho-hang-bao', 'Hàng bao xếp chồng cao trên pallet n
 <li><b>Ngăn cháy lan:</b> di chuyển giấy, vải, hàng hóa, can nhiên liệu ra xa khu vực cháy.</li>
 <li><b>Thoát nạn nếu không dập được:</b> khói từ dây điện, vỏ nhựa cháy rất độc, đừng cố ở lại trong phòng kín.</li>
 </ol>
-${fig(pic, 'chay-no', 'Nhân viên kho cúi xuống nhấc bình chữa cháy đặt cạnh tủ chữa cháy vách tường', 'Ảnh minh họa: bình chữa cháy phải đặt ở nơi dễ thấy, gần tủ điện và khu máy móc để lấy được ngay.')}
 
+${fig(pic, 'pccc-binh-co2-tu-dien')}
 <h2 id="chon-binh">Chọn đúng loại bình chữa cháy</h2>
 <div class="kb-table" role="region" aria-label="Loại bình chữa cháy dùng cho cháy do điện" tabindex="0"><table>
 <thead><tr><th scope="col">Loại bình</th><th scope="col">Dùng cho cháy do điện</th><th scope="col">Lưu ý</th></tr></thead>
@@ -267,8 +376,8 @@ ${fig(pic, 'chay-no', 'Nhân viên kho cúi xuống nhấc bình chữa cháy đ
 
 <h2 id="dau-hieu">Dấu hiệu sắp cháy do điện</h2>
 <p>Nhiều vụ cháy do điện có dấu hiệu báo trước: mùi khét nhựa, ổ cắm phát tiếng lách tách, đèn chập chờn, aptomat nhảy liên tục, vỏ dây hoặc phích cắm nóng và biến màu. Gặp những dấu hiệu này, hãy ngắt điện thiết bị và báo người phụ trách kỹ thuật kiểm tra, đừng bật lại aptomat liên tục cho đến khi nó "chịu" giữ điện.</p>
-${fig(pic, 'section-chay-no', 'Chuyên viên đội mũ bảo hộ và quản lý kho kiểm tra tủ báo cháy gắn trên cột trong kho hàng', 'Ảnh minh họa: kiểm tra định kỳ tủ điện, tủ báo cháy giúp phát hiện sớm nguy cơ chập cháy.')}
 
+${fig(pic, 'pccc-dau-hieu-chap-dien')}
 <h2 id="phong-ngua">Phòng ngừa cháy do điện ở nơi làm việc</h2>
 <ul>
 <li>Thiết kế, lắp đặt hệ thống điện đúng công suất; mỗi thiết bị công suất lớn nên có aptomat riêng.</li>
@@ -278,8 +387,8 @@ ${fig(pic, 'section-chay-no', 'Chuyên viên đội mũ bảo hộ và quản l�
 <li>Tắt thiết bị không cần thiết và ngắt nguồn khu vực khi hết ca.</li>
 </ul>
 <p>Điện chỉ là một trong nhiều nhóm nguy cơ. Danh sách đầy đủ có trong bài <a class="kb-link" href="${K(S3)}">các nguy cơ có thể xảy ra cháy nổ tại nơi làm việc</a>.</p>
-${fig(pic, 'binh-duong-tai-san', 'Kỹ sư và nhân viên trao đổi bên dây chuyền máy cắt kim loại trong nhà xưởng', 'Ảnh minh họa: dây chuyền máy móc công suất lớn cần aptomat riêng và lịch kiểm tra hệ thống điện định kỳ.')}
 
+${fig(pic, 'pccc-kiem-tra-tu-dien')}
 <h2 id="bao-hiem">Thiệt hại do chập điện có được bảo hiểm không?</h2>
 <p>Với <a class="kb-link" href="${CHAY_NO}">bảo hiểm cháy nổ bắt buộc</a>, thiệt hại do cháy, nổ đối với tài sản được bảo hiểm thuộc phạm vi bồi thường, kể cả khi đám cháy bắt nguồn từ sự cố điện, trừ các trường hợp loại trừ ghi trong quy tắc. Riêng hư hỏng của chính thiết bị điện do chập mạch, quá tải mà không phát sinh cháy thường cần thêm điều khoản mở rộng. Khi mua, hãy hỏi rõ phạm vi để biết hợp đồng có bảo vệ trường hợp của mình không. PVI Thành Đô tư vấn qua số <a class="kb-link" href="tel:0938072236">0938 072 236</a>.</p>`,
   },
@@ -289,8 +398,7 @@ ${fig(pic, 'binh-duong-tai-san', 'Kỹ sư và nhân viên trao đổi bên dây
     ...base(S5, DATE, CAT,
       'Phải làm gì để thực hiện tốt nhiệm vụ PCCC tại cơ sở?',
       'Thực hiện tốt nhiệm vụ PCCC tại cơ sở không chỉ là mua đủ bình chữa cháy. Đó là một hệ thống gồm người chịu trách nhiệm, nội quy, lực lượng tại chỗ, phương tiện còn hoạt động, kế hoạch chữa cháy được diễn tập và hồ sơ được cập nhật.',
-      'binh-duong-chay-no', 'Ba nhân viên đội mũ bảo hộ đi kiểm tra lối đi trong nhà xưởng có tủ chữa cháy vách tường',
-      'Ảnh minh họa: quản lý cơ sở và nhân viên an toàn đi kiểm tra phương tiện phòng cháy trong nhà xưởng.',
+      'pccc-nhiem-vu-tai-co-so-hero',
       { title: 'Phải làm gì để thực hiện tốt nhiệm vụ PCCC tại cơ sở? | PVI', description: 'Phải làm gì để thực hiện tốt nhiệm vụ PCCC tại cơ sở: phân công trách nhiệm, nội quy, đội PCCC cơ sở, phương tiện, kế hoạch và diễn tập, hồ sơ, bảo hiểm cháy nổ.' }, 6),
     faqs: [
       { question: 'Ai chịu trách nhiệm PCCC tại cơ sở?', answer: 'Người đứng đầu cơ sở chịu trách nhiệm tổ chức công tác phòng cháy, chữa cháy tại cơ sở của mình theo Luật Phòng cháy, chữa cháy và cứu nạn, cứu hộ. Người lao động có trách nhiệm chấp hành nội quy và tham gia khi được phân công.' },
@@ -309,24 +417,24 @@ ${fig(pic, 'binh-duong-tai-san', 'Kỹ sư và nhân viên trao đổi bên dây
 <h2 id="noi-quy">2. Nội quy, biển báo và thói quen hằng ngày</h2>
 <p>Nội quy PCCC, sơ đồ thoát nạn, biển cấm lửa, biển chỉ dẫn lối thoát phải được treo ở vị trí dễ thấy. Quan trọng hơn là biến nội quy thành thói quen: không hút thuốc ngoài khu quy định, không để hàng chắn tủ chữa cháy và cửa thoát nạn, kiểm tra và ngắt điện khu vực trước khi ra về.</p>
 <p>Một bảng kiểm tra cuối ca vài dòng, có chữ ký người trực, giúp phát hiện sớm những thứ hay bị bỏ qua. Danh sách những thứ cần soát có trong bài <a class="kb-link" href="${K(S3)}">các nguy cơ có thể xảy ra cháy nổ tại nơi làm việc</a>.</p>
-${fig(pic, 'chay-no-dien-tap-binh-chua-chay', 'Nhân viên mặc đồ bảo hộ dùng bình chữa cháy dập lửa trong buổi diễn tập trước tòa nhà', 'Ảnh minh họa: buổi diễn tập dập lửa bằng bình chữa cháy giúp nhân viên làm quen thao tác thật.')}
 
 <h2 id="luc-luong">3. Lực lượng PCCC tại chỗ được huấn luyện</h2>
 <p>Lực lượng tại chỗ là những người có mặt ngay trong những phút đầu, trước khi xe chữa cháy đến. Cơ sở cần thành lập và duy trì đội PCCC cơ sở theo quy định, chia đủ người cho các ca làm việc, kể cả ca đêm và ngày nghỉ. Thành viên đội cần được huấn luyện nghiệp vụ, biết dùng bình chữa cháy, tủ chữa cháy vách tường, biết cắt điện và hướng dẫn thoát nạn.</p>
 <p>Những người còn lại tối thiểu phải biết ba việc: báo động thế nào, gọi 114 nói gì, thoát nạn theo lối nào. Đây là kiến thức nền của <a class="kb-link" href="${K(S2)}">quy trình xử lý khi có cháy xảy ra ở địa phương hay nơi làm việc</a>.</p>
 
+${fig(pic, 'pccc-huan-luyen-doi-pccc')}
 <h2 id="phuong-tien">4. Phương tiện chữa cháy luôn trong tình trạng hoạt động</h2>
 <p>Bình chữa cháy hết áp, vòi chữa cháy mục, máy bơm không nổ, chuông báo cháy bị tắt vì "hay kêu nhầm" là những lỗi thường gặp khi kiểm tra. Cơ sở nên có sổ theo dõi: ngày kiểm tra, người kiểm tra, tình trạng, việc đã sửa. Bình chữa cháy được kiểm tra, nạp lại theo hướng dẫn của nhà sản xuất và quy định; hệ thống báo cháy, chữa cháy tự động được bảo dưỡng định kỳ bởi đơn vị có chuyên môn.</p>
-${fig(pic, 'section-chay-no', 'Chuyên viên và quản lý kho đội mũ bảo hộ kiểm tra tủ báo cháy trong kho hàng', 'Ảnh minh họa: kiểm tra định kỳ tủ báo cháy và ghi sổ theo dõi tình trạng phương tiện.')}
 
+${fig(pic, 'pccc-kiem-tra-binh-chua-chay')}
 <h2 id="ke-hoach">5. Kế hoạch chữa cháy và diễn tập</h2>
 <p>Cơ sở cần có phương án hoặc kế hoạch chữa cháy theo quy định: tình huống cháy lớn nhất có thể xảy ra, ai làm gì, dùng phương tiện nào, thoát nạn theo đường nào, điểm tập kết ở đâu. Kế hoạch chỉ có giá trị khi được diễn tập. Qua mỗi lần diễn tập, cơ sở sẽ thấy cửa thoát nạn nào bị khóa, ai chưa biết dùng bình, điểm tập kết nào chắn đường xe.</p>
 <p>Diễn tập nên có cả tình huống xấu nhất, khi lửa vượt tầm kiểm soát. Hướng dẫn cho nhân viên trong tình huống này có ở bài <a class="kb-link" href="${K(S1)}">nếu đám cháy lớn không kiểm soát được cán bộ nhân viên cần làm gì</a>.</p>
-${fig(pic, 'kho-duong-ong-chua-chay', 'Đường ống chữa cháy sơn đỏ chạy dọc tường nhà xưởng, cạnh cửa cuốn và xe tải', 'Ảnh minh họa: đường ống, trụ nước chữa cháy và lối xe ra vào cần được đánh dấu trên sơ đồ trong kế hoạch chữa cháy.')}
 
+${fig(pic, 'pccc-dien-tap-phuong-an')}
 <h2 id="ho-so">6. Hồ sơ PCCC và bảo hiểm cháy nổ</h2>
 <p>Hồ sơ PCCC của cơ sở gồm các văn bản về tổ chức lực lượng, nội quy, phương án, sổ theo dõi kiểm tra, huấn luyện, diễn tập theo quy định tại Nghị định 105/2025/NĐ-CP và văn bản sửa đổi. Hồ sơ được cập nhật mỗi khi cơ sở thay đổi quy mô, công năng hoặc nhân sự phụ trách.</p>
 <p>Với cơ sở có tên trong danh mục, mua <a class="kb-link" href="${CHAY_NO}">bảo hiểm cháy nổ bắt buộc</a> cho tài sản là nghĩa vụ, không phải lựa chọn. Bảo hiểm không thay cho phòng cháy, nhưng giúp cơ sở có tiền khôi phục nhà xưởng, máy móc, hàng hóa nếu sự cố vẫn xảy ra. Tìm hiểu thêm ở mục <a class="kb-link" href="${HUB}">kiến thức cháy nổ, tài sản</a> hoặc gọi PVI Thành Đô <a class="kb-link" href="tel:0938072236">0938 072 236</a> để được tư vấn theo loại hình cơ sở.</p>
-${fig(pic, 'fire-layer-property', 'Nhà xưởng mái tôn tường trắng sọc xanh với sân bê tông và cây xanh phía trước', 'Ảnh minh họa: nhà xưởng, máy móc và hàng hóa là tài sản cần được bảo vệ bằng phòng cháy tốt và bảo hiểm phù hợp.')}`,
+${fig(pic, 'pccc-ho-so-bao-hiem-chay-no')}`,
   },
 ];
