@@ -1,4 +1,4 @@
-// Nhận xét, đánh giá của bạn đọc cho các bài Tin tức (Vercel Function + Vercel Blob).
+// Nhận xét, đánh giá của bạn đọc (Vercel Function). Lưu ở Vercel Blob nếu đã kết nối, không thì Redis (KV) của project.
 //
 // GET    /api/nhan-xet?slug=...            → nhận xét của bài (mới nhất trước) + điểm trung bình
 // POST   /api/nhan-xet  {slug,rating,...}  → lưu và hiện ngay (không qua duyệt, theo yêu cầu chủ site)
@@ -69,7 +69,46 @@ async function readOne(pathname) {
   return { id: pathname, ...data };
 }
 
+/* ── Kho Redis dự phòng (22/11/2026): pvihcm chưa kết nối Blob store nhưng đã có Redis (KV_REST_API_* / UPSTASH_*,
+   đang dùng cho api/danh-gia-san-pham.mjs). Không có Blob thì lưu ở Redis, khóa riêng pvihcm:nhan-xet:<slug>
+   (danh sách JSON, mới nhất đứng đầu), không đụng khóa khác. ── */
+const REDIS_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+const REDIS_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+const HAS_BLOB = !!(process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_STORE_ID);
+const HAS_REDIS = !!(REDIS_URL && REDIS_TOKEN);
+const rkey = (slug) => `pvihcm:nhan-xet:${slug}`;
+async function redis(command) {
+  const r = await fetch(REDIS_URL.replace(/\/$/, ''), {
+    method: 'POST', headers: { Authorization: `Bearer ${REDIS_TOKEN}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(command), signal: AbortSignal.timeout(8000),
+  });
+  if (!r.ok) throw new Error('REDIS ' + r.status);
+  const d = await r.json();
+  if (d.error) throw new Error('REDIS ' + d.error);
+  return d.result;
+}
+async function readAllRedis(slug) {
+  const rows = (await redis(['LRANGE', rkey(slug), '0', '4999'])) || [];
+  const items = rows.map((x) => { try { return JSON.parse(x); } catch (e) { return null; } }).filter(Boolean);
+  const sum = items.reduce((t, x) => t + Number(x.rating || 0), 0);
+  return {
+    ok: true, count: items.length,
+    average: items.length ? Math.round((sum / items.length) * 10) / 10 : 0,
+    reviews: items.filter((x) => x.comment).slice(0, MAX_SHOW),
+  };
+}
+async function removeRedis(id) {
+  const m = /^nhan-xet\/([a-z0-9-]{3,120})\//.exec(id);
+  if (!m) return false;
+  const rows = (await redis(['LRANGE', rkey(m[1]), '0', '4999'])) || [];
+  const hit = rows.find((x) => { try { return JSON.parse(x).id === id; } catch (e) { return false; } });
+  if (!hit) return false;
+  await redis(['LREM', rkey(m[1]), '1', hit]);
+  return true;
+}
+
 async function readAll(slug) {
+  if (!HAS_BLOB) return readAllRedis(slug);
   const blobs = [];
   let cursor;
   do {
@@ -91,7 +130,7 @@ async function readAll(slug) {
 module.exports = async function handler(req, res) {
   res.setHeader('X-Robots-Tag', 'noindex');
   // Chưa kết nối Blob store: báo cho trang ẩn khối nhận xét thay vì để khách gửi rồi lỗi.
-  if (!process.env.BLOB_READ_WRITE_TOKEN && !process.env.BLOB_STORE_ID) {
+  if (!HAS_BLOB && !HAS_REDIS) {
     res.setHeader('Cache-Control', 'public, s-maxage=60');
     return res.status(req.method === 'GET' ? 200 : 503).json({ ok: req.method === 'GET', disabled: true, error: 'Mục nhận xét chưa được bật.' });
   }
@@ -129,9 +168,13 @@ module.exports = async function handler(req, res) {
 
       const review = { rating, name, comment, date: today() };
       const pathname = `${PREFIX}${slug}/${Date.now()}-${crypto.randomBytes(4).toString('hex')}.json`;
-      await withAccess((a) => put(pathname, JSON.stringify(review), {
-        access: a, contentType: 'application/json', addRandomSuffix: false, cacheControlMaxAge: 60,
-      }));
+      if (HAS_BLOB) {
+        await withAccess((a) => put(pathname, JSON.stringify(review), {
+          access: a, contentType: 'application/json', addRandomSuffix: false, cacheControlMaxAge: 60,
+        }));
+      } else {
+        await redis(['LPUSH', rkey(slug), JSON.stringify({ id: pathname, ...review })]);
+      }
       const page = clean(d.page, 200);
       await pushReviewToSheet({
         id: pathname, rating, comment, name, slug, title: clean(d.title, 200),
@@ -150,7 +193,7 @@ module.exports = async function handler(req, res) {
       if (!okKey) return res.status(403).json({ ok: false, error: 'Sai mã quản trị.' });
       const id = String(req.query.id || '');
       if (!/^nhan-xet\/[a-z0-9-]{3,120}\/\d+-[a-f0-9]{8}\.json$/.test(id)) return res.status(400).json({ ok: false, error: 'Mã nhận xét không hợp lệ.' });
-      await del(id);
+      if (HAS_BLOB) await del(id); else await removeRedis(id);
       return res.status(200).json({ ok: true });
     }
 
