@@ -37,6 +37,17 @@ const clean = (v, max) => String(v == null ? '' : v)
   .replace(/\r\n?/g, '\n').replace(/\n{3,}/g, '\n\n').trim().slice(0, max);
 // Che chuỗi số dài (số điện thoại, số hợp đồng, CCCD) để khách không vô tình lộ thông tin.
 const maskNumbers = (s) => s.replace(/(?:\+?\d[\s.-]?){9,}/g, (m) => m.replace(/\d/g, '*'));
+// Che bớt tên người gửi khi hiện công khai (chủ site 23/11/2026): mỗi chữ trừ chữ cuối còn chữ cái đầu + "***",
+// tên một chữ còn chữ cái đầu + "***". Ví dụ "Nguyễn Văn Minh" → "N*** V*** Minh", "Minh" → "M***".
+// Tên đầy đủ chỉ gửi vào Google Sheet cho chủ site.
+function maskName(name) {
+  const w = String(name || '').trim().split(/\s+/).filter(Boolean);
+  if (!w.length) return '';
+  const hide = (x) => Array.from(x)[0] + '***';
+  if (w.length === 1) return hide(w[0]);
+  return w.slice(0, -1).map(hide).concat(w[w.length - 1]).join(' ');
+}
+const publicView = (x) => ({ ...x, name: maskName(x.name) });
 const today = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' }).format(new Date());
 
 function limited(ip) {
@@ -94,7 +105,7 @@ async function readAllRedis(slug) {
   return {
     ok: true, count: items.length,
     average: items.length ? Math.round((sum / items.length) * 10) / 10 : 0,
-    reviews: items.filter((x) => x.comment).slice(0, MAX_SHOW),
+    reviews: items.filter((x) => x.comment).slice(0, MAX_SHOW).map(publicView),
   };
 }
 async function removeRedis(id) {
@@ -123,7 +134,7 @@ async function readAll(slug) {
     ok: true,
     count: items.length,
     average: items.length ? Math.round((sum / items.length) * 10) / 10 : 0,
-    reviews: items.filter((x) => x.comment).slice(0, MAX_SHOW),
+    reviews: items.filter((x) => x.comment).slice(0, MAX_SHOW).map(publicView),
   };
 }
 
@@ -181,7 +192,7 @@ module.exports = async function handler(req, res) {
         page: /^\/[a-z0-9\-/]*$/i.test(page) ? 'https://pvihcm.com' + page : '',
         kind: slug === 'pvi-thanh-do' ? 'Công ty (khối gộp với điểm Google)' : 'Bài viết',
       });
-      return res.status(200).json({ ok: true, review: { id: pathname, ...review } });
+      return res.status(200).json({ ok: true, review: publicView({ id: pathname, ...review }) });
     }
 
     if (req.method === 'DELETE') {

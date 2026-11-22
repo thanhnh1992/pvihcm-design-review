@@ -70,7 +70,6 @@ const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5
 .gr-note{margin:4px 0 0;font-size:13px;line-height:1.6;color:#5b6f86}
 .gr-link{color:#1F4A8C;font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .fb .fb-src{margin:-4px 0 12px;font-size:14px;line-height:1.6;color:#5b6f86}
-.fb .fb-note b{color:#b42318;font-weight:600}
 .dgs-in{width:min(760px,calc(100% - 2*var(--gutter,20px)));margin-inline:auto}
 .dgs .fb{max-width:none}
 ${news.slice(from, to).trim()}
@@ -106,7 +105,6 @@ ${orgLd(' data-org-rating')}
 <label class="fb-label" for="fb-name">Tên hiển thị <span>(không bắt buộc)</span></label>
 <input id="fb-name" name="name" maxlength="60" autocomplete="nickname">
 <p class="fb-honey" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></p>
-<p class="fb-note">Chỉ cần chọn số sao là gửi được. Nhận xét hiển thị công khai, <b>không được chèn đường link</b>, không ghi số điện thoại, số hợp đồng hay thông tin cá nhân.</p>
 <div class="fb-actions"><button type="submit" class="fb-btn">Gửi đánh giá</button><span class="fb-count" aria-hidden="true">0/1000</span></div>
 <p class="fb-msg" role="status" aria-live="polite"></p>
 </form>
@@ -116,6 +114,13 @@ ${orgLd(' data-org-rating')}
 </div></section>
 ${END}`;
 };
+
+// Bỏ câu ghi chú dưới form trên mọi trang (chủ site 23/11/2026), kể cả bài viết đã sinh sẵn.
+for (const file of walk(DIST)) {
+  const html = fs.readFileSync(file, 'utf8');
+  const out = html.replace(/<p class="fb-note">[\s\S]*?<\/p>\r?\n?/g, '');
+  if (out !== html) fs.writeFileSync(file, out);
+}
 
 let added = 0, kept = 0;
 const skipped = {};
