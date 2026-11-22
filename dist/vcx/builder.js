@@ -1,16 +1,18 @@
 /* Trang Bảo hiểm vật chất xe: 3 bước (thông tin xe, điều khoản bổ sung, phí TNDS mua kèm) rồi gom thành
    tin nhắn gửi tư vấn viên qua Zalo. Chuyển từ vcx-builder.tsx của baohiempvi-vn (16/11/2026).
-   Chưa tính phí vật chất xe: chờ biểu phí đã đối chiếu. Không lưu, không gửi dữ liệu đi đâu.
+   Ước tính khoảng phí vật chất theo giá trị xe. Không lưu, không gửi dữ liệu đi đâu.
    HTML in sẵn đủ giá trị mặc định (tools/vcx-ui.mjs); file này chỉ gắn thao tác. */
 import { carCatalogue, ZALO_TU_VAN } from './vcx-data.js';
-import { passengerFeeForSeats, quoteTnds } from '../o-to/tnds-data.js';
+import { passengerFeeForSeats, quoteTnds, resolveBaseFee, tndsVehicleClasses } from '../o-to/tnds-data.js';
+
+const taxiRow = tndsVehicleClasses.find(({ id }) => id === 'special').usages[0].rows.find(({ id }) => id === 'special-taxi');
 
 const root = document.querySelector('[data-vcx]');
 if (root) {
   const $ = (s) => root.querySelector(s);
   const f = (n) => root.querySelector(`[name="${n}"]`);
   const fmt = (n) => new Intl.NumberFormat('vi-VN').format(n);
-  const USES0 = f('use').options[0].value;
+  const businessUse = f('businessUse');
 
   // Năm sản xuất: 21 năm tính từ năm hiện tại (HTML in sẵn theo năm sinh trang).
   const yearNow = new Date().getFullYear();
@@ -26,16 +28,30 @@ if (root) {
   const state = () => {
     const amount = Number(f('value').value.replace(/\D/g, ''));
     const picked = [...root.querySelectorAll('[name="clause"]:checked')].map((c) => c.value).sort();
-    const src = passengerFeeForSeats(Number(f('seats').value), f('use').value !== USES0);
-    const tnds = f('kemTnds').checked ? quoteTnds(src?.fee) : null;
-    return { brand: f('brand').value.trim(), model: f('model').value.trim(), seats: f('seats').value, year: f('year').value, use: f('use').value, amount, picked, src, tnds };
+    const business = $('[name="use"]:checked').value === 'business';
+    const type = business ? businessUse.value : 'private';
+    const seats = f('seats').value;
+    const use = business ? 'Xe kinh doanh' : 'Xe không kinh doanh';
+    const useDetail = business && type ? businessUse.selectedOptions[0].textContent : '';
+    let src = null;
+    if (type === 'taxi') {
+      src = { label: `xe taxi ${seats} chỗ`, fee: resolveBaseFee(taxiRow, { seats: Number(seats) }) };
+    } else if (type === 'private' || type === 'contract') {
+      src = passengerFeeForSeats(Number(seats), business);
+    }
+    const wantsTnds = f('kemTnds').checked;
+    const tnds = wantsTnds ? quoteTnds(src?.fee) : null;
+    return { brand: f('brand').value.trim(), model: f('model').value.trim(), seats, year: f('year').value, business, use: useDetail ? `${use}: ${useDetail}` : use, amount, picked, src, tnds, wantsTnds, totalLoss: f('totalLoss').checked };
   };
   const errorsOf = (s) => ({ brand: s.brand.length < 2, model: !s.model, value: s.amount < 50_000_000 });
 
   const models = $('#vcx-models');
+  const estimate = $('[data-vcx-estimate]');
   let lastBrand = null;
   const render = () => {
     const s = state();
+    $('[data-business-use]').hidden = !s.business;
+    businessUse.disabled = !s.business;
     // Gợi ý dòng xe theo nhãn hiệu (không phân biệt hoa thường).
     const key = Object.keys(carCatalogue).find((b) => b.toLowerCase() === s.brand.toLowerCase()) ?? '';
     if (key !== lastBrand) { lastBrand = key; models.innerHTML = (carCatalogue[key] ?? []).map((m) => `<option value="${m}"></option>`).join(''); }
@@ -46,11 +62,20 @@ if (root) {
       root.querySelector(`[data-err="${k}"]`).hidden = !show;
       f(k).setAttribute('aria-invalid', String(!!show));
     }
-    root.querySelectorAll('.vcx-clause').forEach((l) => l.toggleAttribute('data-on', l.querySelector('input').checked));
+    if (estimate) {
+      const showEstimate = !err.value && Number.isSafeInteger(s.amount);
+      const fee = (rate) => `${fmt(Math.round(s.amount * (Number(rate) / 10000)))} đ`;
+      const { lowBps, highBps } = estimate.dataset;
+      const estimateText = showEstimate
+        ? `Ước tính: ${fee(lowBps)} đến ${fee(highBps)} mỗi năm. Phí chính thức theo báo giá.`
+        : '';
+      if (estimate.textContent !== estimateText) estimate.textContent = estimateText;
+      estimate.hidden = !showEstimate;
+    }
     // Bước 3: phí TNDS theo số chỗ và mục đích sử dụng.
-    const on = f('kemTnds').checked;
-    $('.vcx-tndsFee').hidden = !(on && s.tnds && s.src);
-    $('.vcx-tndsSrc').hidden = !on;
+    $('.vcx-tndsFee').hidden = !s.tnds;
+    $('.vcx-tndsSrc').hidden = !s.wantsTnds;
+    $('[data-tnds-pending]').hidden = !s.wantsTnds || Boolean(s.tnds);
     if (s.tnds && s.src) {
       root.querySelector('[data-tnds="label"]').textContent = `Phí ${s.src.label}`;
       root.querySelector('[data-tnds="base"]').textContent = `${fmt(s.tnds.base)} đ`;
@@ -59,7 +84,12 @@ if (root) {
     }
     const car = `${s.brand} ${s.model}`.trim();
     root.querySelector('[data-sum="car"]').textContent = car || 'Xe của bạn';
-    root.querySelector('[data-sum="line"]').textContent = `${s.seats} chỗ · ${s.year} · ${s.use} · ${s.amount ? `${fmt(s.amount)} đ` : 'chưa nhập giá trị'} · ĐKBS ${s.picked.length ? s.picked.join(', ') : 'không chọn'}${s.tnds ? ` · TNDS ${fmt(s.tnds.total)} đ` : ''}`;
+    root.querySelector('[data-sum="line"]').textContent = [
+      `${s.seats} chỗ`, s.year, s.use, s.amount ? `${fmt(s.amount)} đ` : 'chưa nhập giá trị',
+      `ĐKBS ${s.picked.length ? s.picked.join(', ') : 'không chọn'}`,
+      s.totalLoss && 'Yêu cầu tư vấn gói tổn thất toàn bộ',
+      s.wantsTnds && (s.tnds ? `TNDS ${fmt(s.tnds.total)} đ` : 'TNDS cần xác nhận phí'),
+    ].filter(Boolean).join(' · ');
     root.querySelector('[data-sum="note"]').textContent = copied ? 'Đã sao chép thông tin, dán vào Zalo để gửi.' : 'Thông tin được sao chép để bạn dán vào Zalo; trang không lưu dữ liệu.';
   };
 
@@ -80,8 +110,9 @@ if (root) {
     `Mục đích: ${s.use}`,
     `Giá trị xe muốn bảo hiểm: ${s.amount ? fmt(s.amount) + ' đ' : '(chưa nhập)'}`,
     `Điều khoản bổ sung: ${s.picked.length ? s.picked.join(', ') : 'không chọn'}`,
-    `Mua kèm TNDS bắt buộc: ${s.tnds ? `có, ${fmt(s.tnds.total)} đ gồm VAT` : 'không'}`,
-  ].join('\n');
+    s.totalLoss && 'Yêu cầu tư vấn gói chỉ bảo hiểm tổn thất toàn bộ.',
+    `Mua kèm TNDS bắt buộc: ${s.wantsTnds ? (s.tnds ? `có, ${fmt(s.tnds.total)} đ gồm VAT` : 'có, nhờ xác nhận nhóm xe và phí') : 'không'}`,
+  ].filter(Boolean).join('\n');
 
   root.querySelectorAll('[data-send]').forEach((btn) => btn.addEventListener('click', async () => {
     touched = true;
@@ -100,17 +131,4 @@ if (root) {
   }));
 
   render();
-}
-
-// Mô hình 3D: chỉ tải khi khối sắp vào màn hình.
-const viewer = document.querySelector('[data-vf7]');
-if (viewer) {
-  const io = new IntersectionObserver((entries) => {
-    if (!entries.some((e) => e.isIntersecting)) return;
-    io.disconnect();
-    import('./vf7.js').then((m) => m.mount(viewer)).catch(() => {
-      viewer.querySelector('.vcx-canvasNote').textContent = 'Thiết bị chưa hỗ trợ mô hình 3D.';
-    });
-  }, { rootMargin: '300px' });
-  io.observe(viewer);
 }

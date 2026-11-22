@@ -274,11 +274,46 @@
 .vcx-page header{height:auto;max-width:none;justify-content:flex-start}
 .vcx-page .vcx-stepHead{margin:0 0 16px;padding:0}
 .vcx-page .vcx-certTop{margin:0 0 6px;padding:0 0 14px}
-.vcx-page .vcx-viewer svg,.vcx-page .vcx-clause svg{width:1em;height:1em}
 /* Không có ô kiểm tra giá như bản gốc: nút báo giá nằm cạnh ô giá trị xe. */
-.vcx-fields .vcx-quoteBtn{grid-column:2/4}
-@media(max-width:720px){.vcx-fields .vcx-quoteBtn{grid-column:1/-1}}
-.vcx-canvas canvas{touch-action:pan-y}
+.vcx-fields .vcx-value{display:grid;align-content:start;gap:7px;overflow-wrap:anywhere}
+.vcx-fields [data-vcx-estimate]{color:var(--ink);font-size:16px;line-height:1.5}
+/* Mục đích sử dụng và điều khoản bổ sung. */
+.vcx-builder .vcx-fields{grid-template-columns:repeat(2,minmax(0,1.2fr)) repeat(2,minmax(0,.8fr))}
+.vcx-fields .vcx-value,.vcx-fields .vcx-quoteBtn{grid-column:span 2}
+.vcx-options{display:grid;gap:16px}
+.vcx-options fieldset{margin:0;padding:0;border:0;min-inline-size:0}
+.vcx-options legend{font-weight:750;font-size:18px;color:var(--ink);padding:0;margin-bottom:10px}
+.vcx-useGrid,.vcx-clauseGrid{display:grid;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.vcx-clauseGrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.vcx-choice{--choice:#1f4a8c;--choice-bg:#edf4ff;display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:10px;align-items:start;padding:12px;min-height:60px;border:1px solid #cfdbe7;border-radius:12px;background:#fff;color:var(--ink);cursor:pointer}
+.vcx-choice[data-kind="briefcase"],.vcx-choice[data-kind="garage"],.vcx-choice[data-kind="parts"]{--choice:#824904;--choice-bg:#fff5e5}
+.vcx-choice[data-kind="lock"],.vcx-choice[data-kind="shield"]{--choice:#70429b;--choice-bg:#f7efff}
+.vcx-choice[data-kind="battery"],.vcx-choice[data-kind="wrench"]{--choice:#216349;--choice-bg:#eaf8f0}
+.vcx-choice[data-kind="drop"]{--choice:#125f81;--choice-bg:#eaf7fb}
+.vcx-choice:hover{border-color:var(--choice)}
+.vcx-choice:has(input:checked){border-color:var(--choice);background:var(--choice-bg)}
+.vcx-choice:has(input:focus-visible){outline:2px solid var(--choice);outline-offset:2px}
+.vcx-choice input{grid-column:3;grid-row:1;inline-size:18px;block-size:18px;margin:2px 0 0;accent-color:var(--choice);cursor:pointer}
+.vcx-choiceIcon{grid-column:1;grid-row:1;display:grid;place-items:center;width:36px;height:36px;border-radius:8px;background:var(--choice-bg);color:var(--choice)}
+.vcx-choice:has(input:checked) .vcx-choiceIcon{color:#fff;background:var(--choice)}
+.vcx-choiceIcon svg{width:21px;height:21px}
+.vcx-choiceText{grid-column:2;grid-row:1;display:grid;gap:2px;min-width:0}
+.vcx-choiceText b{font-size:16px;line-height:1.4}
+.vcx-choiceText small{font-size:13px;font-weight:700;color:var(--choice)}
+.vcx-choiceText>span{font-size:14px;line-height:1.45;color:#43566a}
+.vcx-businessUse{display:grid;gap:6px;margin:10px 0 0;max-width:380px;font-weight:650}
+.vcx-businessUse select{width:100%;min-height:44px;border:1px solid #c1d0df;border-radius:9px;padding:8px 10px;color:var(--ink);background:#fff;font:inherit}
+.vcx-optionNote{font-size:14px;line-height:1.5;color:#43566a;margin:10px 0 0}
+.vcx-more{margin-top:12px;padding:0;border-top:1px solid #d5dfe9}
+.vcx-more summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:6px 0;color:#183665;font-weight:750;cursor:pointer;list-style:none}
+.vcx-more summary::-webkit-details-marker{display:none}
+.vcx-more summary span{flex:0 0 8px;height:8px;margin-right:5px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.vcx-more[open] summary span{transform:rotate(225deg)}
+.vcx-clauseDocs{display:flex;flex-wrap:wrap;gap:4px 20px}
+.vcx-clauseDocs a{display:inline-flex;align-items:center;min-height:44px;color:#183665;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:880px){.vcx-clauseGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.vcx-builder .vcx-fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.vcx-useGrid,.vcx-clauseGrid{grid-template-columns:minmax(0,1fr)}}
 /* Chữ trên nền xanh đậm: product.css (.fire h2) và .vcx-sources a làm chìm chữ trắng. */
 .vcx-page .vcx-summary h2{color:#fff}
 .vcx-sources a.vcx-primary{color:#fff}

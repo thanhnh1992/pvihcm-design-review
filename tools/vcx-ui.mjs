@@ -4,7 +4,7 @@
 // chuyển sang HTML tĩnh + JS thuần. Giữ nguyên URL cũ của pvihcm.
 // Dữ liệu: tools/data/vcx.mjs (chép nguyên văn vcx-data.ts qua tools/load-data.mjs), không gõ lại số liệu;
 // trình duyệt dùng bản chép dist/vcx/vcx-data.js. Phí TNDS ở bước 3 dùng dist/o-to/tnds-data.js.
-// JS: dist/vcx/builder.js (3 bước, gửi Zalo), dist/vcx/vf7.js (mô hình 3D, Three.js r170 ở dist/vendor).
+// JS: dist/vcx/builder.js (chọn nhóm xe, quyền lợi và gửi Zalo).
 // CSS: dist/vcx.css, sinh từ vcx.module.css của baohiempvi-vn khi có thư mục đó (BAOHIEMPVI_DIR):
 // lớp module đổi thành vcx-<tên>, font về Be Vietnam Pro; sửa riêng cho pvihcm đặt trong FOOT bên dưới.
 // Bỏ so với bản gốc: ô "AI kiểm tra giá xe thực tế" (chưa nối dịch vụ, bên đó chỉ báo "đang kết nối").
@@ -13,6 +13,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { page, esc, SITE, faqJsonLd } from './chrome.mjs';
+import { vcxEstimate, vcxEstimateLabel } from './data/vcx-estimate.mjs';
+import { businessUses, earlierClausesPdf, mainClauses, moreClauses, vehicleUses } from './data/vcx-options.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.resolve(HERE, '../dist');
@@ -23,14 +25,13 @@ fs.mkdirSync(path.join(DIST, 'vcx'), { recursive: true });
 fs.copyFileSync(path.join(HERE, 'data/vcx.mjs'), path.join(DIST, 'vcx/vcx-data.js'));
 const D = await import(pathToFileURL(path.join(DIST, 'vcx/vcx-data.js')).href);
 const T = await import(pathToFileURL(path.join(DIST, 'o-to/tnds-data.js')).href);
-const { askBeforeSigning, basicScope, carCatalogue, certificateMock, certificateNotes, claimSteps, clauses, CLAUSES_PDF, DOI_CHIEU_NGUON, faqs, HOTLINE_BOI_THUONG, related, RULES_PDF, sampleCertificate, ZALO_TU_VAN } = D;
+const { askBeforeSigning, basicScope, carCatalogue, certificateMock, certificateNotes, claimSteps, CLAUSES_PDF, DOI_CHIEU_NGUON, faqs, HOTLINE_BOI_THUONG, related, RULES_PDF, sampleCertificate, ZALO_TU_VAN } = D;
+const currentClausesPdf = CLAUSES_PDF.replace('https://adminweb.pvi.com.vn/', 'https://www.pvi.com.vn/adminweb/');
 
-// Ảnh, video (Hình ảnh mô phỏng) và Three.js: chép từ baohiempvi-vn khi có thư mục đó.
+// Ảnh và video minh họa: chép từ baohiempvi-vn khi có thư mục đó.
 if (fs.existsSync(SRC)) {
   fs.mkdirSync(path.join(DIST, 'assets/vat-chat-xe'), { recursive: true });
   for (const f of ['showroom-kiem-tra-xe-poster.webp', 'showroom-kiem-tra-xe.mp4', 'showroom-kiem-tra-xe.vi.vtt']) fs.copyFileSync(path.join(B, 'public/img/vat-chat-xe', f), path.join(DIST, 'assets/vat-chat-xe', f));
-  fs.mkdirSync(path.join(DIST, 'vendor/three-0.170.0'), { recursive: true });
-  for (const f of ['three.module.min.js', 'LICENSE.txt']) fs.copyFileSync(path.join(B, 'public/vendor/three-0.170.0', f), path.join(DIST, 'vendor/three-0.170.0', f));
   buildCss();
 }
 
@@ -48,7 +49,6 @@ const PVI_LOGO = '/assets/pvi-logo.svg';
 
 const YEAR_NOW = 2026; // builder.js tự cập nhật theo năm hiện tại khi chạy
 const YEARS = Array.from({ length: 21 }, (_, i) => YEAR_NOW - i);
-const USES = ['Không kinh doanh vận tải', 'Taxi / cho thuê tự lái', 'Kinh doanh vận tải theo hợp đồng'];
 const SEATS = ['2', '4', '5', '7', '8', '9', '16'];
 const opt = (list, sel) => list.map((v) => `<option${String(v) === String(sel) ? ' selected' : ''}>${esc(v)}</option>`).join('');
 
@@ -59,55 +59,66 @@ const ICONS = {
   wrench: SVG('<path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.6 17.1a1.8 1.8 0 0 0 2.5 2.5l5.7-5.7a4 4 0 0 0 5.1-5.4l-2.4 2.4-2.2-.5-.5-2.2z"/>'),
   garage: SVG('<path d="M3 21V9l9-5 9 5v12"/><path d="M7 21v-8h10v8M7 16h10"/>'),
   drop: SVG('<path d="M12 3s6 6.4 6 11a6 6 0 0 1-12 0c0-4.6 6-11 6-11z"/><path d="M12 9v11"/>'),
+  battery: SVG('<rect x="3" y="7" width="17" height="10" rx="2"/><path d="M22 10v4m-10-5-3 3h5l-3 3"/>'),
+  parts: SVG('<path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Zm0 9 8-4.5M12 12 4 7.5M12 12v9m-4-16 8 4.5"/>'),
+  car: SVG('<path d="m5 10 2-5h10l2 5M3 11l2-1h14l2 1v7H3v-7Zm2 7v2m14-2v2M7 14h1m8 0h1"/>'),
+  briefcase: SVG('<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V4h8v3M3 12l9 3 9-3m-9 1v3"/>'),
+  globe: SVG('<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/>'),
+  clock: SVG('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'),
+  shield: SVG('<path d="M12 3c2.8 1.7 5.5 2.5 8 3v5c0 5-3 8-8 10-5-2-8-5-8-10V6c2.5-.5 5.2-1.3 8-3Z"/>'),
+  clipboard: SVG('<rect x="5" y="5" width="14" height="16" rx="2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6m-6 4h6"/>'),
+  tow: SVG('<path d="M3 17V8h6v9m0-7h8l4 4v3h-3m-9 0h4M5 17h1"/><circle cx="6" cy="18" r="2"/><circle cx="16" cy="18" r="2"/>'),
 };
+const clauseButton = ([id, icon, title, text, checked]) => `<label class="vcx-choice" data-kind="${icon}"><input type="checkbox" name="clause" value="${id}"${checked ? ' checked' : ''} aria-describedby="vcx-clause-${id}" aria-labelledby="vcx-clause-title-${id}"><span class="vcx-choiceIcon">${ICONS[icon]}</span><span class="vcx-choiceText"><b id="vcx-clause-title-${id}">${esc(title)}</b><small>ĐKBS ${id}/XCG-PVI</small><span id="vcx-clause-${id}">${esc(text)}</span></span></label>`;
 const fmt = (n) => new Intl.NumberFormat('vi-VN').format(n);
 const tndsSeed = T.passengerFeeForSeats(5, false);
 const tndsQ = T.quoteTnds(tndsSeed?.fee);
 
 const builder = `<div class="vcx-builder" data-vcx>
-<section class="vcx-step" aria-labelledby="vcx-step1">
+<section class="vcx-step" id="tinh-phi" aria-labelledby="vcx-step1">
 <header class="vcx-stepHead"><span>1</span><h2 id="vcx-step1">Thông tin xe cần bảo hiểm</h2></header>
 <div class="vcx-fields">
 <label><span>Nhãn hiệu</span><input name="brand" list="vcx-brands" placeholder="Ví dụ: Kia, Mazda, BYD" autocomplete="off"><datalist id="vcx-brands">${Object.keys(carCatalogue).map((b) => `<option value="${esc(b)}"></option>`).join('')}</datalist><em data-err="brand" hidden>Nhập nhãn hiệu xe.</em></label>
 <label><span>Dòng xe</span><input name="model" list="vcx-models" placeholder="Ví dụ: Yaris, VF 8, Camry" autocomplete="off"><datalist id="vcx-models"></datalist><em data-err="model" hidden>Nhập dòng xe.</em></label>
 <label><span>Số chỗ</span><select name="seats">${opt(SEATS, '5')}</select></label>
 <label><span>Năm sản xuất</span><select name="year">${opt(YEARS, YEAR_NOW)}</select></label>
-<label><span>Mục đích sử dụng</span><select name="use">${opt(USES, USES[0])}</select></label>
-<label class="vcx-value"><span>Giá trị xe muốn bảo hiểm</span><div class="vcx-money"><input name="value" inputmode="numeric" placeholder="915.000.000" autocomplete="off"><b>đ</b></div><em data-err="value" hidden>Nhập giá trị xe muốn bảo hiểm (từ 50 triệu đồng).</em><small>PVI xác nhận giá trị trước khi cấp đơn.</small></label>
+<div class="vcx-value"><label for="vcx-insured-value"><span>Giá trị xe muốn bảo hiểm</span></label><div class="vcx-money"><input id="vcx-insured-value" name="value" inputmode="numeric" placeholder="915.000.000" autocomplete="off" aria-describedby="vcx-estimate-help"><b>đ</b></div><em data-err="value" hidden>Nhập giá trị xe muốn bảo hiểm (từ 50 triệu đồng).</em><small id="vcx-estimate-help">Phí vật chất tham khảo: ${vcxEstimateLabel} giá trị xe mỗi năm.</small><output for="vcx-insured-value" data-vcx-estimate data-low-bps="${vcxEstimate.lowBps}" data-high-bps="${vcxEstimate.highBps}" hidden></output></div>
 <button type="button" class="vcx-quoteBtn" data-send><span>Nhận báo giá ngay <b aria-hidden="true">→</b></span></button>
 </div>
 </section>
 
 <section class="vcx-step" id="quyen-loi" aria-labelledby="vcx-step2">
-<header class="vcx-stepHead"><span>2</span><h2 id="vcx-step2">Chọn quyền lợi, xem rõ phạm vi</h2></header>
-<div class="vcx-stepGrid">
-<figure class="vcx-viewer" data-vf7>
-<div class="vcx-viewerTop"><div><small>MÔ HÌNH 3D MINH HỌA</small><b>Dáng xe VF 7</b></div>
-<div class="vcx-viewToggle" role="group" aria-label="Góc xem mô hình"><button type="button" aria-pressed="true" data-view="exterior">Ngoại thất</button><button type="button" aria-pressed="false" data-view="battery">Lật xem pin</button></div></div>
-<div class="vcx-canvas" role="img" aria-label="Mô hình 3D minh họa dáng xe VF 7, kéo để xoay"><p class="vcx-canvasNote">Đang dựng mô hình 3D…</p><span class="vcx-packLabel" hidden>Bộ pin dưới sàn xe</span></div>
-<div class="vcx-viewerBottom"><div class="vcx-paints" role="group" aria-label="Màu xe minh họa"><button type="button" aria-pressed="true" aria-label="Màu Trắng" title="Trắng" data-paint="0xe9eef2" style="background:#e9eef2"></button><button type="button" aria-pressed="false" aria-label="Màu Xanh" title="Xanh" data-paint="0x1d4f91" style="background:#1d4f91"></button><button type="button" aria-pressed="false" aria-label="Màu Xám" title="Xám" data-paint="0x6b7683" style="background:#6b7683"></button></div><span class="vcx-dragHint">Kéo để xoay xe</span></div>
-<figcaption>Mô hình dựng bằng code để giải thích quyền lợi; hình dáng và bộ pin mang tính minh họa, không phải thiết kế chính hãng.</figcaption>
-</figure>
-<div class="vcx-cover">
-<div class="vcx-basic"><small>PHẠM VI CƠ BẢN · ĐÃ GỒM</small><ul>${basicScope.map((s) => `<li>${esc(s)}</li>`).join('')}</ul></div>
-<fieldset class="vcx-clauses"><legend>Điều khoản bổ sung <span>chọn thêm</span></legend>
-${clauses.map((c) => { const on = ['006', '007', '008'].includes(c.id); return `<label class="vcx-clause"${on ? ' data-on' : ''}><input type="checkbox" name="clause" value="${c.id}"${on ? ' checked' : ''}><i aria-hidden="true">${ICONS[c.icon]}</i><span><b>${esc(c.title)}</b><small>${esc(c.code)}</small><span>${esc(c.text)}</span></span></label>`; }).join('\n')}
+<header class="vcx-stepHead"><span>2</span><h2 id="vcx-step2">Chọn nhóm xe và quyền lợi</h2></header>
+<div class="vcx-options">
+<fieldset class="vcx-uses"><legend>Mục đích sử dụng xe</legend>
+<div class="vcx-useGrid">${vehicleUses.map(({ id, icon, label, text }) => `<label class="vcx-choice" data-kind="${icon}"><input type="radio" name="use" value="${id}"${id === 'private' ? ' checked' : ''}><span class="vcx-choiceIcon">${ICONS[icon]}</span><span class="vcx-choiceText"><b>${esc(label)}</b><span>${esc(text)}</span></span></label>`).join('')}</div>
+<label class="vcx-businessUse" data-business-use hidden><span>Hình thức kinh doanh</span><select name="businessUse" disabled><option value="">Chọn hình thức (nếu đã xác định)</option>${businessUses.map(([id, label]) => `<option value="${id}">${esc(label)}</option>`).join('')}</select></label>
 </fieldset>
-</div>
+<div class="vcx-basic"><small>PHẠM VI CƠ BẢN · ĐÃ GỒM</small><ul>${basicScope.map((s) => `<li>${esc(s)}</li>`).join('')}</ul></div>
+<fieldset class="vcx-addons"><legend>Điều khoản bổ sung</legend>
+<div class="vcx-clauseGrid">${mainClauses.map(clauseButton).join('\n')}</div>
+<p class="vcx-optionNote">Với pin động cơ (019), thiết bị lắp thêm (014) và thiết bị chuyên dùng (013), tư vấn viên sẽ xác nhận phiên bản điều khoản, điều kiện áp dụng và giá trị cần kê khai.</p>
+<details class="vcx-more"><summary>Các điều khoản khác <span aria-hidden="true"></span></summary>
+<div class="vcx-clauseGrid">${moreClauses.map(clauseButton).join('\n')}
+<label class="vcx-choice" data-kind="shield"><input type="checkbox" name="totalLoss"><span class="vcx-choiceIcon">${ICONS.shield}</span><span class="vcx-choiceText"><b>Gói tổn thất toàn bộ</b><span>Yêu cầu tư vấn riêng về phạm vi chỉ bảo hiểm tổn thất toàn bộ.</span></span></label></div>
+</details>
+</fieldset>
+<div class="vcx-clauseDocs"><a href="${currentClausesPdf}" target="_blank">Xem bộ điều khoản hiệu lực 01/07/2025 ↗</a><a href="${earlierClausesPdf}" target="_blank">Tài liệu tham khảo có mã 013, 014 và 019 ↗</a></div>
 </div>
 </section>
 
 <section class="vcx-step" id="phi-tnds" aria-labelledby="vcx-step3">
 <header class="vcx-stepHead"><span>3</span><h2 id="vcx-step3">Phí TNDS bắt buộc</h2></header>
 <div class="vcx-tnds">
-<label class="vcx-tndsToggle"><input type="checkbox" name="kemTnds"><span><b>Mua kèm TNDS bắt buộc</b><small>Tính theo số chỗ và mục đích sử dụng ở bước 1</small></span></label>
+<label class="vcx-tndsToggle"><input type="checkbox" name="kemTnds"><span><b>Mua kèm TNDS bắt buộc</b><small>Tính theo số chỗ và mục đích sử dụng xe</small></span></label>
 <dl class="vcx-tndsFee" hidden><div><dt data-tnds="label">Phí ${esc(tndsSeed.label)}</dt><dd data-tnds="base">${fmt(tndsQ.base)} đ</dd></div><div><dt>VAT 10%</dt><dd data-tnds="vat">${fmt(tndsQ.vat)} đ</dd></div><div class="vcx-tndsTotal"><dt>Tổng phí TNDS 1 năm</dt><dd data-tnds="total">${fmt(tndsQ.total)} đ</dd></div></dl>
 <p class="vcx-tndsSrc" hidden>Theo ${esc(T.tndsReference.legalBasis)}. Xe bán tải, minivan chở người và hàng có mức riêng. <a href="${TNDS}#tinh-phi">Xem biểu phí đầy đủ →</a></p>
+<p class="vcx-optionNote" data-tnds-pending hidden>Tư vấn viên sẽ xác nhận nhóm xe và phí TNDS theo hồ sơ.</p>
 </div>
 </section>
 
 <section class="vcx-summary" id="bao-phi" aria-labelledby="vcx-summary" aria-live="polite">
-<div class="vcx-summaryInfo"><small>YÊU CẦU BÁO PHÍ</small><h2 id="vcx-summary" data-sum="car">Xe của bạn</h2><p data-sum="line">5 chỗ · ${YEAR_NOW} · ${USES[0]} · chưa nhập giá trị · ĐKBS 006, 007, 008</p></div>
+<div class="vcx-summaryInfo"><small>YÊU CẦU BÁO PHÍ</small><h2 id="vcx-summary" data-sum="car">Xe của bạn</h2><p data-sum="line">5 chỗ · ${YEAR_NOW} · ${esc(vehicleUses[0].label)} · chưa nhập giá trị · ĐKBS 006, 007, 008</p></div>
 <div class="vcx-summaryFee"><small>Phí tham khảo</small><b>Tư vấn viên gửi báo phí</b><span>Ví dụ thật: xe ${esc(sampleCertificate.insuredValue)}, ĐKBS ${esc(sampleCertificate.clauses)}: ${esc(sampleCertificate.total)}/năm gồm VAT</span></div>
 <div class="vcx-summaryAct"><button type="button" data-send>Gửi thông tin qua Zalo</button><span data-sum="note">Thông tin được sao chép để bạn dán vào Zalo; trang không lưu dữ liệu.</span></div>
 </section>
@@ -173,8 +184,8 @@ const main = `<div class="vcx-page">
 
 <section class="vcx-section" aria-labelledby="vcx-src"><div class="shell vcx-sources">
 <h2 id="vcx-src">Nguồn tham chiếu</h2>
-<ul><li><a href="${RULES_PDF}" target="_blank">Bảo hiểm PVI: Quy tắc bảo hiểm tự nguyện xe ô tô, hiệu lực 01/07/2025 ↗</a></li><li><a href="${CLAUSES_PDF}" target="_blank">Bảo hiểm PVI: Các điều khoản bổ sung bảo hiểm tự nguyện xe ô tô, hiệu lực 01/07/2025 ↗</a></li><li>Giấy chứng nhận bảo hiểm xe ô tô PVI cấp ngày 27/10/2026 do PVI Thành Đô cung cấp (số liệu phí); thông tin chủ xe và xe trên giấy mẫu là thông tin tượng trưng.</li></ul>
-<p>Đối chiếu nguồn ngày ${esc(DOI_CHIEU_NGUON)}. Phạm vi, loại trừ, mức khấu trừ và phí áp dụng theo quy tắc, điều khoản và hợp đồng được phát hành. Mô hình 3D và video là hình ảnh mô phỏng.</p>
+<ul><li><a href="${RULES_PDF}" target="_blank">Bảo hiểm PVI: Quy tắc bảo hiểm tự nguyện xe ô tô, hiệu lực 01/07/2025 ↗</a></li><li><a href="${currentClausesPdf}" target="_blank">Bảo hiểm PVI: Các điều khoản bổ sung bảo hiểm tự nguyện xe ô tô, hiệu lực 01/07/2025 ↗</a></li><li>Giấy chứng nhận bảo hiểm xe ô tô PVI cấp ngày 27/10/2026 do PVI Thành Đô cung cấp (số liệu phí); thông tin chủ xe và xe trên giấy mẫu là thông tin tượng trưng.</li></ul>
+<p>Đối chiếu nguồn ngày ${esc(DOI_CHIEU_NGUON)}. Phạm vi, loại trừ, mức khấu trừ và phí áp dụng theo quy tắc, điều khoản và hợp đồng được phát hành. Video là hình ảnh mô phỏng.</p>
 <a class="vcx-primary" href="${ZALO_TU_VAN}" target="_blank">Nhắn Zalo 0938 072 236</a>
 </div></section>
 </div>`;
@@ -234,11 +245,46 @@ function buildCss() {
 .vcx-page header{height:auto;max-width:none;justify-content:flex-start}
 .vcx-page .vcx-stepHead{margin:0 0 16px;padding:0}
 .vcx-page .vcx-certTop{margin:0 0 6px;padding:0 0 14px}
-.vcx-page .vcx-viewer svg,.vcx-page .vcx-clause svg{width:1em;height:1em}
 /* Không có ô kiểm tra giá như bản gốc: nút báo giá nằm cạnh ô giá trị xe. */
-.vcx-fields .vcx-quoteBtn{grid-column:2/4}
-@media(max-width:720px){.vcx-fields .vcx-quoteBtn{grid-column:1/-1}}
-.vcx-canvas canvas{touch-action:pan-y}
+.vcx-fields .vcx-value{display:grid;align-content:start;gap:7px;overflow-wrap:anywhere}
+.vcx-fields [data-vcx-estimate]{color:var(--ink);font-size:16px;line-height:1.5}
+/* Mục đích sử dụng và điều khoản bổ sung. */
+.vcx-builder .vcx-fields{grid-template-columns:repeat(2,minmax(0,1.2fr)) repeat(2,minmax(0,.8fr))}
+.vcx-fields .vcx-value,.vcx-fields .vcx-quoteBtn{grid-column:span 2}
+.vcx-options{display:grid;gap:16px}
+.vcx-options fieldset{margin:0;padding:0;border:0;min-inline-size:0}
+.vcx-options legend{font-weight:750;font-size:18px;color:var(--ink);padding:0;margin-bottom:10px}
+.vcx-useGrid,.vcx-clauseGrid{display:grid;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.vcx-clauseGrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.vcx-choice{--choice:#1f4a8c;--choice-bg:#edf4ff;display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:10px;align-items:start;padding:12px;min-height:60px;border:1px solid #cfdbe7;border-radius:12px;background:#fff;color:var(--ink);cursor:pointer}
+.vcx-choice[data-kind="briefcase"],.vcx-choice[data-kind="garage"],.vcx-choice[data-kind="parts"]{--choice:#824904;--choice-bg:#fff5e5}
+.vcx-choice[data-kind="lock"],.vcx-choice[data-kind="shield"]{--choice:#70429b;--choice-bg:#f7efff}
+.vcx-choice[data-kind="battery"],.vcx-choice[data-kind="wrench"]{--choice:#216349;--choice-bg:#eaf8f0}
+.vcx-choice[data-kind="drop"]{--choice:#125f81;--choice-bg:#eaf7fb}
+.vcx-choice:hover{border-color:var(--choice)}
+.vcx-choice:has(input:checked){border-color:var(--choice);background:var(--choice-bg)}
+.vcx-choice:has(input:focus-visible){outline:2px solid var(--choice);outline-offset:2px}
+.vcx-choice input{grid-column:3;grid-row:1;inline-size:18px;block-size:18px;margin:2px 0 0;accent-color:var(--choice);cursor:pointer}
+.vcx-choiceIcon{grid-column:1;grid-row:1;display:grid;place-items:center;width:36px;height:36px;border-radius:8px;background:var(--choice-bg);color:var(--choice)}
+.vcx-choice:has(input:checked) .vcx-choiceIcon{color:#fff;background:var(--choice)}
+.vcx-choiceIcon svg{width:21px;height:21px}
+.vcx-choiceText{grid-column:2;grid-row:1;display:grid;gap:2px;min-width:0}
+.vcx-choiceText b{font-size:16px;line-height:1.4}
+.vcx-choiceText small{font-size:13px;font-weight:700;color:var(--choice)}
+.vcx-choiceText>span{font-size:14px;line-height:1.45;color:#43566a}
+.vcx-businessUse{display:grid;gap:6px;margin:10px 0 0;max-width:380px;font-weight:650}
+.vcx-businessUse select{width:100%;min-height:44px;border:1px solid #c1d0df;border-radius:9px;padding:8px 10px;color:var(--ink);background:#fff;font:inherit}
+.vcx-optionNote{font-size:14px;line-height:1.5;color:#43566a;margin:10px 0 0}
+.vcx-more{margin-top:12px;padding:0;border-top:1px solid #d5dfe9}
+.vcx-more summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:6px 0;color:#183665;font-weight:750;cursor:pointer;list-style:none}
+.vcx-more summary::-webkit-details-marker{display:none}
+.vcx-more summary span{flex:0 0 8px;height:8px;margin-right:5px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.vcx-more[open] summary span{transform:rotate(225deg)}
+.vcx-clauseDocs{display:flex;flex-wrap:wrap;gap:4px 20px}
+.vcx-clauseDocs a{display:inline-flex;align-items:center;min-height:44px;color:#183665;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:880px){.vcx-clauseGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.vcx-builder .vcx-fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.vcx-useGrid,.vcx-clauseGrid{grid-template-columns:minmax(0,1fr)}}
 /* Chữ trên nền xanh đậm: product.css (.fire h2) và .vcx-sources a làm chìm chữ trắng. */
 .vcx-page .vcx-summary h2{color:#fff}
 .vcx-sources a.vcx-primary{color:#fff}
