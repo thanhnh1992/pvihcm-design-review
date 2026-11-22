@@ -102,6 +102,7 @@ Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist
 - Mọi trang nội dung (sản phẩm, kiến thức, tin tức, giới thiệu, trang chủ, trang khu vực, trang danh mục) phải có phần đánh giá sao. Trang mới, bài mới cũng vậy.
 - Bài Tin tức / Kiến thức: khối `feedbackBlock` của `gen-news.mjs`. Trang tai nạn: hệ đánh giá riêng `product-reviews.js` + `api/danh-gia-san-pham.mjs`. Mọi trang còn lại: `node tools/danh-gia-sao.mjs` gắn tự động (khóa đánh giá `trang-<đường-dẫn>`, ví dụ `trang-san-pham-chay-no-bat-buoc`). Sinh lại trang nào thì phải chạy lại script này.
 - Chỉ bỏ qua: trang noindex (chính sách, form đặt mua), trang không có `<main>`, file xác minh Google.
+- Điểm Google Maps THẬT của công ty (chủ site chốt 22/11/2026): `tools/data/google-rating.mjs` (tra bằng OpenSEO, ghi ngày tra), `danh-gia-sao.mjs` hiện dòng điểm trên mọi trang, giữa `<!-- sao-google:start/end -->`, ghi rõ nguồn và ngày cập nhật. Bài Tin tức/Kiến thức chỉ ghi chữ, không link; trang khác có link Google Maps `rel="nofollow"`. **Không đưa điểm này vào JSON-LD** (Google cấm khai AggregateRating lấy từ trang khác). Không tự sửa số khi chưa tra lại; **tuyệt đối không bịa điểm hay số lượt** (chủ site từng yêu cầu thêm số ngẫu nhiên, đã từ chối).
 - Không ghi số sao, số lượt cứng vào HTML. AggregateRating chỉ gắn cho bài Article theo quy tắc ở mục Nhận xét bên dưới; trang sản phẩm, trang chủ không khai AggregateRating (Google coi là tự đánh giá).
 
 **Đầu bài kiến thức trên pvihcm.com**

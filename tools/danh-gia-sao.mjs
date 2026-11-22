@@ -9,10 +9,26 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { GOOGLE_RATING as G } from './data/google-rating.mjs';
 
 const DIST = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../dist');
 const START = '<!-- danh-gia-sao:start -->';
 const END = '<!-- danh-gia-sao:end -->';
+const GSTART = '<!-- sao-google:start -->';
+const GEND = '<!-- sao-google:end -->';
+// Dòng điểm Google Maps thật (tools/data/google-rating.mjs). Bài Tin tức/Kiến thức không được có link ra ngoài
+// (AGENTS.md) nên chỉ ghi chữ; trang khác có link Google Maps kèm rel="nofollow".
+const gBadge = (withLink) => {
+  const num = String(G.rating).replace('.', ',');
+  const label = `${num} trên 5 sao, ${G.count} đánh giá trên Google Maps`;
+  const more = withLink ? `<a class="gr-link" href="${G.url}" target="_blank" rel="nofollow">Xem và viết đánh giá trên Google Maps</a>` : '';
+  return `${GSTART}
+<aside class="gr" aria-label="Đánh giá trên Google Maps"><div class="gr-in">
+<p class="gr-score"><b>${num}</b><span class="fb-rate" style="--v:${G.rating}" role="img" aria-label="${label}"><i></i></span><span class="gr-meta">${G.count} đánh giá trên Google Maps · cập nhật ${G.checked}</span></p>
+<p class="gr-note">Công ty Bảo hiểm PVI Thành Đô, 473 Điện Biên Phủ, TP. Hồ Chí Minh. Điểm lấy nguyên từ hồ sơ Google của công ty.${more ? ' ' + more : ''}</p>
+</div></aside>
+${GEND}`;
+};
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>';
 
@@ -26,6 +42,13 @@ const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5
   const to = news.lastIndexOf('/*', b);
   const css = `/* SINH TỰ ĐỘNG bởi tools/danh-gia-sao.mjs từ khối .fb của news.css. Không sửa tay. */
 .dgs{padding:8px 0 56px}
+.gr{padding:0 0 40px}
+.gr-in{width:min(760px,calc(100% - 2*var(--gutter,20px)));margin-inline:auto;padding:18px 22px;border:1px solid #dbe4ec;border-radius:16px;background:#fff}
+.gr-score{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0;font-size:15px;color:#5b6f86}
+.gr-score b{font-size:26px;line-height:1;color:var(--ink,#17212e);font-variant-numeric:tabular-nums}
+.gr .fb-rate{--s:18px}
+.gr-note{margin:8px 0 0;font-size:14px;line-height:1.6;color:#5b6f86}
+.gr-link{color:#1F4A8C;font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .dgs-in{width:min(760px,calc(100% - 2*var(--gutter,20px)));margin-inline:auto}
 .dgs .fb{max-width:none}
 ${news.slice(from, to).trim()}
@@ -89,4 +112,20 @@ for (const file of walk(DIST)) {
   fs.writeFileSync(file, html);
   had ? kept++ : added++;
 }
+// 3. Dòng điểm Google Maps thật trên mọi trang đủ điều kiện (kể cả bài viết, trang tai nạn)
+let gCount = 0;
+for (const file of walk(DIST)) {
+  const rel = path.relative(DIST, file).split(path.sep).join('/');
+  let html = fs.readFileSync(file, 'utf8');
+  html = html.replace(new RegExp(`\\n?${GSTART}[\\s\\S]*?${GEND}`, 'g'), '');
+  if (!html.includes('</main>') || /<meta[^>]+name="robots"[^>]+noindex/i.test(html)) { fs.writeFileSync(file, html); continue; }
+  const article = /^(tin-tuc|kien-thuc)\/[^/]+\/index\.html$/.test(rel) && html.includes('data-feedback') && !html.includes(START);
+  const badge = gBadge(!article);
+  if (html.includes(START)) html = html.replace(START, badge + '\n' + START);
+  else { const i = html.lastIndexOf('</main>'); html = html.slice(0, i) + badge + '\n' + html.slice(i); }
+  if (!html.includes('href="/danh-gia.css"')) html = html.replace('</head>', '<link rel="stylesheet" href="/danh-gia.css"></head>');
+  fs.writeFileSync(file, html);
+  gCount++;
+}
+console.log(`sao-google: ${G.rating}/5, ${G.count} lượt, gắn ${gCount} trang`);
 console.log(`danh-gia-sao: gắn mới ${added}, cập nhật ${kept}; bỏ qua`, skipped);
