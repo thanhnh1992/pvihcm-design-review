@@ -11,6 +11,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { GOOGLE_RATING as G } from './data/google-rating.mjs';
 import { THANH_DO_ORG as O, ORG_ID, SITE } from './chrome.mjs';
+import { PRODUCTS } from './data/san-pham-danh-gia.mjs';
 
 const DIST = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../dist');
 const START = '<!-- danh-gia-sao:start -->';
@@ -92,21 +93,39 @@ const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => {
 // Khối gộp (chủ site yêu cầu 22/11/2026): điểm Google thật + khách chấm tiếp trên website, chung khóa pvi-thanh-do
 // (đánh giá công ty, không theo từng trang); tổng gộp ghi vào JSON-LD. Nhận xét không bắt buộc, cấm chèn link
 // (chặn ở feedback.js và api/nhan-xet.js).
-const block = (title, full = false) => {
+// Schema Product của trang sản phẩm: chỉ in sẵn khi có giá thật (offers); điểm riêng do feedback.js gắn khi có lượt thật.
+const productLd = (pr, rel) => {
+  if (!pr.offers) return '';
+  const ld = {
+    '@context': 'https://schema.org', '@type': 'Product', '@id': SITE + '/' + rel.replace(/index\.html$/, '') + '#san-pham',
+    name: pr.name, brand: { '@type': 'Brand', name: 'Bảo hiểm PVI' }, url: SITE + '/' + rel.replace(/index\.html$/, ''),
+    offers: { '@type': 'AggregateOffer', priceCurrency: 'VND', lowPrice: pr.offers.low, highPrice: pr.offers.high, offerCount: pr.offers.count, seller: { '@id': ORG_ID } },
+  };
+  return `<script type="application/ld+json" data-product-rating>${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>\n`;
+};
+const block = (title, full = false, pr = null, rel = '') => {
   const num = String(G.rating).replace('.', ',');
+  const who = pr ? pr.name : 'Bảo hiểm PVI Thành Đô';
+  const attrs = pr
+    ? `data-mode="product" data-slug="${pr.slug}" data-company-slug="pvi-thanh-do" data-product-name="${esc(pr.name)}" data-product-url="${SITE}/${rel.replace(/index\.html$/, '')}"`
+    : `data-mode="org"${full ? ' data-full' : ''} data-slug="pvi-thanh-do"`;
+  const summary = pr
+    ? `<p class="fb-summary" hidden><b class="fb-avg"></b><span class="fb-rate" role="img"><i></i></span><span class="fb-total"></span></p></div>
+<p class="fb-src"><span data-company-line>Điểm chung Bảo hiểm PVI Thành Đô: <b>${num}</b>/5 · ${G.count} đánh giá trên Google (cập nhật ${G.checked}).</span> <a class="gr-link" href="/danh-gia/" data-same-tab>Xem toàn bộ đánh giá</a></p>`
+    : `<p class="fb-summary"><b class="fb-avg">${num}</b><span class="fb-rate" style="--v:${G.rating}" role="img" aria-label="${num} trên 5 sao, ${G.count} đánh giá"><i></i></span><span class="fb-total">${G.count} đánh giá</span></p></div>
+<p class="fb-src"><span data-site-line>Gồm ${G.count} đánh giá trên Google (cập nhật ${G.checked}).</span> <a class="gr-link" href="${G.url}" target="_blank" rel="nofollow">Xem trên Google Maps</a></p>`;
   return `${START}
 ${orgLd(' data-org-rating')}
-<section class="dgs" aria-label="Đánh giá Bảo hiểm PVI Thành Đô"><div class="dgs-in">
-<section class="fb" data-feedback data-mode="org"${full ? ' data-full' : ''} data-base-count="${G.count}" data-base-avg="${G.rating}" data-endpoint="/api/nhan-xet" data-slug="pvi-thanh-do" data-title="${esc(title)}" aria-labelledby="fb-h">
-<div class="fb-top"><h2 id="fb-h">Đánh giá Bảo hiểm PVI Thành Đô</h2>
-<p class="fb-summary"><b class="fb-avg">${num}</b><span class="fb-rate" style="--v:${G.rating}" role="img" aria-label="${num} trên 5 sao, ${G.count} đánh giá"><i></i></span><span class="fb-total">${G.count} đánh giá</span></p></div>
-<p class="fb-src"><span data-site-line>Gồm ${G.count} đánh giá trên Google (cập nhật ${G.checked}).</span> <a class="gr-link" href="${G.url}" target="_blank" rel="nofollow">Xem trên Google Maps</a></p>
+${pr ? productLd(pr, rel) : ''}<section class="dgs" aria-label="Đánh giá ${esc(who)}"><div class="dgs-in">
+<section class="fb" data-feedback ${attrs} data-base-count="${G.count}" data-base-avg="${G.rating}" data-endpoint="/api/nhan-xet" data-title="${esc(title)}" aria-labelledby="fb-h">
+<div class="fb-top"><h2 id="fb-h">Đánh giá ${esc(who)}</h2>
+${summary}
 <form class="fb-form" novalidate>
-<fieldset class="fb-field"><legend>Bạn đánh giá dịch vụ của PVI Thành Đô bao nhiêu sao?</legend>
+<fieldset class="fb-field"><legend>Bạn đánh giá ${pr ? esc(pr.name) : 'dịch vụ của PVI Thành Đô'} bao nhiêu sao?</legend>
 <div class="fb-pick"><div class="fb-stars" data-v="0">${[1, 2, 3, 4, 5].map((n) => `<label data-n="${n}"><input type="radio" name="rating" value="${n}">${STAR}<span class="fb-sr">${n} sao</span></label>`).join('')}</div><span class="fb-hint" aria-live="polite">Chọn số sao</span></div>
 </fieldset>
 <label class="fb-label" for="fb-comment">Nhận xét <span>(không bắt buộc)</span></label>
-<textarea id="fb-comment" name="comment" rows="3" maxlength="1000" placeholder="Bạn hài lòng điều gì, hoặc PVI Thành Đô cần làm tốt hơn ở đâu?"></textarea>
+<textarea id="fb-comment" name="comment" rows="3" maxlength="1000" placeholder="${pr ? 'Bạn thấy sản phẩm, quy trình mua và hỗ trợ thế nào?' : 'Bạn hài lòng điều gì, hoặc PVI Thành Đô cần làm tốt hơn ở đâu?'}"></textarea>
 <label class="fb-label" for="fb-name">Tên hiển thị <span>(không bắt buộc)</span></label>
 <input id="fb-name" name="name" maxlength="60" autocomplete="nickname">
 <label class="fb-label" for="fb-email">Email <span>(không bắt buộc, không công khai)</span></label>
@@ -115,7 +134,7 @@ ${orgLd(' data-org-rating')}
 <div class="fb-actions"><button type="submit" class="fb-btn">Gửi đánh giá</button><span class="fb-count" aria-hidden="true">0/1000</span></div>
 <p class="fb-msg" role="status" aria-live="polite"></p>
 </form>
-<div class="fb-done" role="status" hidden><b>Cảm ơn bạn đã đánh giá.</b><p>Đánh giá của bạn đã được cộng vào điểm chung.</p></div>
+<div class="fb-done" role="status" hidden><b>Cảm ơn bạn đã đánh giá.</b><p>${pr ? 'Đánh giá đã ghi cho sản phẩm và cộng vào điểm chung.' : 'Đánh giá của bạn đã được cộng vào điểm chung.'}</p></div>
 <ul class="fb-list" hidden></ul>
 </section>
 </div></section>
@@ -147,7 +166,7 @@ for (const file of walk(DIST)) {
   const h1 = (html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/) || [])[1];
   const title = (h1 ? h1.replace(/<[^>]+>/g, ' ') : (html.match(/<title>([^<]*)<\/title>/) || [])[1] || rel).replace(/\s+/g, ' ').trim();
   const i = html.lastIndexOf('</main>');
-  html = html.slice(0, i) + block(title, rel === 'danh-gia/index.html') + '\n' + html.slice(i);
+  html = html.slice(0, i) + block(title, rel === 'danh-gia/index.html', PRODUCTS[rel] || null, rel) + '\n' + html.slice(i);
   if (!html.includes('href="/danh-gia.css"')) html = html.replace('</head>', '<link rel="stylesheet" href="/danh-gia.css"></head>');
   if (!html.includes('src="/feedback.js"')) html = html.replace('</head>', '<script src="/feedback.js" defer></script></head>');
   fs.writeFileSync(file, html);

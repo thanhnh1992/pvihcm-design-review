@@ -12,6 +12,12 @@
      (data-base-count/avg) với đánh giá khách gửi trên website (khóa chung pvi-thanh-do), tổng gộp được
      ghi vào JSON-LD InsuranceAgency (script[data-org-rating]). */
   var org = box.getAttribute('data-mode') === 'org';
+  /* Chế độ "product" (23/11/2026): khách chấm cho sản phẩm của trang (khóa sp-...), điểm riêng ghi vào schema Product;
+     máy chủ cộng chép lượt đó vào khóa chung pvi-thanh-do nên điểm chung công ty (Google + website) vẫn tăng. */
+  var product = box.getAttribute('data-mode') === 'product';
+  var companySlug = box.getAttribute('data-company-slug') || '';
+  var comp = { count: 0, sum: 0 };
+  var companyLine = box.querySelector('[data-company-line]');
   var baseCount = Number(box.getAttribute('data-base-count')) || 0;
   var baseAvg = Number(box.getAttribute('data-base-avg')) || 0;
   var siteLine = box.querySelector('[data-site-line]');
@@ -40,7 +46,7 @@
   }
   var count = form.querySelector('.fb-count');
   var area = form.querySelector('textarea');
-  var HINTS = org ? ['', 'Rất không hài lòng', 'Không hài lòng', 'Bình thường', 'Hài lòng', 'Rất hài lòng']
+  var HINTS = (org || product) ? ['', 'Rất không hài lòng', 'Không hài lòng', 'Bình thường', 'Hài lòng', 'Rất hài lòng']
     : ['', 'Chưa hữu ích', 'Ít hữu ích', 'Tạm được', 'Hữu ích', 'Rất hữu ích'];
   var started = Date.now();
   var sentKey = 'pvi-fb-' + slug;
@@ -92,6 +98,7 @@
       try { localStorage.setItem(sentKey, '1'); } catch (e) { /* bỏ qua */ }
       if (res.review) {
         all.count += 1; all.sum += res.review.rating; showSummary();
+        if (product) { comp.count += 1; comp.sum += res.review.rating; showCompany(); }
         if (res.review.comment) { list.insertBefore(item(res.review), list.firstChild); list.hidden = false; }
       }
       done();
@@ -145,16 +152,43 @@
     if (siteLine && all.count) siteLine.textContent = 'Gồm ' + baseCount + ' đánh giá trên Google và ' + all.count + ' đánh giá của khách trên website.';
     syncOrgLd(count, avg);
   }
+  function syncProductLd(count, avg) {
+    var node = document.querySelector('script[data-product-rating]');
+    if (!node && !count) return;
+    var o;
+    try { o = node ? JSON.parse(node.textContent) : null; } catch (e) { return; }
+    if (!o) {
+      var pageUrl = box.getAttribute('data-product-url') || location.href;
+      o = { '@context': 'https://schema.org', '@type': 'Product', '@id': pageUrl + '#san-pham', name: box.getAttribute('data-product-name') || title, brand: { '@type': 'Brand', name: 'Bảo hiểm PVI' }, url: pageUrl };
+      node = document.createElement('script'); node.type = 'application/ld+json'; node.setAttribute('data-product-rating', '');
+      document.head.appendChild(node);
+    }
+    if (count) o.aggregateRating = { '@type': 'AggregateRating', ratingValue: avg, bestRating: 5, worstRating: 1, ratingCount: count };
+    else delete o.aggregateRating;
+    if (!count && !o.offers) { node.remove(); return; } // Product không giá, không điểm thì không khai
+    node.textContent = JSON.stringify(o);
+  }
+  function showCompany() {
+    var count = baseCount + comp.count;
+    var avg = count ? Math.round(((baseAvg * baseCount + comp.sum) / count) * 10) / 10 : 0;
+    if (companyLine) companyLine.innerHTML = '';
+    if (companyLine) {
+      companyLine.appendChild(document.createTextNode('Điểm chung Bảo hiểm PVI Thành Đô: '));
+      var b = document.createElement('b'); b.textContent = avg.toFixed(1).replace('.', ','); companyLine.appendChild(b);
+      companyLine.appendChild(document.createTextNode('/5 · ' + count + ' đánh giá (' + baseCount + ' trên Google, ' + comp.count + ' trên website).'));
+    }
+    syncOrgLd(count, avg);
+  }
   function showSummary() {
     if (org) return showOrg();
     if (!all.count) {
       summary.hidden = true;
       showTopStatus('Chưa có đánh giá', true);
-      syncRatingLd(0);
+      if (product) syncProductLd(0); else syncRatingLd(0);
       return;
     }
     var avg = Math.round((all.sum / all.count) * 10) / 10;
-    syncRatingLd(all.count, avg);
+    if (product) syncProductLd(all.count, avg); else syncRatingLd(all.count, avg);
     summary.querySelector('.fb-avg').textContent = avg.toFixed(1).replace('.', ',');
     var avgStars = summary.querySelector('.fb-rate');
     rate(avgStars, avg);
@@ -169,6 +203,8 @@
     var b = document.createElement('b'); b.textContent = r.name || 'Bạn đọc';
     var t = document.createElement('time'); t.textContent = viDate(r.date); t.setAttribute('datetime', r.date);
     head.appendChild(b); head.appendChild(starRow(r.rating)); head.appendChild(t);
+    // Trang tổng /danh-gia/ và khối công ty: ghi rõ lượt chấm cho sản phẩm nào.
+    if (org && r.on) { var on = document.createElement('span'); on.className = 'fb-on'; on.textContent = 'về ' + r.on; head.appendChild(on); }
     if (adminKey && r.id) {
       var x = document.createElement('button'); x.type = 'button'; x.className = 'fb-del'; x.textContent = 'Xóa';
       x.addEventListener('click', function () {
@@ -179,6 +215,7 @@
           .then(function (d) {
             if (!d.ok) throw new Error(d.error || '');
             all.count -= 1; all.sum -= r.rating; showSummary();
+            if (product) { comp.count -= 1; comp.sum -= r.rating; showCompany(); }
             li.remove(); list.hidden = !list.children.length;
           })
           .catch(function (err) { x.disabled = false; window.alert(err.message || 'Chưa xóa được.'); });
@@ -225,7 +262,7 @@
     .then(function (r) { return r.json(); })
     .then(function (d) {
       if (!d || !d.ok || d.disabled) {
-        if (org) { form.hidden = true; }
+        if (org || product) { form.hidden = true; }
         showTopStatus(d && d.disabled ? 'Chức năng đánh giá chưa được bật' : 'Chưa tải được đánh giá', false);
         return;
       }
@@ -235,5 +272,12 @@
       list.hidden = !list.children.length;
       paginate();
     })
-    .catch(function () { if (org) form.hidden = true; showTopStatus('Chưa tải được đánh giá', false); });
+    .catch(function () { if (org || product) form.hidden = true; showTopStatus('Chưa tải được đánh giá', false); });
+  // Trang sản phẩm: lấy thêm tổng của khóa chung để cập nhật điểm công ty (Google + mọi lượt trên website).
+  if (product && companySlug) {
+    fetch(url + '?slug=' + encodeURIComponent(companySlug))
+      .then(function (r) { return r.json(); })
+      .then(function (d) { if (d && d.ok && !d.disabled) { comp.count = d.count; comp.sum = d.average * d.count; showCompany(); } })
+      .catch(function () { /* giữ điểm Google tĩnh */ });
+  }
 })();

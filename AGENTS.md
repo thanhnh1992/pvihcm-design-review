@@ -109,6 +109,7 @@ Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist
 **Hiển thị đánh giá (chủ site chốt 23/11/2026)**
 - Sao màu vàng (#f5a623). Tên người gửi che bớt khi hiện công khai (`maskName` trong api/nhan-xet.js: "Nguyễn Văn Minh" → "N*** V*** Minh"). Không có câu ghi chú dưới form.
 - Mỗi trang hiện 3 nhận xét mới nhất; khối công ty có link "Xem toàn bộ N nhận xét" sang `/danh-gia/` (tools/gen-danh-gia.mjs, chạy trước danh-gia-sao.mjs), bài viết có nút mở thêm tại chỗ.
+- Trang sản phẩm (tools/data/san-pham-danh-gia.mjs, 23/11/2026): khách chấm cho CHÍNH sản phẩm (khóa `sp-...`), schema `Product` mang điểm riêng (feedback.js gắn khi có ≥1 lượt thật; `offers` chỉ khi có biểu phí thật, hiện chỉ TNDS ô tô 480.700đ đến 5.294.300đ từ tools/data/tnds.mjs). Máy chủ chép mỗi lượt sản phẩm sang khóa chung `pvi-thanh-do` nên điểm chung công ty (Google + mọi lượt website) vẫn cộng; xóa ở phía nào cũng xóa cả hai bản. KHÔNG cộng 20 lượt Google vào điểm Product.
 - Ô Email không bắt buộc. IP và email KHÔNG BAO GIỜ trả ra trang công khai: chỉ GET có header đúng ADMIN_KEY (mở trang với ?quantri) và Google Sheet mới có. Không được làm trang công khai hiện IP/email.
 
 **Đánh giá vào Google Sheet (chủ site yêu cầu 22/11/2026)**

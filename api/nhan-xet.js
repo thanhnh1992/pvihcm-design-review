@@ -94,6 +94,9 @@ const REDIS_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_R
 const HAS_BLOB = !!(process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_STORE_ID);
 const HAS_REDIS = !!(REDIS_URL && REDIS_TOKEN);
 const rkey = (slug) => `pvihcm:nhan-xet:${slug}`;
+// Lượt chấm cho sản phẩm (khóa sp-...) được chép thêm vào khóa chung của công ty (chủ site 23/11/2026).
+const COMPANY = 'pvi-thanh-do';
+const isProduct = (slug) => /^sp-[a-z0-9-]+$/.test(slug);
 async function redis(command) {
   const r = await fetch(REDIS_URL.replace(/\/$/, ''), {
     method: 'POST', headers: { Authorization: `Bearer ${REDIS_TOKEN}`, 'Content-Type': 'application/json' },
@@ -116,12 +119,12 @@ async function readAllRedis(slug, admin) {
 }
 async function removeRedis(id) {
   const m = /^nhan-xet\/([a-z0-9-]{3,120})\//.exec(id);
-  if (!m) return false;
+  if (!m) return null;
   const rows = (await redis(['LRANGE', rkey(m[1]), '0', '4999'])) || [];
   const hit = rows.find((x) => { try { return JSON.parse(x).id === id; } catch (e) { return false; } });
-  if (!hit) return false;
+  if (!hit) return null;
   await redis(['LREM', rkey(m[1]), '1', hit]);
-  return true;
+  return JSON.parse(hit);
 }
 
 async function readAll(slug, admin) {
@@ -191,19 +194,24 @@ module.exports = async function handler(req, res) {
       if (limited(ip)) return res.status(429).json({ ok: false, error: 'Bạn gửi hơi nhiều, vui lòng thử lại sau ít phút.' });
 
       const review = { rating, name, comment, date: today(), ip, email };
+      if (isProduct(slug)) { review.sp = slug; review.on = clean(d.title, 120); }
       const pathname = `${PREFIX}${slug}/${Date.now()}-${crypto.randomBytes(4).toString('hex')}.json`;
+      const copyPath = isProduct(slug) ? pathname.replace(`${PREFIX}${slug}/`, `${PREFIX}${COMPANY}/`) : '';
       if (HAS_BLOB) {
-        await withAccess((a) => put(pathname, JSON.stringify(review), {
+        const save = (pth) => withAccess((a) => put(pth, JSON.stringify(review), {
           access: a, contentType: 'application/json', addRandomSuffix: false, cacheControlMaxAge: 60,
         }));
+        await save(pathname);
+        if (copyPath) await save(copyPath);
       } else {
         await redis(['LPUSH', rkey(slug), JSON.stringify({ id: pathname, ...review })]);
+        if (copyPath) await redis(['LPUSH', rkey(COMPANY), JSON.stringify({ id: copyPath, ...review })]);
       }
       const page = clean(d.page, 200);
       await pushReviewToSheet({
         id: pathname, rating, comment, name, email, ip, slug, title: clean(d.title, 200),
         page: /^\/[a-z0-9\-/]*$/i.test(page) ? 'https://pvihcm.com' + page : '',
-        kind: slug === 'pvi-thanh-do' ? 'Công ty (khối gộp với điểm Google)' : 'Bài viết',
+        kind: slug === COMPANY ? 'Công ty (khối gộp với điểm Google)' : isProduct(slug) ? 'Sản phẩm (cộng vào điểm chung)' : 'Bài viết',
       });
       return res.status(200).json({ ok: true, review: publicView({ id: pathname, ...review }) });
     }
@@ -217,7 +225,15 @@ module.exports = async function handler(req, res) {
       if (!okKey) return res.status(403).json({ ok: false, error: 'Sai mã quản trị.' });
       const id = String(req.query.id || '');
       if (!/^nhan-xet\/[a-z0-9-]{3,120}\/\d+-[a-f0-9]{8}\.json$/.test(id)) return res.status(400).json({ ok: false, error: 'Mã nhận xét không hợp lệ.' });
-      if (HAS_BLOB) await del(id); else await removeRedis(id);
+      // Xóa cả bản chép: lượt của sản phẩm nằm ở sp-... và ở khóa chung, cùng tên tệp. Xóa từ phía nào cũng xóa cả hai.
+      const m = /^nhan-xet\/([a-z0-9-]{3,120})\/(.+)$/.exec(id);
+      let rec = null;
+      if (HAS_BLOB) { rec = await readOne(id).catch(() => null); await del(id); }
+      else rec = await removeRedis(id);
+      let twin = '';
+      if (m && isProduct(m[1])) twin = `${PREFIX}${COMPANY}/${m[2]}`;
+      else if (m && m[1] === COMPANY && rec && rec.sp && isProduct(rec.sp)) twin = `${PREFIX}${rec.sp}/${m[2]}`;
+      if (twin) { if (HAS_BLOB) await del(twin).catch(() => {}); else await removeRedis(twin); }
       return res.status(200).json({ ok: true });
     }
 
