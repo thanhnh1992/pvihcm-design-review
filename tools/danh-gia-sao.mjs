@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { GOOGLE_RATING as G } from './data/google-rating.mjs';
+import { THANH_DO_ORG as O, ORG_ID, SITE } from './chrome.mjs';
 
 const DIST = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../dist');
 const START = '<!-- danh-gia-sao:start -->';
@@ -22,7 +23,18 @@ const gBadge = (withLink) => {
   const num = String(G.rating).replace('.', ',');
   const label = `${num} trên 5 sao, ${G.count} đánh giá trên Google Maps`;
   const more = withLink ? `<a class="gr-link" href="${G.url}" target="_blank" rel="nofollow">Xem và viết đánh giá trên Google Maps</a>` : '';
+  // Chủ site yêu cầu bắt buộc 22/11/2026 (đã được báo rủi ro Google bỏ qua hoặc phạt thủ công, chấp nhận):
+  // khai điểm Google Maps thật vào JSON-LD InsuranceAgency (cùng @id với thực thể trong chân trang).
+  const ld = {
+    '@context': 'https://schema.org', '@type': 'InsuranceAgency', '@id': ORG_ID,
+    name: O.name, alternateName: O.alternateName, url: SITE + '/', image: SITE + '/assets/pvi-logo.svg', telephone: '+84938072236',
+    address: { '@type': 'PostalAddress', streetAddress: O.street, addressLocality: O.ward, addressRegion: O.city, addressCountry: 'VN' },
+    parentOrganization: { '@type': 'Organization', name: O.parent },
+    sameAs: [G.url],
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: G.rating, bestRating: 5, worstRating: 1, ratingCount: G.count },
+  };
   return `${GSTART}
+<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
 <aside class="gr" aria-label="Đánh giá trên Google Maps"><div class="gr-in">
 <p class="gr-score"><b>${num}</b><span class="fb-rate" style="--v:${G.rating}" role="img" aria-label="${label}"><i></i></span><span class="gr-meta">${G.count} đánh giá trên Google Maps · cập nhật ${G.checked}</span></p>
 <p class="gr-note">Công ty Bảo hiểm PVI Thành Đô, 473 Điện Biên Phủ, TP. Hồ Chí Minh. Điểm lấy nguyên từ hồ sơ Google của công ty.${more ? ' ' + more : ''}</p>
