@@ -134,7 +134,7 @@ ${photo('bang-chao-phi-trang-1', 1200, 1697, 'Trang 1 bảng chào phí, phần 
 <section class="kb-cta kb-wide" aria-labelledby="tu-van">
 <div>
 <h2 id="tu-van">Nhận chào phí cho kho của bạn</h2>
-<p>Nhắn <a href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Zalo 0938 072 236</a> thông tin kho và hồ sơ phòng cháy chữa cháy. PVI Thành Đô khảo sát và gửi bảng chào phí trước khi bạn quyết định.</p>
+<p>Nhắn <a href="${ZALO_TU_VAN}" target="_blank">Zalo 0938 072 236</a> thông tin kho và hồ sơ phòng cháy chữa cháy. PVI Thành Đô khảo sát và gửi bảng chào phí trước khi bạn quyết định.</p>
 </div>
 ${ctaRow('Gọi tư vấn 0938 072 236')}
 </section>

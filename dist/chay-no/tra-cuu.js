@@ -136,13 +136,13 @@ function renderDialogPanel(d, ctx) {
     return `<button class="fld-close" type="button" aria-label="Đóng" data-dlg="close">${ic('X', 22)}</button><div class="fld-done" role="status"><span class="fld-doneIcon">${ic('CheckCircle', 54, 'fill')}</span><h3 id="${uid}-dlg-title">Đã nhận thông tin của bạn</h3>`
       + `<p>${d.kind === 'bang-chao' ? 'Chuyên viên sẽ lập bảng chào theo tài sản bạn đã chọn và gửi qua email, Zalo.' : 'Chuyên viên PVI Thành Đô sẽ liên hệ tư vấn cho bạn ngay.'}</p>`
       + `<p class="fld-code">Mã yêu cầu: <b>${esc(d.code)}</b></p>`
-      + `<a class="fld-zaloButton" href="${ZALO_URL}" target="_blank" rel="nofollow noopener noreferrer">${ic('ChatCircleDots', 24, 'fill')}Mở Zalo chat với chuyên viên</a><button class="fld-ghost" type="button" data-dlg="close">Đóng</button></div>`;
+      + `<a class="fld-zaloButton" href="${ZALO_URL}" target="_blank" rel="nofollow noreferrer">${ic('ChatCircleDots', 24, 'fill')}Mở Zalo chat với chuyên viên</a><button class="fld-ghost" type="button" data-dlg="close">Đóng</button></div>`;
   }
   if (d.sent) {
     return `<button class="fld-close" type="button" aria-label="Đóng" data-dlg="close">${ic('X', 22)}</button><div class="fld-done"><span class="fld-doneIcon">${ic('CheckCircle', 54, 'fill')}</span><h3 id="${uid}-dlg-title">${d.copied ? 'Đã chép thông tin của bạn' : 'Nội dung yêu cầu báo phí'}</h3>`
       + `<p>${d.copied ? 'Dán nội dung đã sao chép vào khung chat Zalo và bấm Gửi để nhân viên PVI nhận yêu cầu.' : 'Sao chép nội dung bên dưới, dán vào khung chat Zalo rồi bấm Gửi để nhân viên PVI nhận yêu cầu.'}</p>`
       + `<pre class="fld-context" style="white-space:pre-wrap;text-align:left">${esc(d.text)}</pre>`
-      + `<a class="fld-zaloButton" href="${ZALO_URL}" target="_blank" rel="nofollow noopener noreferrer">${ic('ChatCircleDots', 24, 'fill')}Mở Zalo chat với chuyên viên</a><p role="status" data-dlg-reminder></p><button class="fld-ghost" type="button" data-dlg="close">Đóng</button></div>`;
+      + `<a class="fld-zaloButton" href="${ZALO_URL}" target="_blank" rel="nofollow noreferrer">${ic('ChatCircleDots', 24, 'fill')}Mở Zalo chat với chuyên viên</a><p role="status" data-dlg-reminder></p><button class="fld-ghost" type="button" data-dlg="close">Đóng</button></div>`;
   }
   const errors = cnbbLeadFieldErrors(d.values);
   const ready = CNBB_LEAD_FIELDS.every((f) => !errors[f]) && d.consent;

@@ -87,7 +87,7 @@ ${rows}
 <section class="kb-cta kb-wide" aria-labelledby="tu-van">
 <div>
 <h2 id="tu-van">Cần tư vấn bảo hiểm PVI tại TP.HCM?</h2>
-<p>Nhắn <a href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Zalo 0938 072 236</a> để PVI Thành Đô tư vấn và chuẩn bị bản chào phí.</p>
+<p>Nhắn <a href="${ZALO_TU_VAN}" target="_blank">Zalo 0938 072 236</a> để PVI Thành Đô tư vấn và chuẩn bị bản chào phí.</p>
 </div>
 ${ctaRow('Gọi tư vấn 0938 072 236')}
 </section>

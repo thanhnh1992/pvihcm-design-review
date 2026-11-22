@@ -64,7 +64,7 @@ ${cards}
 
 <section class="sp-help"><div class="sp-wrap sp-help-box">
 <div><h2>Chưa biết chọn sản phẩm nào?</h2><p>Gọi hoặc nhắn Zalo, chuyên viên hỏi vài thông tin rồi chỉ ra sản phẩm và mức bảo hiểm phù hợp.</p></div>
-<div class="sp-help-actions"><a class="sp-btn sp-btn-red" href="tel:0938072236">Gọi 0938 072 236</a><a class="sp-btn sp-btn-line" href="${ZALO}" target="_blank" rel="noopener">Nhắn Zalo</a></div>
+<div class="sp-help-actions"><a class="sp-btn sp-btn-red" href="tel:0938072236">Gọi 0938 072 236</a><a class="sp-btn sp-btn-line" href="${ZALO}" target="_blank">Nhắn Zalo</a></div>
 </div></section>`;
 
 const itemList = {

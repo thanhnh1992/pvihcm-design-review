@@ -1,6 +1,6 @@
 // Link ra ngoài (chủ site chốt 18/11/2026): hạn chế tối đa; link nào buộc phải có thì gắn rel="nofollow".
 // nofollowExternal(html): thêm "nofollow" vào rel của mọi <a href="http(s)://..."> không trỏ về pvihcm.com,
-// giữ nguyên các giá trị rel đang có (noopener, noreferrer...). Chạy lại nhiều lần không đổi kết quả.
+// giữ nguyên các giá trị rel đang có (noreferrer...; không dùng noopener, chủ site bỏ 22/11/2026). Chạy lại nhiều lần không đổi kết quả.
 // Chạy như script: node tools/link-out.mjs  → áp cho mọi trang HTML trong dist/ (trừ file xác minh Google).
 // Đặt ở cuối quy trình sinh trang (sau srcset.mjs, trước gen-sitemap.mjs). chrome.mjs cũng gọi hàm này.
 import fs from 'node:fs';

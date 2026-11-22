@@ -107,7 +107,7 @@ export function body({ ctaRow }) {
 <section class="kb-cta kb-wide" aria-labelledby="tu-van">
 <div>
 <h2 id="tu-van">Mua bảo hiểm cháy nổ bắt buộc tại PVI Thành Đô</h2>
-<p>Nhắn <a href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Zalo 0938 072 236</a> thông tin cơ sở và danh mục tài sản. Chuyên viên đối chiếu Phụ lục VI, VII và gửi báo phí trước khi bạn quyết định.</p>
+<p>Nhắn <a href="${ZALO_TU_VAN}" target="_blank">Zalo 0938 072 236</a> thông tin cơ sở và danh mục tài sản. Chuyên viên đối chiếu Phụ lục VI, VII và gửi báo phí trước khi bạn quyết định.</p>
 </div>
 ${ctaRow('Gọi tư vấn 0938 072 236')}
 </section>

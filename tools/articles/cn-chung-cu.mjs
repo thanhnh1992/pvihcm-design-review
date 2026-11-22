@@ -103,7 +103,7 @@ export function body({ ctaRow }) {
 <section class="kb-cta kb-wide" aria-labelledby="tu-van">
 <div>
 <h2 id="tu-van">Báo phí cho ban quản trị, chủ đầu tư</h2>
-<p>Nhắn <a href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Zalo 0938 072 236</a> số tầng, diện tích sàn, có hay không hệ thống chữa cháy tự động. PVI Thành Đô gửi báo phí và tư vấn thêm bảo hiểm căn hộ cho cư dân.</p>
+<p>Nhắn <a href="${ZALO_TU_VAN}" target="_blank">Zalo 0938 072 236</a> số tầng, diện tích sàn, có hay không hệ thống chữa cháy tự động. PVI Thành Đô gửi báo phí và tư vấn thêm bảo hiểm căn hộ cho cư dân.</p>
 </div>
 ${ctaRow('Gọi tư vấn 0938 072 236')}
 </section>

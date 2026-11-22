@@ -114,7 +114,7 @@ export function body({ pic, ctaRow }) {
 <section class="kb-cta kb-wide" aria-labelledby="tu-van">
 <div>
 <h2 id="tu-van">Hỏi bảo hiểm cho căn hộ hoặc tòa nhà của bạn</h2>
-<p>Chủ căn hộ, ban quản trị chung cư nhắn <a href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Zalo 0938 072 236</a> diện tích, số tầng, giá trị tài sản. PVI Thành Đô kiểm tra phần nào đã được bảo hiểm và báo phí phần còn thiếu.</p>
+<p>Chủ căn hộ, ban quản trị chung cư nhắn <a href="${ZALO_TU_VAN}" target="_blank">Zalo 0938 072 236</a> diện tích, số tầng, giá trị tài sản. PVI Thành Đô kiểm tra phần nào đã được bảo hiểm và báo phí phần còn thiếu.</p>
 </div>
 ${ctaRow('Gọi tư vấn 0938 072 236')}
 </section>

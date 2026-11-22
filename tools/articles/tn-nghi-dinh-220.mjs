@@ -99,7 +99,7 @@ export function body({ ctaRow }) {
 <section class="kb-cta kb-wide" aria-labelledby="tu-van">
 <div>
 <h2 id="tu-van">Gửi yêu cầu bảo hiểm của gói thầu để đối chiếu</h2>
-<p>Chụp phần yêu cầu bảo hiểm trong hồ sơ mời thầu gửi qua <a href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Zalo 0938 072 236</a>. PVI Thành Đô đối chiếu với Nghị định 220/2026 và báo lại bằng văn bản mức cần mua trước khi bạn thanh toán.</p>
+<p>Chụp phần yêu cầu bảo hiểm trong hồ sơ mời thầu gửi qua <a href="${ZALO_TU_VAN}" target="_blank">Zalo 0938 072 236</a>. PVI Thành Đô đối chiếu với Nghị định 220/2026 và báo lại bằng văn bản mức cần mua trước khi bạn thanh toán.</p>
 </div>
 ${ctaRow('Gọi tư vấn 0938 072 236')}
 </section>

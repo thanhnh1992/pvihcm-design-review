@@ -43,7 +43,7 @@ const BHVN = 'https://www.baohiempvi-vn.com';
 // Link nội bộ của baohiempvi-vn: trang có trên pvihcm thì đổi sang, chưa có thì dẫn sang baohiempvi-vn.
 const LOCAL = { '/gara-lien-ket-pvi': GARA_URL, '/kien-thuc/bao-hiem-xe-ban-tai-dien-vinfast-vf-wild': '/tin-tuc/bao-hiem-xe-ban-tai-dien-vinfast-vf-wild/' };
 const href = (h) => LOCAL[h] || (h.startsWith('/') ? BHVN + h : h);
-const out = (h) => (/^https?:/.test(h) ? ' target="_blank" rel="noopener"' : '');
+const out = (h) => (/^https?:/.test(h) ? ' target="_blank"' : '');
 const PVI_LOGO = '/assets/pvi-logo.svg';
 
 const YEAR_NOW = 2026; // builder.js tự cập nhật theo năm hiện tại khi chạy
@@ -173,9 +173,9 @@ const main = `<div class="vcx-page">
 
 <section class="vcx-section" aria-labelledby="vcx-src"><div class="shell vcx-sources">
 <h2 id="vcx-src">Nguồn tham chiếu</h2>
-<ul><li><a href="${RULES_PDF}" target="_blank" rel="noopener">Bảo hiểm PVI: Quy tắc bảo hiểm tự nguyện xe ô tô, hiệu lực 01/07/2025 ↗</a></li><li><a href="${CLAUSES_PDF}" target="_blank" rel="noopener">Bảo hiểm PVI: Các điều khoản bổ sung bảo hiểm tự nguyện xe ô tô, hiệu lực 01/07/2025 ↗</a></li><li>Giấy chứng nhận bảo hiểm xe ô tô PVI cấp ngày 27/10/2026 do PVI Thành Đô cung cấp (số liệu phí); thông tin chủ xe và xe trên giấy mẫu là thông tin tượng trưng.</li></ul>
+<ul><li><a href="${RULES_PDF}" target="_blank">Bảo hiểm PVI: Quy tắc bảo hiểm tự nguyện xe ô tô, hiệu lực 01/07/2025 ↗</a></li><li><a href="${CLAUSES_PDF}" target="_blank">Bảo hiểm PVI: Các điều khoản bổ sung bảo hiểm tự nguyện xe ô tô, hiệu lực 01/07/2025 ↗</a></li><li>Giấy chứng nhận bảo hiểm xe ô tô PVI cấp ngày 27/10/2026 do PVI Thành Đô cung cấp (số liệu phí); thông tin chủ xe và xe trên giấy mẫu là thông tin tượng trưng.</li></ul>
 <p>Đối chiếu nguồn ngày ${esc(DOI_CHIEU_NGUON)}. Phạm vi, loại trừ, mức khấu trừ và phí áp dụng theo quy tắc, điều khoản và hợp đồng được phát hành. Mô hình 3D và video là hình ảnh mô phỏng.</p>
-<a class="vcx-primary" href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Nhắn Zalo 0938 072 236</a>
+<a class="vcx-primary" href="${ZALO_TU_VAN}" target="_blank">Nhắn Zalo 0938 072 236</a>
 </div></section>
 </div>`;
 

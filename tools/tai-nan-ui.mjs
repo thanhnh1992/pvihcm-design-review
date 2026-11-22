@@ -45,7 +45,7 @@ const h1Of = (href) => {
 };
 const pct = (x) => Math.round(x * 100);
 const ext = (href) => /^https?:/.test(href) || /\.pdf$/.test(href);
-const tgt = (href) => (ext(href) ? ' target="_blank" rel="noopener"' : '');
+const tgt = (href) => (ext(href) ? ' target="_blank"' : '');
 const br = (s) => s.split(/<br\s*\/?>/).map(t).join('<br>');
 
 /* ── Hero ── */
@@ -58,7 +58,7 @@ const hero = (ac) => `
 <h1>Bảo hiểm Tai nạn <em>24/24</em> PVI</h1>
 <p>${t('Bảo vệ người lao động 24 giờ mỗi ngày, trong và ngoài giờ làm việc — và là giấy tờ nhà thầu cần có trong hồ sơ theo')} <a class="tn-legal-link" href="/tin-tuc/nghi-dinh-220-2026-bao-hiem-cong-trinh/">Nghị định 220/2026/NĐ-CP</a>.</p>
 <ul class="accident-chips"><li>Bồi thường tai nạn 24/24h, trong và ngoài giờ</li><li>Cấp giấy chứng nhận trong ngày</li><li>Xuất hóa đơn VAT</li></ul>
-<div class="auto-hero-links"><a href="${ac.ZALO_URL}" target="_blank" rel="noopener">Nhận báo giá qua Zalo <i>→</i></a><a href="#tinh-phi">Tính phí ngay <i>↓</i></a></div>
+<div class="auto-hero-links"><a href="${ac.ZALO_URL}" target="_blank">Nhận báo giá qua Zalo <i>→</i></a><a href="#tinh-phi">Tính phí ngay <i>↓</i></a></div>
 </div>
 <figure class="accident-hero-media">
 <div class="accident-hero-frame"><img src="/assets/section-tai-nan.webp" srcset="/assets/section-tai-nan-480.webp 480w, /assets/section-tai-nan-800.webp 800w, /assets/section-tai-nan.webp 1280w" sizes="(max-width: 1000px) calc(100vw - 48px), 566px" width="1280" height="853" alt="Tư vấn bảo hiểm tai nạn cho người lao động tại nhà máy" fetchpriority="high" decoding="async"></div>
@@ -116,7 +116,7 @@ ${seg('04. Số người và thời hạn', `<div class="accident-field-row"><di
 <div class="accident-calc-actions"><button type="button" class="accident-primary" data-tn-share>Mua ngay <i aria-hidden="true">→</i></button><button type="button" class="accident-secondary" data-tn-detail aria-expanded="false" aria-controls="tn-detail">Nhận báo giá chi tiết</button></div>
 <form class="accident-detail" id="tn-detail" novalidate hidden><p class="accident-detail-lead"><b>Nhận báo giá chi tiết theo đúng lựa chọn ở trên.</b> Để lại họ tên và số điện thoại, nhân viên PVI Thành Đô gửi báo giá chính thức và gọi lại tư vấn.</p>
 <div class="accident-field-row"><div class="accident-field"><label for="tn-detail-name">Họ và tên</label><input id="tn-detail-name" name="name" autocomplete="name" maxlength="120"></div><div class="accident-field"><label for="tn-detail-phone">Số điện thoại</label><input id="tn-detail-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20"></div></div>
-<label class="accident-consent"><input type="checkbox" name="consent"><span>Tôi đồng ý để Bảo hiểm PVI Thành Đô liên hệ và xử lý thông tin trên cho mục đích báo giá, tư vấn bảo hiểm. Tôi đã đọc <a href="/chinh-sach-bao-ve-du-lieu-ca-nhan/" target="_blank" rel="noopener">Chính sách Bảo vệ Dữ liệu Cá nhân</a>.</span></label>
+<label class="accident-consent"><input type="checkbox" name="consent"><span>Tôi đồng ý để Bảo hiểm PVI Thành Đô liên hệ và xử lý thông tin trên cho mục đích báo giá, tư vấn bảo hiểm. Tôi đã đọc <a href="/chinh-sach-bao-ve-du-lieu-ca-nhan/" target="_blank">Chính sách Bảo vệ Dữ liệu Cá nhân</a>.</span></label>
 <p class="accident-form-error" role="alert" hidden></p>
 <button type="submit" class="accident-primary">Gửi yêu cầu báo giá <i aria-hidden="true">→</i></button>
 <p class="accident-form-ok" role="status" hidden></p></form>
@@ -140,7 +140,7 @@ ${[
     ['01', 'Quy tắc bảo hiểm TNCN PVI 2026', 'Cập nhật 2026 · Quyết định 498/QĐ-PVIBH', PDF.quyTac, 'tn-mang-kien-thuc', 'kien-thuc-chung'],
     ['02', 'Bảng tỷ lệ trả tiền thương tật', 'Phụ lục 1 · Xem tài liệu PDF', PDF.thuongTat, 'tn-mang-van-ban', 'tin-tuc-nganh'],
     ['03', 'Giấy chứng nhận bảo hiểm PVI', 'Chứng từ thực tế · Bản đã ẩn thông tin', PDF.gcn, 'tn-mang-thuc-te', 'trai-nghiem-thuc-te'],
-  ].map(([n, name, hint, href, img, stream]) => `<li><a class="accident-trio-tile" data-stream="${stream}" href="${href}" target="_blank" rel="noopener"><img src="/assets/${img}-480.webp" alt="" width="480" height="320" loading="lazy" decoding="async"><span class="accident-trio-veil" aria-hidden="true"></span><span class="accident-trio-index">${n}</span><strong>${t(name)}</strong><small>${t(hint)}</small><i aria-hidden="true">↗</i></a></li>`).join('')}
+  ].map(([n, name, hint, href, img, stream]) => `<li><a class="accident-trio-tile" data-stream="${stream}" href="${href}" target="_blank"><img src="/assets/${img}-480.webp" alt="" width="480" height="320" loading="lazy" decoding="async"><span class="accident-trio-veil" aria-hidden="true"></span><span class="accident-trio-index">${n}</span><strong>${t(name)}</strong><small>${t(hint)}</small><i aria-hidden="true">↗</i></a></li>`).join('')}
 </ul><a class="accident-trio-all" href="/tin-tuc/">Xem toàn bộ tin tức và kiến thức <i aria-hidden="true">→</i></a></section>
 </aside>
 </div>
@@ -156,7 +156,7 @@ const answer = () => `
 
 function legal(ac, up) {
   const date = (iso) => iso.slice(0, 10).split('-').reverse().join('/');
-  const items = up.legalUpdates.map((u) => `<details><summary><span class="accident-hub-q">${t(u.title)}${u.status === 'current' ? ` <b class="accident-flag is-ok">${t(u.statusLabel)}</b>` : ''}</span><em>${date(u.updatedAt)}</em><i aria-hidden="true">+</i></summary><div class="accident-hub-answer">${u.body.map((p) => `<p>${t(p)}</p>`).join('')}<p class="accident-hub-byline">Cập nhật ${date(u.updatedAt)} · Ban nội dung Bảo hiểm PVI Thành Đô</p>${u.sourceHref ? `<a href="${u.sourceHref}" target="_blank" rel="noopener">${t(u.sourceLabel || 'Mở văn bản gốc')} <i aria-hidden="true">↗</i></a>` : ''}</div></details>`).join('');
+  const items = up.legalUpdates.map((u) => `<details><summary><span class="accident-hub-q">${t(u.title)}${u.status === 'current' ? ` <b class="accident-flag is-ok">${t(u.statusLabel)}</b>` : ''}</span><em>${date(u.updatedAt)}</em><i aria-hidden="true">+</i></summary><div class="accident-hub-answer">${u.body.map((p) => `<p>${t(p)}</p>`).join('')}<p class="accident-hub-byline">Cập nhật ${date(u.updatedAt)} · Ban nội dung Bảo hiểm PVI Thành Đô</p>${u.sourceHref ? `<a href="${u.sourceHref}" target="_blank">${t(u.sourceLabel || 'Mở văn bản gốc')} <i aria-hidden="true">↗</i></a>` : ''}</div></details>`).join('');
   const trio = [
     ['01', 'kien-thuc-chung', 'tn-mang-kien-thuc', 'Kiến thức chung', 'Theo từng loại bảo hiểm', POSTS.loiIch],
     ['02', 'trai-nghiem-thuc-te', 'tn-mang-thuc-te', 'Trải nghiệm thực tế', 'Tình huống thật và tra cứu', POSTS.congTrinh],
@@ -171,15 +171,15 @@ ${heading('HUB CẬP NHẬT · CĂN CỨ PHÁP LÝ', 'accident-legal-title', 'V�
 <div class="accident-product-docs" aria-labelledby="accident-product-docs-title"><div class="accident-product-docs-copy"><span class="auto-kicker blue">TÀI LIỆU SẢN PHẨM · PVI</span><h3 id="accident-product-docs-title">Quy tắc và chứng từ bảo hiểm tai nạn cá nhân</h3>
 <p>Tải tài liệu tham khảo trực tiếp tại trang sản phẩm. Quy tắc được ban hành theo Quyết định 498/QĐ-PVIBH, áp dụng từ ngày 01/07/2025; quyền lợi cụ thể vẫn căn cứ giấy chứng nhận và điều khoản ghi trên hợp đồng của từng khách hàng.</p>
 <ul class="accident-product-doc-list">
-<li><a href="${PDF.quyTac}" target="_blank" rel="noopener"><span><b>Quy tắc bảo hiểm tai nạn cá nhân PVI</b><small>Quyết định 498/QĐ-PVIBH · hiệu lực 01/07/2025 · PDF</small></span><i aria-hidden="true">↗</i></a></li>
-<li><a href="${PDF.thuongTat}" target="_blank" rel="noopener"><span><b>Bảng tỷ lệ trả tiền thương tật</b><small>Tài liệu dùng cùng quy tắc bảo hiểm · PDF</small></span><i aria-hidden="true">↗</i></a></li>
-<li><a href="${PDF.gcn}" target="_blank" rel="noopener"><span><b>Giấy chứng nhận PVI · bản tham khảo đã ẩn danh</b><small>Mẫu chứng nhận đã ẩn thông tin khách hàng · PDF</small></span><i aria-hidden="true">↗</i></a></li>
+<li><a href="${PDF.quyTac}" target="_blank"><span><b>Quy tắc bảo hiểm tai nạn cá nhân PVI</b><small>Quyết định 498/QĐ-PVIBH · hiệu lực 01/07/2025 · PDF</small></span><i aria-hidden="true">↗</i></a></li>
+<li><a href="${PDF.thuongTat}" target="_blank"><span><b>Bảng tỷ lệ trả tiền thương tật</b><small>Tài liệu dùng cùng quy tắc bảo hiểm · PDF</small></span><i aria-hidden="true">↗</i></a></li>
+<li><a href="${PDF.gcn}" target="_blank"><span><b>Giấy chứng nhận PVI · bản tham khảo đã ẩn danh</b><small>Mẫu chứng nhận đã ẩn thông tin khách hàng · PDF</small></span><i aria-hidden="true">↗</i></a></li>
 </ul>
 <p class="accident-product-doc-note">Mẫu giấy chứng nhận được trích từ chứng từ PVI thực tế và đã ẩn thông tin khách hàng. Khách hàng có thể dùng mẫu để nhận biết các mục cần kiểm tra khi nhận giấy chứng nhận; quyền lợi cụ thể áp dụng theo hợp đồng PVI cấp cho từng người mua.</p>
 <div class="accident-step-actions"><a class="accident-secondary" href="${POSTS.loiIch}">Đọc bài: lợi ích và cách đọc giấy chứng nhận →</a></div>
 </div><img src="/assets/tn-mang-van-ban.webp" alt="Hình ảnh mô phỏng tài liệu, bút và kính trên bàn làm việc" width="960" height="640" loading="lazy" decoding="async"></div>
 <div class="auto-faqs accident-hub-faq">${items}</div>
-<div class="accident-callout"><span aria-hidden="true">!</span><p>${t(`Mua theo mức của văn bản cũ có thể bị loại khi thẩm định hồ sơ thầu. Nhiều báo giá vẫn dẫn Thông tư 329/2016 hoặc Nghị định 119/2015 — cả hai đã hết hiệu lực. Nếu báo giá anh/chị đang cầm ghi hai văn bản đó, đề nghị bên bán phát hành lại theo ${ac.legalReference.current}.`)}</p><a href="${ac.legalReference.href}" target="_blank" rel="noopener">Mở văn bản ↗</a></div>
+<div class="accident-callout"><span aria-hidden="true">!</span><p>${t(`Mua theo mức của văn bản cũ có thể bị loại khi thẩm định hồ sơ thầu. Nhiều báo giá vẫn dẫn Thông tư 329/2016 hoặc Nghị định 119/2015 — cả hai đã hết hiệu lực. Nếu báo giá anh/chị đang cầm ghi hai văn bản đó, đề nghị bên bán phát hành lại theo ${ac.legalReference.current}.`)}</p><a href="${ac.legalReference.href}" target="_blank">Mở văn bản ↗</a></div>
 <section class="accident-trio-band" aria-labelledby="accident-trio-band-title"><div class="accident-trio-band-head"><span class="accident-trio-eyebrow">BA MẢNG KIẾN THỨC · TAI NẠN 24/24</span><h3 id="accident-trio-band-title">Hiểu sản phẩm, xem tình huống thật, theo dõi văn bản mới</h3></div><div class="accident-trio-grid">${trio}</div></section>
 </section>`;
 }
@@ -225,32 +225,32 @@ const buy = (ac) => `
 <section class="accident-buy" id="quy-trinh-mua" aria-labelledby="accident-buy-title">
 ${heading('QUY TRÌNH MUA', 'accident-buy-title', 'Mua thế nào, mất bao lâu?', 'Ba bước. Phần lâu nhất là chuẩn bị danh sách, phần còn lại nhân viên làm.')}
 ${stepsList(ac.buySteps)}
-<div class="accident-step-actions"><a class="accident-secondary" href="${ac.ZALO_URL}" target="_blank" rel="noopener">Xin mẫu danh sách người được bảo hiểm (.xlsx)</a><p class="accident-field-help">Không gửi được file? Chụp CCCD gửi Zalo, nhân viên nhập giúp.</p></div>
+<div class="accident-step-actions"><a class="accident-secondary" href="${ac.ZALO_URL}" target="_blank">Xin mẫu danh sách người được bảo hiểm (.xlsx)</a><p class="accident-field-help">Không gửi được file? Chụp CCCD gửi Zalo, nhân viên nhập giúp.</p></div>
 </section>`;
 
 const claim = (ac) => `
 <section class="accident-claim" id="quy-trinh-boi-thuong" aria-labelledby="accident-claim-title">
 ${heading('QUY TRÌNH BỒI THƯỜNG', 'accident-claim-title', 'Tai nạn xảy ra thì làm gì trước?', `Gọi ${ac.CLAIMS_HOTLINE} trước khi làm thủ tục. Phần lớn hồ sơ bị kéo dài là do thiếu chứng từ ngay từ ngày đầu.`)}
-<div class="accident-claim-grid">${stepsList(ac.claimSteps)}<aside class="accident-claim-docs" id="chung-tu"><h3>Hồ sơ cần chuẩn bị</h3><ul>${ac.claimDocuments.map((x) => `<li>${t(x)}</li>`).join('')}</ul><a class="accident-secondary" href="${ac.documents[2].href}" target="_blank" rel="noopener">Mở hướng dẫn bồi thường của PVI ↗</a></aside></div>
+<div class="accident-claim-grid">${stepsList(ac.claimSteps)}<aside class="accident-claim-docs" id="chung-tu"><h3>Hồ sơ cần chuẩn bị</h3><ul>${ac.claimDocuments.map((x) => `<li>${t(x)}</li>`).join('')}</ul><a class="accident-secondary" href="${ac.documents[2].href}" target="_blank">Mở hướng dẫn bồi thường của PVI ↗</a></aside></div>
 </section>`;
 
 const faqs = (ac) => `
 <section class="auto-faq-docs" id="cau-hoi"><div class="auto-faqs"><div class="auto-section-heading"><span>CÂU HỎI THƯỜNG GẶP</span><h2>Những câu khách hỏi nhiều nhất</h2></div>
 ${ac.faqs.map((f) => `<details><summary>${t(f.question)}<i aria-hidden="true">+</i></summary><p>${t(f.answer)}</p></details>`).join('')}</div>
-<aside class="auto-docs"><span>TÀI LIỆU THAM KHẢO</span><h2>Văn bản và hướng dẫn, mở trực tiếp từ nguồn.</h2>${ac.documents.map((d) => `<a href="${d.href}" target="_blank" rel="noopener"><small>${t(d.type)}</small><b>${t(d.title)}</b><i aria-hidden="true">↗</i></a>`).join('')}</aside>
+<aside class="auto-docs"><span>TÀI LIỆU THAM KHẢO</span><h2>Văn bản và hướng dẫn, mở trực tiếp từ nguồn.</h2>${ac.documents.map((d) => `<a href="${d.href}" target="_blank"><small>${t(d.type)}</small><b>${t(d.title)}</b><i aria-hidden="true">↗</i></a>`).join('')}</aside>
 </section>`;
 
 const contact = (ac) => `
 <section class="accident-contact" id="kenh-lien-he" aria-labelledby="accident-contact-title">
 ${heading('LIÊN HỆ', 'accident-contact-title', 'Gọi kênh nào cho đúng việc?', `${['', 'Một', 'Hai', 'Ba', 'Bốn'][ac.contactChannels.length] || ac.contactChannels.length} kênh, mỗi kênh một loại việc. Chọn đúng kênh thì xử lý nhanh hơn nhiều.`)}
-<div class="accident-contact-grid">${ac.contactChannels.map((c) => `<article><span>${t(c.label)}</span><a href="${c.href}"${c.external ? ' target="_blank" rel="noopener"' : ''}>${t(c.value)}</a><p>${t(c.when)}</p>${c.id === 'zalo' ? '<img class="accident-zalo-qr" src="/assets/zalo-qr-pvi-thanh-do.png" alt="Mã QR Zalo chính thức của Bảo hiểm PVI Thành Đô" width="132" height="132" loading="lazy" decoding="async">' : ''}</article>`).join('')}</div>
+<div class="accident-contact-grid">${ac.contactChannels.map((c) => `<article><span>${t(c.label)}</span><a href="${c.href}"${c.external ? ' target="_blank"' : ''}>${t(c.value)}</a><p>${t(c.when)}</p>${c.id === 'zalo' ? '<img class="accident-zalo-qr" src="/assets/zalo-qr-pvi-thanh-do.png" alt="Mã QR Zalo chính thức của Bảo hiểm PVI Thành Đô" width="132" height="132" loading="lazy" decoding="async">' : ''}</article>`).join('')}</div>
 <div class="accident-form-block"><div><span class="auto-kicker blue">GỬI YÊU CẦU BÁO PHÍ</span><h3>Năm ô, không hơn.</h3><p>Kênh chốt nhanh nhất vẫn là Zalo. Form này dành cho anh/chị muốn để lại thông tin trước rồi nhận cuộc gọi sau.</p></div>
 <form class="accident-form" id="tn-quote" novalidate>
 <div class="accident-field"><label for="accident-name">Họ và tên</label><input id="accident-name" name="name" autocomplete="name"></div>
 <div class="accident-field"><label for="accident-phone">Số điện thoại</label><input id="accident-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"></div>
 <div class="accident-field"><label for="accident-people">Số người cần bảo hiểm</label><input id="accident-people" name="people" type="number" min="1" inputmode="numeric"></div>
 <div class="accident-field"><label for="accident-plan">Gói quan tâm</label><select id="accident-plan" name="plan">${ac.accidentPlans.map((p) => `<option value="${p.id}">${t(p.label)}</option>`).join('')}<option value="khac">Chưa rõ, cần tư vấn</option></select></div>
-<label class="accident-consent"><input type="checkbox" name="consent"><span>Tôi đồng ý để Bảo hiểm PVI Thành Đô liên hệ và xử lý thông tin trên cho mục đích tư vấn bảo hiểm. Tôi đã đọc <a href="/chinh-sach-bao-ve-du-lieu-ca-nhan/" target="_blank" rel="noopener">Chính sách Bảo vệ Dữ liệu Cá nhân</a>.</span></label>
+<label class="accident-consent"><input type="checkbox" name="consent"><span>Tôi đồng ý để Bảo hiểm PVI Thành Đô liên hệ và xử lý thông tin trên cho mục đích tư vấn bảo hiểm. Tôi đã đọc <a href="/chinh-sach-bao-ve-du-lieu-ca-nhan/" target="_blank">Chính sách Bảo vệ Dữ liệu Cá nhân</a>.</span></label>
 <p class="accident-form-error" role="alert" hidden></p>
 <button type="submit" class="accident-primary">Gửi yêu cầu báo phí <i aria-hidden="true">→</i></button>
 <p class="accident-field-help">Trang không lưu thông tin này trên máy anh/chị và không đưa số điện thoại lên đường dẫn. Nút gửi chép thông tin rồi mở Zalo để anh/chị gửi trực tiếp cho nhân viên.</p>

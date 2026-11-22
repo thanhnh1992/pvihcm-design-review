@@ -90,7 +90,7 @@ const main = `
             <p class="bh-order-status" role="status"></p>
           </form>
         </details>
-        <a class="bh-btn bh-btn-main bh-btn-full" href="${ZALO}" target="_blank" rel="noopener">Đăng ký online qua Zalo</a>
+        <a class="bh-btn bh-btn-main bh-btn-full" href="${ZALO}" target="_blank">Đăng ký online qua Zalo</a>
       </div>
     </div>
     <p class="bh-note">Số tiền theo bảng mục 3 Thông báo 3508/TB-BHXH của BHXH TP. Hồ Chí Minh. Số chính thức theo biên lai thu khi đóng.</p>
@@ -135,7 +135,7 @@ const main = `
           <li><span>Nhà nước hỗ trợ mỗi tháng</span><b data-tn-sup>− ${vnd(tn0.sup.amount)}</b></li>
           <li><span>Tự đóng mỗi tháng</span><b data-tn-month>${vnd(tn0m)}</b></li>
         </ul>
-        <a class="bh-btn bh-btn-main bh-btn-full" href="${ZALO}" target="_blank" rel="noopener">Đăng ký online qua Zalo</a>
+        <a class="bh-btn bh-btn-main bh-btn-full" href="${ZALO}" target="_blank">Đăng ký online qua Zalo</a>
       </div>
     </div>
     <div class="bh-table bh-table-mt" role="region" aria-label="Bảng mức đóng BHXH tự nguyện cho người tham gia khác" tabindex="0"><table>
@@ -182,7 +182,7 @@ const main = `
       <div><dt>Đơn vị thu</dt><dd>${esc(PVI_THANH_DO.name)}</dd></div>
       <div><dt>Trụ sở</dt><dd>${esc(PVI_THANH_DO.address)}</dd></div>
       <div><dt>Điểm thu trực tiếp</dt><dd>${esc(DIEM_THU.address)}</dd></div>
-      <div><dt>Đăng ký online, tư vấn</dt><dd><a href="tel:0938072236">0938 072 236</a> · <a href="${ZALO}" target="_blank" rel="noopener">Zalo</a></dd></div>
+      <div><dt>Đăng ký online, tư vấn</dt><dd><a href="tel:0938072236">0938 072 236</a> · <a href="${ZALO}" target="_blank">Zalo</a></dd></div>
       <div><dt>Tổng đài hỗ trợ của BHXH</dt><dd><a href="tel:19009068">${DIEM_THU.bhxhHotline}</a></dd></div>
     </dl>
     </div>

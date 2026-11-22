@@ -97,7 +97,7 @@ export function body({ ctaRow }) {
 <section class="kb-cta kb-wide" aria-labelledby="tu-van">
 <div>
 <h2 id="tu-van">Rà giấy chứng nhận đang có của cơ sở</h2>
-<p>Gửi ảnh giấy chứng nhận hiện tại qua <a href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Zalo 0938 072 236</a>. PVI Thành Đô kiểm tra địa điểm, danh mục tài sản, tỷ lệ phí so với Phụ lục VI và báo phí tái tục.</p>
+<p>Gửi ảnh giấy chứng nhận hiện tại qua <a href="${ZALO_TU_VAN}" target="_blank">Zalo 0938 072 236</a>. PVI Thành Đô kiểm tra địa điểm, danh mục tài sản, tỷ lệ phí so với Phụ lục VI và báo phí tái tục.</p>
 </div>
 ${ctaRow('Gọi tư vấn 0938 072 236')}
 </section>

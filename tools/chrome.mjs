@@ -67,7 +67,7 @@ const BCT_URL = '';
 const MAP_QUERY = '194 Golden Building, 473 Điện Biên Phủ, Phường Thạnh Mỹ Tây, Thành phố Hồ Chí Minh';
 function footerMap(query = MAP_QUERY, label = 'Bản đồ trụ sở PVI Thành Đô: 194 Golden Building, 473 Điện Biên Phủ, TP.HCM') {
   const badge = `<img src="/assets/bct-da-thong-bao.webp" width="180" height="55" alt="Đã thông báo Bộ Công Thương" loading="lazy" decoding="async">`;
-  return `<div class="footer-map"><div class="footer-map-frame"><iframe src="https://www.google.com/maps?q=${encodeURIComponent(query)}&amp;hl=vi&amp;z=17&amp;output=embed" title="${esc(label)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>${BCT_URL ? `<a class="footer-bct" href="${BCT_URL}" target="_blank" rel="noopener">${badge}</a>` : `<span class="footer-bct">${badge}</span>`}</div>`;
+  return `<div class="footer-map"><div class="footer-map-frame"><iframe src="https://www.google.com/maps?q=${encodeURIComponent(query)}&amp;hl=vi&amp;z=17&amp;output=embed" title="${esc(label)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>${BCT_URL ? `<a class="footer-bct" href="${BCT_URL}" target="_blank">${badge}</a>` : `<span class="footer-bct">${badge}</span>`}</div>`;
 }
 
 function footerHq() {
@@ -174,7 +174,7 @@ export const steps = (list) => `<div class="fire-steps">${list.map((s, i) => `<a
 export const hotline = `<div class="fire-hotline"><div><strong>Tổng đài bồi thường</strong><p>Gọi ngay khi sự cố xảy ra, trước khi làm thủ tục khác.</p></div><a href="tel:1900545458">1900 54 54 58</a></div>`;
 
 export const ZALO = 'https://zalo.me/2076363329232219188?src=qr&f=1';
-export const ctaRow = (primaryLabel = 'Gọi tư vấn 0938 072 236') => `<div class="pd-cta"><a class="fire-btn fire-btn-red" href="tel:0938072236">${primaryLabel}</a><a class="fire-btn fire-btn-line" href="${ZALO}" target="_blank" rel="noopener">Nhắn Zalo</a></div>`;
+export const ctaRow = (primaryLabel = 'Gọi tư vấn 0938 072 236') => `<div class="pd-cta"><a class="fire-btn fire-btn-red" href="tel:0938072236">${primaryLabel}</a><a class="fire-btn fire-btn-line" href="${ZALO}" target="_blank">Nhắn Zalo</a></div>`;
 
 export function productCoverMeta({ base, alt }) {
   const src = SITE + `/assets/${base}.jpg`;

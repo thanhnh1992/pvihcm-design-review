@@ -85,16 +85,16 @@ ${[...ARCS].reverse().map((a) => `<circle class="wp-slice" data-label="${esc(a.l
 <ul class="wp-legend">${SHARES.map((s, i) => `<li tabindex="0" data-label="${esc(s.label)}" data-value="${s.value}" data-full="${esc(s.full || s.label)}"${s.label === 'PVI' ? ' data-pvi' : ''} style="--d:${150 + i * 110}ms;--w:${Math.min((s.value / BAR_MAX) * 100, 100).toFixed(1)}%;--c:${s.color}"><i aria-hidden="true"></i><span${s.full ? ` title="${esc(s.full)}"` : ''}>${esc(s.label)}</span><b>${pct(s.value)}</b><em aria-hidden="true"></em></li>`).join('')}</ul>
 </div>`;
 
-const tile = (p, copy) => `<li class="wp-tile"${copy ? ' aria-hidden="true"' : ''}><a class="wp-tile-link" href="${p.source}" target="_blank" rel="noopener noreferrer"${copy ? ' tabindex="-1"' : ' title="Xem nguồn"'}><span class="wp-photo"><img src="/assets/cong-trinh/${p.img}.webp" width="352" height="208" loading="lazy" decoding="async" alt="${copy ? '' : esc(p.alt)}">${p.tag ? `<span class="wp-photo-tag">${esc(p.tag)}</span>` : ''}</span><span class="wp-tile-name">${esc(p.name)}</span></a></li>`;
+const tile = (p, copy) => `<li class="wp-tile"${copy ? ' aria-hidden="true"' : ''}><a class="wp-tile-link" href="${p.source}" target="_blank" rel="noreferrer"${copy ? ' tabindex="-1"' : ' title="Xem nguồn"'}><span class="wp-photo"><img src="/assets/cong-trinh/${p.img}.webp" width="352" height="208" loading="lazy" decoding="async" alt="${copy ? '' : esc(p.alt)}">${p.tag ? `<span class="wp-photo-tag">${esc(p.tag)}</span>` : ''}</span><span class="wp-tile-name">${esc(p.name)}</span></a></li>`;
 
 const html = `<!-- why-pvi:start -->
 <section class="why-pvi" id="ve-pvi" aria-labelledby="vi-sao-chon-pvi"><div class="wp-card">
 <div class="wp-head"><small>VÌ SAO CHỌN PVI</small><h2 id="vi-sao-chon-pvi">Tại sao các doanh nghiệp lớn lựa chọn <span class="wp-brand-red">Bảo Hiểm PVI</span>?</h2></div>
 <div class="wp-row">
 <figure class="wp-figure wp-market-figure">${market}
-<figcaption>Số 1 thị phần bảo hiểm phi nhân thọ<a href="${MARKET_SOURCE.href}" target="_blank" rel="noopener noreferrer">Nguồn: ${esc(MARKET_SOURCE.label)}</a></figcaption></figure>
-<figure class="wp-figure"><a class="wp-cert" href="${AM_BEST_CERT}" target="_blank" rel="noopener"><img src="${AM_BEST_CERT}" width="960" height="737" loading="lazy" decoding="async" alt="Giấy chứng nhận AM Best: PVI Insurance Corporation được xếp hạng năng lực tài chính A− (Excellent), hiệu lực từ 19/03/2026"></a>
-<figcaption>AM Best A− (Xuất sắc), 4 năm liên tiếp<span>Hiệu lực 19/03/2026</span><span class="wp-sources">Nguồn: <a href="${AM_BEST_SOURCE}" target="_blank" rel="noopener noreferrer">PVI</a> · <a href="${AM_BEST_PRESS}" target="_blank" rel="noopener noreferrer">Dân trí</a></span></figcaption></figure>
+<figcaption>Số 1 thị phần bảo hiểm phi nhân thọ<a href="${MARKET_SOURCE.href}" target="_blank" rel="noreferrer">Nguồn: ${esc(MARKET_SOURCE.label)}</a></figcaption></figure>
+<figure class="wp-figure"><a class="wp-cert" href="${AM_BEST_CERT}" target="_blank"><img src="${AM_BEST_CERT}" width="960" height="737" loading="lazy" decoding="async" alt="Giấy chứng nhận AM Best: PVI Insurance Corporation được xếp hạng năng lực tài chính A− (Excellent), hiệu lực từ 19/03/2026"></a>
+<figcaption>AM Best A− (Xuất sắc), 4 năm liên tiếp<span>Hiệu lực 19/03/2026</span><span class="wp-sources">Nguồn: <a href="${AM_BEST_SOURCE}" target="_blank" rel="noreferrer">PVI</a> · <a href="${AM_BEST_PRESS}" target="_blank" rel="noreferrer">Dân trí</a></span></figcaption></figure>
 <div class="wp-projects"><div class="wp-strip" tabindex="0" aria-label="Công trình lớn PVI đã bảo hiểm. Dải tự chạy, di chuột để dừng; bấm vào từng công trình để xem nguồn."><ul class="wp-track">${PROJECTS.map((p) => tile(p, false)).join('')}${PROJECTS.map((p) => tile(p, true)).join('')}</ul></div>
 <p class="wp-note">Công trình lớn PVI đã bảo hiểm (xây dựng hoặc vận hành), một số trong liên danh nhà bảo hiểm.</p>
 <div class="wp-slogan"><div class="wp-slogan-track"><span>${esc(SLOGAN)}</span><span aria-hidden="true">${esc(SLOGAN)}</span></div></div></div>
@@ -103,7 +103,7 @@ const html = `<!-- why-pvi:start -->
 
 const press = `<section class="pvi-press" aria-labelledby="bao-chi-pvi"><div class="pp-inner">
 <h2 id="bao-chi-pvi">${esc(PRESS_TITLE)}</h2><p class="pp-lead">${esc(PRESS_LEAD)}</p>
-<ul class="pp-list">${PRESS.map((x) => `<li><a href="${x.href}" target="_blank" rel="nofollow noopener noreferrer"><img src="/assets/press/${x.logo}.webp" width="${x.w}" height="120" loading="lazy" decoding="async" alt="${esc(x.name)}"><p>${esc(x.text)}</p><span class="pp-more">Đọc bài trên ${esc(x.name)} <i aria-hidden="true">↗</i></span></a></li>`).join('')}</ul>
+<ul class="pp-list">${PRESS.map((x) => `<li><a href="${x.href}" target="_blank" rel="nofollow noreferrer"><img src="/assets/press/${x.logo}.webp" width="${x.w}" height="120" loading="lazy" decoding="async" alt="${esc(x.name)}"><p>${esc(x.text)}</p><span class="pp-more">Đọc bài trên ${esc(x.name)} <i aria-hidden="true">↗</i></span></a></li>`).join('')}</ul>
 <p class="pp-source">Nguồn báo chí: ${PRESS.map((x) => esc(x.name)).join(', ')}.</p>
 </div></section>`;
 

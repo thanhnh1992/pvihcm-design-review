@@ -131,7 +131,7 @@ ${pic('khoang-lai', 1200, 900, 'Khoang lái VinFast VF Wild với vô lăng hai 
 <section class="kb-cta kb-wide" aria-labelledby="tu-van">
 <div>
 <h2 id="tu-van">Nhận chào phí cho xe bán tải VinFast</h2>
-<p>Nhắn <a href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Zalo 0938 072 236</a> ảnh hóa đơn hoặc đăng ký xe. PVI Thành Đô gửi bản chào phí theo tỷ lệ 1,05% trước khi bạn quyết định.</p>
+<p>Nhắn <a href="${ZALO_TU_VAN}" target="_blank">Zalo 0938 072 236</a> ảnh hóa đơn hoặc đăng ký xe. PVI Thành Đô gửi bản chào phí theo tỷ lệ 1,05% trước khi bạn quyết định.</p>
 </div>
 ${ctaRow('Gọi tư vấn 0938 072 236')}
 </section>

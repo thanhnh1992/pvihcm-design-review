@@ -91,7 +91,7 @@ export function renderDashboard(st) {
     + '</section>';
   const panel = `<div class="auto-fee-panel ocp-feePanel" aria-live="polite"><div class="ocp-feeContent"><div class="ocp-feeSummary"><div class="auto-fee-value"><span>${c.nntxPhaiTra ? 'Tổng phí tham khảo' : 'Phí TNDS tham khảo'} <small>(đã gồm VAT)</small></span><strong>${c.grandTotal ? money(c.grandTotal) : 'Theo quy định'}<em> / năm</em></strong><p>${esc(sub)}</p></div>`
     + `<div class="auto-fee-line"><span>Phí cơ bản</span><b>${esc(formatVnd(on ? c.discountedBasePremium : basePremium))}</b><i>+</i><span>VAT (10%)</span><b>${basePremium ? esc(formatVnd(on ? c.discountedVat : c.vat)) : '—'}</b><i>=</i><span>Tổng phí</span><b>${c.payableTotal ? esc(formatVnd(c.payableTotal)) : 'Theo quy định'}</b></div>`
-    + nntx + `</div>${buy}</div><div class="ocp-ruleChip"><div class="auto-rule-chip"><span>⌁</span><p><b>${esc(tndsReference.legalBasis)}</b><small>${esc(tndsReference.updated)}</small></p><a href="${esc(tndsReference.sourceUrl)}" target="_blank" rel="noopener">Nguồn PVI ↗</a></div></div></div>`;
+    + nntx + `</div>${buy}</div><div class="ocp-ruleChip"><div class="auto-rule-chip"><span>⌁</span><p><b>${esc(tndsReference.legalBasis)}</b><small>${esc(tndsReference.updated)}</small></p><a href="${esc(tndsReference.sourceUrl)}" target="_blank">Nguồn PVI ↗</a></div></div></div>`;
   return `<div class="auto-segments">${seg}</div>${panel}`;
 }
 

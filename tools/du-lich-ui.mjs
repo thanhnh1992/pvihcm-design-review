@@ -90,7 +90,7 @@ export function tvHero({ regions, bands }) {
 </ul>
 <p class="tv-quote-note">Theo biểu phí vùng của PVI, phạm vi chính. Chuyên viên xác nhận phí trước khi phát hành.</p>
 </div>
-<a class="tv-btn tv-btn-red tv-btn-block" id="tv-send" href="${ZALO_TV}" target="_blank" rel="noopener">Nhận tư vấn ngay ${svg('arrow', 'tv-ico-sm')}</a>
+<a class="tv-btn tv-btn-red tv-btn-block" id="tv-send" href="${ZALO_TV}" target="_blank">Nhận tư vấn ngay ${svg('arrow', 'tv-ico-sm')}</a>
 <p class="tv-send-msg" id="tv-send-msg" role="status"></p>
 <ul class="tv-ticks"><li>${svg('check', 'tv-ico-xs')}Tư vấn miễn phí</li><li>${svg('check', 'tv-ico-xs')}Có báo phí nhanh</li><li>${svg('check', 'tv-ico-xs')}Không lưu dữ liệu trên web</li></ul>
 <script type="application/json" id="tv-fee-data">${JSON.stringify(feeData)}</script>
@@ -177,7 +177,7 @@ ${pic('du-lich-tu-van', 'Chuyên viên tư vấn đeo tai nghe trả lời khác
 <li>${svg('shield', 'tv-ico-sm')}Đồng hành khi có sự cố</li>
 </ul>
 </div>
-<div class="tv-adv-call">${svg('phone', 'tv-ico-xl')}<div><span>Gọi ngay</span><a href="tel:0938072236">0938 072 236</a></div><a class="tv-adv-zalo" href="${ZALO_TV}" target="_blank" rel="noopener" aria-label="Nhắn Zalo 0938 072 236">${svg('arrow', 'tv-ico-sm')}</a></div>
+<div class="tv-adv-call">${svg('phone', 'tv-ico-xl')}<div><span>Gọi ngay</span><a href="tel:0938072236">0938 072 236</a></div><a class="tv-adv-zalo" href="${ZALO_TV}" target="_blank" aria-label="Nhắn Zalo 0938 072 236">${svg('arrow', 'tv-ico-sm')}</a></div>
 </div></div></section>`;
 }
 
@@ -197,6 +197,6 @@ export function tvCta() {
 <section class="tv-cta" aria-labelledby="tv-cta-h"><div class="tv-wrap tv-cta-box">
 <span class="tv-cta-mark">${svg('plane', 'tv-ico-lg')}</span>
 <div class="tv-cta-copy"><h2 id="tv-cta-h">Sắp có chuyến đi?</h2><p>Gửi lịch trình qua Zalo, chúng tôi tư vấn gói phù hợp với bạn.</p></div>
-<div class="tv-cta-actions"><a class="tv-btn tv-btn-phone" href="tel:0938072236">${svg('phone', 'tv-ico-sm')}0938 072 236</a><a class="tv-btn tv-btn-red" href="${ZALO}" target="_blank" rel="noopener">Nhận tư vấn ngay ${svg('arrow', 'tv-ico-sm')}</a></div>
+<div class="tv-cta-actions"><a class="tv-btn tv-btn-phone" href="tel:0938072236">${svg('phone', 'tv-ico-sm')}0938 072 236</a><a class="tv-btn tv-btn-red" href="${ZALO}" target="_blank">Nhận tư vấn ngay ${svg('arrow', 'tv-ico-sm')}</a></div>
 </div></section>`;
 }

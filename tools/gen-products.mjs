@@ -59,7 +59,7 @@ const write = (rel, html) => { const f = path.join(DIST, rel); fs.mkdirSync(path
 <div class="fire-total pd-result" id="tnds-result">
 <div class="fire-total-rows"><div><span>Phí cơ bản</span><b id="tnds-base">437.000đ</b></div><div><span>VAT 10%</span><b id="tnds-vat">43.700đ</b></div></div>
 <div class="fire-total-sum"><span>Tổng phí một năm</span><strong id="tnds-total">480.700đ</strong></div>
-<div class="fire-total-foot"><a class="fire-btn fire-btn-red" href="tel:0938072236">Gọi mua 0938 072 236</a><a class="fire-btn fire-btn-line" href="${ZALO}" target="_blank" rel="noopener" style="color:var(--ink);border:1px solid #c9d6e3;background:#fff">Gửi cà vẹt qua Zalo</a></div>
+<div class="fire-total-foot"><a class="fire-btn fire-btn-red" href="tel:0938072236">Gọi mua 0938 072 236</a><a class="fire-btn fire-btn-line" href="${ZALO}" target="_blank" style="color:var(--ink);border:1px solid #c9d6e3;background:#fff">Gửi cà vẹt qua Zalo</a></div>
 </div>
 <div class="pd-card" style="margin-top:18px"><table class="pd-table"><caption style="padding:16px 18px 0">Mức trách nhiệm bảo hiểm</caption><tbody>${limits.map((l) => `<tr><th scope="row">${esc(l.label)}</th><td class="num strong">${esc(l.value)}</td><td>${esc(l.note)}</td></tr>`).join('')}</tbody></table></div>
 <p class="fire-note"><b>Căn cứ:</b> ${t(ref.legalBasis)}. ${t(ref.updated)}. Phí trên là phí theo biểu quy định, cần đối chiếu thông tin trên giấy chứng nhận trước khi phát hành.</p>
@@ -70,7 +70,7 @@ const write = (rel, html) => { const f = path.join(DIST, rel); fs.mkdirSync(path
 <h2>Biểu phí TNDS đầy đủ</h2>
 <div class="fire-tabs" role="tablist" aria-label="Nhóm xe">${classes.map((c, i) => `<button type="button" role="tab" id="tb-${c.id}" aria-controls="tab-${c.id}" aria-selected="${i === 0}">${esc(c.label)}</button>`).join('')}</div>
 ${feeTables}
-<p class="fire-note"><b>Nguồn:</b> <a href="${ref.sourceUrl}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">Bảo hiểm PVI</a>, ${t(ref.legalBasis)}. Tổng phí làm tròn theo đồng, đã gồm ${t(ref.vat)}.</p>
+<p class="fire-note"><b>Nguồn:</b> <a href="${ref.sourceUrl}" target="_blank" style="color:var(--blue);text-decoration:underline">Bảo hiểm PVI</a>, ${t(ref.legalBasis)}. Tổng phí làm tròn theo đồng, đã gồm ${t(ref.vat)}.</p>
 </div></section>
 
 <section class="fire-compare" id="vat-chat"><div class="fire-wrap">
@@ -88,7 +88,7 @@ ${feeTables}
 <h2>Người lao động thi công trên công trường</h2>
 <p class="fire-lede" style="margin-top:12px">${t(contractor.summary)}</p>
 <div class="fire-alert"><b>${t(ac.legalReference.current)} · ${t(ac.legalReference.effective)}</b><p>${t(ac.legalReference.replaces)}. <b>${t(ac.faqs[3].question)}</b> ${t(ac.faqs[3].answer)}</p></div>
-<div class="pd-cta"><a class="fire-btn fire-btn-dark" href="/san-pham/bao-hiem-tai-nan/#doi-tuong">Xem phí cho nhà thầu</a><a class="fire-btn fire-btn-line" href="${ac.legalReference.href}" target="_blank" rel="noopener">Đọc Nghị định 220/2026/NĐ-CP</a></div>
+<div class="pd-cta"><a class="fire-btn fire-btn-dark" href="/san-pham/bao-hiem-tai-nan/#doi-tuong">Xem phí cho nhà thầu</a><a class="fire-btn fire-btn-line" href="${ac.legalReference.href}" target="_blank">Đọc Nghị định 220/2026/NĐ-CP</a></div>
 <p class="fire-note">Đọc thêm: <a href="/tin-tuc/bao-hiem-tai-nan-cong-trinh-pvi/">Bảo hiểm tai nạn công trình PVI: phần bắt buộc, quyền lợi, hồ sơ báo giá và bồi thường</a></p>
 </div></section>
 
@@ -103,7 +103,7 @@ ${feeTables}
 
 <section class="fire-news" id="tai-lieu" style="background:#fff"><div class="fire-wrap">
 <h2>Quy tắc, mẫu biểu và văn bản pháp lý</h2>
-<ul class="pd-docs">${docs.map((a) => `<li><a href="${a.href}" target="_blank" rel="noopener"><span class="cat">${t(a.type)}</span><div><b>${t(a.title)}</b><span class="d">${t(a.description)} ${t(a.meta)}.</span></div><i aria-hidden="true">&#8599;</i></a></li>`).join('')}</ul>
+<ul class="pd-docs">${docs.map((a) => `<li><a href="${a.href}" target="_blank"><span class="cat">${t(a.type)}</span><div><b>${t(a.title)}</b><span class="d">${t(a.description)} ${t(a.meta)}.</span></div><i aria-hidden="true">&#8599;</i></a></li>`).join('')}</ul>
 </div></section>
 
 <section class="fire-claim pd-paper" id="boi-thuong"><div class="fire-wrap">
@@ -267,7 +267,7 @@ ${ctaRow('Gọi tư vấn 0938 072 236')}
 
 <section class="fire-news" id="tai-lieu" style="background:#fff"><div class="fire-wrap">
 <h2>Tài liệu và hướng dẫn chính thức</h2>
-<ul class="pd-docs">${g.attachments.filter((a) => a.href).map((a) => `<li><a href="${a.href}" target="_blank" rel="noopener"><span class="cat">${t(a.meta)}</span><div><b>${t(a.title)}</b><span class="d">${t(a.description)}</span></div><i aria-hidden="true">&#8599;</i></a></li>`).join('')}</ul>
+<ul class="pd-docs">${g.attachments.filter((a) => a.href).map((a) => `<li><a href="${a.href}" target="_blank"><span class="cat">${t(a.meta)}</span><div><b>${t(a.title)}</b><span class="d">${t(a.description)}</span></div><i aria-hidden="true">&#8599;</i></a></li>`).join('')}</ul>
 </div></section>
 
 <section class="fire-claim pd-paper" id="boi-thuong"><div class="fire-wrap">
@@ -275,7 +275,7 @@ ${ctaRow('Gọi tư vấn 0938 072 236')}
 <h2>Ba việc cần làm ngay</h2>
 ${steps(g.claimSteps)}
 ${hotline}
-<p class="fire-note"><b>Nguồn:</b> <a href="${g.sourceUrl}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">${t(g.sourceLabel)}</a>. Phạm vi, điều khoản, mức khấu trừ và phí được chuyên viên xác nhận theo từng hồ sơ.</p>
+<p class="fire-note"><b>Nguồn:</b> <a href="${g.sourceUrl}" target="_blank" style="color:var(--blue);text-decoration:underline">${t(g.sourceLabel)}</a>. Phạm vi, điều khoản, mức khấu trừ và phí được chuyên viên xác nhận theo từng hồ sơ.</p>
 </div></section>
 
 ${faqBlock(g.faqs)}`;

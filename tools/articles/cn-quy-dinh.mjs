@@ -100,7 +100,7 @@ export function body({ ctaRow }) {
 <section class="kb-cta kb-wide" aria-labelledby="tu-van">
 <div>
 <h2 id="tu-van">Kiểm tra cơ sở đã mua đúng quy định chưa</h2>
-<p>Nhắn <a href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Zalo 0938 072 236</a> loại hình, diện tích và hợp đồng đang có. PVI Thành Đô đối chiếu Phụ lục VI, VII và các điểm sửa đổi của Nghị định 347/2026.</p>
+<p>Nhắn <a href="${ZALO_TU_VAN}" target="_blank">Zalo 0938 072 236</a> loại hình, diện tích và hợp đồng đang có. PVI Thành Đô đối chiếu Phụ lục VI, VII và các điểm sửa đổi của Nghị định 347/2026.</p>
 </div>
 ${ctaRow('Gọi tư vấn 0938 072 236')}
 </section>

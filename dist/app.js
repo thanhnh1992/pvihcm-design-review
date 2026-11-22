@@ -84,10 +84,8 @@ const opensNewTab = (link) => {
 const desktopPointer = matchMedia('(hover:hover) and (pointer:fine)');
 const setNewTab = (link) => {
   if (!desktopPointer.matches || !opensNewTab(link)) return;
+  // Không gắn thuộc tính rel noopener (chủ site bỏ 22/11/2026); trình duyệt hiện đại tự áp noopener cho target="_blank".
   link.target = '_blank';
-  const rel = new Set((link.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
-  rel.add('noopener');
-  link.setAttribute('rel', [...rel].join(' '));
 };
 document.querySelectorAll('a[href]').forEach(setNewTab);
 document.addEventListener('click', (event) => {

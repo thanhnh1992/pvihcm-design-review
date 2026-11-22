@@ -30,7 +30,7 @@ const GARA_URL = 'https://online.pvi.com.vn/kien-thuc/danh-sach-gara-lien-ket-su
 const BHVN = 'https://www.baohiempvi-vn.com';
 // Link nội bộ của baohiempvi-vn: trang có trên pvihcm thì đổi sang, chưa có thì dẫn sang baohiempvi-vn.
 const docHref = (href) => href === '/gara-lien-ket-pvi' ? GARA_URL : href.startsWith('/') ? BHVN + href : href;
-const ext = 'target="_blank" rel="noopener"';
+const ext = 'target="_blank"';
 
 const buoc = [
   { so: '01', nhan: 'Báo tổn thất', tieuDe: 'Gọi ngay, đừng sửa trước', mo: `Gọi ${CLAIMS_HOTLINE} báo cho Bảo hiểm PVI ngay tại chỗ. Chụp hiện trường, biển số và vết hư hỏng trước khi di chuyển xe.`, manh: 'Tự sửa trước rồi mới báo là lý do hồ sơ hay bị kéo dài nhất.' },

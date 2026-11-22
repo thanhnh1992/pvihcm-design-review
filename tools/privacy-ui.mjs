@@ -3,7 +3,7 @@ export const PRIVACY_PATH = '/chinh-sach-bao-ve-du-lieu-ca-nhan/';
 export const PRIVACY_PDF = '/tai-lieu/chinh-sach-bao-ve-du-lieu-ca-nhan-30-03-2026.pdf';
 
 export function privacyLinks() {
-  return `<nav class="privacy-footer-links" aria-label="Quyền riêng tư"><a href="${PRIVACY_PATH}">Chính sách Bảo vệ Dữ liệu Cá nhân</a><a href="${PRIVACY_PDF}" target="_blank" rel="noopener">Tải chính sách PVI (PDF)</a><button type="button" data-privacy-open>Cài đặt quyền riêng tư</button></nav>`;
+  return `<nav class="privacy-footer-links" aria-label="Quyền riêng tư"><a href="${PRIVACY_PATH}">Chính sách Bảo vệ Dữ liệu Cá nhân</a><a href="${PRIVACY_PDF}" target="_blank">Tải chính sách PVI (PDF)</a><button type="button" data-privacy-open>Cài đặt quyền riêng tư</button></nav>`;
 }
 
 export function privacyUi() {

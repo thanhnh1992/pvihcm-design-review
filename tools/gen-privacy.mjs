@@ -27,7 +27,7 @@ function lines(items) {
 const main = `<section class="privacy-page"><article class="privacy-document">
 <p class="privacy-breadcrumb"><a href="/">Trang chủ</a> / ${esc(policy.title)}</p>
 <h1>${esc(policy.title)}</h1><p class="privacy-decision">${esc(policy.decision)}</p>
-<div class="privacy-document-actions"><a href="${PRIVACY_PDF}" target="_blank" rel="noopener">Tải chính sách PVI (PDF)</a><button type="button" data-privacy-open>Cài đặt quyền riêng tư</button></div>
+<div class="privacy-document-actions"><a href="${PRIVACY_PDF}" target="_blank">Tải chính sách PVI (PDF)</a><button type="button" data-privacy-open>Cài đặt quyền riêng tư</button></div>
 <section class="privacy-intro"><h2>${esc(data.introTitle)}</h2>${lines(data.introLines)}<h2>${esc(data.purposeTitle)}</h2>${lines(data.purposeLines)}<h2>${esc(data.updateTitle)}</h2>${lines(data.updateLines)}</section>
 <nav class="privacy-toc" aria-label="Các điều trong chính sách"><strong>Nội dung chính sách</strong>${data.articles.map(a=>`<a href="#dieu-${a.key}">${esc(title(a))}</a>`).join('')}</nav>
 ${data.articles.map(a=>`<details class="privacy-article" id="dieu-${a.key}"><summary><h2>${esc(title(a))}</h2></summary><div class="privacy-article-body">${lines(a.lines)}</div></details>`).join('\n')}

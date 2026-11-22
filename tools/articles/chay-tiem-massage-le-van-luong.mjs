@@ -75,7 +75,7 @@ ${photo('chay-massage-khoi-den', 720, 960, 'Cột khói đen bốc cao phía xa 
 
 <h2 id="bat-buoc">Tiệm massage, cửa hàng nhỏ có phải mua bảo hiểm cháy nổ bắt buộc không?</h2>
 <p>Tùy quy mô. Nghĩa vụ mua bảo hiểm cháy, nổ bắt buộc chỉ áp dụng với cơ sở thuộc danh mục 44 nhóm tại Phụ lục VII Nghị định 105/2025/NĐ-CP, và mỗi nhóm có ngưỡng quy mô riêng. Ví dụ: karaoke từ 2 tầng hoặc 300 m² trở lên, cơ sở kinh doanh hàng hóa dễ cháy từ 200 m² sàn trở lên.</p>
-<p>Nhiều cửa hàng, hộ kinh doanh nhỏ không thuộc diện bắt buộc. Không bắt buộc không có nghĩa là không có rủi ro: khi cháy, toàn bộ thiệt hại nhà, máy móc, nội thất, hàng hóa do chủ cơ sở tự gánh nếu không có bảo hiểm. Gửi diện tích, số tầng, ngành nghề qua <a class="kb-link" href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Zalo 0938 072 236</a> để PVI Thành Đô kiểm tra cơ sở có thuộc diện bắt buộc hay không.</p>
+<p>Nhiều cửa hàng, hộ kinh doanh nhỏ không thuộc diện bắt buộc. Không bắt buộc không có nghĩa là không có rủi ro: khi cháy, toàn bộ thiệt hại nhà, máy móc, nội thất, hàng hóa do chủ cơ sở tự gánh nếu không có bảo hiểm. Gửi diện tích, số tầng, ngành nghề qua <a class="kb-link" href="${ZALO_TU_VAN}" target="_blank">Zalo 0938 072 236</a> để PVI Thành Đô kiểm tra cơ sở có thuộc diện bắt buộc hay không.</p>
 
 <h2 id="boi-thuong">Nếu có bảo hiểm cháy nổ, chủ cơ sở được bồi thường những gì?</h2>
 <p>Bảo hiểm cháy nổ bồi thường thiệt hại vật chất của tài sản được bảo hiểm do cháy, nổ gây ra, sau khi trừ mức khấu trừ và trong phạm vi số tiền bảo hiểm ghi trên hợp đồng. Số tiền bồi thường phụ thuộc vào:</p>
@@ -115,7 +115,7 @@ ${photo('chay-massage-khoi-den', 720, 960, 'Cột khói đen bốc cao phía xa 
 <section class="kb-cta kb-wide" aria-labelledby="tu-van">
 <div>
 <h2 id="tu-van">Kiểm tra cơ sở của bạn có phải mua bảo hiểm cháy nổ không</h2>
-<p>Nhắn <a href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Zalo 0938 072 236</a> diện tích, số tầng, ngành nghề và giá trị tài sản. PVI Thành Đô trả lời có thuộc diện bắt buộc không và báo phí trước khi bạn quyết định.</p>
+<p>Nhắn <a href="${ZALO_TU_VAN}" target="_blank">Zalo 0938 072 236</a> diện tích, số tầng, ngành nghề và giá trị tài sản. PVI Thành Đô trả lời có thuộc diện bắt buộc không và báo phí trước khi bạn quyết định.</p>
 </div>
 ${ctaRow('Gọi tư vấn 0938 072 236')}
 </section>

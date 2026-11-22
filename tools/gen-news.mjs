@@ -580,7 +580,7 @@ for (const article of pcccNoiLamViec) renderKb(article);
       const body = st.items.length
         ? `<ul class="nl-photos kt-list">${st.items.map((p) => `<li><a class="nl-card" href="${postUrl(p)}"><span class="nl-photo">${cover(p, '(max-width:600px) 120px, (max-width:960px) 50vw, 400px')}</span>
 <span class="nl-card-copy"><span class="nl-label">${esc(p.cat)}</span><h3>${t(p.title)}</h3><p class="kt-lead">${t(p.lead)}</p>${time(p)}</span></a></li>`).join('')}</ul>`
-        : `<p class="kt-empty">Mảng này đang biên soạn. Cần hỏi ngay, nhắn <a href="https://zalo.me/0938072236" target="_blank" rel="noopener">Zalo 0938 072 236</a>.</p>`;
+        : `<p class="kt-empty">Mảng này đang biên soạn. Cần hỏi ngay, nhắn <a href="https://zalo.me/0938072236" target="_blank">Zalo 0938 072 236</a>.</p>`;
       return `
 <section class="nl-section" id="${id}" aria-labelledby="${id}-h"><div class="fire-wrap">
 <div class="nl-head"><span class="nl-kicker">${String(i + 1).padStart(2, '0')} · ${esc(st.name)}</span>

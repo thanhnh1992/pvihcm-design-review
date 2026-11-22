@@ -109,7 +109,7 @@ Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist
 
 **Bấm link mở tab mới, chỉ trên máy tính (chủ site chốt 28/10/2026, áp dụng cho mọi trang hiện có và sau này)**
 - Chỉ áp dụng khi thiết bị có chuột (`(hover:hover) and (pointer:fine)`). Điện thoại và máy tính bảng cảm ứng mở cùng tab như cũ (link vốn đã có sẵn `target="_blank"` trong HTML thì vẫn giữ).
-- Đoạn `opensNewTab` / `setNewTab` ở đầu phần hiệu ứng trong `dist/app.js` tự gắn `target="_blank" rel="noopener"` cho mọi link http/https. Mọi trang đều nạp `app.js` (qua `page()` trong `tools/chrome.mjs` và `dist/index.html`), nên trang mới không cần làm gì thêm. Trang viết tay mới phải nạp `/app.js`.
+- Đoạn `opensNewTab` / `setNewTab` ở đầu phần hiệu ứng trong `dist/app.js` tự gắn `target="_blank"` cho mọi link http/https (không gắn `rel="noopener"`). Mọi trang đều nạp `app.js` (qua `page()` trong `tools/chrome.mjs` và `dist/index.html`), nên trang mới không cần làm gì thêm. Trang viết tay mới phải nạp `/app.js`.
 - Giữ nguyên tab cho: link nhảy mục trong cùng trang (`#...`), `tel:`, `mailto:`, link có `download`. Link nào cần mở cùng tab thì thêm `data-same-tab`.
 - Không gỡ hay đảo quy tắc này khi chủ site chưa đồng ý.
 
@@ -135,7 +135,7 @@ Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist
 - **Mỗi khi thêm hoặc sửa bài/trang có ảnh minh họa: nhắc chủ site render hình kèm metadata cho bài đó** (gợi ý tiêu đề, mô tả, từ khóa theo nội dung bài để chủ site điền). Không tự lấy ảnh stock hay ảnh AI thay khi chủ site chưa duyệt.
 
 **Link ra ngoài (chủ site chốt 18/11/2026)**
-- Hạn chế tối đa link trỏ ra site khác. Link nào buộc phải có (nguồn trích dẫn, Zalo, văn bản pháp luật) thì **bắt buộc có `rel="nofollow"`**, giữ thêm `noopener noreferrer` khi mở tab mới. Hàm `nofollowExternal()` trong `tools/link-out.mjs` tự gắn; `chrome.mjs` và `patch-static.mjs` đã gọi, script sinh trang khác thì chạy `node tools/link-out.mjs` sau cùng. Link tự dựng trong JS (`advisor.js`, `chay-no/tra-cuu.js`...) phải ghi sẵn `rel="nofollow"`.
+- Hạn chế tối đa link trỏ ra site khác. Link nào buộc phải có (nguồn trích dẫn, Zalo, văn bản pháp luật) thì **bắt buộc có `rel="nofollow"`**, **không dùng `noopener`** (chủ site bỏ 22/11/2026: không ghi `rel="noopener"` ở bất kỳ link nào, trình duyệt hiện đại tự áp cho `target="_blank"`); `noreferrer` có sẵn thì giữ. Hàm `nofollowExternal()` trong `tools/link-out.mjs` tự gắn; `chrome.mjs` và `patch-static.mjs` đã gọi, script sinh trang khác thì chạy `node tools/link-out.mjs` sau cùng. Link tự dựng trong JS (`advisor.js`, `chay-no/tra-cuu.js`...) phải ghi sẵn `rel="nofollow"`.
 
 **Favicon (chủ site chốt 18/11/2026)**
 - Mọi trang dùng đúng 2 thẻ: `<link rel="icon" href="https://pvihcm.com/pvihcm.ico?v=2" sizes="48x48 96x96 144x144">` và `<link rel="apple-touch-icon" href="https://pvihcm.com/apple-touch-icon.png" sizes="180x180">`. Trang sinh bằng script lấy từ `tools/chrome.mjs`; trang sửa tay (trang chủ, cháy nổ) sửa trực tiếp. `dist/pvihcm.ico` chứa các khung 16/32/48/96/144/256. Đổi icon thì tăng `?v=` để trình duyệt tải lại.

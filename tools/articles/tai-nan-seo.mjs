@@ -69,7 +69,7 @@ function build(a, i) {
   const cta = (n) => `<div class="wp-block-group has-background is-layout-constrained tn-cta">
 <p class="tn-cta-title">${b2b ? 'Cần báo phí cho danh sách nhân viên?' : 'Cần chọn gói phù hợp?'}</p>
 <p>${b2b ? 'Gửi danh sách họ tên, ngày sinh, số CCCD và nhóm nghề qua Zalo. PVI Thành Đô gửi lại báo phí chính thức và bản nháp giấy chứng nhận để soát tên.' : 'Nhắn Zalo cho PVI Thành Đô số tiền bảo hiểm anh chị muốn và công việc đang làm, nhân viên tư vấn gói phù hợp.'}</p>
-<div class="wp-block-buttons is-layout-flex"><div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="${ZALO_TU_VAN}" target="_blank" rel="noopener" data-cta="tai-nan-seo-${n}">Nhắn Zalo 0938 072 236</a></div><div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="tel:0938072236">Gọi 0938 072 236</a></div></div>
+<div class="wp-block-buttons is-layout-flex"><div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="${ZALO_TU_VAN}" target="_blank" data-cta="tai-nan-seo-${n}">Nhắn Zalo 0938 072 236</a></div><div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="tel:0938072236">Gọi 0938 072 236</a></div></div>
 </div>`;
 
   const sections = a.sections.map((s, k) => [
@@ -125,7 +125,7 @@ ${readMore}
 <section class="kb-cta kb-wide" aria-labelledby="tu-van">
 <div>
 <h2 id="tu-van">${b2b ? 'Gửi danh sách nhân viên để nhận báo phí' : 'Nhận tư vấn bảo hiểm tai nạn'}</h2>
-<p>Nhắn <a href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Zalo 0938 072 236</a> ${b2b ? 'danh sách họ tên, ngày sinh, CCCD và nhóm nghề. PVI Thành Đô gửi báo phí chính thức, giấy chứng nhận và hóa đơn VAT phát hành trong ngày làm việc sau khi thanh toán.' : 'để được tư vấn gói phù hợp. Khi xảy ra tai nạn, gọi tổng đài bồi thường PVI 1900 54 54 58.'}</p>
+<p>Nhắn <a href="${ZALO_TU_VAN}" target="_blank">Zalo 0938 072 236</a> ${b2b ? 'danh sách họ tên, ngày sinh, CCCD và nhóm nghề. PVI Thành Đô gửi báo phí chính thức, giấy chứng nhận và hóa đơn VAT phát hành trong ngày làm việc sau khi thanh toán.' : 'để được tư vấn gói phù hợp. Khi xảy ra tai nạn, gọi tổng đài bồi thường PVI 1900 54 54 58.'}</p>
 </div>
 ${ctaRow('Gọi tư vấn 0938 072 236')}
 </section>

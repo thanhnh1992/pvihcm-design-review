@@ -78,7 +78,7 @@ const REMOTE_STEPS = [
 ];
 
 const dateVn = (iso) => iso.split('-').reverse().join('/');
-const zaloBtn = (label, cls = 'kv-btn kv-btn-red') => `<a class="${cls}" href="${ZALO_TU_VAN}" target="_blank" rel="noopener">${ICON.chat}<span>${label}</span></a>`;
+const zaloBtn = (label, cls = 'kv-btn kv-btn-red') => `<a class="${cls}" href="${ZALO_TU_VAN}" target="_blank">${ICON.chat}<span>${label}</span></a>`;
 
 export function renderArea(A, { page, write, units }) {
   const P = `/tin-tuc/${A.slug}/`;
@@ -127,7 +127,7 @@ ${cover ? '' : `<p class="kv-pin">${ICON.pin}<span>${esc(A.nhan)}<small>${esc(A.
 
 <div class="kv-shell"><div class="kv-answer">
 <p class="kv-lead">${isThuDuc ? `Bạn có thể đến <strong>${esc(THU_DUC_ADDRESS)}</strong> để mua bảo hiểm PVI. Nếu muốn hỏi phí trước, hãy nhắn Zalo 0938 072 236 cho nhân viên Bảo hiểm PVI Thành Đô và cho biết bạn cần bảo hiểm ô tô, con người hay tài sản.` : t(A.lead)}</p>
-<p class="kv-byline">Công ty Bảo hiểm PVI Thành Đô · <time datetime="${A.reviewedAt}">Đối chiếu nguồn ngày ${dateVn(A.reviewedAt)}</time> · Tư vấn: <a href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Zalo 0938 072 236</a></p>
+<p class="kv-byline">Công ty Bảo hiểm PVI Thành Đô · <time datetime="${A.reviewedAt}">Đối chiếu nguồn ngày ${dateVn(A.reviewedAt)}</time> · Tư vấn: <a href="${ZALO_TU_VAN}" target="_blank">Zalo 0938 072 236</a></p>
 </div></div>
 
 ${isThuDuc ? `<section class="kv-block" aria-labelledby="an-khanh"><div class="kv-shell kv-online">
@@ -144,7 +144,7 @@ ${isThuDuc ? `<section class="kv-block" aria-labelledby="an-khanh"><div class="k
  ${isThuDuc ? `<div class="kv-prose"><h2 id="san-pham">Chọn loại bảo hiểm và chuẩn bị giấy tờ</h2>
 <p>Nếu chỉ cần báo phí, chuẩn bị trước thông tin ở dòng phù hợp bên dưới. Mỗi loại bảo hiểm cần một bộ hồ sơ khác nhau.</p>
 <ul>${THU_DUC_PRODUCTS.map(([label, href, detail]) => `<li><strong><a href="${href}">${esc(label)}</a></strong>. ${esc(detail)}</li>`).join('')}</ul></div>` : `
-<div class="kv-block-head"><h2 id="san-pham">Các sản phẩm bảo hiểm PVI phổ biến tại ${esc(A.ten)}</h2><a class="kv-head-link" href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Tư vấn theo nhu cầu của bạn ${ICON.arrow}</a></div>
+<div class="kv-block-head"><h2 id="san-pham">Các sản phẩm bảo hiểm PVI phổ biến tại ${esc(A.ten)}</h2><a class="kv-head-link" href="${ZALO_TU_VAN}" target="_blank">Tư vấn theo nhu cầu của bạn ${ICON.arrow}</a></div>
 <ul class="kv-products">${PRODUCTS.map((p) => `<li><a href="${p.href}">${srcset(p.img, 1280, 853, '(max-width:640px) 50vw, 230px', false, p.alt)}<span class="kv-product-body"><strong>${esc(p.ten)}</strong><small>${esc(p.moTa)}</small></span></a></li>`).join('')}</ul>`}
 </div></section>
 

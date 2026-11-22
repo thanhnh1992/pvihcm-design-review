@@ -74,7 +74,7 @@ ${ctaRow()}
 const linksBlock = (p, id = 'tai-lieu', title = 'Tài liệu và nguồn chính thức') => {
   const items = p.attachments.filter((a) => a.href).map((a) => {
     const href = a.href.startsWith('/') ? SISTER + a.href : a.href;
-    return `<li><a href="${href}" target="_blank" rel="noopener"><span class="cat">${t(a.meta || a.type)}</span><div><b>${t(a.title)}</b><span class="d">${t(a.description)}</span></div><i aria-hidden="true">&#8599;</i></a></li>`;
+    return `<li><a href="${href}" target="_blank"><span class="cat">${t(a.meta || a.type)}</span><div><b>${t(a.title)}</b><span class="d">${t(a.description)}</span></div><i aria-hidden="true">&#8599;</i></a></li>`;
   }).join('');
   if (!items) return '';
   return `
@@ -90,7 +90,7 @@ const claimBlock = (p, eyebrow, heading) => `
 <h2>${esc(heading)}</h2>
 ${steps(p.claimSteps)}
 ${hotline}
-<p class="fire-note"><b>Nguồn:</b> <a href="${fixUrl(p.sourceUrl)}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">${t(p.sourceLabel)}</a>. Phạm vi, điều khoản, mức khấu trừ và phí được chuyên viên xác nhận theo từng hồ sơ.</p>
+<p class="fire-note"><b>Nguồn:</b> <a href="${fixUrl(p.sourceUrl)}" target="_blank" style="color:var(--blue);text-decoration:underline">${t(p.sourceLabel)}</a>. Phạm vi, điều khoản, mức khấu trừ và phí được chuyên viên xác nhận theo từng hồ sơ.</p>
 </div></section>`;
 
 const build = (o) => {
@@ -326,7 +326,7 @@ ${regions.map(([id, label, tb]) => `<div class="dl-panel" id="dl-p-${id}"><div c
 </div>
 </div>
 
-<p class="fire-note">Bậc từ 32 ngày có mức thấp hơn các bậc ngắn ngày, đây là mức ghi trong biểu phí của PVI, cách áp cho chuyến dài ngày được chuyên viên xác nhận theo từng hồ sơ. Đoàn nhiều người và các điều khoản mở rộng (bảo hiểm dịch bệnh, hoạt động rủi ro cao, ngộ độc) được báo phí riêng. Nguồn: <a href="${SRC}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">PVI Online, bảo hiểm du lịch quốc tế</a>.</p>
+<p class="fire-note">Bậc từ 32 ngày có mức thấp hơn các bậc ngắn ngày, đây là mức ghi trong biểu phí của PVI, cách áp cho chuyến dài ngày được chuyên viên xác nhận theo từng hồ sơ. Đoàn nhiều người và các điều khoản mở rộng (bảo hiểm dịch bệnh, hoạt động rủi ro cao, ngộ độc) được báo phí riêng. Nguồn: <a href="${SRC}" target="_blank" style="color:var(--blue);text-decoration:underline">PVI Online, bảo hiểm du lịch quốc tế</a>.</p>
 </div></section>
 
 <section class="pd-section" id="loai-tru"><div class="fire-wrap">
@@ -374,10 +374,10 @@ ${hotline}
 <section class="fire-news pd-paper" id="tai-lieu"><div class="fire-wrap">
 <h2>Tài liệu chính thức</h2>
 <ul class="pd-docs">
-<li><a href="${PDF}QTBH_DLQT_1.7.2025.pdf" target="_blank" rel="noopener"><span class="cat">Quy tắc bảo hiểm</span><div><b>Quy tắc bảo hiểm du lịch quốc tế</b><span class="d">Toàn văn quy tắc ban hành kèm ${QD}, gồm phạm vi, loại trừ, thủ tục bồi thường và Phụ lục 1 về phạm vi bổ sung.</span></div><i aria-hidden="true">&#8599;</i></a></li>
-<li><a href="${PDF}BQL_dlqt_1.7.2025.pdf" target="_blank" rel="noopener"><span class="cat">Bảng quyền lợi</span><div><b>Bảng quyền lợi bảo hiểm du lịch quốc tế</b><span class="d">Hạn mức từng quyền lợi của cả sáu chương trình, bản PDF do Bảo hiểm PVI phát hành.</span></div><i aria-hidden="true">&#8599;</i></a></li>
-<li><a href="${PDF}loaitrubaohiemDLQT.pdf" target="_blank" rel="noopener"><span class="cat">Loại trừ</span><div><b>Phần IV, loại trừ bảo hiểm</b><span class="d">19 điểm loại trừ của quy tắc, kèm Phụ lục 1 với loại trừ riêng của từng quyền lợi bổ sung.</span></div><i aria-hidden="true">&#8599;</i></a></li>
-<li><a href="${SRC}" target="_blank" rel="noopener"><span class="cat">Kênh bán của PVI</span><div><b>PVI Online, bảo hiểm du lịch quốc tế</b><span class="d">Trang sản phẩm và biểu phí ba chương trình Bạc, Vàng, Kim cương của Tổng công ty Bảo hiểm PVI.</span></div><i aria-hidden="true">&#8599;</i></a></li>
+<li><a href="${PDF}QTBH_DLQT_1.7.2025.pdf" target="_blank"><span class="cat">Quy tắc bảo hiểm</span><div><b>Quy tắc bảo hiểm du lịch quốc tế</b><span class="d">Toàn văn quy tắc ban hành kèm ${QD}, gồm phạm vi, loại trừ, thủ tục bồi thường và Phụ lục 1 về phạm vi bổ sung.</span></div><i aria-hidden="true">&#8599;</i></a></li>
+<li><a href="${PDF}BQL_dlqt_1.7.2025.pdf" target="_blank"><span class="cat">Bảng quyền lợi</span><div><b>Bảng quyền lợi bảo hiểm du lịch quốc tế</b><span class="d">Hạn mức từng quyền lợi của cả sáu chương trình, bản PDF do Bảo hiểm PVI phát hành.</span></div><i aria-hidden="true">&#8599;</i></a></li>
+<li><a href="${PDF}loaitrubaohiemDLQT.pdf" target="_blank"><span class="cat">Loại trừ</span><div><b>Phần IV, loại trừ bảo hiểm</b><span class="d">19 điểm loại trừ của quy tắc, kèm Phụ lục 1 với loại trừ riêng của từng quyền lợi bổ sung.</span></div><i aria-hidden="true">&#8599;</i></a></li>
+<li><a href="${SRC}" target="_blank"><span class="cat">Kênh bán của PVI</span><div><b>PVI Online, bảo hiểm du lịch quốc tế</b><span class="d">Trang sản phẩm và biểu phí ba chương trình Bạc, Vàng, Kim cương của Tổng công ty Bảo hiểm PVI.</span></div><i aria-hidden="true">&#8599;</i></a></li>
 </ul>
 </div></section>
 `

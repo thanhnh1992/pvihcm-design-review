@@ -94,7 +94,7 @@ export function body({ pic, ctaRow }) {
 <section class="kb-cta kb-wide" aria-labelledby="tu-van">
 <div>
 <h2 id="tu-van">Tư vấn bảo hiểm PVI tại TP.HCM</h2>
-<p>Công ty Bảo hiểm PVI Thành Đô, đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Hotline <a href="tel:0938072236">0938 072 236</a> · Zalo <a href="${ZALO_TU_VAN}" target="_blank" rel="noopener">0938 072 236</a> · Website <a href="/">pvihcm.com</a></p>
+<p>Công ty Bảo hiểm PVI Thành Đô, đơn vị thành viên của Tổng công ty Bảo hiểm PVI. Hotline <a href="tel:0938072236">0938 072 236</a> · Zalo <a href="${ZALO_TU_VAN}" target="_blank">0938 072 236</a> · Website <a href="/">pvihcm.com</a></p>
 </div>
 ${ctaRow('Gọi 0938 072 236')}
 </section>

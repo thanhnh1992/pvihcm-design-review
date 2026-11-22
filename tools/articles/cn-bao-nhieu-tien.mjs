@@ -94,7 +94,7 @@ export function body({ ctaRow }) {
 <section class="kb-cta kb-wide" aria-labelledby="tu-van">
 <div>
 <h2 id="tu-van">Nhận báo phí chính xác cho cơ sở của bạn</h2>
-<p>Nhắn <a href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Zalo 0938 072 236</a> loại cơ sở, diện tích và danh mục tài sản. PVI Thành Đô phân loại đúng dòng Phụ lục VI và gửi báo phí trước khi bạn quyết định.</p>
+<p>Nhắn <a href="${ZALO_TU_VAN}" target="_blank">Zalo 0938 072 236</a> loại cơ sở, diện tích và danh mục tài sản. PVI Thành Đô phân loại đúng dòng Phụ lục VI và gửi báo phí trước khi bạn quyết định.</p>
 </div>
 ${ctaRow('Gọi tư vấn 0938 072 236')}
 </section>

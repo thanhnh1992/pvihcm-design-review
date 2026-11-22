@@ -99,7 +99,7 @@ const write = (rel, html) => { fs.writeFileSync(path.join(DIST, rel), html); con
 <div>
 <div class="fire-total pd-result" id="need-result" tabindex="-1">
 <div class="fire-total-rows"><p id="need-text" style="color:var(--ink);font-size:16px;line-height:1.7;white-space:pre-line">Bản tóm tắt sẽ hiện ở đây sau khi anh/chị bấm “Tạo bản tóm tắt”.</p></div>
-<div class="fire-total-foot"><button class="fire-btn fire-btn-line" type="button" id="need-copy" style="color:var(--ink);border:1px solid #c9d6e3;background:#fff" disabled>Sao chép</button><a class="fire-btn fire-btn-red" href="${ZALO}" target="_blank" rel="noopener">Mở Zalo gửi tư vấn</a><a class="fire-btn fire-btn-line" href="tel:0938072236" style="color:var(--ink);border:1px solid #c9d6e3;background:#fff">Gọi 0938 072 236</a></div>
+<div class="fire-total-foot"><button class="fire-btn fire-btn-line" type="button" id="need-copy" style="color:var(--ink);border:1px solid #c9d6e3;background:#fff" disabled>Sao chép</button><a class="fire-btn fire-btn-red" href="${ZALO}" target="_blank">Mở Zalo gửi tư vấn</a><a class="fire-btn fire-btn-line" href="tel:0938072236" style="color:var(--ink);border:1px solid #c9d6e3;background:#fff">Gọi 0938 072 236</a></div>
 <p id="need-copied" role="status" style="padding:0 20px 14px;font-size:15px;color:#0a6b46"></p>
 </div>
 <p class="fire-note">Thông tin chỉ nằm trên máy của anh/chị để sao chép, trang không lưu và không tự gửi đi đâu.</p>
@@ -172,7 +172,7 @@ ${DIA_BAN.map(([vung, ds]) => `<div class="db-region"><h3>${vung}</h3><ul class=
       ? `<li><a class="db-item" href="${href}"><b>${ten}</b>${sub}<i aria-hidden="true">&rarr;</i></a></li>`
       : `<li><span class="db-item db-soon"><b>${ten}</b>${sub}<em>Đang cập nhật</em></span></li>`;
   }).join('')}</ul></div>`).join('\n')}
-<p class="db-note">Chưa thấy trang tỉnh của anh/chị? Nhắn <a href="${ZALO}" target="_blank" rel="noopener">Zalo</a> hoặc gọi <a href="tel:0938072236">0938 072 236</a>, PVI Thành Đô vẫn tư vấn và báo phí cho mọi tỉnh trong địa bàn.</p>
+<p class="db-note">Chưa thấy trang tỉnh của anh/chị? Nhắn <a href="${ZALO}" target="_blank">Zalo</a> hoặc gọi <a href="tel:0938072236">0938 072 236</a>, PVI Thành Đô vẫn tư vấn và báo phí cho mọi tỉnh trong địa bàn.</p>
 </div></section>
 `;
   const main = `
