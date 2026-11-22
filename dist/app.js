@@ -181,6 +181,15 @@ window.addEventListener('pvi:privacy-change', ({ detail }) => {
   if (detail.marketing && !privacyAdsConfigured) { privacyAdsConfigured = true; gtag('config', 'AW-18556160976'); }
 });
 
+// Vercel Speed Insights: đo tốc độ tải trang thật của khách (không dùng cookie).
+// Script phục vụ từ chính site (/_vercel/...) nên CSP 'self' đã cho phép; chỉ chạy trên pvihcm.com.
+if (/(^|\.)pvihcm\.com$/.test(location.hostname)) {
+  const speedInsights = document.createElement('script');
+  speedInsights.defer = true;
+  speedInsights.src = '/_vercel/speed-insights/script.js';
+  document.head.append(speedInsights);
+}
+
 document.addEventListener('click', (event) => {
   const link = event.target.closest?.('a[href]');
   if (!link) return;
