@@ -107,7 +107,7 @@ Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist
 
 **Đánh giá vào Google Sheet (chủ site yêu cầu 22/11/2026)**
 - Mỗi lượt đánh giá gửi thành công, `api/nhan-xet.js` (hàm `pushReviewToSheet`) gửi thêm 1 dòng sang Apps Script đơn hàng (action `danh-gia`, khóa `danhGiaSecret` = ORDER_SHEET_SECRET) → tab "Đánh giá" tự tạo. 1-2 sao Apps Script gửi mail báo. Mã nguồn Apps Script: `docs/apps-script-don-hang.gs` (bản đầy đủ: đơn hàng, bằng chứng chuyển khoản, CNBB, đánh giá); KHÔNG ghi email thật hay SHARED_SECRET vào file này (repo công khai).
-- Lịch tự tra điểm Google Maps mỗi thứ Hai (scheduled task "Cập nhật sao Google pvihcm"): đổi số thì sửa `tools/data/google-rating.mjs`, chạy `node tools/danh-gia-sao.mjs`, tạo PR, không tự merge.
+- Không có lịch tự tra điểm Google (chủ site bỏ 22/11/2026: "chỉ cập nhật sao, không cần OpenSEO"). Phần tự động là cộng đánh giá của khách trên website (feedback.js). Điểm Google trong `tools/data/google-rating.mjs` chỉ sửa khi chủ site yêu cầu, lấy đúng số thật.
 
 **Đầu bài kiến thức trên pvihcm.com**
 - Với bài ở `/kien-thuc/<slug>/`, đặt dòng đánh giá bạn đọc và mục lục sau thông tin bài, trước ảnh đại diện. Mục lục lấy tự động từ các H2, giữ thứ tự trong bài và cho phép thu gọn.
