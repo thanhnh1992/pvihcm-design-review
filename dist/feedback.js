@@ -80,6 +80,7 @@
       body: JSON.stringify({
         slug: slug, title: title, rating: rating,
         name: form.elements.name.value, comment: area.value, website: form.elements.website.value,
+        page: location.pathname,
       }),
     }).then(function (r) { return r.json(); }).then(function (res) {
       if (!res || !res.ok) throw new Error((res && res.error) || '');
