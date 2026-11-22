@@ -54,6 +54,7 @@ node tools/gen-why-pvi.mjs    # khối "Vì sao chọn PVI" trên trang chủ (c
 node tools/gen-hero-bento.mjs  # lưới bento sản phẩm ở đầu trang chủ (thay vòng xoay từ 03/11/2026); thêm sản phẩm: sửa tools/data/hero-products.mjs và chọn ô trong SLOTS của script
 node tools/gen-san-pham.mjs   # trang danh mục /san-pham/ (mục "Sản phẩm" trên menu); thêm sản phẩm: sửa tools/data/san-pham.mjs. Chạy sau các script trang sản phẩm
 node tools/gen-tinh.mjs [slug] # nhánh tỉnh /<tinh>/ (từ Bình Thuận trở vào, 20/11/2026): dữ liệu tools/data/tinh/<slug>.mjs, CSS dist/tinh/tinh.css + /binhduong/landing.css; câu lệnh ảnh: node tools/tinh-anh-gpt.mjs <slug>. Xem SO-DO-TRANG.md
+node tools/danh-gia-sao.mjs   # BẮT BUỘC sau mọi script sinh trang, trước gen-sitemap: gắn khối đánh giá sao (feedback.js + /api/nhan-xet) cho mọi trang chưa có, giữa <!-- danh-gia-sao:start/end -->; sinh dist/danh-gia.css từ khối .fb của news.css (không sửa tay)
 node tools/gen-sitemap.mjs    # PHẢI chạy sau cùng: sinh lại dist/sitemap.xml, dist/llms.txt (bản đồ site cho AI) và dist/search-index.json (dữ liệu nút Tìm kiếm) (không sửa tay các file này)
 ```
 - `tools/chrome.mjs`: header, menu, chân trang, thẻ SEO dùng chung. Hai trang `dist/index.html` và `dist/san-pham/chay-no-bat-buoc/index.html` sửa tay; header và chân trang của chúng lấy từ chrome.mjs qua `tools/patch-static.mjs`. JSON-LD của trang chủ thì sửa tay. Bảng trong `#fire-ref` của trang cháy nổ nằm giữa hai dấu `<!-- fire-ref:start ... -->` / `<!-- fire-ref:end -->`, do `tools/prerender-fire.mjs` sinh: không sửa tay, `page.js` vẫn vẽ lại theo tab khi trang tải.
@@ -96,6 +97,12 @@ Xem thử: `npx vite dist` hoặc bất kỳ static server nào trỏ vào `dist
 - Loạt bài "Mua bảo hiểm PVI tại <khu vực>" (chủ site giao 15/10/2026): `tools/articles/khu-vuc.mjs` + dữ liệu `tools/data/khu-vuc.json` (chép từ `app/area-articles.json` của baohiempvi-vnwebsite) + CSS `dist/khu-vuc.css`. Trang khai canonical về baohiempvi-vn.com nên không vào sitemap. Liên hệ đẩy về Zalo 0938 072 236 (`https://zalo.me/0938072236`, được `checkNoOutbound` cho phép cùng Zalo OA). Đơn vị PVI hiện ở cuối mỗi bài lấy từ `tools/data/don-vi-thanh-vien-pvi.json` (dùng chung với bài danh sách 46 đơn vị).
 - Bài "Danh sách 46 đơn vị trong mạng lưới Bảo hiểm PVI" (`/tin-tuc/don-vi-thanh-vien-pvi/`, chủ site giao 04/11/2026, mục Tin tức chung): `tools/articles/don-vi-thanh-vien-pvi.mjs`, canonical về `https://www.baohiempvi-vn.com/don-vi-thanh-vien-pvi`. Dữ liệu `tools/data/don-vi-thanh-vien-pvi.json` chép nguyên `app/pvi-member-directory.json` của baohiempvi-vnwebsite (có mã số thuế `taxCode`); sửa bên đó thì chép lại, không gõ tay.
 - Đăng lại bài đã có bản chuẩn ở site khác: thêm `canonical: 'https://...'` vào `post` của module bài. `renderKb()` in canonical đó, `gen-sitemap.mjs` tự bỏ trang khỏi sitemap.
+
+**Đánh giá sao trên MỌI trang (chủ site chốt 22/11/2026, bắt buộc)**
+- Mọi trang nội dung (sản phẩm, kiến thức, tin tức, giới thiệu, trang chủ, trang khu vực, trang danh mục) phải có phần đánh giá sao. Trang mới, bài mới cũng vậy.
+- Bài Tin tức / Kiến thức: khối `feedbackBlock` của `gen-news.mjs`. Trang tai nạn: hệ đánh giá riêng `product-reviews.js` + `api/danh-gia-san-pham.mjs`. Mọi trang còn lại: `node tools/danh-gia-sao.mjs` gắn tự động (khóa đánh giá `trang-<đường-dẫn>`, ví dụ `trang-san-pham-chay-no-bat-buoc`). Sinh lại trang nào thì phải chạy lại script này.
+- Chỉ bỏ qua: trang noindex (chính sách, form đặt mua), trang không có `<main>`, file xác minh Google.
+- Không ghi số sao, số lượt cứng vào HTML. AggregateRating chỉ gắn cho bài Article theo quy tắc ở mục Nhận xét bên dưới; trang sản phẩm, trang chủ không khai AggregateRating (Google coi là tự đánh giá).
 
 **Đầu bài kiến thức trên pvihcm.com**
 - Với bài ở `/kien-thuc/<slug>/`, đặt dòng đánh giá bạn đọc và mục lục sau thông tin bài, trước ảnh đại diện. Mục lục lấy tự động từ các H2, giữ thứ tự trong bài và cho phép thu gọn.
