@@ -88,3 +88,29 @@
 @media(prefers-reduced-motion:reduce){
   .tn-page .auto-page.accident-page .auto-hero-links > a:first-child,.tn-page .auto-cta a,.tn-page .accident-page .accident-offer-cta{animation:none}
 }
+
+/* 6) Bộ tính phí cháy nổ (chay-no.css, 22/11/2026): nút "Tính phí" theo kiểu nút chính màu logo;
+   nút "Nhận bảng chào miễn phí ngay" nằm trong khung tổng phí nền tối nên dùng kiểu nền trắng viền logo. */
+.cn-page .pal-calcButton{
+  color:#fff;border:2.5px solid transparent;
+  background:
+    linear-gradient(135deg,var(--logo-navy) 0%,var(--logo-navy-2) 100%) padding-box,
+    conic-gradient(from var(--cta-a),var(--logo-red) 0deg,#ff8a8f 60deg,#fff 110deg,var(--logo-navy) 180deg,var(--logo-red) 260deg,#fff 320deg,var(--logo-red) 360deg) border-box;
+  box-shadow:0 10px 22px -12px rgba(24,54,101,.7),0 0 0 4px rgba(227,31,38,.10);
+  animation:cta-spin 3.6s linear infinite}
+.cn-page .pal-calcButton:hover{
+  background:
+    linear-gradient(135deg,#1e4580 0%,#2d62a8 100%) padding-box,
+    conic-gradient(from var(--cta-a),var(--logo-red) 0deg,#ff8a8f 60deg,#fff 110deg,var(--logo-navy) 180deg,var(--logo-red) 260deg,#fff 320deg,var(--logo-red) 360deg) border-box;
+  box-shadow:0 16px 30px -12px rgba(24,54,101,.8),0 0 0 5px rgba(227,31,38,.18)}
+.cn-page .pal-leadQuote{
+  color:var(--logo-navy);border:2.5px solid transparent;
+  background:
+    linear-gradient(#fff,#fff) padding-box,
+    conic-gradient(from var(--cta-a),var(--logo-red) 0deg,var(--logo-navy) 120deg,var(--logo-red) 240deg,var(--logo-navy) 360deg) border-box;
+  animation:cta-spin 3.6s linear infinite}
+.cn-page .pal-leadQuote:hover{
+  background:
+    linear-gradient(#fff4f4,#fff4f4) padding-box,
+    conic-gradient(from var(--cta-a),var(--logo-red) 0deg,var(--logo-navy) 120deg,var(--logo-red) 240deg,var(--logo-navy) 360deg) border-box}
+@media(prefers-reduced-motion:reduce){.cn-page .pal-calcButton,.cn-page .pal-leadQuote{animation:none}}

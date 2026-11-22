@@ -10,7 +10,19 @@
    bảo hiểm cháy nổ bắt buộc) qua /api/chay-no-lead, giống baohiempvi-vn. Chưa lưu được Sheet thì vẫn chép
    thông tin khách nhập để khách dán vào Zalo gửi chuyên viên. */
 import ICONS from './icons.js';
-import { VAT_RATE, formatMillions } from './fire-data.js';
+import { VAT_RATE } from './fire-data.js';
+
+/* Hiện phí đầy đủ đến đồng (22/11/2026). formatMillions của fire-data.js làm tròn 2 số lẻ theo triệu,
+   nên 9.998.000đ thành "10 triệu đ"; khách doanh nghiệp cần đúng con số. */
+const formatVnd = (millions) => (millions === undefined || millions === null || !Number.isFinite(millions) ? '—' : `${Math.round(millions * 1e6).toLocaleString('vi-VN')} đ`);
+/* Ô giá trị tài sản (triệu đồng): chỉ nhận chữ số và một dấu thập phân, dấu phẩy hiểu là dấu thập phân,
+   bỏ số 0 thừa ở đầu. Dùng type="text" để lăn chuột không đổi số như ô type="number". */
+const cleanSum = (raw) => {
+  let v = String(raw).replace(/,/g, '.').replace(/[^0-9.]/g, '');
+  const dot = v.indexOf('.');
+  if (dot !== -1) v = v.slice(0, dot + 1) + v.slice(dot + 1).replace(/\./g, '');
+  return v.replace(/^0+(?=\d)/, '');
+};
 import { assetDisplayName, assetPremium, formatAssetRate, insurancePurposes, propertyAssets, propertyGroups, searchPropertyAssets, togglePropertyAssetSelection } from './property-asset-data.js';
 import { CNBB_LEAD_FIELDS, cnbbLeadFieldErrors, normalizeCompanyName, normalizeEmail, normalizePhone } from '../o-to/order-input-rules.js';
 
@@ -44,8 +56,8 @@ function view(st) {
 }
 
 function renderSummary(v) {
-  return `<span class="pal-summaryEyebrow">Phí năm tham khảo (gồm VAT)</span><strong class="pal-summaryTotal">${v.complete ? esc(formatMillions(v.totalNet * (1 + VAT_RATE))) : '—'}</strong>`
-    + (v.complete ? `<dl class="pal-totals"><div><dt>Phí chưa VAT</dt><dd>${esc(formatMillions(v.totalNet))}</dd></div><div><dt>VAT ${VAT_RATE * 100}%</dt><dd>${esc(formatMillions(v.totalNet * VAT_RATE))}</dd></div></dl>` : '<p class="pal-summaryHint">Nhập giá trị tài sản để xem phí.</p>')
+  return `<span class="pal-summaryEyebrow">Phí năm tham khảo (gồm VAT)</span><strong class="pal-summaryTotal">${v.complete ? esc(formatVnd(v.totalNet * (1 + VAT_RATE))) : '—'}</strong>`
+    + (v.complete ? `<dl class="pal-totals"><div><dt>Phí chưa VAT</dt><dd>${esc(formatVnd(v.totalNet))}</dd></div><div><dt>VAT ${VAT_RATE * 100}%</dt><dd>${esc(formatVnd(v.totalNet * VAT_RATE))}</dd></div></dl>` : '<p class="pal-summaryHint">Nhập giá trị tài sản để xem phí.</p>')
     + (v.selectedPurpose ? `<p class="pal-summaryPurpose">${ic('Checks', 18)}Mục đích: ${esc(v.selectedPurpose.label)}</p>` : '');
 }
 
@@ -107,7 +119,7 @@ export function renderLookup(st) {
     for (const { asset, fee } of v.lines) {
       const name = assetDisplayName(asset.name);
       h += `<div class="pal-calcCard${fee !== null ? ' pal-calcCardDone' : ''}"><div class="pal-calcAsset"><span class="pal-calcIcon">${assetIcon(asset)}</span><label for="${uid}-sum-${esc(asset.id)}"><strong>${esc(name.title)}</strong><small>Mã ${esc(asset.code)} · ${esc(groupLabels.get(asset.group))}</small></label><span class="pal-rateChip">${esc(formatAssetRate(asset))}${asset.rate !== null || asset.rateText ? '<small> / năm</small>' : ''}</span></div>`
-        + `<div class="pal-calcInputRow"><div class="pal-sumInput"><input id="${uid}-sum-${esc(asset.id)}" type="number" min="0" step="any" inputmode="decimal" placeholder="Nhập giá trị tài sản" value="${esc(st.sums[asset.id] ?? '')}" data-sum="${esc(asset.id)}"><span>triệu đồng</span></div><p class="pal-calcFee"><small>Phí / năm chưa VAT</small><b>${fee !== null ? esc(formatMillions(fee)) : '—'}</b></p></div>`
+        + `<div class="pal-calcInputRow"><div class="pal-sumInput"><input id="${uid}-sum-${esc(asset.id)}" type="text" inputmode="decimal" autocomplete="off" placeholder="Ví dụ: 5000" value="${esc(st.sums[asset.id] ?? '')}" data-sum="${esc(asset.id)}"><span>triệu đồng</span></div><p class="pal-calcFee"><small>Phí / năm chưa VAT</small><b>${fee !== null ? esc(formatVnd(fee)) : '—'}</b></p></div>`
         + (asset.rate === null ? '<p class="pal-calcWarn">Loại này chưa có tỷ lệ cố định, phí cần được PVI xác nhận theo hồ sơ.</p>' : '') + '</div>';
     }
     h += `<div class="pal-leadLeft"><a class="pal-leadAdvice" href="${ZALO_PERSONAL_URL}" rel="nofollow">${ic('ChatCircleDots', 28, 'fill')}<span><strong>Nhận tư vấn miễn phí ngay</strong><small>Chuyên viên chat Zalo với bạn ngay</small></span></a></div></div>`
@@ -174,13 +186,19 @@ function mount(box) {
     const t = e.target;
     if (t.dataset.in === 'query') { st.query = t.value; st.showAll = []; render(); }
     else if (t.dataset.sum) {
-      st.sums = { ...st.sums, [t.dataset.sum]: t.value };
+      const clean = cleanSum(t.value);
+      if (clean !== t.value) {
+        const pos = Math.max(0, (t.selectionStart ?? t.value.length) - (t.value.length - clean.length));
+        t.value = clean;
+        try { t.setSelectionRange(pos, pos); } catch { /* bỏ qua nếu trình duyệt không cho đặt con trỏ */ }
+      }
+      st.sums = { ...st.sums, [t.dataset.sum]: clean };
       const v = view(st);
       const { fee } = v.lines.find((line) => line.asset.id === t.dataset.sum);
       const card = t.closest('.pal-calcCard');
       // Chỉ cập nhật kết quả để giữ ô nhập và vị trí con trỏ khi đang gõ số.
       card.classList.toggle('pal-calcCardDone', fee !== null);
-      card.querySelector('.pal-calcFee b').textContent = fee !== null ? formatMillions(fee) : '—';
+      card.querySelector('.pal-calcFee b').textContent = fee !== null ? formatVnd(fee) : '—';
       $('.pal-summaryLive').innerHTML = renderSummary(v);
     }
   });
@@ -242,7 +260,7 @@ function mount(box) {
   function openDialog(kind) {
     const v = view(st), a = v.assets[0];
     if (!a) return;
-    ctx = { assetCode: a.code, assetName: a.name, sum: st.sums[a.id] ?? '', fee: v.complete ? formatMillions(v.totalNet * (1 + VAT_RATE)) : '', purpose: v.selectedPurpose?.label ?? '' };
+    ctx = { assetCode: a.code, assetName: a.name, sum: st.sums[a.id] ?? '', fee: v.complete ? formatVnd(v.totalNet * (1 + VAT_RATE)) : '', purpose: v.selectedPurpose?.label ?? '' };
     d = { kind, values: { phone: '', email: '', company: '' }, touched: {}, consent: false, sent: false };
     drawDlg();
     if (!dlg.open) dlg.showModal();
