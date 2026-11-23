@@ -54,6 +54,7 @@ node tools/gen-why-pvi.mjs    # khối "Vì sao chọn PVI" trên trang chủ (c
 node tools/gen-hero-bento.mjs  # lưới bento sản phẩm ở đầu trang chủ (thay vòng xoay từ 03/11/2026); thêm sản phẩm: sửa tools/data/hero-products.mjs và chọn ô trong SLOTS của script
 node tools/gen-san-pham.mjs   # trang danh mục /san-pham/ (mục "Sản phẩm" trên menu); thêm sản phẩm: sửa tools/data/san-pham.mjs. Chạy sau các script trang sản phẩm
 node tools/gen-tinh.mjs [slug] # nhánh tỉnh /<tinh>/ (từ Bình Thuận trở vào, 20/11/2026): dữ liệu tools/data/tinh/<slug>.mjs, CSS dist/tinh/tinh.css + /binhduong/landing.css; câu lệnh ảnh: node tools/tinh-anh-gpt.mjs <slug>. Xem SO-DO-TRANG.md
+node tools/gen-nav-menu.mjs   # menu con của Giới thiệu, Kiến thức (theo HUBS), Tin tức, Bồi thường: ghi vào dist/app.js giữa NAV_KHAC (menu Sản phẩm vẫn do gen-san-pham ghi NAV_SAN_PHAM). Menu mở NGAY, không hiệu ứng chờ (chủ site 23/11/2026)
 node tools/gen-danh-gia.mjs   # trang /danh-gia/ (toàn bộ đánh giá về PVI Thành Đô), chạy trước danh-gia-sao
 node tools/danh-gia-sao.mjs   # BẮT BUỘC sau mọi script sinh trang, trước gen-sitemap: gắn khối đánh giá sao (feedback.js + /api/nhan-xet) cho mọi trang chưa có, giữa <!-- danh-gia-sao:start/end -->; sinh dist/danh-gia.css từ khối .fb của news.css (không sửa tay)
 node tools/gen-sitemap.mjs    # PHẢI chạy sau cùng: sinh lại dist/sitemap.xml, dist/llms.txt (bản đồ site cho AI) và dist/search-index.json (dữ liệu nút Tìm kiếm) (không sửa tay các file này)

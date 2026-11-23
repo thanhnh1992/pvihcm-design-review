@@ -136,44 +136,92 @@ if (siteHeader && menuToggle) {
 }
 
 
-/* Mục "Sản phẩm" trên menu: bấm thì mở danh mục sản phẩm (chủ site yêu cầu 21/11/2026).
+/* Dữ liệu danh mục "Sản phẩm" trên menu (chủ site yêu cầu 21/11/2026).
    Không có JS thì vẫn là link tới /san-pham/. Danh sách sinh từ tools/data/san-pham.mjs
    (node tools/gen-san-pham.mjs ghi đè đoạn giữa hai dấu NAV_SAN_PHAM, không sửa tay). */
 /* NAV_SAN_PHAM:start */
 const NAV_SAN_PHAM = [{"label":"Bắt buộc theo luật","items":[{"href":"/san-pham/bao-hiem-bat-buoc/","title":"Bảo hiểm TNDS ô tô bắt buộc","img":"bat-buoc"},{"href":"/san-pham/chay-no-bat-buoc/","title":"Bảo hiểm cháy nổ bắt buộc","img":"chay-no"}]},{"label":"Con người","items":[{"href":"/san-pham/bao-hiem-tai-nan/","title":"Bảo hiểm tai nạn 24/24","img":"tai-nan"},{"href":"/san-pham/bao-hiem-suc-khoe/","title":"Bảo hiểm sức khỏe PVI Care","img":"hero-suc-khoe"},{"href":"/san-pham/bao-hiem-y-te/","title":"BHYT hộ gia đình, BHXH tự nguyện","img":"diem-thu-bhxh-bhyt-pvi-thanh-do"},{"href":"/san-pham/bao-hiem-du-lich/","title":"Bảo hiểm du lịch quốc tế","img":"hero-du-lich"}]},{"label":"Tài sản và doanh nghiệp","items":[{"href":"/san-pham/hang-hoa-xuat-nhap-khau/","title":"Bảo hiểm hàng hóa xuất nhập khẩu","img":"hang-hoa"},{"href":"/san-pham/bao-hiem-cong-trinh/","title":"Bảo hiểm công trình và lắp đặt","img":"hero-cong-trinh"},{"href":"/san-pham/bao-hiem-trach-nhiem/","title":"Bảo hiểm trách nhiệm","img":"tu-van-doanh-nghiep"},{"href":"/san-pham/bao-hiem-vat-chat-xe/","title":"Bảo hiểm vật chất xe ô tô","img":"tu-van-xe-o-to"}]}];
 /* NAV_SAN_PHAM:end */
-const productsLink = document.querySelector('.site-nav a[href="/san-pham/"]');
-if (siteHeader && productsLink && NAV_SAN_PHAM.length) {
-  const panel = document.createElement('div');
-  panel.id = 'nav-san-pham';
-  panel.className = 'nav-products';
-  panel.hidden = true;
+/* Menu con cho các mục khác (chủ site 23/11/2026). Sinh bởi node tools/gen-nav-menu.mjs, không sửa tay. */
+/* NAV_KHAC:start */
+const NAV_KHAC = {"/gioi-thieu/":{"all":["/gioi-thieu/","Giới thiệu PVI Thành Đô"],"items":[{"href":"/gioi-thieu/","title":"Về Công ty Bảo hiểm PVI Thành Đô","desc":"Đơn vị thành viên Tổng công ty Bảo hiểm PVI"},{"href":"/danh-gia/","title":"Đánh giá của khách hàng","desc":"Điểm trên Google và đánh giá trên website"},{"href":"/#lien-he","title":"Liên hệ, địa chỉ","desc":"Trụ sở 473 Điện Biên Phủ, hotline tư vấn"}]},"/kien-thuc/":{"all":["/kien-thuc/","Tất cả kiến thức"],"items":[{"href":"/kien-thuc/tai-nan-24-24/","title":"Tai nạn 24/24","desc":"Bảo hiểm tai nạn 24/24"},{"href":"/kien-thuc/chay-no-bat-buoc/","title":"Cháy nổ, tài sản","desc":"Bảo hiểm cháy nổ bắt buộc"},{"href":"/kien-thuc/cong-trinh-lap-dat/","title":"Công trình","desc":"Bảo hiểm công trình xây dựng, lắp đặt"},{"href":"/kien-thuc/bao-hiem-o-to/","title":"Ô tô","desc":"Bảo hiểm ô tô"},{"href":"/kien-thuc/suc-khoe/","title":"Sức khỏe","desc":"Bảo hiểm sức khỏe"},{"href":"/kien-thuc/du-lich/","title":"Du lịch","desc":"Bảo hiểm du lịch"},{"href":"/kien-thuc/hang-hoa/","title":"Hàng hóa","desc":"Bảo hiểm hàng hóa xuất nhập khẩu"}]},"/tin-tuc/":{"all":["/tin-tuc/","Tất cả tin tức"],"items":[{"href":"/tin-tuc/#tin-san-pham","title":"Tin sản phẩm","desc":"Bài viết theo từng sản phẩm bảo hiểm"},{"href":"/tin-tuc/#phap-ly-moi","title":"Pháp lý mới","desc":"Nghị định, thông tư và ngày hiệu lực"},{"href":"/tin-tuc/#tin-chung","title":"Tin tức chung","desc":"Tin đơn vị, khu vực, thông báo"}]},"/#boi-thuong":{"all":["/#boi-thuong","Xem quy trình bồi thường"],"items":[{"href":"/#boi-thuong","title":"Quy trình và hồ sơ bồi thường","desc":"Các bước khi xảy ra sự cố"},{"href":"tel:1900545458","title":"Tổng đài bồi thường 1900 54 54 58","desc":"Gọi ngay khi có sự cố"},{"href":"tel:0938072236","title":"Tư vấn 0938 072 236","desc":"Hỏi quyền lợi, hồ sơ trước khi nộp"}]}};
+/* NAV_KHAC:end */
+
+/* Menu thả xuống cho mọi mục có danh sách con (chủ site 23/11/2026: bấm là hiện NGAY, chọn nhanh nhất có thể).
+   - Không hiệu ứng chờ; máy tính có chuột: rê vào là mở luôn, bấm cũng mở/đóng; điện thoại: chạm là mở tại chỗ.
+   - Ảnh nhỏ của danh mục sản phẩm được tải trước khi trang rảnh, nên mở ra là có ảnh ngay.
+   - Không có JS thì các mục vẫn là link bình thường. */
+const navMenus = [];
+const siteNav = siteHeader?.querySelector('.site-nav');
+if (siteHeader && siteNav) {
   const here = location.pathname;
-  panel.innerHTML = '<div class="nav-products-grid">' + NAV_SAN_PHAM.map((g) => '<div class="nav-products-col"><p class="nav-products-h">' + g.label + '</p><ul>'
-    + g.items.map((p) => '<li><a href="' + p.href + '"' + (p.href === here ? ' aria-current="page"' : '') + '><img src="/assets/' + p.img + '-480.webp" width="56" height="56" alt="" loading="lazy" decoding="async"><span>' + p.title + '</span></a></li>').join('')
-    + '</ul></div>').join('') + '</div><a class="nav-products-all" href="/san-pham/">Xem tất cả sản phẩm <span aria-hidden="true">→</span></a>';
-  productsLink.after(panel);
-  productsLink.setAttribute('aria-expanded', 'false');
-  productsLink.setAttribute('aria-controls', panel.id);
-  productsLink.classList.add('nav-products-toggle');
-  const setProducts = (open) => {
-    panel.hidden = !open;
-    productsLink.setAttribute('aria-expanded', String(open));
-    siteHeader.classList.toggle('products-open', open);
+  const hoverable = matchMedia('(hover:hover) and (pointer:fine) and (min-width:1181px)');
+  const closeAll = (except) => navMenus.forEach((m) => { if (m !== except) m.set(false); });
+  const build = (link, html, wide) => {
+    const panel = document.createElement('div');
+    panel.id = 'nav-sub-' + navMenus.length;
+    panel.className = 'nav-products' + (wide ? '' : ' nav-sub');
+    panel.hidden = true;
+    panel.innerHTML = html;
+    link.after(panel);
+    link.setAttribute('aria-expanded', 'false');
+    link.setAttribute('aria-controls', panel.id);
+    link.classList.add('nav-products-toggle');
+    let timer = 0;
+    const m = {
+      link, panel,
+      set(open) {
+        clearTimeout(timer);
+        if (open) {
+          closeAll(m);
+          if (!wide && hoverable.matches) panel.style.left = (link.offsetLeft + link.offsetWidth / 2) + 'px';
+        }
+        panel.hidden = !open;
+        link.setAttribute('aria-expanded', String(open));
+        siteHeader.classList.toggle('products-open', navMenus.some((x) => !x.panel.hidden));
+      },
+    };
+    link.addEventListener('click', (event) => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      // Máy tính: rê chuột đã mở thì bấm giữ nguyên (không đóng lại); điện thoại: chạm để mở/đóng.
+      m.set(hoverable.matches ? true : panel.hidden);
+    });
+    const later = () => { clearTimeout(timer); timer = setTimeout(() => m.set(false), 160); };
+    link.addEventListener('pointerenter', () => { if (hoverable.matches) m.set(true); });
+    link.addEventListener('pointerleave', () => { if (hoverable.matches) later(); });
+    panel.addEventListener('pointerenter', () => clearTimeout(timer));
+    panel.addEventListener('pointerleave', () => { if (hoverable.matches) later(); });
+    navMenus.push(m);
+    return m;
   };
-  productsLink.addEventListener('click', (event) => {
-    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    event.preventDefault();
-    setProducts(panel.hidden);
+  const cur = (href) => (href === here ? ' aria-current="page"' : '');
+  const productsLink = siteNav.querySelector('a[href="/san-pham/"]');
+  if (productsLink && NAV_SAN_PHAM.length) {
+    build(productsLink, '<div class="nav-products-grid">' + NAV_SAN_PHAM.map((g) => '<div class="nav-products-col"><p class="nav-products-h">' + g.label + '</p><ul>'
+      + g.items.map((p) => '<li><a href="' + p.href + '"' + cur(p.href) + '><img src="/assets/' + p.img + '-480.webp" width="56" height="56" alt="" decoding="async"><span>' + p.title + '</span></a></li>').join('')
+      + '</ul></div>').join('') + '</div><a class="nav-products-all" href="/san-pham/">Xem tất cả sản phẩm <span aria-hidden="true">→</span></a>', true);
+  }
+  Object.keys(NAV_KHAC).forEach((href) => {
+    const link = siteNav.querySelector('a[href="' + href + '"]');
+    const d = NAV_KHAC[href];
+    if (!link || !d.items || !d.items.length) return;
+    build(link, '<ul>' + d.items.map((x) => '<li><a href="' + x.href + '"' + cur(x.href) + '><span><b>' + x.title + '</b>' + (x.desc ? '<small>' + x.desc + '</small>' : '') + '</span></a></li>').join('')
+      + '</ul><a class="nav-products-all" href="' + d.all[0] + '">' + d.all[1] + ' <span aria-hidden="true">→</span></a>', false);
   });
   addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && !panel.hidden) { setProducts(false); productsLink.focus(); }
+    if (event.key !== 'Escape') return;
+    const open = navMenus.find((x) => !x.panel.hidden);
+    if (open) { open.set(false); open.link.focus(); }
   });
   document.addEventListener('click', (event) => {
-    if (!panel.hidden && !panel.contains(event.target) && event.target !== productsLink && !productsLink.contains(event.target)) setProducts(false);
+    navMenus.forEach((m) => { if (!m.panel.hidden && !m.panel.contains(event.target) && !m.link.contains(event.target)) m.set(false); });
   });
-  menuToggle?.addEventListener('click', () => { if (!siteHeader.classList.contains('nav-open')) setProducts(false); });
-  addEventListener('pageshow', () => setProducts(false));
+  menuToggle?.addEventListener('click', () => { if (!siteHeader.classList.contains('nav-open')) closeAll(); });
+  addEventListener('pageshow', () => closeAll());
+  // Tải trước ảnh nhỏ của danh mục sản phẩm khi trang rảnh: mở menu là thấy ảnh ngay.
+  const warm = () => NAV_SAN_PHAM.forEach((g) => g.items.forEach((p) => { const i = new Image(); i.decoding = 'async'; i.src = '/assets/' + p.img + '-480.webp'; }));
+  if ('requestIdleCallback' in window) requestIdleCallback(warm, { timeout: 3000 }); else setTimeout(warm, 1500);
 }
 
 /* Nút tìm kiếm trên header: lần bấm đầu mới tải search.js + dữ liệu, trang không nặng thêm. Ctrl/⌘+K cũng mở. */
