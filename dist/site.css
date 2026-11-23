@@ -382,3 +382,33 @@ a.db-item:hover,a.db-item:focus-visible{box-shadow:inset 0 0 0 2px var(--blue,#1
   .nav-products.nav-sub{width:330px;padding:10px 10px 6px}
   .nav-products.nav-sub .nav-products-all{margin-top:6px;min-height:44px}
 }
+
+/* ═══ Chọn ngôn ngữ VN/EN + nút 3 gạch trên máy tính (chủ site 23/11/2026, app.js) ═══ */
+.lang-pick{position:relative;flex:none}
+.lang-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:var(--tap);min-height:var(--tap);padding:0 12px;
+  border:1px solid #d3dde8;border-radius:var(--r-pill,999px);background:radial-gradient(circle at 30% 25%,#fff 0%,#eef5fc 70%);color:var(--ink);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.lang-btn svg{color:#1F4A8C;flex:none}
+.lang-btn:hover,.lang-btn[aria-expanded="true"]{border-color:var(--blue);color:var(--blue)}
+.lang-menu{position:absolute;right:0;top:calc(100% + 6px);z-index:70;min-width:170px;padding:6px;background:#fff;border:1px solid #dfe7ef;border-radius:14px;box-shadow:0 18px 40px rgba(15,35,60,.16)}
+.lang-menu[hidden]{display:none}
+.lang-menu a{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 12px;border-radius:10px;color:var(--ink);font-size:15px;text-decoration:none}
+.lang-menu a b{min-width:26px;color:#1F4A8C}
+.lang-menu a:hover,.lang-menu a[aria-current]{background:#eef4fb}
+.nav-drawer{display:none}
+@media(min-width:1181px){
+  .menu-toggle{display:inline-flex}
+  .menu-toggle .lbl{display:none}
+  .site-header.nav-open .nav-drawer{display:block;position:absolute;right:28px;top:calc(100% - 6px);z-index:65;width:min(1000px,calc(100vw - 56px));
+    padding:20px 22px;background:#fff;border:1px solid #dfe7ef;border-radius:20px;box-shadow:0 28px 60px rgba(15,35,60,.18)}
+  .nav-drawer-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+  .nav-drawer-h{margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#cb2530}
+  .nav-drawer ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+  .nav-drawer a{display:block;padding:6px 8px;border-radius:8px;font-size:14px;line-height:1.35;color:var(--ink);text-decoration:none}
+  .nav-drawer a:hover{background:#eef4fb;color:var(--blue)}
+  .nav-drawer-col:first-child{grid-column:span 2}
+  .nav-drawer-col:first-child ul{grid-template-columns:1fr 1fr;column-gap:8px}
+}
+@media(max-width:560px){
+  .lang-btn{padding:0 9px;gap:4px}
+  .lang-btn b{font-size:12px}
+}

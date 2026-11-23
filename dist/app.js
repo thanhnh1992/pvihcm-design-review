@@ -224,6 +224,56 @@ if (siteHeader && siteNav) {
   if ('requestIdleCallback' in window) requestIdleCallback(warm, { timeout: 3000 }); else setTimeout(warm, 1500);
 }
 
+/* ── Ngôn ngữ VN/EN và nút 3 gạch trên máy tính (chủ site 23/11/2026) ──
+   - Quả địa cầu "VN" cạnh nút Tìm kiếm: chọn VN hoặc EN.
+   - EN: mở bản dịch máy của Google cho đúng trang đang xem (pvihcm-com.translate.goog). Chủ site chốt: CHỈ đổi
+     ngôn ngữ, KHÔNG tạo thêm trang tiếng Anh trên pvihcm.com, nên Google không index thêm trang, không có nội dung
+     trùng. Link sang Google gắn rel="nofollow". Lựa chọn được nhớ trên máy khách (bot không có nên không bị chuyển).
+   - Nút 3 gạch: điện thoại như cũ; máy tính mở ngăn kéo liệt kê đủ mọi mục để chọn nhanh. */
+const onTranslate = /\.translate\.goog$/.test(location.hostname);
+const pagePath = location.pathname;
+const isEn = onTranslate;
+const safeStore = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } return null; };
+if (/[?&]lang=vi\b/.test(location.search)) {
+  safeStore('pvi-lang', 'vi');
+  try { history.replaceState(null, '', location.pathname + location.search.replace(/[?&]lang=vi\b/, '').replace(/^&/, '?') + location.hash); } catch (e) { /* bỏ qua */ }
+}
+const viHref = onTranslate ? 'https://pvihcm.com' + pagePath + '?lang=vi' : pagePath;
+const enHref = 'https://pvihcm-com.translate.goog' + pagePath + '?_x_tr_sl=vi&_x_tr_tl=en&_x_tr_hl=en';
+// Đã chọn EN trước đó mà quay lại trang tiếng Việt: chuyển sang tiếng Anh luôn.
+if (!isEn && safeStore('pvi-lang') === 'en' && !/[?&]lang=vi\b/.test(location.search)) location.replace(enHref);
+
+if (siteHeader) {
+  const GLOBE = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 3.9 5.6 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.6-3.9-9S9.4 5.6 12 3z"/></svg>';
+  const pick = document.createElement('div');
+  pick.className = 'lang-pick';
+  pick.innerHTML = '<button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="' + (isEn ? 'Language: English' : 'Ngôn ngữ: Tiếng Việt') + '">' + GLOBE + '<b>' + (isEn ? 'EN' : 'VN') + '</b></button>'
+    + '<div class="lang-menu" hidden><a href="' + viHref + '" hreflang="vi" lang="vi" data-lang="vi" data-same-tab' + (isEn ? '' : ' aria-current="true"') + '><b>VN</b><span>Tiếng Việt</span></a>'
+    + '<a href="' + enHref + '" hreflang="en" lang="en" rel="nofollow" data-lang="en" data-same-tab' + (isEn ? ' aria-current="true"' : '') + '><b>EN</b><span>English</span></a></div>';
+  const anchor = siteHeader.querySelector('.search-btn') || siteHeader.querySelector('.menu-toggle');
+  if (anchor) anchor.before(pick);
+  const btn = pick.querySelector('.lang-btn'), list = pick.querySelector('.lang-menu');
+  const setLang = (open) => { list.hidden = !open; btn.setAttribute('aria-expanded', String(open)); };
+  btn.addEventListener('click', (e) => { e.stopPropagation(); setLang(list.hidden); });
+  list.addEventListener('click', (e) => { const a = e.target.closest('a[data-lang]'); if (a) safeStore('pvi-lang', a.dataset.lang); });
+  document.addEventListener('click', (e) => { if (!pick.contains(e.target)) setLang(false); });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && !list.hidden) { setLang(false); btn.focus(); } });
+
+  // Ngăn kéo cho nút 3 gạch trên máy tính: đủ mọi mục, mở ngay.
+  if (menuToggle) {
+    const drawer = document.createElement('div');
+    drawer.className = 'nav-drawer';
+    const col = (title, items) => '<div class="nav-drawer-col"><p class="nav-drawer-h">' + title + '</p><ul>' + items.map((x) => '<li><a href="' + x.href + '">' + x.title + '</a></li>').join('') + '</ul></div>';
+    const prod = []; NAV_SAN_PHAM.forEach((g) => g.items.forEach((p) => prod.push(p)));
+    drawer.innerHTML = '<div class="nav-drawer-grid">'
+      + col('Sản phẩm', prod.concat([{ href: '/san-pham/', title: 'Tất cả sản phẩm →' }]))
+      + Object.keys(NAV_KHAC).map((k) => col(({ '/gioi-thieu/': 'Giới thiệu', '/kien-thuc/': 'Kiến thức', '/tin-tuc/': 'Tin tức', '/#boi-thuong': 'Bồi thường' })[k] || k, NAV_KHAC[k].items)).join('')
+      + '</div>';
+    siteHeader.appendChild(drawer);
+  }
+
+}
+
 /* Nút tìm kiếm trên header: lần bấm đầu mới tải search.js + dữ liệu, trang không nặng thêm. Ctrl/⌘+K cũng mở. */
 const searchBtn = document.querySelector('.search-btn');
 if (searchBtn) {
