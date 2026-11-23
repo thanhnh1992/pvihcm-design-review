@@ -33,6 +33,7 @@ export const POST_HUB = {
   'bao-hiem-tai-nan-co-bat-buoc-khong': [['tai-nan-24-24', 'kien-thuc']],
   'doanh-nghiep-co-bat-buoc-mua-bao-hiem-tai-nan': [['tai-nan-24-24', 'kien-thuc']],
   'bao-hiem-tai-nan-lao-dong-la-gi': [['tai-nan-24-24', 'kien-thuc']],
+  'bi-cho-meo-can-co-duoc-boi-thuong-khong': [['tai-nan-24-24', 'kien-thuc']],
   'loi-ich-bao-hiem-tai-nan-ca-nhan': [['tai-nan-24-24', 'kien-thuc']],
   'bao-hiem-tai-nan-24-24-cong-nhan-binh-duong': [['tai-nan-24-24', 'kien-thuc']],
   'bao-hiem-tai-nan-cong-nhan-cong-truong-binh-duong': [['tai-nan-24-24', 'kien-thuc'], ['cong-trinh-lap-dat', 'kien-thuc']],

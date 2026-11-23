@@ -54,6 +54,7 @@ function wordCount(a) {
 function build(a, i) {
   const ids = a.sections.map((s) => slugify(s.title));
   const fig = FIGS[a.figure];
+  const heroName = a.heroImage || `tn-${a.slug}`;
   const b2b = B2B.has(a.slug);
   const siblings = data.filter((x) => x.slug !== a.slug);
 
@@ -94,12 +95,13 @@ function build(a, i) {
       cat: b2b ? 'Kiến thức · Tai nạn doanh nghiệp' : 'Kiến thức · Bảo hiểm tai nạn',
       title: a.title,
       lead: a.lead,
-      image: `/assets/tn-${a.slug}.webp`,
+      image: `/assets/${heroName}.webp`,
+      ...(a.heroImage ? { imageWidth: 1200, imageHeight: 630 } : {}),
       alt: a.heroAlt || `Hình ảnh mô phỏng: đồ họa nền xanh ghi tiêu đề bài "${a.title}"`,
       readMin: Math.max(4, Math.round(wordCount(a) / 220)),
     },
     crumb: b2b ? 'Tai nạn doanh nghiệp' : 'Bảo hiểm tai nạn',
-    hero: { name: `tn-${a.slug}`, w: 1200, h: 630, caption: a.heroCaption || 'Hình ảnh mô phỏng: đồ họa tiêu đề bài viết do PVI Thành Đô biên soạn.' },
+    hero: { name: heroName, w: 1200, h: 630, caption: a.heroCaption || 'Hình ảnh mô phỏng: đồ họa tiêu đề bài viết do PVI Thành Đô biên soạn.' },
     seo: { title: a.title, description: a.description },
     toc: [...a.sections.map((s, k) => [ids[k], s.title.replace(/\?$/, '')]), ['doc-them', 'Đọc thêm'], ['san-pham', 'Sản phẩm liên quan'], ['cau-hoi', 'Câu hỏi thường gặp']],
     faqs: a.faq.map((f) => ({ question: f.q, answer: f.a })),

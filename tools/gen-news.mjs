@@ -19,6 +19,7 @@ import * as kbDonVi from './articles/don-vi-thanh-vien-pvi.mjs';
 import * as kbPvi27045 from './articles/bao-hiem-pvi-ve-dich-som-2026.mjs';
 import { binhDuongGuides } from './articles/binh-duong-guides.mjs';
 import { taiNanSeo } from './articles/tai-nan-seo.mjs';
+import * as kbChoMeoCan from './articles/bi-cho-meo-can-co-duoc-boi-thuong-khong.mjs';
 import { doiTacPvi } from './articles/doi-tac-pvi.mjs';
 import { kienThucBaoHiem } from './articles/kien-thuc-bao-hiem-2026-11-20.mjs';
 import { pcccNoiLamViec } from './articles/pccc-noi-lam-viec.mjs';
@@ -63,6 +64,7 @@ export const posts = [
   ...kienThucBaoHiem.map(({ post }) => post),
   kbTnNd220.post,
   ...taiNanSeo.map(({ post }) => post),
+  kbChoMeoCan.post,
   ...doiTacPvi.map(({ post }) => post),
   kbCnMuaODau.post,
   kbCnBaoNhieu.post,
@@ -152,6 +154,7 @@ const POST_GROUP = {
   'quy-dinh-mua-bao-hiem-chay-no-bat-buoc': 'phap-ly',
   ...Object.fromEntries(binhDuongGuides.map(({ post }) => [post.slug, 'san-pham'])),
   ...Object.fromEntries(taiNanSeo.map(({ post }) => [post.slug, 'san-pham'])),
+  [kbChoMeoCan.post.slug]: 'san-pham',
   ...Object.fromEntries(doiTacPvi.map(({ post }) => [post.slug, 'chung'])),
   'loi-ich-bao-hiem-tai-nan-ca-nhan': 'san-pham',
   'bao-hiem-tai-nan-cong-trinh-pvi': 'san-pham',
@@ -453,6 +456,9 @@ function renderKb(A) {
   const crumbHtml = `<p class="kb-crumb">${crumbs.map(([n, h]) => `<a href="${h}">${esc(n)}</a><span aria-hidden="true">/</span>`).join('')}<span>${t(kn ? (STREAMS.find((x) => x.key === HB.stream).name) : A.crumb)}</span></p>`;
   const hubBlock = HB ? `<aside class="kb-hub" aria-label="Sản phẩm của bài viết"><span class="kb-hub-k">Bài này thuộc sản phẩm</span><b>${esc(HB.hub.name)}</b><span class="kb-hub-links"><a class="kb-hub-main" href="${HB.hub.product}">Xem sản phẩm, quyền lợi và phí <i aria-hidden="true">&rarr;</i></a><a href="/kien-thuc/${HB.hub.slug}/">Kiến thức, trải nghiệm, tin tức ${esc(HB.hub.short)} <i aria-hidden="true">&rarr;</i></a></span></aside>\n` : '';
   const H = A.hero;
+  const coverMeta = p.imageWidth && p.imageHeight && !p.socialImage
+    ? `<meta property="og:image:width" content="${p.imageWidth}"><meta property="og:image:height" content="${p.imageHeight}"><meta property="og:image:alt" content="${esc(p.alt)}"><meta name="twitter:image" content="${SITE}${p.image}"><meta name="twitter:image:alt" content="${esc(p.alt)}">`
+    : '';
   // Mục lục dựng từ chính các H2 trong bài (tools/toc.mjs), giữ tên ngắn người viết đã khai trong A.toc.
   const bodyHtml = ensureH2Ids(A.body({ img, pic, ctaRow }));
   const endHtml = A.endMatter ? ensureH2Ids(A.endMatter()) : '';
@@ -495,7 +501,7 @@ ${feedbackBlock(p)}
     description: A.seo.description,
     image: p.socialImage || p.image,
     canonical: p.canonical,
-    head: `${articleJsonLd({ type: p.schemaType || 'Article', path: P, canonical: p.canonical, title: p.title, description: p.lead, image: p.image, date: p.date, updated: p.updated })}<script type="application/ld+json">${JSON.stringify({
+    head: `${coverMeta}${articleJsonLd({ type: p.schemaType || 'Article', path: P, canonical: p.canonical, title: p.title, description: p.lead, image: p.image, date: p.date, updated: p.updated })}<script type="application/ld+json">${JSON.stringify({
       '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: SITE + '/' },
         ...crumbs.map(([n, h], i) => ({ '@type': 'ListItem', position: i + 2, name: n, item: SITE + h })),
@@ -528,6 +534,7 @@ renderKb(kbDonVi);
 renderKb(kbPvi27045);
 for (const article of binhDuongGuides) renderKb(article);
 for (const article of taiNanSeo) renderKb(article);
+renderKb(kbChoMeoCan);
 for (const article of doiTacPvi) renderKb(article);
 for (const article of kienThucBaoHiem) renderKb(article);
 for (const article of pcccNoiLamViec) renderKb(article);
