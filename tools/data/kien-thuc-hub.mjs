@@ -54,6 +54,7 @@ export const POST_HUB = {
   'bao-hiem-chay-no-kho-hang-sprinkler-thuc-te': [['chay-no-bat-buoc', 'trai-nghiem']],
   'chay-can-ho-chung-cu-happy-valley-bao-hiem-chay-no': [['chay-no-bat-buoc', 'tin-tuc']],
   'chay-tiem-massage-le-van-luong-bao-hiem-chay-no': [['chay-no-bat-buoc', 'tin-tuc']],
+  'chay-nha-duong-tran-quang-khai-tan-dinh': [['chay-no-bat-buoc', 'tin-tuc']],
   'nghi-dinh-347-2026-chay-no-bat-buoc': [['chay-no-bat-buoc', 'tin-tuc']],
   // Công trình
   'bao-hiem-cong-trinh-lap-dat-binh-duong': [['cong-trinh-lap-dat', 'kien-thuc']],

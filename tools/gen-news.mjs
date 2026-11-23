@@ -12,6 +12,7 @@ import * as kbBhytOnline from './articles/mua-bao-hiem-y-te-online.mjs';
 import * as kbBinhThanh from './articles/mua-bao-hiem-pvi-binh-thanh.mjs';
 import * as kbChayMassage from './articles/chay-tiem-massage-le-van-luong.mjs';
 import * as kbChayHappyValley from './articles/chay-can-ho-chung-cu-happy-valley.mjs';
+import * as kbChayTranQuangKhai from './articles/chay-nha-duong-tran-quang-khai-tan-dinh.mjs';
 import * as kbKhoSprinkler from './articles/bao-hiem-chay-no-kho-hang-sprinkler.mjs';
 import * as kbVfWild from './articles/bao-hiem-xe-ban-tai-dien-vinfast-vf-wild.mjs';
 import * as kbDonVi from './articles/don-vi-thanh-vien-pvi.mjs';
@@ -55,6 +56,7 @@ const write = (rel, html) => {
 const postUrl = (post) => post.path || `/tin-tuc/${post.slug}/`;
 
 export const posts = [
+  kbChayTranQuangKhai.post,
   kbBaiBoTt04.post,
   kbBhytOnline.post,
   ...pcccNoiLamViec.map(({ post }) => post),
@@ -159,6 +161,7 @@ const POST_GROUP = {
   'mua-bao-hiem-pvi-binh-thanh': 'chung',
   'chay-tiem-massage-le-van-luong-bao-hiem-chay-no': 'san-pham',
   'chay-can-ho-chung-cu-happy-valley-bao-hiem-chay-no': 'san-pham',
+  [kbChayTranQuangKhai.post.slug]: 'san-pham',
   'bao-hiem-chay-no-kho-hang-sprinkler-thuc-te': 'san-pham',
   'bao-hiem-xe-ban-tai-dien-vinfast-vf-wild': 'san-pham',
   'don-vi-thanh-vien-pvi': 'chung',
@@ -518,6 +521,7 @@ renderKb(kbBhytOnline);
 renderKb(kbBinhThanh);
 renderKb(kbChayMassage);
 renderKb(kbChayHappyValley);
+renderKb(kbChayTranQuangKhai);
 renderKb(kbKhoSprinkler);
 renderKb(kbVfWild);
 renderKb(kbDonVi);
