@@ -6,15 +6,16 @@ import { formatVnd, tndsVehicleClasses } from './data/tnds.mjs';
 import { binhDuongGuides, binhDuongOffice, binhDuongOfficeSources } from './articles/binh-duong-guides.mjs';
 
 const route = '/binhduong/';
+const heroAsset = 'binh-duong-hang-hoa';
 const catalog = route + 'sanpham/';
 const overview = '/tin-tuc/mua-bao-hiem-pvi-binh-duong/';
 const onlyProductPages = process.argv.includes('--products-only');
-const title = 'Mua bảo hiểm tại Bình Dương | Uy tín, báo phí nhanh';
-const description = 'Mua bảo hiểm tại Bình Dương. Tra biểu phí PVI 2026 theo sản phẩm, nhận báo phí, hỏi ưu đãi đang áp dụng và xem địa chỉ tư vấn tại Thủ Dầu Một.';
+const title = 'Mua bảo hiểm tại Đông Sài Gòn | Uy tín, báo phí nhanh';
+const description = 'Mua bảo hiểm tại Đông Sài Gòn. Tra biểu phí PVI 2026 theo sản phẩm, nhận báo phí, hỏi ưu đãi đang áp dụng và xem địa chỉ tư vấn tại Thủ Dầu Một.';
 const groups = [
   {
     id: 'xe',
-    title: 'Mua bảo hiểm xe ô tô tại Bình Dương',
+    title: 'Mua bảo hiểm xe ô tô tại Đông Sài Gòn',
     products: [
       ['bao-hiem-tnds-o-to-binh-duong', 'Bảo hiểm TNDS ô tô bắt buộc', 'Cho xe cá nhân và xe kinh doanh. Tra phí theo loại xe, số chỗ, tải trọng và mục đích sử dụng.', '#tnds-tra-cuu', 'Tra phí TNDS'],
       ['bao-hiem-vat-chat-xe-o-to-binh-duong', 'Bảo hiểm vật chất xe ô tô', 'Xem phạm vi bảo hiểm thân vỏ, mức khấu trừ và điều khoản bổ sung. Báo phí theo giá trị và tình trạng xe.', '', 'Xem quyền lợi vật chất xe'],
@@ -24,10 +25,10 @@ const groups = [
     id: 'tai-san',
     title: 'Bảo hiểm nhà xưởng, công trình và hàng hóa',
     products: [
-      ['bao-hiem-chay-no-nha-xuong-kho-binh-duong', 'Mua bảo hiểm cháy nổ bắt buộc tại Bình Dương', 'Cho nhà xưởng, kho và cơ sở thuộc diện phải mua. Tra loại cơ sở và nhập giá trị tài sản để ước tính phí.', '#tra-cuu', 'Tra phí cháy nổ'],
+      ['bao-hiem-chay-no-nha-xuong-kho-binh-duong', 'Mua bảo hiểm cháy nổ bắt buộc tại Đông Sài Gòn', 'Cho nhà xưởng, kho và cơ sở thuộc diện phải mua. Tra loại cơ sở và nhập giá trị tài sản để ước tính phí.', '#tra-cuu', 'Tra phí cháy nổ'],
       ['bao-hiem-tai-san-nha-xuong-binh-duong', 'Bảo hiểm tài sản nhà xưởng', 'Cho nhà xưởng đang vận hành, máy móc và tồn kho. Lập danh mục tài sản theo từng địa điểm để nhận báo phí.', '#nhan-bao-phi', 'Nhận báo phí tài sản'],
       ['bao-hiem-cong-trinh-lap-dat-binh-duong', 'Bảo hiểm công trình và lắp đặt', 'Cho chủ đầu tư và nhà thầu xây mới, cải tạo hoặc lắp dây chuyền. Chuẩn bị dự toán, tiến độ và lịch chạy thử.', '', 'Xem bảo hiểm công trình'],
-      ['bao-hiem-hang-hoa-xuat-nhap-khau-binh-duong', 'Bảo hiểm hàng hóa xuất nhập khẩu', 'Cho lô hàng đi từ kho Bình Dương đến cảng hoặc điểm giao. Báo phí theo giá trị hàng, bao bì và hành trình.', '', 'Xem bảo hiểm hàng hóa'],
+      ['bao-hiem-hang-hoa-xuat-nhap-khau-binh-duong', 'Bảo hiểm hàng hóa xuất nhập khẩu', 'Cho lô hàng đi từ kho tại Đông Sài Gòn đến cảng hoặc điểm giao. Báo phí theo giá trị hàng, bao bì và hành trình.', '', 'Xem bảo hiểm hàng hóa'],
     ],
   },
   {
@@ -55,9 +56,9 @@ const localProducts = {
   'du-lich': ['dulichquocte', ['Điểm đến, ngày đi, ngày về và mục đích chuyến đi', 'Độ tuổi và thông tin hộ chiếu qua kênh được xác nhận', 'Yêu cầu về chứng nhận hoặc hồ sơ visa nếu có']],
 };
 const faqs = [
-  { question: 'Bảo hiểm PVI có cấp hợp đồng cho khách tại Bình Dương không?', answer: 'Có. Bảo hiểm PVI tiếp nhận nhu cầu từ cá nhân và doanh nghiệp ở khu vực Bình Dương, gồm Thủ Dầu Một, Dĩ An, Thuận An, Bến Cát và Tân Uyên. Việc phát hành căn cứ hồ sơ và điều kiện của từng nghiệp vụ.' },
+  { question: 'Bảo hiểm PVI có cấp hợp đồng cho khách tại Đông Sài Gòn không?', answer: 'Có. Bảo hiểm PVI tiếp nhận nhu cầu từ cá nhân và doanh nghiệp ở khu vực Đông Sài Gòn, gồm Thủ Dầu Một, Dĩ An, Thuận An, Bến Cát và Tân Uyên. Việc phát hành căn cứ hồ sơ và điều kiện của từng nghiệp vụ.' },
   { question: 'Nhà xưởng ở VSIP hoặc Mỹ Phước cần gửi gì để báo phí?', answer: 'Chuẩn bị địa chỉ và công năng từng khu, danh mục và giá trị tài sản, thông tin phòng cháy chữa cháy và thời hạn mong muốn. Nếu thuê xưởng, gửi thông tin về phần tài sản của chủ xưởng và phần tài sản của doanh nghiệp để xác định phạm vi cần bảo hiểm.' },
-  { question: 'PVI Bình Dương hiện ở đâu?', answer: 'PVI Bình Dương hiện là Chi nhánh Bảo hiểm PVI Đông Sài Gòn. Văn phòng ở tầng 4 và 5, tòa nhà số 48 đường Hoàng Văn Thụ, khu dân cư Chánh Nghĩa, phường Thủ Dầu Một, TP.HCM. Điện thoại chi nhánh 0274 387 2528.' },
+  { question: 'PVI Đông Sài Gòn hiện ở đâu?', answer: 'Chi nhánh Bảo hiểm PVI Đông Sài Gòn có văn phòng ở tầng 4 và 5, tòa nhà số 48 đường Hoàng Văn Thụ, khu dân cư Chánh Nghĩa, phường Thủ Dầu Một, TP.HCM. Điện thoại chi nhánh 0274 387 2528.' },
 ];
 const exampleFees = tndsVehicleClasses
   .find(({ id }) => id === 'passenger').usages
@@ -105,7 +106,7 @@ const industrialParks = [
 
 const bhytGuide = `    <aside class="bd-local-intro" aria-labelledby="bao-hiem-y-te-ho-gia-dinh">
       <h3 id="bao-hiem-y-te-ho-gia-dinh">Bảo hiểm y tế hộ gia đình</h3>
-      <p>Người dân khu vực Bình Dương có thể xem hồ sơ đăng ký lần đầu, cách gia hạn thẻ và mức đóng theo số người trong hộ.</p>
+      <p>Người dân khu vực Đông Sài Gòn có thể xem hồ sơ đăng ký lần đầu, cách gia hạn thẻ và mức đóng theo số người trong hộ.</p>
       <div class="bd-product-links">
         <a class="bd-product-primary" href="/tin-tuc/mua-bao-hiem-y-te-online/">Đọc hướng dẫn đăng ký BHYT online <span aria-hidden="true">→</span></a>
       </div>
@@ -115,16 +116,16 @@ const main = `<div class="bd">
 <section class="bd-hero">
   <div class="bd-wrap bd-hero-grid">
     <div class="bd-intro">
-      <nav class="bd-crumb" aria-label="Đường dẫn"><a href="/">Trang chủ</a><span aria-hidden="true">/</span><span aria-current="page">Bảo hiểm tại Bình Dương</span></nav>
-      <h1>Mua bảo hiểm tại Bình Dương</h1>
+      <nav class="bd-crumb" aria-label="Đường dẫn"><a href="/">Trang chủ</a><span aria-hidden="true">/</span><span aria-current="page">Bảo hiểm tại Đông Sài Gòn</span></nav>
+      <h1>Mua bảo hiểm tại Đông Sài Gòn</h1>
       <p class="bd-promise">Uy tín · Báo phí nhanh · Hỏi ưu đãi</p>
-      <p>Tra phí bảo hiểm cho cá nhân và doanh nghiệp tại Bình Dương. Chọn sản phẩm, xem hồ sơ cần chuẩn bị và hỏi chính sách ưu đãi đang áp dụng cho nhu cầu của bạn.</p>
+      <p>Tra phí và xem hồ sơ bảo hiểm cho cá nhân, doanh nghiệp tại Đông Sài Gòn, gồm khu vực Thủ Dầu Một, Dĩ An, Thuận An, Bến Cát và Tân Uyên.</p>
       <div class="bd-actions"><a class="bd-button" href="${catalog}">Xem sản phẩm bảo hiểm</a><a class="bd-button bd-secondary" href="#nhan-bao-phi">Nhận báo phí</a></div>
-      <p class="bd-location"><strong>PVI Đông Sài Gòn (PVI Bình Dương trước đây)</strong><br>48 Hoàng Văn Thụ, phường Thủ Dầu Một, TP.HCM</p>
+      <p class="bd-location"><strong>Chi nhánh Bảo hiểm PVI Đông Sài Gòn</strong><br>48 Hoàng Văn Thụ, phường Thủ Dầu Một, TP.HCM</p>
     </div>
     <figure class="bd-hero-photo">
-      ${photo('binhduong-khu-cong-nghiep', 'Đại lộ Bình Dương minh họa với xe tải và nhà xưởng khu công nghiệp', '(max-width:800px) 92vw, 550px', { eager: true })}
-      <figcaption>Hình ảnh minh họa lấy cảm hứng từ các khu công nghiệp VSIP và Mỹ Phước, Bình Dương.</figcaption>
+      ${photo(heroAsset, 'Xe tải và xe nâng tại khu vực xếp dỡ của kho hàng', '(max-width:800px) 92vw, 550px', { eager: true, width: 1280, height: 853 })}
+      <figcaption>Hình ảnh minh họa khu vực xếp dỡ hàng hóa trong khu công nghiệp.</figcaption>
     </figure>
   </div>
 </section>
@@ -133,9 +134,9 @@ const main = `<div class="bd">
     <a href="#bieu-phi">Biểu phí</a><a href="#cach-mua">Cách mua</a><a href="#dai-ly">Kiểm tra đại lý</a><a href="#nhan-bao-phi">Hồ sơ</a><a href="#su-co">Khi có sự cố</a><a href="#dia-chi-pvi-binh-duong">Địa chỉ PVI</a>
   </nav>
   <section class="bd-section" aria-labelledby="bieu-phi">
-    <h2 id="bieu-phi">Biểu phí bảo hiểm PVI tại Bình Dương mới nhất 2026</h2>
+    <h2 id="bieu-phi">Biểu phí bảo hiểm PVI tại Đông Sài Gòn mới nhất 2026</h2>
     <div class="bd-local-intro">
-      <p><strong>PVI Bình Dương</strong>, hay còn có tên gọi khác là <strong>Bảo hiểm PVI Đông Sài Gòn</strong>, có văn phòng tại địa chỉ tầng 4 và 5, tòa nhà số 48 đường Hoàng Văn Thụ, khu dân cư Chánh Nghĩa, phường Thủ Dầu Một, TP.HCM. Bạn có thể gọi <a class="bd-link" href="tel:02743872528">0274 387 2528</a> để hỏi thông tin nghiệp vụ, hồ sơ và việc cấp bảo hiểm tại khu vực Bình Dương.</p>
+      <p><strong>Chi nhánh Bảo hiểm PVI Đông Sài Gòn</strong> có văn phòng tại địa chỉ tầng 4 và 5, tòa nhà số 48 đường Hoàng Văn Thụ, khu dân cư Chánh Nghĩa, phường Thủ Dầu Một, TP.HCM. Bạn có thể gọi <a class="bd-link" href="tel:02743872528">0274 387 2528</a> để hỏi thông tin nghiệp vụ, hồ sơ và việc cấp bảo hiểm tại khu vực Đông Sài Gòn.</p>
       <p>Cá nhân và doanh nghiệp tại các phường Thủ Dầu Một, Phú Lợi, Bình Dương, Dĩ An, Tân Đông Hiệp, Thuận An, Thuận Giao, Bến Cát, Thới Hòa và Tân Uyên có thể gửi nhu cầu mua bảo hiểm ô tô, cháy nổ, tài sản hoặc người lao động. Khi chuẩn bị hồ sơ, ghi đúng địa chỉ hành chính đang sử dụng và địa điểm xe, nhà xưởng hoặc công trình cần bảo hiểm.</p>
       <p>Với cơ sở tại KCN VSIP I, VSIP II, VSIP III, Mỹ Phước, Bàu Bàng, Nam Tân Uyên, Đồng An 2 hoặc Sóng Thần 3, hãy gửi công năng, danh mục và giá trị tài sản để nhận báo phí phù hợp. Bên dưới có liên kết tra phí theo từng nghiệp vụ; doanh nghiệp có nhu cầu bảo hiểm cho công nhân nên bổ sung số người, nhóm công việc và thời hạn mong muốn.</p>
     </div>
@@ -148,7 +149,7 @@ const main = `<div class="bd">
     <ul${g.id === 'tai-san' ? ' id="chay-no"' : ''}>${g.products.map(productCard).join('\n')}</ul>
   </section>`).join('\n')}
   <section class="bd-section bd-guide bd-after-products" aria-labelledby="cach-mua">
-    <h2 id="cach-mua">Ba bước mua bảo hiểm tại Bình Dương</h2>
+    <h2 id="cach-mua">Ba bước mua bảo hiểm tại Đông Sài Gòn</h2>
     <ol>
       <li><strong>Gửi nhu cầu.</strong> Chọn nghiệp vụ, nêu đối tượng cần bảo hiểm và ngày muốn bắt đầu. Gửi giấy tờ theo hướng dẫn của đầu mối tư vấn.</li>
       <li><strong>Đọc báo phí.</strong> Soát phạm vi, mức phí, quyền lợi, loại trừ và mức khấu trừ nếu có. Hỏi lại nếu thông tin xe, nhà xưởng hoặc danh sách người lao động chưa khớp.</li>
@@ -156,7 +157,7 @@ const main = `<div class="bd">
     </ol>
   </section>
   <section class="bd-section bd-guide" aria-labelledby="dai-ly">
-    <h2 id="dai-ly">Mua qua đại lý ở Bình Dương cần kiểm tra gì?</h2>
+    <h2 id="dai-ly">Mua qua đại lý ở Đông Sài Gòn cần kiểm tra gì?</h2>
     <p class="bd-summary">Xác minh đại lý được phép phân phối sản phẩm PVI bạn định mua. Nếu cần kiểm tra, gọi <a class="bd-link" href="tel:02743872528">chi nhánh PVI Đông Sài Gòn</a> trước khi chuyển tiền.</p>
     <ul>
       <li>Chứng từ ghi rõ Bảo hiểm PVI, đơn vị cấp và đúng tên bên mua.</li>
@@ -165,11 +166,11 @@ const main = `<div class="bd">
     </ul>
   </section>
   <section class="bd-section bd-quote" aria-labelledby="nhan-bao-phi">
-    <div><h2 id="nhan-bao-phi">Nhận báo phí và hỏi ưu đãi</h2><p>Gửi nghiệp vụ, địa chỉ xe hoặc tài sản và ngày cần hiệu lực. Với nhà xưởng hoặc kho, thêm công năng và danh mục tài sản. Với công nhân, thêm số người, nhóm việc và nơi làm việc.</p><p>Hỏi chương trình ưu đãi đang áp dụng cho sản phẩm và điều kiện tham gia khi nhận báo phí.</p><a class="bd-link" href="${overview}">Xem hướng dẫn mua bảo hiểm PVI tại Bình Dương →</a></div>
+    <div><h2 id="nhan-bao-phi">Nhận báo phí và hỏi ưu đãi</h2><p>Gửi nghiệp vụ, địa chỉ xe hoặc tài sản và ngày cần hiệu lực. Với nhà xưởng hoặc kho, thêm công năng và danh mục tài sản. Với công nhân, thêm số người, nhóm việc và nơi làm việc.</p><p>Hỏi chương trình ưu đãi đang áp dụng cho sản phẩm và điều kiện tham gia khi nhận báo phí.</p><a class="bd-link" href="${overview}">Xem hướng dẫn mua bảo hiểm PVI tại Đông Sài Gòn →</a></div>
     <div class="bd-actions bd-quote-actions"><a class="bd-button" href="tel:0938072236">Gọi tư vấn 0938 072 236</a><a class="bd-button bd-secondary" href="${esc(ZALO)}">Nhắn Zalo</a></div>
   </section>
   <section class="bd-section bd-guide" aria-labelledby="su-co">
-    <h2 id="su-co">Khi có sự cố ở Bình Dương</h2>
+    <h2 id="su-co">Khi có sự cố ở Đông Sài Gòn</h2>
     <p class="bd-summary">Ưu tiên an toàn và liên hệ cơ quan chức năng hoặc cấp cứu khi cần. Sau đó báo đầu mối đã cấp hợp đồng và gọi <a class="bd-link" href="tel:1900545458">tổng đài bồi thường PVI 1900 54 54 58</a> để nhận hướng dẫn.</p>
     <p class="bd-summary">Giữ ảnh hiện trường, giấy tờ và hóa đơn liên quan. Trước khi tự sửa chữa hoặc xử lý tài sản bị hư hỏng, hỏi PVI về việc giám định và hồ sơ cần nộp. Nếu phải di chuyển để bảo đảm an toàn, ghi lại tình trạng khi có thể.</p>
   </section>
@@ -178,22 +179,22 @@ const main = `<div class="bd">
     ${faqs.map((f) => `<details><summary>${esc(f.question)}</summary><p>${esc(f.answer)}</p></details>`).join('\n')}
   </section>
   <section class="bd-section bd-office" aria-labelledby="dia-chi-pvi-binh-duong">
-    <figure>${photo('binhduong-thu-dau-mot', 'Minh họa hai tháp trung tâm hành chính và đại lộ có hàng cây ở Bình Dương', '(max-width:800px) 92vw, 510px')}<figcaption>Hình ảnh minh họa lấy cảm hứng từ Trung tâm Hành chính Bình Dương.</figcaption></figure>
+    <figure>${photo('binhduong-thu-dau-mot', 'Minh họa hai tháp trung tâm hành chính và đại lộ có hàng cây ở Đông Sài Gòn', '(max-width:800px) 92vw, 510px')}<figcaption>Hình ảnh minh họa lấy cảm hứng từ Trung tâm Hành chính Bình Dương.</figcaption></figure>
     <div>${binhDuongOffice()}<p class="bd-source">Nguồn: ${binhDuongOfficeSources.map(([name]) => esc(name)).join(' và ')}.</p></div>
   </section>
   <section class="bd-section bd-industrial" aria-labelledby="phi-khu-cong-nghiep">
-    <h2 id="phi-khu-cong-nghiep">Phí bảo hiểm PVI tại các khu công nghiệp Bình Dương</h2>
+    <h2 id="phi-khu-cong-nghiep">Phí bảo hiểm PVI tại các khu công nghiệp Đông Sài Gòn</h2>
     <p class="bd-summary">Chọn <a class="bd-link" href="${fireProduct.url}">bảo hiểm cháy nổ bắt buộc</a>, <a class="bd-link" href="/binhduong/taisannhaxuong/">bảo hiểm tài sản nhà xưởng</a> hoặc <a class="bd-link" href="/binhduong/tainan2424/">bảo hiểm tai nạn công nhân</a> để xem hồ sơ báo phí cho cơ sở của bạn. Phí được xác định theo nghiệp vụ và thông tin rủi ro của từng cơ sở, nhóm tài sản hoặc nhóm người lao động.</p>
-    <ul class="bd-industrial-list">${industrialParks.map((name) => `<li>Phí bảo hiểm PVI tại KCN ${esc(name)} Bình Dương</li>`).join('\n')}</ul>
-    <p class="bd-source">Tên phường đối chiếu Nghị quyết 1685/NQ-UBTVQH15. Tên khu công nghiệp tham khảo danh mục dự án VSIP, công bố của Becamex, Công ty Cổ phần KCN Nam Tân Uyên và Quy hoạch tỉnh Bình Dương thời kỳ 2021–2030. Bình Dương trong trang này chỉ khu vực tỉnh Bình Dương trước sắp xếp, nay thuộc TP.HCM.</p>
+    <ul class="bd-industrial-list">${industrialParks.map((name) => `<li>Phí bảo hiểm PVI tại KCN ${esc(name)}</li>`).join('\n')}</ul>
+    <p class="bd-source">Tên phường đối chiếu Nghị quyết 1685/NQ-UBTVQH15. Tên khu công nghiệp tham khảo danh mục dự án VSIP, công bố của Becamex, Công ty Cổ phần KCN Nam Tân Uyên và Quy hoạch tỉnh Bình Dương thời kỳ 2021–2030.</p>
   </section>
 </div>
 </div>`;
 
-const localName = 'Bảo hiểm tại Bình Dương';
-const catalogName = 'Sản phẩm bảo hiểm tại Bình Dương';
-const catalogTitle = 'Biểu phí bảo hiểm PVI tại Bình Dương mới nhất 2026';
-const heroImage = '/assets/binhduong-khu-cong-nghiep.webp';
+const localName = 'Bảo hiểm tại Đông Sài Gòn';
+const catalogName = 'Sản phẩm bảo hiểm tại Đông Sài Gòn';
+const catalogTitle = 'Biểu phí bảo hiểm PVI tại Đông Sài Gòn mới nhất 2026';
+const heroImage = `/assets/${heroAsset}.webp`;
 
 function subpageCrumb(label, isProduct = false) {
   return `<nav class="bd-crumb" aria-label="Đường dẫn">
@@ -206,7 +207,7 @@ function writePage({ url, title, description, image, main, type = 'WebPage', ext
   const jsonLd = JSON.stringify({
     '@context': 'https://schema.org', '@type': type, name: title, description,
     url: SITE + url,
-    about: { '@type': 'Place', name: 'Khu vực Bình Dương, TP.HCM' },
+    about: { '@type': 'Place', name: 'Khu vực Đông Sài Gòn, TP.HCM' },
     ...structured,
   }).replace(/</g, '\\u003c');
   const html = page({
@@ -238,12 +239,12 @@ writePage({ url: route, title, description, image: heroImage, main,
 
 writePage({
   url: catalog, title: catalogTitle,
-  description: 'Xem 10 sản phẩm bảo hiểm tại Bình Dương. Chọn ô tô, cháy nổ, nhà xưởng, công trình, tai nạn hoặc sức khỏe để xem hồ sơ và cách tra phí.',
+  description: 'Xem 10 sản phẩm bảo hiểm tại Đông Sài Gòn. Chọn ô tô, cháy nổ, nhà xưởng, công trình, tai nạn hoặc sức khỏe để xem hồ sơ và cách tra phí.',
   type: 'CollectionPage', image: heroImage, extraHead: subpageBreadcrumbJsonLd(catalog, catalogName),
   main: `<div class="bd"><div class="bd-wrap bd-body bd-catalog">
     ${subpageCrumb(catalogName)}
     <h1>${catalogTitle}</h1>
-    <p class="bd-summary">Chọn sản phẩm để xem hồ sơ cần chuẩn bị, biểu phí tham khảo hoặc cách nhận báo phí tại Bình Dương.</p>
+    <p class="bd-summary">Chọn sản phẩm để xem hồ sơ cần chuẩn bị, biểu phí tham khảo hoặc cách nhận báo phí tại Đông Sài Gòn.</p>
     <nav class="bd-jumps" aria-label="Nhóm sản phẩm">${productGroups.map((g) => `<a href="#${g.id}">${g.title}</a>`).join('')}</nav>
     ${productGroups.map((g) => `<section class="bd-group" aria-labelledby="${g.id}"><h2 id="${g.id}">${g.title}</h2><ul>${g.products.map(productCard).join('\n')}</ul></section>`).join('\n')}
     <div class="bd-actions"><a class="bd-button" href="${route}#bieu-phi">Xem biểu phí 2026</a><a class="bd-button bd-secondary" href="${route}#nhan-bao-phi">Nhận báo phí</a></div>
@@ -254,7 +255,7 @@ writePage({
 
 const branchId = SITE + route + '#dia-chi-pvi-binh-duong';
 const localAddress = localityForPath(route + 'tndsoto/').unit;
-const areaName = 'Khu vực Bình Dương, Thành phố Hồ Chí Minh';
+const areaName = 'Khu vực Đông Sài Gòn, Thành phố Hồ Chí Minh';
 const tndsCover = 'tnds-pvi-thu-dau-mot';
 const tndsCaption = 'Xe gia đình chuẩn bị khởi hành trên một tuyến phố có hàng cây.';
 const tndsPhases = tndsVehicleClasses.find(({ id }) => id === 'passenger').usages;
@@ -329,7 +330,7 @@ for (const group of productGroups) {
       ...sections.map(([id, label]) => [id, label]),
       ['ho-so', 'Hồ sơ cần chuẩn bị'],
       ['cau-hoi', 'Câu hỏi thường gặp'],
-      ['dia-chi-pvi-binh-duong', 'Địa chỉ PVI Bình Dương'],
+      ['dia-chi-pvi-binh-duong', 'Địa chỉ PVI Đông Sài Gòn'],
       ['lien-he-tu-van', 'Nhận báo phí'],
     ];
     writePage({
@@ -369,7 +370,7 @@ for (const group of productGroups) {
       <h2 id="ho-so">Hồ sơ cần chuẩn bị</h2>
       <ul>${documents.map((item) => `<li>${esc(item)}</li>`).join('')}</ul>
       <div class="bd-actions"><a class="bd-button" href="${esc(ZALO)}">Nhắn Zalo hỏi về hồ sơ</a></div>
-      <p><a class="bd-link" href="/tin-tuc/${slug}/">Đọc hướng dẫn chi tiết tại Bình Dương</a></p>
+      <p><a class="bd-link" href="/tin-tuc/${slug}/">Đọc hướng dẫn chi tiết tại Đông Sài Gòn</a></p>
     </section>
     <section class="bd-section bd-guide bd-faq" aria-labelledby="cau-hoi">
       <h2 id="cau-hoi">Câu hỏi thường gặp</h2>
@@ -388,9 +389,9 @@ for (const group of productGroups) {
       <div class="bd-actions bd-quote-actions"><a class="bd-button" href="tel:0938072236">Gọi tư vấn 0938 072 236</a><a class="bd-button bd-secondary" href="${esc(ZALO)}">Nhắn Zalo</a></div>
     </section>
     <nav class="bd-section bd-guide bd-sibling-products" aria-label="Sản phẩm cùng nhóm">
-      <h2>Sản phẩm cùng nhóm tại Bình Dương</h2>
+      <h2>Sản phẩm cùng nhóm tại Đông Sài Gòn</h2>
       <ul>${group.products.filter((sibling) => sibling.url !== url).map((sibling) => `<li><a class="bd-link" href="${sibling.url}">${esc(sibling.label)}</a></li>`).join('')}</ul>
-      <p class="bd-return"><a class="bd-link" href="${catalog}">← Xem danh mục bảo hiểm tại Bình Dương</a></p>
+      <p class="bd-return"><a class="bd-link" href="${catalog}">← Xem danh mục bảo hiểm tại Đông Sài Gòn</a></p>
     </nav>
   </div>
 </div>`.replace(/^[\t ]+$/gm, ''),

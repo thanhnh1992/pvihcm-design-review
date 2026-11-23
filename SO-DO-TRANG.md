@@ -3,7 +3,7 @@
 **Chủ site chốt ngày 20/11/2026. Bắt buộc với mọi người và mọi AI (Codex, Claude Code…) làm trên repo này.**
 Cấu trúc cây dưới đây **không được thay đổi**, không gắn trang hay link "lung tung". Muốn đổi thì phải hỏi chủ site trước và cập nhật file này trong cùng lần đổi.
 
-Sơ đồ mẫu chủ site gửi: `Domain Index` (trang chủ) → `Subject` (trang chủ đề, ví dụ **Bình Dương**) → trang con (ví dụ **các dịch vụ ở Bình Dương**, **các xã phường, KCN Bình Dương**).
+Sơ đồ mẫu chủ site gửi: `Domain Index` (trang chủ) → `Subject` (trang chủ đề, ví dụ **Bình Dương**) → trang con (ví dụ **các dịch vụ ở Đông Sài Gòn**, **các xã phường, KCN Đông Sài Gòn**).
 
 ---
 
@@ -65,13 +65,13 @@ Tầng 3  BÀI HỖ TRỢ (nếu có)      bài viết bổ trợ cho đúng 1 t
 **`/tin-tuc/` Tin tức**: tin đơn vị, pháp lý mới, tin sản phẩm. Bài theo khu vực TP.HCM (`/tin-tuc/mua-bao-hiem-pvi-<quận>/`), Đồng Nai, Vũng Tàu hiện cũng nằm ở đây.
 - `/tin-tuc/mua-bao-hiem-y-te-online/` hướng dẫn đăng ký và gia hạn BHYT hộ gia đình tại TP.HCM, hỗ trợ trang tính mức đóng BHYT.
 
-**`/binhduong/` Bình Dương** (nhánh khu vực, đúng như ví dụ trong sơ đồ, dựng bằng `tools/gen-binhduong.mjs`)
-- Nhánh t2a, **các dịch vụ ở Bình Dương**:
-  - `/binhduong/sanpham/` Biểu phí bảo hiểm PVI tại Bình Dương
+**`/binhduong/` Đông Sài Gòn** (nhánh khu vực, đúng như ví dụ trong sơ đồ, dựng bằng `tools/gen-binhduong.mjs`)
+- Nhánh t2a, **các dịch vụ ở Đông Sài Gòn**:
+  - `/binhduong/sanpham/` Biểu phí bảo hiểm PVI tại Đông Sài Gòn
   - `/binhduong/tndsoto/` · `/binhduong/vatchatxeoto/` · `/binhduong/chaynobatbuoc/` · `/binhduong/taisannhaxuong/` · `/binhduong/congtrinhlapdat/` · `/binhduong/hanghoaxuatnhapkhau/` · `/binhduong/nguoilaodongthicong/` · `/binhduong/tainan2424/` · `/binhduong/suckhoe/` · `/binhduong/dulichquocte/`
-- Nhánh t2b, **các xã phường, KCN Bình Dương**: hiện chỉ là 2 mục trong trang `/binhduong/` (`#dia-chi-pvi-binh-duong`, `#phi-khu-cong-nghiep`), **chưa có trang riêng**. Khi làm trang riêng, URL theo mẫu `/binhduong/<ten-phuong-hoac-kcn>/`, cha là `/binhduong/`.
+- Nhánh t2b, **các xã phường, KCN Đông Sài Gòn**: hiện chỉ là 2 mục trong trang `/binhduong/` (`#dia-chi-pvi-binh-duong`, `#phi-khu-cong-nghiep`), **chưa có trang riêng**. Khi làm trang riêng, URL theo mẫu `/binhduong/<ten-phuong-hoac-kcn>/`, cha là `/binhduong/`.
 
-**Nhánh các tỉnh từ Bình Thuận trở vào** (chủ site giao 20/11/2026; tên tỉnh cũ trước sắp xếp 01/7/2025; Bình Dương và TP.HCM chủ site tự viết). Dựng bằng `tools/gen-tinh.mjs`, dữ liệu mỗi tỉnh `tools/data/tinh/<slug>.mjs`, câu lệnh tạo ảnh `tools/data/tinh/<slug>-anh-gpt.md`. Mỗi tỉnh cùng một khuôn:
+**Nhánh các tỉnh từ Bình Thuận trở vào** (chủ site giao 20/11/2026; tên tỉnh cũ trước sắp xếp 01/7/2025; Đông Sài Gòn và TP.HCM chủ site tự viết). Dựng bằng `tools/gen-tinh.mjs`, dữ liệu mỗi tỉnh `tools/data/tinh/<slug>.mjs`, câu lệnh tạo ảnh `tools/data/tinh/<slug>-anh-gpt.md`. Mỗi tỉnh cùng một khuôn:
 - `/<tinh>/` trang tỉnh → `/<tinh>/sanpham/` danh mục → 10 trang con: `tndsoto`, `vatchatxeoto`, `chaynobatbuoc`, `taisannhaxuong`, `congtrinhlapdat`, `hanghoaxuatnhapkhau`, `nguoilaodongthicong`, `tainan2424`, `suckhoe`, `dulichquocte`.
 - Trang con nối ngang với 9 sản phẩm cùng tỉnh, dẫn lên trang tỉnh và danh mục; chỉ 1 link sang trang sản phẩm chung `/san-pham/...` (công cụ tra phí). Không link sang tỉnh khác.
 - Đã có: `/cantho/` (TP Cần Thơ cũ, mẫu đầu tiên, chờ chủ site duyệt trước khi làm các tỉnh còn lại).
@@ -79,7 +79,7 @@ Tầng 3  BÀI HỖ TRỢ (nếu có)      bài viết bổ trợ cho đúng 1 t
 
 **`/tphcm/` Mua bảo hiểm PVI tại TP.HCM** (sinh bằng `node tools/gen-tphcm.mjs`, dữ liệu `tools/data/tphcm.mjs`).
 - Vị trí dẫn vào do chủ site chọn: ô **TP. Hồ Chí Minh** trong nhóm Đông Nam Bộ của `/gioi-thieu/#dia-ban`.
-- Trang TP.HCM dẫn xuống `/tphcm/sanpham/` và 10 trang sản phẩm tương ứng với nhánh Bình Dương. Các trang sản phẩm nối ngang và dẫn lên trang TP.HCM, danh mục.
+- Trang TP.HCM dẫn xuống `/tphcm/sanpham/` và 10 trang sản phẩm tương ứng với nhánh Đông Sài Gòn. Các trang sản phẩm nối ngang và dẫn lên trang TP.HCM, danh mục.
 - Mục quận, huyện cũ dẫn xuống 22 bài khu vực đang có trong `/tin-tuc/`. Quận 2, Quận 9 và quận Thủ Đức cũ dùng chung bài Thủ Đức. Giữ URL, breadcrumb và canonical của các bài hiện có.
 
 **Trang đơn vị** (con trực tiếp của trang chủ): `/gioi-thieu/` · `/huong-dan/` · `/tai-nan-doanh-nghiep/` · `/chinh-sach-bao-ve-du-lieu-ca-nhan/`
@@ -99,7 +99,7 @@ Tầng 3  BÀI HỖ TRỢ (nếu có)      bài viết bổ trợ cho đúng 1 t
 
 Các điểm dưới đây có sẵn từ trước khi chốt sơ đồ. Ghi lại để không ai làm lệch thêm. Chỉ sửa khi chủ site đồng ý.
 
-1. **Bình Dương có 2 bộ trang cùng chủ đề.** 10 trang `/binhduong/<dịch vụ>/` và 10 bài `/tin-tuc/bao-hiem-<dịch vụ>-binh-duong/` nói cùng một việc, ví dụ `/binhduong/tndsoto/` và `/tin-tuc/bao-hiem-tnds-o-to-binh-duong/`. Thêm cặp `/binhduong/` và `/tin-tuc/mua-bao-hiem-pvi-binh-duong/`. Google có thể coi là trùng và để 2 trang tranh nhau một từ khóa. Hướng đề xuất: coi bài `/tin-tuc/` là **bài hỗ trợ tầng 3** của trang `/binhduong/` tương ứng (đổi góc viết cho khác), hoặc chọn 1 trang làm bản chuẩn.
-2. **Trang con Bình Dương chưa nối ngang với nhau.** Ví dụ `/binhduong/tndsoto/` chỉ dẫn về `/binhduong/` và `/binhduong/sanpham/`, chưa dẫn sang các dịch vụ anh em (sơ đồ yêu cầu nối ngang).
-3. **Link chéo nhánh:** `/kien-thuc/bao-hiem-o-to/` đang dẫn sang các bài Bình Dương (`/tin-tuc/bao-hiem-tnds-o-to-binh-duong/`, `/tin-tuc/bao-hiem-vat-chat-xe-o-to-binh-duong/`).
+1. **Đông Sài Gòn có 2 bộ trang cùng chủ đề.** 10 trang `/binhduong/<dịch vụ>/` và 10 bài `/tin-tuc/bao-hiem-<dịch vụ>-binh-duong/` nói cùng một việc, ví dụ `/binhduong/tndsoto/` và `/tin-tuc/bao-hiem-tnds-o-to-binh-duong/`. Thêm cặp `/binhduong/` và `/tin-tuc/mua-bao-hiem-pvi-binh-duong/`. Google có thể coi là trùng và để 2 trang tranh nhau một từ khóa. Hướng đề xuất: coi bài `/tin-tuc/` là **bài hỗ trợ tầng 3** của trang `/binhduong/` tương ứng (đổi góc viết cho khác), hoặc chọn 1 trang làm bản chuẩn.
+2. **Trang con Đông Sài Gòn chưa nối ngang với nhau.** Ví dụ `/binhduong/tndsoto/` chỉ dẫn về `/binhduong/` và `/binhduong/sanpham/`, chưa dẫn sang các dịch vụ anh em (sơ đồ yêu cầu nối ngang).
+3. **Link chéo nhánh:** `/kien-thuc/bao-hiem-o-to/` đang dẫn sang các bài Đông Sài Gòn (`/tin-tuc/bao-hiem-tnds-o-to-binh-duong/`, `/tin-tuc/bao-hiem-vat-chat-xe-o-to-binh-duong/`).
 4. **Đồng Nai chưa có nhánh riêng:** bài Đồng Nai nằm trong `/tin-tuc/`. Nếu làm nhánh theo mô hình Bình Dương thì phải hỏi chủ site trước.

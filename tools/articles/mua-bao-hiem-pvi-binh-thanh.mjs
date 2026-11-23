@@ -70,7 +70,7 @@ export const related = [
   { href: OTO, img: 'section-bat-buoc', k: 'Xe ô tô', title: 'Bảo hiểm bắt buộc và vật chất xe', text: 'Tính phí TNDS ô tô, thông tin bảo hiểm vật chất xe và hồ sơ cần gửi.' },
   { href: TAI_NAN, img: 'tu-van-van-phong', k: 'Cá nhân, doanh nghiệp', title: 'Bảo hiểm tai nạn 24/24', text: 'Tính phí theo gói, số người và thời hạn cho cá nhân, nhóm, nhà thầu.' },
   { href: CHAY_NO, img: 'section-chay-no', k: 'Cơ sở kinh doanh', title: 'Cháy nổ bắt buộc', text: 'Tra cứu cơ sở phải mua, tỷ lệ phí và phí tạm tính theo tài sản.' },
-  { href: '/tin-tuc/mua-bao-hiem-pvi-binh-duong/', img: 'cong-truong-thi-cong', k: 'Bài liên quan', title: 'Mua bảo hiểm PVI ở Bình Dương', text: 'Liên hệ ai, mua qua đại lý cần kiểm tra gì, hồ sơ theo từng loại.' },
+  { href: '/tin-tuc/mua-bao-hiem-pvi-binh-duong/', img: 'cong-truong-thi-cong', k: 'Bài liên quan', title: 'Mua bảo hiểm PVI ở Đông Sài Gòn', text: 'Liên hệ ai, mua qua đại lý cần kiểm tra gì, hồ sơ theo từng loại.' },
 ];
 
 export function body({ pic, ctaRow }) {

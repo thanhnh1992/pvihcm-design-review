@@ -219,7 +219,7 @@ ${rest.length ? `<ol class="nl-timeline">${rest.map((p) => `<li>${time(p)}<a hre
   };
   // Loạt bài theo khu vực (tools/articles/khu-vuc.mjs): một khối link gọn, không xếp từng bài vào dòng thời gian.
   const areaIndex = () => {
-    const list = [['Bình Thạnh', '/tin-tuc/mua-bao-hiem-pvi-binh-thanh/'], ['Bình Dương', '/tin-tuc/mua-bao-hiem-pvi-binh-duong/'],
+    const list = [['Bình Thạnh', '/tin-tuc/mua-bao-hiem-pvi-binh-thanh/'], ['Đông Sài Gòn', '/tin-tuc/mua-bao-hiem-pvi-binh-duong/'],
       ...areas.filter((a) => !AREA_SKIP.has(a.slug)).map((a) => [a.ten, `/tin-tuc/${a.slug}/`])];
     return `
 <div class="nl-areas"><h3>Mua bảo hiểm PVI theo khu vực</h3><p>Văn phòng, phường xã mới sau sắp xếp từ 01/07/2025 và cách nhận báo phí cho từng khu vực.</p>

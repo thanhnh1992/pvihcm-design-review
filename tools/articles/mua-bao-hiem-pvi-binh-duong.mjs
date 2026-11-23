@@ -1,6 +1,6 @@
-// Bài kiến thức: Mua bảo hiểm PVI ở Bình Dương.
+// Bài kiến thức: Mua bảo hiểm PVI ở Đông Sài Gòn.
 // Viết theo câu lệnh Semrush AI theo dõi (chủ đề "bảo hiểm PVI Bình Dương", 08/10/2026):
-// "Làm thế nào để mua bảo hiểm tại PVI Bình Dương hoặc qua đại lý ở Bình Dương?"
+// "Làm thế nào để mua bảo hiểm tại PVI Đông Sài Gòn hoặc qua đại lý ở Đông Sài Gòn?"
 // Dữ kiện dùng: Nghị quyết 202/2025/QH15 (hợp nhất Bình Dương, Bà Rịa - Vũng Tàu vào TP.HCM,
 // chính quyền mới hoạt động từ 01/07/2025); thông tin liên hệ PVI Thành Đô đã chốt trong AGENTS.md.
 // Địa chỉ chi nhánh được đối chiếu với danh bạ và thông báo đổi tên của Tổng công ty Bảo hiểm PVI.
@@ -13,8 +13,8 @@ export const post = {
   updated: '2026-11-13',
   updatedText: '13/11/2026',
   cat: 'Kiến thức · Mua bảo hiểm',
-  title: 'Mua bảo hiểm PVI ở Bình Dương: liên hệ ai, chuẩn bị gì',
-  lead: 'Từ 01/07/2025, Bình Dương thuộc TP.HCM. Khách hàng ở Thủ Dầu Một, Dĩ An, Thuận An, Bến Cát, Tân Uyên có thể mua bảo hiểm PVI qua PVI Thành Đô, đơn vị thành viên của Tổng công ty Bảo hiểm PVI tại TP.HCM: gửi thông tin qua Zalo, nhận báo phí, kiểm tra rồi mới phát hành.',
+  title: 'Mua bảo hiểm PVI ở Đông Sài Gòn: liên hệ ai, chuẩn bị gì',
+  lead: 'Khách hàng ở Đông Sài Gòn, gồm khu vực Thủ Dầu Một, Dĩ An, Thuận An, Bến Cát, Tân Uyên có thể mua bảo hiểm PVI qua PVI Thành Đô, đơn vị thành viên của Tổng công ty Bảo hiểm PVI tại TP.HCM: gửi thông tin qua Zalo, nhận báo phí, kiểm tra rồi mới phát hành.',
   image: '/assets/tu-van-van-phong.webp',
   alt: 'Hình ảnh minh họa: chuyên viên tư vấn chỉ vào bảng quyền lợi bảo hiểm cho khách tại bàn làm việc',
   readMin: 6,
@@ -23,41 +23,41 @@ export const post = {
 export const crumb = 'Kiến thức mua bảo hiểm';
 export const hero = { name: 'tu-van-van-phong', w: 1280, h: 853, position: '50% 50%', caption: 'Hình ảnh minh họa: đọc bảng quyền lợi cùng chuyên viên trước khi mua bảo hiểm.' };
 export const seo = {
-  title: 'Mua bảo hiểm PVI ở Bình Dương: liên hệ, hồ sơ, báo phí | PVI',
-  description: 'Cách mua bảo hiểm PVI cho cá nhân và doanh nghiệp ở khu vực Bình Dương (nay thuộc TP.HCM): đầu mối liên hệ, cách kiểm tra đại lý, hồ sơ cần chuẩn bị cho xe, nhà xưởng, người lao động.',
+  title: 'Mua bảo hiểm PVI ở Đông Sài Gòn: liên hệ, hồ sơ, báo phí | PVI',
+  description: 'Cách mua bảo hiểm PVI cho cá nhân và doanh nghiệp ở khu vực Đông Sài Gòn, TP.HCM: đầu mối liên hệ, cách kiểm tra đại lý, hồ sơ cần chuẩn bị cho xe, nhà xưởng, người lao động.',
 };
 
 const ZALO = 'https://zalo.me/2076363329232219188?src=qr&f=1';
 
 export const toc = [
   ['tra-loi-nhanh', 'Trả lời nhanh'],
-  ['binh-duong-nay', 'Bình Dương bây giờ thuộc đâu'],
+  ['binh-duong-nay', 'Địa chỉ hành chính ở Đông Sài Gòn'],
   ['cach-mua', 'Ba bước mua bảo hiểm PVI'],
   ['dai-ly', 'Mua qua đại lý: kiểm tra gì'],
-  ['nhu-cau', 'Nhu cầu thường gặp ở Bình Dương'],
+  ['nhu-cau', 'Nhu cầu thường gặp ở Đông Sài Gòn'],
   ['bao-hiem-theo-nghiep-vu', 'Hướng dẫn theo từng nghiệp vụ'],
   ['ho-so', 'Hồ sơ cần chuẩn bị'],
   ['su-co', 'Khi có sự cố'],
   ['san-pham', 'Sản phẩm liên quan'],
   ['cau-hoi', 'Câu hỏi thường gặp'],
-  ['dia-chi-pvi-binh-duong', 'Địa chỉ PVI tại Bình Dương'],
+  ['dia-chi-pvi-binh-duong', 'Địa chỉ PVI tại Đông Sài Gòn'],
 ];
 
 export const faqs = [
   {
-    question: 'Ở Bình Dương mua bảo hiểm PVI ở đâu?',
-    answer: 'Bình Dương nay thuộc TP.HCM. Khách hàng ở khu vực này có thể liên hệ PVI Thành Đô, đơn vị thành viên của Tổng công ty Bảo hiểm PVI, qua Zalo hoặc điện thoại 0938 072 236 để được tư vấn, báo phí và hướng dẫn phát hành. Trụ sở PVI Thành Đô: Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, P. Thạnh Mỹ Tây, TP.HCM.',
+    question: 'Ở Đông Sài Gòn mua bảo hiểm PVI ở đâu?',
+    answer: 'Khách hàng tại Đông Sài Gòn (TP.HCM) có thể liên hệ PVI Thành Đô, đơn vị thành viên của Tổng công ty Bảo hiểm PVI, qua Zalo hoặc điện thoại 0938 072 236 để được tư vấn, báo phí và hướng dẫn phát hành. Trụ sở PVI Thành Đô: Tầng 12A, Tòa nhà 194 Golden Building, 473 Điện Biên Phủ, P. Thạnh Mỹ Tây, TP.HCM.',
   },
   {
     question: 'Có cần đến văn phòng để mua bảo hiểm không?',
     answer: 'Không bắt buộc. Có thể gửi thông tin và ảnh giấy tờ qua Zalo để chuyên viên kiểm tra và báo phí. Chuyên viên sẽ hướng dẫn cách xác nhận, thanh toán và nhận giấy chứng nhận theo từng sản phẩm.',
   },
   {
-    question: 'Mua qua đại lý ở Bình Dương có được không?',
+    question: 'Mua qua đại lý ở Đông Sài Gòn có được không?',
     answer: 'Được, nếu đại lý thực sự phân phối sản phẩm của Bảo hiểm PVI. Trước khi thanh toán, hãy kiểm tra giấy chứng nhận hoặc hợp đồng ghi rõ Bảo hiểm PVI và đơn vị cấp, thời hạn, quyền lợi, và thanh toán theo hướng dẫn ghi trên chứng từ.',
   },
   {
-    question: 'Xảy ra sự cố ở Bình Dương thì báo cho ai?',
+    question: 'Xảy ra sự cố ở Đông Sài Gòn thì báo cho ai?',
     answer: 'Gọi tổng đài bồi thường Bảo hiểm PVI 1900 54 54 58, đồng thời báo cho đầu mối đã cấp hợp đồng. Giữ nguyên hiện trường trong khả năng, chụp ảnh và giữ chứng từ; không tự sửa chữa hoặc thỏa thuận trước khi được hướng dẫn, trừ khi cần để bảo đảm an toàn.',
   },
 ];
@@ -80,7 +80,7 @@ export const related = [
 
 export function body() {
   return `
-<p class="kb-first">Khi hỏi “mua bảo hiểm PVI ở Bình Dương”, phần lớn khách hàng cần biết ba điều: liên hệ ai, có phải đến văn phòng không, và cần chuẩn bị giấy tờ gì. Bài này trả lời lần lượt từng câu, dựa trên cách PVI Thành Đô đang làm việc với khách hàng ở TP.HCM, trong đó có khu vực Bình Dương cũ.</p>
+<p class="kb-first">Khi hỏi “mua bảo hiểm PVI ở Đông Sài Gòn”, phần lớn khách hàng cần biết ba điều: liên hệ ai, có phải đến văn phòng không, và cần chuẩn bị giấy tờ gì. Bài này trả lời lần lượt từng câu, dựa trên cách PVI Thành Đô đang hỗ trợ khách hàng tại khu vực này.</p>
 
 <div class="kb-who" id="tra-loi-nhanh">
 <p class="kb-who-h">Trả lời nhanh</p>
@@ -92,7 +92,7 @@ export function body() {
 </dl>
 </div>
 
-<h2 id="binh-duong-nay">Bình Dương bây giờ thuộc đâu?</h2>
+<h2 id="binh-duong-nay">Địa chỉ hành chính ở Đông Sài Gòn?</h2>
 <p>Theo Nghị quyết 202/2025/QH15 do Quốc hội thông qua ngày 12/06/2025, tỉnh Bình Dương, tỉnh Bà Rịa - Vũng Tàu và Thành phố Hồ Chí Minh được hợp nhất thành Thành phố Hồ Chí Minh. Chính quyền thành phố mới hoạt động từ 01/07/2025.</p>
 <p>Với người mua bảo hiểm, điều này có nghĩa là các khu vực Thủ Dầu Một, Dĩ An, Thuận An, Bến Cát, Tân Uyên trước đây giờ là một phần của TP.HCM. Khi khai địa chỉ trên giấy chứng nhận hoặc hợp đồng, nên ghi theo địa chỉ hành chính mới đang dùng trên giấy tờ của bạn. Nếu giấy tờ xe hoặc giấy phép kinh doanh vẫn ghi địa chỉ cũ, hãy báo chuyên viên để thống nhất cách ghi trước khi phát hành.</p>
 
@@ -104,7 +104,7 @@ export function body() {
 </ol>
 <p>Thông tin chưa đủ hoặc mâu thuẫn (ví dụ số khung trên ảnh không đọc rõ, năm sản xuất không khớp) sẽ được hỏi lại, không tự điền. Việc này mất thêm vài phút nhưng tránh được rắc rối khi cần bồi thường.</p>
 
-<h2 id="dai-ly">Mua qua đại lý ở Bình Dương: cần kiểm tra gì</h2>
+<h2 id="dai-ly">Mua qua đại lý ở Đông Sài Gòn: cần kiểm tra gì</h2>
 <p>Nhiều khách hàng mua bảo hiểm qua người quen, đại lý hoặc nơi bán xe. Cách này không sai, miễn là bạn kiểm tra đủ các điểm sau trước khi chuyển tiền:</p>
 <ul class="kb-ticks">
 <li>Giấy chứng nhận hoặc hợp đồng ghi rõ <b>Bảo hiểm PVI</b> và tên đơn vị cấp.</li>
@@ -115,8 +115,8 @@ export function body() {
 </ul>
 <p>Nếu chưa chắc, bạn có thể gửi ảnh chứng từ qua Zalo 0938 072 236 để PVI Thành Đô xem giúp các mục cần đối chiếu.</p>
 
-<h2 id="nhu-cau">Nhu cầu bảo hiểm thường gặp ở khu vực Bình Dương</h2>
-<p>Bình Dương cũ có nhiều khu công nghiệp, nhà xưởng, kho bãi và công trình xây dựng, nên các câu hỏi thường xoay quanh doanh nghiệp và người lao động:</p>
+<h2 id="nhu-cau">Nhu cầu bảo hiểm thường gặp ở khu vực Đông Sài Gòn</h2>
+<p>Khu vực Đông Sài Gòn có nhiều khu công nghiệp, nhà xưởng, kho bãi và công trình xây dựng, nên các câu hỏi thường xoay quanh doanh nghiệp và người lao động:</p>
 <ul class="kb-ticks">
 <li><b>Nhà xưởng, kho hàng:</b> cơ sở có thuộc diện phải mua <a class="kb-link" href="/san-pham/chay-no-bat-buoc/">cháy nổ bắt buộc</a> không, mức phí theo công năng và giá trị tài sản.</li>
 <li><b>Công nhân, nhân viên:</b> <a class="kb-link" href="/san-pham/bao-hiem-tai-nan/">bảo hiểm tai nạn 24/24</a> theo nhóm, tính phí theo số người và thời hạn.</li>
@@ -125,7 +125,7 @@ export function body() {
 <li><b>Hàng xuất nhập khẩu:</b> <a class="kb-link" href="/san-pham/hang-hoa-xuat-nhap-khau/">bảo hiểm hàng hóa</a> theo từng lô hoặc hợp đồng bao.</li>
 </ul>
 ${binhDuongGuideLinks()}
-<p><a class="kb-link" href="/binhduong/">Tra biểu phí bảo hiểm PVI tại Bình Dương năm 2026</a> cho ô tô, cháy nổ, tai nạn và các nghiệp vụ khác.</p>
+<p><a class="kb-link" href="/binhduong/">Tra biểu phí bảo hiểm PVI tại Đông Sài Gòn năm 2026</a> cho ô tô, cháy nổ, tai nạn và các nghiệp vụ khác.</p>
 
 <h2 id="ho-so">Hồ sơ cần chuẩn bị</h2>
 <p>Mỗi sản phẩm cần thông tin khác nhau. Danh sách dưới đây giúp bạn gửi đủ ngay lần đầu; chuyên viên có thể hỏi thêm tùy trường hợp.</p>
@@ -151,7 +151,7 @@ ${binhDuongGuideLinks()}
 
 <section class="kb-cta kb-wide" aria-labelledby="lien-he-cta">
 <div>
-<h2 id="lien-he-cta">Ở Bình Dương, cần báo phí bảo hiểm PVI?</h2>
+<h2 id="lien-he-cta">Ở Đông Sài Gòn, cần báo phí bảo hiểm PVI?</h2>
 <p>Gửi nhu cầu và ảnh giấy tờ qua Zalo. PVI Thành Đô kiểm tra thông tin, báo phí và hướng dẫn phát hành.</p>
 </div>
 <div class="pd-cta"><a class="fire-btn fire-btn-line" href="${ZALO}">Nhắn Zalo OA</a><a class="fire-btn fire-btn-red" href="tel:0938072236">Gọi tư vấn 0938 072 236</a></div>
