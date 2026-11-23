@@ -1,5 +1,8 @@
 const CHAY_NO = '/san-pham/chay-no-bat-buoc/';
 const QUY_DINH = '/tin-tuc/nghi-dinh-347-2026-chay-no-bat-buoc/';
+const ANH_HIEN_TRUONG = 'tn-chay-tan-dinh-tran-quang-khai';
+const NGUON_ANH = 'Ảnh do người gửi cung cấp';
+const KICH_THUOC_ANH_BIA = { w: 1173, h: 616 };
 
 export const post = {
   slug: 'chay-nha-duong-tran-quang-khai-tan-dinh',
@@ -8,19 +11,19 @@ export const post = {
   cat: 'Tin tức · Cháy nổ',
   title: 'Cháy nhà đường Trần Quang Khải, phường Tân Định',
   lead: 'Sáng 23/11/2026, lửa bùng lên ở sân thượng một căn nhà trên đường Trần Quang Khải, phường Tân Định, TP.HCM. Người trong nhà thoát ra an toàn, nhiều tài sản bị thiêu rụi. Chủ nhà kết hợp kinh doanh có thể tra cứu diện phải mua bảo hiểm cháy nổ bắt buộc theo hướng dẫn dưới đây.',
-  image: '/assets/section-chay-no.webp',
-  alt: 'Chuyên viên kiểm tra tủ và đường ống chữa cháy trong một cơ sở',
+  image: `/assets/${ANH_HIEN_TRUONG}.webp`,
+  imageWidth: KICH_THUOC_ANH_BIA.w,
+  imageHeight: KICH_THUOC_ANH_BIA.h,
+  alt: 'Xe chữa cháy phun nước về phía căn nhà đang bốc lửa trên đường Trần Quang Khải',
   readMin: 3,
   schemaType: 'NewsArticle',
 };
 
 export const crumb = 'Tin tức cháy nổ';
 export const hero = {
-  name: 'section-chay-no',
-  w: 1280,
-  h: 853,
-  position: '50% 45%',
-  caption: 'Hình ảnh minh họa: kiểm tra thiết bị và đường ống chữa cháy tại một cơ sở.',
+  name: ANH_HIEN_TRUONG,
+  ...KICH_THUOC_ANH_BIA,
+  caption: `Ảnh thực tế: Xe chữa cháy phun nước từ đường Trần Quang Khải, phường Tân Định, sáng 23/11/2026 · Nguồn: ${NGUON_ANH}.`,
 };
 export const seo = {
   title: 'Cháy nhà đường Trần Quang Khải, Tân Định | PVI Thành Đô',
@@ -82,11 +85,21 @@ export const related = [
   },
 ];
 
-export function body() {
+export function body({ pic }) {
   return `
 <h2 id="dien-bien">Diễn biến vụ cháy nhà trên đường Trần Quang Khải</h2>
 <p>Theo Tuổi Trẻ và Sài Gòn Giải Phóng, khói bốc lên từ khu vực sân thượng một căn nhà trên đường Trần Quang Khải vào sáng 23/11. Những người bên trong thoát ra bằng cầu thang. Lực lượng Cảnh sát PCCC và cứu nạn, cứu hộ TP.HCM tiếp cận, phun nước từ bên ngoài để dập lửa.</p>
 <p>Trang SaigonFun.vn cũng đăng video được giới thiệu là hiện trường vụ cháy sáng cùng ngày. Vụ cháy không gây thương vong, song nhiều tài sản ở khu vực sân thượng bị thiêu rụi. Khi báo chí đưa tin, cơ quan chức năng đang xác minh nguyên nhân và thống kê thiệt hại.</p>
+<div class="kb-photo-pair">
+  <figure class="kb-photo kb-doc">
+    ${pic('chay-tan-dinh-lua-khoi', { w: 1168, h: 1280, sizes: '(max-width:600px) calc(100vw - 40px), 420px', alt: 'Lửa bốc lên phía sau lan can sân thượng, khói đen dày giữa các tòa nhà' })}
+    <figcaption>Ảnh thực tế: Lửa và khói đen ở khu vực sân thượng · Nguồn: ${NGUON_ANH}.</figcaption>
+  </figure>
+  <figure class="kb-photo kb-doc">
+    ${pic('chay-tan-dinh-khoi-san-thuong', { w: 1144, h: 1254, sizes: '(max-width:600px) calc(100vw - 40px), 420px', alt: 'Khói dày bốc lên trên sân thượng nhìn từ phía đường Trần Quang Khải' })}
+    <figcaption>Ảnh thực tế: Cột khói nhìn từ đường Trần Quang Khải · Nguồn: ${NGUON_ANH}.</figcaption>
+  </figure>
+</div>
 
 <h2 id="dien-bat-buoc">Nhà ở kết hợp kinh doanh có phải mua bảo hiểm cháy nổ bắt buộc?</h2>
 <p>Chủ nhà hoặc người thuê mặt bằng kinh doanh cần xác định loại hình cơ sở, công năng, quy mô và loại hàng hóa để đối chiếu Phụ lục VII Nghị định 105/2025/NĐ-CP. Đồng thời, cần kiểm tra các điều kiện tại Điều 35 của nghị định này, đã được sửa đổi bởi Điều 23 Nghị định 347/2026/NĐ-CP.</p>

@@ -562,6 +562,12 @@
 .kb-photo{margin:28px 0 26px}
 .kb-photo img{aspect-ratio:3/2;object-fit:cover;border-radius:16px}
 .kb-photo.kb-doc img{aspect-ratio:auto;height:auto;object-fit:contain;background:#f4f6f8}
+.kb-photo-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:28px 0 26px}
+.kb-photo-pair .kb-photo{margin:0}
+@media (max-width:600px){
+  .kb-photo-pair{grid-template-columns:minmax(0,1fr)}
+  .kb-photo-pair figcaption,.kb-hero img[src^="/assets/tn-chay-tan-dinh-"]+figcaption{padding-inline-end:84px}
+}
 .kb-photo-tight{margin:0 0 4px}
 .kb-photo-tight img{border-radius:12px}
 .kb-gcn-fee{margin-top:16px}
