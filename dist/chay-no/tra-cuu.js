@@ -14,6 +14,8 @@ import { VAT_RATE } from './fire-data.js';
 
 /* Hiện phí đầy đủ đến đồng (22/11/2026). formatMillions của fire-data.js làm tròn 2 số lẻ theo triệu,
    nên 9.998.000đ thành "10 triệu đ"; khách doanh nghiệp cần đúng con số. */
+// Dòng quy đổi dưới ô nhập (16/11/2026, chủ site yêu cầu ô nhập nổi bật): 5000 -> "= 5 tỷ đồng".
+const echoSum = (v) => { const n = Number(v); if (!v || !Number.isFinite(n) || n <= 0) return 'Ví dụ: 5000 triệu đồng = 5 tỷ đồng'; return '= ' + (n >= 1000 ? `${(Math.round(n) / 1000).toLocaleString('vi-VN')} tỷ đồng` : `${n.toLocaleString('vi-VN')} triệu đồng`); };
 const formatVnd = (millions) => (millions === undefined || millions === null || !Number.isFinite(millions) ? '—' : `${Math.round(millions * 1e6).toLocaleString('vi-VN')} đ`);
 /* Ô giá trị tài sản (triệu đồng): chỉ nhận chữ số và một dấu thập phân, dấu phẩy hiểu là dấu thập phân,
    bỏ số 0 thừa ở đầu. Dùng type="text" để lăn chuột không đổi số như ô type="number". */
@@ -119,7 +121,7 @@ export function renderLookup(st) {
     for (const { asset, fee } of v.lines) {
       const name = assetDisplayName(asset.name);
       h += `<div class="pal-calcCard${fee !== null ? ' pal-calcCardDone' : ''}"><div class="pal-calcAsset"><span class="pal-calcIcon">${assetIcon(asset)}</span><label for="${uid}-sum-${esc(asset.id)}"><strong>${esc(name.title)}</strong><small>Mã ${esc(asset.code)} · ${esc(groupLabels.get(asset.group))}</small></label><span class="pal-rateChip">${esc(formatAssetRate(asset))}${asset.rate !== null || asset.rateText ? '<small> / năm</small>' : ''}</span></div>`
-        + `<div class="pal-calcInputRow"><div class="pal-sumInput"><input id="${uid}-sum-${esc(asset.id)}" type="text" inputmode="decimal" autocomplete="off" placeholder="Ví dụ: 5000" value="${esc(st.sums[asset.id] ?? '')}" data-sum="${esc(asset.id)}"><span>triệu đồng</span></div><p class="pal-calcFee"><small>Phí / năm chưa VAT</small><b>${fee !== null ? esc(formatVnd(fee)) : '—'}</b></p></div>`
+        + `<div class="pal-calcInputRow"><div class="pal-sumField"><label class="pal-sumLabel" for="${uid}-sum-${esc(asset.id)}">Nhập giá trị tài sản cần bảo hiểm</label><div class="pal-sumInput${st.sums[asset.id] ? '' : ' pal-sumEmpty'}"><input id="${uid}-sum-${esc(asset.id)}" type="text" inputmode="decimal" autocomplete="off" placeholder="Ví dụ: 5000" value="${esc(st.sums[asset.id] ?? '')}" data-sum="${esc(asset.id)}"><span>triệu đồng</span></div><small class="pal-sumEcho">${esc(echoSum(st.sums[asset.id]))}</small></div><p class="pal-calcFee"><small>Phí / năm chưa VAT</small><b>${fee !== null ? esc(formatVnd(fee)) : '—'}</b></p></div>`
         + (asset.rate === null ? '<p class="pal-calcWarn">Loại này chưa có tỷ lệ cố định, phí cần được PVI xác nhận theo hồ sơ.</p>' : '') + '</div>';
     }
     h += `<div class="pal-leadLeft"><a class="pal-leadAdvice" href="${ZALO_PERSONAL_URL}" rel="nofollow">${ic('ChatCircleDots', 28, 'fill')}<span><strong>Nhận tư vấn miễn phí ngay</strong><small>Chuyên viên chat Zalo với bạn ngay</small></span></a></div></div>`
@@ -198,6 +200,8 @@ function mount(box) {
       const card = t.closest('.pal-calcCard');
       // Chỉ cập nhật kết quả để giữ ô nhập và vị trí con trỏ khi đang gõ số.
       card.classList.toggle('pal-calcCardDone', fee !== null);
+      card.querySelector('.pal-sumInput').classList.toggle('pal-sumEmpty', !clean);
+      card.querySelector('.pal-sumEcho').textContent = echoSum(clean);
       card.querySelector('.pal-calcFee b').textContent = fee !== null ? formatVnd(fee) : '—';
       $('.pal-summaryLive').innerHTML = renderSummary(v);
     }
