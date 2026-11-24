@@ -1,8 +1,6 @@
 // Nội dung dành cho người đang chọn mua từng nghiệp vụ ở Bình Dương.
 export const localProductCopy = {
   tndsoto: {
-    heading: 'Bảo hiểm TNDS ô tô PVI tại Bình Dương',
-    title: 'Bảo hiểm TNDS ô tô PVI Bình Dương | Tra phí, mua và tái tục',
     description: 'Tra phí bảo hiểm TNDS ô tô PVI tại Bình Dương theo loại xe và mục đích sử dụng. Xem hồ sơ mua, tái tục và địa chỉ PVI ở Thủ Dầu Một.',
     intro: 'Bạn có thể tra phí bảo hiểm ô tô bắt buộc PVI theo loại xe, số chỗ hoặc tải trọng. Nếu đang tái tục ở Bình Dương, hãy đối chiếu giờ hết hạn trên giấy chứng nhận cũ để chọn thời điểm bắt đầu của kỳ mới.',
     sections: [
@@ -24,7 +22,6 @@ export const localProductCopy = {
     ],
   },
   vatchatxeoto: {
-    heading: 'Bảo hiểm vật chất xe ô tô PVI tại Bình Dương',
     intro: 'Nếu bạn muốn được xem xét chi trả thiệt hại của chính chiếc xe, hãy hỏi bảo hiểm vật chất xe. Để so hai báo phí, đặt giá trị bảo hiểm, mức khấu trừ, quyền chọn gara và các điều khoản bổ sung cạnh nhau.',
     sections: [
       ['pham-vi', 'Chọn phạm vi bảo hiểm thân vỏ', ['Khi hỏi báo phí, nêu rõ bạn quan tâm va chạm khi đi lại hằng ngày, xe đỗ ngoài trời hay rủi ro ngập nước. Hỏi riêng điều kiện áp dụng cho thủy kích, mất cắp bộ phận và lựa chọn gara. Kiểm tra từng quyền lợi trên báo phí trước khi mua.']],
@@ -32,7 +29,6 @@ export const localProductCopy = {
     ],
   },
   chaynobatbuoc: {
-    heading: 'Mua bảo hiểm cháy nổ PVI tại Bình Dương',
     description: 'Tra phí bảo hiểm cháy nổ PVI tại Bình Dương cho nhà xưởng, kho và cơ sở kinh doanh. Xem cách xác định diện bắt buộc và chuẩn bị hồ sơ báo phí.',
     intro: 'Chủ kho, xưởng hoặc cơ sở kinh doanh ở Bình Dương có thể tra nhóm cơ sở trước khi ước tính phí cháy nổ bắt buộc. Khi gửi báo giá, mô tả công năng thật của từng khu và tách riêng nhà, máy móc, hàng hóa.',
     sections: [
@@ -41,7 +37,6 @@ export const localProductCopy = {
     ],
   },
   taisannhaxuong: {
-    heading: 'Bảo hiểm tài sản nhà xưởng PVI tại Bình Dương',
     intro: 'Bắt đầu từ tài sản doanh nghiệp cần bảo vệ: nhà kho, dây chuyền, máy móc hay hàng tồn. Nếu thuê xưởng tại Bình Dương, đối chiếu hợp đồng thuê để biết phần nào do doanh nghiệp và phần nào do chủ xưởng mua bảo hiểm.',
     sections: [
       ['pham-vi', 'Tách tài sản theo từng địa điểm', ['Với kho tại Sóng Thần và xưởng sản xuất tại Tân Uyên, lập hai danh mục riêng. Ghi giá trị máy móc, nhà xưởng, hàng hóa và nhu cầu bổ sung rủi ro tại từng điểm. Hỏi cách khai hàng tồn biến động nếu lượng hàng thay đổi nhiều trong năm.']],
@@ -49,7 +44,6 @@ export const localProductCopy = {
     ],
   },
   congtrinhlapdat: {
-    heading: 'Bảo hiểm công trình và lắp đặt PVI tại Bình Dương',
     intro: 'Khi cần báo phí xây mới, cải tạo hoặc lắp máy ở Bình Dương, gửi dự toán, tiến độ và ngày dự kiến chạy thử. Ba dữ kiện này giúp hai bên xác định đúng hạng mục và thời gian cần bảo hiểm.',
     sections: [
       ['pham-vi', 'Chọn bảo hiểm theo phần việc thực tế', ['Dự án xây nhà xưởng và dự án đưa dây chuyền vào xưởng đang hoạt động có hồ sơ khác nhau. Ghi phần xây lắp mới, thiết bị đưa vào công trường và tài sản hiện hữu cần xem xét. Nếu cần bảo hiểm trách nhiệm với bên thứ ba, nói rõ công trình lân cận và hoạt động xung quanh.']],
@@ -57,7 +51,6 @@ export const localProductCopy = {
     ],
   },
   hanghoaxuatnhapkhau: {
-    heading: 'Bảo hiểm hàng hóa xuất nhập khẩu PVI tại Bình Dương',
     intro: 'Để báo phí lô hàng xuất nhập khẩu, chuẩn bị giá trị hàng, loại hàng, cách đóng gói và hành trình từ kho tại Bình Dương đến điểm giao. Hãy nêu cả chặng xe tải nội địa nếu bạn cần đưa chặng đó vào phạm vi.',
     sections: [
       ['pham-vi', 'Chốt điểm bắt đầu và kết thúc hành trình', ['Với lô xuất từ kho Dĩ An qua cảng Cát Lái, ghi địa chỉ kho, nơi giao container, cảng đi và điểm giao cuối. Đối chiếu điều kiện giao hàng để biết bên nào thu xếp bảo hiểm và chứng từ nào cần giao cho đối tác.']],
@@ -65,7 +58,6 @@ export const localProductCopy = {
     ],
   },
   nguoilaodongthicong: {
-    heading: 'Bảo hiểm người lao động thi công PVI tại Bình Dương',
     intro: 'Nhà thầu cần báo phí cho đội thi công ở Bình Dương nên gửi tên công trình, hạng mục, thời gian và nhóm công việc. Danh sách cần khớp với đội thực tế vào công trường.',
     sections: [
       ['pham-vi', 'Thông tin về người và hạng mục thi công', ['Với công trình nhà xưởng, phân biệt nhóm làm trên cao, nhóm lắp máy và nhóm làm công việc mặt đất. Ghi rõ đơn vị quản lý và địa điểm làm việc nếu đội luân chuyển giữa các công trình. Người phụ trách có thể dùng thông tin này để kiểm tra đúng chương trình khi hỏi báo phí.']],
@@ -73,7 +65,6 @@ export const localProductCopy = {
     ],
   },
   tainan2424: {
-    heading: 'Bảo hiểm tai nạn 24/24 PVI cho công nhân tại Bình Dương',
     intro: 'Doanh nghiệp ở Bình Dương có thể ước tính phí tai nạn 24/24 theo số người, gói và thời hạn. Khi hỏi báo phí chính thức, tách danh sách theo nhóm nghề và nói rõ công việc mỗi nhóm đang làm.',
     sections: [
       ['pham-vi', 'Chọn quyền lợi theo công việc thực tế', ['Xưởng có nhóm vận hành máy, nhóm kho vận và nhân viên văn phòng nên mô tả riêng từng nhóm. Khi đọc báo phí, kiểm tra phạm vi tai nạn, quyền lợi đã chọn và các điểm loại trừ trước khi chốt danh sách.']],
@@ -81,7 +72,6 @@ export const localProductCopy = {
     ],
   },
   suckhoe: {
-    heading: 'Bảo hiểm sức khỏe PVI Care tại Bình Dương',
     intro: 'Chọn bảo hiểm sức khỏe theo nhu cầu nội trú, ngoại trú và bệnh viện bạn thường đến. Khi hỏi PVI Care tại Bình Dương, gửi nhóm tuổi, số người và thời điểm mong muốn bắt đầu.',
     sections: [
       ['pham-vi', 'So quyền lợi nội trú và ngoại trú', ['Nếu mục tiêu là chi phí nằm viện, xem giới hạn nội trú, tiền phòng và các điều khoản liên quan. Nếu thường khám trong ngày ở Thủ Dầu Một hoặc Thuận An, hỏi quyền lợi ngoại trú và cơ sở mà bạn dự định sử dụng.']],
@@ -89,7 +79,6 @@ export const localProductCopy = {
     ],
   },
   dulichquocte: {
-    heading: 'Bảo hiểm du lịch quốc tế PVI tại Bình Dương',
     intro: 'Khách ở Bình Dương có thể tra phí bảo hiểm du lịch quốc tế theo điểm đến, số ngày và chương trình. Nếu cần giấy chứng nhận để nộp hồ sơ visa, đối chiếu yêu cầu của nơi tiếp nhận trước khi chọn gói.',
     sections: [
       ['pham-vi', 'Khai đúng hành trình và mục đích chuyến đi', ['Ghi cả điểm đến và điểm quá cảnh có lưu trú, ngày đi và ngày về. Nêu rõ đi du lịch, thăm thân hay công tác. Nếu có hoạt động thể thao hoặc lịch trình đặc biệt, hỏi phạm vi áp dụng của gói dự định mua.']],

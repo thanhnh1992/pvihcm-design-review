@@ -25,7 +25,7 @@ const groups = [
     id: 'tai-san',
     title: 'Bảo hiểm nhà xưởng, công trình và hàng hóa',
     products: [
-      ['bao-hiem-chay-no-nha-xuong-kho-binh-duong', localProductCopy.chaynobatbuoc.heading, 'Cho nhà xưởng, kho và cơ sở thuộc diện phải mua. Tra loại cơ sở và nhập giá trị tài sản để ước tính phí.', '#tra-cuu', 'Tra phí cháy nổ'],
+      ['bao-hiem-chay-no-nha-xuong-kho-binh-duong', 'Bảo hiểm cháy nổ bắt buộc', 'Cho nhà xưởng, kho và cơ sở thuộc diện phải mua. Tra loại cơ sở và nhập giá trị tài sản để ước tính phí.', '#tra-cuu', 'Tra phí cháy nổ'],
       ['bao-hiem-tai-san-nha-xuong-binh-duong', 'Bảo hiểm tài sản nhà xưởng', 'Cho nhà xưởng đang vận hành, máy móc và tồn kho. Lập danh mục tài sản theo từng địa điểm để nhận báo phí.', '#nhan-bao-phi', 'Nhận báo phí tài sản'],
       ['bao-hiem-cong-trinh-lap-dat-binh-duong', 'Bảo hiểm công trình và lắp đặt', 'Cho chủ đầu tư và nhà thầu xây mới, cải tạo hoặc lắp dây chuyền. Chuẩn bị dự toán, tiến độ và lịch chạy thử.', '', 'Xem bảo hiểm công trình'],
       ['bao-hiem-hang-hoa-xuat-nhap-khau-binh-duong', 'Bảo hiểm hàng hóa xuất nhập khẩu', 'Cho lô hàng đi từ kho tại Bình Dương đến cảng hoặc điểm giao. Báo phí theo giá trị hàng, bao bì và hành trình.', '', 'Xem bảo hiểm hàng hóa'],
@@ -37,7 +37,7 @@ const groups = [
     products: [
       ['bao-hiem-tai-nan-cong-nhan-cong-truong-binh-duong', 'Bảo hiểm người lao động thi công', 'Cho nhà thầu cần bảo hiểm đội thi công. Khai địa điểm công trình, nhóm việc, số người và thời gian làm việc.', '#cong-truong', 'Xem bảo hiểm công trường'],
       ['bao-hiem-tai-nan-24-24-cong-nhan-binh-duong', 'Bảo hiểm tai nạn 24/24 cho công nhân', 'Cho doanh nghiệp mua theo danh sách nhân viên. Ước tính phí theo gói, số người và thời hạn.', '#tinh-phi', 'Tính phí tai nạn 24/24'],
-      ['bao-hiem-suc-khoe-pvi-care-binh-duong', 'Bảo hiểm sức khỏe', 'Cho cá nhân, gia đình hoặc nhân viên. So quyền lợi nội trú, ngoại trú và điều kiện bảo lãnh viện phí.', '', 'Xem các chương trình sức khỏe'],
+      ['bao-hiem-suc-khoe-pvi-care-binh-duong', 'Bảo hiểm sức khỏe PVI Care', 'Cho cá nhân, gia đình hoặc nhân viên. So quyền lợi nội trú, ngoại trú và điều kiện bảo lãnh viện phí.', '', 'Xem các chương trình sức khỏe'],
       ['bao-hiem-du-lich-quoc-te-binh-duong', 'Bảo hiểm du lịch quốc tế', 'Cho chuyến đi du lịch, công tác hoặc thăm thân. Tra phí theo điểm đến, số ngày và chương trình.', '#tinh-phi', 'Tính phí du lịch'],
     ],
   },
@@ -74,11 +74,11 @@ function photo(name, alt, sizes, { eager = false, width = 1200, height = 800 } =
   return `<img src="${src}.webp" srcset="${src}-480.webp 480w, ${src}-800.webp 800w, ${src}.webp ${width}w" sizes="${sizes}" width="${width}" height="${height}" alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
 }
 
-function productDetails([slug, label, basis, anchor, action]) {
+function productDetails([slug, name, basis, anchor, action]) {
   const guide = binhDuongGuides.find(({ post }) => post.slug === slug);
   const [localSlug, documents] = localProducts[guide.hero.name.replace('binh-duong-', '')];
   const destination = anchor === '#nhan-bao-phi' ? route + anchor : guide.related[0].href + anchor;
-  return { slug, label, basis, action, guide, documents, destination, url: route + localSlug + '/' };
+  return { slug, label: `${name} tại Bình Dương`, basis, action, guide, documents, destination, url: route + localSlug + '/' };
 }
 
 function productCard({ label, basis, action, guide, destination, url }) {
@@ -105,7 +105,7 @@ const industrialParks = [
 ];
 
 const bhytGuide = `    <aside class="bd-local-intro" aria-labelledby="bao-hiem-y-te-ho-gia-dinh">
-      <h3 id="bao-hiem-y-te-ho-gia-dinh">Bảo hiểm y tế hộ gia đình</h3>
+      <h3 id="bao-hiem-y-te-ho-gia-dinh">Bảo hiểm y tế hộ gia đình tại Bình Dương</h3>
       <p>Người dân khu vực Bình Dương có thể xem hồ sơ đăng ký lần đầu, cách gia hạn thẻ và mức đóng theo số người trong hộ.</p>
       <div class="bd-product-links">
         <a class="bd-product-primary" href="/tin-tuc/mua-bao-hiem-y-te-online/">Đọc hướng dẫn đăng ký BHYT online <span aria-hidden="true">→</span></a>
@@ -307,7 +307,7 @@ function productSchema(heading, description, url, cover) {
 
 for (const group of productGroups) {
   for (const product of group.products) {
-    const { guide, documents, action, destination, slug, url } = product;
+    const { guide, documents, action, destination, slug, url, label: heading } = product;
     const localSlug = url.split('/').at(-2);
     const copy = localProductCopy[localSlug];
     const isTnds = localSlug === 'tndsoto';
@@ -319,9 +319,8 @@ for (const group of productGroups) {
     const quote = '#lien-he-tu-van';
     const nextStepHref = isTnds ? original + 'dat-mua/' : 'tel:0938072236';
     const nextStepLabel = isTnds ? 'Mua ngay' : 'Liên hệ tư vấn ngay';
-    const { heading, intro, sections } = copy;
+    const { intro, sections } = copy;
     const description = copy.description || intro;
-    const title = copy.title || heading + ' | Hồ sơ và báo phí';
     const name = isTnds ? tndsCover : guide.hero.name;
     const { w, h } = isTnds ? { w: 1200, h: 630 } : guide.hero;
     const alt = isTnds ? tndsCaption : guide.post.alt;
@@ -334,7 +333,7 @@ for (const group of productGroups) {
       ['lien-he-tu-van', 'Nhận báo phí'],
     ];
     writePage({
-      url, title, description,
+      url, title: heading, description,
       image: isTnds ? '/assets/' + tndsCover + '-og.jpg' : guide.post.socialImage,
       structured: productSchema(heading, description, url, '/assets/' + name + '.webp'),
       extraHead: subpageBreadcrumbJsonLd(url, heading, true),
