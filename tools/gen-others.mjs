@@ -151,12 +151,12 @@ ${faqBlock(faqs, 'Hiểu rõ rồi hãy quyết định')}`;
     ['/san-pham/hang-hoa-xuat-nhap-khau/', 'Bảo hiểm hàng hóa xuất nhập khẩu', 'Theo từng chuyến, hợp đồng bao hoặc chuỗi logistics, rà soát theo chứng từ lô hàng.'],
   ];
   // Địa bàn phụ trách (chủ site giao 20/11/2026): các tỉnh từ Bình Thuận trở vào, tên tỉnh cũ trước sắp xếp 01/7/2025,
-  // cùng quy ước nhánh tỉnh trong SO-DO-TRANG.md (URL /<tinh>/ không gạch nối, ví dụ /dongsaigon/, /cantho/).
+  // cùng quy ước nhánh tỉnh trong SO-DO-TRANG.md (URL /<tinh>/ không gạch nối, ví dụ /binhduong/, /cantho/).
   // Tỉnh đã có trang trong dist thì thành link; chưa có thì ghi "Đang cập nhật", không để link hỏng.
   // "Nay thuộc": đơn vị hành chính cấp tỉnh sau sắp xếp theo Nghị quyết 202/2025/QH15, hiệu lực 01/7/2025.
   const DIA_BAN = [
     ['Nam Trung Bộ', [['Bình Thuận', 'binhthuan', 'Lâm Đồng']]],
-    ['Đông Nam Bộ', [['TP. Hồ Chí Minh', 'tphcm', 'TP. Hồ Chí Minh'], ['Đông Sài Gòn', 'dongsaigon', 'TP. Hồ Chí Minh'], ['Bà Rịa – Vũng Tàu', 'vungtau', 'TP. Hồ Chí Minh'], ['Đồng Nai', 'dongnai', 'Đồng Nai'], ['Bình Phước', 'binhphuoc', 'Đồng Nai'], ['Tây Ninh', 'tayninh', 'Tây Ninh']]],
+    ['Đông Nam Bộ', [['TP. Hồ Chí Minh', 'tphcm', 'TP. Hồ Chí Minh'], ['Bình Dương', 'binhduong', 'TP. Hồ Chí Minh'], ['Bà Rịa – Vũng Tàu', 'vungtau', 'TP. Hồ Chí Minh'], ['Đồng Nai', 'dongnai', 'Đồng Nai'], ['Bình Phước', 'binhphuoc', 'Đồng Nai'], ['Tây Ninh', 'tayninh', 'Tây Ninh']]],
     ['Đồng bằng sông Cửu Long', [['Long An', 'longan', 'Tây Ninh'], ['Tiền Giang', 'tiengiang', 'Đồng Tháp'], ['Đồng Tháp', 'dongthap', 'Đồng Tháp'], ['Bến Tre', 'bentre', 'Vĩnh Long'], ['Vĩnh Long', 'vinhlong', 'Vĩnh Long'], ['Trà Vinh', 'travinh', 'Vĩnh Long'], ['An Giang', 'angiang', 'An Giang'], ['Kiên Giang', 'kiengiang', 'An Giang'], ['Cần Thơ', 'cantho', 'Cần Thơ'], ['Hậu Giang', 'haugiang', 'Cần Thơ'], ['Sóc Trăng', 'soctrang', 'Cần Thơ'], ['Bạc Liêu', 'baclieu', 'Cà Mau'], ['Cà Mau', 'camau', 'Cà Mau']]],
   ];
   const DIST_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../dist');

@@ -4,13 +4,13 @@ export const guides = [
   {
     id: 'tnds',
     slug: 'bao-hiem-tnds-o-to-binh-duong',
-    title: 'Mua bảo hiểm TNDS ô tô PVI tại Đông Sài Gòn',
-    description: 'Mua bảo hiểm TNDS ô tô PVI tại Đông Sài Gòn. Cách khai đúng mục đích sử dụng, kiểm tra giấy chứng nhận và tái tục cho xe cá nhân, xe công ty.',
+    title: 'Mua bảo hiểm TNDS ô tô PVI tại Bình Dương',
+    description: 'Mua bảo hiểm TNDS ô tô PVI tại Bình Dương. Cách khai đúng mục đích sử dụng, kiểm tra giấy chứng nhận và tái tục cho xe cá nhân, xe công ty.',
     anchor: 'Bảo hiểm TNDS ô tô',
     product: 'o-to',
     next: 'vat-chat-xe',
     image: 'Ô tô gia đình lưu thông trên tuyến đường đô thị có hàng cây',
-    lead: 'Bảo hiểm PVI có thể cấp bảo hiểm trách nhiệm dân sự bắt buộc cho chủ ô tô ở Đông Sài Gòn. Khi hỏi mua hoặc tái tục, hãy gửi giấy đăng ký, khai đúng mục đích sử dụng và đối chiếu ngày hết hạn của hợp đồng cũ để chọn thời điểm bắt đầu phù hợp.',
+    lead: 'Bảo hiểm PVI có thể cấp bảo hiểm trách nhiệm dân sự bắt buộc cho chủ ô tô ở Bình Dương. Khi hỏi mua hoặc tái tục, hãy gửi giấy đăng ký, khai đúng mục đích sử dụng và đối chiếu ngày hết hạn của hợp đồng cũ để chọn thời điểm bắt đầu phù hợp.',
     sections: [
       ['TNDS ô tô dùng để bảo hiểm phần nào?', [
         'Đây là bảo hiểm trách nhiệm dân sự của chủ xe cơ giới theo quy định về bảo hiểm bắt buộc. Khi phát sinh trách nhiệm thuộc phạm vi, PVI xem xét theo điều kiện và mức trách nhiệm áp dụng. Chủ xe muốn bảo hiểm thiệt hại của chính chiếc xe nên hỏi riêng về bảo hiểm vật chất xe.',
@@ -26,7 +26,7 @@ export const guides = [
       ]],
     ],
     faq: [
-      ['Xe đăng ký ngoài Đông Sài Gòn có thể hỏi mua tại đây không?', 'Bạn có thể gửi hồ sơ cho đầu mối PVI ở Đông Sài Gòn để kiểm tra. Cần khai đúng chủ xe và dữ liệu trên giấy đăng ký. Nếu xe đang sang tên hoặc đổi biển, nêu rõ tình trạng để được hướng dẫn thông tin cần đối chiếu trước khi cấp.'],
+      ['Xe đăng ký ngoài Bình Dương có thể hỏi mua tại đây không?', 'Bạn có thể gửi hồ sơ cho đầu mối PVI ở Bình Dương để kiểm tra. Cần khai đúng chủ xe và dữ liệu trên giấy đăng ký. Nếu xe đang sang tên hoặc đổi biển, nêu rõ tình trạng để được hướng dẫn thông tin cần đối chiếu trước khi cấp.'],
       ['Có cần mua lại khi đổi mục đích sử dụng xe?', 'Hãy liên hệ đơn vị đang quản lý giấy chứng nhận ngay khi mục đích sử dụng thay đổi. Gửi giấy tờ cập nhật và ngày dự kiến đổi, để PVI kiểm tra phương án điều chỉnh hoặc phát hành phù hợp với hồ sơ và quy định tại thời điểm đó.'],
       ['Mua trước ngày hết hạn được không?', 'Bạn có thể hỏi báo phí sớm và đề nghị giờ bắt đầu nối tiếp hợp đồng hiện hành. Kiểm tra thời điểm trên giấy chứng nhận mới trước khi xác nhận. Nếu hợp đồng cũ đã hết hạn, hỏi PVI thời điểm bắt đầu sớm nhất có thể ghi trên chứng nhận mới.'],
     ],
@@ -35,13 +35,13 @@ export const guides = [
   {
     id: 'vat-chat-xe',
     slug: 'bao-hiem-vat-chat-xe-o-to-binh-duong',
-    title: 'Mua bảo hiểm vật chất xe ô tô PVI tại Đông Sài Gòn',
-    description: 'Bảo hiểm vật chất xe ô tô PVI tại Đông Sài Gòn. Cách so báo phí thân vỏ, mức khấu trừ, điều khoản ngập nước và lựa chọn gara trước khi mua.',
+    title: 'Mua bảo hiểm vật chất xe ô tô PVI tại Bình Dương',
+    description: 'Bảo hiểm vật chất xe ô tô PVI tại Bình Dương. Cách so báo phí thân vỏ, mức khấu trừ, điều khoản ngập nước và lựa chọn gara trước khi mua.',
     anchor: 'Bảo hiểm vật chất xe ô tô',
     product: 'vat-chat-xe',
     next: 'tnds',
     image: 'Kỹ thuật viên kiểm tra thân vỏ ô tô trong xưởng dịch vụ',
-    lead: 'Bảo hiểm PVI có thể cấp bảo hiểm vật chất xe ô tô cho khách ở Đông Sài Gòn sau khi xem xét hồ sơ xe. Trước khi chọn báo phí thân vỏ, hãy so cùng giá trị xe, mức khấu trừ, điều khoản ngập nước và phương án sửa chữa tại gara bạn dự định sử dụng.',
+    lead: 'Bảo hiểm PVI có thể cấp bảo hiểm vật chất xe ô tô cho khách ở Bình Dương sau khi xem xét hồ sơ xe. Trước khi chọn báo phí thân vỏ, hãy so cùng giá trị xe, mức khấu trừ, điều khoản ngập nước và phương án sửa chữa tại gara bạn dự định sử dụng.',
     sections: [
       ['So báo phí thân vỏ xe theo cùng điều kiện', [
         'Mức phí chỉ dễ so khi hai phương án cùng giá trị bảo hiểm, mức khấu trừ và điều khoản bổ sung. Hỏi rõ cách tính phần chủ xe tự chịu trong một vụ tổn thất và điều kiện về thay thế phụ tùng, sửa chữa tại gara hoặc hãng nếu bạn có nhu cầu.',
@@ -58,7 +58,7 @@ export const guides = [
     ],
     faq: [
       ['Có bắt buộc mua thân vỏ cùng TNDS không?', 'Bảo hiểm vật chất xe là nghiệp vụ tự nguyện. Bảo hiểm TNDS bắt buộc áp dụng cho trách nhiệm dân sự theo quy định. Nếu mua xe trả góp, nên xem thêm hợp đồng tín dụng để biết ngân hàng yêu cầu loại bảo hiểm hoặc điều kiện thụ hưởng nào.'],
-      ['Xe cũ ở Đông Sài Gòn có thể xin báo phí không?', 'Có thể gửi giấy tờ và ảnh tình trạng hiện tại để PVI xem xét. Tuổi xe, cách dùng, giá trị đề nghị, tổn thất có sẵn và phương án sửa chữa là những thông tin có thể ảnh hưởng đến việc chấp nhận bảo hiểm và điều kiện cụ thể.'],
+      ['Xe cũ ở Bình Dương có thể xin báo phí không?', 'Có thể gửi giấy tờ và ảnh tình trạng hiện tại để PVI xem xét. Tuổi xe, cách dùng, giá trị đề nghị, tổn thất có sẵn và phương án sửa chữa là những thông tin có thể ảnh hưởng đến việc chấp nhận bảo hiểm và điều kiện cụ thể.'],
       ['Có được chọn gara chính hãng không?', 'Hãy nêu tên hãng hoặc gara ngay khi yêu cầu báo phí. Khả năng lựa chọn, điều kiện thanh toán và phần chênh lệch nếu có cần được kiểm tra trên phương án và chứng từ. Gọi PVI trước khi đưa xe vào sửa để được hướng dẫn.'],
     ],
     sources: [
@@ -68,13 +68,13 @@ export const guides = [
   {
     id: 'tai-san',
     slug: 'bao-hiem-tai-san-nha-xuong-binh-duong',
-    title: 'Mua bảo hiểm tài sản nhà xưởng PVI tại Đông Sài Gòn',
-    description: 'Mua bảo hiểm tài sản nhà xưởng PVI tại Đông Sài Gòn. Cách kê khai nhà, máy móc và tồn kho ở Bến Cát, Tân Uyên hoặc Thuận An trước khi báo phí.',
+    title: 'Mua bảo hiểm tài sản nhà xưởng PVI tại Bình Dương',
+    description: 'Mua bảo hiểm tài sản nhà xưởng PVI tại Bình Dương. Cách kê khai nhà, máy móc và tồn kho ở Bến Cát, Tân Uyên hoặc Thuận An trước khi báo phí.',
     anchor: 'Bảo hiểm tài sản nhà xưởng',
     product: 'chay-no',
     next: 'chay-no',
     image: 'Bên trong nhà xưởng có dây chuyền gia công và hàng kê trên pallet',
-    lead: 'Doanh nghiệp tại Đông Sài Gòn có thể gửi hồ sơ để PVI xem xét cấp bảo hiểm tài sản nhà xưởng, máy móc và hàng tồn kho. Hãy tách danh mục theo địa điểm và chủ sở hữu, rồi chốt rủi ro cần bảo hiểm để PVI báo phí trên đúng phạm vi.',
+    lead: 'Doanh nghiệp tại Bình Dương có thể gửi hồ sơ để PVI xem xét cấp bảo hiểm tài sản nhà xưởng, máy móc và hàng tồn kho. Hãy tách danh mục theo địa điểm và chủ sở hữu, rồi chốt rủi ro cần bảo hiểm để PVI báo phí trên đúng phạm vi.',
     sections: [
       ['Nhà xưởng đang vận hành cần khai những tài sản nào?', [
         'Chia danh mục thành nhà và hạ tầng, máy móc thiết bị, hàng tồn kho. Với mỗi nhóm, ghi địa điểm, đơn vị có quyền lợi bảo hiểm và căn cứ xác định giá trị. Nếu một pháp nhân có xưởng ở Bến Cát và kho trung chuyển ở Thuận An, chuẩn bị bảng tách riêng để xác định chính xác tài sản tại từng địa điểm.',
@@ -102,13 +102,13 @@ export const guides = [
   {
     id: 'chay-no',
     slug: 'bao-hiem-chay-no-nha-xuong-kho-binh-duong',
-    title: 'Bảo hiểm cháy nổ nhà xưởng, kho tại Đông Sài Gòn',
-    description: 'Mua bảo hiểm cháy nổ PVI cho nhà xưởng, kho tại Đông Sài Gòn. Kiểm tra diện bắt buộc, kê giá trị tài sản và chuẩn bị hồ sơ tái tục.',
+    title: 'Bảo hiểm cháy nổ nhà xưởng, kho tại Bình Dương',
+    description: 'Mua bảo hiểm cháy nổ PVI cho nhà xưởng, kho tại Bình Dương. Kiểm tra diện bắt buộc, kê giá trị tài sản và chuẩn bị hồ sơ tái tục.',
     anchor: 'Bảo hiểm cháy nổ nhà xưởng, kho',
     product: 'chay-no',
     next: 'tai-san',
     image: 'Lối đi trong kho có kệ hàng và đường ống chữa cháy phía trên',
-    lead: 'PVI có thể cấp bảo hiểm cháy nổ cho nhà xưởng và kho tại Đông Sài Gòn theo hồ sơ từng cơ sở. Khi hỏi mua, hãy gửi công năng, quy mô, thông tin phòng cháy chữa cháy và danh mục tài sản để xác định diện bắt buộc và phương án báo phí.',
+    lead: 'PVI có thể cấp bảo hiểm cháy nổ cho nhà xưởng và kho tại Bình Dương theo hồ sơ từng cơ sở. Khi hỏi mua, hãy gửi công năng, quy mô, thông tin phòng cháy chữa cháy và danh mục tài sản để xác định diện bắt buộc và phương án báo phí.',
     sections: [
       ['Xác định diện bắt buộc theo cơ sở và công năng', [
         'Đối chiếu công năng và quy mô thực tế với danh mục cơ sở phải mua đang áp dụng. Kho chứa thành phẩm, khu sản xuất và văn phòng trong cùng khuôn viên có thể cần mô tả riêng. Gửi sơ đồ, diện tích, số tầng, nhóm hàng hoặc nguyên liệu và thông tin về các khu độc lập.',
@@ -137,13 +137,13 @@ export const guides = [
   {
     id: 'cong-nhan',
     slug: 'bao-hiem-tai-nan-cong-nhan-cong-truong-binh-duong',
-    title: 'Bảo hiểm tai nạn công nhân công trường tại Đông Sài Gòn',
-    description: 'Mua bảo hiểm tai nạn công nhân công trường PVI tại Đông Sài Gòn. Cách khai đội thi công, công việc, địa điểm và cập nhật người vào công trường.',
+    title: 'Bảo hiểm tai nạn công nhân công trường tại Bình Dương',
+    description: 'Mua bảo hiểm tai nạn công nhân công trường PVI tại Bình Dương. Cách khai đội thi công, công việc, địa điểm và cập nhật người vào công trường.',
     anchor: 'Bảo hiểm tai nạn công nhân công trường',
     product: 'bat-buoc',
     next: 'tai-nan',
     image: 'Đội thi công đội mũ bảo hộ trao đổi kế hoạch an toàn tại công trường',
-    lead: 'Nhà thầu tại Đông Sài Gòn có thể gửi hồ sơ để PVI xem xét cấp bảo hiểm cho người lao động thi công trên công trường. Trước ngày vào làm, hãy xác định bên mua, công trình, nhóm công việc và thời gian thi công, rồi kiểm tra danh sách và ngày hiệu lực trên chứng từ.',
+    lead: 'Nhà thầu tại Bình Dương có thể gửi hồ sơ để PVI xem xét cấp bảo hiểm cho người lao động thi công trên công trường. Trước ngày vào làm, hãy xác định bên mua, công trình, nhóm công việc và thời gian thi công, rồi kiểm tra danh sách và ngày hiệu lực trên chứng từ.',
     sections: [
       ['Xác định đúng nghiệp vụ cho người thi công', [
         'Đối chiếu bảo hiểm bắt buộc trong hoạt động đầu tư xây dựng với nghĩa vụ của nhà thầu và yêu cầu trong hồ sơ dự án. Nhu cầu bảo hiểm cho người thi công khác mục tiêu mua bảo hiểm tai nạn 24/24 như phúc lợi cho nhân viên. Với một đội làm cả ở xưởng và công trường, hỏi PVI cách bố trí hai phạm vi.',
@@ -171,13 +171,13 @@ export const guides = [
   {
     id: 'tai-nan',
     slug: 'bao-hiem-tai-nan-24-24-cong-nhan-binh-duong',
-    title: 'Bảo hiểm tai nạn 24/24 cho công nhân tại Đông Sài Gòn',
-    description: 'Mua bảo hiểm tai nạn 24/24 PVI cho công nhân tại Đông Sài Gòn. Cách chọn quyền lợi theo ca làm, nhóm nghề và quản lý danh sách khi thay người.',
+    title: 'Bảo hiểm tai nạn 24/24 cho công nhân tại Bình Dương',
+    description: 'Mua bảo hiểm tai nạn 24/24 PVI cho công nhân tại Bình Dương. Cách chọn quyền lợi theo ca làm, nhóm nghề và quản lý danh sách khi thay người.',
     anchor: 'Bảo hiểm tai nạn 24/24 cho công nhân',
     product: 'tai-nan',
     next: 'cong-nhan',
     image: 'Nhân viên sản xuất mặc đồ bảo hộ rời nhà máy sau ca làm',
-    lead: 'Doanh nghiệp ở Đông Sài Gòn có thể đề nghị PVI cấp bảo hiểm tai nạn 24/24 cho công nhân theo danh sách. Khi lập hồ sơ, hãy tách nhóm làm việc theo ca và tính chất công việc, rồi hỏi rõ quyền lợi trong và ngoài giờ làm cùng cách cập nhật nhân sự.',
+    lead: 'Doanh nghiệp ở Bình Dương có thể đề nghị PVI cấp bảo hiểm tai nạn 24/24 cho công nhân theo danh sách. Khi lập hồ sơ, hãy tách nhóm làm việc theo ca và tính chất công việc, rồi hỏi rõ quyền lợi trong và ngoài giờ làm cùng cách cập nhật nhân sự.',
     sections: [
       ['Chọn quyền lợi cho người làm ca và nhóm sản xuất', [
         'Bắt đầu từ các tình huống muốn bảo hiểm, chẳng hạn tai nạn tại xưởng, trên đường đi làm hoặc ngoài ca. Yêu cầu PVI đối chiếu từng tình huống với quy tắc của gói đang chào, nhất là giới hạn chi phí y tế, thương tật và hồ sơ cần nộp.',
@@ -202,13 +202,13 @@ export const guides = [
   {
     id: 'cong-trinh',
     slug: 'bao-hiem-cong-trinh-lap-dat-binh-duong',
-    title: 'Bảo hiểm công trình và lắp đặt PVI tại Đông Sài Gòn',
-    description: 'Mua bảo hiểm công trình và lắp đặt PVI tại Đông Sài Gòn. Chuẩn bị dự toán, tiến độ, phạm vi chạy thử và thông tin tài sản lân cận để báo phí.',
+    title: 'Bảo hiểm công trình và lắp đặt PVI tại Bình Dương',
+    description: 'Mua bảo hiểm công trình và lắp đặt PVI tại Bình Dương. Chuẩn bị dự toán, tiến độ, phạm vi chạy thử và thông tin tài sản lân cận để báo phí.',
     anchor: 'Bảo hiểm công trình và lắp đặt',
     product: 'cong-trinh',
     next: 'cong-nhan',
     image: 'Khung thép công nghiệp đang thi công với cần cẩu ở công trường',
-    lead: 'Chủ đầu tư và nhà thầu ở Đông Sài Gòn có thể đề nghị PVI cấp bảo hiểm công trình và lắp đặt. Hồ sơ báo phí nên thể hiện giá trị từng hạng mục, tiến độ, công việc chạy thử và tài sản lân cận cần xem xét trong thời gian thi công.',
+    lead: 'Chủ đầu tư và nhà thầu ở Bình Dương có thể đề nghị PVI cấp bảo hiểm công trình và lắp đặt. Hồ sơ báo phí nên thể hiện giá trị từng hạng mục, tiến độ, công việc chạy thử và tài sản lân cận cần xem xét trong thời gian thi công.',
     sections: [
       ['Tách phần xây dựng và phần lắp đặt trong hồ sơ', [
         'Gửi phạm vi từng gói thầu và dự toán: phần xây dựng, thiết bị đưa vào lắp, chi phí lắp đặt và công tác chạy thử. Đối chiếu dự án có thuộc diện bảo hiểm bắt buộc theo quy định hay cần mua theo hợp đồng với chủ đầu tư, ngân hàng hoặc bên thuê.',
@@ -233,15 +233,15 @@ export const guides = [
   {
     id: 'hang-hoa',
     slug: 'bao-hiem-hang-hoa-xuat-nhap-khau-binh-duong',
-    title: 'Bảo hiểm hàng hóa xuất nhập khẩu tại Đông Sài Gòn',
-    description: 'Mua bảo hiểm hàng hóa xuất nhập khẩu PVI tại Đông Sài Gòn. Chuẩn bị hóa đơn, tuyến kho đến cảng, điều kiện giao hàng và lịch chạy lô.',
+    title: 'Bảo hiểm hàng hóa xuất nhập khẩu tại Bình Dương',
+    description: 'Mua bảo hiểm hàng hóa xuất nhập khẩu PVI tại Bình Dương. Chuẩn bị hóa đơn, tuyến kho đến cảng, điều kiện giao hàng và lịch chạy lô.',
     anchor: 'Bảo hiểm hàng hóa xuất nhập khẩu',
     product: 'hang-hoa',
     next: 'tai-san',
     image: 'Hàng đóng pallet được chuẩn bị lên container tại cửa kho',
-    lead: 'Doanh nghiệp ở Đông Sài Gòn có thể đề nghị PVI cấp bảo hiểm hàng hóa xuất nhập khẩu theo lô hoặc theo phương án khai báo định kỳ phù hợp. Để báo phí, hãy gửi loại hàng, giá trị, bao bì, tuyến vận chuyển, điều kiện giao hàng và lịch khởi hành.',
+    lead: 'Doanh nghiệp ở Bình Dương có thể đề nghị PVI cấp bảo hiểm hàng hóa xuất nhập khẩu theo lô hoặc theo phương án khai báo định kỳ phù hợp. Để báo phí, hãy gửi loại hàng, giá trị, bao bì, tuyến vận chuyển, điều kiện giao hàng và lịch khởi hành.',
     sections: [
-      ['Khai trọn tuyến từ kho tại Đông Sài Gòn đến điểm giao', [
+      ['Khai trọn tuyến từ kho tại Bình Dương đến điểm giao', [
         'Ghi địa điểm nhận, chặng đường bộ, cảng đi, cảng đến, điểm trung chuyển và nơi giao cuối cùng. Một lô đồ gỗ rời xưởng Tân Uyên đi cảng Cát Lái có nhiều chặng, nên hồ sơ cần làm rõ những chặng nào phải được xem xét bảo hiểm.',
         'Cung cấp điều kiện giao hàng Incoterms đang dùng và hỏi bên nào có trách nhiệm thu xếp bảo hiểm. Nếu người mua hoặc ngân hàng yêu cầu loại chứng từ, ngôn ngữ hoặc điều kiện cụ thể, gửi yêu cầu cùng bộ hồ sơ báo phí.',
       ]],
@@ -264,13 +264,13 @@ export const guides = [
   {
     id: 'suc-khoe',
     slug: 'bao-hiem-suc-khoe-pvi-care-binh-duong',
-    title: 'Mua bảo hiểm sức khỏe PVI Care tại Đông Sài Gòn',
-    description: 'Tìm hiểu bảo hiểm sức khỏe PVI Care tại Đông Sài Gòn. So quyền lợi nội trú, ngoại trú, bảo lãnh viện phí và hồ sơ cá nhân, doanh nghiệp.',
+    title: 'Mua bảo hiểm sức khỏe PVI Care tại Bình Dương',
+    description: 'Tìm hiểu bảo hiểm sức khỏe PVI Care tại Bình Dương. So quyền lợi nội trú, ngoại trú, bảo lãnh viện phí và hồ sơ cá nhân, doanh nghiệp.',
     anchor: 'Bảo hiểm sức khỏe PVI Care',
     product: 'suc-khoe',
     next: 'tai-nan',
     image: 'Bác sĩ trao đổi về hồ sơ khám với người bệnh tại phòng tư vấn',
-    lead: 'Khách hàng ở Đông Sài Gòn có thể gửi nhu cầu để PVI xem xét phương án bảo hiểm sức khỏe PVI Care. Nên bắt đầu từ nơi thường khám và nhu cầu nội trú hoặc ngoại trú, sau đó kiểm tra thời gian chờ, giới hạn chi trả và điều kiện bảo lãnh viện phí.',
+    lead: 'Khách hàng ở Bình Dương có thể gửi nhu cầu để PVI xem xét phương án bảo hiểm sức khỏe PVI Care. Nên bắt đầu từ nơi thường khám và nhu cầu nội trú hoặc ngoại trú, sau đó kiểm tra thời gian chờ, giới hạn chi trả và điều kiện bảo lãnh viện phí.',
     sections: [
       ['Bắt đầu từ nơi thường khám và nhu cầu điều trị', [
         'Ghi tên cơ sở khám chữa bệnh hay dùng tại Thủ Dầu Một, Thuận An, Dĩ An hoặc các nơi khác trong TP.HCM. Hỏi PVI nơi đó áp dụng bảo lãnh cho gói đang xem ở loại hình điều trị nào và cần xuất trình giấy tờ gì. Danh sách cơ sở và điều kiện có thể thay đổi.',
@@ -278,7 +278,7 @@ export const guides = [
       ]],
       ['Khai hồ sơ sức khỏe và thời gian tham gia', [
         'Chuẩn bị thông tin người tham gia, độ tuổi, ngày cần hiệu lực và khai báo sức khỏe theo mẫu. Nếu đang điều trị, dùng thuốc hoặc có tiền sử bệnh, khai theo câu hỏi của PVI để được xác nhận cách áp dụng thời gian chờ, điều kiện và loại trừ.',
-        'Với doanh nghiệp có lao động làm ca ở Đông Sài Gòn, HR nên ghi số người, nhóm quyền lợi, nơi làm việc, cơ chế thêm người và khả năng tham gia của người phụ thuộc. Giữ thông tin y tế theo quy trình bảo mật của doanh nghiệp.',
+        'Với doanh nghiệp có lao động làm ca ở Bình Dương, HR nên ghi số người, nhóm quyền lợi, nơi làm việc, cơ chế thêm người và khả năng tham gia của người phụ thuộc. Giữ thông tin y tế theo quy trình bảo mật của doanh nghiệp.',
       ]],
       ['Làm rõ bảo lãnh và thanh toán lại trước khi mua', [
         'Yêu cầu PVI hướng dẫn thủ tục bảo lãnh tại nơi bạn thường đến và hồ sơ nếu bạn tự thanh toán trước. Khi khám, giữ chỉ định, kết quả, hóa đơn và chứng từ theo hướng dẫn. Kiểm tra quy định thông báo và thời hạn nộp hồ sơ trên hợp đồng.',
@@ -295,13 +295,13 @@ export const guides = [
   {
     id: 'du-lich',
     slug: 'bao-hiem-du-lich-quoc-te-binh-duong',
-    title: 'Mua bảo hiểm du lịch quốc tế PVI tại Đông Sài Gòn',
-    description: 'Mua bảo hiểm du lịch quốc tế PVI tại Đông Sài Gòn cho chuyến đi chơi, công tác hoặc thăm thân. Kiểm tra điểm đến, ngày hiệu lực và chứng nhận.',
+    title: 'Mua bảo hiểm du lịch quốc tế PVI tại Bình Dương',
+    description: 'Mua bảo hiểm du lịch quốc tế PVI tại Bình Dương cho chuyến đi chơi, công tác hoặc thăm thân. Kiểm tra điểm đến, ngày hiệu lực và chứng nhận.',
     anchor: 'Bảo hiểm du lịch quốc tế',
     product: 'du-lich',
     next: 'suc-khoe',
     image: 'Hành khách mang vali đứng trước cửa kính nhìn ra sân đỗ máy bay',
-    lead: 'Người ở Đông Sài Gòn có thể mua bảo hiểm du lịch quốc tế PVI cho chuyến đi phù hợp điều kiện sản phẩm. Trước khi đặt mua, hãy gửi điểm đến, ngày đi và về, thông tin hộ chiếu cùng yêu cầu của hồ sơ visa hoặc chuyến công tác nếu có.',
+    lead: 'Người ở Bình Dương có thể mua bảo hiểm du lịch quốc tế PVI cho chuyến đi phù hợp điều kiện sản phẩm. Trước khi đặt mua, hãy gửi điểm đến, ngày đi và về, thông tin hộ chiếu cùng yêu cầu của hồ sơ visa hoặc chuyến công tác nếu có.',
     sections: [
       ['Chọn theo hành trình, mục đích đi và yêu cầu visa', [
         'Ghi tất cả nước đến và điểm quá cảnh cần xem xét, thời gian chuyến đi, độ tuổi và mục đích. Ví dụ, gia đình ở Thủ Dầu Một đi nghỉ và nhóm nhân viên từ Bến Cát sang đối tác để làm việc nên nêu đúng hành trình và hoạt động dự kiến.',
@@ -309,7 +309,7 @@ export const guides = [
       ]],
       ['Đọc quyền lợi y tế và điều kiện trợ giúp khi đi nước ngoài', [
         'So các mục chi phí y tế, vận chuyển cấp cứu, hành lý và sự cố chuyến đi theo đúng chương trình. Đối chiếu giới hạn, loại trừ, hoạt động đặc biệt và phương thức liên hệ hỗ trợ tại nơi đến.',
-        'Với đoàn công tác, người phụ trách ở Đông Sài Gòn nên lập danh sách từng người và chuyến đi. Nếu nhân viên đi nhiều đợt, hỏi PVI về điều kiện và cách lựa chọn thời hạn phù hợp. Thông tin hộ chiếu chỉ gửi qua kênh đã xác nhận.',
+        'Với đoàn công tác, người phụ trách ở Bình Dương nên lập danh sách từng người và chuyến đi. Nếu nhân viên đi nhiều đợt, hỏi PVI về điều kiện và cách lựa chọn thời hạn phù hợp. Thông tin hộ chiếu chỉ gửi qua kênh đã xác nhận.',
       ]],
       ['Kiểm tra giấy chứng nhận trước ngày khởi hành', [
         'Đối chiếu tên theo hộ chiếu, khu vực, ngày bắt đầu và ngày kết thúc. Nếu đổi vé, thêm điểm đến hoặc kéo dài công tác, liên hệ PVI để kiểm tra cách cập nhật trước khi thay đổi lịch trình.',
@@ -319,7 +319,7 @@ export const guides = [
     faq: [
       ['Mua để xin visa cần chuẩn bị gì ngoài hộ chiếu?', 'Hãy gửi lịch dự kiến, các nước trong chuyến đi và yêu cầu của nơi tiếp nhận hồ sơ visa. Hỏi PVI chứng nhận thể hiện những nội dung gì và đối chiếu với yêu cầu đó. Nơi tiếp nhận hồ sơ quyết định việc chấp nhận tài liệu.'],
       ['Đổi ngày bay sau khi mua thì làm gì?', 'Liên hệ đầu mối đã cấp bảo hiểm ngay khi có lịch mới. Gửi chứng nhận hiện tại và ngày đi, về mới để PVI kiểm tra việc thay đổi. Chỉ dựa vào thời hạn được xác nhận trên chứng từ, nhất là khi đổi lịch sát ngày khởi hành.'],
-      ['Có thể mua cho cả đoàn công ty ở Đông Sài Gòn không?', 'Có thể gửi danh sách dự kiến, nhóm tuổi, mục đích và lịch trình để PVI xem xét phương án. Nếu đoàn có người bay lệch ngày hoặc làm việc khác nhau tại điểm đến, tách rõ từng nhóm. Đối chiếu chứng nhận của mỗi người trước ngày đi.'],
+      ['Có thể mua cho cả đoàn công ty ở Bình Dương không?', 'Có thể gửi danh sách dự kiến, nhóm tuổi, mục đích và lịch trình để PVI xem xét phương án. Nếu đoàn có người bay lệch ngày hoặc làm việc khác nhau tại điểm đến, tách rõ từng nhóm. Đối chiếu chứng nhận của mỗi người trước ngày đi.'],
     ],
     sources: [['Giới thiệu sản phẩm bảo hiểm du lịch quốc tế', '', 'Bảo hiểm PVI Digital']],
   },

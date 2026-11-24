@@ -11,8 +11,8 @@ import { withInlineToc } from '../toc.mjs';
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 export const areas = JSON.parse(fs.readFileSync(path.resolve(HERE, '../data/khu-vuc.json'), 'utf8'));
 // Bài có sẵn trên pvihcm từ trước (giữ nguyên, không tạo bản thứ hai).
-const dongSaiGonSlug = 'mua-bao-hiem-pvi-binh-duong';
-export const SKIP = new Set([dongSaiGonSlug]);
+const binhDuongSlug = 'mua-bao-hiem-pvi-binh-duong';
+export const SKIP = new Set([binhDuongSlug]);
 export const BAN_CHUAN = 'https://www.baohiempvi-vn.com';
 export const ZALO_TU_VAN = 'https://zalo.me/0938072236';
 
@@ -105,7 +105,7 @@ export function renderArea(A, { page, write, units }) {
   const unit = A.donVi ? units.find((u) => u.name === A.donVi) : null;
   const others = [
     ['Bình Thạnh', '/tin-tuc/mua-bao-hiem-pvi-binh-thanh/'],
-    ...areas.filter((x) => x.slug !== A.slug).map((x) => [x.slug === dongSaiGonSlug ? 'Đông Sài Gòn' : x.ten, `/tin-tuc/${x.slug}/`]),
+    ...areas.filter((x) => x.slug !== A.slug).map((x) => [x.slug === binhDuongSlug ? 'Bình Dương' : x.ten, `/tin-tuc/${x.slug}/`]),
   ];
   const main = `
 <article class="kv">

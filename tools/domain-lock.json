@@ -4,123 +4,123 @@
   "trailingSlash": true,
   "redirects": [
     {
-      "source": "/binhduong",
-      "destination": "/dongsaigon/",
+      "source": "/dongsaigon",
+      "destination": "/binhduong/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/",
-      "destination": "/dongsaigon/",
+      "source": "/dongsaigon/",
+      "destination": "/binhduong/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/sanpham",
-      "destination": "/dongsaigon/sanpham/",
+      "source": "/dongsaigon/sanpham",
+      "destination": "/binhduong/sanpham/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/sanpham/",
-      "destination": "/dongsaigon/sanpham/",
+      "source": "/dongsaigon/sanpham/",
+      "destination": "/binhduong/sanpham/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/tndsoto",
-      "destination": "/dongsaigon/tndsoto/",
+      "source": "/dongsaigon/tndsoto",
+      "destination": "/binhduong/tndsoto/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/tndsoto/",
-      "destination": "/dongsaigon/tndsoto/",
+      "source": "/dongsaigon/tndsoto/",
+      "destination": "/binhduong/tndsoto/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/vatchatxeoto",
-      "destination": "/dongsaigon/vatchatxeoto/",
+      "source": "/dongsaigon/vatchatxeoto",
+      "destination": "/binhduong/vatchatxeoto/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/vatchatxeoto/",
-      "destination": "/dongsaigon/vatchatxeoto/",
+      "source": "/dongsaigon/vatchatxeoto/",
+      "destination": "/binhduong/vatchatxeoto/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/chaynobatbuoc",
-      "destination": "/dongsaigon/chaynobatbuoc/",
+      "source": "/dongsaigon/chaynobatbuoc",
+      "destination": "/binhduong/chaynobatbuoc/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/chaynobatbuoc/",
-      "destination": "/dongsaigon/chaynobatbuoc/",
+      "source": "/dongsaigon/chaynobatbuoc/",
+      "destination": "/binhduong/chaynobatbuoc/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/taisannhaxuong",
-      "destination": "/dongsaigon/taisannhaxuong/",
+      "source": "/dongsaigon/taisannhaxuong",
+      "destination": "/binhduong/taisannhaxuong/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/taisannhaxuong/",
-      "destination": "/dongsaigon/taisannhaxuong/",
+      "source": "/dongsaigon/taisannhaxuong/",
+      "destination": "/binhduong/taisannhaxuong/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/congtrinhlapdat",
-      "destination": "/dongsaigon/congtrinhlapdat/",
+      "source": "/dongsaigon/congtrinhlapdat",
+      "destination": "/binhduong/congtrinhlapdat/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/congtrinhlapdat/",
-      "destination": "/dongsaigon/congtrinhlapdat/",
+      "source": "/dongsaigon/congtrinhlapdat/",
+      "destination": "/binhduong/congtrinhlapdat/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/hanghoaxuatnhapkhau",
-      "destination": "/dongsaigon/hanghoaxuatnhapkhau/",
+      "source": "/dongsaigon/hanghoaxuatnhapkhau",
+      "destination": "/binhduong/hanghoaxuatnhapkhau/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/hanghoaxuatnhapkhau/",
-      "destination": "/dongsaigon/hanghoaxuatnhapkhau/",
+      "source": "/dongsaigon/hanghoaxuatnhapkhau/",
+      "destination": "/binhduong/hanghoaxuatnhapkhau/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/nguoilaodongthicong",
-      "destination": "/dongsaigon/nguoilaodongthicong/",
+      "source": "/dongsaigon/nguoilaodongthicong",
+      "destination": "/binhduong/nguoilaodongthicong/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/nguoilaodongthicong/",
-      "destination": "/dongsaigon/nguoilaodongthicong/",
+      "source": "/dongsaigon/nguoilaodongthicong/",
+      "destination": "/binhduong/nguoilaodongthicong/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/tainan2424",
-      "destination": "/dongsaigon/tainan2424/",
+      "source": "/dongsaigon/tainan2424",
+      "destination": "/binhduong/tainan2424/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/tainan2424/",
-      "destination": "/dongsaigon/tainan2424/",
+      "source": "/dongsaigon/tainan2424/",
+      "destination": "/binhduong/tainan2424/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/suckhoe",
-      "destination": "/dongsaigon/suckhoe/",
+      "source": "/dongsaigon/suckhoe",
+      "destination": "/binhduong/suckhoe/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/suckhoe/",
-      "destination": "/dongsaigon/suckhoe/",
+      "source": "/dongsaigon/suckhoe/",
+      "destination": "/binhduong/suckhoe/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/dulichquocte",
-      "destination": "/dongsaigon/dulichquocte/",
+      "source": "/dongsaigon/dulichquocte",
+      "destination": "/binhduong/dulichquocte/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/dulichquocte/",
-      "destination": "/dongsaigon/dulichquocte/",
+      "source": "/dongsaigon/dulichquocte/",
+      "destination": "/binhduong/dulichquocte/",
       "statusCode": 301
     },
     {

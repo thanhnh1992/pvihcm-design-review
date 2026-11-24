@@ -32,7 +32,7 @@ export const toc = [
   ['dang-ky-hay-gia-han', 'Đăng ký mới hay gia hạn'],
   ['ba-buoc-dang-ky', 'Ba bước đăng ký online'],
   ['muc-dong-bhyt', 'Mức đóng BHYT hộ gia đình'],
-  ['khu-vuc-binh-duong', 'Hỗ trợ tại khu vực Đông Sài Gòn'],
+  ['khu-vuc-binh-duong', 'Hỗ trợ tại khu vực Bình Dương'],
 ];
 
 export const body = ({ pic }) => `
@@ -61,10 +61,10 @@ ${STEPS.map((rate, index) => `<tr><th scope="row">${labels[index]} (${Math.round
 </tbody></table></div>
 <p>Ví dụ, ba người trong hộ đủ điều kiện giảm trừ, cùng đóng kỳ 12 tháng, có tổng tiền là <strong>${format.format((perMonth(0) + perMonth(1) + perMonth(2)) * 12)} đồng</strong>. Khi gia hạn cho một người, kiểm tra mức giảm trừ được áp dụng trước khi thanh toán. Số tiền chính thức theo kết quả đối chiếu và biên lai thu.</p>
 
-<h2 id="khu-vuc-binh-duong">Ở khu vực Đông Sài Gòn thì liên hệ ở đâu?</h2>
+<h2 id="khu-vuc-binh-duong">Ở khu vực Bình Dương thì liên hệ ở đâu?</h2>
 <p>Người ở khu vực Dĩ An, Thuận An hoặc Thủ Dầu Một có thể gửi yêu cầu cho PVI Thành Đô và báo phường cư trú hiện tại. PVI Thành Đô tiếp nhận hồ sơ và thu tiền theo ủy quyền. Cơ quan BHXH cấp thẻ và cập nhật hiệu lực.</p>
-<p>Khi cần tìm đầu mối bảo hiểm khác, xem <a href="/dongsaigon/">Bảo hiểm PVI tại Đông Sài Gòn</a> hoặc <a href="/dongsaigon/sanpham/">danh mục sản phẩm tại Đông Sài Gòn</a>. Nếu cần quyền lợi nội trú, ngoại trú hoặc bảo lãnh viện phí theo hợp đồng thương mại, xem riêng <a href="/dongsaigon/suckhoe/">bảo hiểm sức khỏe PVI Care tại Đông Sài Gòn</a>.</p>
-<p>Xem thêm <a href="/tin-tuc/mua-bao-hiem-pvi-binh-duong/">hướng dẫn mua bảo hiểm PVI ở Đông Sài Gòn</a> hoặc trở về <a href="/tin-tuc/">mục Tin tức PVI Thành Đô</a>.</p>`;
+<p>Khi cần tìm đầu mối bảo hiểm khác, xem <a href="/binhduong/">Bảo hiểm PVI tại Bình Dương</a> hoặc <a href="/binhduong/sanpham/">danh mục sản phẩm tại Bình Dương</a>. Nếu cần quyền lợi nội trú, ngoại trú hoặc bảo lãnh viện phí theo hợp đồng thương mại, xem riêng <a href="/binhduong/suckhoe/">bảo hiểm sức khỏe PVI Care tại Bình Dương</a>.</p>
+<p>Xem thêm <a href="/tin-tuc/mua-bao-hiem-pvi-binh-duong/">hướng dẫn mua bảo hiểm PVI ở Bình Dương</a> hoặc trở về <a href="/tin-tuc/">mục Tin tức PVI Thành Đô</a>.</p>`;
 
 export const related = [{
   href: product, img: cover, w: 1200, h: 630, k: 'BHYT hộ gia đình',

@@ -5,7 +5,7 @@ import { localityPaths, localityForPath } from './locality-footer.mjs';
 import { localProductCopy } from './data/binh-duong-product-copy.mjs';
 import { protectExternalEmbeds } from './privacy-ui.mjs';
 import { nofollowExternal } from './link-out.mjs';
-const paths = [...localityPaths, '/dongsaigon/', ...Object.keys(localProductCopy).map((slug) => '/dongsaigon/' + slug + '/')];
+const paths = [...localityPaths, '/binhduong/', ...Object.keys(localProductCopy).map((slug) => '/binhduong/' + slug + '/')];
 for (const path of paths) {
   const file = 'dist' + path + 'index.html';
   assert(fs.existsSync(file), file);
