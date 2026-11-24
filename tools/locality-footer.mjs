@@ -13,8 +13,8 @@ mappings.set('/tin-tuc/mua-bao-hiem-pvi-binh-thanh/', { name: 'Bình Thạnh', u
 mappings.set('/tin-tuc/mua-bao-hiem-pvi-thu-duc/', { name: 'Thủ Đức', point: true, unit: { address: '37 Đường số 2, phường An Khánh, khu vực TP Thủ Đức cũ, TP.HCM' } });
 export const localityPaths = [...mappings.keys()];
 export function localityForPath(path) {
-  const binhDuongPage = path.startsWith('/binhduong/') && path !== '/binhduong/sanpham/';
-  const entry = binhDuongPage
+  const dongSaiGonPage = path.startsWith('/dongsaigon/') && path !== '/dongsaigon/sanpham/';
+  const entry = dongSaiGonPage
     ? dongSaiGon
     : mappings.get(path);
   if (entry && !entry.unit) throw new Error('Thiếu đơn vị PVI cho ' + path);

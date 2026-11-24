@@ -4,6 +4,126 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/binhduong",
+      "destination": "/dongsaigon/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/",
+      "destination": "/dongsaigon/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/sanpham",
+      "destination": "/dongsaigon/sanpham/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/sanpham/",
+      "destination": "/dongsaigon/sanpham/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/tndsoto",
+      "destination": "/dongsaigon/tndsoto/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/tndsoto/",
+      "destination": "/dongsaigon/tndsoto/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/vatchatxeoto",
+      "destination": "/dongsaigon/vatchatxeoto/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/vatchatxeoto/",
+      "destination": "/dongsaigon/vatchatxeoto/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/chaynobatbuoc",
+      "destination": "/dongsaigon/chaynobatbuoc/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/chaynobatbuoc/",
+      "destination": "/dongsaigon/chaynobatbuoc/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/taisannhaxuong",
+      "destination": "/dongsaigon/taisannhaxuong/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/taisannhaxuong/",
+      "destination": "/dongsaigon/taisannhaxuong/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/congtrinhlapdat",
+      "destination": "/dongsaigon/congtrinhlapdat/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/congtrinhlapdat/",
+      "destination": "/dongsaigon/congtrinhlapdat/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/hanghoaxuatnhapkhau",
+      "destination": "/dongsaigon/hanghoaxuatnhapkhau/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/hanghoaxuatnhapkhau/",
+      "destination": "/dongsaigon/hanghoaxuatnhapkhau/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/nguoilaodongthicong",
+      "destination": "/dongsaigon/nguoilaodongthicong/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/nguoilaodongthicong/",
+      "destination": "/dongsaigon/nguoilaodongthicong/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/tainan2424",
+      "destination": "/dongsaigon/tainan2424/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/tainan2424/",
+      "destination": "/dongsaigon/tainan2424/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/suckhoe",
+      "destination": "/dongsaigon/suckhoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/suckhoe/",
+      "destination": "/dongsaigon/suckhoe/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/dulichquocte",
+      "destination": "/dongsaigon/dulichquocte/",
+      "statusCode": 301
+    },
+    {
+      "source": "/binhduong/dulichquocte/",
+      "destination": "/dongsaigon/dulichquocte/",
+      "statusCode": 301
+    },
+    {
       "source": "/tin-tuc/nghi-dinh-347-2026-bao-hiem-chay-no",
       "destination": "/tin-tuc/nghi-dinh-347-2026-chay-no-bat-buoc/",
       "statusCode": 301

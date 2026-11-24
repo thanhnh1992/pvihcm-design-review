@@ -5,12 +5,12 @@ import { localProductCopy } from './data/binh-duong-product-copy.mjs';
 import { formatVnd, tndsVehicleClasses } from './data/tnds.mjs';
 import { binhDuongGuides, binhDuongOffice, binhDuongOfficeSources } from './articles/binh-duong-guides.mjs';
 
-const route = '/binhduong/';
+const route = '/dongsaigon/';
 const heroAsset = 'binh-duong-hang-hoa';
 const catalog = route + 'sanpham/';
 const overview = '/tin-tuc/mua-bao-hiem-pvi-binh-duong/';
 const onlyProductPages = process.argv.includes('--products-only');
-const title = 'Mua bảo hiểm tại Đông Sài Gòn | Uy tín, báo phí nhanh';
+const title = 'Mua bảo hiểm PVI tại Đông Sài Gòn | PVI Thành Đô';
 const description = 'Mua bảo hiểm tại Đông Sài Gòn. Tra biểu phí PVI 2026 theo sản phẩm, nhận báo phí, hỏi ưu đãi đang áp dụng và xem địa chỉ tư vấn tại Thủ Dầu Một.';
 const groups = [
   {
@@ -25,7 +25,7 @@ const groups = [
     id: 'tai-san',
     title: 'Bảo hiểm nhà xưởng, công trình và hàng hóa',
     products: [
-      ['bao-hiem-chay-no-nha-xuong-kho-binh-duong', 'Mua bảo hiểm cháy nổ bắt buộc tại Đông Sài Gòn', 'Cho nhà xưởng, kho và cơ sở thuộc diện phải mua. Tra loại cơ sở và nhập giá trị tài sản để ước tính phí.', '#tra-cuu', 'Tra phí cháy nổ'],
+      ['bao-hiem-chay-no-nha-xuong-kho-binh-duong', localProductCopy.chaynobatbuoc.heading, 'Cho nhà xưởng, kho và cơ sở thuộc diện phải mua. Tra loại cơ sở và nhập giá trị tài sản để ước tính phí.', '#tra-cuu', 'Tra phí cháy nổ'],
       ['bao-hiem-tai-san-nha-xuong-binh-duong', 'Bảo hiểm tài sản nhà xưởng', 'Cho nhà xưởng đang vận hành, máy móc và tồn kho. Lập danh mục tài sản theo từng địa điểm để nhận báo phí.', '#nhan-bao-phi', 'Nhận báo phí tài sản'],
       ['bao-hiem-cong-trinh-lap-dat-binh-duong', 'Bảo hiểm công trình và lắp đặt', 'Cho chủ đầu tư và nhà thầu xây mới, cải tạo hoặc lắp dây chuyền. Chuẩn bị dự toán, tiến độ và lịch chạy thử.', '', 'Xem bảo hiểm công trình'],
       ['bao-hiem-hang-hoa-xuat-nhap-khau-binh-duong', 'Bảo hiểm hàng hóa xuất nhập khẩu', 'Cho lô hàng đi từ kho tại Đông Sài Gòn đến cảng hoặc điểm giao. Báo phí theo giá trị hàng, bao bì và hành trình.', '', 'Xem bảo hiểm hàng hóa'],
@@ -184,7 +184,7 @@ const main = `<div class="bd">
   </section>
   <section class="bd-section bd-industrial" aria-labelledby="phi-khu-cong-nghiep">
     <h2 id="phi-khu-cong-nghiep">Phí bảo hiểm PVI tại các khu công nghiệp Đông Sài Gòn</h2>
-    <p class="bd-summary">Chọn <a class="bd-link" href="${fireProduct.url}">bảo hiểm cháy nổ bắt buộc</a>, <a class="bd-link" href="/binhduong/taisannhaxuong/">bảo hiểm tài sản nhà xưởng</a> hoặc <a class="bd-link" href="/binhduong/tainan2424/">bảo hiểm tai nạn công nhân</a> để xem hồ sơ báo phí cho cơ sở của bạn. Phí được xác định theo nghiệp vụ và thông tin rủi ro của từng cơ sở, nhóm tài sản hoặc nhóm người lao động.</p>
+    <p class="bd-summary">Chọn <a class="bd-link" href="${fireProduct.url}">bảo hiểm cháy nổ bắt buộc</a>, <a class="bd-link" href="/dongsaigon/taisannhaxuong/">bảo hiểm tài sản nhà xưởng</a> hoặc <a class="bd-link" href="/dongsaigon/tainan2424/">bảo hiểm tai nạn công nhân</a> để xem hồ sơ báo phí cho cơ sở của bạn. Phí được xác định theo nghiệp vụ và thông tin rủi ro của từng cơ sở, nhóm tài sản hoặc nhóm người lao động.</p>
     <ul class="bd-industrial-list">${industrialParks.map((name) => `<li>Phí bảo hiểm PVI tại KCN ${esc(name)}</li>`).join('\n')}</ul>
     <p class="bd-source">Tên phường đối chiếu Nghị quyết 1685/NQ-UBTVQH15. Tên khu công nghiệp tham khảo danh mục dự án VSIP, công bố của Becamex, Công ty Cổ phần KCN Nam Tân Uyên và Quy hoạch tỉnh Bình Dương thời kỳ 2021–2030.</p>
   </section>

@@ -12,9 +12,9 @@ Sơ đồ mẫu chủ site gửi: `Domain Index` (trang chủ) → `Subject` (tr
 ```
 Tầng 0  DOMAIN INDEX            https://pvihcm.com/
           │
-Tầng 1  TRANG CHỦ ĐỀ (Subject)   /san-pham/   /kien-thuc/   /tin-tuc/   /binhduong/   …
+Tầng 1  TRANG CHỦ ĐỀ (Subject)   /san-pham/   /kien-thuc/   /tin-tuc/   /dongsaigon/   …
           │
-Tầng 2  TRANG CON                /binhduong/tndsoto/   /binhduong/vatchatxeoto/   …
+Tầng 2  TRANG CON                /dongsaigon/tndsoto/   /dongsaigon/vatchatxeoto/   …
           │
 Tầng 3  BÀI HỖ TRỢ (nếu có)      bài viết bổ trợ cho đúng 1 trang con
 ```
@@ -65,17 +65,17 @@ Tầng 3  BÀI HỖ TRỢ (nếu có)      bài viết bổ trợ cho đúng 1 t
 **`/tin-tuc/` Tin tức**: tin đơn vị, pháp lý mới, tin sản phẩm. Bài theo khu vực TP.HCM (`/tin-tuc/mua-bao-hiem-pvi-<quận>/`), Đồng Nai, Vũng Tàu hiện cũng nằm ở đây.
 - `/tin-tuc/mua-bao-hiem-y-te-online/` hướng dẫn đăng ký và gia hạn BHYT hộ gia đình tại TP.HCM, hỗ trợ trang tính mức đóng BHYT.
 
-**`/binhduong/` Đông Sài Gòn** (nhánh khu vực, đúng như ví dụ trong sơ đồ, dựng bằng `tools/gen-binhduong.mjs`)
+**`/dongsaigon/` Đông Sài Gòn** (nhánh khu vực, đúng như ví dụ trong sơ đồ, dựng bằng `tools/gen-binhduong.mjs`)
 - Nhánh t2a, **các dịch vụ ở Đông Sài Gòn**:
-  - `/binhduong/sanpham/` Biểu phí bảo hiểm PVI tại Đông Sài Gòn
-  - `/binhduong/tndsoto/` · `/binhduong/vatchatxeoto/` · `/binhduong/chaynobatbuoc/` · `/binhduong/taisannhaxuong/` · `/binhduong/congtrinhlapdat/` · `/binhduong/hanghoaxuatnhapkhau/` · `/binhduong/nguoilaodongthicong/` · `/binhduong/tainan2424/` · `/binhduong/suckhoe/` · `/binhduong/dulichquocte/`
-- Nhánh t2b, **các xã phường, KCN Đông Sài Gòn**: hiện chỉ là 2 mục trong trang `/binhduong/` (`#dia-chi-pvi-binh-duong`, `#phi-khu-cong-nghiep`), **chưa có trang riêng**. Khi làm trang riêng, URL theo mẫu `/binhduong/<ten-phuong-hoac-kcn>/`, cha là `/binhduong/`.
+  - `/dongsaigon/sanpham/` Biểu phí bảo hiểm PVI tại Đông Sài Gòn
+  - `/dongsaigon/tndsoto/` · `/dongsaigon/vatchatxeoto/` · `/dongsaigon/chaynobatbuoc/` · `/dongsaigon/taisannhaxuong/` · `/dongsaigon/congtrinhlapdat/` · `/dongsaigon/hanghoaxuatnhapkhau/` · `/dongsaigon/nguoilaodongthicong/` · `/dongsaigon/tainan2424/` · `/dongsaigon/suckhoe/` · `/dongsaigon/dulichquocte/`
+- Nhánh t2b, **các xã phường, KCN Đông Sài Gòn**: hiện chỉ là 2 mục trong trang `/dongsaigon/` (`#dia-chi-pvi-binh-duong`, `#phi-khu-cong-nghiep`), **chưa có trang riêng**. Khi làm trang riêng, URL theo mẫu `/dongsaigon/<ten-phuong-hoac-kcn>/`, cha là `/dongsaigon/`.
 
 **Nhánh các tỉnh từ Bình Thuận trở vào** (chủ site giao 20/11/2026; tên tỉnh cũ trước sắp xếp 01/7/2025; Đông Sài Gòn và TP.HCM chủ site tự viết). Dựng bằng `tools/gen-tinh.mjs`, dữ liệu mỗi tỉnh `tools/data/tinh/<slug>.mjs`, câu lệnh tạo ảnh `tools/data/tinh/<slug>-anh-gpt.md`. Mỗi tỉnh cùng một khuôn:
 - `/<tinh>/` trang tỉnh → `/<tinh>/sanpham/` danh mục → 10 trang con: `tndsoto`, `vatchatxeoto`, `chaynobatbuoc`, `taisannhaxuong`, `congtrinhlapdat`, `hanghoaxuatnhapkhau`, `nguoilaodongthicong`, `tainan2424`, `suckhoe`, `dulichquocte`.
 - Trang con nối ngang với 9 sản phẩm cùng tỉnh, dẫn lên trang tỉnh và danh mục; chỉ 1 link sang trang sản phẩm chung `/san-pham/...` (công cụ tra phí). Không link sang tỉnh khác.
 - Đã có: `/cantho/` (TP Cần Thơ cũ, mẫu đầu tiên, chờ chủ site duyệt trước khi làm các tỉnh còn lại).
-- Đã có: `/vungtau/` (tỉnh Bà Rịa – Vũng Tàu cũ, chủ site giao 21/11/2026). Cuối mỗi trang tỉnh có 2 khối như `/binhduong/`: khu công nghiệp (`#khu-cong-nghiep`, dữ liệu `kcn`: tên, vị trí, ngành nghề) và phường, xã lớn (`#phuong-xa`, dữ liệu `hanhChinh.viDu`: tên mới kèm đơn vị cũ hợp thành).
+- Đã có: `/vungtau/` (tỉnh Bà Rịa – Vũng Tàu cũ, chủ site giao 21/11/2026). Cuối mỗi trang tỉnh có 2 khối như `/dongsaigon/`: khu công nghiệp (`#khu-cong-nghiep`, dữ liệu `kcn`: tên, vị trí, ngành nghề) và phường, xã lớn (`#phuong-xa`, dữ liệu `hanhChinh.viDu`: tên mới kèm đơn vị cũ hợp thành).
 
 **`/tphcm/` Mua bảo hiểm PVI tại TP.HCM** (sinh bằng `node tools/gen-tphcm.mjs`, dữ liệu `tools/data/tphcm.mjs`).
 - Vị trí dẫn vào do chủ site chọn: ô **TP. Hồ Chí Minh** trong nhóm Đông Nam Bộ của `/gioi-thieu/#dia-ban`.
@@ -87,7 +87,7 @@ Tầng 3  BÀI HỖ TRỢ (nếu có)      bài viết bổ trợ cho đúng 1 t
 ## 4. Thêm trang mới: làm đúng thứ tự
 
 1. Chọn **đúng 1 trang cha** có sẵn trong mục 3. Không tìm được cha thì **dừng lại hỏi chủ site**, không tự tạo chủ đề tầng 1 mới.
-2. Đặt URL nằm dưới URL của cha, ví dụ con của `/binhduong/` là `/binhduong/<slug>/`.
+2. Đặt URL nằm dưới URL của cha, ví dụ con của `/dongsaigon/` là `/dongsaigon/<slug>/`.
 3. Gắn đủ link bắt buộc ở mục 2: lên cha, về trang chủ, ngang với anh em. Trang cha thêm link xuống trang mới.
 4. Không gắn link nội dung sang trang con của chủ đề khác.
 5. Cập nhật mục 3 của file này trong cùng commit.
@@ -99,7 +99,7 @@ Tầng 3  BÀI HỖ TRỢ (nếu có)      bài viết bổ trợ cho đúng 1 t
 
 Các điểm dưới đây có sẵn từ trước khi chốt sơ đồ. Ghi lại để không ai làm lệch thêm. Chỉ sửa khi chủ site đồng ý.
 
-1. **Đông Sài Gòn có 2 bộ trang cùng chủ đề.** 10 trang `/binhduong/<dịch vụ>/` và 10 bài `/tin-tuc/bao-hiem-<dịch vụ>-binh-duong/` nói cùng một việc, ví dụ `/binhduong/tndsoto/` và `/tin-tuc/bao-hiem-tnds-o-to-binh-duong/`. Thêm cặp `/binhduong/` và `/tin-tuc/mua-bao-hiem-pvi-binh-duong/`. Google có thể coi là trùng và để 2 trang tranh nhau một từ khóa. Hướng đề xuất: coi bài `/tin-tuc/` là **bài hỗ trợ tầng 3** của trang `/binhduong/` tương ứng (đổi góc viết cho khác), hoặc chọn 1 trang làm bản chuẩn.
-2. **Trang con Đông Sài Gòn chưa nối ngang với nhau.** Ví dụ `/binhduong/tndsoto/` chỉ dẫn về `/binhduong/` và `/binhduong/sanpham/`, chưa dẫn sang các dịch vụ anh em (sơ đồ yêu cầu nối ngang).
+1. **Đông Sài Gòn có 2 bộ trang cùng chủ đề.** 10 trang `/dongsaigon/<dịch vụ>/` và 10 bài `/tin-tuc/bao-hiem-<dịch vụ>-binh-duong/` nói cùng một việc, ví dụ `/dongsaigon/tndsoto/` và `/tin-tuc/bao-hiem-tnds-o-to-binh-duong/`. Thêm cặp `/dongsaigon/` và `/tin-tuc/mua-bao-hiem-pvi-binh-duong/`. Google có thể coi là trùng và để 2 trang tranh nhau một từ khóa. Hướng đề xuất: coi bài `/tin-tuc/` là **bài hỗ trợ tầng 3** của trang `/dongsaigon/` tương ứng (đổi góc viết cho khác), hoặc chọn 1 trang làm bản chuẩn.
+2. **Trang con Đông Sài Gòn chưa nối ngang với nhau.** Ví dụ `/dongsaigon/tndsoto/` chỉ dẫn về `/dongsaigon/` và `/dongsaigon/sanpham/`, chưa dẫn sang các dịch vụ anh em (sơ đồ yêu cầu nối ngang).
 3. **Link chéo nhánh:** `/kien-thuc/bao-hiem-o-to/` đang dẫn sang các bài Đông Sài Gòn (`/tin-tuc/bao-hiem-tnds-o-to-binh-duong/`, `/tin-tuc/bao-hiem-vat-chat-xe-o-to-binh-duong/`).
 4. **Đồng Nai chưa có nhánh riêng:** bài Đồng Nai nằm trong `/tin-tuc/`. Nếu làm nhánh theo mô hình Bình Dương thì phải hỏi chủ site trước.

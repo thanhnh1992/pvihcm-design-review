@@ -32,7 +32,8 @@ export const localProductCopy = {
     ],
   },
   chaynobatbuoc: {
-    heading: 'Bảo hiểm cháy nổ bắt buộc PVI tại Đông Sài Gòn',
+    heading: 'Mua bảo hiểm cháy nổ PVI tại Đông Sài Gòn',
+    description: 'Tra phí bảo hiểm cháy nổ PVI tại Đông Sài Gòn cho nhà xưởng, kho và cơ sở kinh doanh. Xem cách xác định diện bắt buộc và chuẩn bị hồ sơ báo phí.',
     intro: 'Chủ kho, xưởng hoặc cơ sở kinh doanh ở Đông Sài Gòn có thể tra nhóm cơ sở trước khi ước tính phí cháy nổ bắt buộc. Khi gửi báo giá, mô tả công năng thật của từng khu và tách riêng nhà, máy móc, hàng hóa.',
     sections: [
       ['pham-vi', 'Kho hoặc xưởng có thuộc diện phải mua?', ['Dùng công cụ tra cứu theo loại cơ sở và thông số thực tế. Một xưởng ở Mỹ Phước có khu sản xuất, kho thành phẩm và khu chứa vật tư thì nên ghi công năng, diện tích và vị trí từng khu để đối chiếu đúng.']],
