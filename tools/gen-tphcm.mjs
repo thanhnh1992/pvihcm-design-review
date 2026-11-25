@@ -16,6 +16,7 @@ if (!office) throw new Error('Thiếu dữ liệu danh bạ PVI Thành Đô');
 const officePhone = office.phone.replace(/\D/g, '');
 const areaPath = (slug) => '/tin-tuc/mua-bao-hiem-pvi-' + slug + '/';
 const productPath = (product) => root + product.slug + '/';
+const productTitle = ({ name }) => name + ' tại TP.HCM';
 const heroName = 'tru-so-pvi-thanh-do';
 const css = '<link rel="stylesheet" href="/binhduong/landing.css"><link rel="stylesheet" href="/binhduong/product-detail.css"><link rel="stylesheet" href="/tphcm/local.css">';
 
@@ -95,12 +96,12 @@ function faq(entries) {
 function productList() {
   return `<div class="hcm-product-groups">${productGroups.map(([group, label]) => `<section class="bd-group" aria-labelledby="${group}">
     <h3 id="${group}">${esc(label)}</h3>
-    <ul>${products.filter((p) => p.group === group).map((p) => `<li class="hcm-product-card"><h4><a href="${productPath(p)}" class="bd-link">${esc(p.name)}</a></h4><p>${esc(p.intro)}</p><a href="${productPath(p)}" class="bd-link" aria-label="Xem ${esc(p.name)} tại TP.HCM">Xem hồ sơ và cách tra phí →</a></li>`).join('')}</ul>
+    <ul>${products.filter((p) => p.group === group).map((p) => `<li class="hcm-product-card"><h4><a href="${productPath(p)}" class="bd-link">${esc(productTitle(p))}</a></h4><p>${esc(p.intro)}</p><a href="${productPath(p)}" class="bd-link" aria-label="Xem ${esc(productTitle(p))}">Xem hồ sơ và cách tra phí →</a></li>`).join('')}</ul>
   </section>`).join('')}</div>`;
 }
 
 const districtEntries = districtGroups.flatMap(({ areas }) => areas.map(([name, slug]) => [name, areaPath(slug)]));
-const productEntries = products.map((p) => [p.name, productPath(p)]);
+const productEntries = products.map((p) => [productTitle(p), productPath(p)]);
 const districtSection = `<section class="bd-section" aria-labelledby="quan-huyen">
   <h2 id="quan-huyen">Mua bảo hiểm PVI theo quận, huyện cũ</h2>
   <p class="bd-summary">Chọn khu vực theo tên quen dùng trên giấy tờ. Các tên dưới đây chỉ địa bàn TP.HCM trước đợt sắp xếp năm 2025.</p>
@@ -160,8 +161,8 @@ write({
 
 for (const product of products) {
   const path = productPath(product);
-  const heading = product.name + ' tại TP.HCM';
-  const trail = [homeCrumb, cityCrumb, catalogCrumb, [product.name, path]];
+  const heading = productTitle(product);
+  const trail = [homeCrumb, cityCrumb, catalogCrumb, [heading, path]];
   const cover = productCovers[product.original];
   if (!cover) throw new Error('Thiếu ảnh sản phẩm ' + product.original);
   const originalHref = product.original + (product.action?.[1] || '');
@@ -194,7 +195,7 @@ for (const product of products) {
       ${faq([product.faq])}${officeSection()}${quote()}
       <nav class="bd-section bd-guide bd-sibling-products" aria-labelledby="san-pham-khac">
         <h2 id="san-pham-khac">Sản phẩm khác tại TP.HCM</h2>
-        <ul>${products.filter((p) => p !== product).map((p) => `<li><a class="bd-link" href="${productPath(p)}">${esc(p.name)}</a></li>`).join('')}</ul>
+        <ul>${products.filter((p) => p !== product).map((p) => `<li><a class="bd-link" href="${productPath(p)}">${esc(productTitle(p))}</a></li>`).join('')}</ul>
         <p><a class="bd-link" href="${catalog}">Xem danh mục</a> · <a class="bd-link" href="${root}">Hướng dẫn mua bảo hiểm PVI tại TP.HCM</a></p>
       </nav>
     </div>
