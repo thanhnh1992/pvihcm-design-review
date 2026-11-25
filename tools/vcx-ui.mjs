@@ -14,7 +14,7 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { page, esc, SITE, faqJsonLd } from './chrome.mjs';
 import { vcxEstimate, vcxEstimateLabel } from './data/vcx-estimate.mjs';
-import { businessUses, earlierClausesPdf, mainClauses, moreClauses, vehicleUses } from './data/vcx-options.mjs';
+import { businessUses, mainClauses, moreClauses, vehicleUses } from './data/vcx-options.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.resolve(HERE, '../dist');
@@ -25,9 +25,13 @@ fs.mkdirSync(path.join(DIST, 'vcx'), { recursive: true });
 fs.copyFileSync(path.join(HERE, 'data/vcx.mjs'), path.join(DIST, 'vcx/vcx-data.js'));
 const D = await import(pathToFileURL(path.join(DIST, 'vcx/vcx-data.js')).href);
 const T = await import(pathToFileURL(path.join(DIST, 'o-to/tnds-data.js')).href);
-const { askBeforeSigning, basicScope, carCatalogue, certificateMock, certificateNotes, claimSteps, CLAUSES_PDF, DOI_CHIEU_NGUON, faqs, HOTLINE_BOI_THUONG, related, RULES_PDF, sampleCertificate, ZALO_TU_VAN } = D;
-const currentRulesPdf = RULES_PDF.replace('https://adminweb.pvi.com.vn/', 'https://www.pvi.com.vn/adminweb/');
-const currentClausesPdf = CLAUSES_PDF.replace('https://adminweb.pvi.com.vn/', 'https://www.pvi.com.vn/adminweb/');
+const { askBeforeSigning, basicScope, carCatalogue, certificateMock, certificateNotes, claimSteps, DOI_CHIEU_NGUON, faqs, HOTLINE_BOI_THUONG, related, sampleCertificate, ZALO_TU_VAN } = D;
+const currentRulesPdf = '/tai-lieu/pvi-quy-tac-o-to-01-07-2025.pdf';
+const currentClausesPdf = '/tai-lieu/pvi-dieu-khoan-bo-sung-o-to-01-07-2025.pdf';
+const earlierClausesPdf = '/tai-lieu/pvi-dieu-khoan-o-to-tham-khao-013-014-019.pdf';
+const clauseDocument = (title, url) => `<details><summary>${esc(title)}</summary>
+<iframe src="${url}" title="${esc(title)}" loading="lazy"></iframe>
+<a href="${url}" target="_blank" aria-label="Mở PDF ${esc(title)} trong tab mới">Mở PDF trong tab mới</a></details>`;
 
 // Ảnh và video minh họa: chép từ baohiempvi-vn khi có thư mục đó.
 if (fs.existsSync(SRC)) {
@@ -104,7 +108,10 @@ const builder = `<div class="vcx-builder" data-vcx>
 <label class="vcx-choice" data-kind="shield"><input type="checkbox" name="totalLoss"><span class="vcx-choiceIcon">${ICONS.shield}</span><span class="vcx-choiceText"><b>Gói tổn thất toàn bộ</b><span>Yêu cầu tư vấn riêng về phạm vi chỉ bảo hiểm tổn thất toàn bộ.</span></span></label></div>
 </details>
 </fieldset>
-<div class="vcx-clauseDocs"><a href="${currentClausesPdf}" target="_blank">Xem bộ điều khoản hiệu lực 01/07/2025 ↗</a><a href="${earlierClausesPdf}" target="_blank">Tài liệu tham khảo có mã 013, 014 và 019 ↗</a></div>
+<div class="vcx-clauseDocs" aria-label="Tài liệu điều khoản bổ sung">
+${clauseDocument('Xem bộ điều khoản hiệu lực 01/07/2025', currentClausesPdf)}
+${clauseDocument('Tài liệu tham khảo có mã 013, 014 và 019', earlierClausesPdf)}
+</div>
 </div>
 </section>
 
@@ -283,8 +290,11 @@ function buildCss() {
 .vcx-more summary::-webkit-details-marker{display:none}
 .vcx-more summary span{flex:0 0 8px;height:8px;margin-right:5px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg)}
 .vcx-more[open] summary span{transform:rotate(225deg)}
-.vcx-clauseDocs{display:flex;flex-wrap:wrap;gap:4px 20px}
-.vcx-clauseDocs a{display:inline-flex;align-items:center;min-height:44px;color:#183665;text-decoration:underline;text-underline-offset:3px}
+.vcx-clauseDocs{display:grid;gap:10px}
+.vcx-clauseDocs details{border:1px solid #c8d8e6;border-radius:12px;background:#fff}
+.vcx-clauseDocs summary{min-height:44px;padding:12px 16px;color:#183665;font-weight:700;cursor:pointer}
+.vcx-clauseDocs iframe{display:block;width:100%;height:clamp(340px,65vh,760px);border:0;border-top:1px solid #c8d8e6}
+.vcx-clauseDocs a{display:inline-flex;align-items:center;min-height:44px;margin:0 16px;color:#183665;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:880px){.vcx-clauseGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:720px){.vcx-builder .vcx-fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.vcx-useGrid,.vcx-clauseGrid{grid-template-columns:minmax(0,1fr)}}
