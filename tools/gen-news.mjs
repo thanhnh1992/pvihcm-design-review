@@ -13,6 +13,7 @@ import * as kbBinhThanh from './articles/mua-bao-hiem-pvi-binh-thanh.mjs';
 import * as kbChayMassage from './articles/chay-tiem-massage-le-van-luong.mjs';
 import * as kbChayHappyValley from './articles/chay-can-ho-chung-cu-happy-valley.mjs';
 import * as kbChayTranQuangKhai from './articles/chay-nha-duong-tran-quang-khai-tan-dinh.mjs';
+import * as kbNoGasNguyenVanTuyet from './articles/no-gas-nguyen-van-tuyet-dong-da.mjs';
 import * as kbTet2027 from './articles/lich-nghi-tet-nguyen-dan-2027.mjs';
 import * as kbLichLe2027 from './articles/lich-nghi-le-tet-2027.mjs';
 import * as kbNghiBu2027 from './articles/nghi-le-tet-2027-huong-luong-va-nghi-bu.mjs';
@@ -65,6 +66,7 @@ export const posts = [
   kbLichLe2027.post,
   kbNghiBu2027.post,
   kbTet2027.post,
+  kbNoGasNguyenVanTuyet.post,
   kbChayTranQuangKhai.post,
   kbBaiBoTt04.post,
   kbBhytOnline.post,
@@ -176,6 +178,7 @@ const POST_GROUP = {
   'chay-tiem-massage-le-van-luong-bao-hiem-chay-no': 'san-pham',
   'chay-can-ho-chung-cu-happy-valley-bao-hiem-chay-no': 'san-pham',
   [kbChayTranQuangKhai.post.slug]: 'san-pham',
+  [kbNoGasNguyenVanTuyet.post.slug]: 'san-pham',
   'bao-hiem-chay-no-kho-hang-sprinkler-thuc-te': 'san-pham',
   'bao-hiem-xe-ban-tai-dien-vinfast-vf-wild': 'san-pham',
   'don-vi-thanh-vien-pvi': 'chung',
@@ -545,6 +548,7 @@ renderKb(kbBinhThanh);
 renderKb(kbChayMassage);
 renderKb(kbChayHappyValley);
 renderKb(kbChayTranQuangKhai);
+renderKb(kbNoGasNguyenVanTuyet);
 renderKb(kbTet2027);
 renderKb(kbLichLe2027);
 renderKb(kbNghiBu2027);
