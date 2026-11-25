@@ -150,10 +150,10 @@ const main = `<div class="vcx-page">
 <div class="vcx-heroCopy">
 <span class="vcx-kicker">BẢO HIỂM VẬT CHẤT XE Ô TÔ · PVI</span>
 <h1 id="vcx-title">Bảo hiểm vật chất xe <em>ô tô PVI</em></h1>
-<p class="vcx-tagline">Hiểu quyền lợi. Chọn sự an tâm.</p>
-<p class="vcx-lead">Bảo hiểm vật chất xe trả chi phí sửa chữa, thay thế cho chính chiếc xe của bạn khi va chạm, cháy nổ, thiên tai hoặc bị trộm cướp toàn bộ xe. Chọn thêm điều khoản bổ sung như thủy kích, sửa chữa chính hãng, không khấu hao.</p>
+<p class="vcx-tagline">An tâm bảo vệ xe cùng Bảo hiểm PVI</p>
+<p class="vcx-lead">Bảo hiểm PVI dẫn đầu thị phần bảo hiểm phi nhân thọ Việt Nam năm 2025 và có hơn 20 năm kinh nghiệm bảo hiểm xe cơ giới. Với mạng lưới hơn 700 gara và showroom liên kết trên toàn quốc cùng đội ngũ tư vấn, giám định và bồi thường giàu kinh nghiệm, chúng tôi đồng hành cùng chủ xe từ khi chọn quyền lợi đến khi cần sửa chữa và giải quyết bồi thường.</p>
 <div class="vcx-heroActions"><a class="vcx-primary" href="#bao-phi">Nhận báo phí</a><a class="vcx-secondary" href="#quyen-loi">Xem quyền lợi</a></div>
-<dl class="vcx-facts"><div><dt>Khấu trừ chung</dt><dd>500.000 đ/vụ</dd></div><div><dt>Bảo lãnh sửa chữa</dt><dd>Gara liên kết PVI</dd></div><div><dt>Quy tắc áp dụng</dt><dd>Hiệu lực 01/07/2025</dd></div></dl>
+<dl class="vcx-facts"><div><dt>Khấu trừ chung</dt><dd>500.000 đ/vụ</dd></div><div><dt>Bảo lãnh sửa chữa</dt><dd><a href="${GARA_URL}" target="_blank" rel="nofollow" aria-label="Mở danh sách gara liên kết PVI trong tab mới">Gara liên kết PVI <span aria-hidden="true">↗</span></a></dd></div><div><dt>Quy tắc bảo hiểm</dt><dd><a href="${RULES_PDF}" target="_blank" rel="nofollow" aria-label="Mở PDF quy tắc bảo hiểm tự nguyện xe ô tô, hiệu lực 01/07/2025, trong tab mới">Hiệu lực 01/07/2025 <span aria-hidden="true">↗</span></a></dd></div></dl>
 </div>
 <figure class="vcx-video"><video controls muted playsinline preload="none" poster="/assets/vat-chat-xe/showroom-kiem-tra-xe-poster.webp" width="1280" height="720"><source src="/assets/vat-chat-xe/showroom-kiem-tra-xe.mp4" type="video/mp4"><track kind="captions" src="/assets/vat-chat-xe/showroom-kiem-tra-xe.vi.vtt" srclang="vi" label="Tiếng Việt" default></video>
 <figcaption>Hình ảnh mô phỏng chủ xe và giám định viên kiểm tra xe tại showroom · 12 giây</figcaption></figure>
@@ -239,6 +239,8 @@ function buildCss() {
 @media(max-width:720px){.vcx-page .shell{width:min(100% - 28px,1180px)}}
 .vcx-page{line-height:1.6}
 .vcx-page a{text-decoration:none}
+.vcx-page .vcx-facts a{display:inline-flex;align-items:center;gap:.35em;min-height:44px;color:#1f4a8c;text-decoration:underline;text-underline-offset:.18em}
+.vcx-facts a span{flex:none}
 .vcx-page img,.vcx-page video{max-width:100%}
 .vcx-page [hidden]{display:none!important}
 /* style.css của pvihcm đặt kiểu chung cho mọi <header> (đầu trang cũ): gỡ cho các header bên trong trang này. */
