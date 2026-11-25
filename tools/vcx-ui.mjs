@@ -26,6 +26,7 @@ fs.copyFileSync(path.join(HERE, 'data/vcx.mjs'), path.join(DIST, 'vcx/vcx-data.j
 const D = await import(pathToFileURL(path.join(DIST, 'vcx/vcx-data.js')).href);
 const T = await import(pathToFileURL(path.join(DIST, 'o-to/tnds-data.js')).href);
 const { askBeforeSigning, basicScope, carCatalogue, certificateMock, certificateNotes, claimSteps, CLAUSES_PDF, DOI_CHIEU_NGUON, faqs, HOTLINE_BOI_THUONG, related, RULES_PDF, sampleCertificate, ZALO_TU_VAN } = D;
+const currentRulesPdf = RULES_PDF.replace('https://adminweb.pvi.com.vn/', 'https://www.pvi.com.vn/adminweb/');
 const currentClausesPdf = CLAUSES_PDF.replace('https://adminweb.pvi.com.vn/', 'https://www.pvi.com.vn/adminweb/');
 
 // Ảnh và video minh họa: chép từ baohiempvi-vn khi có thư mục đó.
@@ -153,7 +154,7 @@ const main = `<div class="vcx-page">
 <p class="vcx-tagline">An tâm bảo vệ xe cùng Bảo hiểm PVI</p>
 <p class="vcx-lead">Bảo hiểm PVI dẫn đầu thị phần bảo hiểm phi nhân thọ Việt Nam năm 2025 và có hơn 20 năm kinh nghiệm bảo hiểm xe cơ giới. Với mạng lưới hơn 700 gara và showroom liên kết trên toàn quốc cùng đội ngũ tư vấn, giám định và bồi thường giàu kinh nghiệm, chúng tôi đồng hành cùng chủ xe từ khi chọn quyền lợi đến khi cần sửa chữa và giải quyết bồi thường.</p>
 <div class="vcx-heroActions"><a class="vcx-primary" href="#bao-phi">Nhận báo phí</a><a class="vcx-secondary" href="#quyen-loi">Xem quyền lợi</a></div>
-<dl class="vcx-facts"><div><dt>Khấu trừ chung</dt><dd>500.000 đ/vụ</dd></div><div><dt>Bảo lãnh sửa chữa</dt><dd><a href="${GARA_URL}" target="_blank" rel="nofollow" aria-label="Mở danh sách gara liên kết PVI trong tab mới">Gara liên kết PVI <span aria-hidden="true">↗</span></a></dd></div><div><dt>Quy tắc bảo hiểm</dt><dd><a href="${RULES_PDF}" target="_blank" rel="nofollow" aria-label="Mở PDF quy tắc bảo hiểm tự nguyện xe ô tô, hiệu lực 01/07/2025, trong tab mới">Hiệu lực 01/07/2025 <span aria-hidden="true">↗</span></a></dd></div></dl>
+<dl class="vcx-facts"><div><dt>Khấu trừ chung</dt><dd>500.000 đ/vụ</dd></div><div><dt>Bảo lãnh sửa chữa</dt><dd><a href="${GARA_URL}" target="_blank" rel="nofollow" aria-label="Mở danh sách gara liên kết PVI trong tab mới">Gara liên kết PVI <span aria-hidden="true">↗</span></a></dd></div><div><dt>Quy tắc bảo hiểm</dt><dd><a href="${currentRulesPdf}" target="_blank" rel="nofollow" aria-label="Mở PDF quy tắc bảo hiểm tự nguyện xe ô tô, hiệu lực 01/07/2025, trong tab mới">Hiệu lực 01/07/2025 <span aria-hidden="true">↗</span></a></dd></div></dl>
 </div>
 <figure class="vcx-video"><video controls muted playsinline preload="none" poster="/assets/vat-chat-xe/showroom-kiem-tra-xe-poster.webp" width="1280" height="720"><source src="/assets/vat-chat-xe/showroom-kiem-tra-xe.mp4" type="video/mp4"><track kind="captions" src="/assets/vat-chat-xe/showroom-kiem-tra-xe.vi.vtt" srclang="vi" label="Tiếng Việt" default></video>
 <figcaption>Hình ảnh mô phỏng chủ xe và giám định viên kiểm tra xe tại showroom · 12 giây</figcaption></figure>
@@ -184,7 +185,7 @@ const main = `<div class="vcx-page">
 
 <section class="vcx-section" aria-labelledby="vcx-src"><div class="shell vcx-sources">
 <h2 id="vcx-src">Nguồn tham chiếu</h2>
-<ul><li><a href="${RULES_PDF}" target="_blank">Bảo hiểm PVI: Quy tắc bảo hiểm tự nguyện xe ô tô, hiệu lực 01/07/2025 ↗</a></li><li><a href="${currentClausesPdf}" target="_blank">Bảo hiểm PVI: Các điều khoản bổ sung bảo hiểm tự nguyện xe ô tô, hiệu lực 01/07/2025 ↗</a></li><li>Giấy chứng nhận bảo hiểm xe ô tô PVI cấp ngày 27/10/2026 do PVI Thành Đô cung cấp (số liệu phí); thông tin chủ xe và xe trên giấy mẫu là thông tin tượng trưng.</li></ul>
+<ul><li><a href="${currentRulesPdf}" target="_blank">Bảo hiểm PVI: Quy tắc bảo hiểm tự nguyện xe ô tô, hiệu lực 01/07/2025 ↗</a></li><li><a href="${currentClausesPdf}" target="_blank">Bảo hiểm PVI: Các điều khoản bổ sung bảo hiểm tự nguyện xe ô tô, hiệu lực 01/07/2025 ↗</a></li><li>Giấy chứng nhận bảo hiểm xe ô tô PVI cấp ngày 27/10/2026 do PVI Thành Đô cung cấp (số liệu phí); thông tin chủ xe và xe trên giấy mẫu là thông tin tượng trưng.</li></ul>
 <p>Đối chiếu nguồn ngày ${esc(DOI_CHIEU_NGUON)}. Phạm vi, loại trừ, mức khấu trừ và phí áp dụng theo quy tắc, điều khoản và hợp đồng được phát hành. Video là hình ảnh mô phỏng.</p>
 <a class="vcx-primary" href="${ZALO_TU_VAN}" target="_blank">Nhắn Zalo 0938 072 236</a>
 </div></section>
