@@ -96,13 +96,13 @@
       "statusCode": 301
     },
     {
-      "source": "/binhduong/chaynobatbuoc",
-      "destination": "/dongsaigon/chaynobatbuoc/",
+      "source": "/dongsaigon/chaynobatbuoc",
+      "destination": "/binhduong/chaynobatbuoc/",
       "statusCode": 301
     },
     {
-      "source": "/binhduong/chaynobatbuoc/",
-      "destination": "/dongsaigon/chaynobatbuoc/",
+      "source": "/dongsaigon/chaynobatbuoc/",
+      "destination": "/binhduong/chaynobatbuoc/",
       "statusCode": 301
     },
     {
