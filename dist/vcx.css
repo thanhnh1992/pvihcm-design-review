@@ -311,6 +311,10 @@
 .vcx-more summary::-webkit-details-marker{display:none}
 .vcx-more summary span{flex:0 0 8px;height:8px;margin-right:5px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg)}
 .vcx-more[open] summary span{transform:rotate(225deg)}
+.vcx-clauseActions{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:12px 24px}
+.vcx-clauseActions .vcx-primary{min-height:44px;text-align:center}
+.vcx-summaryAct button[data-chat]{white-space:normal;text-align:center}
+@media(max-width:720px){.vcx-clauseActions{grid-template-columns:minmax(0,1fr)}.vcx-clauseActions .vcx-primary{justify-self:stretch}}
 .vcx-clauseDocs{display:grid;gap:10px}
 .vcx-clauseDocs details{border:1px solid #c8d8e6;border-radius:12px;background:#fff}
 .vcx-clauseDocs summary{min-height:44px;padding:12px 16px;color:#183665;font-weight:700;cursor:pointer}

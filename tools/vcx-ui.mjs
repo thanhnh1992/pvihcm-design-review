@@ -109,9 +109,12 @@ const builder = `<div class="vcx-builder" data-vcx>
 <label class="vcx-choice" data-kind="shield"><input type="checkbox" name="totalLoss"><span class="vcx-choiceIcon">${ICONS.shield}</span><span class="vcx-choiceText"><b>Gói tổn thất toàn bộ</b><span>Yêu cầu tư vấn riêng về phạm vi chỉ bảo hiểm tổn thất toàn bộ.</span></span></label></div>
 </details>
 </fieldset>
+<div class="vcx-clauseActions">
 <div class="vcx-clauseDocs" aria-label="Tài liệu điều khoản bổ sung">
 ${clauseDocument('Xem bộ điều khoản hiệu lực 01/07/2025', currentClausesPdf)}
 ${clauseDocument('Tài liệu tham khảo có mã 013, 014 và 019', earlierClausesPdf)}
+</div>
+<a class="vcx-primary" href="https://online.pvi.com.vn/san-pham/bao-hiem-vat-chat-xe-o-to" target="_blank" rel="nofollow">Mua online ngay <span aria-hidden="true">↗</span></a>
 </div>
 </div>
 </section>
@@ -129,7 +132,7 @@ ${clauseDocument('Tài liệu tham khảo có mã 013, 014 và 019', earlierClau
 <section class="vcx-summary" id="bao-phi" aria-labelledby="vcx-summary" aria-live="polite">
 <div class="vcx-summaryInfo"><small>YÊU CẦU BÁO PHÍ</small><h2 id="vcx-summary" data-sum="car">Xe của bạn</h2><p data-sum="line">5 chỗ · ${YEAR_NOW} · ${esc(vehicleUses[0].label)} · chưa nhập giá trị · ĐKBS 006, 007, 008</p></div>
 <div class="vcx-summaryFee"><small>Phí tham khảo</small><b>Tư vấn viên gửi báo phí</b><span>Ví dụ thật: xe ${esc(sampleCertificate.insuredValue)}, ĐKBS ${esc(sampleCertificate.clauses)}: ${esc(sampleCertificate.total)}/năm gồm VAT</span></div>
-<div class="vcx-summaryAct"><button type="button" data-send>Gửi thông tin qua Zalo</button><span data-sum="note">Thông tin được sao chép để bạn dán vào Zalo; trang không lưu dữ liệu.</span></div>
+<div class="vcx-summaryAct"><button type="button" data-chat>Chat với chuyên viên ngay để nhận báo phí ưu đãi</button><span data-sum="note">Thông tin được sao chép để bạn dán vào Zalo; trang không lưu dữ liệu.</span></div>
 </section>
 </div>`;
 
@@ -291,6 +294,10 @@ function buildCss() {
 .vcx-more summary::-webkit-details-marker{display:none}
 .vcx-more summary span{flex:0 0 8px;height:8px;margin-right:5px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg)}
 .vcx-more[open] summary span{transform:rotate(225deg)}
+.vcx-clauseActions{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:12px 24px}
+.vcx-clauseActions .vcx-primary{min-height:44px;text-align:center}
+.vcx-summaryAct button[data-chat]{white-space:normal;text-align:center}
+@media(max-width:720px){.vcx-clauseActions{grid-template-columns:minmax(0,1fr)}.vcx-clauseActions .vcx-primary{justify-self:stretch}}
 .vcx-clauseDocs{display:grid;gap:10px}
 .vcx-clauseDocs details{border:1px solid #c8d8e6;border-radius:12px;background:#fff}
 .vcx-clauseDocs summary{min-height:44px;padding:12px 16px;color:#183665;font-weight:700;cursor:pointer}

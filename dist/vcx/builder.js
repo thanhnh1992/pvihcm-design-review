@@ -114,11 +114,11 @@ if (root) {
     `Mua kèm TNDS bắt buộc: ${s.wantsTnds ? (s.tnds ? `có, ${fmt(s.tnds.total)} đ gồm VAT` : 'có, nhờ xác nhận nhóm xe và phí') : 'không'}`,
   ].filter(Boolean).join('\n');
 
-  root.querySelectorAll('[data-send]').forEach((btn) => btn.addEventListener('click', async () => {
+  root.querySelectorAll('[data-send], [data-chat]').forEach((btn) => btn.addEventListener('click', async () => {
     touched = true;
     const s = state();
     const err = errorsOf(s);
-    if (err.brand || err.model || err.value) {
+    if (!btn.hasAttribute('data-chat') && (err.brand || err.model || err.value)) {
       render();
       const first = ['brand', 'model', 'value'].find((k) => err[k]);
       f(first).focus();
