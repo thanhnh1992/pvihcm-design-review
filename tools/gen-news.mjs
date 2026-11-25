@@ -5,6 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { page, t, esc, clean, ctaRow, faqJsonLd, articleJsonLd, SITE, av } from './chrome.mjs';
 import { ensureH2Ids, tocEntries, tocHtml, withInlineToc } from './toc.mjs';
+import { CAR_FEE_PATH, CAR_FEE_TITLE, renderCarFeeDirectory } from './car-fee-directory.mjs';
 import * as kbCongTrinh from './articles/tai-nan-cong-trinh.mjs';
 import * as kbTaiNanCaNhan from './articles/loi-ich-tai-nan-ca-nhan.mjs';
 import * as kbBinhDuong from './articles/mua-bao-hiem-pvi-binh-duong.mjs';
@@ -586,13 +587,14 @@ for (const article of pcccNoiLamViec) renderKb(article);
   // Trang chung /kien-thuc/
   {
     const P = '/kien-thuc/';
+    write(CAR_FEE_PATH.slice(1) + 'index.html', renderCarFeeDirectory());
     const main = `${hero('Kiến thức bảo hiểm PVI Thành Đô', 'Kiến thức theo từng sản phẩm.<br><em>Chọn sản phẩm, xem đủ ba mảng.</em>', 'Mỗi sản phẩm có ba mảng: kiến thức giải đáp, trải nghiệm thực tế có chứng từ và tin tức liên quan. Mỗi bài dẫn về trang sản phẩm để xem quyền lợi và phí.')}
 <section class="nl-section kt-index" aria-label="Chọn sản phẩm"><div class="fire-wrap">
 <ul class="kt-products">${live.map((h) => `<li><a class="kt-product" href="/kien-thuc/${h.slug}/"><span class="nl-photo">${cover(h, '(max-width:600px) 100vw, (max-width:960px) 50vw, 380px')}</span>
 <span class="kt-product-copy"><h2>${esc(h.name)}</h2><p>${esc(h.lead)}</p>
 <span class="kt-counts">${h.streams.map((st) => `<span>${esc(st.name)}: <b>${st.items.length}</b></span>`).join('')}</span>
 <b class="kt-go">Xem kiến thức ${esc(h.short)} <i aria-hidden="true">&rarr;</i></b></span></a></li>`).join('')}</ul>
-<p class="nl-total">Tin hoạt động của PVI Thành Đô và bài theo khu vực xem ở mục <a href="/tin-tuc/">Tin tức</a>.</p>
+<p class="nl-total"><a href="${CAR_FEE_PATH}">${CAR_FEE_TITLE}</a> · Tin hoạt động của PVI Thành Đô và bài theo khu vực xem ở mục <a href="/tin-tuc/">Tin tức</a>.</p>
 </div></section>`;
     write('kien-thuc/index.html', page({
       path: P,
@@ -601,7 +603,8 @@ for (const article of pcccNoiLamViec) renderKb(article);
       image: live[0].image,
       head: `<script type="application/ld+json">${JSON.stringify({
         '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Kiến thức bảo hiểm theo sản phẩm', url: SITE + P,
-        hasPart: live.map((h) => ({ '@type': 'CollectionPage', name: 'Kiến thức ' + h.name, url: SITE + P + h.slug + '/' })),
+        hasPart: [...live.map((h) => ({ '@type': 'CollectionPage', name: 'Kiến thức ' + h.name, url: SITE + P + h.slug + '/' })),
+          { '@type': 'CollectionPage', name: CAR_FEE_TITLE, url: SITE + CAR_FEE_PATH }],
       }).replace(/</g, '\\u003c')}</script><script type="application/ld+json">${JSON.stringify({
         '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: SITE + '/' },

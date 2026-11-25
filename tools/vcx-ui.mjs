@@ -13,6 +13,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { page, esc, SITE, faqJsonLd } from './chrome.mjs';
+import { carFeeCard, carFeeStyles } from './car-fee-directory.mjs';
 import { vcxEstimate, vcxEstimateLabel } from './data/vcx-estimate.mjs';
 import { businessUses, mainClauses, moreClauses, vehicleUses } from './data/vcx-options.mjs';
 
@@ -186,7 +187,7 @@ const main = `<div class="vcx-page">
 </div></section>
 
 <section class="vcx-section vcx-soft" id="faq" aria-labelledby="vcx-faq"><div class="shell vcx-split">
-<div class="vcx-heading"><span class="vcx-kicker">CÂU HỎI THƯỜNG GẶP</span><h2 id="vcx-faq">Hiểu thêm trước khi tham gia</h2><ul class="vcx-related">${related.map((r) => `<li><a href="${href(r.href)}"${out(href(r.href))}>${esc(r.label)}</a></li>`).join('')}</ul></div>
+<div class="vcx-heading"><span class="vcx-kicker">CÂU HỎI THƯỜNG GẶP</span><h2 id="vcx-faq">Hiểu thêm trước khi tham gia</h2><ul class="vcx-related">${related.map((r) => `<li><a href="${href(r.href)}"${out(href(r.href))}>${esc(r.label)}</a></li>`).join('')}</ul>${carFeeCard}</div>
 <div class="vcx-faqs">${faqs.map((f, i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(f.question)}<i aria-hidden="true">+</i></summary><p>${esc(f.answer)}</p></details>`).join('')}</div>
 </div></section>
 
@@ -215,7 +216,7 @@ const graph = { '@context': 'https://schema.org', '@graph': [
 
 const html = page({
   path: PATH, title, description, image: '/assets/vat-chat-xe/showroom-kiem-tra-xe-poster.webp', bodyClass: 'fire vcx',
-  extraCss: '<link rel="stylesheet" href="/vcx.css">',
+  extraCss: '<link rel="stylesheet" href="/vcx.css">' + carFeeStyles,
   head: ld(graph) + faqJsonLd(faqs),
   scripts: '<script type="module" src="/vcx/builder.js"></script>',
   main,

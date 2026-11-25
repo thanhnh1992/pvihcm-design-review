@@ -62,6 +62,7 @@ Tầng 3  BÀI HỖ TRỢ (nếu có)      bài viết bổ trợ cho đúng 1 t
 - `/kien-thuc/bao-hiem-o-to/` · `/kien-thuc/chay-no-bat-buoc/` · `/kien-thuc/tai-nan-24-24/` · `/kien-thuc/suc-khoe/` · `/kien-thuc/cong-trinh-lap-dat/` · `/kien-thuc/du-lich/` · `/kien-thuc/hang-hoa/`
 - Bài kiến thức ở `/kien-thuc/<slug>/` hoặc giữ URL cũ `/tin-tuc/<slug>/`: mỗi bài thuộc đúng 1 nhóm sản phẩm ở trên.
 - `/kien-thuc/bao-hiem-o-to/bao-hiem-than-vo-hyundai-santa-fe/` Bài tính phí tham khảo cho Hyundai Santa Fe của PVI Thành Đô, thuộc nhóm Bảo hiểm ô tô.
+- `/kien-thuc/tinhphinhanhtheotenxe/` Danh sách dòng xe theo hãng, dẫn vào các bài phí đã có. Có lối vào từ trang Kiến thức và ô tra cứu trên trang Bảo hiểm vật chất xe.
 
 **`/tin-tuc/` Tin tức**: tin đơn vị, pháp lý mới, tin sản phẩm. Bài theo khu vực TP.HCM (`/tin-tuc/mua-bao-hiem-pvi-<quận>/`), Đồng Nai, Vũng Tàu hiện cũng nằm ở đây.
 - `/tin-tuc/mua-bao-hiem-y-te-online/` hướng dẫn đăng ký và gia hạn BHYT hộ gia đình tại TP.HCM, hỗ trợ trang tính mức đóng BHYT.
