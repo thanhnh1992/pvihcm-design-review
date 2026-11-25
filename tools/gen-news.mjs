@@ -18,6 +18,7 @@ import * as kbLichLe2027 from './articles/lich-nghi-le-tet-2027.mjs';
 import * as kbNghiBu2027 from './articles/nghi-le-tet-2027-huong-luong-va-nghi-bu.mjs';
 import * as kbKhoSprinkler from './articles/bao-hiem-chay-no-kho-hang-sprinkler.mjs';
 import * as kbVfWild from './articles/bao-hiem-xe-ban-tai-dien-vinfast-vf-wild.mjs';
+import * as kbSantaFe from './articles/bao-hiem-than-vo-hyundai-santa-fe.mjs';
 import * as kbDonVi from './articles/don-vi-thanh-vien-pvi.mjs';
 import * as kbPvi27045 from './articles/bao-hiem-pvi-ve-dich-som-2026.mjs';
 import { binhDuongGuides } from './articles/binh-duong-guides.mjs';
@@ -60,6 +61,7 @@ const write = (rel, html) => {
 const postUrl = (post) => post.path || `/tin-tuc/${post.slug}/`;
 
 export const posts = [
+  kbSantaFe.post,
   kbLichLe2027.post,
   kbNghiBu2027.post,
   kbTet2027.post,
@@ -465,6 +467,10 @@ function renderKb(A) {
   const crumbHtml = `<p class="kb-crumb">${crumbs.map(([n, h]) => `<a href="${h}">${esc(n)}</a><span aria-hidden="true">/</span>`).join('')}<span>${t(kn ? (STREAMS.find((x) => x.key === HB.stream).name) : A.crumb)}</span></p>`;
   const hubBlock = HB ? `<aside class="kb-hub" aria-label="Sản phẩm của bài viết"><span class="kb-hub-k">Bài này thuộc sản phẩm</span><b>${esc(HB.hub.name)}</b><span class="kb-hub-links"><a class="kb-hub-main" href="${HB.hub.product}">Xem sản phẩm, quyền lợi và phí <i aria-hidden="true">&rarr;</i></a><a href="/kien-thuc/${HB.hub.slug}/">Kiến thức, trải nghiệm, tin tức ${esc(HB.hub.short)} <i aria-hidden="true">&rarr;</i></a></span></aside>\n` : '';
   const H = A.hero;
+  const heroSizes = H.besideTitle ? '(max-width:820px) 100vw, 55vw' : '(max-width:820px) 100vw, 1160px';
+  const heroHtml = `<figure class="kb-hero${H.besideTitle ? ' kb-hero-top' : ''}"${H.position ? ` style="--pos:${H.position}"` : ''}>${pic(H.name, { w: H.w, h: H.h, alt: p.alt, sizes: heroSizes, eager: true })}
+<figcaption>${t(H.caption)}</figcaption></figure>`;
+  const titleHtml = `<h1>${t(p.title)}</h1>`;
   const coverMeta = p.imageWidth && p.imageHeight && !p.socialImage
     ? `<meta property="og:image:width" content="${p.imageWidth}"><meta property="og:image:height" content="${p.imageHeight}"><meta property="og:image:alt" content="${esc(p.alt)}"><meta name="twitter:image" content="${SITE}${p.image}"><meta name="twitter:image:alt" content="${esc(p.alt)}">`
     : '';
@@ -475,17 +481,18 @@ function renderKb(A) {
   const toc = tocHtml(tocEntries(bodyHtml + '<h2 id="san-pham">Sản phẩm liên quan</h2>' + (A.faqs.length ? '<h2 id="cau-hoi">Câu hỏi thường gặp</h2>' : '') + endHtml, A.toc.map(([id, label]) => [id, clean(label)])), { inline: topTools });
   const tocScript = '<script>(function(){var d=document.querySelector(\'.kb-toc details\');if(d&&window.matchMedia(\'(min-width:901px)\').matches)d.open=true;})();</script>';
   const rating = topTools || p.ratingTop ? `<p class="kb-rating" data-rating-top><strong>Đánh giá bài viết</strong>${p.ratingTop ? '<span aria-hidden="true">☆☆☆☆☆</span>' : ''}<span data-rating-status role="status">Đang tải đánh giá…</span><a href="#fb-h" data-rating-link hidden>Gửi đánh giá</a></p>` : '';
+  const articleIntro = `<p class="kb-lead">${t(p.lead)}</p>
+<p class="kb-meta"><span>Công ty Bảo hiểm PVI Thành Đô</span><time datetime="${p.date}">${esc(p.dateText)}</time>${p.updated ? `<time datetime="${p.updated}">Cập nhật ${esc(p.updatedText)}</time>` : ''}<span>${p.readMin} phút đọc</span></p>`;
   const main = `
 <article class="kb">
 <div class="kb-head"><div class="kb-shell">
 ${crumbHtml}
-<h1>${t(p.title)}</h1>
-${p.ratingTop && !topTools ? rating + '\n' : ''}<p class="kb-lead">${t(p.lead)}</p>
-<p class="kb-meta"><span>Công ty Bảo hiểm PVI Thành Đô</span><time datetime="${p.date}">${esc(p.dateText)}</time>${p.updated ? `<time datetime="${p.updated}">Cập nhật ${esc(p.updatedText)}</time>` : ''}<span>${p.readMin} phút đọc</span></p>${topTools ? '\n' + rating + '\n' + toc : ''}
+${H.besideTitle
+    ? `<div class="kb-head-feature">${titleHtml}${heroHtml}<div class="kb-head-intro">${articleIntro}</div></div>`
+    : `${titleHtml}\n${p.ratingTop && !topTools ? rating + '\n' : ''}${articleIntro}`}${topTools ? '\n' + rating + '\n' + toc : ''}
 </div></div>
 
-<figure class="kb-hero"${H.position ? ` style="--pos:${H.position}"` : ''}>${pic(H.name, { w: H.w, h: H.h, alt: p.alt, sizes: '(max-width:820px) 100vw, 1160px', eager: true })}
-<figcaption>${t(H.caption)}</figcaption></figure>
+${H.besideTitle ? '' : heroHtml}
 
 <div class="kb-shell kb-layout${topTools ? ' kb-layout-inline' : ''}">
 ${topTools ? '' : toc + '\n' + tocScript}
@@ -517,11 +524,12 @@ ${feedbackBlock(p)}
         { '@type': 'ListItem', position: crumbs.length + 2, name: p.title, item: SITE + P }],
     })}</script>${A.faqs.length ? faqJsonLd(A.faqs) : ''}`,
     main,
-    scripts: feedbackScript(),
-    extraCss: '<link rel="stylesheet" href="/news.css">',
+    scripts: feedbackScript() + (A.script ? `<script src="${A.script}" defer></script>` : ''),
+    extraCss: '<link rel="stylesheet" href="/news.css">' + (A.stylesheet ? `<link rel="stylesheet" href="${A.stylesheet}">` : ''),
   }));
 }
 
+renderKb(kbSantaFe);
 renderKb(kbCongTrinh);
 renderKb(kbTnNd220);
 renderKb(kbBaiBoTt04);
