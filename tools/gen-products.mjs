@@ -4,6 +4,7 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { taiNanMain, taiNanJs, taiNanJsonLd } from './tai-nan-ui.mjs';
 import { page, t, esc, clean, faqBlock, faqJsonLd, breadcrumbJsonLd, steps, hotline, ctaRow, ZALO } from './chrome.mjs';
+import { TNDS_PDF } from './gen-tnds-pdf.mjs';
 
 const HERE = path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1'));
 const D = (f) => pathToFileURL(path.join(HERE, 'data', f)).href;
@@ -66,8 +67,9 @@ const write = (rel, html) => { const f = path.join(DIST, rel); fs.mkdirSync(path
 </div></div></div></section>
 
 <section class="fire-tables" id="bieu-phi"><div class="fire-wrap">
-<span class="fire-eyebrow">${t(ref.legalBasis)}</span>
-<h2>Biểu phí TNDS đầy đủ</h2>
+<div class="pd-dl-head"><div><span class="fire-eyebrow">${t(ref.legalBasis)}</span>
+<h2>Biểu phí TNDS đầy đủ</h2></div>
+<a class="fire-btn fire-btn-red pd-dl" href="${TNDS_PDF}" download data-same-tab><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg>Tải biểu phí PDF</a></div>
 <div class="fire-tabs" role="tablist" aria-label="Nhóm xe">${classes.map((c, i) => `<button type="button" role="tab" id="tb-${c.id}" aria-controls="tab-${c.id}" aria-selected="${i === 0}">${esc(c.label)}</button>`).join('')}</div>
 ${feeTables}
 <p class="fire-note"><b>Nguồn:</b> <a href="${ref.sourceUrl}" target="_blank" style="color:var(--blue);text-decoration:underline">Bảo hiểm PVI</a>, ${t(ref.legalBasis)}. Tổng phí làm tròn theo đồng, đã gồm ${t(ref.vat)}.</p>

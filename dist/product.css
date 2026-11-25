@@ -405,3 +405,7 @@
 #dl-dna:checked~.dl-panels #dl-p-dna,#dl-ca:checked~.dl-panels #dl-p-ca,
 #dl-tc:checked~.dl-panels #dl-p-tc{display:block}
 .dl-sub{display:block;font-size:15px;font-weight:400;color:var(--muted);margin-top:3px;white-space:nowrap}
+/* Nút tải biểu phí PDF cạnh tiêu đề "Biểu phí TNDS đầy đủ" (chủ site yêu cầu 25/11/2026). Điện thoại: nút xuống dưới tiêu đề. */
+.pd-dl-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px 24px;flex-wrap:wrap}
+.pd-dl{display:inline-flex;align-items:center;gap:8px;min-height:44px;flex:none}
+.pd-dl svg{flex:none}

@@ -40,6 +40,7 @@ Ba trang sản phẩm, `/huong-dan/` và `/tai-nan-doanh-nghiep/` **được sin
 ```
 node tools/load-data.mjs      # chỉ khi dữ liệu bên baohiempvi-vn đổi (cần typescript trong project đó)
 node tools/gen-products.mjs   # bắt buộc, tai nạn, hàng hóa. Trang tai nạn (giao diện + bộ tính phí theo baohiempvi-vn, 28/10/2026) dựng trong tools/tai-nan-ui.mjs; CSS dist/tai-nan.css trích bằng tools/extract-tai-nan-css.cjs, không sửa tay
+node tools/gen-tnds-pdf.mjs  # PDF biểu phí TNDS ô tô cho nút "Tải biểu phí PDF" ở /san-pham/bao-hiem-bat-buoc/#bieu-phi (chủ site yêu cầu 25/11/2026, có link về pvihcm.com). Số liệu từ tools/data/tnds.mjs; in bằng Chrome/Edge có sẵn trên máy. Chạy lại khi tnds.mjs đổi
 node tools/gen-others.mjs     # huong-dan, tai-nan-doanh-nghiep, gioi-thieu
 node tools/gen-products-2.mjs # sức khỏe, công trình, vật chất xe, du lịch; phần đầu trang du lịch (mẫu duyệt 28/10/2026) ở tools/du-lich-ui.mjs + dist/du-lich.css + dist/du-lich.js
 node tools/o-to-ui.mjs        # trang /san-pham/bao-hiem-o-to/ và /dat-mua/ (port trang /bao-hiem-o-to của baohiempvi-vn, 09/11/2026). Bộ tra phí dist/o-to/tra-phi.js, form dist/o-to/dat-mua.js dùng chung dữ liệu tools/data/tnds.mjs (chép sang dist/o-to/tnds-data.js); CSS dist/o-to.css trích bằng tools/extract-o-to-css.cjs, không sửa tay
