@@ -14,6 +14,8 @@ import * as kbChayMassage from './articles/chay-tiem-massage-le-van-luong.mjs';
 import * as kbChayHappyValley from './articles/chay-can-ho-chung-cu-happy-valley.mjs';
 import * as kbChayTranQuangKhai from './articles/chay-nha-duong-tran-quang-khai-tan-dinh.mjs';
 import * as kbTet2027 from './articles/lich-nghi-tet-nguyen-dan-2027.mjs';
+import * as kbLichLe2027 from './articles/lich-nghi-le-tet-2027.mjs';
+import * as kbNghiBu2027 from './articles/nghi-le-tet-2027-huong-luong-va-nghi-bu.mjs';
 import * as kbKhoSprinkler from './articles/bao-hiem-chay-no-kho-hang-sprinkler.mjs';
 import * as kbVfWild from './articles/bao-hiem-xe-ban-tai-dien-vinfast-vf-wild.mjs';
 import * as kbDonVi from './articles/don-vi-thanh-vien-pvi.mjs';
@@ -58,6 +60,8 @@ const write = (rel, html) => {
 const postUrl = (post) => post.path || `/tin-tuc/${post.slug}/`;
 
 export const posts = [
+  kbLichLe2027.post,
+  kbNghiBu2027.post,
   kbTet2027.post,
   kbChayTranQuangKhai.post,
   kbBaiBoTt04.post,
@@ -146,6 +150,8 @@ const GROUPS = [
   { id: 'tin-chung', key: 'chung', name: 'Tin tức chung', hint: 'PVI Thành Đô và khu vực', title: 'Hoạt động của PVI Thành Đô', lead: 'Thông báo của đơn vị và thông tin mua bảo hiểm PVI theo từng khu vực tại TP.HCM.' },
 ];
 const POST_GROUP = {
+  [kbLichLe2027.post.slug]: 'chung',
+  [kbNghiBu2027.post.slug]: 'chung',
   [kbTet2027.post.slug]: 'chung',
   [kbBhytOnline.post.slug]: 'san-pham',
   'nghi-dinh-220-2026-bao-hiem-cong-trinh': 'phap-ly',
@@ -532,6 +538,8 @@ renderKb(kbChayMassage);
 renderKb(kbChayHappyValley);
 renderKb(kbChayTranQuangKhai);
 renderKb(kbTet2027);
+renderKb(kbLichLe2027);
+renderKb(kbNghiBu2027);
 renderKb(kbKhoSprinkler);
 renderKb(kbVfWild);
 renderKb(kbDonVi);
