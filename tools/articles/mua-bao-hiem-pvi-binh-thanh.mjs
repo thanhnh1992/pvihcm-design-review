@@ -4,6 +4,8 @@
 // đoạn ghi chú SEO nội bộ, mục "Gợi ý internal link" và "Gợi ý schema".
 // Số văn phòng 028 3535 2235 khớp với số in trên giấy chứng nhận PVI Thành Đô chủ site đã gửi.
 
+import { tphcmAdvice } from './tphcm-advice.mjs';
+
 export const post = {
   slug: 'mua-bao-hiem-pvi-binh-thanh',
   date: '2026-10-08',
@@ -29,6 +31,7 @@ const CHAY_NO = '/san-pham/chay-no-bat-buoc/';
 
 export const toc = [
   ['thong-tin', 'Thông tin PVI Thành Đô'],
+  ['ho-so-khu-vuc', 'Hẹn tư vấn và chuẩn bị hồ sơ tại Bình Thạnh'],
   ['san-pham-mua', 'Mua được những bảo hiểm nào'],
   ['den-truc-tiep', 'Có cần đến văn phòng không'],
   ['vi-sao', 'Vì sao làm hồ sơ qua PVI Thành Đô'],
@@ -93,6 +96,7 @@ export function body({ pic, ctaRow }) {
 </section>
 
 <div class="kb-col">
+${tphcmAdvice(post.slug, '')}
 <h2 id="san-pham-mua">Có thể mua những bảo hiểm PVI nào tại khu vực Bình Thạnh?</h2>
 <p>PVI Thành Đô hỗ trợ nhiều nhóm bảo hiểm phi nhân thọ cho cá nhân và doanh nghiệp. Với khách hàng tại khu vực Bình Thạnh, các nhu cầu phổ biến nhất gồm bảo hiểm ô tô, bảo hiểm tai nạn, bảo hiểm cháy nổ bắt buộc và các sản phẩm bảo hiểm tài sản.</p>
 </div>

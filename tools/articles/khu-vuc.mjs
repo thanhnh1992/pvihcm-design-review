@@ -7,6 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { t, esc, SITE, articleJsonLd } from '../chrome.mjs';
 import { withInlineToc } from '../toc.mjs';
+import { tphcmAdvice } from './tphcm-advice.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 export const areas = JSON.parse(fs.readFileSync(path.resolve(HERE, '../data/khu-vuc.json'), 'utf8'));
@@ -142,7 +143,7 @@ ${isThuDuc ? `<section class="kv-block" aria-labelledby="an-khanh"><div class="k
 </div></section>` : ''}
 
 <section class="kv-block" aria-labelledby="san-pham"><div class="kv-shell">
- ${isThuDuc ? `<div class="kv-prose"><h2 id="san-pham">Chọn loại bảo hiểm và chuẩn bị giấy tờ</h2>
+${isThuDuc ? `<div class="kv-prose"><h2 id="san-pham">Chọn loại bảo hiểm và chuẩn bị giấy tờ</h2>
 <p>Nếu chỉ cần báo phí, chuẩn bị trước thông tin ở dòng phù hợp bên dưới. Mỗi loại bảo hiểm cần một bộ hồ sơ khác nhau.</p>
 <ul>${THU_DUC_PRODUCTS.map(([label, href, detail]) => `<li><strong><a href="${href}">${esc(label)}</a></strong>. ${esc(detail)}</li>`).join('')}</ul></div>` : `
 <div class="kv-block-head"><h2 id="san-pham">Các sản phẩm bảo hiểm PVI phổ biến tại ${esc(A.ten)}</h2><a class="kv-head-link" href="${ZALO_TU_VAN}" target="_blank">Tư vấn theo nhu cầu của bạn ${ICON.arrow}</a></div>
@@ -154,6 +155,8 @@ ${isThuDuc ? `<section class="kv-block" aria-labelledby="an-khanh"><div class="k
 ${A.nhuCau.paragraphs.map((x) => `<p>${t(x)}</p>`).join('\n')}
 ${A.nhuCau.items.length ? `<ul>${A.nhuCau.items.map((x) => `<li>${t(x)}</li>`).join('')}</ul>` : ''}
 </div></section>
+
+${tphcmAdvice(A.slug)}
 
 <section class="kv-block" aria-labelledby="van-phong"><div class="kv-shell">
 <h2 id="van-phong"><b>1.</b> ${isThuDuc ? 'Địa chỉ trụ sở theo danh bạ PVI' : `Văn phòng Bảo hiểm PVI cho khách hàng ${esc(A.ten)}`}</h2>

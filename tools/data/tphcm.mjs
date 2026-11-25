@@ -28,6 +28,7 @@ export const productGroups = [
 export const products = [
   {
     slug: 'tndsoto', group: 'xe', name: 'Bảo hiểm TNDS ô tô PVI',
+    photo: { base: 'tphcm/tnds-o-to-ben-bach-dang', alt: 'Chủ xe xem thông tin trên điện thoại cạnh ô tô đang đỗ, với sông Sài Gòn ở phía xa', place: 'Bến Bạch Đằng, TP.HCM' },
     original: '/san-pham/bao-hiem-o-to/', action: ['Tra phí TNDS', '#tnds-tra-cuu'], buy: '/san-pham/bao-hiem-o-to/dat-mua/',
     intro: 'Chủ ô tô tại TP.HCM có thể tra phí TNDS theo loại xe, số chỗ hoặc tải trọng và mục đích sử dụng. Khi tái tục, đối chiếu ngày giờ hết hạn của giấy chứng nhận đang có để chọn thời điểm bắt đầu kỳ mới.',
     details: [
@@ -37,10 +38,12 @@ export const products = [
     ],
     docs: ['Giấy đăng ký xe hoặc giấy tờ xe mới.', 'Số chỗ hoặc tải trọng và mục đích sử dụng.', 'Ngày cần hiệu lực hoặc ngày hết hạn trên giấy chứng nhận cũ.'],
     faq: ['Có thể đặt mua TNDS ô tô trực tuyến không?', 'Bạn có thể mở trang đặt mua, điền thông tin xe và kiểm tra lại phí, thời hạn trước khi gửi. Nếu xe mới chưa có biển hoặc hồ sơ chưa khớp, gọi tư vấn trước khi đặt.'],
+    example: ['Tái tục cho xe gia đình hoặc đội xe công ty', 'Ví dụ chủ xe ở Bình Thạnh sắp hết hạn TNDS, nhưng xe vừa chuyển từ sử dụng cá nhân sang phục vụ công việc. Khi hỏi phí, gửi cả giấy đăng ký, cách xe đang được sử dụng và ngày giờ hết hạn, để tư vấn viên kiểm tra lại nhóm áp dụng.', 'Nếu mua cho nhiều xe, lập bảng theo biển số, số chỗ hoặc tải trọng, công việc của xe và giờ hết hạn. So ngày bắt đầu trên bản nháp với kỳ cũ trước khi xác nhận, nhất là khi các xe có ngày hết hạn khác nhau.'],
     imageText: ['Tra phí theo đúng nhóm xe', 'Kiểm tra giấy chứng nhận khi tái tục'],
   },
   {
     slug: 'vatchatxeoto', group: 'xe', name: 'Bảo hiểm vật chất xe ô tô PVI',
+    photo: { base: 'tphcm/vat-chat-xe-gara-tan-binh', alt: 'Kỹ thuật viên dùng đèn cầm tay soi một vết móp nhẹ trên cánh cửa xe tại gara', place: 'Tân Bình, TP.HCM' },
     original: '/san-pham/bao-hiem-vat-chat-xe/',
     intro: 'Khi mua bảo hiểm vật chất xe tại TP.HCM, hãy so giá trị bảo hiểm, mức khấu trừ và điều kiện chọn gara. Nếu xe thường đỗ ngoài trời hoặc đi qua tuyến hay ngập, hỏi rõ các điều khoản bổ sung trước khi chọn gói.',
     details: [
@@ -49,10 +52,12 @@ export const products = [
     ],
     docs: ['Giấy đăng ký, đời xe và mục đích sử dụng.', 'Giá trị xe đề nghị, ảnh hiện trạng nếu được yêu cầu.', 'Nhu cầu về gara, mức khấu trừ và quyền lợi bổ sung.'],
     faq: ['Cùng một loại xe, vì sao báo phí có thể khác nhau?', 'Giá trị xe, phạm vi quyền lợi, tình trạng sử dụng và mức khấu trừ có thể khác. Hãy yêu cầu báo phí ghi rõ các nội dung đó khi so sánh.'],
+    example: ['So báo phí khi muốn sửa ở gara quen', 'Chủ xe thường bảo dưỡng tại một gara ở Tân Bình có thể nêu tên gara ngay khi hỏi phí. Đưa cùng giá trị xe, gara và mức khấu trừ vào hai phương án để biết chênh lệch đến từ quyền lợi nào.', 'Khi xe từng sửa hoặc có vết xước sẵn, gửi thông tin và ảnh theo hướng dẫn trước khi phát hành. Kiểm tra điều khoản bổ sung đã ghi trên phương án, nhất là khi quan tâm đến ngập nước, thủy kích hoặc thay thế phụ tùng.'],
     imageText: ['So quyền lợi bảo hiểm vật chất xe', 'Đối chiếu gara và mức khấu trừ'],
   },
   {
     slug: 'chaynobatbuoc', group: 'tai-san', name: 'Bảo hiểm cháy nổ bắt buộc PVI',
+    photo: { base: 'tphcm/chay-no-bat-buoc-kho-tan-tao', alt: 'Hai người rà danh mục tài sản tại lối đi kho, cạnh kệ pallet và đường ống chữa cháy', place: 'Tân Tạo, Bình Tân, TP.HCM' },
     original: '/san-pham/chay-no-bat-buoc/', action: ['Tra loại cơ sở và phí', '#tra-cuu'],
     intro: 'Chủ kho, xưởng và cơ sở kinh doanh tại TP.HCM nên xác định cơ sở có thuộc diện phải mua trước khi tra phí. Hồ sơ báo phí cần ghi công năng thực tế, địa chỉ và giá trị tài sản theo từng khu.',
     details: [
@@ -61,10 +66,12 @@ export const products = [
     ],
     docs: ['Địa chỉ và công năng từng khu của cơ sở.', 'Danh mục tài sản và giá trị theo hạng mục.', 'Thông tin PCCC đang có và thay đổi so với kỳ trước.'],
     faq: ['Một doanh nghiệp có nhiều cơ sở thì gửi hồ sơ thế nào?', 'Lập danh sách từng địa chỉ và kê giá trị tài sản riêng cho từng nơi. Ghi rõ điểm nào là nơi sản xuất, nơi kinh doanh hoặc nơi lưu kho.'],
+    example: ['Kê khai cho kho thuê có khu đóng gói', 'Ví dụ doanh nghiệp thuê kho ở Bình Chánh, dùng một phần để lưu hàng và một phần để đóng gói. Khi tra cứu, ghi diện tích và hoạt động của từng khu. Kê nhà, máy đóng gói và hàng lưu kho thành các dòng riêng để đối chiếu.', 'Nếu kho có nhiều bên sử dụng, ghi rõ phần của doanh nghiệp và phần của chủ nhà kho. Gửi hồ sơ phòng cháy hiện có và nêu thay đổi về công năng hoặc giá trị tài sản nếu đang tái tục.'],
     imageText: ['Tra cơ sở thuộc diện bắt buộc', 'Tách giá trị từng nhóm tài sản'],
   },
   {
     slug: 'taisannhaxuong', group: 'tai-san', name: 'Bảo hiểm tài sản nhà xưởng PVI',
+    photo: { base: 'tphcm/tai-san-nha-xuong-hiep-phuoc', alt: 'Quản lý xưởng đi dọc lối an toàn giữa khu máy móc và khu hàng tồn', place: 'Hiệp Phước, Nhà Bè, TP.HCM' },
     original: '/san-pham/chay-no-bat-buoc/', originalLabel: 'Xem bảo hiểm cháy nổ bắt buộc cho nhà xưởng',
     intro: 'Doanh nghiệp tại TP.HCM nên lập danh mục nhà xưởng, máy móc và hàng tồn trước khi hỏi bảo hiểm tài sản. Nếu dùng nhà xưởng thuê, đọc hợp đồng thuê để xác định phần tài sản do từng bên chịu trách nhiệm.',
     details: [
@@ -73,10 +80,12 @@ export const products = [
     ],
     docs: ['Địa chỉ, công năng và quy mô từng điểm.', 'Danh mục nhà, thiết bị, hàng tồn và giá trị đề nghị.', 'Thông tin tài sản sở hữu, thuê và nhận giữ hộ.'],
     faq: ['Có thể hỏi bảo hiểm hàng nằm trong xưởng thuê không?', 'Có thể gửi đề nghị để xem xét. Ghi rõ chủ sở hữu hàng, nơi lưu kho và phần trách nhiệm theo hợp đồng thuê hoặc lưu kho.'],
+    example: ['Kê kho linh kiện và xưởng ở hai địa chỉ', 'Nếu linh kiện tập kết ở Tân Phú rồi chuyển đến xưởng tại Củ Chi, tạo bảng riêng cho từng nơi. Ghi giá trị hàng lưu ở mỗi địa chỉ và các thiết bị tự sở hữu hoặc thuê tại xưởng.', 'Khi trao đổi phương án, ghi riêng nhu cầu bảo hiểm thiệt hại tại kho với nhu cầu cho chặng vận chuyển. Khi xem bản nháp, kiểm tra danh mục, địa điểm và cơ sở xác định giá trị từng nhóm tài sản.'],
     imageText: ['Tách nhà xưởng, máy móc, hàng tồn', 'Khai tài sản theo từng địa điểm'],
   },
   {
     slug: 'congtrinhlapdat', group: 'tai-san', name: 'Bảo hiểm công trình và lắp đặt PVI',
+    photo: { base: 'tphcm/cong-trinh-lap-dat-thu-thiem', alt: 'Hai kỹ sư xem sơ đồ lắp đặt tại công trường Thủ Thiêm, với cầu Ba Son ở xa', place: 'Thủ Thiêm và cầu Ba Son, TP.HCM' },
     original: '/san-pham/bao-hiem-cong-trinh/',
     intro: 'Khi cần bảo hiểm xây dựng hoặc lắp đặt tại TP.HCM, gửi dự toán, hạng mục và tiến độ ngay từ đầu. Ghi rõ thời điểm chạy thử, bàn giao và tài sản đang sử dụng tại công trường.',
     details: [
@@ -85,10 +94,12 @@ export const products = [
     ],
     docs: ['Địa điểm, hạng mục công việc và dự toán.', 'Tiến độ xây lắp, chạy thử, bàn giao.', 'Thông tin công trình hiện hữu và khu vực lân cận.'],
     faq: ['Đổi tiến độ thi công có cần báo PVI không?', 'Hãy báo cho đơn vị cấp ngay khi lịch thay đổi để kiểm tra thời hạn còn lại và điều kiện điều chỉnh theo hợp đồng.'],
+    example: ['Cải tạo mặt bằng vẫn đang hoạt động', 'Ví dụ sửa một tầng văn phòng ở Quận 3 cũ trong khi các tầng khác vẫn làm việc. Gửi sơ đồ, phần thi công và tài sản có sẵn cần xem xét. Nêu rõ khu vực lối đi chung, cũng như việc bàn giao một phần trước khi hoàn tất.', 'Nếu hạng mục có thiết bị cần chạy thử, ghi ngày dự kiến và thời lượng chạy thử trong tiến độ. Khi nhận báo phí, kiểm tra phần xây lắp, phạm vi tài sản hiện hữu và các mốc thời gian đã được ghi nhận.'],
     imageText: ['Báo phí theo hạng mục xây lắp', 'Đối chiếu tiến độ và lịch chạy thử'],
   },
   {
     slug: 'hanghoaxuatnhapkhau', group: 'tai-san', name: 'Bảo hiểm hàng hóa xuất nhập khẩu PVI',
+    photo: { base: 'tphcm/hang-hoa-xuat-nhap-khau-cat-lai', alt: 'Nhân viên kho xem kiện hàng trên pallet, phía xa có cẩu bờ và container khu vực Cát Lái', place: 'Cát Lái, TP.HCM' },
     original: '/san-pham/hang-hoa-xuat-nhap-khau/',
     intro: 'Để báo phí lô hàng xuất nhập khẩu qua TP.HCM, chuẩn bị thông tin về loại hàng, giá trị, cách đóng gói và hành trình. Ghi cả chặng nội địa nếu cần bảo hiểm từ kho đến cảng hoặc từ cảng về kho.',
     details: [
@@ -97,10 +108,12 @@ export const products = [
     ],
     docs: ['Giá trị hàng và mô tả loại hàng.', 'Cách đóng gói, phương tiện và lịch đi.', 'Điểm nhận, điểm giao và điều kiện giao hàng.'],
     faq: ['Có thể bảo hiểm cả đoạn xe tải nội địa không?', 'Hãy ghi điểm đầu, điểm cuối và các chặng cần bảo hiểm khi hỏi báo phí. Phạm vi áp dụng được xác nhận trên chứng từ phát hành.'],
+    example: ['Khai đủ chặng kho, cảng và nơi giao cuối', 'Với một lô hàng đi từ kho tại TP.HCM đến cảng Cát Lái, cho biết chặng xe tải có nằm trong nhu cầu bảo hiểm hay không. Ghi cả nơi đến cuối cùng, thời gian chuyển tải nếu dự kiến có và đặc điểm bao bì.', 'Nếu gửi hàng nhiều chuyến, chuẩn bị lịch, giá trị từng lô và chứng từ đi kèm. Khi xem báo phí, kiểm tra điều kiện giao hàng và đoạn hành trình được ghi, nhất là khi lô hàng lưu tạm hoặc thay phương tiện.'],
     imageText: ['Khai đủ hành trình của lô hàng', 'Chuẩn bị giá trị và cách đóng gói'],
   },
   {
     slug: 'nguoilaodongthicong', group: 'con-nguoi', name: 'Bảo hiểm người lao động thi công PVI',
+    photo: { base: 'tphcm/lao-dong-thi-cong-cau-phu-my', alt: 'Tổ trưởng phổ biến công việc cho hai người lao động có đủ trang bị bảo hộ trước khi vào ca', place: 'Khu vực cầu Phú Mỹ, TP.HCM' },
     original: '/san-pham/bao-hiem-bat-buoc/', action: ['Xem mục bảo hiểm công trường', '#cong-truong'],
     intro: 'Nhà thầu có đội thi công tại TP.HCM nên gửi tên công trình, thời hạn thi công và số người theo nhóm việc. Danh sách phải phản ánh đội ngũ thực tế làm việc tại công trường.',
     details: [
@@ -109,10 +122,12 @@ export const products = [
     ],
     docs: ['Tên nhà thầu và địa chỉ công trình.', 'Nhóm việc và thời gian thực hiện.', 'Số người và danh sách theo hướng dẫn của PVI.'],
     faq: ['Thay người giữa kỳ thì làm gì?', 'Liên hệ đơn vị cấp để được hướng dẫn cách cập nhật và xác nhận thời điểm người mới được ghi nhận theo hồ sơ.'],
+    example: ['Đội thi công chuyển giữa hai công trình trong kỳ', 'Nếu nhà thầu có đội lắp máy làm ở Bình Chánh rồi chuyển sang một công trình khác, gửi lịch từng đội và địa chỉ của từng nơi. Nêu vai trò của lao động thuê phụ và những công việc có độ cao nếu có.', 'Khi chốt hồ sơ, kiểm tra cách cập nhật người vào hoặc rời công trường. Xác nhận danh sách và ngày có hiệu lực đã khớp với tiến độ trước khi đội bắt đầu phần việc mới.'],
     imageText: ['Khai nhóm việc tại công trường', 'Cập nhật danh sách khi thay người'],
   },
   {
     slug: 'tainan2424', group: 'con-nguoi', name: 'Bảo hiểm tai nạn 24/24 PVI',
+    photo: { base: 'tphcm/tai-nan-24-24-tan-phu', alt: 'Người phụ trách nhân sự trao đổi với trưởng ca bên cửa khu sản xuất', place: 'Tân Phú, TP.HCM' },
     original: '/san-pham/bao-hiem-tai-nan/', action: ['Tính phí tai nạn 24/24', '#tinh-phi'],
     intro: 'Doanh nghiệp ở TP.HCM có thể tra phí tai nạn 24/24 theo gói, số người và thời hạn. Khi hỏi báo phí chính thức, tách danh sách theo nhóm nghề và công việc thực tế.',
     details: [
@@ -121,10 +136,12 @@ export const products = [
     ],
     docs: ['Số người và nhóm nghề.', 'Gói quyền lợi và thời hạn mong muốn.', 'Tần suất thay đổi danh sách trong kỳ.'],
     faq: ['Chưa chốt danh sách có thể tra phí trước không?', 'Bạn có thể dùng số người dự kiến để xem mức tham khảo. Báo phí và giấy chứng nhận chính thức theo hồ sơ được chốt.'],
+    example: ['Lập báo phí riêng cho bộ phận kho và văn phòng', 'Một doanh nghiệp có nhân viên làm việc tại văn phòng ở Quận 7 cũ và đội kho ở Nhà Bè có thể chia hai nhóm trên bảng đề nghị. Ghi số người và nhiệm vụ của từng nhóm, kể cả người thường đi giao nhận hoặc kiểm hàng ngoài kho.', 'Khi so phương án, chọn cùng thời hạn và mức quyền lợi để so phí. Kiểm tra nội dung chi phí y tế, phạm vi theo công việc và cách cập nhật khi nhân viên chuyển bộ phận.'],
     imageText: ['Tra phí tai nạn theo gói và số người', 'Tách danh sách theo nhóm nghề'],
   },
   {
     slug: 'suckhoe', group: 'con-nguoi', name: 'Bảo hiểm sức khỏe PVI Care',
+    photo: { base: 'tphcm/pvi-care-binh-thanh', alt: 'Người đến khám trao đổi tại quầy tiếp nhận, với đường chân trời Bình Thạnh ngoài cửa kính', place: 'Bình Thạnh, TP.HCM' },
     original: '/san-pham/bao-hiem-suc-khoe/',
     intro: 'Khi hỏi PVI Care tại TP.HCM, chọn từ nhu cầu nội trú, ngoại trú và cơ sở y tế thường sử dụng. Cho biết số người, nhóm tuổi và thời điểm muốn bắt đầu để nhận phương án phù hợp.',
     details: [
@@ -133,10 +150,12 @@ export const products = [
     ],
     docs: ['Số người, nhóm tuổi và ngày cần hiệu lực.', 'Nhu cầu nội trú, ngoại trú và cơ sở thường khám.', 'Tờ khai theo hướng dẫn của đơn vị tiếp nhận.'],
     faq: ['Bệnh viện gần nhà có được bảo lãnh viện phí không?', 'Danh sách áp dụng theo chương trình và có thể thay đổi. Hãy đưa tên cơ sở và chương trình để PVI đối chiếu trước khi mua.'],
+    example: ['Kiểm tra chương trình theo bệnh viện gia đình thường đến', 'Ví dụ một gia đình ở khu vực Quận 10 cũ có nhu cầu khám ngoại trú và thỉnh thoảng nhập viện. Khi hỏi PVI Care, gửi nhóm tuổi, số người, cơ sở thường khám và nhu cầu cụ thể của từng người để được tư vấn.', 'Khi xem báo phí, hỏi tên chương trình và phạm vi bảo lãnh áp dụng tại cơ sở đó. Đối chiếu giới hạn nội trú, ngoại trú và trường hợp cần ứng trước chi phí trước khi đăng ký.'],
     imageText: ['So quyền lợi nội trú và ngoại trú', 'Kiểm tra nơi bảo lãnh viện phí'],
   },
   {
     slug: 'dulichquocte', group: 'con-nguoi', name: 'Bảo hiểm du lịch quốc tế PVI',
+    photo: { base: 'tphcm/du-lich-quoc-te-tan-son-nhat', alt: 'Hai hành khách xem lịch chuyến đi bên vali ở sảnh sân bay Tân Sơn Nhất', place: 'Tân Sơn Nhất, TP.HCM' },
     original: '/san-pham/bao-hiem-du-lich/', action: ['Tính phí theo chuyến đi', '#tinh-phi'],
     intro: 'Khách xuất phát từ TP.HCM có thể tra phí bảo hiểm du lịch quốc tế theo điểm đến, thời gian và chương trình. Nếu cần giấy chứng nhận cho visa, đối chiếu yêu cầu của nơi tiếp nhận trước khi chọn mức quyền lợi.',
     details: [
@@ -145,6 +164,7 @@ export const products = [
     ],
     docs: ['Điểm đến, ngày đi và ngày về.', 'Số người, độ tuổi và mục đích chuyến đi.', 'Yêu cầu giấy chứng nhận của nơi nhận hồ sơ visa nếu có.'],
     faq: ['Gắn mốc thời gian theo ngày bay hay ngày tại điểm đến?', 'Gửi đầy đủ hành trình và giờ đến dự kiến để được hướng dẫn chọn thời hạn bao phủ phù hợp với hồ sơ chuyến đi.'],
+    example: ['Đặt bảo hiểm cho chuyến có quá cảnh', 'Nếu khởi hành từ TP.HCM, quá cảnh rồi đi tiếp, gửi lịch theo từng chặng và ngày về dự kiến. Khi hỏi bảo hiểm cho hồ sơ visa, gửi cả yêu cầu của nơi tiếp nhận để đối chiếu phạm vi lãnh thổ và thời hạn.', 'Khi nhận giấy chứng nhận, kiểm tra tên theo hộ chiếu, điểm đến và ngày hiệu lực. Nếu dời lịch, liên hệ đầu mối cấp để hỏi cách điều chỉnh trước ngày khởi hành.'],
     imageText: ['Tra phí theo điểm đến và thời hạn', 'Kiểm tra giấy chứng nhận cho visa'],
   },
 ];
