@@ -64,6 +64,7 @@ Tầng 3  BÀI HỖ TRỢ (nếu có)      bài viết bổ trợ cho đúng 1 t
 
 **`/tin-tuc/` Tin tức**: tin đơn vị, pháp lý mới, tin sản phẩm. Bài theo khu vực TP.HCM (`/tin-tuc/mua-bao-hiem-pvi-<quận>/`), Đồng Nai, Vũng Tàu hiện cũng nằm ở đây.
 - `/tin-tuc/mua-bao-hiem-y-te-online/` hướng dẫn đăng ký và gia hạn BHYT hộ gia đình tại TP.HCM, hỗ trợ trang tính mức đóng BHYT.
+- `/tin-tuc/lich-nghi-tet-nguyen-dan-2027/` lịch nghỉ Tết Đinh Mùi theo Bộ Nội vụ và mẫu thông báo cho doanh nghiệp.
 
 **`/binhduong/` Bình Dương** (nhánh khu vực, đúng như ví dụ trong sơ đồ, dựng bằng `tools/gen-binhduong.mjs`)
 - Nhánh t2a, **các dịch vụ ở Bình Dương**:
