@@ -1,4 +1,5 @@
 import { esc } from '../chrome.mjs';
+import { moreModelFeeData } from '../data/car-fee-models-batch3.mjs';
 import { carFeeAtRate, carFeeBands, carFeeRows, carFeeText, formatCarMoney as money, carElectricTerms } from '../car-fee-rates.mjs';
 
 const models = [
@@ -92,6 +93,7 @@ const models = [
     answer: 'Ở hai giá hãng trong ví dụ, Comfort tính 8.268.800 đồng còn Premium tính 8.508.500 đồng mỗi năm, vì Premium có số tiền bảo hiểm cao hơn.',
     banner: ['SO PHÍ VF 6 COMFORT VÀ PREMIUM', 'KIỂM KÊ KHAI PIN VÀ ĐỘNG CƠ ĐIỆN'],
   },
+  ...moreModelFeeData,
 ];
 
 const feeText = (rate, value) => `${rate === carFeeBands.at(-1).rate ? 'Chỉ từ ' : ''}${money(carFeeAtRate(value * 1_000_000, rate))} đồng/năm`;
