@@ -98,6 +98,100 @@
   font-size: 16px;
 }
 
+.car-fee-calculate {
+  scroll-margin-top: 100px;
+  margin-bottom: 28px;
+  padding: clamp(14px, 3vw, 24px);
+  border: 1px solid #cbd9e7;
+  border-radius: 14px;
+  background: #f5f8fc;
+}
+
+.car-fee-calculate h2 {
+  margin: 0 0 8px;
+  overflow-wrap: anywhere;
+}
+
+.car-fee-calculate p {
+  margin: 10px 0;
+}
+
+.car-fee-inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 12px;
+  margin-block: 14px 8px;
+}
+
+.car-fee-inputs label {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  font-weight: 700;
+}
+
+.car-fee-inputs input,
+.car-fee-inputs select,
+.car-fee-price-buttons button {
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid #7489a1;
+  border-radius: 8px;
+  font: inherit;
+  color: #183665;
+  background: #fff;
+}
+
+.car-fee-inputs input,
+.car-fee-inputs select {
+  width: 100%;
+  min-width: 0;
+}
+
+.car-fee-price-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.car-fee-price-buttons button {
+  white-space: normal;
+  cursor: pointer;
+}
+
+.car-fee-electric-choice,
+.car-fee-tariff summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.car-fee-tariff summary {
+  display: list-item;
+  padding-block: 10px;
+  box-sizing: border-box;
+}
+
+.car-fee-tariff table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.car-fee-tariff :is(th, td) {
+  padding: 8px;
+  text-align: left;
+  border-top: 1px solid #cbd9e7;
+}
+
+.car-fee-result output {
+  color: #a61c22;
+  font-weight: 800;
+}
+
 .car-fee-filter {
   max-width: 560px;
   margin-block-end: 28px;
@@ -238,6 +332,9 @@
 }
 
 .car-fee-brand li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
   border-top: 1px solid #d9e2eb;
   line-height: 1.45;
 }
@@ -256,6 +353,20 @@
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+.car-fee-model {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+.car-fee-brand .car-fee-guide {
+  flex-shrink: 0;
+  font-size: 13px;
+}
+
+.car-fee-model[aria-current] {
+  color: #a61c22;
 }
 
 .car-fee-directory [hidden] {

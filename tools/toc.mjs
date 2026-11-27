@@ -48,10 +48,10 @@ export function tocEntries(html, declared = []) {
 }
 
 /** Khối mục lục, cùng markup với bài kiến thức (.kb-toc). inline=true: ô nằm đầu thân bài (bài một cột). */
-export function tocHtml(entries, { inline = false } = {}) {
+export function tocHtml(entries, { inline = false, startOpen = inline, label = 'Trong bài này' } = {}) {
   if (entries.length < 2) return '';
   // Dùng <div role="navigation"> chứ không <nav>: style.css ẩn mọi thẻ nav dưới 820px (luật của menu đầu trang).
-  return `<div class="kb-toc${inline ? ' kb-toc-inline' : ''}" role="navigation" aria-label="Mục lục bài viết"><details${inline ? ' open' : ''}><summary>Trong bài này <span>${entries.length} mục</span></summary><ol>${entries.map(([id, label]) => `<li><a href="#${esc(id)}">${esc(label)}</a></li>`).join('')}</ol></details></div>`;
+  return `<div class="kb-toc${inline ? ' kb-toc-inline' : ''}" role="navigation" aria-label="Mục lục bài viết"><details${startOpen ? ' open' : ''}><summary>${esc(label)} <span>${entries.length} mục</span></summary><ol>${entries.map(([id, label]) => `<li><a href="#${esc(id)}">${esc(label)}</a></li>`).join('')}</ol></details></div>`;
 }
 
 /**

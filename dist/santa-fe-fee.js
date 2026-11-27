@@ -1,30 +1,40 @@
-const santaFeCalculator = document.querySelector('[data-santa-fe-fee]');
+const carFeeCalculator = document.querySelector('[data-santa-fe-fee], [data-car-fee-calculator]');
 
-if (santaFeCalculator) {
-  const input = santaFeCalculator.querySelector('input');
-  const profile = santaFeCalculator.querySelector('select');
-  const [preferred, standard] = santaFeCalculator.querySelectorAll('output');
-  const threshold = Number(santaFeCalculator.dataset.threshold);
+if (carFeeCalculator) {
+  const input = carFeeCalculator.querySelector('input');
+  const profile = carFeeCalculator.querySelector('select');
+  const output = carFeeCalculator.querySelector('output');
+  const bands = [...carFeeCalculator.querySelectorAll('[data-rate-bps]')].map((row) => ({
+    min: Number(row.dataset.min) * 1_000_000,
+    max: row.dataset.max ? Number(row.dataset.max) * 1_000_000 : Infinity,
+    rate: Number(row.dataset.rateBps),
+    inclusiveMax: row.hasAttribute('data-inclusive-max'),
+  }));
   const currency = new Intl.NumberFormat('vi-VN');
-  const premium = (value, output) => {
-    const fee = Math.round(value * (Number(output.dataset.rateBps) / 10_000));
-    return `${currency.format(fee)} đồng`;
-  };
+  const percentage = new Intl.NumberFormat('vi-VN', { style: 'percent', minimumFractionDigits: 2 });
 
   const update = () => {
-    if (profile.value === 'review') {
-      preferred.value = 'Liên hệ chuyên viên để được báo phí';
-      standard.value = preferred.value;
+    if (profile.value !== 'standard') {
+      output.value = 'Liên hệ chuyên viên để được báo phí';
       return;
     }
     const value = Math.round(input.valueAsNumber * 1_000_000);
     if (!input.validity.valid || !Number.isSafeInteger(value)) {
-      preferred.value = 'Nhập giá trị xe hợp lệ';
-      standard.value = 'Nhập giá trị xe hợp lệ';
+      output.value = input.value ? 'Nhập giá trị xe hợp lệ' : 'Nhập giá trị bảo hiểm để tính phí';
       return;
     }
-    preferred.value = value > threshold ? premium(value, preferred) : 'Chỉ xét xe trên 800 triệu đồng';
-    standard.value = premium(value, standard);
+    const band = bands.find(({ min, max, inclusiveMax }) => {
+      if (max === Infinity) return value > min;
+      return value >= min && (value < max || (inclusiveMax && value === max));
+    });
+    if (!band) {
+      output.value = 'Liên hệ chuyên viên để được báo phí';
+      return;
+    }
+    const rate = band.rate / 10_000;
+    const fee = Math.round(value * rate);
+    const prefix = band.max === Infinity ? 'Chỉ từ ' : '';
+    output.value = `${prefix}${currency.format(fee)} đồng/năm (${percentage.format(rate)})`;
   };
 
   input.addEventListener('input', update);

@@ -479,10 +479,12 @@ function renderKb(A) {
   const bodyHtml = ensureH2Ids(A.body({ img, pic, ctaRow }));
   const endHtml = A.endMatter ? ensureH2Ids(A.endMatter()) : '';
   const faq = !A.faqs.length ? '' : `<h2 id="cau-hoi">Câu hỏi thường gặp</h2><div class="kb-faq">${A.faqs.map((f) => `<details><summary>${t(f.question)}</summary><p>${t(f.answer)}</p></details>`).join('')}</div>`;
-  const toc = tocHtml(tocEntries(bodyHtml + '<h2 id="san-pham">Sản phẩm liên quan</h2>' + (A.faqs.length ? '<h2 id="cau-hoi">Câu hỏi thường gặp</h2>' : '') + endHtml, A.toc.map(([id, label]) => [id, clean(label)])), { inline: topTools });
+  const toc = tocHtml(tocEntries(bodyHtml + '<h2 id="san-pham">Sản phẩm liên quan</h2>' + (A.faqs.length ? '<h2 id="cau-hoi">Câu hỏi thường gặp</h2>' : '') + endHtml, A.toc.map(([id, label]) => [id, clean(label)])), { inline: topTools, ...A.tocOptions });
   const tocScript = '<script>(function(){var d=document.querySelector(\'.kb-toc details\');if(d&&window.matchMedia(\'(min-width:901px)\').matches)d.open=true;})();</script>';
   const rating = topTools || p.ratingTop ? `<p class="kb-rating" data-rating-top><strong>Đánh giá bài viết</strong>${p.ratingTop ? '<span aria-hidden="true">☆☆☆☆☆</span>' : ''}<span data-rating-status role="status">Đang tải đánh giá…</span><a href="#fb-h" data-rating-link hidden>Gửi đánh giá</a></p>` : '';
-  const articleIntro = `<p class="kb-lead">${t(p.lead)}</p>
+  const lead = t(p.lead);
+  const highlight = A.leadHighlight && t(A.leadHighlight);
+  const articleIntro = `<p class="kb-lead">${highlight ? lead.replace(highlight, `<strong class="kb-lead-highlight">${highlight}</strong>`) : lead}</p>
 <p class="kb-meta"><span>Công ty Bảo hiểm PVI Thành Đô</span><time datetime="${p.date}">${esc(p.dateText)}</time>${p.updated ? `<time datetime="${p.updated}">Cập nhật ${esc(p.updatedText)}</time>` : ''}<span>${p.readMin} phút đọc</span></p>`;
   const main = `
 <article class="kb">

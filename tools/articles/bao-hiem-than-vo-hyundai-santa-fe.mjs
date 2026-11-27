@@ -1,13 +1,17 @@
+import { carFeeAtRate, carFeeBands, carFeeRows, formatCarMoney as money } from '../car-fee-rates.mjs';
+
 const slug = 'bao-hiem-than-vo-hyundai-santa-fe';
-const cover = 'bao-hiem-than-vo-hyundai-santa-fe-pvi';
+const cover = 'bao-hiem-than-vo-hyundai-santa-fe-pvi-v2';
 const inspection = 'kiem-tra-hyundai-santa-fe';
-const exampleValue = 917_000_000;
-const discountThreshold = 800_000_000;
-const preferredRate = 85;
-const referenceRate = 100;
-const money = (value) => new Intl.NumberFormat('vi-VN').format(value);
-const preferredFee = money(Math.round(exampleValue * preferredRate / 10_000));
-const referenceFee = money(Math.round(exampleValue * referenceRate / 10_000));
+const marketLow = 869_000_000;
+const marketHigh = 965_000_000;
+const exampleValue = (marketLow + marketHigh) / 2;
+const preferredRate = carFeeBands.at(-1).rate;
+const feeAtRate = (value, rate) => money(carFeeAtRate(value, rate));
+const preferredFee = feeAtRate(exampleValue, preferredRate);
+const feeRange = (rate) => feeAtRate(marketLow, rate) + ' đến ' + feeAtRate(marketHigh, rate) + ' đồng/năm';
+const marketRange = money(marketLow / 1_000_000) + '–' + money(marketHigh / 1_000_000) + ' triệu đồng';
+export const leadHighlight = 'thấp nhất chỉ từ ' + feeAtRate(marketLow, preferredRate) + ' đồng/năm';
 
 export const post = {
   slug,
@@ -16,7 +20,7 @@ export const post = {
   dateText: '25/11/2026',
   cat: 'Kiến thức · Bảo hiểm vật chất xe',
   title: 'Bảo hiểm thân vỏ Hyundai Santa Fe PVI giá bao nhiêu?',
-  lead: 'PVI Thành Đô áp dụng mức phí tham khảo trong bài cho Hyundai Santa Fe mới hoặc đã sử dụng đến 3 năm. Với xe tham gia bảo hiểm 917 triệu đồng và đủ điều kiện áp dụng tỷ lệ 0,85%, phí dự tính là ' + preferredFee + ' đồng một năm.',
+  lead: 'Hyundai Santa Fe 2023 bản dầu cao cấp được rao ở mức ' + marketRange + ' trong hai tin tại TP.HCM. Nếu giá trị bảo hiểm nằm trong khoảng này và hồ sơ đủ điều kiện tính 0,85%, phí dự tính ' + leadHighlight + '. Tỷ lệ này được xét cho xe mới hoặc đã sử dụng đến 3 năm, với số tiền bảo hiểm trên 800 triệu đồng.',
   image: '/assets/' + cover + '.webp',
   imageWidth: 1200,
   imageHeight: 630,
@@ -32,6 +36,7 @@ export const seo = {
 };
 export const stylesheet = '/santa-fe-fee.css';
 export const script = '/santa-fe-fee.js';
+export const tocOptions = { startOpen: false, label: 'Tóm tắt nội dung' };
 
 export const toc = [
   ['bang-tinh-phi', 'Tính thử phí bảo hiểm Santa Fe'],
@@ -44,15 +49,15 @@ export const toc = [
 ];
 
 export const faqs = [
-  { question: 'Santa Fe có giá trị bảo hiểm đúng 800 triệu đồng có được tính 0,85% không?', answer: 'Mức 0,85% trong ví dụ dành cho xe mới hoặc đã sử dụng đến 3 năm, có số tiền bảo hiểm trên 800 triệu đồng và hồ sơ đủ điều kiện. Với xe được chấp thuận đúng 800 triệu đồng, bạn có thể lấy mức 1% để dự trù 8 triệu đồng cho 12 tháng nếu hồ sơ phù hợp.' },
+  { question: 'Santa Fe có giá trị bảo hiểm đúng 800 triệu đồng thì phí bao nhiêu?', answer: 'Theo bảng tham khảo, đúng 800 triệu đồng áp dụng tỷ lệ 1,19%, tương đương 9.520.000 đồng/năm nếu hồ sơ đủ điều kiện. Xe có số tiền bảo hiểm trên 800 triệu đồng mới được xét mức tối thiểu 0,85%.' },
   { question: 'Santa Fe trên 3 năm hoặc có tỷ lệ bồi thường cao thì tính phí thế nào?', answer: 'PVI Thành Đô sẽ xem xét và điều chỉnh phí theo tuổi xe, tình trạng xe, quyền lợi bổ sung và lịch sử bồi thường. Bạn có thể gửi thông tin xe và hợp đồng kỳ trước cho chuyên viên chăm sóc khách hàng qua Zalo 0938 072 236 để được báo phí cụ thể.' },
   { question: 'Có thể lấy giá mua Santa Fe năm trước để tính phí năm nay không?', answer: 'Bạn có thể gửi hóa đơn hoặc giá mua cũ làm thông tin tham khảo. Khi tái tục, PVI xem xét giá trị xe tại thời điểm tham gia, theo phiên bản, đời xe và tình trạng thực tế. Mốc trên hợp đồng cũ có thể khác số tiền bảo hiểm sẽ được chấp thuận cho kỳ mới.' },
   { question: 'Mức 0,85% đã gồm sửa xưởng Hyundai và thủy kích chưa?', answer: 'Hãy xem báo giá ghi rõ điều khoản sửa tại cơ sở chính hãng, thiệt hại động cơ do nước và mức khấu trừ của từng quyền lợi. Phép tính 0,85% trong bài giúp bạn dự trù chi phí. Bản chào phí sẽ cho biết những quyền lợi nào được tính trong tổng tiền và thuế GTGT được ghi thế nào.' },
 ];
 
 export const sources = [
-  ['Giá rao Hyundai Santa Fe Cao cấp 2.2L HTRAC đời 2023', '', 'Bonbanh · hai tin tại TP.HCM, mã 7062978 và 7036022 · đối chiếu 25/11/2026'],
-  ['Mức phí tham khảo 0,85%, 1% và điều kiện áp dụng', '', 'Thông tin tư vấn do Bảo hiểm PVI Thành Đô cung cấp · 25/11/2026'],
+  ['Giá rao Hyundai Santa Fe Cao cấp 2.2L HTRAC đời 2023', '', 'Bonbanh · hai tin tại TP.HCM, mã 7062978 và 7036022 · đối chiếu 26/11/2026'],
+  ['Bốn mốc tỷ lệ phí tham khảo và điều kiện áp dụng', '', 'Thông tin tư vấn do Bảo hiểm PVI Thành Đô cung cấp · 26/11/2026'],
   ['Hyundai Thành Công Việt Nam ra mắt Hyundai Auto Care', '', 'Tập đoàn Thành Công · 03/03/2026'],
   ['Bảo hiểm PVI tham gia triển khai Hyundai Auto Care', '', 'Tổng công ty Bảo hiểm PVI · 04/03/2026'],
   ['Danh sách gara và showroom hợp tác với Bảo hiểm PVI', '', 'PVI Digital · danh sách cập nhật 31/03/2025, đối chiếu 25/11/2026'],
@@ -82,9 +87,13 @@ const hyundaiWorkshops = [
 export function body({ pic }) {
   return `
 <h2 id="bang-tinh-phi">Tính thử phí bảo hiểm thân vỏ Hyundai Santa Fe</h2>
-<p>Phí vật chất xe dự tính bằng <strong>số tiền bảo hiểm nhân với tỷ lệ phí</strong>. Bảng dưới điền sẵn giá trị 917 triệu đồng. Bạn có thể thay bằng số tiền muốn bảo hiểm cho chiếc Santa Fe của mình để xem kết quả theo hai mốc.</p>
+<p>Phí vật chất xe dự tính bằng <strong>số tiền bảo hiểm nhân với tỷ lệ phí</strong>. Với khoảng giá rao ${marketRange}, có thể dự trù:</p>
+<ul class="santa-fe-market-range">
+  <li><strong>0,85% nếu đủ điều kiện: ${feeRange(preferredRate)}.</strong></li>
+</ul>
+<p>Bảng tính điền sẵn ${exampleValue / 1_000_000} triệu đồng, là mức giữa của hai giá rao. Bạn có thể nhập số tiền bảo hiểm của xe mình để tính lại.</p>
 <p>Bảng phí tham khảo áp dụng cho <strong>xe mới và xe đã sử dụng đến 3 năm</strong>. Xe trên 3 năm hoặc hồ sơ có tỷ lệ bồi thường cao sẽ được xem xét và điều chỉnh phí. Bạn có thể <a class="kb-link" href="#nhan-bao-phi">liên hệ chuyên viên chăm sóc khách hàng</a> để biết phí cho xe của mình.</p>
-<div class="santa-fe-fee" data-santa-fe-fee data-threshold="${discountThreshold}">
+<div class="santa-fe-fee" data-santa-fe-fee>
   <label for="santa-fe-vehicle-profile">Hồ sơ xe</label>
   <select id="santa-fe-vehicle-profile">
     <option value="standard">Xe mới hoặc sử dụng đến 3 năm</option>
@@ -93,24 +102,24 @@ export function body({ pic }) {
   <label for="santa-fe-value">Giá trị bảo hiểm của xe <span>(triệu đồng)</span></label>
   <input id="santa-fe-value" type="number" inputmode="decimal" min="1" step="any" value="${exampleValue / 1_000_000}" aria-describedby="santa-fe-value-help" required>
   <p id="santa-fe-value-help">Ví dụ nhập 917 cho 917 triệu đồng.</p>
+  <p class="santa-fe-estimate"><strong>Phí dự tính:</strong> <output for="santa-fe-value santa-fe-vehicle-profile">Chỉ từ ${preferredFee} đồng/năm (0,85%)</output></p>
   <div class="kb-table">
-    <table aria-label="Phí bảo hiểm thân vỏ Santa Fe dự tính">
-      <thead><tr><th scope="col">Tỷ lệ dùng để tính</th><th scope="col">Phí dự tính trong 12 tháng</th></tr></thead>
+    <table aria-label="Tỷ lệ phí bảo hiểm theo giá trị xe">
+      <thead><tr><th scope="col">Số tiền bảo hiểm</th><th scope="col">Tỷ lệ phí tham khảo</th></tr></thead>
       <tbody>
-        <tr><td><strong>0,85%</strong> · Xe trên 800 triệu đồng, hồ sơ đủ điều kiện</td><td><output for="santa-fe-value" data-rate-bps="${preferredRate}">${preferredFee} đồng</output></td></tr>
-        <tr><td><strong>1,00%</strong> · Mức tham khảo để đối chiếu</td><td><output for="santa-fe-value" data-rate-bps="${referenceRate}">${referenceFee} đồng</output></td></tr>
+${carFeeRows()}
       </tbody>
     </table>
   </div>
   <noscript><p>Bảng đang hiển thị kết quả cho xe 917 triệu đồng. Bật JavaScript để thử giá trị khác.</p></noscript>
 </div>
-<p>Hai dòng dùng cùng số tiền bảo hiểm để bạn thấy số tiền thay đổi theo tỷ lệ. Khi nhận chào phí, hãy kiểm tra quyền lợi nào đã được tính vào tổng tiền, số tiền tự trả mỗi vụ và tổng phí đã gồm thuế GTGT hay chưa.</p>
+<p>Giá trị xe dưới 300 triệu đồng cần hỏi báo phí riêng. Khi nhận báo giá, bạn nên kiểm tra các điều khoản đi kèm, mức khấu trừ mỗi vụ và tổng phí đã gồm thuế GTGT hay chưa.</p>
 
 <h2 id="yeu-to-tinh-phi">Bốn yếu tố quyết định phí bảo hiểm Santa Fe</h2>
 <p>PVI Thành Đô xem giá trị xe, năm sản xuất, điều khoản khách chọn và lịch sử bồi thường trước khi báo phí. Mỗi yếu tố trả lời một câu hỏi khác nhau về chiếc xe và phạm vi khách muốn bảo hiểm.</p>
 
 <h3>1. Giá trị thị trường của xe</h3>
-<p>Bắt đầu bằng việc tra xe cùng phiên bản và năm sản xuất trên Bonbanh. Hai tin rao Hyundai Santa Fe 2023 bản dầu cao cấp 2.2L HTRAC tại TP.HCM có giá 869 triệu và 965 triệu đồng trong lần đối chiếu tháng 11/2026. Bình quân của hai tin là 917 triệu đồng.</p>
+<p>Hai chiếc Santa Fe 2023 bản dầu cao cấp ở TP.HCM được rao giá 869 và 965 triệu đồng trên Bonbanh. Bài dùng khoảng giá này để tính thử phí bảo hiểm.</p>
 <p>Đó là mốc dự trù từ giá rao. Khi định giá chiếc xe cụ thể, còn cần đối chiếu quãng đường đã đi, tình trạng xe và hồ sơ thực tế. Nếu bạn đã có bản chào phí hoặc hợp đồng kỳ trước, hãy xem số tiền bảo hiểm được ghi trên đó để hỏi phần chênh lệch.</p>
 
 <h3>2. Năm sản xuất</h3>
@@ -129,8 +138,8 @@ export function body({ pic }) {
 </figure>
 
 <h2 id="phi-tu-085">Santa Fe trên 800 triệu đồng khi nào được xét phí 0,85%?</h2>
-<p>PVI Thành Đô có thể xem xét tỷ lệ từ 0,85% cho xe mới hoặc sử dụng đến 3 năm nếu số tiền bảo hiểm được chấp thuận trên 800 triệu đồng và hồ sơ đủ điều kiện. Trong cùng nhóm tuổi xe, mức từ 1% dùng để tham khảo cho các xe còn lại có hồ sơ phù hợp. Xe cũ hơn hoặc có tỷ lệ bồi thường cao cần chuyên viên kiểm tra trước khi báo phí.</p>
-<p>Nếu bạn thấy giá thị trường khoảng 917 triệu đồng và cần dự trù ngân sách, có thể dùng ngay kết quả 7.794.500 đồng ở kịch bản 0,85%. Nếu chọn thêm điều khoản hoặc hồ sơ được áp dụng tỷ lệ khác, hãy lấy số cuối trên bản chào phí để quyết định.</p>
+<p>PVI Thành Đô có thể xem xét mức tối thiểu 0,85% cho xe mới hoặc sử dụng đến 3 năm nếu số tiền bảo hiểm trên 800 triệu đồng và hồ sơ đủ điều kiện. Từ 300 đến 800 triệu đồng, xem tỷ lệ theo từng mốc trong bảng. Xe cũ hơn hoặc có tỷ lệ bồi thường cao cần chuyên viên kiểm tra trước khi báo phí.</p>
+<p>Với khoảng giá rao ${marketRange}, mức 0,85% tương ứng khoảng ${feeRange(preferredRate)} nếu PVI chấp thuận giá trị bảo hiểm và hồ sơ. Bạn có thể dùng bảng tính để thử số khác khi đã có định giá cho xe của mình.</p>
 
 <h2 id="so-bao-gia">So hai báo giá cho cùng một chiếc Santa Fe thế nào?</h2>
 <p>Hãy đưa hai báo giá về cùng số tiền bảo hiểm, cùng thời hạn và cùng quyền lợi chính. Một dòng tổng phí chỉ cho bạn biết số tiền đóng. Tên xưởng, mức tự trả và điều khoản đi kèm giúp bạn biết quyền lợi mình đang mua.</p>

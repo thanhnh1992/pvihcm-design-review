@@ -1,6 +1,7 @@
 import { normalizeCarName } from './car-fee-normalize.js';
 
 const carFilter = document.querySelector('.car-fee-filter');
+const calculator = document.querySelector('#tinh-phi');
 
 if (carFilter) {
   const search = carFilter.querySelector('input');
@@ -11,7 +12,7 @@ if (carFilter) {
       group,
       models: [...group.querySelectorAll('li')].map((item) => ({
         item,
-        name: normalizeCarName(brand + item.textContent),
+        name: normalizeCarName(brand + item.dataset.model),
       })),
     };
   });
@@ -39,4 +40,48 @@ if (carFilter) {
   carFilter.hidden = false;
   search.addEventListener('input', filter);
   filter();
+}
+
+if (calculator) {
+  const heading = calculator.querySelector('h2');
+  const value = calculator.querySelector('input[type="number"]');
+  const electric = calculator.querySelector('[data-electric-choice]');
+  const terms = calculator.querySelector('[data-electric-terms]');
+  const priceTarget = calculator.querySelector('[data-price-example-target]');
+  const examples = new Map([...calculator.querySelectorAll('template[data-price-example]')]
+    .map((template) => [template.dataset.priceExample, template]));
+  const updateTerms = () => { terms.hidden = !electric.checked; };
+  electric.addEventListener('change', updateTerms);
+  updateTerms();
+
+  let selected;
+  document.querySelector('.car-fee-groups').addEventListener('click', (event) => {
+    const link = event.target.closest('.car-fee-model');
+    if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    const model = link.closest('[data-model]').dataset.model;
+    const brand = link.closest('[data-brand]').dataset.brand;
+    const name = brand + ' ' + model;
+    const example = examples.get(name);
+    selected?.removeAttribute('aria-current');
+    selected = link;
+    selected.setAttribute('aria-current', 'true');
+    heading.textContent = 'Tính phí bảo hiểm ' + name;
+    priceTarget.replaceChildren();
+    if (example) priceTarget.append(example.content.cloneNode(true));
+    priceTarget.hidden = !example;
+    electric.checked = Boolean(example?.hasAttribute('data-electric'));
+    updateTerms();
+    value.value = '';
+    value.dispatchEvent(new Event('input'));
+    heading.focus({ preventScroll: true });
+    calculator.scrollIntoView({ block: 'start' });
+  });
+
+  priceTarget.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-example-value]');
+    if (!button) return;
+    value.value = button.dataset.exampleValue;
+    value.dispatchEvent(new Event('input'));
+  });
 }

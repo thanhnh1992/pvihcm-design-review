@@ -1,3 +1,30 @@
+.kb-lead-highlight,
+.santa-fe-market-range strong,
+.santa-fe-lowest strong,
+.santa-fe-fee .santa-fe-estimate output {
+  color: #a61c22;
+  font-weight: 800;
+}
+
+.kb-toc-inline summary span {
+  margin-left: auto;
+}
+
+.kb-toc-inline summary::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  margin: 0 4px 4px 12px;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.kb-toc-inline details[open] summary::after {
+  margin: 4px 4px 0 12px;
+  transform: rotate(225deg);
+}
+
 .santa-fe-fee {
   margin-block: 24px;
   padding: clamp(14px, 4vw, 24px);
