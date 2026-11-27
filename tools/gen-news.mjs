@@ -525,7 +525,7 @@ ${feedbackBlock(p)}
     description: A.seo.description,
     image: p.socialImage || p.image,
     canonical: p.canonical,
-    head: `${coverMeta}${articleJsonLd({ type: p.schemaType || 'Article', path: P, canonical: p.canonical, title: p.title, description: p.lead, image: p.image, date: p.date, updated: p.updated })}<script type="application/ld+json">${JSON.stringify({
+    head: `${p.noindex ? '<meta name="robots" content="noindex,follow">' : ''}${coverMeta}${articleJsonLd({ type: p.schemaType || 'Article', path: P, canonical: p.canonical, title: p.title, description: p.lead, image: p.image, date: p.date, updated: p.updated })}<script type="application/ld+json">${JSON.stringify({
       '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: SITE + '/' },
         ...crumbs.map(([n, h], i) => ({ '@type': 'ListItem', position: i + 2, name: n, item: SITE + h })),

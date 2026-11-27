@@ -28,17 +28,23 @@ const published = {
 };
 const quoteOnly = new Set();
 const newPriceExamples = [];
+const curatedBrands = new Set(['Volvo', 'Mercedes-Benz', 'Subaru', 'VinFast']);
 
 for (const { brand, model, aliases, post, data } of modelFeeArticles) {
+  if (data.archiveFromListing) continue;
   const links = published[brand] ??= {};
   links[model] = post.path;
   for (const name of aliases) links[name] = post.path + (data.checks ? '#xe-' + carFeeModelAnchor(name) : '');
   if (!data.editorial) continue;
   const review = data.profile?.startsWith('used') || data.profile === 'service';
-  if (review) for (const name of [model, ...aliases]) quoteOnly.add(brand + ' ' + name);
+  for (const name of [model, ...aliases]) {
+    const key = brand + ' ' + name;
+    if (review) quoteOnly.add(key);
+    else quoteOnly.delete(key);
+  }
   if (!data.checks) newPriceExamples.push([brand, model, {
     source: data.source, values: data.variants,
-    electric: data.profile?.includes('electric') || data.profile === 'service',
+    electric: data.profile?.includes('electric') || (brand === 'VinFast' && data.profile === 'service'),
     note: review ? 'Hồ sơ cần báo phí riêng.' : '',
   }]);
 }
@@ -77,7 +83,8 @@ const feeCalculator = `<section class="car-fee-calculate" id="tinh-phi" data-car
 export function renderCarFeeDirectory() {
   const priority = ['Hyundai', 'Kia', 'Toyota', 'VinFast', 'Ford', 'Mazda', 'Mitsubishi', 'Honda'];
   const groups = priority.map((name) => [name, carCatalogue[name]])
-    .concat(Object.entries(carCatalogue).filter(([name]) => !priority.includes(name)));
+    .concat(Object.entries(carCatalogue).filter(([name]) => !priority.includes(name)))
+    .map(([name, models]) => [name, curatedBrands.has(name) ? models.filter(model => published[name]?.[model]) : models]);
   const count = groups.reduce((total, [, models]) => total + models.length, 0);
   const main = `
     <section class="car-fee-directory">
@@ -90,6 +97,7 @@ export function renderCarFeeDirectory() {
         <div class="car-fee-directory-head">
           <h1>${CAR_FEE_TITLE}</h1>
           <p>Tra phí vật chất cho ${count.toLocaleString('vi-VN')} dòng xe thuộc ${groups.length} hãng. Chọn mẫu xe để tính phí. Mẫu đã có bài riêng sẽ hiện thêm liên kết đọc bài.</p>
+          <p>Hướng dẫn theo mẫu của Volvo, Mercedes-Benz, Subaru và VinFast tập trung vào các dòng phổ biến có xe sản xuất từ năm 2020.</p>
         </div>
         ${feeCalculator}
         <div class="car-fee-filter" hidden>

@@ -2,6 +2,7 @@ import { esc } from '../chrome.mjs';
 import { moreModelFeeData } from '../data/car-fee-models-batch3.mjs';
 import { additionalModelFeeData } from '../data/car-fee-models-batch4.mjs';
 import { remainingModelFeeData } from '../data/car-fee-models-batch5.mjs';
+import { individualModelFeeData } from '../data/car-fee-models-batch6.mjs';
 import { carFeeAtRate, carFeeBands, carFeeRows, carFeeText, formatCarMoney as money, carElectricTerms } from '../car-fee-rates.mjs';
 
 const models = [
@@ -98,6 +99,7 @@ const models = [
   ...moreModelFeeData,
   ...additionalModelFeeData,
   ...remainingModelFeeData,
+  ...individualModelFeeData,
 ];
 
 const feeText = (rate, value) => `${rate === carFeeBands.at(-1).rate ? 'Chỉ từ ' : ''}${money(carFeeAtRate(value * 1_000_000, rate))} đồng/năm`;
@@ -110,7 +112,7 @@ export const modelFeeArticles = models.map((data) => {
   const title = `Phí bảo hiểm vật chất ${name} bao nhiêu?`;
   const [, firstValue, firstRate] = variants[0] || [];
   const reviewOnly = Boolean(data.commercial || data.profile?.startsWith('used') || data.profile === 'service');
-  const electric = data.profile?.includes('electric') || data.profile === 'service';
+  const electric = data.profile?.includes('electric') || (brand === 'VinFast' && data.profile === 'service');
   const reviewLabel = data.commercial ? 'Xe chở hàng, cần báo phí riêng' : data.profile === 'service'
     ? 'Xe cần báo phí theo mục đích sử dụng' : reviewOnly ? 'Hồ sơ cần thẩm định riêng' : 'Xe kinh doanh, trên 3 năm hoặc tỷ lệ bồi thường cao';
   const example = firstRate ? feeText(firstRate, firstValue) : 'Liên hệ chuyên viên để được báo phí';
@@ -123,6 +125,7 @@ export const modelFeeArticles = models.map((data) => {
     slug: id, path: '/kien-thuc/bao-hiem-o-to/' + id + '/', date: '2026-11-27', dateText: '27/11/2026',
     cat: 'Kiến thức · Bảo hiểm vật chất xe', title, lead, image: '/assets/' + cover + '.webp',
     imageWidth: 1200, imageHeight: 630, alt, readMin: 4,
+    noindex: Boolean(data.archiveFromListing),
   };
   return {
     data, brand, model, aliases, post, cover, internalLinksOnly: true,

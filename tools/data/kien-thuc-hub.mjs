@@ -4,6 +4,7 @@
 // Thêm bài mới: thêm một dòng vào POST_HUB (hub chính đứng đầu). Bài không gắn sản phẩm (tin đơn vị, khu vực) thì không thêm.
 
 import { remainingModelFeeData } from './car-fee-models-batch5.mjs';
+import { individualModelFeeData } from './car-fee-models-batch6.mjs';
 
 export const HUBS = [
   { slug: 'tai-nan-24-24', name: 'Bảo hiểm tai nạn 24/24', short: 'Tai nạn 24/24', product: '/san-pham/bao-hiem-tai-nan/', image: '/assets/tn-bao-hiem-tai-nan-la-gi.webp', alt: 'Người đội mũ bảo hiểm chạy xe máy đi làm ở TP.HCM', lead: 'Bảo hiểm tai nạn là gì, phí bao nhiêu, té xe hay chơi thể thao có được trả, doanh nghiệp cần mua gì cho người lao động.' },
@@ -91,7 +92,9 @@ export const POST_HUB = {
   'bao-hiem-vat-chat-vinfast-vf-mpv-7': [['bao-hiem-o-to', 'kien-thuc']],
   'bao-hiem-vat-chat-vinfast-minio-green': [['bao-hiem-o-to', 'kien-thuc']],
   'bao-hiem-vat-chat-vinfast-ec-van': [['bao-hiem-o-to', 'kien-thuc']],
-  ...Object.fromEntries(remainingModelFeeData.map(({ slug }) => ['bao-hiem-vat-chat-' + slug, [['bao-hiem-o-to', 'kien-thuc']]])),
+  ...Object.fromEntries([...remainingModelFeeData, ...individualModelFeeData]
+    .filter(({ archiveFromListing }) => !archiveFromListing)
+    .map(({ slug }) => ['bao-hiem-vat-chat-' + slug, [['bao-hiem-o-to', 'kien-thuc']]])),
   'bai-bo-thong-tu-04-2021-tt-btc-bao-hiem-xe-co-gioi': [['bao-hiem-o-to', 'tin-tuc']],
   'bao-hiem-xe-ban-tai-dien-vinfast-vf-wild': [['bao-hiem-o-to', 'kien-thuc']],
   'bao-hiem-tnds-o-to-binh-duong': [['bao-hiem-o-to', 'kien-thuc']],
