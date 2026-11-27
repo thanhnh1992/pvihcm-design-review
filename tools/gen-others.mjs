@@ -7,9 +7,10 @@ import { page, faqBlock, breadcrumbJsonLd, ZALO, hotline } from './chrome.mjs';
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.resolve(HERE, '../dist');
 const write = (rel, html) => { fs.writeFileSync(path.join(DIST, rel), html); console.log('wrote', rel, html.length); };
+const localDirectoryOnly = process.argv.includes('--local-directory-only');
 
 /* ── /huong-dan/ ── */
-{
+if (!localDirectoryOnly) {
   const P = '/huong-dan/';
   const items = [
     { t: 'Bạn mua để giải quyết việc gì?', p: 'Chăm lo thêm cho nhân viên, chuẩn bị yêu cầu của khách hàng hay đáp ứng hồ sơ công trường? Nói rõ mục tiêu giúp tránh nhận một báo giá không giải quyết đúng việc.', q: 'Doanh nghiệp cần bảo hiểm cho khoảng 30 người làm việc tại kho, dự kiến hiệu lực từ tháng tới.', checks: [] },
@@ -49,7 +50,7 @@ const write = (rel, html) => { fs.writeFileSync(path.join(DIST, rel), html); con
 }
 
 /* ── /tai-nan-doanh-nghiep/ ── */
-{
+if (!localDirectoryOnly) {
   const P = '/tai-nan-doanh-nghiep/';
   const faqs = [
     { question: 'Chưa có danh sách đầy đủ có thể hỏi phương án không?', answer: 'Có thể bắt đầu với số người dự kiến và nhóm công việc. Danh sách cùng hồ sơ cần thiết sẽ được xác nhận ở bước tiếp theo.' },
@@ -155,16 +156,24 @@ ${faqBlock(faqs, 'Hiểu rõ rồi hãy quyết định')}`;
   // Tỉnh đã có trang trong dist thì thành link; chưa có thì ghi "Đang cập nhật", không để link hỏng.
   // "Nay thuộc": đơn vị hành chính cấp tỉnh sau sắp xếp theo Nghị quyết 202/2025/QH15, hiệu lực 01/7/2025.
   const DIA_BAN = [
-    ['Nam Trung Bộ', [['Bình Thuận', 'binhthuan', 'Lâm Đồng']]],
-    ['Đông Nam Bộ', [['TP. Hồ Chí Minh', 'tphcm', 'TP. Hồ Chí Minh'], ['Bình Dương', 'binhduong', 'TP. Hồ Chí Minh'], ['Bà Rịa – Vũng Tàu', 'vungtau', 'TP. Hồ Chí Minh'], ['Đồng Nai', 'dongnai', 'Đồng Nai'], ['Bình Phước', 'binhphuoc', 'Đồng Nai'], ['Tây Ninh', 'tayninh', 'Tây Ninh']]],
-    ['Đồng bằng sông Cửu Long', [['Long An', 'longan', 'Tây Ninh'], ['Tiền Giang', 'tiengiang', 'Đồng Tháp'], ['Đồng Tháp', 'dongthap', 'Đồng Tháp'], ['Bến Tre', 'bentre', 'Vĩnh Long'], ['Vĩnh Long', 'vinhlong', 'Vĩnh Long'], ['Trà Vinh', 'travinh', 'Vĩnh Long'], ['An Giang', 'angiang', 'An Giang'], ['Kiên Giang', 'kiengiang', 'An Giang'], ['Cần Thơ', 'cantho', 'Cần Thơ'], ['Hậu Giang', 'haugiang', 'Cần Thơ'], ['Sóc Trăng', 'soctrang', 'Cần Thơ'], ['Bạc Liêu', 'baclieu', 'Cà Mau'], ['Cà Mau', 'camau', 'Cà Mau']]],
+    ['Nam Trung Bộ', [['Đà Nẵng', 'danang', 'Đà Nẵng'], ['Bình Thuận', 'binhthuan', 'Lâm Đồng']]],
+    ['Tây Nguyên', [['Đà Lạt', 'dalat', 'Lâm Đồng'], ['Bảo Lộc', 'baoloc', 'Lâm Đồng']]],
+    ['Đông Nam Bộ', [
+      ['TP. Hồ Chí Minh', 'tphcm', 'TP. Hồ Chí Minh'], ['Bình Dương', 'binhduong', 'TP. Hồ Chí Minh'],
+      ['Thủ Dầu Một', 'thudaumot', 'TP. Hồ Chí Minh'], ['Dĩ An', 'dian', 'TP. Hồ Chí Minh'], ['Thuận An', 'thuanan', 'TP. Hồ Chí Minh'], ['Bến Cát', 'bencat', 'TP. Hồ Chí Minh'],
+      ['Bà Rịa – Vũng Tàu', 'vungtau', 'TP. Hồ Chí Minh'], ['Bà Rịa', 'baria', 'TP. Hồ Chí Minh'],
+      ['Đồng Nai', 'dongnai', 'Đồng Nai'], ['Biên Hòa', 'bienhoa', 'Đồng Nai'], ['Trảng Bom', 'trangbom', 'Đồng Nai'],
+      ['Nhơn Trạch', 'nhontrach', 'Đồng Nai'], ['Long Thành', 'longthanh', 'Đồng Nai'],
+      ['Bình Phước', 'binhphuoc', 'Đồng Nai'], ['Tây Ninh', 'tayninh', 'Tây Ninh'],
+    ]],
+    ['Đồng bằng sông Cửu Long', [['Long An', 'longan', 'Tây Ninh'], ['Tiền Giang', 'tiengiang', 'Đồng Tháp'], ['Đồng Tháp', 'dongthap', 'Đồng Tháp'], ['Bến Tre', 'bentre', 'Vĩnh Long'], ['Vĩnh Long', 'vinhlong', 'Vĩnh Long'], ['Trà Vinh', 'travinh', 'Vĩnh Long'], ['An Giang', 'angiang', 'An Giang'], ['Kiên Giang', 'kiengiang', 'An Giang'], ['Phú Quốc', 'phuquoc', 'An Giang'], ['Cần Thơ', 'cantho', 'Cần Thơ'], ['Hậu Giang', 'haugiang', 'Cần Thơ'], ['Sóc Trăng', 'soctrang', 'Cần Thơ'], ['Bạc Liêu', 'baclieu', 'Cà Mau'], ['Cà Mau', 'camau', 'Cà Mau']]],
   ];
   const DIST_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../dist');
   const coTrang = (slug) => slug && fs.existsSync(path.join(DIST_DIR, slug, 'index.html'));
   const diaBan = () => `
 <section class="pd-section db-section" id="dia-ban" aria-labelledby="dia-ban-h"><div class="fire-wrap">
 <h2 id="dia-ban-h">Địa bàn phụ trách</h2>
-<p class="fire-lede" style="margin-top:12px">PVI Thành Đô tư vấn và phát hành bảo hiểm cho khách hàng từ Bình Thuận trở vào. Chọn tỉnh để xem văn phòng, sản phẩm và cách nhận báo phí tại địa phương. Tên tỉnh ghi theo địa giới trước ngày 01/7/2025, kèm tỉnh, thành phố mới sau sắp xếp.</p>
+<p class="fire-lede" style="margin-top:12px">PVI Thành Đô tư vấn và phát hành bảo hiểm cho khách hàng từ Bình Thuận trở vào. Danh sách bên dưới có thêm thông tin văn phòng và sản phẩm PVI theo từng khu vực. Một số địa danh dùng tên trước sắp xếp để khách dễ tìm.</p>
 ${DIA_BAN.map(([vung, ds]) => `<div class="db-region"><h3>${vung}</h3><ul class="db-list">${ds.map(([ten, slug, nay]) => {
     const href = slug === '' ? '/' : coTrang(slug) ? `/${slug}/` : '';
     const sub = nay === ten ? '' : `<small>Nay thuộc ${nay}</small>`;
@@ -175,6 +184,15 @@ ${DIA_BAN.map(([vung, ds]) => `<div class="db-region"><h3>${vung}</h3><ul class=
 <p class="db-note">Chưa thấy trang tỉnh của anh/chị? Nhắn <a href="${ZALO}" target="_blank">Zalo</a> hoặc gọi <a href="tel:0938072236">0938 072 236</a>, PVI Thành Đô vẫn tư vấn và báo phí cho mọi tỉnh trong địa bàn.</p>
 </div></section>
 `;
+  if (localDirectoryOnly) {
+    const file = 'gioi-thieu/index.html';
+    const existing = fs.readFileSync(path.join(DIST, file), 'utf8');
+    const directory = /<section\b[^>]*\bid="dia-ban"[^>]*>[\s\S]*?<\/section>/;
+    if (!directory.test(existing)) throw Error('Không tìm thấy mục địa bàn trong trang giới thiệu');
+    const section = diaBan().trim().replace('target="_blank"', 'target="_blank" rel="nofollow noopener"');
+    write(file, existing.replace(directory, () => section));
+    process.exit(0);
+  }
   const main = `
 <section class="fire-hero"><div class="fire-wrap"><div class="fire-hero-copy">
 <span class="fire-eyebrow">Giới thiệu</span>

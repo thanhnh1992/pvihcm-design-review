@@ -1,0 +1,141 @@
+export const localProductArticles = {
+  thudaumot: {
+    tndsoto: {
+      image: 'local-thudaumot-tndsoto',
+      titleSuffix: 'Biểu phí và cách mua online',
+      lead: 'Chủ xe ở Thủ Dầu Một có thể tra phí TNDS theo loại xe, số chỗ hoặc tải trọng và mục đích sử dụng. Xe chở người dưới 6 chỗ không kinh doanh vận tải có phí 437.000đ/năm trước VAT, tương đương 480.700đ/năm đã gồm VAT 10%.',
+      scope: [
+        'Bảo hiểm TNDS bắt buộc dành cho chủ xe cơ giới. Trong phạm vi hợp đồng và quy định, bảo hiểm chi trả trách nhiệm của chủ xe đối với thiệt hại về sức khỏe, tính mạng và tài sản của bên thứ ba, cũng như thiệt hại về sức khỏe, tính mạng của hành khách trên xe theo hợp đồng vận chuyển.',
+        'Xe cá nhân đi làm qua Quốc lộ 13 và xe đưa đón khách có thể cùng số chỗ nhưng thuộc nhóm phí khác. Đối chiếu mục đích sử dụng thực tế và thông tin xe khi tra phí.',
+      ],
+      fee: 'Bảng dưới đây minh họa một số nhóm xe phổ biến. Với pickup, taxi, xe tập lái và xe tải khác, chọn đúng dòng xe trên công cụ tra phí. Số tiền tính theo năm.',
+      docs: [
+        'Đối chiếu biển số, thông tin chủ xe, số chỗ hoặc tải trọng trên giấy đăng ký.',
+        'Nếu tái tục, kiểm tra ngày hết hiệu lực của giấy chứng nhận đang dùng rồi chọn ngày bắt đầu phù hợp.',
+        'Kiểm tra lại thông tin xe và thời hạn trên giấy chứng nhận điện tử sau khi được phát hành.',
+      ],
+      claim: [
+        'Bảo đảm an toàn và hỗ trợ người bị nạn. Liên hệ cơ quan chức năng khi cần theo tình huống tai nạn.',
+        'Gọi PVI để được hướng dẫn. Nếu an toàn, lưu ảnh hiện trường, phương tiện liên quan và giấy tờ cần thiết. Thực hiện thông báo tổn thất theo hướng dẫn của PVI.',
+      ],
+      actions: [['Mua online ngay','/san-pham/bao-hiem-o-to/dat-mua/'],['Tra đầy đủ biểu phí','/san-pham/bao-hiem-bat-buoc/#bieu-phi']],
+      questions: [
+        ['Xe cá nhân và xe kinh doanh dưới 6 chỗ đóng phí giống nhau không?', 'Hai nhóm có mức khác nhau. Xe dưới 6 chỗ không kinh doanh đóng phí 437.000đ/năm trước VAT. Xe dưới 6 chỗ kinh doanh vận tải đóng 756.000đ/năm trước VAT.'],
+        ['Có thể khai địa chỉ cũ ở Thủ Dầu Một khi tái tục không?', 'Nhập thông tin theo giấy đăng ký xe để đối chiếu. Nếu địa chỉ cư trú đã thay đổi hoặc giấy tờ có tên phường cũ, báo chuyên viên trước khi hoàn tất đơn.'],
+        ['TNDS có trả tiền sửa chiếc xe của mình không?', 'Quyền lợi TNDS giải quyết trách nhiệm đối với bên thứ ba và hành khách theo quy định. Chủ xe có thể xem thêm bảo hiểm vật chất tự nguyện để bảo vệ chính xe của mình.'],
+      ],
+      sources: ['Nghị định 67/2023/NĐ-CP, Phụ lục I. Văn bản hợp nhất 64/2026/VBHN-NĐ-BTC.'],
+    },
+    vatchatxeoto: {
+      image: 'local-thudaumot-vatchatxeoto',
+      titleSuffix: 'Cách tính phí và chọn quyền lợi',
+      lead: 'Bảo hiểm vật chất xe ô tô tại Thủ Dầu Một giúp chủ xe bảo vệ chiếc xe của mình trước tổn thất thuộc hợp đồng. Khi xin báo phí, chuẩn bị giá trị xe, năm sản xuất, mục đích sử dụng và các quyền lợi bổ sung cần chọn.',
+      scope: [
+        'Phạm vi cơ bản theo quy tắc PVI có các nhóm rủi ro như tai nạn bất ngờ, cháy nổ, thiên tai và mất cắp toàn bộ xe. Điều kiện, loại trừ và mức khấu trừ áp dụng theo hợp đồng.',
+        'Nếu dùng xe đi làm qua Quốc lộ 13 hoặc thường đỗ tại các khu thương mại ở Thủ Dầu Một, xem trước mức khấu trừ mỗi vụ và cơ sở sửa chữa có phù hợp với thói quen sử dụng xe. Với nhu cầu sửa hãng, hỏi về ĐKBS 007.',
+        'ĐKBS 006 liên quan đến khấu hao phụ tùng thay mới. ĐKBS 008 liên quan đến thiệt hại động cơ do ảnh hưởng của nước trong các điều kiện quy định. Với ô tô điện, yêu cầu xác nhận riêng phạm vi bảo hiểm bộ pin trên báo phí và giấy chứng nhận.',
+      ],
+      fee: 'Phí tham khảo khoảng 0,85%–1,8% giá trị xe. Báo phí cụ thể tùy giá trị, mẫu xe, năm sản xuất, điều khoản bổ sung và tỷ lệ bồi thường kỳ trước. Kiểm tra thêm VAT và mức khấu trừ trên phương án được báo.',
+      docs: [
+        'Chuẩn bị đăng ký xe, mẫu xe, năm sản xuất, mục đích sử dụng và giá trị đề nghị bảo hiểm.',
+        'Nếu tái tục, cung cấp thời hạn hợp đồng hiện tại và lịch sử tổn thất để kiểm tra báo phí.',
+        'Trước khi thanh toán, soát phạm vi thiệt hại, khấu trừ, gara và các điều khoản được ghi trong báo phí.',
+      ],
+      claim: [
+        'Dừng xe an toàn và báo PVI. Khi có thể, ghi nhận ảnh hiện trường, vị trí và phần xe bị hư hỏng.',
+        'Nếu xe chết máy sau khi đi vào vùng ngập, tránh khởi động lại. Liên hệ PVI để hỏi về giám định và hướng dẫn cứu hộ hoặc đưa xe đến nơi sửa chữa.',
+      ],
+      actions: [['Nhận báo phí','/san-pham/bao-hiem-vat-chat-xe/#bao-phi'],['Xem quy tắc bảo hiểm','/tai-lieu/pvi-quy-tac-o-to-01-07-2025.pdf']],
+      questions: [
+        ['Xin báo phí vật chất xe cần gửi thông tin gì?', 'Gửi mẫu xe, năm sản xuất, mục đích sử dụng, giá trị xe, điều khoản muốn thêm và thông tin bồi thường kỳ trước nếu có.'],
+        ['Mua bảo hiểm vật chất xe đã có quyền sửa chính hãng chưa?', 'Kiểm tra ĐKBS 007 trên phương án trước khi chốt. Cơ sở sửa chữa và chi phí cần đáp ứng điều kiện của điều khoản đã mua.'],
+        ['Xe bị hỏng động cơ sau khi đi vào vùng ngập có được xem xét bồi thường không?', 'PVI xem xét theo nguyên nhân tổn thất, ĐKBS 008 nếu đã được ghi nhận trên hợp đồng, mức khấu trừ và điều kiện áp dụng.'],
+      ],
+      sources: ['Quy tắc bảo hiểm tự nguyện xe ô tô của Bảo hiểm PVI, hiệu lực 01/07/2025.', 'Các điều khoản bổ sung bảo hiểm tự nguyện xe ô tô của Bảo hiểm PVI, hiệu lực 01/07/2025.'],
+    },
+    chaynobatbuoc: {
+      image: 'local-thudaumot-chaynobatbuoc',
+      titleSuffix: 'Tra đối tượng và tính phí theo tài sản',
+      lead: 'Chủ cơ sở tại Thủ Dầu Một có thể tra loại hình thuộc diện mua bảo hiểm cháy nổ bắt buộc, sau đó chuẩn bị giá trị tài sản để tính phí. Hai cơ sở cùng nằm trên Quốc lộ 13 có thể có công năng, quy mô và hồ sơ khác nhau.',
+      scope: [
+        'Kiểm tra cơ sở theo Nghị định 105/2025/NĐ-CP và các nội dung sửa đổi tại Nghị định 347/2026/NĐ-CP. Dùng công năng và quy mô thực tế, đối chiếu hồ sơ phòng cháy, chữa cháy hiện có.',
+        'Với cơ sở cho thuê mặt bằng ở Phú Lợi cũ hoặc Chánh Nghĩa cũ, làm rõ phần công trình thuộc chủ tòa nhà và tài sản do bên thuê quản lý. Đối chiếu hợp đồng thuê và hợp đồng bảo hiểm đã có trước khi kê khai.',
+      ],
+      fee: 'Tra nhóm cơ sở và tỷ lệ phí tương ứng theo Phụ lục VI Nghị định 105/2025/NĐ-CP, có đối chiếu nội dung sửa đổi. Chuẩn bị giá trị công trình, máy móc và hàng hóa. Nếu có nhiều hạng mục độc lập, khai riêng từng hạng mục để chuyên viên xem điều kiện áp dụng, mức khấu trừ và thuế trên báo phí.',
+      docs: [
+        'Chuẩn bị tên cơ sở, địa chỉ hiện hành, công năng, quy mô và tài liệu phòng cháy, chữa cháy theo hướng dẫn.',
+        'Tách danh mục tài sản theo nhóm và vị trí. Với mặt bằng thuê, ghi rõ bên sở hữu công trình và bên sở hữu thiết bị, hàng hóa.',
+        'Khi tái tục, kiểm tra hạn hợp đồng và cập nhật hạng mục xây thêm, thay đổi công năng hoặc thay đổi giá trị tài sản.',
+      ],
+      claim: [
+        'Ưu tiên sơ tán và gọi 114 khi có cháy. Chỉ ghi nhận hiện trường, hình ảnh hoặc tài sản thiệt hại khi đã bảo đảm an toàn.',
+        'Báo PVI, giữ tài liệu về tài sản và hồ sơ liên quan đến sự cố. Làm theo hướng dẫn giám định trước khi thu dọn hoặc sửa chữa, trừ việc cần làm ngay để bảo đảm an toàn.',
+      ],
+      actions: [['Tra cứu và tính phí','/san-pham/chay-no-bat-buoc/#tra-cuu'],['Xem bảng tỷ lệ phí','/san-pham/chay-no-bat-buoc/#bieu-phi']],
+      questions: [
+        ['Mặt bằng đi thuê cần khai những gì?', 'Gửi địa chỉ, công năng và hợp đồng thuê để đối chiếu trách nhiệm từng bên. Tách công trình với thiết bị, hàng hóa bên thuê sở hữu.'],
+        ['Một cơ sở có cả cửa hàng và kho phía sau thì tra phí thế nào?', 'Liệt kê công năng, quy mô và giá trị tài sản của từng phần. Chuyên viên đối chiếu điều kiện của các hạng mục trước khi xác định phương án phí.'],
+        ['Đang tái tục và vừa mở rộng kho thì dùng danh mục cũ được không?', 'Cập nhật phần diện tích, công năng và giá trị hàng hóa phát sinh để báo phí và hợp đồng phản ánh tài sản hiện có.'],
+      ],
+      sources: ['Nghị định 105/2025/NĐ-CP và Phụ lục VI.', 'Nghị định 347/2026/NĐ-CP sửa đổi, bổ sung quy định liên quan.'],
+    },
+    taisannhaxuong: {
+      image: 'local-thudaumot-taisannhaxuong',
+      titleSuffix: 'Kê khai nhà xưởng, máy móc và hàng tồn',
+      lead: 'Doanh nghiệp tại Thủ Dầu Một nên lập danh mục riêng cho kết cấu nhà xưởng, máy móc và hàng tồn trước khi xin báo phí bảo hiểm tài sản. Với xưởng thuê, cần xác định tài sản nào của bên thuê và phần nào đã được chủ xưởng bảo hiểm.',
+      scope: [
+        'Tài sản có thể kê khai gồm công trình, dây chuyền sản xuất, nguyên vật liệu và thành phẩm. Danh mục, địa điểm, rủi ro, mức khấu trừ và loại trừ phải được đối chiếu trên báo phí và hợp đồng.',
+        'Doanh nghiệp có văn phòng tại Chánh Nghĩa và xưởng ở khu vực Phú Tân cũ nên ghi rõ giá trị tại từng địa điểm. Nếu hàng thường xuyên luân chuyển giữa hai nơi, hỏi riêng phạm vi trong quá trình vận chuyển.',
+      ],
+      fee: 'Phí phụ thuộc công năng, giá trị tài sản, cách lưu kho, phương án phòng cháy và phạm vi cần bảo hiểm. Hỏi rõ cách xác định giá trị máy móc, giá trị hàng tồn và mức khấu trừ theo từng rủi ro. Yêu cầu báo phí ghi rõ VAT nếu áp dụng.',
+      docs: ['Gửi danh mục tài sản theo từng địa chỉ, công năng từng khu và căn cứ định giá.', 'Với kho có lượng hàng thay đổi theo mùa, nêu giá trị hàng tồn cao nhất dự kiến và cách theo dõi tồn kho.', 'Khi tái tục, cập nhật máy móc mới, phần diện tích mở rộng và các thay đổi về sử dụng mặt bằng.'],
+      claim: ['Sau khi bảo đảm an toàn, báo PVI và thực hiện biện pháp hạn chế tổn thất theo hướng dẫn.', 'Giữ ảnh, danh sách tài sản hư hỏng, hồ sơ mua sắm, số liệu tồn kho và chứng từ sửa chữa liên quan.'],
+      actions: [['Nhận tư vấn bảo hiểm tài sản','tel:0938072236'],['Tra bảo hiểm cháy nổ bắt buộc','/thudaumot/chaynobatbuoc/']],
+      referenceLabel: 'Xem công cụ tra cháy nổ bắt buộc',
+      questions: [
+        ['Xưởng thuê có thể bảo hiểm dây chuyền của bên thuê không?', 'Gửi hợp đồng thuê và chứng từ liên quan để xác định quyền lợi có thể bảo hiểm. Kê khai riêng dây chuyền, thiết bị của bên thuê và phần công trình của bên cho thuê.'],
+        ['Làm sao kê khai kho có lượng hàng biến động?', 'Gửi mức hàng tồn cao nhất dự kiến cùng phương pháp ghi nhận tồn kho. Yêu cầu ghi rõ cơ chế kê khai và giới hạn áp dụng trên báo phí.'],
+        ['Hàng đi từ kho ra cảng có nằm trong đơn bảo hiểm tài sản không?', 'Đối chiếu địa điểm và phạm vi trong hợp đồng. Chặng vận chuyển ngoài địa điểm bảo hiểm cần xem riêng theo điều khoản hoặc hợp đồng hàng hóa.'],
+      ],
+      sources: ['Bảo hiểm PVI, sản phẩm và quy tắc bảo hiểm mọi rủi ro tài sản.'],
+    },
+    congtrinhlapdat: {
+      image: 'local-thudaumot-congtrinhlapdat',
+      titleSuffix: 'Báo phí theo hạng mục và tiến độ',
+      lead: 'Chủ đầu tư và nhà thầu tại Thủ Dầu Một có thể nhận tư vấn theo loại công trình, giá trị khi hoàn thành và tiến độ. Khi có lắp thiết bị, cần nêu mốc đưa thiết bị vào công trường, chạy thử và bàn giao.',
+      scope: [
+        'Tách nhu cầu bảo hiểm phần xây dựng, phần lắp đặt và trách nhiệm đối với bên thứ ba để đối chiếu theo hợp đồng. Với công trình thuộc diện bắt buộc, đối chiếu Nghị định 67/2023/NĐ-CP đã được sửa đổi, bổ sung bởi Nghị định 220/2026/NĐ-CP.',
+        'Với dự án cải tạo mặt bằng trong khu vực trung tâm Thủ Dầu Một, ghi rõ phần hiện hữu sẽ giữ lại và tài sản lân cận. Nếu thi công hoặc lắp đặt trong nhà xưởng đang hoạt động, nêu rõ phần vẫn vận hành trong thời gian làm việc.',
+      ],
+      fee: 'Chuẩn bị giá trị toàn bộ công trình khi hoàn thành, tỷ trọng phần lắp đặt, loại thiết bị, thời hạn và điều kiện thi công. Đối với phần bắt buộc, đối chiếu căn cứ pháp lý và nhóm công trình. Đối với phần tự nguyện, mức phí và khấu trừ theo báo phí được thẩm định.',
+      docs: ['Gửi hợp đồng thi công hoặc lắp đặt, địa chỉ, dự toán và lịch tiến độ.', 'Ghi các mốc dự kiến khởi công, đưa thiết bị vào công trường, chạy thử và nghiệm thu.', 'Nếu đổi tiến độ hoặc tăng giá trị, báo chuyên viên để xem điều chỉnh hoặc gia hạn trước mốc liên quan.'],
+      claim: ['Bảo đảm an toàn, ghi nhận hạng mục và hiện trường nếu có thể, sau đó báo PVI để nhận hướng dẫn.', 'Lưu nhật ký thi công, biên bản sự việc và hồ sơ giá trị hạng mục. Phối hợp giám định trước khi sửa chữa nếu điều kiện an toàn cho phép.'],
+      actions: [['Nhận tư vấn công trình','tel:0938072236'],['Xem phương án bảo hiểm','/san-pham/bao-hiem-cong-trinh/#phuong-an']],
+      questions: [
+        ['Đưa máy vào chạy thử khi chưa nghiệm thu có cần báo trước không?', 'Khai lịch, thời lượng và loại chạy thử ngay khi báo phí. Kiểm tra thời gian và điều kiện chạy thử được ghi trên hợp đồng.'],
+        ['Công trình thay đổi tiến độ thì xử lý thế nào?', 'Thông báo mốc cũ, mốc mới và phần việc còn lại để PVI xem có cần điều chỉnh thời hạn và phí không.'],
+        ['Cải tạo công trình đang hoạt động cần kê khai gì thêm?', 'Tách phần cải tạo, tài sản có sẵn và khu vực tiếp tục hoạt động. Hỏi riêng về phạm vi đối với tài sản hiện hữu và tài sản lân cận.'],
+      ],
+      sources: ['Nghị định 67/2023/NĐ-CP, được sửa đổi và bổ sung bởi Nghị định 220/2026/NĐ-CP.', 'Văn bản hợp nhất 64/2026/VBHN-NĐ-BTC về bảo hiểm bắt buộc.'],
+    },
+    hanghoaxuatnhapkhau: {
+      image: 'local-thudaumot-hanghoaxuatnhapkhau',
+      titleSuffix: 'Báo phí theo lô hàng và hành trình',
+      lead: 'Doanh nghiệp gửi hàng từ kho ở Thủ Dầu Một nên báo đủ chặng đường bộ, cảng, chặng quốc tế và các điểm chuyển tải khi xin bảo hiểm. Hồ sơ báo phí cần ghi rõ loại hàng, cách đóng gói và giá trị lô hàng.',
+      scope: [
+        'Đối chiếu điều kiện bảo hiểm hàng hóa theo tuyến, phương thức vận chuyển, loại hàng và các rủi ro muốn bảo hiểm. Xác nhận khi nào phạm vi bắt đầu và kết thúc theo điều khoản được cấp.',
+        'Với lô từ kho ở khu vực Phú Tân cũ đi cảng, hỏi rõ chặng xe tải, thời gian lưu chờ và điểm chuyển tải trên phương án. Đối với hàng cần kiểm soát nhiệt độ, khai yêu cầu bảo quản ngay khi xin báo phí.',
+      ],
+      fee: 'Báo phí dựa trên giá trị lô hàng, loại hàng, đóng gói, phương thức và hành trình. Gửi hóa đơn thương mại, điều kiện giao hàng và thời điểm dự kiến khởi hành để đối chiếu số tiền bảo hiểm, mức khấu trừ và các điều kiện áp dụng.',
+      docs: ['Gửi hóa đơn thương mại, phiếu đóng gói và lịch vận chuyển dự kiến.', 'Ghi điểm nhận, điểm giao, cảng đi và cảng đến nếu có, cũng như chặng vận tải nội địa.', 'Với lô gửi thường xuyên, mô tả tần suất, nhóm hàng và quy trình khai từng chuyến để được tư vấn phương án phù hợp.'],
+      claim: ['Khi phát hiện tổn thất, liên hệ PVI. Ghi nhận niêm phong, bao bì và hàng bị ảnh hưởng nếu có thể làm an toàn.', 'Giữ biên bản giao nhận, vận đơn, hóa đơn thương mại, phiếu đóng gói và chứng từ thông báo cho bên vận chuyển. Phối hợp giám định theo hướng dẫn.'],
+      actions: [['Nhận tư vấn bảo hiểm hàng hóa','tel:0938072236'],['Xem chứng từ cần chuẩn bị','/san-pham/hang-hoa-xuat-nhap-khau/#chung-tu']],
+      questions: [
+        ['Hàng từ kho Thủ Dầu Một đi cảng có thể tham gia cùng chặng biển không?', 'Kê khai cả hai chặng và yêu cầu PVI xác nhận phạm vi, địa điểm bắt đầu, điểm kết thúc và các điều kiện chuyển tải trên hợp đồng.'],
+        ['Điều kiện giao hàng có ảnh hưởng cách mua không?', 'Có thể ảnh hưởng bên thu xếp bảo hiểm và thời điểm chuyển rủi ro. Cung cấp điều kiện giao hàng cùng hợp đồng thương mại để đối chiếu trước khi cấp đơn.'],
+        ['Khi nhận container thấy niêm phong bất thường thì làm gì?', 'Ghi nhận tình trạng trên biên bản giao nhận, giữ ảnh và thông báo cho PVI cùng đơn vị liên quan để được hướng dẫn giám định.'],
+      ],
+      sources: ['PVIHCM, trang bảo hiểm hàng hóa xuất nhập khẩu, các mục Phạm vi và Chứng từ.'],
+    },
+  },
+};

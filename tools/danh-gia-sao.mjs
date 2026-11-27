@@ -161,6 +161,7 @@ for (const file of walk(DIST)) {
   if (had) html = html.replace(new RegExp(`\\n?${START}[\\s\\S]*?${END}`), '');
   if (!html.includes('</main>')) { skip('không có <main>'); continue; }
   if (/<meta[^>]+name="robots"[^>]+noindex/i.test(html)) { skip('noindex'); continue; }
+  if (html.includes('name="local-market-preview"')) continue;
   if (html.includes('data-rating-link-only')) { skip('đánh giá dẫn về trang công ty'); continue; }
   if (html.includes('data-feedback')) { skip('đã có khối nhận xét của bài'); continue; }
   if (html.includes('product-reviews')) { skip('có hệ đánh giá sản phẩm riêng'); continue; }
@@ -180,6 +181,7 @@ for (const file of walk(DIST)) {
   let html = fs.readFileSync(file, 'utf8');
   html = html.replace(new RegExp(`\\n?${GSTART}[\\s\\S]*?${GEND}`, 'g'), '');
   if (!html.includes('</main>') || /<meta[^>]+name="robots"[^>]+noindex/i.test(html)) { fs.writeFileSync(file, html); continue; }
+  if (html.includes('name="local-market-preview"')) continue;
   if (html.includes('data-rating-link-only')) continue;
   if (html.includes(START)) { fs.writeFileSync(file, html); gCount++; continue; } // khối gộp đã chứa điểm Google + schema
   const article = /^(tin-tuc|kien-thuc)\/[^/]+\/index\.html$/.test(rel) && html.includes('data-feedback');
