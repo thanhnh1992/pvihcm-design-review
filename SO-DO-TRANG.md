@@ -49,7 +49,7 @@ Tầng 3  BÀI HỖ TRỢ (nếu có)      bài viết bổ trợ cho đúng 1 t
 - `/san-pham/bao-hiem-o-to/` (con: `/san-pham/bao-hiem-o-to/dat-mua/`, trang đặt mua, noindex)
 - `/san-pham/bao-hiem-bat-buoc/`
 - `/san-pham/bao-hiem-vat-chat-xe/`
-- `/san-pham/chay-no-bat-buoc/`
+- `/san-pham/chay-no-bat-buoc/` (con: `/san-pham/chay-no-bat-buoc/bao-gia-theo-co-so/`, báo giá theo loại cơ sở và mẫu giấy chứng nhận)
 - `/san-pham/bao-hiem-tai-nan/`
 - `/san-pham/bao-hiem-suc-khoe/`
 - `/san-pham/bao-hiem-y-te/` BHYT hộ gia đình và BHXH tự nguyện

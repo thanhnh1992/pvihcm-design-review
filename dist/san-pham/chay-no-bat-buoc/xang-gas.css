@@ -20,7 +20,7 @@
 }
 
 .fuel-quote :where(h2, h3, p, dl, dd, fieldset) { margin: 0; }
-.fuel-quote h2 {
+.fuel-quote :is(h1, h2) {
   color: #fff;
   font-size: clamp(1.9rem, 4vw, 3.4rem);
   line-height: 1.17;
@@ -246,3 +246,8 @@ html:has(#bao-gia-xang-gas:target) { scroll-behavior: auto; }
 }
 .fuel-certificate-group dd ul { margin: 0; padding-inline-start: 1.25rem; }
 .fuel-certificate-group dd li + li { margin-top: 4px; }
+
+.fuel-breadcrumb { display: flex; flex-wrap: wrap; gap: 4px 16px; padding-block: 12px; }
+.fuel-breadcrumb a, .fuel-parent-link a { color: #1f4a8c; text-decoration: underline; }
+.fuel-parent-link { padding-block: 0 24px; }
+.fuel-child-link { padding-block: 20px; }
