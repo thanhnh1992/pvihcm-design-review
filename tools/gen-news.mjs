@@ -470,7 +470,7 @@ function renderKb(A) {
   const H = A.hero;
   const heroSizes = H.besideTitle ? '(max-width:820px) 100vw, 55vw' : '(max-width:820px) 100vw, 1160px';
   const heroHtml = `<figure class="kb-hero${H.besideTitle ? ' kb-hero-top' : ''}"${H.position ? ` style="--pos:${H.position}"` : ''}>${pic(H.name, { w: H.w, h: H.h, alt: p.alt, sizes: heroSizes, eager: true })}
-<figcaption>${t(H.caption)}</figcaption></figure>`;
+<figcaption>${t(H.caption)}${H.download ? ` <a class="kb-link" href="/assets/${H.name}.webp${av(H.name)}" download>Tải ảnh</a>` : ''}</figcaption></figure>`;
   const titleHtml = `<h1>${t(p.title)}</h1>`;
   const coverMeta = p.imageWidth && p.imageHeight && !p.socialImage
     ? `<meta property="og:image:width" content="${p.imageWidth}"><meta property="og:image:height" content="${p.imageHeight}"><meta property="og:image:alt" content="${esc(p.alt)}"><meta name="twitter:image" content="${SITE}${p.image}"><meta name="twitter:image:alt" content="${esc(p.alt)}">`
