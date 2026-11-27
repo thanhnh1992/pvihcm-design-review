@@ -31,7 +31,7 @@ export const seo = {
 };
 
 const CHAY_NO = '/san-pham/chay-no-bat-buoc/';
-const BAO_GIA_GAS = '/san-pham/chay-no-bat-buoc/#bao-gia-xang-gas';
+const BAO_GIA_GAS = '/san-pham/chay-no-bat-buoc/bao-gia-theo-co-so/#tra-cuu';
 
 export const toc = [
   ['tan-thuan', 'Vụ nổ ở Tân Thuận, TP.HCM'],
