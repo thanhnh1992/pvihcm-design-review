@@ -62,6 +62,10 @@ export const POST_HUB = {
   'nghi-dinh-220-2026-bao-hiem-cong-trinh': [['cong-trinh-lap-dat', 'tin-tuc'], ['tai-nan-24-24', 'tin-tuc']],
   // Ô tô
   'bao-hiem-than-vo-hyundai-santa-fe': [['bao-hiem-o-to', 'kien-thuc']],
+  'bao-hiem-vat-chat-volvo-xc60': [['bao-hiem-o-to', 'kien-thuc']],
+  'bao-hiem-vat-chat-mercedes-benz-glc': [['bao-hiem-o-to', 'kien-thuc']],
+  'bao-hiem-vat-chat-subaru-forester': [['bao-hiem-o-to', 'kien-thuc']],
+  'bao-hiem-vat-chat-vinfast-vf-5': [['bao-hiem-o-to', 'kien-thuc']],
   'bai-bo-thong-tu-04-2021-tt-btc-bao-hiem-xe-co-gioi': [['bao-hiem-o-to', 'tin-tuc']],
   'bao-hiem-xe-ban-tai-dien-vinfast-vf-wild': [['bao-hiem-o-to', 'kien-thuc']],
   'bao-hiem-tnds-o-to-binh-duong': [['bao-hiem-o-to', 'kien-thuc']],

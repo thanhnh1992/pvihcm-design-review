@@ -183,7 +183,7 @@ for (const file of walk(DIST)) {
   if (html.includes('data-rating-link-only')) continue;
   if (html.includes(START)) { fs.writeFileSync(file, html); gCount++; continue; } // khối gộp đã chứa điểm Google + schema
   const article = /^(tin-tuc|kien-thuc)\/[^/]+\/index\.html$/.test(rel) && html.includes('data-feedback');
-  const badge = gBadge(!article);
+  const badge = gBadge(!article && !html.includes('data-internal-links-only'));
   const fbAt = article ? html.indexOf('<section class="fb" data-feedback') : -1;
   const fbEnd = fbAt >= 0 ? html.indexOf('</section>', fbAt) : -1;
   if (fbEnd >= 0) { const i = fbEnd + '</section>'.length; html = html.slice(0, i) + '\n' + badge + html.slice(i); }

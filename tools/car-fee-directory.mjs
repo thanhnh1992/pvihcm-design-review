@@ -5,6 +5,7 @@ import carCatalogue from './data/car-fee-catalogue.json' with { type: 'json' };
 import { post as santaFe } from './articles/bao-hiem-than-vo-hyundai-santa-fe.mjs';
 import { carElectricTerms, carFeeRows } from './car-fee-rates.mjs';
 import { carFeePriceExamples } from './data/car-fee-price-examples.mjs';
+import { modelFeeArticles } from './articles/bao-hiem-xe-theo-hang.mjs';
 
 export const CAR_FEE_PATH = '/kien-thuc/tinhphinhanhtheotenxe/';
 export const CAR_FEE_TITLE = 'Tra cứu phí bảo hiểm theo dòng xe';
@@ -25,6 +26,11 @@ const published = {
   Hyundai: { 'Santa Fe': santaFe.path },
   VinFast: { 'VF Wild': '/tin-tuc/bao-hiem-xe-ban-tai-dien-vinfast-vf-wild/' },
 };
+
+for (const { brand, model, aliases, post } of modelFeeArticles) {
+  const links = published[brand] ??= {};
+  for (const name of [model, ...aliases]) links[name] = post.path;
+}
 
 const priceCards = Object.entries(carFeePriceExamples).flatMap(([brand, models]) =>
   Object.entries(models).map(([model, { source, values, electric, note }]) => {

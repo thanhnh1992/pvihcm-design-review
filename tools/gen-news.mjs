@@ -20,6 +20,7 @@ import * as kbNghiBu2027 from './articles/nghi-le-tet-2027-huong-luong-va-nghi-b
 import * as kbKhoSprinkler from './articles/bao-hiem-chay-no-kho-hang-sprinkler.mjs';
 import * as kbVfWild from './articles/bao-hiem-xe-ban-tai-dien-vinfast-vf-wild.mjs';
 import * as kbSantaFe from './articles/bao-hiem-than-vo-hyundai-santa-fe.mjs';
+import { modelFeeArticles } from './articles/bao-hiem-xe-theo-hang.mjs';
 import * as kbDonVi from './articles/don-vi-thanh-vien-pvi.mjs';
 import * as kbPvi27045 from './articles/bao-hiem-pvi-ve-dich-som-2026.mjs';
 import { binhDuongGuides } from './articles/binh-duong-guides.mjs';
@@ -63,6 +64,7 @@ const postUrl = (post) => post.path || `/tin-tuc/${post.slug}/`;
 
 export const posts = [
   kbSantaFe.post,
+  ...modelFeeArticles.map(({ post }) => post),
   kbLichLe2027.post,
   kbNghiBu2027.post,
   kbTet2027.post,
@@ -487,7 +489,7 @@ function renderKb(A) {
   const articleIntro = `<p class="kb-lead">${highlight ? lead.replace(highlight, `<strong class="kb-lead-highlight">${highlight}</strong>`) : lead}</p>
 <p class="kb-meta"><span>Công ty Bảo hiểm PVI Thành Đô</span><time datetime="${p.date}">${esc(p.dateText)}</time>${p.updated ? `<time datetime="${p.updated}">Cập nhật ${esc(p.updatedText)}</time>` : ''}<span>${p.readMin} phút đọc</span></p>`;
   const main = `
-<article class="kb">
+<article class="kb"${A.internalLinksOnly ? ' data-internal-links-only' : ''}>
 <div class="kb-head"><div class="kb-shell">
 ${crumbHtml}
 ${H.besideTitle
@@ -533,6 +535,7 @@ ${feedbackBlock(p)}
 }
 
 renderKb(kbSantaFe);
+for (const article of modelFeeArticles) renderKb(article);
 renderKb(kbCongTrinh);
 renderKb(kbTnNd220);
 renderKb(kbBaiBoTt04);

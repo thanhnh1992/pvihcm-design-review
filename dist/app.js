@@ -233,6 +233,7 @@ if (siteHeader && siteNav) {
 const onTranslate = /\.translate\.goog$/.test(location.hostname);
 const pagePath = location.pathname;
 const vungTauPage = pagePath.startsWith('/vungtau/');
+const internalLinksOnly = vungTauPage || document.querySelector('[data-internal-links-only]');
 const isEn = onTranslate;
 const safeStore = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } return null; };
 if (/[?&]lang=vi\b/.test(location.search)) {
@@ -242,10 +243,10 @@ if (/[?&]lang=vi\b/.test(location.search)) {
 const viHref = onTranslate ? 'https://pvihcm.com' + pagePath + '?lang=vi' : pagePath;
 const enHref = 'https://pvihcm-com.translate.goog' + pagePath + '?_x_tr_sl=vi&_x_tr_tl=en&_x_tr_hl=en';
 // Đã chọn EN trước đó mà quay lại trang tiếng Việt: chuyển sang tiếng Anh luôn.
-if (!vungTauPage && !isEn && safeStore('pvi-lang') === 'en' && !/[?&]lang=vi\b/.test(location.search)) location.replace(enHref);
+if (!internalLinksOnly && !isEn && safeStore('pvi-lang') === 'en' && !/[?&]lang=vi\b/.test(location.search)) location.replace(enHref);
 
 if (siteHeader) {
-  if (!vungTauPage) {
+  if (!internalLinksOnly) {
     const GLOBE = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 3.9 5.6 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.6-3.9-9S9.4 5.6 12 3z"/></svg>';
     const pick = document.createElement('div');
     pick.className = 'lang-pick';

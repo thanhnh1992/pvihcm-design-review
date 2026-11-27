@@ -1,0 +1,104 @@
+import { esc } from '../chrome.mjs';
+import { carFeeAtRate, carFeeBands, carFeeRows, carFeeText, formatCarMoney as money, carElectricTerms } from '../car-fee-rates.mjs';
+
+const models = [
+  {
+    brand: 'Volvo', model: 'XC60', logo: 'volvo', slug: 'volvo-xc60',
+    variants: [['B5 AWD Mild hybrid', 2299, 85], ['T8 AWD Plug-in hybrid', 2750, 85]],
+    source: 'Volvo Cars Việt Nam · Giá khởi điểm XC60 B5 và XC60 T8, đời 2026',
+    context: 'B5 và T8 có giá và hệ truyền động khác nhau. Nếu đang tái tục, hãy gửi số tiền bảo hiểm trên hợp đồng cũ cùng phiên bản để chuyên viên xem lại giá trị xe hiện tại.',
+    heading: 'XC60 B5 và T8 cần kiểm tra điều khoản gì?',
+    advice: 'Với bản T8 sạc ngoài, hỏi riêng phạm vi của bộ pin cao áp và hệ truyền động hybrid. Gửi đúng phiên bản để PVI kiểm tra điều khoản có thể áp dụng. Nếu muốn sửa tại Volvo, ghi rõ xưởng bạn thường dùng và hỏi điều kiện thay phụ tùng mới.',
+    question: 'Có thể dùng phí của XC60 B5 để dự trù cho bản T8 không?',
+    answer: 'Hãy tính từ giá trị bảo hiểm của bản T8. Phạm vi pin cao áp và hệ truyền động hybrid cũng cần xác nhận riêng trên chào phí.',
+    banner: ['SO PHÍ XC60 B5 VÀ T8', 'KIỂM ĐIỀU KHOẢN PIN CAO ÁP'],
+  },
+  {
+    brand: 'Mercedes-Benz', model: 'GLC', logo: 'mercedesbenz', slug: 'mercedes-benz-glc',
+    aliases: ['GLC 200', 'GLC 300'],
+    variants: [['GLC 200 4MATIC', 1999, 85], ['GLC 300 4MATIC', 2499, 85]],
+    source: 'Mercedes-Benz Việt Nam · Bảng giá bán lẻ đề xuất tháng 10/2026',
+    context: 'Bảng giá hãng ghi mốc khởi điểm theo phiên bản. Xe có tùy chọn thêm hoặc đã qua sử dụng cần định giá lại theo chính chiếc xe.',
+    heading: 'Muốn sửa GLC tại xưởng Mercedes-Benz cần hỏi gì?',
+    advice: 'Gửi tên xưởng bạn định sử dụng, hỏi chào phí có điều khoản chọn xưởng hay không và mức tự trả mỗi vụ. Nếu xe có gói trang bị thêm, gửi danh sách để xác định phần nào được kê trong hợp đồng.',
+    question: 'GLC 200 và GLC 300 cùng tỷ lệ thì phí có giống nhau không?',
+    answer: 'Phí tính trên số tiền bảo hiểm của từng bản. Nếu hai mức giá trị chênh 500 triệu đồng và cùng đủ điều kiện tính 0,85%, phần chênh phí minh họa là 4.250.000 đồng/năm.',
+    banner: ['SO PHÍ GLC 200 VÀ GLC 300', 'XEM ĐIỀU KIỆN SỬA CHỮA CHÍNH HÃNG'],
+  },
+  {
+    brand: 'Subaru', model: 'Forester', logo: 'subaru', slug: 'subaru-forester',
+    variants: [['2.5i-L EyeSight, VIN 2026', 1299, 85], ['2.5 Boxer', 1399, 85]],
+    source: 'Subaru Việt Nam · Bảng giá Forester 2.5i-L EyeSight và chương trình Forester 2.5 Boxer tháng 11/2026',
+    context: 'Tra đúng tên phiên bản và VIN trên hồ sơ. Các mốc trên lấy từ giá hãng công bố. Quà tặng, ưu đãi tín dụng hoặc chi phí lăn bánh được xem riêng.',
+    heading: 'Forester có EyeSight cần hỏi gì trước khi chọn xưởng?',
+    advice: 'Nếu chào phí có quyền lợi sửa kính hoặc sửa chữa chính hãng, hỏi cả phương án kiểm tra và hiệu chỉnh hệ thống hỗ trợ lái sau sửa chữa khi cần. Nhờ PVI xác nhận chi phí nào thuộc phạm vi và mức khấu trừ áp dụng.',
+    question: 'Xe Forester bản cũ có dùng giá của bản 2.5 mới không?',
+    answer: 'Gửi đúng năm sản xuất, phiên bản và tình trạng của xe để định giá ở kỳ bảo hiểm hiện tại. Xe trên ba năm hoặc có tỷ lệ bồi thường cao cần chuyên viên xem riêng.',
+    banner: ['SO PHÍ HAI BẢN FORESTER 2.5', 'HỎI PHẠM VI SỬA KÍNH VÀ HỆ THỐNG EYESIGHT'],
+  },
+  {
+    brand: 'VinFast', model: 'VF 5', logo: 'vinfast', slug: 'vinfast-vf-5',
+    variants: [['VF 5 Plus', 496, 153], ['VF 5 mới Premium', 540, 128], ['VF 5 mới Green', 460]],
+    source: 'VinFast · Chính sách giá bán kèm pin từ 12/11/2026',
+    context: 'Mốc 496 triệu và 540 triệu nằm hai phía của ngưỡng 500 triệu, vì vậy hai ví dụ dùng hai tỷ lệ khác nhau. Bản Green được VinFast định hướng cho kinh doanh dịch vụ. Nếu dùng kinh doanh, hãy gửi thông tin để chuyên viên xác nhận phí.',
+    heading: 'Bảo hiểm VF 5 có quyền lợi pin và động cơ điện thế nào?',
+    advice: carElectricTerms,
+    question: 'Giá VF 5 đã kèm pin thì pin có tự được bảo hiểm không?',
+    answer: 'Cần kiểm tra báo giá có ghi giá trị pin và ĐKBS 019. Nếu pin thuê hoặc mua riêng, gửi hợp đồng pin và hồ sơ sở hữu để PVI xem cách kê khai.',
+    banner: ['SO PHÍ VF 5 Ở HAI MỐC GIÁ', 'XEM ĐIỀU KHOẢN PIN VÀ ĐỘNG CƠ ĐIỆN'],
+  },
+];
+
+const feeText = (rate, value) => `${rate === carFeeBands.at(-1).rate ? 'Chỉ từ ' : ''}${money(carFeeAtRate(value * 1_000_000, rate))} đồng/năm`;
+
+export const modelFeeArticles = models.map((data) => {
+  const { brand, model, logo, aliases = [], variants, slug, source, context, heading, advice, question, answer } = data;
+  const name = brand + ' ' + model;
+  const id = 'bao-hiem-vat-chat-' + slug;
+  const title = `Phí bảo hiểm vật chất ${name} bao nhiêu?`;
+  const lead = `Xem phí dự tính cho ${name} theo giá trị bảo hiểm và phiên bản. Với mốc ${money(variants[0][1])} triệu đồng, phí tham khảo là ${feeText(variants[0][2], variants[0][1]).toLowerCase()} nếu hồ sơ đủ điều kiện.`;
+  const cover = 'phi-bao-hiem-' + slug;
+  const alt = `Minh họa tra phí bảo hiểm vật chất ${name} với logo ${brand}`;
+  const post = {
+    slug: id, path: '/kien-thuc/bao-hiem-o-to/' + id + '/', date: '2026-11-27', dateText: '27/11/2026',
+    cat: 'Kiến thức · Bảo hiểm vật chất xe', title, lead, image: '/assets/' + cover + '.webp',
+    imageWidth: 1200, imageHeight: 630, alt, readMin: 4,
+  };
+  return {
+    data, brand, model, aliases, post, cover, internalLinksOnly: true,
+    crumb: 'Bảo hiểm vật chất xe',
+    hero: { name: cover, w: 1200, h: 630, besideTitle: true, download: true, caption: `Giá tham khảo và cách tính phí cho ${name}.` },
+    seo: { title, description: `Tra phí bảo hiểm ${name} theo giá trị xe, xem các điều khoản và cách xác nhận xưởng ${brand} trong chương trình liên kết PVI.` },
+    stylesheet: '/santa-fe-fee.css',
+    script: '/santa-fe-fee.js',
+    tocOptions: { startOpen: false, label: 'Tóm tắt nội dung' },
+    toc: [['bang-tinh-phi', 'Bảng tính phí'], ['dieu-khoan', 'Điều khoản cần kiểm tra'], ['xuong-lien-ket', 'Kiểm tra xưởng liên kết']],
+    faqs: [{ question, answer }],
+    sources: [[source, '', 'Đối chiếu 27/11/2026'], ['Tỷ lệ phí tham khảo và chương trình liên kết', '', 'Thông tin do PVI Thành Đô cung cấp']],
+    related: [{ href: '/kien-thuc/tinhphinhanhtheotenxe/', img: cover, w: 1200, h: 630, k: 'Tra cứu theo mẫu xe', title: 'Tra cứu phí theo dòng xe', text: 'Chọn hãng và tìm mẫu xe khác để tính thử.' }],
+    disclaimer: 'Phép tính dùng để dự trù phí 12 tháng. Thuế, phí bổ sung, quyền lợi và điều kiện bảo lãnh theo báo giá và hợp đồng được PVI chấp thuận.',
+    body() {
+      return `
+<h2 id="bang-tinh-phi">Tính thử phí cho ${esc(name)}</h2>
+<p>${esc(context)}</p>
+<div class="kb-table"><table aria-label="Ví dụ phí theo phiên bản">
+<thead><tr><th scope="col">Phiên bản</th><th scope="col">Giá tham khảo</th><th scope="col">Phí 12 tháng</th></tr></thead>
+<tbody>${variants.map(([label, value, rate]) => `<tr><th scope="row">${esc(label)}</th><td>${money(value)} triệu</td><td>${rate ? `${carFeeText(rate)} · ${feeText(rate, value)}` : 'Hỏi báo phí theo mục đích sử dụng'}${rate === 153 ? ' · 3 điều khoản' : ''}</td></tr>`).join('')}</tbody>
+</table></div>
+<p>Giá xe là mốc để tính thử. Khi có số tiền bảo hiểm được chấp thuận, dùng số đó nhân tỷ lệ. Bảng áp dụng tham khảo cho xe mới hoặc sử dụng đến 3 năm, hồ sơ đủ điều kiện.</p>
+<div class="santa-fe-fee" data-car-fee-calculator>
+  <label for="model-fee-profile">Hồ sơ xe</label>
+  <select id="model-fee-profile"><option value="standard">Xe mới hoặc sử dụng đến 3 năm</option><option value="review">Xe kinh doanh, trên 3 năm hoặc tỷ lệ bồi thường cao</option></select>
+  <label for="model-fee-value">Số tiền bảo hiểm (triệu đồng)</label>
+  <input id="model-fee-value" type="number" inputmode="decimal" min="1" step="any" required value="${variants[0][1]}">
+  <p class="santa-fe-estimate"><strong>Phí dự tính:</strong> <output for="model-fee-value model-fee-profile">${feeText(variants[0][2], variants[0][1])}</output></p>
+  <details><summary>Xem bốn mốc tỷ lệ phí</summary><div class="kb-table"><table><thead><tr><th scope="col">Số tiền bảo hiểm</th><th scope="col">Tỷ lệ phí</th></tr></thead><tbody>${carFeeRows()}</tbody></table></div></details>
+</div>
+<h2 id="dieu-khoan">${esc(heading)}</h2>
+<p>${esc(advice)}</p>
+<h2 id="xuong-lien-ket">Kiểm tra xưởng ${esc(brand)} liên kết với PVI</h2>
+<p>PVI đã ký hợp tác với ${esc(brand)} theo thông tin từ PVI Thành Đô. Nếu muốn sửa tại một cơ sở cụ thể, gửi tên và địa chỉ xưởng để chuyên viên kiểm tra cơ sở tiếp nhận, điều kiện bảo lãnh và quyền lợi sửa chữa trên báo giá.</p>
+<p>Để nhận báo phí, chuẩn bị phiên bản, năm sản xuất, mục đích sử dụng, hồ sơ bồi thường kỳ trước nếu có và tên xưởng muốn chọn. Xem <a class="kb-link" href="/san-pham/bao-hiem-vat-chat-xe/">quyền lợi bảo hiểm vật chất xe PVI</a>.</p>`;
+    },
+  };
+});
