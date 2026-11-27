@@ -5,6 +5,8 @@ const status = document.querySelector('#fuel-status');
 const fallback = document.querySelector('#fuel-fallback');
 const button = form.querySelector('button');
 const certificate = document.querySelector('#mau-gcn-chay-no');
+const gasCertificate = certificate.querySelector('[data-fuel-certificate=gas]');
+const rentalCertificate = certificate.querySelector('[data-fuel-certificate=rental]');
 const facilities = {
   gas: 'Cửa hàng gas (cơ sở kinh doanh khí đốt)',
   xang: 'Trạm xăng (cửa hàng xăng dầu)',
@@ -27,6 +29,8 @@ const rentalRates = {
 
 function updateEstimate() {
   const isRental = rentalFacilities.has(form.elements.facility.value);
+  gasCertificate.hidden = isRental;
+  rentalCertificate.hidden = !isRental;
   rental.hidden = !isRental;
   rental.disabled = !isRental;
   const terms = isRental ? rentalRates[form.elements.pccc.value] : undefined;
