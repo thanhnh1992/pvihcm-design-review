@@ -1,0 +1,81 @@
+import { carElectricTerms } from '../car-fee-rates.mjs';
+
+const vinfastSource = 'VinFast · Chính sách giá bán lẻ đề xuất kèm pin từ 12/11/2026';
+const mercedesSource = 'Mercedes-Benz Việt Nam · Bảng giá bán lẻ đề xuất tháng 10/2026';
+
+export const additionalModelFeeData = [
+  {
+    brand: 'Volvo', model: 'ES90', logo: 'volvo', slug: 'volvo-es90',
+    variants: [['ES90 thuần điện, đời 2027', 2600, 85]], source: 'Volvo Cars Việt Nam · Giá khởi điểm ES90 đời 2027',
+    context: 'Volvo công bố ES90 đời 2027 có giá từ 2,6 tỷ đồng. Phí trong bảng được tính thử nếu PVI chấp thuận đúng mức giá trị đó và hồ sơ đủ điều kiện.',
+    heading: 'ES90 cần kiểm giá trị pin và hệ truyền động ra sao?', advice: carElectricTerms,
+    question: 'Trước khi nhận xe ES90 cần gửi gì để PVI xem báo phí?',
+    answer: 'Gửi phiên bản, dự kiến ngày nhận xe, thông tin bộ pin và báo giá xe. Nếu đã có VIN, gửi kèm để chuyên viên đối chiếu cấu hình.',
+    banner: ['TÍNH THỬ PHÍ VOLVO ES90', 'KIỂM GIÁ TRỊ PIN TRƯỚC KHI NHẬN XE'],
+  },
+  {
+    brand: 'Mercedes-Benz', model: 'GLE', aliases: ['GLE Class'], logo: 'mercedesbenz', slug: 'mercedes-benz-gle',
+    variants: [['GLE 400 e 4MATIC', 4669, 85], ['GLE 450 4MATIC', 4669, 85]], source: mercedesSource,
+    context: 'Hai bản GLE 400 e và GLE 450 cùng giá đề xuất trong bảng hãng tháng 10/2026. Nếu chỉ nhân cùng số tiền bảo hiểm với cùng tỷ lệ thì kết quả bằng nhau. Chào phí còn phụ thuộc phạm vi từng cấu hình.',
+    heading: 'GLE 400 e bản sạc ngoài cần hỏi thêm gì?',
+    advice: 'Khai cấu hình plug-in hybrid và hỏi điều khoản riêng cho pin cao áp, bộ sạc hoặc hệ truyền động nếu cần. Nhờ chuyên viên PVI xác nhận điều khoản áp dụng, hạn mức và xưởng sửa.',
+    question: 'Hai bản GLE cùng giá thì quyền lợi có giống nhau không?',
+    answer: 'Đối chiếu từng báo giá, nhất là danh mục tài sản được bảo hiểm, quyền chọn xưởng và điều khoản dành cho cấu hình sạc ngoài.',
+    banner: ['SO PHÍ GLE 400 E VÀ GLE 450', 'KIỂM QUYỀN LỢI CẤU HÌNH SẠC NGOÀI'],
+  },
+  {
+    brand: 'Mercedes-Benz', model: 'GLS', logo: 'mercedesbenz', slug: 'mercedes-benz-gls',
+    variants: [['GLS 450 4MATIC', 5689, 85]], source: mercedesSource,
+    context: 'Mốc 5,689 tỷ đồng lấy từ bảng hãng cho GLS 450 4MATIC. Nếu định bảo hiểm các hạng mục đã lắp thêm, liệt kê riêng để xác định số tiền bảo hiểm.',
+    heading: 'GLS có thiết bị tuỳ chọn cần kiểm gì khi báo giá?',
+    advice: 'Ghi rõ giá trị cụm trang bị nội thất hoặc ngoại thất muốn bảo hiểm kèm. Hỏi thêm điều kiện thay mới phụ tùng, mức khấu trừ và cơ sở Mercedes-Benz dự định tiếp nhận.',
+    question: 'Có thể so báo giá GLS theo tổng số tiền đóng không?',
+    answer: 'Đưa hai báo giá về cùng giá trị xe, thời hạn, mức khấu trừ và phạm vi phụ tùng trước khi so tổng phí.',
+    banner: ['TRA PHÍ GLS 450 4MATIC', 'SO QUYỀN LỢI PHỤ TÙNG VÀ XƯỞNG SỬA'],
+  },
+  {
+    brand: 'VinFast', model: 'VF 2', logo: 'vinfast', slug: 'vinfast-vf-2',
+    variants: [['VF 2 kèm pin', 188]], source: vinfastSource,
+    context: 'Giá hãng dùng để tham khảo là 188 triệu đồng, thấp hơn 300 triệu. Cung cấp giá trị xe và mục đích sử dụng để PVI xem báo phí riêng.',
+    heading: 'Pin kèm VF 2 có cần khai trong báo giá?', advice: carElectricTerms,
+    question: 'Có thể lấy tỷ lệ 1,53% để tính VF 2 tại mức 188 triệu không?',
+    answer: 'Mốc 1,53% được nêu cho số tiền bảo hiểm từ 300 đến dưới 500 triệu. Hãy gửi hồ sơ để nhận mức cho xe dưới ngưỡng.',
+    banner: ['VF 2 DƯỚI 300 TRIỆU HỎI PHÍ THẾ NÀO?', 'KIỂM KÊ KHAI PIN TRONG BÁO GIÁ'],
+  },
+  {
+    brand: 'VinFast', model: 'VF 3', logo: 'vinfast', slug: 'vinfast-vf-3',
+    variants: [['Eco tiêu chuẩn 2', 278], ['Eco tiêu chuẩn 3', 285], ['Plus', 296]], source: vinfastSource,
+    context: 'Ba mốc giá kèm pin đều dưới 300 triệu đồng. Khi hỏi phí, gửi đúng bản Eco hoặc Plus và trang bị cần đưa vào số tiền bảo hiểm.',
+    heading: 'VF 3 cần kiểm gì về pin và trang bị lắp thêm?', advice: carElectricTerms + ' Nếu có trang bị lắp thêm, gửi danh sách để chuyên viên kiểm cách kê khai.',
+    question: 'VF 3 Plus giá 296 triệu đã được dùng bảng 1,53% chưa?',
+    answer: 'Nếu số tiền bảo hiểm được chấp thuận vẫn dưới 300 triệu đồng, PVI sẽ xem phí theo hồ sơ. Dùng số tiền bảo hiểm thực tế để tra ngưỡng.',
+    banner: ['TRA PHÍ RIÊNG CHO VF 3 ECO VÀ PLUS', 'KIỂM KÊ KHAI PIN VÀ PHỤ KIỆN'],
+  },
+  {
+    brand: 'VinFast', model: 'VF MPV 7', logo: 'vinfast', slug: 'vinfast-vf-mpv-7',
+    variants: [['VF MPV 7 kèm pin', 750, 119]], source: vinfastSource,
+    context: 'Giá tham khảo 750 triệu đồng nằm trong bậc 700–800 triệu. Ví dụ dùng hồ sơ xe đủ điều kiện theo bảng. Nếu dùng xe chở khách kinh doanh, hãy chọn mục xem hồ sơ riêng.',
+    heading: 'VF MPV 7 dùng cho gia đình và kinh doanh cần khai gì?', advice: carElectricTerms + ' Nêu rõ xe dùng gia đình hay chở khách kinh doanh để PVI xác định tỷ lệ và điều kiện.',
+    question: 'VF MPV 7 giá 750 triệu dự tính phí bao nhiêu?',
+    answer: 'Nếu số tiền bảo hiểm đúng 750 triệu và đủ điều kiện tính 1,19%, mức minh họa là 8.925.000 đồng cho 12 tháng.',
+    banner: ['TÍNH THỬ PHÍ VF MPV 7', 'KHAI ĐÚNG PIN VÀ MỤC ĐÍCH SỬ DỤNG'],
+  },
+  {
+    brand: 'VinFast', model: 'Minio Green', logo: 'vinfast', slug: 'vinfast-minio-green',
+    variants: [['Minio Green kèm pin', 188]], source: vinfastSource,
+    context: 'Giá kèm pin của Minio Green là 188 triệu đồng trong chính sách đối chiếu. Đây là mốc cần hỏi báo phí riêng vì thấp hơn bậc 300 triệu của bảng tham khảo.',
+    heading: 'Khi hỏi phí Minio Green cần khai mục đích nào?', advice: carElectricTerms + ' Ghi rõ nếu dùng xe chạy dịch vụ và gửi thông tin quản lý hoặc giấy tờ thuê xe nếu có.',
+    question: 'Xe giá 188 triệu dùng cá nhân có tự tính theo bảng được không?',
+    answer: 'Xe dưới 300 triệu cần PVI xem mức phí riêng, kể cả dùng cá nhân. Gửi giá trị xe và hồ sơ pin để được tư vấn.',
+    banner: ['HỎI PHÍ MINIO GREEN DƯỚI 300 TRIỆU', 'KHAI PIN VÀ MỤC ĐÍCH DÙNG XE'],
+  },
+  {
+    brand: 'VinFast', model: 'EC Van', logo: 'vinfast', slug: 'vinfast-ec-van', commercial: true,
+    variants: [['Tiêu chuẩn', 248], ['Nâng cao', 286], ['Nâng cao + cửa trượt', 306]], source: vinfastSource,
+    context: 'Chính sách VinFast ghi các mốc 248, 286 và 306 triệu đồng. EC Van dùng để chở hàng cần PVI xem mục đích sử dụng và phương án phí theo hồ sơ.',
+    heading: 'EC Van chở hàng cần gửi thêm thông tin gì?', advice: carElectricTerms + ' Gửi loại hàng, mục đích vận tải và thiết bị lắp thêm trong khoang hàng để PVI xem phạm vi.',
+    question: 'EC Van bản 306 triệu có tự áp mức 1,53% không?',
+    answer: 'Cần xác nhận mục đích sử dụng và điều kiện hồ sơ trước. Mốc giá trên 300 triệu tự nó chưa xác định được phí cho xe chở hàng.',
+    banner: ['HỎI PHÍ THEO PHIÊN BẢN EC VAN', 'KÊ KHAI PIN VÀ NHU CẦU CHỞ HÀNG'],
+  },
+];

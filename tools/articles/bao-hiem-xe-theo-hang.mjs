@@ -1,5 +1,6 @@
 import { esc } from '../chrome.mjs';
 import { moreModelFeeData } from '../data/car-fee-models-batch3.mjs';
+import { additionalModelFeeData } from '../data/car-fee-models-batch4.mjs';
 import { carFeeAtRate, carFeeBands, carFeeRows, carFeeText, formatCarMoney as money, carElectricTerms } from '../car-fee-rates.mjs';
 
 const models = [
@@ -94,6 +95,7 @@ const models = [
     banner: ['SO PHÍ VF 6 COMFORT VÀ PREMIUM', 'KIỂM KÊ KHAI PIN VÀ ĐỘNG CƠ ĐIỆN'],
   },
   ...moreModelFeeData,
+  ...additionalModelFeeData,
 ];
 
 const feeText = (rate, value) => `${rate === carFeeBands.at(-1).rate ? 'Chỉ từ ' : ''}${money(carFeeAtRate(value * 1_000_000, rate))} đồng/năm`;
@@ -103,7 +105,11 @@ export const modelFeeArticles = models.map((data) => {
   const name = brand + ' ' + (data.displayModel || model);
   const id = 'bao-hiem-vat-chat-' + slug;
   const title = `Phí bảo hiểm vật chất ${name} bao nhiêu?`;
-  const lead = `Xem phí dự tính cho ${name} theo giá trị bảo hiểm và phiên bản. Với mốc ${money(variants[0][1])} triệu đồng, phí tham khảo là ${feeText(variants[0][2], variants[0][1]).toLowerCase()} nếu hồ sơ đủ điều kiện.`;
+  const [, firstValue, firstRate] = variants[0];
+  const example = firstRate ? feeText(firstRate, firstValue) : 'Liên hệ chuyên viên để được báo phí';
+  const lead = firstRate
+    ? `Xem phí dự tính cho ${name} theo giá trị bảo hiểm và phiên bản. Với mốc ${money(firstValue)} triệu đồng, phí tham khảo là ${example.toLowerCase()} nếu hồ sơ đủ điều kiện.`
+    : `Xem giá hãng, điều khoản và hồ sơ cần gửi để được báo phí bảo hiểm ${name}. Mốc ${money(firstValue)} triệu đồng trong bài cần được báo phí riêng.`;
   const cover = 'phi-bao-hiem-' + slug + '-minh-hoa';
   const alt = `Ảnh minh họa ${name} tại khu tiếp nhận dịch vụ`;
   const post = {
@@ -135,10 +141,10 @@ export const modelFeeArticles = models.map((data) => {
 <p>Giá xe là mốc để tính thử. Khi có số tiền bảo hiểm được chấp thuận, dùng số đó nhân tỷ lệ. Bảng áp dụng tham khảo cho xe mới hoặc sử dụng đến 3 năm, hồ sơ đủ điều kiện.</p>
 <div class="santa-fe-fee" data-car-fee-calculator>
   <label for="model-fee-profile">Hồ sơ xe</label>
-  <select id="model-fee-profile"><option value="standard">Xe mới hoặc sử dụng đến 3 năm</option><option value="review">Xe kinh doanh, trên 3 năm hoặc tỷ lệ bồi thường cao</option></select>
+  <select id="model-fee-profile">${data.commercial ? '' : '<option value="standard">Xe mới hoặc sử dụng đến 3 năm</option>'}<option value="review">${data.commercial ? 'Xe chở hàng, cần báo phí riêng' : 'Xe kinh doanh, trên 3 năm hoặc tỷ lệ bồi thường cao'}</option></select>
   <label for="model-fee-value">Số tiền bảo hiểm (triệu đồng)</label>
   <input id="model-fee-value" type="number" inputmode="decimal" min="1" step="any" required value="${variants[0][1]}">
-  <p class="santa-fe-estimate"><strong>Phí dự tính:</strong> <output for="model-fee-value model-fee-profile">${feeText(variants[0][2], variants[0][1])}</output></p>
+  <p class="santa-fe-estimate"><strong>Phí dự tính:</strong> <output for="model-fee-value model-fee-profile">${example}</output></p>
   <details><summary>Xem bốn mốc tỷ lệ phí</summary><div class="kb-table"><table><thead><tr><th scope="col">Số tiền bảo hiểm</th><th scope="col">Tỷ lệ phí</th></tr></thead><tbody>${carFeeRows()}</tbody></table></div></details>
 </div>
 <h2 id="dieu-khoan">${esc(heading)}</h2>
