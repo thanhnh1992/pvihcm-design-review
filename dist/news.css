@@ -757,3 +757,13 @@
 .kb-rating strong,.kb-rating a{color:var(--ink)}
 .kb-rating a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:3px}
 .kb-rating a[hidden]{display:none}
+
+/* Ảnh đại diện nằm ngang tiêu đề và phần mô tả đầu bài (hero.besideTitle trong tools/articles/*.mjs; chủ site yêu cầu 27/11/2026).
+   Cùng bố cục với dist/santa-fe-fee.css (trang xe nạp cả hai file, quy tắc trùng nhau nên không đổi giao diện trang xe). */
+.kb-head-feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"title cover" "intro cover";grid-template-rows:auto 1fr;align-items:start;gap:14px clamp(20px,3vw,44px);margin-block:12px 20px}
+.kb-head-feature h1{grid-area:title;margin:0;font-size:clamp(28px,2.7vw,40px)}
+.kb-head .kb-hero-top{grid-area:cover;width:100%;margin:0}
+.kb-head-intro{grid-area:intro}
+.kb-head-intro .kb-lead{margin-top:0}
+.kb-head .kb-hero-top img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:12px}
+@media (max-width:820px){.kb-head-feature{grid-template-columns:minmax(0,1fr);grid-template-areas:"title" "cover" "intro";grid-template-rows:auto}.kb-head .kb-hero-top figcaption{padding-inline:0}}

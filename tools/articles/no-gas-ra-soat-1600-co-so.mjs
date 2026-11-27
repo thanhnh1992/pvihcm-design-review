@@ -1,5 +1,6 @@
 // Tin: nổ gas ở TP.HCM (13/11/2026) và Hà Nội (24/11/2026); Công an TP.HCM rà soát hơn 1.600 cơ sở kinh doanh khí hóa lỏng
-// (chủ site giao 27/11/2026, theo bài Tuổi Trẻ trên Facebook). Bản chuẩn ở pvihcm.com, mục Tin tức, hub Cháy nổ (mảng Tin tức).
+// (chủ site giao 27/11/2026, theo bài Tuổi Trẻ trên Facebook). Đăng cả hai site (chủ site 27/11/2026): bản chuẩn ở baohiempvi-vn.com
+// (quy tắc baohiempvi cấm canonical ra ngoài), trang này khai canonical về đó như bài massage. Ảnh đại diện nằm ngang phần mô tả (besideTitle).
 // Dữ kiện theo Tuổi Trẻ, VOH, Báo Đầu tư, Tiền Phong, Dân trí, VnExpress, Báo Chính phủ; nguồn ghi bằng chữ, không link ra ngoài.
 // Thương vong thay đổi theo giờ cập nhật: ghi "ít nhất" kèm mốc thời gian và nguồn. Không nêu tên chủ cửa hàng.
 // Biểu phí gói cửa hàng lấy từ tools/data/product.mjs (gói "Bảo hiểm cháy nổ cửa hàng, hộ kinh doanh" đang đăng trên site).
@@ -18,10 +19,11 @@ export const post = {
   alt: 'Cảnh sát PCCC và CNCH đưa bình gas ra khỏi đống đổ nát của một cửa hàng sau vụ nổ',
   readMin: 6,
   schemaType: 'NewsArticle',
+  canonical: 'https://www.baohiempvi-vn.com/kien-thuc/no-gas-tphcm-ha-noi-ra-soat-1600-co-so-kinh-doanh-gas',
 };
 
 export const crumb = 'Tin tức cháy nổ';
-export const hero = { name: 'chay-no-hien-truong-sau-vu-no', w: 1200, h: 800, position: '50% 45%', caption: 'Lực lượng Cảnh sát PCCC và CNCH đưa bình gas ra khỏi đống đổ nát sau một vụ nổ cửa hàng gas. Ảnh minh họa, không phải ảnh của từng vụ việc trong bài.' };
+export const hero = { name: 'chay-no-hien-truong-sau-vu-no', w: 1200, h: 800, position: '50% 45%', besideTitle: true, caption: 'Lực lượng Cảnh sát PCCC và CNCH đưa bình gas ra khỏi đống đổ nát sau một vụ nổ cửa hàng gas. Ảnh minh họa, không phải ảnh của từng vụ việc trong bài.' };
 export const seo = {
   title: 'Nổ gas TP.HCM, Hà Nội: rà soát 1.600 cơ sở gas | PVI',
   description: 'TP.HCM rà soát hơn 1.600 cơ sở kinh doanh gas sau vụ nổ ở Tân Thuận và Hà Nội. Cửa hàng, quán ăn dùng gas cần kiểm tra gì, bảo hiểm cháy nổ phí bao nhiêu.',
