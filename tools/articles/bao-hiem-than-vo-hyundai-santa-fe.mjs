@@ -29,7 +29,7 @@ export const post = {
 };
 
 export const crumb = 'Bảo hiểm vật chất xe';
-export const hero = { name: cover, w: 1200, h: 630, besideTitle: true, caption: 'Hình ảnh minh họa: Hyundai Santa Fe tại khu vực tiếp nhận của xưởng dịch vụ ô tô.' };
+export const hero = { name: cover, w: 1200, h: 630, besideTitle: true, download: true, caption: 'Hình ảnh minh họa: Hyundai Santa Fe tại khu vực tiếp nhận của xưởng dịch vụ ô tô.' };
 export const seo = {
   title: 'Bảo hiểm thân vỏ Hyundai Santa Fe PVI bao nhiêu?',
   description: 'Tính thử phí bảo hiểm thân vỏ Hyundai Santa Fe theo giá trị xe, năm sản xuất, quyền lợi bổ sung và lịch sử bồi thường tại PVI Thành Đô.',
