@@ -12,6 +12,7 @@ import * as kbBinhDuong from './articles/mua-bao-hiem-pvi-binh-duong.mjs';
 import * as kbBhytOnline from './articles/mua-bao-hiem-y-te-online.mjs';
 import * as kbBinhThanh from './articles/mua-bao-hiem-pvi-binh-thanh.mjs';
 import * as kbChayMassage from './articles/chay-tiem-massage-le-van-luong.mjs';
+import * as kbNoGas from './articles/no-gas-ra-soat-1600-co-so.mjs';
 import * as kbChayHappyValley from './articles/chay-can-ho-chung-cu-happy-valley.mjs';
 import * as kbChayTranQuangKhai from './articles/chay-nha-duong-tran-quang-khai-tan-dinh.mjs';
 import * as kbTet2027 from './articles/lich-nghi-tet-nguyen-dan-2027.mjs';
@@ -63,6 +64,7 @@ const write = (rel, html) => {
 const postUrl = (post) => post.path || `/tin-tuc/${post.slug}/`;
 
 export const posts = [
+  kbNoGas.post,
   kbSantaFe.post,
   ...modelFeeArticles.map(({ post }) => post),
   kbLichLe2027.post,
@@ -155,6 +157,7 @@ const GROUPS = [
   { id: 'tin-chung', key: 'chung', name: 'Tin tức chung', hint: 'PVI Thành Đô và khu vực', title: 'Hoạt động của PVI Thành Đô', lead: 'Thông báo của đơn vị và thông tin mua bảo hiểm PVI theo từng khu vực tại TP.HCM.' },
 ];
 const POST_GROUP = {
+  'no-gas-tphcm-ha-noi-ra-soat-1600-co-so-kinh-doanh-gas': 'san-pham',
   [kbLichLe2027.post.slug]: 'chung',
   [kbNghiBu2027.post.slug]: 'chung',
   [kbTet2027.post.slug]: 'chung',
@@ -549,6 +552,7 @@ renderKb(kbBinhDuong);
 renderKb(kbBhytOnline);
 renderKb(kbBinhThanh);
 renderKb(kbChayMassage);
+renderKb(kbNoGas);
 renderKb(kbChayHappyValley);
 renderKb(kbChayTranQuangKhai);
 renderKb(kbTet2027);
