@@ -11,12 +11,13 @@ for (const guide of guides) mappings.set('/tin-tuc/' + guide.slug + '/', binhDuo
 mappings.set('/tin-tuc/mua-bao-hiem-pvi-binh-thanh/', { name: 'Bình Thạnh', unit: units.find((unit) => unit.name === 'Bảo hiểm PVI Thành Đô') });
 // Điểm mua thực tế đã được chủ site cung cấp ảnh, địa chỉ trong bài Thủ Đức.
 mappings.set('/tin-tuc/mua-bao-hiem-pvi-thu-duc/', { name: 'Thủ Đức', point: true, unit: { address: '37 Đường số 2, phường An Khánh, khu vực TP Thủ Đức cũ, TP.HCM' } });
+const vungTau = { name: 'Vũng Tàu', unit: units.find((unit) => unit.name === 'Bảo hiểm PVI Vũng Tàu'), addressPage: '/vungtau/#dia-chi-pvi' };
 export const localityPaths = [...mappings.keys()];
 export function localityForPath(path) {
   const binhDuongPage = path.startsWith('/binhduong/') && path !== '/binhduong/sanpham/';
   const entry = binhDuongPage
     ? binhDuong
-    : mappings.get(path);
+    : path.startsWith('/vungtau/') ? vungTau : mappings.get(path);
   if (entry && !entry.unit) throw new Error('Thiếu đơn vị PVI cho ' + path);
   return entry;
 }

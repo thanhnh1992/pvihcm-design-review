@@ -121,7 +121,7 @@ function footerSiteOffice() {
 }
 
 // Địa chỉ địa phương tách rõ với đơn vị vận hành website Thành Đô.
-function localityFooter({ name, unit, point }) {
+function localityFooter({ name, unit, point, addressPage }) {
   let html = footer();
   html = html.replace('class="site-footer"', 'class="site-footer site-footer-local"');
   html = html.replace(footerHq(), '');
@@ -130,7 +130,7 @@ function localityFooter({ name, unit, point }) {
   html = html.replace(/<address>[\s\S]*?<\/address>/, '<address><strong>' + (point ? 'Địa chỉ điểm mua' : 'Địa chỉ văn phòng') + '</strong>' + esc(unit.address) + (point ? '' : '<br><a href="tel:' + unit.phone.replace(/\D/g, '') + '">Điện thoại văn phòng: ' + esc(unit.phone) + '</a>') + '</address>');
   html = html.replace('<strong>Liên hệ tư vấn</strong>', '<strong>Tư vấn PVI Thành Đô</strong>');
   html = html.replace('</div><div class="footer-contact">', () => footerSiteOffice() + '</div><div class="footer-contact">');
-  html = html.replace(footerMap(), footerMap(unit.address, 'Bản đồ: ' + (point ? 'Điểm mua PVI Thành Đô tại An Khánh' : unit.name)));
+  html = html.replace(footerMap(), addressPage ? '<p class="footer-map"><a href="' + addressPage + '">Xem địa chỉ PVI Vũng Tàu</a></p>' : footerMap(unit.address, 'Bản đồ: ' + (point ? 'Điểm mua PVI Thành Đô tại An Khánh' : unit.name)));
   return html;
 }
 

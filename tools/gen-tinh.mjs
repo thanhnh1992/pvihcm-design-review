@@ -7,8 +7,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { page, esc, SITE, ZALO, faqJsonLd, articleJsonLd } from './chrome.mjs';
+import { page, esc, SITE, ZALO, ORG_ID, faqJsonLd, articleJsonLd } from './chrome.mjs';
 import { formatVnd, tndsVehicleClasses, tndsLimits, tndsReference } from './data/tnds.mjs';
+import { GOOGLE_RATING } from './data/google-rating.mjs';
 import { sampleCertificate, clauses as vcxClauses } from './data/vcx.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -25,12 +26,13 @@ const NHOM = [
 
 const exists = (name) => fs.existsSync(path.join(DIST, 'assets', name + '.webp'));
 // Ảnh địa phương nếu đã có, không thì ảnh minh họa sản phẩm (alt/caption nói thật là ảnh không chụp tại tỉnh).
-function img({ anh, anhTam, alt, w = 1280, h = 853, tw = w, th = h, sizes, eager = false }, ten, tinhTen) {
+function img({ anh, anhTam, alt, caption, w = 1280, h = 853, tw = w, th = h, sizes, eager = false }, ten, tinhTen) {
   const local = anh && exists(anh);
+  if (caption && !local) throw new Error('Thiếu ảnh địa phương: ' + anh);
   const name = local ? anh : anhTam;
   const [W, H] = local ? [tw, th] : [w, h];
   const a = local ? alt : `Hình ảnh minh họa ${lc(ten)}`;
-  const cap = local ? alt + '.' : `Hình ảnh minh họa ${lc(ten)}, không chụp tại ${tinhTen}.`;
+  const cap = local ? (caption || alt + '.') : `Hình ảnh minh họa ${lc(ten)}, không chụp tại ${tinhTen}.`;
   const src = `/assets/${name}`;
   const variants = [480, 800].filter((x) => x < W && exists(`${name}-${x}`)).map((x) => `${src}-${x}.webp ${x}w`);
   const srcset = variants.length ? ` srcset="${variants.join(', ')}, ${src}.webp ${W}w" sizes="${sizes}"` : '';
@@ -75,27 +77,53 @@ for (const file of files) {
   const { tinh: T } = await import(pathToFileURL(path.join(DATA, file)).href);
   const route = `/${T.slug}/`;
   const catalog = route + 'sanpham/';
-  const hubName = `Bảo hiểm tại ${T.ten}`;
+  const hubName = T.localActions ? `Bảo hiểm PVI tại ${T.ten}` : `Bảo hiểm tại ${T.ten}`;
   const catName = `Sản phẩm bảo hiểm tại ${T.ten}`;
   const O = T.office;
+  const actions = T.localActions;
+  const localArea = O.addressRegion || T.ten;
+  const office = { '@type': 'InsuranceAgency', name: O.ten, telephone: '+84' + O.tel.slice(1),
+    address: { '@type': 'PostalAddress', streetAddress: O.streetAddress || O.diaChi, addressRegion: localArea, addressCountry: 'VN' },
+    parentOrganization: { '@type': 'Organization', name: 'Tổng công ty Bảo hiểm PVI' } };
+  if (O.addressLocality) {
+    office['@id'] = SITE + route + '#van-phong-pvi';
+    office.url = SITE + route + '#dia-chi-pvi';
+    office.address.addressLocality = O.addressLocality;
+    office.taxID = O.mst;
+  }
+  const online = T.onlinePurchase;
+  const onlineButton = online ? `<a class="bd-button" href="${esc(online.zaloUrl)}" rel="nofollow noopener" target="_blank">Mua online tại đây (PVI Online)</a>` : '';
+  const purchaseIntro = (product = 'bảo hiểm PVI') => `<p>Khách hàng mua <strong>${esc(product)} tại ${esc(T.ten)}</strong> có thể đến trực tiếp văn phòng ${esc(O.ten)} tại ${esc(O.diaChi)} hoặc mua qua <strong>PVI Online</strong>. Bấm nút PVI Online để chat qua Zalo, nhận báo phí và được hướng dẫn mua.</p>`;
+  const onlineBenefits = () => `<h3>Ưu điểm khi mua online</h3><ol>
+<li>Tiết kiệm thời gian di chuyển, nhất là khi ở xa văn phòng trên địa bàn ${esc(online.area)}.</li>
+<li>Nhận báo phí theo hồ sơ, so sánh phương án phí và xem quyền lợi, điều kiện của sản phẩm trước khi quyết định mua.</li>
+<li>Thanh toán online trực tiếp cho đơn vị bảo hiểm theo hướng dẫn chính thức và nhận giấy chứng nhận điện tử ngay khi đơn được phát hành, giúp chủ động khi cần chứng nhận gấp. Với hồ sơ cần thẩm định, chuyên viên sẽ xác nhận thời gian phát hành.</li>
+</ol>`;
+  const imageMeta = (im) => im.data ? '<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="' + esc(im.data.alt) + '">' + ld({
+    '@context': 'https://schema.org', '@type': 'ImageObject', contentUrl: SITE + im.src, name: im.data.alt,
+    caption: im.data.caption, creator: { '@type': im.data.illustration ? 'Organization' : 'Person', name: im.data.creator },
+    creditText: im.data.illustration ? 'Ảnh minh họa PVIHCM' : im.data.creator + ' (ảnh gốc) · PVIHCM (trình bày)',
+    copyrightNotice: im.data.rights + '. Bản trình bày: Công ty Bảo hiểm PVI Thành Đô.',
+  }) : '';
   const url = (p) => route + p.id + '/';
   const meta = (mins) => `<p class="tn-meta">Cập nhật: <time datetime="${T.ngay}">${T.ngayText}</time> · Biên soạn: Công ty Bảo hiểm PVI Thành Đô${mins ? ` · ${mins} phút đọc` : ''}</p>`;
   const write = (p, html) => { const out = path.join(DIST, p); fs.mkdirSync(out, { recursive: true }); fs.writeFileSync(path.join(out, 'index.html'), html); };
   const css = '<link rel="stylesheet" href="/binhduong/landing.css"><link rel="stylesheet" href="/tinh/tinh.css">';
-  const place = { '@type': 'Place', name: `${T.ten} (${T.tenDayDu})`, address: { '@type': 'PostalAddress', addressRegion: T.ten, addressCountry: 'VN' } };
+  const place = { '@type': 'Place', name: `${T.ten} (${T.tenDayDu})`, address: { '@type': 'PostalAddress', addressRegion: localArea, addressCountry: 'VN' } };
+  const rating = actions ? '<p class="tn-meta" data-rating-link-only><a class="bd-link" href="/danh-gia/">Đánh giá PVI Thành Đô: ' + String(GOOGLE_RATING.rating).replace('.', ',') + '/5</a> · ' + GOOGLE_RATING.count + ' lượt trên Google, đối chiếu ' + esc(GOOGLE_RATING.checked) + '.</p>' : '';
   const officeHtml = (h = 'h2', id = 'dia-chi-pvi') => `<${h} id="${id}">Địa chỉ PVI tại ${esc(T.ten)}</${h}>
 <p><strong>${esc(O.ten)}</strong> là ${esc(O.loai.charAt(0).toLowerCase() + O.loai.slice(1))}, đầu mối của Bảo hiểm PVI tại ${esc(T.ten)}.</p>
 <p><strong>Địa chỉ:</strong> ${esc(O.diaChi)}. <strong>Điện thoại:</strong> <a class="bd-link" href="tel:${O.tel}">${esc(O.dienThoai)}</a>.</p>
-<p>Muốn làm từ xa, gửi hồ sơ qua Zalo và nhận giấy chứng nhận điện tử, liên hệ Công ty Bảo hiểm PVI Thành Đô: <a class="bd-link" href="tel:0938072236">0938 072 236</a>. Hợp đồng bảo hiểm PVI có hiệu lực trên toàn quốc, không phụ thuộc đơn vị cấp.</p>`;
+<p>${online ? 'Bạn cũng có thể mua từ xa qua PVI Online.' : 'Muốn làm từ xa, gửi hồ sơ qua Zalo và nhận giấy chứng nhận điện tử, liên hệ Công ty Bảo hiểm PVI Thành Đô: <a class="bd-link" href="tel:0938072236">0938 072 236</a>. Hợp đồng bảo hiểm PVI có hiệu lực trên toàn quốc, không phụ thuộc đơn vị cấp.'}</p>`;
   const card = (p) => {
-    const im = img({ anh: p.anh, anhTam: p.anhTam, alt: p.anhAlt, w: p.anhW || 1280, h: p.anhH || 853, sizes: '(max-width:620px) calc(100vw - 40px), (max-width:1248px) 48vw, 588px' }, p.ten, T.ten);
+    const im = img({ anh: p.anh, anhTam: p.anhTam, alt: p.anhAlt, caption: p.cover?.caption, tw: p.cover ? 1200 : undefined, th: p.cover ? 630 : undefined, w: p.anhW || 1280, h: p.anhH || 853, sizes: '(max-width:620px) calc(100vw - 40px), (max-width:1248px) 48vw, 588px' }, p.ten, T.ten);
     return `<li class="bd-product"><div class="bd-product-photo">${im.html}</div><div class="bd-product-copy"><h3><a class="bd-product-title" href="${url(p)}">${esc(p.ten)} tại ${esc(T.ten)}</a></h3><p>${esc(p.the)}</p><div class="bd-product-links"><a class="bd-product-primary" href="${url(p)}">Xem phí và hồ sơ <span aria-hidden="true">→</span></a></div></div></li>`;
   };
   const groups = NHOM.map(([id, title]) => ({ id, title, list: T.products.filter((p) => p.nhom === id) })).filter((g) => g.list.length);
 
   /* ── Trang tỉnh ── */
   const H = T.hero;
-  const heroImg = img({ anh: H.anh, anhTam: H.anhTam, alt: H.alt, w: 1200, h: 630, tw: 1200, th: 960, sizes: '(max-width:800px) 92vw, 550px', eager: true }, 'mạng lưới Bảo hiểm PVI', T.ten);
+  const heroImg = { data: H.cover, ...img({ anh: H.anh, anhTam: H.anhTam, alt: H.alt, caption: H.cover?.caption, w: 1200, h: 630, tw: 1200, th: H.cover ? 630 : 960, sizes: '(max-width:800px) 92vw, 550px', eager: true }, 'mạng lưới Bảo hiểm PVI', T.ten) };
   const hc = T.hanhChinh;
   const hub = `<div class="bd">
 <section class="bd-hero"><div class="bd-wrap bd-hero-grid"><div class="bd-intro">
@@ -107,11 +135,11 @@ ${crumbNav([['Trang chủ', '/'], [hubName, route]])}
 <p class="bd-location"><strong>${esc(O.ten)}</strong><br>${esc(O.diaChi)}</p>
 </div><figure class="bd-hero-photo">${heroImg.html}<figcaption>${esc(heroImg.cap)}</figcaption></figure></div></section>
 <div class="bd-wrap bd-body">
-${meta(0)}
+${meta(0)}${rating}
 <nav class="bd-jumps bd-page-nav" aria-label="Nội dung trang"><a href="#bao-hiem-pvi">PVI tại ${esc(T.ten)}</a><a href="#san-pham">Sản phẩm</a><a href="#khu-cong-nghiep">Khu công nghiệp</a><a href="#phuong-xa">Phường, xã</a><a href="#rui-ro">Rủi ro địa phương</a><a href="#cach-mua">Cách mua</a><a href="#su-co">Khi có sự cố</a><a href="#dia-chi-pvi">Địa chỉ PVI</a></nav>
 <section class="bd-section" aria-labelledby="bao-hiem-pvi"><h2 id="bao-hiem-pvi">Bảo hiểm PVI tại ${esc(T.ten)}: ai phụ trách, mua ở đâu</h2>
 <div class="bd-local-intro">
-<p>Đầu mối của Bảo hiểm PVI tại ${esc(T.ten)} là <strong>${esc(O.ten)}</strong>, văn phòng ở ${esc(O.diaChi)}, điện thoại <a class="bd-link" href="tel:${O.tel}">${esc(O.dienThoai)}</a>. Khách có thể làm việc trực tiếp tại đây hoặc mua từ xa qua Công ty Bảo hiểm PVI Thành Đô bằng Zalo <a class="bd-link" href="tel:0938072236">0938 072 236</a>.</p>
+<p>Đầu mối của Bảo hiểm PVI tại ${esc(T.ten)} là <strong>${esc(O.ten)}</strong>, văn phòng ở ${esc(O.diaChi)}, điện thoại <a class="bd-link" href="tel:${O.tel}">${esc(O.dienThoai)}</a>. Khách có thể làm việc trực tiếp tại đây.</p>
 <p>${esc(hc.cu)} ${esc(hc.moi)}</p>
 <p>Danh sách phường, xã mới kèm đơn vị cũ hợp thành xem ở mục <a class="bd-link" href="#phuong-xa">phường, xã lớn</a> cuối trang. Giấy tờ còn ghi địa chỉ cũ vẫn dùng được khi mua bảo hiểm.</p>
 </div></section>
@@ -123,13 +151,13 @@ ${groups.map((g) => `<section class="bd-group" aria-labelledby="nhom-${g.id}"><h
 <ul>${T.ruiRo.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>
 <p class="bd-summary">Vì vậy xe ô tô nên có <a class="bd-link" href="${route}vatchatxeoto/">điều khoản thủy kích</a>, nhà xưởng, kho ở vùng trũng, ven sông hay ven biển nên hỏi thêm rủi ro ngập, giông bão trong <a class="bd-link" href="${route}taisannhaxuong/">bảo hiểm tài sản</a>.</p></section>
 <section class="bd-section bd-guide" aria-labelledby="cach-mua"><h2 id="cach-mua">Ba bước mua bảo hiểm tại ${esc(T.ten)}</h2><ol>
-<li><strong>Gửi nhu cầu.</strong> Chọn sản phẩm, gửi giấy tờ xe, danh mục tài sản hoặc danh sách người qua Zalo hoặc tại văn phòng.</li>
+<li><strong>Gửi nhu cầu.</strong> Chọn sản phẩm, gửi giấy tờ xe, danh mục tài sản hoặc danh sách người theo hướng dẫn của chuyên viên hoặc tại văn phòng.</li>
 <li><strong>Đọc báo phí.</strong> Soát phạm vi, quyền lợi, loại trừ và mức khấu trừ. Hỏi lại nếu thông tin chưa khớp giấy tờ.</li>
 <li><strong>Xác nhận và nhận chứng nhận.</strong> Đối chiếu tên, địa chỉ, thời hạn trước khi thanh toán theo hướng dẫn trên chứng từ.</li></ol></section>
 <section class="bd-section bd-guide" aria-labelledby="dai-ly"><h2 id="dai-ly">Mua qua đại lý ở ${esc(T.ten)} cần kiểm tra gì?</h2>
 <ul><li>Chứng từ ghi rõ Bảo hiểm PVI, đơn vị cấp và đúng tên bên mua.</li><li>Đối tượng bảo hiểm, biển số hoặc địa chỉ, thời hạn khớp báo phí đã xác nhận.</li><li>Tài khoản thanh toán khớp hướng dẫn trên hợp đồng. Nghi ngờ thì gọi <a class="bd-link" href="tel:${O.tel}">${esc(O.ten)}</a> để kiểm tra trước khi chuyển tiền.</li></ul></section>
-<section class="bd-section bd-quote" aria-labelledby="nhan-bao-phi"><div><h2 id="nhan-bao-phi">Nhận báo phí và hỏi ưu đãi</h2><p>Gửi sản phẩm cần mua, giấy tờ liên quan và ngày cần hiệu lực. Hỏi chương trình ưu đãi đang áp dụng khi nhận báo phí.</p></div>
-<div class="bd-actions bd-quote-actions"><a class="bd-button" href="tel:0938072236">Gọi tư vấn 0938 072 236</a><a class="bd-button bd-secondary" href="${esc(ZALO)}">Nhắn Zalo</a></div></section>
+<section class="bd-section bd-quote" aria-labelledby="nhan-bao-phi"><div><h2 id="nhan-bao-phi">${online ? 'Mua bảo hiểm PVI trực tiếp hoặc online' : 'Nhận báo phí và hỏi ưu đãi'}</h2>${online ? purchaseIntro() + onlineBenefits() : '<p>Gửi sản phẩm cần mua, giấy tờ liên quan và ngày cần hiệu lực. Hỏi chương trình ưu đãi đang áp dụng khi nhận báo phí.</p>'}</div>
+<div class="bd-actions bd-quote-actions">${online ? onlineButton : `<a class="bd-button" href="tel:0938072236">Gọi tư vấn 0938 072 236</a><a class="bd-button bd-secondary" href="${esc(ZALO)}">Nhắn Zalo</a>`}</div></section>
 <section class="bd-section bd-guide" aria-labelledby="su-co"><h2 id="su-co">Khi có sự cố ở ${esc(T.ten)}</h2>
 <p class="bd-summary">Ưu tiên an toàn, gọi cấp cứu hoặc cơ quan chức năng khi cần. Sau đó gọi tổng đài bồi thường PVI <a class="bd-link" href="tel:1900545458">1900 54 54 58</a>, giữ ảnh hiện trường và giấy tờ, không tự sửa chữa hay thanh lý tài sản trước khi được hướng dẫn giám định.</p></section>
 <section class="bd-section bd-faq" aria-labelledby="cau-hoi"><h2 id="cau-hoi">Câu hỏi thường gặp</h2>
@@ -148,19 +176,20 @@ ${T.hanhChinh.phuongKhac && T.hanhChinh.phuongKhac.length ? `<p class="bd-summar
   write(route, page({
     path: route, title: H.title, description: H.description, image: heroImg.src, bodyClass: 'fire bd-page', extraCss: css, main: hub,
     head: ld({ '@context': 'https://schema.org', '@type': 'WebPage', '@id': SITE + route + '#webpage', url: SITE + route, name: H.title, description: H.description, inLanguage: 'vi-VN', dateModified: T.ngay, about: place,
-      mentions: { '@type': 'InsuranceAgency', name: O.ten, telephone: '+84' + O.tel.slice(1), address: { '@type': 'PostalAddress', streetAddress: O.diaChi, addressRegion: T.ten, addressCountry: 'VN' }, parentOrganization: { '@type': 'Organization', name: 'Tổng công ty Bảo hiểm PVI' } } })
-      + crumbLd(hubTrail) + faqJsonLd(T.faqs),
+      mentions: office })
+      + crumbLd(hubTrail) + faqJsonLd(T.faqs) + imageMeta(heroImg),
   }));
 
   /* ── Danh mục ── */
-  const catTitle = `Biểu phí bảo hiểm PVI tại ${T.ten} mới nhất 2026`;
+  const catTitle = actions ? catName : `Biểu phí bảo hiểm PVI tại ${T.ten} mới nhất 2026`;
+  const categoryImage = T.catalogCover ? { src: '/assets/' + T.catalogCover.stem + '.webp', data: T.catalogCover } : heroImg;
   const catTrail = [...hubTrail, [catName, catalog]];
   write(catalog, page({
     path: catalog, title: catTitle, description: `Xem ${T.products.length} sản phẩm bảo hiểm PVI tại ${T.ten}: TNDS và vật chất ô tô, cháy nổ, nhà xưởng, công trình, hàng hóa, tai nạn, sức khỏe, du lịch. Phí và hồ sơ từng sản phẩm.`,
-    image: heroImg.src, bodyClass: 'fire bd-page', extraCss: css,
+    image: categoryImage.src, bodyClass: 'fire bd-page', extraCss: css,
     head: ld({ '@context': 'https://schema.org', '@type': 'CollectionPage', url: SITE + catalog, name: catTitle, inLanguage: 'vi-VN', dateModified: T.ngay, about: place,
-      hasPart: T.products.map((p) => ({ '@type': 'WebPage', name: `${p.ten} tại ${T.ten}`, url: SITE + url(p) })) }) + crumbLd(catTrail),
-    main: `<div class="bd"><div class="bd-wrap bd-body bd-catalog">${crumbNav(catTrail)}<h1>${esc(catTitle)}</h1>${meta(0)}
+      hasPart: T.products.map((p) => ({ '@type': 'WebPage', name: `${p.ten} tại ${T.ten}`, url: SITE + url(p) })) }) + crumbLd(catTrail) + imageMeta(categoryImage),
+    main: `<div class="bd"><div class="bd-wrap bd-body bd-catalog">${crumbNav(catTrail)}<h1>${esc(catTitle)}</h1>${meta(0)}${rating}
 <p class="bd-summary">Chọn sản phẩm để xem phí tham khảo, hồ sơ cần chuẩn bị và cách nhận báo phí tại ${esc(T.ten)}.</p>
 <nav class="bd-jumps" aria-label="Nhóm sản phẩm">${groups.map((g) => `<a href="#${g.id}">${esc(g.title)}</a>`).join('')}</nav>
 ${groups.map((g) => `<section class="bd-group" aria-labelledby="${g.id}"><h2 id="${g.id}">${esc(g.title)}</h2><ul>${g.list.map(card).join('\n')}</ul></section>`).join('\n')}
@@ -171,27 +200,29 @@ ${groups.map((g) => `<section class="bd-group" aria-labelledby="${g.id}"><h2 id=
   for (const p of T.products) {
     const u = url(p);
     const trail = [...catTrail, [p.h1, u]];
-    const im = img({ anh: p.anh, anhTam: p.anhTam, alt: p.anhAlt, w: p.anhW || 1280, h: p.anhH || 853, sizes: '(max-width:800px) 92vw, 550px', eager: true }, p.ten, T.ten);
+    const im = { data: p.cover, ...img({ anh: p.anh, anhTam: p.anhTam, alt: p.anhAlt, caption: p.cover?.caption, tw: p.cover ? 1200 : undefined, th: p.cover ? 630 : undefined, w: p.anhW || 1280, h: p.anhH || 853, sizes: '(max-width:800px) 92vw, 550px', eager: true }, p.ten, T.ten) };
     const toc = [...p.sections.map(([h], i) => [`muc-${i + 1}`, h]), ['ho-so', 'Hồ sơ cần chuẩn bị'], ['mua-o-dau', `Mua ${lc(p.ten)} ở đâu tại ${T.ten}`], ['cau-hoi', 'Câu hỏi thường gặp']];
     const mins = Math.max(3, Math.round(words([p.lead, ...p.sections.flatMap((s) => [s[0], ...s[1]]), ...p.faqs.flat(), ...p.hoSo]) / 200));
     const siblings = T.products.filter((x) => x !== p);
+    const related = siblings.filter((x) => p.related?.includes(x.id));
+    const relatedLinks = related.map((x) => '<a class="bd-link" href="' + url(x) + '">' + esc(lc(x.ten)) + '</a>').join(' và ');
     const body = `<div class="bd">
 <section class="bd-hero"><div class="bd-wrap bd-hero-grid"><div class="bd-intro">${crumbNav(trail)}
 <h1>${esc(p.h1)}</h1>
 <p>${esc(p.lead)}</p>
-<div class="bd-actions"><a class="bd-button" href="#ho-so">Xem hồ sơ cần gửi</a><a class="bd-button bd-secondary" href="${esc(ZALO)}">Nhắn Zalo báo phí</a></div>
+<div class="bd-actions">${actions ? `<a class="bd-button" href="${p.buyPath || (online ? '#mua-o-dau' : '#bao-phi')}">${p.buyPath ? 'Mua ngay' : online ? 'Xem cách mua' : 'Nhận báo phí'}</a><a class="bd-button bd-secondary" href="tel:0938072236">Liên hệ tư vấn ngay</a>` : `<a class="bd-button" href="#ho-so">Xem hồ sơ cần gửi</a><a class="bd-button bd-secondary" href="${esc(ZALO)}">Nhắn Zalo báo phí</a>`}</div>
 </div><figure class="bd-hero-photo">${im.html}<figcaption>${esc(im.cap)}</figcaption></figure></div></section>
 <div class="bd-wrap bd-body tn-article">
-${meta(mins)}
+${meta(mins)}${rating}
 <nav class="tn-toc" aria-label="Mục lục"><details open><summary>Mục lục</summary><ol>${toc.map(([id, h]) => `<li><a href="#${id}">${esc(h)}</a></li>`).join('')}</ol></details></nav>
-${p.sections.map(([h, paras], i) => `<section class="tn-sec" aria-labelledby="muc-${i + 1}"><h2 id="muc-${i + 1}">${esc(h)}</h2>${paras.map((x) => `<p>${esc(x)}</p>`).join('')}${i === 1 && p.bangPhi ? feeBlock(p.bangPhi) : ''}</section>`).join('\n')}
+${p.sections.map(([h, paras], i) => `<section class="tn-sec" aria-labelledby="muc-${i + 1}"><h2 id="muc-${i + 1}">${esc(h)}</h2>${paras.map((x) => `<p>${esc(x)}</p>`).join('')}${i === 1 && p.bangPhi ? feeBlock(p.bangPhi) : ''}${i === 1 && relatedLinks ? `<p>Xem thêm tại ${esc(T.ten)}: ${relatedLinks}.</p>` : ''}</section>`).join('\n')}
 <section class="tn-sec bd-guide" aria-labelledby="ho-so"><h2 id="ho-so">Hồ sơ cần chuẩn bị</h2><ul>${p.hoSo.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
-<p>Xem thêm công cụ và thông tin chung tại trang <a class="bd-link" href="${p.link}">${esc(lc(p.ten))} của PVI Thành Đô</a>.</p></section>
+<p>Xem thêm công cụ và thông tin chung tại trang <a class="bd-link" href="${p.link}">${esc(lc(p.ten))}</a>.</p></section>
 <section class="tn-sec bd-guide" aria-labelledby="mua-o-dau"><h2 id="mua-o-dau">Mua ${esc(lc(p.ten))} ở đâu tại ${esc(T.ten)}</h2>
-<p>Tại ${esc(T.ten)}, đầu mối của Bảo hiểm PVI là <strong>${esc(O.ten)}</strong>, ${esc(O.diaChi)}, điện thoại <a class="bd-link" href="tel:${O.tel}">${esc(O.dienThoai)}</a>.</p>
-<p>Muốn làm từ xa, gửi hồ sơ qua Zalo cho Công ty Bảo hiểm PVI Thành Đô (<a class="bd-link" href="tel:0938072236">0938 072 236</a>): nhận báo phí, thanh toán và giấy chứng nhận điện tử mà không cần đến văn phòng. Hợp đồng có hiệu lực toàn quốc; khi có tổn thất ở ${esc(T.ten)}, PVI giám định tại chỗ.</p></section>
-<section class="tn-sec bd-quote" aria-labelledby="bao-phi"><div><h2 id="bao-phi">Nhận báo phí ${esc(lc(p.ten))} tại ${esc(T.ten)}</h2><p>Gửi hồ sơ ở trên qua Zalo, nhận báo phí và tư vấn điều khoản phù hợp.</p></div>
-<div class="bd-actions bd-quote-actions"><a class="bd-button" href="tel:0938072236">Gọi 0938 072 236</a><a class="bd-button bd-secondary" href="${esc(ZALO)}">Nhắn Zalo</a></div></section>
+${online ? purchaseIntro(lc(p.ten)) + onlineBenefits() + '<div class="bd-actions">' + onlineButton + '</div>' : `<p>Tại ${esc(T.ten)}, đầu mối của Bảo hiểm PVI là <strong>${esc(O.ten)}</strong>, ${esc(O.diaChi)}, điện thoại <a class="bd-link" href="tel:${O.tel}">${esc(O.dienThoai)}</a>.</p>
+<p>Muốn làm từ xa, gửi hồ sơ qua Zalo cho Công ty Bảo hiểm PVI Thành Đô (<a class="bd-link" href="tel:0938072236">0938 072 236</a>): nhận báo phí, thanh toán và giấy chứng nhận điện tử mà không cần đến văn phòng. Hợp đồng có hiệu lực toàn quốc; khi có tổn thất ở ${esc(T.ten)}, PVI giám định tại chỗ.</p>`}</section>
+<section class="tn-sec bd-quote" aria-labelledby="bao-phi"><div><h2 id="bao-phi">Nhận báo phí ${esc(lc(p.ten))} tại ${esc(T.ten)}</h2><p>${actions ? 'Chuyên viên xác nhận thông tin, phạm vi bảo hiểm và mức phí theo hồ sơ của bạn.' : 'Gửi hồ sơ ở trên qua Zalo, nhận báo phí và tư vấn điều khoản phù hợp.'}</p></div>
+<div class="bd-actions bd-quote-actions">${online ? `<a class="bd-button" href="#mua-o-dau">Xem cách mua</a><a class="bd-button bd-secondary" href="${p.buyPath || p.link}">${p.buyPath ? 'Mua online ngay' : 'Xem sản phẩm gốc'}</a>` : `<a class="bd-button" href="tel:0938072236">Gọi 0938 072 236</a><a class="bd-button bd-secondary" href="${esc(ZALO)}">Nhắn Zalo</a>`}</div></section>
 <section class="tn-sec bd-faq" aria-labelledby="cau-hoi"><h2 id="cau-hoi">Câu hỏi thường gặp</h2>
 ${p.faqs.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('\n')}</section>
 <nav class="tn-sec tn-siblings" aria-labelledby="cung-tinh"><h2 id="cung-tinh" class="tn-h-small">Sản phẩm bảo hiểm khác tại ${esc(T.ten)}</h2><ul>${siblings.map((x) => `<li><a href="${url(x)}">${esc(x.ten)} tại ${esc(T.ten)}</a></li>`).join('')}</ul>
@@ -202,8 +233,8 @@ ${p.faqs.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p><
       path: u, title: p.title, description: p.description, image: im.src, bodyClass: 'fire bd-page', extraCss: css, main: body,
       head: articleJsonLd({ path: u, title: p.title, description: p.description, image: im.src, date: T.ngay, updated: T.ngay })
         + ld({ '@context': 'https://schema.org', '@type': 'Service', name: `${p.ten} tại ${T.ten}`, serviceType: p.ten, url: SITE + u, areaServed: place,
-          provider: { '@type': 'InsuranceAgency', name: 'Công ty Bảo hiểm PVI Thành Đô', url: SITE + '/' } })
-        + crumbLd(trail) + faqJsonLd(p.faqs.map(([question, answer]) => ({ question, answer }))),
+          provider: { ...(actions ? { '@id': ORG_ID } : {}), '@type': 'InsuranceAgency', name: 'Công ty Bảo hiểm PVI Thành Đô', url: SITE + '/' } })
+        + crumbLd(trail) + faqJsonLd(p.faqs.map(([question, answer]) => ({ question, answer }))) + imageMeta(im),
     }));
   }
   console.log(`${T.slug}: 1 trang tỉnh, 1 danh mục, ${T.products.length} trang sản phẩm`);
