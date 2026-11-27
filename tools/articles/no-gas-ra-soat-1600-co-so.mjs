@@ -4,6 +4,7 @@
 // Dữ kiện theo Tuổi Trẻ, VOH, Báo Đầu tư, Tiền Phong, Dân trí, VnExpress, Báo Chính phủ; nguồn ghi bằng chữ, không link ra ngoài.
 // Thương vong thay đổi theo giờ cập nhật: ghi "ít nhất" kèm mốc thời gian và nguồn. Không nêu tên chủ cửa hàng.
 // Biểu phí gói cửa hàng lấy từ tools/data/product.mjs (gói "Bảo hiểm cháy nổ cửa hàng, hộ kinh doanh" đang đăng trên site).
+// Chú thích ảnh: KHÔNG ghi "không phải ảnh của từng vụ việc trong bài" (chủ site 27/11/2026).
 // Ảnh: dùng tạm ảnh của site (ElevenLabs hết credit 27/11/2026); câu lệnh tạo ảnh riêng ở cuối file.
 import { ZALO_TU_VAN } from './khu-vuc.mjs';
 import { articleSrcset } from '../chrome.mjs';
@@ -23,7 +24,7 @@ export const post = {
 };
 
 export const crumb = 'Tin tức cháy nổ';
-export const hero = { name: 'chay-no-hien-truong-sau-vu-no', w: 1200, h: 800, position: '50% 45%', besideTitle: true, caption: 'Lực lượng Cảnh sát PCCC và CNCH đưa bình gas ra khỏi đống đổ nát sau một vụ nổ cửa hàng gas. Ảnh minh họa, không phải ảnh của từng vụ việc trong bài.' };
+export const hero = { name: 'chay-no-hien-truong-sau-vu-no', w: 1200, h: 800, position: '50% 45%', besideTitle: true, caption: 'Hình ảnh minh họa: Lực lượng Cảnh sát PCCC và CNCH đưa bình gas ra khỏi đống đổ nát sau một vụ nổ cửa hàng gas.' };
 export const seo = {
   title: 'Nổ gas TP.HCM, Hà Nội: rà soát 1.600 cơ sở gas | PVI',
   description: 'TP.HCM rà soát hơn 1.600 cơ sở kinh doanh gas sau vụ nổ ở Tân Thuận và Hà Nội. Cửa hàng, quán ăn dùng gas cần kiểm tra gì, bảo hiểm cháy nổ phí bao nhiêu.',
@@ -62,7 +63,7 @@ export const sources = [
 ];
 
 export const related = [
-  { href: CHAY_NO, img: 'section-chay-no', k: 'Sản phẩm chính', title: 'Bảo hiểm cháy nổ bắt buộc', text: 'Tra cứu loại cơ sở, báo giá cho cửa hàng gas, trạm xăng và tính phí tham khảo.' },
+  { href: BAO_GIA_GAS, img: 'section-chay-no', k: 'Mua bảo hiểm', title: 'Bảo hiểm cháy nổ cho cửa hàng gas', text: 'Báo giá theo loại cơ sở cho cửa hàng gas, trạm xăng; tính phí tham khảo và nhận báo phí.' },
   { href: '/tin-tuc/chay-tiem-massage-le-van-luong-bao-hiem-chay-no/', img: 'chay-massage-hien-truong', k: 'Tin cháy nổ', title: 'Cháy tiệm massage Lê Văn Lương', text: 'Bài học bảo hiểm cháy nổ cho cửa hàng, hộ kinh doanh nhỏ.' },
 ];
 
@@ -115,7 +116,8 @@ export function body({ ctaRow }) {
 <tr><td>Quán ăn, cà phê, bán lẻ</td><td>0,2%</td><td>2.200.000 đồng đã gồm VAT</td></tr>
 <tr><td>Karaoke</td><td>0,4%</td><td>4.400.000 đồng đã gồm VAT</td></tr>
 </tbody></table></div>
-<p>Mức khấu trừ 4 triệu đồng mỗi vụ tổn thất. Số tiền bảo hiểm trên 2 tỷ đồng phải thẩm định riêng. Xem <a class="kb-link" href="${BAO_GIA_GAS}">báo giá cho cửa hàng gas, trạm xăng</a> để ước tính phí.</p>
+<p>Mức khấu trừ 4 triệu đồng mỗi vụ tổn thất. Số tiền bảo hiểm trên 2 tỷ đồng phải thẩm định riêng.</p>
+<p><a class="kb-link" href="${BAO_GIA_GAS}"><strong>Mua bảo hiểm cháy nổ cho cửa hàng gas: xem báo giá theo loại cơ sở →</strong></a></p>
 <p>Lưu ý hai điểm. Thứ nhất, bảo hiểm cháy trả cho tài sản của chính cơ sở; thiệt hại của nhà bên cạnh, người đi đường thuộc trách nhiệm dân sự của chủ cơ sở, cần hỏi thêm bảo hiểm trách nhiệm đối với bên thứ ba. Thứ hai, kinh doanh không phép hay vi phạm quy định phòng cháy có thể ảnh hưởng quyền lợi bồi thường; đọc kỹ phần loại trừ trên giấy chứng nhận.</p>
 
 </div>
@@ -123,7 +125,7 @@ export function body({ ctaRow }) {
 <section class="kb-cta kb-wide" aria-labelledby="tu-van">
 <div>
 <h2 id="tu-van">Nhận báo phí bảo hiểm cháy nổ cho cửa hàng</h2>
-<p>Nhắn <a href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Zalo 0938 072 236</a> loại cửa hàng, địa chỉ và giá trị tài sản, hàng tồn. PVI Thành Đô gửi báo phí trước khi anh chị quyết định.</p>
+<p>Nhắn <a href="${ZALO_TU_VAN}" target="_blank" rel="noopener">Zalo 0938 072 236</a> loại cửa hàng, địa chỉ và giá trị tài sản, hàng tồn. PVI Thành Đô gửi báo phí trước khi anh chị quyết định. Hoặc tự ước tính trước ở <a href="${BAO_GIA_GAS}">báo giá cửa hàng gas, trạm xăng</a>.</p>
 </div>
 ${ctaRow('Gọi tư vấn 0938 072 236')}
 </section>

@@ -98,6 +98,7 @@ Mục tiêu: một đoạn bất kỳ cắt ra vẫn tự đứng được, đú
 - Ảnh chụp thật: chú thích `Ảnh thực tế: <cảnh> · Nguồn: <đơn vị>`. Ảnh không phải chụp sự việc thật:
   chú thích chỉ tả cảnh và bắt đầu bằng `Hình ảnh minh họa:` (pvihcm.com) hoặc `Hình ảnh mô phỏng` (baohiempvi-vn.com,
   cả alt, theo AGENTS.md mục 12 của repo đó).
+- Chú thích ảnh minh họa chỉ có tiền tố và mô tả cảnh. **Không** thêm câu kiểu "Ảnh minh họa, không phải ảnh của từng vụ việc trong bài" (chủ site bỏ ngày 27/11/2026).
 - **Không nhắc tới AI** ở bất kỳ đâu (nội dung, chú thích, alt, tên file, metadata). Xóa EXIF/GPS trước khi dùng.
 - Che tên khách, địa chỉ, số hợp đồng hoặc giấy chứng nhận, biển số, CCCD, chữ ký, QR trước khi đăng.
 - Không dùng logo tự vẽ hoặc logo trong ảnh có thể do máy vẽ lại.
