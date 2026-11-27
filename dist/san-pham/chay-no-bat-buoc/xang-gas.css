@@ -1,0 +1,139 @@
+.fuel-quote {
+  --fuel-blue: #183665;
+  --fuel-ink: #17212e;
+  --fuel-muted: #465569;
+  --fuel-red: #bc2130;
+  background: linear-gradient(122deg, #152e54, #214c81);
+  color: #fff;
+  margin-block: 24px;
+  padding: clamp(24px, 6vw, 76px) 0;
+  scroll-margin-top: 92px;
+}
+
+.fuel-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.13fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+  width: min(1140px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.fuel-quote :where(h2, h3, p, dl, dd, fieldset) { margin: 0; }
+.fuel-quote h2 {
+  color: #fff;
+  font-size: clamp(1.9rem, 4vw, 3.4rem);
+  line-height: 1.17;
+  letter-spacing: -.035em;
+  margin: 10px 0 18px;
+}
+
+.fuel-copy > p { max-width: 55ch; }
+.fuel-brand, .fuel-copy p, .fuel-eligibility dd { color: #e1edfc; }
+.fuel-brand, .fuel-eligibility dt { font-weight: 700; }
+.fuel-eligibility { border-top: 1px solid #6681a3; margin-top: 24px; }
+.fuel-eligibility div {
+  display: grid;
+  grid-template-columns: minmax(100px, .38fr) minmax(0, 1fr);
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #6681a3;
+}
+.fuel-copy .fuel-source { font-size: .875rem; margin-top: 12px; }
+.fuel-copy a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.fuel-source a { display: inline-flex; align-items: center; min-height: 44px; }
+.fuel-contact { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+.fuel-contact a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid #91aac9;
+  border-radius: 6px;
+  font-size: .95rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.fuel-contact a:hover { background: #15325a; }
+
+.fuel-panel {
+  min-width: 0;
+  background: #fff;
+  color: var(--fuel-ink);
+  border-radius: 16px;
+  padding: clamp(18px, 3vw, 32px);
+  box-shadow: 0 16px 34px #0f203955;
+}
+.fuel-panel h3 { color: var(--fuel-blue); font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; }
+.fuel-panel > p { margin-top: 8px; color: var(--fuel-muted); }
+.fuel-panel a { color: var(--fuel-blue); text-decoration: underline; text-underline-offset: 3px; }
+#fuel-form { margin-top: 16px; }
+#fuel-form fieldset { border: 0; padding: 0; min-width: 0; }
+#fuel-form legend, .fuel-field { font-size: .9375rem; font-weight: 650; }
+.fuel-options, .fuel-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.fuel-options { margin-top: 5px; }
+.fuel-options label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 44px;
+  border: 1px solid #8d9bb1;
+  border-radius: 6px;
+  padding: 6px 9px;
+  font-size: .9375rem;
+  cursor: pointer;
+}
+.fuel-options label:has(input:checked) { border-color: #1f4a8c; background: #edf4ff; }
+.fuel-quote input { accent-color: #1f4a8c; }
+.fuel-options input, .fuel-consent input { margin: 0; flex: 0 0 auto; width: 17px; height: 17px; }
+.fuel-field { display: block; margin-top: 11px; }
+.fuel-field input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  margin-top: 4px;
+  padding: 8px 10px;
+  border: 1px solid #8d9bb1;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.fuel-consent { display: flex; align-items: center; gap: 9px; min-height: 44px; margin: 10px 0 8px; font-size: .875rem; }
+.fuel-consent label { cursor: pointer; }
+.fuel-submit {
+  width: 100%;
+  min-height: 46px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--fuel-red);
+  color: #fff;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+}
+.fuel-submit:hover { background: #9f1d29; }
+.fuel-submit:disabled { opacity: .7; cursor: wait; }
+.fuel-quote :focus-visible { outline: 2px solid #1664bd; outline-offset: 3px; }
+.fuel-copy a:focus-visible { outline-color: #fff; }
+.fuel-panel .fuel-status:empty { display: none; }
+#fuel-fallback a { display: inline-flex; min-height: 44px; align-items: center; }
+
+@media (max-width: 810px) {
+  .fuel-layout { grid-template-columns: 1fr; width: min(620px, calc(100% - 32px)); }
+  .fuel-quote { scroll-margin-top: 72px; }
+}
+@media (max-width: 440px) {
+  .fuel-fields, .fuel-eligibility div { grid-template-columns: 1fr; gap: 3px; }
+}
+
+.fuel-contact .fuel-quote-jump { border-color: #fff; background: #fff; color: var(--fuel-blue); }
+.fuel-contact .fuel-quote-jump:hover { background: #e1edfc; }
+#fuel-form-title { scroll-margin-top: 110px; }
+
+html:has(#bao-gia-xang-gas:target) { scroll-behavior: auto; }
+
+@media (max-width: 380px) {
+  body.fire > header.site-header { padding-inline: 10px; gap: 6px; }
+}
