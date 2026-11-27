@@ -1,6 +1,7 @@
 import { esc } from '../chrome.mjs';
 import { moreModelFeeData } from '../data/car-fee-models-batch3.mjs';
 import { additionalModelFeeData } from '../data/car-fee-models-batch4.mjs';
+import { remainingModelFeeData } from '../data/car-fee-models-batch5.mjs';
 import { carFeeAtRate, carFeeBands, carFeeRows, carFeeText, formatCarMoney as money, carElectricTerms } from '../car-fee-rates.mjs';
 
 const models = [
@@ -96,20 +97,26 @@ const models = [
   },
   ...moreModelFeeData,
   ...additionalModelFeeData,
+  ...remainingModelFeeData,
 ];
 
 const feeText = (rate, value) => `${rate === carFeeBands.at(-1).rate ? 'Chỉ từ ' : ''}${money(carFeeAtRate(value * 1_000_000, rate))} đồng/năm`;
+export const carFeeModelAnchor = (label) => label.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
 export const modelFeeArticles = models.map((data) => {
   const { brand, model, logo, aliases = [], variants, slug, source, context, heading, advice, question, answer } = data;
   const name = brand + ' ' + (data.displayModel || model);
   const id = 'bao-hiem-vat-chat-' + slug;
   const title = `Phí bảo hiểm vật chất ${name} bao nhiêu?`;
-  const [, firstValue, firstRate] = variants[0];
+  const [, firstValue, firstRate] = variants[0] || [];
+  const reviewOnly = Boolean(data.commercial || data.profile?.startsWith('used') || data.profile === 'service');
+  const electric = data.profile?.includes('electric') || data.profile === 'service';
+  const reviewLabel = data.commercial ? 'Xe chở hàng, cần báo phí riêng' : data.profile === 'service'
+    ? 'Xe cần báo phí theo mục đích sử dụng' : reviewOnly ? 'Hồ sơ cần thẩm định riêng' : 'Xe kinh doanh, trên 3 năm hoặc tỷ lệ bồi thường cao';
   const example = firstRate ? feeText(firstRate, firstValue) : 'Liên hệ chuyên viên để được báo phí';
   const lead = firstRate
     ? `Xem phí dự tính cho ${name} theo giá trị bảo hiểm và phiên bản. Với mốc ${money(firstValue)} triệu đồng, phí tham khảo là ${example.toLowerCase()} nếu hồ sơ đủ điều kiện.`
-    : `Xem giá hãng, điều khoản và hồ sơ cần gửi để được báo phí bảo hiểm ${name}. Mốc ${money(firstValue)} triệu đồng trong bài cần được báo phí riêng.`;
+    : data.editorial ? context : `Xem giá hãng, điều khoản và hồ sơ cần gửi để được báo phí bảo hiểm ${name}. Mốc ${money(firstValue)} triệu đồng trong bài cần được báo phí riêng.`;
   const cover = 'phi-bao-hiem-' + slug + '-minh-hoa';
   const alt = `Ảnh minh họa ${name} tại khu tiếp nhận dịch vụ`;
   const post = {
@@ -120,13 +127,16 @@ export const modelFeeArticles = models.map((data) => {
   return {
     data, brand, model, aliases, post, cover, internalLinksOnly: true,
     crumb: 'Bảo hiểm vật chất xe',
-    hero: { name: cover, w: 1200, h: 630, besideTitle: true, download: true, caption: `Ảnh minh họa ${name}.` },
+    hero: { name: cover, w: 1200, h: 630, besideTitle: true, download: true, caption: `Hình ảnh minh họa: ${name}.` },
     seo: { title, description: `Tra phí bảo hiểm ${name} theo giá trị xe, xem các điều khoản và cách xác nhận xưởng ${brand} trong chương trình liên kết PVI.` },
     stylesheet: '/santa-fe-fee.css',
     script: '/santa-fe-fee.js',
     tocOptions: { startOpen: false, label: 'Tóm tắt nội dung' },
     toc: [['bang-tinh-phi', 'Bảng tính phí'], ['dieu-khoan', 'Điều khoản cần kiểm tra'], ['xuong-lien-ket', 'Kiểm tra xưởng liên kết']],
-    faqs: [{ question, answer }],
+    faqs: [{ question, answer }, ...(data.editorial ? [
+      { question: `Cần gửi thông tin nào để nhận báo phí bảo hiểm ${name}?`, answer: `Gửi đăng ký, năm sản xuất, phiên bản, mục đích sử dụng và ảnh hiện trạng. ${electric ? 'Với xe điện, gửi giấy tờ ghi nhận bộ pin cùng hồ sơ xe. ' : ''}Nếu đã có hợp đồng trước đó, bổ sung lịch sử bồi thường và tên xưởng muốn chọn để PVI kiểm tra.` },
+      { question: `Khi nào cần xác nhận xưởng cho ${name}?`, answer: `Hỏi trước khi mua nếu bạn có xưởng muốn chọn. Gửi tên cơ sở, địa chỉ và phiên bản xe để đối chiếu việc tiếp nhận, khả năng sửa chữa và các điều kiện bảo lãnh trên báo giá.` },
+    ] : [])],
     sources: [[source, '', 'Đối chiếu 27/11/2026'], ['Tỷ lệ phí tham khảo và chương trình liên kết', '', 'Thông tin do PVI Thành Đô cung cấp']],
     related: [{ href: '/kien-thuc/tinhphinhanhtheotenxe/', img: cover, w: 1200, h: 630, k: 'Tra cứu theo mẫu xe', title: 'Tra cứu phí theo dòng xe', text: 'Chọn hãng và tìm mẫu xe khác để tính thử.' }],
     disclaimer: 'Phép tính dùng để dự trù phí 12 tháng. Thuế, phí bổ sung, quyền lợi và điều kiện bảo lãnh theo báo giá và hợp đồng được PVI chấp thuận.',
@@ -134,21 +144,25 @@ export const modelFeeArticles = models.map((data) => {
       return `
 <h2 id="bang-tinh-phi">Tính thử phí cho ${esc(name)}</h2>
 <p>${esc(context)}</p>
-<div class="kb-table"><table aria-label="Ví dụ phí theo phiên bản">
+<!-- Thông tin giá được hiển thị khi có nguồn cho đúng phiên bản. -->
+${variants.length ? `<div class="kb-table"><table aria-label="Ví dụ phí theo phiên bản">
 <thead><tr><th scope="col">Phiên bản</th><th scope="col">Giá tham khảo</th><th scope="col">Phí 12 tháng</th></tr></thead>
-<tbody>${variants.map(([label, value, rate]) => `<tr><th scope="row">${esc(label)}</th><td>${money(value)} triệu</td><td>${rate ? `${carFeeText(rate)} · ${feeText(rate, value)}` : 'Hỏi báo phí theo mục đích sử dụng'}${rate === 153 ? ' · 3 điều khoản' : ''}</td></tr>`).join('')}</tbody>
-</table></div>
+<tbody>${variants.map(([label, value, rate]) => `<tr><th scope="row">${esc(label)}</th><td>${money(value)} triệu</td><td>${rate ? `${carFeeText(rate)} · ${feeText(rate, value)}` : 'Hỏi báo phí theo hồ sơ'}${rate === 153 ? ' · 3 điều khoản' : ''}</td></tr>`).join('')}</tbody>
+</table></div>` : '<p>Nhập số tiền muốn tham gia bảo hiểm nếu đã có giá trị tham chiếu. PVI sẽ xem giá trị, ảnh hiện trạng và giấy tờ xe trước khi gửi báo phí.</p>'}
+${data.checks ? `<div class="kb-table"><table aria-label="Thông tin cần chuẩn bị theo mẫu xe"><thead><tr><th scope="col">Mẫu xe</th><th scope="col">Kiểm trước khi hỏi phí</th></tr></thead><tbody>${Object.entries(data.checks).map(([label, note]) => `<tr id="xe-${carFeeModelAnchor(label)}"><th scope="row">${esc(label)}</th><td>${esc(note)}</td></tr>`).join('')}</tbody></table></div>` : ''}
 <p>Giá xe là mốc để tính thử. Khi có số tiền bảo hiểm được chấp thuận, dùng số đó nhân tỷ lệ. Bảng áp dụng tham khảo cho xe mới hoặc sử dụng đến 3 năm, hồ sơ đủ điều kiện.</p>
 <div class="santa-fe-fee" data-car-fee-calculator>
   <label for="model-fee-profile">Hồ sơ xe</label>
-  <select id="model-fee-profile">${data.commercial ? '' : '<option value="standard">Xe mới hoặc sử dụng đến 3 năm</option>'}<option value="review">${data.commercial ? 'Xe chở hàng, cần báo phí riêng' : 'Xe kinh doanh, trên 3 năm hoặc tỷ lệ bồi thường cao'}</option></select>
+  <select id="model-fee-profile">${reviewOnly ? '' : '<option value="standard">Xe mới hoặc sử dụng đến 3 năm</option>'}<option value="review">${reviewLabel}</option></select>
   <label for="model-fee-value">Số tiền bảo hiểm (triệu đồng)</label>
-  <input id="model-fee-value" type="number" inputmode="decimal" min="1" step="any" required value="${variants[0][1]}">
+  <input id="model-fee-value" type="number" inputmode="decimal" min="1" step="any" required${firstValue ? ` value="${firstValue}"` : ''}>
   <p class="santa-fe-estimate"><strong>Phí dự tính:</strong> <output for="model-fee-value model-fee-profile">${example}</output></p>
   <details><summary>Xem bốn mốc tỷ lệ phí</summary><div class="kb-table"><table><thead><tr><th scope="col">Số tiền bảo hiểm</th><th scope="col">Tỷ lệ phí</th></tr></thead><tbody>${carFeeRows()}</tbody></table></div></details>
 </div>
 <h2 id="dieu-khoan">${esc(heading)}</h2>
 <p>${esc(advice)}</p>
+${electric ? `<p>${esc(carElectricTerms)}</p>` : ''}
+${data.editorial ? `<figure><img src="/assets/${cover}-800.webp" width="800" height="420" alt="${esc(alt)}" loading="lazy" decoding="async"><figcaption>Hình ảnh minh họa: ${esc(name)} tại khu tiếp nhận dịch vụ.</figcaption></figure>` : ''}
 <h2 id="xuong-lien-ket">Kiểm tra xưởng ${esc(brand)} liên kết với PVI</h2>
 <p>PVI đã ký hợp tác với ${esc(brand)} theo thông tin từ PVI Thành Đô. Nếu muốn sửa tại một cơ sở cụ thể, gửi tên và địa chỉ xưởng để chuyên viên kiểm tra cơ sở tiếp nhận, điều kiện bảo lãnh và quyền lợi sửa chữa trên báo giá.</p>
 <p>Để nhận báo phí, chuẩn bị phiên bản, năm sản xuất, mục đích sử dụng, hồ sơ bồi thường kỳ trước nếu có và tên xưởng muốn chọn. Xem <a class="kb-link" href="/san-pham/bao-hiem-vat-chat-xe/">quyền lợi bảo hiểm vật chất xe PVI</a>.</p>`;

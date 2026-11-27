@@ -5,7 +5,7 @@ import carCatalogue from './data/car-fee-catalogue.json' with { type: 'json' };
 import { post as santaFe } from './articles/bao-hiem-than-vo-hyundai-santa-fe.mjs';
 import { carElectricTerms, carFeeRows } from './car-fee-rates.mjs';
 import { carFeePriceExamples } from './data/car-fee-price-examples.mjs';
-import { modelFeeArticles } from './articles/bao-hiem-xe-theo-hang.mjs';
+import { carFeeModelAnchor, modelFeeArticles } from './articles/bao-hiem-xe-theo-hang.mjs';
 
 export const CAR_FEE_PATH = '/kien-thuc/tinhphinhanhtheotenxe/';
 export const CAR_FEE_TITLE = 'Tra cứu phí bảo hiểm theo dòng xe';
@@ -26,21 +26,33 @@ const published = {
   Hyundai: { 'Santa Fe': santaFe.path },
   VinFast: { 'VF Wild': '/tin-tuc/bao-hiem-xe-ban-tai-dien-vinfast-vf-wild/' },
 };
+const quoteOnly = new Set();
+const newPriceExamples = [];
 
-for (const { brand, model, aliases, post } of modelFeeArticles) {
+for (const { brand, model, aliases, post, data } of modelFeeArticles) {
   const links = published[brand] ??= {};
-  for (const name of [model, ...aliases]) links[name] = post.path;
+  links[model] = post.path;
+  for (const name of aliases) links[name] = post.path + (data.checks ? '#xe-' + carFeeModelAnchor(name) : '');
+  if (!data.editorial) continue;
+  const review = data.profile?.startsWith('used') || data.profile === 'service';
+  if (review) for (const name of [model, ...aliases]) quoteOnly.add(brand + ' ' + name);
+  if (!data.checks) newPriceExamples.push([brand, model, {
+    source: data.source, values: data.variants,
+    electric: data.profile?.includes('electric') || data.profile === 'service',
+    note: review ? 'Hồ sơ cần báo phí riêng.' : '',
+  }]);
 }
 
-const priceCards = Object.entries(carFeePriceExamples).flatMap(([brand, models]) =>
-  Object.entries(models).map(([model, { source, values, electric, note }]) => {
+const priceExamples = Object.entries(carFeePriceExamples).flatMap(([brand, models]) =>
+  Object.entries(models).map(([model, details]) => [brand, model, details]));
+const examplesByModel = new Map(priceExamples.concat(newPriceExamples).map((entry) => [entry.slice(0, 2).join(' '), entry]));
+const priceCards = [...examplesByModel.values()].map(([brand, model, { source, values, electric, note }]) => {
     if (!carCatalogue[brand]?.includes(model)) throw new Error(`Dòng xe ngoài danh mục: ${brand} ${model}`);
     return `<template data-price-example="${esc(brand + ' ' + model)}"${electric ? ' data-electric' : ''}>
-      <p>Nguồn giá tham khảo: ${esc(source)}. Chọn một mốc để tính thử.</p>
+      <p>${values.length ? `Nguồn giá tham khảo: ${esc(source)}. Chọn mốc giá cần đối chiếu.` : `Nguồn thông tin: ${esc(source)}.`}</p>
       <div class="car-fee-price-buttons">${values.map(([label, value]) => `<button type="button" data-example-value="${value}">${esc(label)} · ${value.toLocaleString('vi-VN')} triệu</button>`).join('')}</div>${note ? `<p>${esc(note)}</p>` : ''}
     </template>`;
-  })
-).join('');
+  }).join('');
 
 const feeCalculator = `<section class="car-fee-calculate" id="tinh-phi" data-car-fee-calculator aria-labelledby="car-fee-calculate-title">
   <h2 id="car-fee-calculate-title" tabindex="-1">Tính thử phí bảo hiểm xe</h2>
@@ -98,7 +110,7 @@ export function renderCarFeeDirectory() {
             ${logo ? `<img class="car-fee-brand-mark" src="${logo}" alt="" width="170" height="105" loading="lazy" decoding="async">` : ''}
             <ul aria-label="Dòng xe ${esc(brand)}" tabindex="0">${models.map((model) => {
               const url = published[brand]?.[model];
-              return `<li data-model="${esc(model)}"><a class="car-fee-model" href="#tinh-phi">${esc(model)}</a>${url ? `<a class="car-fee-guide" href="${url}" aria-label="Đọc bài về ${esc(brand + ' ' + model)}">Đọc bài <span aria-hidden="true">&rarr;</span></a>` : ''}</li>`;
+              return `<li data-model="${esc(model)}"${quoteOnly.has(brand + ' ' + model) ? ' data-quote-only' : ''}><a class="car-fee-model" href="#tinh-phi">${esc(model)}</a>${url ? `<a class="car-fee-guide" href="${url}" aria-label="Đọc bài về ${esc(brand + ' ' + model)}">Đọc bài <span aria-hidden="true">&rarr;</span></a>` : ''}</li>`;
             }).join('')}</ul>
             </div>
           </details>`;

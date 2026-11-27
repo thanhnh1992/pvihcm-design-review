@@ -45,6 +45,7 @@ if (carFilter) {
 if (calculator) {
   const heading = calculator.querySelector('h2');
   const value = calculator.querySelector('input[type="number"]');
+  const profile = calculator.querySelector('select');
   const electric = calculator.querySelector('[data-electric-choice]');
   const terms = calculator.querySelector('[data-electric-terms]');
   const priceTarget = calculator.querySelector('[data-price-example-target]');
@@ -59,7 +60,8 @@ if (calculator) {
     const link = event.target.closest('.car-fee-model');
     if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
-    const model = link.closest('[data-model]').dataset.model;
+    const item = link.closest('[data-model]');
+    const model = item.dataset.model;
     const brand = link.closest('[data-brand]').dataset.brand;
     const name = brand + ' ' + model;
     const example = examples.get(name);
@@ -73,6 +75,7 @@ if (calculator) {
     electric.checked = Boolean(example?.hasAttribute('data-electric'));
     updateTerms();
     value.value = '';
+    profile.value = item.hasAttribute('data-quote-only') ? 'review-commercial' : 'standard';
     value.dispatchEvent(new Event('input'));
     heading.focus({ preventScroll: true });
     calculator.scrollIntoView({ block: 'start' });
