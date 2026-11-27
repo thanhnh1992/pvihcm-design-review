@@ -137,3 +137,71 @@ html:has(#bao-gia-xang-gas:target) { scroll-behavior: auto; }
 @media (max-width: 380px) {
   body.fire > header.site-header { padding-inline: 10px; gap: 6px; }
 }
+
+.fuel-panel .fuel-sample-link { margin-top: 10px; }
+.fuel-sample-link a { display: inline-flex; min-height: 44px; align-items: center; }
+.fuel-certificate {
+  width: min(1140px, calc(100% - 48px));
+  margin: 24px auto 0;
+  border: 1px solid #91aac9;
+  border-radius: 10px;
+  scroll-margin-top: 112px;
+}
+.fuel-certificate summary {
+  min-height: 48px;
+  padding: 12px 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.fuel-certificate summary:focus-visible { outline-color: #fff; }
+.fuel-certificate summary:hover { background: #15325a; border-radius: 9px; }
+.fuel-certificate-paper {
+  max-width: 740px;
+  margin: 4px auto 20px;
+  width: calc(100% - 24px);
+  padding: clamp(14px, 4vw, 30px);
+  background: #fff;
+  color: var(--fuel-ink);
+  border-radius: 8px;
+}
+.fuel-certificate-heading {
+  padding: 16px 12px;
+  border: 2px solid var(--fuel-blue);
+  border-radius: 10px;
+  text-align: center;
+}
+.fuel-certificate-heading img { width: 132px; height: 48px; margin: 0 auto 8px; object-fit: contain; }
+.fuel-certificate-heading h3 {
+  color: var(--fuel-blue);
+  text-transform: uppercase;
+  font-size: clamp(1.15rem, 3vw, 1.55rem);
+  line-height: 1.3;
+}
+.fuel-certificate-heading h3 span { display: block; color: var(--fuel-red); }
+.fuel-certificate-notice { margin: 8px 0 4px; color: var(--fuel-red); font-weight: 750; font-size: .875rem; }
+.fuel-certificate-group { margin-top: 18px; }
+.fuel-certificate-group h4 {
+  width: fit-content;
+  margin: 0;
+  padding: 4px 12px;
+  background: var(--fuel-red);
+  color: #fff;
+  border-radius: 3px 9px 0 0;
+  font-size: 1rem;
+}
+.fuel-certificate-group dl { border: 1px solid #748197; }
+.fuel-certificate-group dl div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr);
+}
+.fuel-certificate-group dl div + div { border-top: 1px solid #aab4c1; }
+.fuel-certificate-group :is(dt, dd) { padding: 7px 10px; overflow-wrap: anywhere; }
+.fuel-certificate-group dt { font-weight: 650; border-right: 1px solid #aab4c1; background: #f5f7f9; }
+
+@media (max-width: 810px) {
+  .fuel-certificate { width: min(620px, calc(100% - 32px)); }
+}
+@media (max-width: 560px) {
+  .fuel-certificate-group dl div { grid-template-columns: 1fr; }
+  .fuel-certificate-group dt { border-right: 0; }
+}

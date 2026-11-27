@@ -65,3 +65,9 @@ form.addEventListener('submit', async (event) => {
   }
   status.focus();
 });
+
+const certificate = document.querySelector('#mau-gcn-chay-no');
+document.querySelector('.fuel-sample-link a').addEventListener('click', () => {
+  certificate.open = true;
+});
+if (location.hash === '#mau-gcn-chay-no') certificate.open = true;
