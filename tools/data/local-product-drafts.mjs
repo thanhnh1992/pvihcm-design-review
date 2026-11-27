@@ -1,3 +1,4 @@
+import { additionalContexts } from './local-market-delta.mjs';
 import { localProductArticles } from './local-product-articles.mjs';
 
 const topics = {
@@ -61,6 +62,7 @@ const topics = {
 
 // Situations used to explain declarations, not claims about customer incidents.
 const contexts = {
+  ...additionalContexts,
   danang: ['xe cá nhân và xe đưa đón ở Hải Châu','xe sử dụng gần biển hoặc chở khách thường xuyên','khách sạn và khu phụ trợ ở Sơn Trà','kho và máy móc phát sinh thêm trong kỳ ở Liên Chiểu','gói cải tạo nhà hàng hoặc lắp thiết bị','lô hàng qua cảng và giao tiếp bằng đường bộ','đội thi công cải tạo cơ sở lưu trú','nhân viên kho hoặc nhân viên phục vụ theo ca','gia đình và nhóm lao động ở Hải Châu','hành khách khởi hành qua sân bay Đà Nẵng'],
   bencat: ['xe cá nhân hoặc xe giao nhận đi Quốc lộ 13','xe phục vụ xưởng tại Mỹ Phước','kho, xưởng và công trình phụ trợ tại Mỹ Phước','máy móc và tồn kho ở khu công nghiệp','gói lắp dây chuyền và chạy thử','lô hàng từ xưởng Mỹ Phước đến kho tập kết','đội thi công chia theo từng xưởng','nhân viên sản xuất và đội bảo trì theo ca','gia đình và nhóm lao động tại khu Bến Cát','chuyến công tác quốc tế có điểm khởi hành ngoài khu vực Bến Cát'],
   binhphuoc: ['xe gia đình và xe chở hàng quanh Đồng Xoài','xe đi đường dài giữa Đồng Xoài và Chơn Thành','xưởng chế biến và kho nguyên liệu tại Chơn Thành','máy móc và hàng tồn ở một cơ sở chế biến','hạng mục lắp mới thiết bị nhà xưởng','lô nguyên liệu có nhiều chặng giao nhận','nhà thầu chia ca theo địa điểm công trình','nhân viên phân loại hàng và vận hành xưởng','gia đình hoặc nhóm nhân viên ở Đồng Xoài','chuyến công tác đi qua sân bay ngoài khu vực Bình Phước'],

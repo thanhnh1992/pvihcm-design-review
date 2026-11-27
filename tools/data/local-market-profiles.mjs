@@ -1,3 +1,4 @@
+import { additionalProfiles } from './local-market-delta.mjs';
 const nso = 'Cục Thống kê, Tình hình kinh tế – xã hội 63 tỉnh, thành phố năm 2024.';
 const dn = 'Niên giám thống kê Đồng Nai 2023, biểu 14, số liệu sơ bộ.';
 const bd = 'Phụ lục 20, Kế hoạch dân số năm 2024, Quyết định 3585/QĐ-UBND ngày 28/12/2023 của UBND tỉnh Bình Dương.';
@@ -7,6 +8,7 @@ const dnLaw = 'Nghị quyết 1662/NQ-UBTVQH15, 237/NQ-UBTVQH16 và 30/2026/QH16
 const hcmLaw = 'Nghị quyết 202/2025/QH15 và Nghị quyết 1685/NQ-UBTVQH15.';
 const ldLaw = 'Nghị quyết 1671/NQ-UBTVQH15.';
 export const profiles = {
+  ...additionalProfiles,
   danang: { name:'Đà Nẵng', area:'thành phố Đà Nẵng', unit:'Đà Nẵng',
     figure:'3.065.628 người', period:'quy mô dân số của thành phố Đà Nẵng sau sắp xếp năm 2025', pop:'Nghị quyết 202/2025/QH15 về sắp xếp đơn vị hành chính cấp tỉnh.',
     law:'Nghị quyết 202/2025/QH15.',
@@ -25,7 +27,7 @@ export const profiles = {
     current:'Bình Phước trên trang này là địa bàn tỉnh Bình Phước trước sắp xếp, nay thuộc thành phố Đồng Nai. Văn phòng tham khảo nằm ở phường Trấn Biên.',
     needs:['Kho nguyên liệu và nhà xưởng ở khu Chơn Thành cần kê khai cách lưu kho, máy móc và giá trị tồn kho theo địa điểm.', 'Chủ xe đi Đồng Xoài, Đồng Phú hoặc Chơn Thành có thể tra phí theo giấy đăng ký và mục đích sử dụng thực tế.', 'Lô hàng đi nhiều chặng cần ghi rõ phương tiện, bao bì, điểm nhận và điểm giao.'],
     rows:[['Đồng Xoài','Xe gia đình, hộ kinh doanh và sức khỏe'],['Chơn Thành','Nhà xưởng, kho và xe giao nhận'],['Đồng Phú','Tài sản, thi công và bảo hiểm lao động']] },
-  phuquoc: { name:'Phú Quốc', area:'đặc khu Phú Quốc, tỉnh An Giang', unit:'An Giang',
+  phuquoc: { name:'Phú Quốc', area:'đặc khu Phú Quốc, tỉnh An Giang', unit:'An Giang', parent:'/kiengiang/',
     figure:'179.480 người', period:'quy mô dân số dùng để thành lập thành phố Phú Quốc năm 2021, theo địa giới khi đó', pop:'Nghị quyết 1109/NQ-UBTVQH14.',
     law:'Nghị quyết 1654/NQ-UBTVQH15.',
     current:'Phú Quốc hiện là đặc khu thuộc tỉnh An Giang. Địa chỉ văn phòng tham khảo của PVI An Giang nằm ở phường Rạch Giá trên đất liền. Khách ở đảo có thể gọi tư vấn trước khi đi.',

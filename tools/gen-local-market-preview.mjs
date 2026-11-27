@@ -81,14 +81,19 @@ for (const [slug, profile] of Object.entries(profiles)) {
   const productTitle = 'Sản phẩm bảo hiểm PVI tại ' + profile.name;
   const unit = units.find(item=>item.name === 'Bảo hiểm PVI ' + profile.unit);
   if (!unit) throw new Error('Thiếu đơn vị ' + profile.unit);
-  const address = profile.unit === 'Đông Nam Bộ' ? 'Tầng 12, Tòa nhà Sonadezi, số 1, đường 1, khu phố An Hào, phường Trấn Biên, thành phố Đồng Nai' : unit.address;
+  const updatedOfficeAddresses = {
+    'Đông Nam Bộ': 'Tầng 12, Tòa nhà Sonadezi, số 1, đường 1, khu phố An Hào, phường Trấn Biên, thành phố Đồng Nai',
+    'Cà Mau': 'Tầng 03, Tòa nhà Vikki Bank Cà Mau, số 03 đường An Dương Vương, phường Tân Thành, tỉnh Cà Mau',
+  };
+  const address = updatedOfficeAddresses[profile.unit] || unit.address;
   const officePhone = !/\d/.test(unit.phone) || profile.unit === 'Lâm Đồng' ? '' : profile.unit === 'Đông Nam Bộ' ? '0251 3918 691' : unit.phone;
   const local = { name:profile.name, unit:{...unit,address,phone:officePhone}, addressPage:route + '#dia-chi-pvi' };
   const office = { ...local.unit, key:profile.unit.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().replace(/đ/g,'d').replaceAll(' ', '-') };
   const img = '/assets/' + photo.stem;
   const desc = title + ' cho xe ô tô, cá nhân và doanh nghiệp. Xem nhóm sản phẩm, địa chỉ văn phòng PVI và cách nhận báo phí.';
   const area = { name:profile.area, path:route };
-  const parents = { '/binhduong/':'Bình Dương', '/dongnai/':'Đồng Nai', '/vungtau/':'Vũng Tàu' };
+  const parents = { '/binhduong/':'Bình Dương', '/dongnai/':'Đồng Nai', '/vungtau/':'Vũng Tàu', '/kiengiang/':'Kiên Giang' };
+  const children = Object.entries(profiles).filter(([, child]) => child.parent === route);
   const trail = [['Trang chủ', '/'], ...(profile.parent ? [[parents[profile.parent] || 'Khu vực phục vụ', profile.parent]] : []), [profile.name, route]];
   const catalogTrail = [...trail,[productTitle,catalog]];
   const catalogProducts = groups.flatMap(([, , products]) => products.map(([id, name]) => [name + ' tại ' + profile.name, route + id + '/']));
@@ -125,7 +130,8 @@ for (const [slug, profile] of Object.entries(profiles)) {
     '<section class="bd-section bd-detail-location" aria-labelledby="dia-chi-pvi"><h2 id="dia-chi-pvi">' + icon('diachi') + 'Địa chỉ PVI phục vụ ' + esc(profile.name) + '</h2>' + officeInfo + para(profile.current) + '</section>' +
     '<section class="bd-section bd-industrial" aria-labelledby="dia-ban"><h2 id="dia-ban">' + icon('doanhnghiep') + 'Địa bàn và nhu cầu bảo hiểm tại ' + esc(profile.name) + '</h2>' +
     (profile.figure ? '<p><strong>' + esc(profile.figure) + '</strong> · ' + esc(profile.period) + '.</p>' : '') + '<ul class="bd-industrial-list">' +
-    profile.rows.map(([name,uses])=>'<li><strong>' + esc(name) + '</strong><span>' + esc(uses) + '</span></li>').join('') + '</ul><p class="bd-source">' + esc([...new Set([profile.pop, profile.law, 'Danh bạ hệ thống Bảo hiểm PVI.'].filter(Boolean))].join(' · ')) + '</p></section>' +
+    profile.rows.map(([name,uses])=>'<li><strong>' + esc(name) + '</strong><span>' + esc(uses) + '</span></li>').join('') + '</ul><p class="bd-source">' + esc([...new Set([profile.pop, profile.law, 'Danh bạ hệ thống Bảo hiểm PVI.'].filter(Boolean))].join(' · ')) + '</p>' +
+    (children.length ? '<nav class="bd-jumps" aria-label="Trang địa bàn liên quan">' + children.map(([key,child]) => '<a href="/' + key + '/">Xem bảo hiểm PVI tại ' + esc(child.name) + '</a>').join('') + '</nav>' : '') + '</section>' +
     '</div></div>';
   const common = {bodyClass:'fire bd-page',extraCss:css,localFooter:local};
   const catalogDescription = 'Xem các nhóm sản phẩm bảo hiểm PVI tại ' + profile.name + ' và tài liệu phí, điều kiện và hướng dẫn mua.';

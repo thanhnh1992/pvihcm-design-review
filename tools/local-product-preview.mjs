@@ -46,9 +46,10 @@ export function renderLocalProduct({ article, product, profile, route, catalog, 
   const quoteAction = ['Nhận báo phí theo hồ sơ', '#lien-he-tu-van'];
   const primary = article.actions[0][1].startsWith('tel:') ? ['Nhận báo phí', quoteAction[1]] : article.actions[0];
   const next = slug === 'tndsoto' ? ['Mua ngay', '/san-pham/bao-hiem-o-to/dat-mua/'] : phone;
+  const heroSecondary = primary[1] === next[1] ? ['Tra biểu phí', '#bieu-phi'] : next;
   const cover = photo ? '<figure class="bd-hero-photo"><img src="' + asset + '.webp" srcset="' + asset + '-480.webp 480w, ' + asset + '-800.webp 800w, ' + asset + '.webp 1200w" sizes="(max-width:800px) 92vw, 550px" width="1200" height="630" fetchpriority="high" decoding="async" alt="' + esc(photo.alt) + '"><figcaption>' + esc(photo.caption) + '</figcaption></figure>' : '';
   const main = '<div class="bd bd-product-page"><section class="bd-hero"><div class="bd-wrap' + (photo ? ' bd-hero-grid' : '') + '"><div class="bd-intro">' + nav + '<h1>' + esc(title) + '</h1>' +
-    para(article.lead) + actionRow([primary, next]) + '</div>' + cover + '</div></section><div class="bd-wrap bd-body">' +
+    para(article.lead) + actionRow([primary, heroSecondary]) + '</div>' + cover + '</div></section><div class="bd-wrap bd-body">' +
     '<nav class="bd-detail-toc" aria-label="Mục lục"><details open><summary>Mục lục</summary><ol>' + toc.map(([id,,label]) => '<li>' + link('#'+id,label) + '</li>').join('') + '</ol></details></nav>' +
     section(scope, article.scope.map(para).join('') + '<div class="bd-actions">' + link(root, article.referenceLabel || 'Xem chi tiết sản phẩm PVI', 'bd-button bd-secondary') + '</div>') +
     section(fee, para(article.fee) + (slug === 'tndsoto' ? tndsTable() : '') + actionRow([...article.actions.filter(([,href]) => !href.startsWith('tel:')), quoteAction])) +
