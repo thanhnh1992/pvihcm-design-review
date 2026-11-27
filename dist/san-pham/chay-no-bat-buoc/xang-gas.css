@@ -221,3 +221,20 @@ html:has(#bao-gia-xang-gas:target) { scroll-behavior: auto; }
 .fuel-quote-note p { margin-top: 8px; }
 .fuel-quote-note ul { margin: 8px 0 0; padding-inline-start: 1.35rem; }
 .fuel-quote-note li + li { margin-top: 6px; }
+
+#fuel-form .fuel-rental {
+  border: 1px solid #bdcce2;
+  background: #f4f8ff;
+  border-radius: 8px;
+  padding: 8px 12px 12px;
+  margin: 14px 0 0;
+}
+#fuel-form .fuel-rental legend { color: var(--fuel-blue); padding-inline: 4px; }
+.fuel-rental .fuel-options label { background: #fff; }
+#fuel-estimate-rate { font-weight: 700; color: var(--fuel-blue); margin-top: 12px; }
+#fuel-estimate-note { font-size: .875rem; color: var(--fuel-muted); margin-top: 7px; }
+#fuel-estimate-result:not(:empty) { display: block; margin-top: 8px; font-weight: 750; color: var(--fuel-blue); }
+
+@media (max-width: 420px) {
+  .fuel-rental .fuel-options { grid-template-columns: 1fr; }
+}

@@ -56,16 +56,34 @@
     </div>
     <div class="fuel-panel">
       <h3 id="fuel-form-title">Nhận báo giá</h3>
-      <p>Chuẩn bị địa chỉ cơ sở và danh mục tài sản để chuyên viên trao đổi khi liên hệ.</p>
+      <p>Chọn loại cơ sở để xem thông tin báo phí và gửi yêu cầu tư vấn.</p>
       <form id="fuel-form" aria-labelledby="fuel-form-title" hidden>
         <fieldset>
           <legend>Loại cơ sở</legend>
           <div class="fuel-options">
             <label><input type="radio" name="facility" value="gas" required> Cửa hàng gas</label>
             <label><input type="radio" name="facility" value="xang" required> Trạm xăng</label>
+            <label><input type="radio" name="facility" value="can-ho-dich-vu" required> Căn hộ dịch vụ</label>
+            <label><input type="radio" name="facility" value="phong-tro" required> Phòng trọ cho thuê</label>
           </div>
         </fieldset>
-        <label class="fuel-field" for="fuel-company">Tên cửa hàng hoặc doanh nghiệp
+        <fieldset class="fuel-rental" id="fuel-rental" hidden disabled>
+          <legend>Biên bản kiểm tra PCCC</legend>
+          <div class="fuel-options">
+            <label><input type="radio" name="pccc" value="co" required> Đã có biên bản</label>
+            <label><input type="radio" name="pccc" value="chua-co" required> Chưa có biên bản</label>
+          </div>
+          <div id="fuel-estimate" hidden>
+            <p id="fuel-estimate-rate"></p>
+            <label class="fuel-field" for="fuel-asset-value">
+              <span id="fuel-asset-label"></span> (triệu đồng, không bắt buộc)
+              <input id="fuel-asset-value" name="assetValue" type="number" inputmode="decimal" min="0.01" step="0.01" placeholder="Ví dụ: 1000" aria-describedby="fuel-estimate-note">
+            </label>
+            <output id="fuel-estimate-result" for="fuel-asset-value" aria-live="polite"></output>
+            <p id="fuel-estimate-note">Phí tham khảo chưa gồm thuế GTGT. PVI sẽ xác định loại hình, rà soát hồ sơ PCCC và xác nhận khả năng cấp bảo hiểm cùng mức phí chính thức.</p>
+          </div>
+        </fieldset>
+        <label class="fuel-field" for="fuel-company">Tên cơ sở hoặc bên đề nghị bảo hiểm
           <input id="fuel-company" name="company" autocomplete="organization" maxlength="150" required>
         </label>
         <div class="fuel-fields">
@@ -115,7 +133,7 @@
       <section class="fuel-certificate-group" aria-labelledby="fuel-certificate-party">
         <h4 id="fuel-certificate-party">Người được bảo hiểm / Người thụ hưởng</h4>
         <dl>
-          <div><dt>Người được bảo hiểm</dt><dd>[Tên cửa hàng gas hoặc doanh nghiệp kinh doanh xăng dầu]</dd></div>
+          <div><dt>Người được bảo hiểm</dt><dd>[Tên cá nhân, hộ kinh doanh hoặc doanh nghiệp được bảo hiểm]</dd></div>
           <div><dt>Địa chỉ</dt><dd>[Địa chỉ của bên được bảo hiểm]</dd></div>
           <div><dt>Ngành nghề kinh doanh</dt><dd>[Ngành nghề ghi trong hồ sơ cơ sở]</dd></div>
           <div><dt>Người thụ hưởng</dt><dd>[Theo hồ sơ bảo hiểm]</dd></div>
