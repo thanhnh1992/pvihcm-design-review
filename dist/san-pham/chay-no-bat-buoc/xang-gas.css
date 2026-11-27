@@ -289,3 +289,20 @@ html:has(#bao-gia-xang-gas:target) { scroll-behavior: auto; }
 @media (max-width: 580px) {
   .fuel-certificate-law ul { grid-template-columns: 1fr; }
 }
+
+/* Hiển thị nút tính phí trên landing báo giá theo cơ sở. */
+.fire-quote-landing .cn-page .pal-calcButton {
+  background: #0759b5;
+  border-color: #0759b5;
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  opacity: 1;
+  filter: none;
+  animation: none;
+}
+.fire-quote-landing .cn-page .pal-calcButton:hover { background: #06488f; }
+.fire-quote-landing .cn-page .pal-calcButton:focus-visible {
+  outline: 3px solid #0759b5;
+  outline-offset: 4px;
+}
