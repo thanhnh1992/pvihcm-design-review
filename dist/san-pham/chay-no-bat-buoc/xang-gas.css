@@ -205,3 +205,19 @@ html:has(#bao-gia-xang-gas:target) { scroll-behavior: auto; }
   .fuel-certificate-group dl div { grid-template-columns: 1fr; }
   .fuel-certificate-group dt { border-right: 0; }
 }
+
+.fuel-quote-info {
+  gap: 16px;
+  align-items: start;
+  margin-top: 24px;
+}
+.fuel-quote-note {
+  min-width: 0;
+  border-top: 1px solid #91aac9;
+  padding: 16px 0 0;
+  color: #e1edfc;
+}
+.fuel-quote-note h3 { color: #fff; font-size: 1.2rem; line-height: 1.35; }
+.fuel-quote-note p { margin-top: 8px; }
+.fuel-quote-note ul { margin: 8px 0 0; padding-inline-start: 1.35rem; }
+.fuel-quote-note li + li { margin-top: 6px; }
