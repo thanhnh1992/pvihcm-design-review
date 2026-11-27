@@ -1,5 +1,11 @@
 # AGENTS.md: pvihcm.com
 
+## Bảo vệ trang sản phẩm gốc khi sửa landing
+
+- Tuyệt đối không điều chỉnh cấu trúc, nội dung, thông tin hoặc hành vi của trang sản phẩm gốc khi tạo hay cập nhật landing page. Giữ nguyên URL, bố cục, tiêu đề, câu chữ, biểu phí, biểu mẫu, liên kết, SEO và dữ liệu có cấu trúc của trang gốc.
+- Chỉ sửa trang con và tài nguyên riêng của landing. Có thể dùng lại thành phần của trang gốc; nếu cần biến thể, mở rộng theo cách không thay đổi kết quả hiển thị hoặc hành vi trên trang gốc.
+- Trước khi đẩy, kiểm tra diff và xác nhận mọi thay đổi hiển thị chỉ xảy ra trên landing.
+
 Hướng dẫn chung cho mọi agent làm việc trên repo này (Codex, Claude Code…). Đọc hết file trước khi sửa.
 
 > **ĐỌC MỤC "Tên miền gốc" TRƯỚC TIÊN:** nghiêm cấm đổi tên miền gốc `https://pvihcm.com`; thay đổi **tên miền thật** (đổi tên miền, `www`, https, DNS) phải qua 2 bước **Cảnh báo → Phê duyệt** của chủ site. Chạy `node tools/check-domain.mjs` trước mỗi lần push.
