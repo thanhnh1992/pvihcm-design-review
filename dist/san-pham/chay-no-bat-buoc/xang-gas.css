@@ -238,3 +238,11 @@ html:has(#bao-gia-xang-gas:target) { scroll-behavior: auto; }
 @media (max-width: 420px) {
   .fuel-rental .fuel-options { grid-template-columns: 1fr; }
 }
+
+.fuel-certificate .fuel-certificate-caption {
+  width: min(740px, calc(100% - 24px));
+  margin: 4px auto 12px;
+  color: #e1edfc;
+}
+.fuel-certificate-group dd ul { margin: 0; padding-inline-start: 1.25rem; }
+.fuel-certificate-group dd li + li { margin-top: 4px; }

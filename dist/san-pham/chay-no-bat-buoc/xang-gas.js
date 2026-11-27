@@ -4,6 +4,7 @@ const form = document.querySelector('#fuel-form');
 const status = document.querySelector('#fuel-status');
 const fallback = document.querySelector('#fuel-fallback');
 const button = form.querySelector('button');
+const certificate = document.querySelector('#mau-gcn-chay-no');
 const facilities = {
   gas: 'Cửa hàng gas (cơ sở kinh doanh khí đốt)',
   xang: 'Trạm xăng (cửa hàng xăng dầu)',
@@ -45,8 +46,10 @@ const requestedFacility = new URLSearchParams(location.search).get('loai-co-so')
 if (rentalFacilities.has(requestedFacility)) form.elements.facility.value = requestedFacility;
 form.hidden = false;
 updateEstimate();
+if (form.elements.facility.value || location.hash === '#mau-gcn-chay-no') certificate.open = true;
 
 form.addEventListener('change', (event) => {
+  if (event.target.name === 'facility') certificate.open = true;
   if (event.target.name === 'facility' || event.target.name === 'pccc') {
     assetValue.value = '';
     updateEstimate();
@@ -116,8 +119,6 @@ form.addEventListener('submit', async (event) => {
   status.focus();
 });
 
-const certificate = document.querySelector('#mau-gcn-chay-no');
 document.querySelector('.fuel-sample-link a').addEventListener('click', () => {
   certificate.open = true;
 });
-if (location.hash === '#mau-gcn-chay-no') certificate.open = true;
