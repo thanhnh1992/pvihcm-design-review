@@ -2,6 +2,15 @@
 const vinFastSource = 'VinFast · Chính sách giá bán kèm pin áp dụng từ 12/11/2026';
 
 export const carFeePriceExamples = {
+  Volvo: {
+    XC90: { source: 'Volvo Cars Việt Nam · Giá khởi điểm XC90 Mild hybrid', values: [['Mild hybrid', 3289]] },
+  },
+  'Mercedes-Benz': {
+    'E class': { source: 'Mercedes-Benz Việt Nam · Bảng giá bán lẻ đề xuất tháng 10/2026', values: [['E 200 Avantgarde', 2189], ['E 200 Exclusive', 2689], ['E 300 AMG', 3259]] },
+  },
+  Subaru: {
+    Crosstrek: { source: 'Subaru Việt Nam · Giá niêm yết các bản MY24 theo bảng tháng 09/2026', values: [['2.0 i-S EyeSight', 1098], ['e-Boxer Hybrid', 1268]] },
+  },
   Hyundai: {
     'Santa Fe': {
       source: 'Bonbanh · Santa Fe 2023 Cao cấp 2.2L HTRAC tại TP.HCM, hai tin đối chiếu 26/11/2026',

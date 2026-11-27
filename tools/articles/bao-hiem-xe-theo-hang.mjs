@@ -47,18 +47,63 @@ const models = [
     answer: 'Cần kiểm tra báo giá có ghi giá trị pin và ĐKBS 019. Nếu pin thuê hoặc mua riêng, gửi hợp đồng pin và hồ sơ sở hữu để PVI xem cách kê khai.',
     banner: ['SO PHÍ VF 5 Ở HAI MỐC GIÁ', 'XEM ĐIỀU KHOẢN PIN VÀ ĐỘNG CƠ ĐIỆN'],
   },
+  {
+    brand: 'Volvo', model: 'XC90', logo: 'volvo', slug: 'volvo-xc90',
+    variants: [['XC90 Mild hybrid', 3289, 85]],
+    source: 'Volvo Cars Việt Nam · Giá khởi điểm XC90 Mild hybrid',
+    context: 'Volvo công bố mức khởi điểm 3,289 tỷ đồng cho XC90 Mild hybrid. Nếu xe của bạn là bản plug-in hybrid hoặc có trang bị tùy chọn, hãy dùng giá trị của đúng phiên bản khi tính.',
+    heading: 'XC90 có trang bị thêm thì kê giá trị thế nào?',
+    advice: 'Gửi cấu hình xe và hóa đơn của các tùy chọn có giá trị đáng kể. Khi chọn xưởng Volvo, hỏi trước cách giám định, mức khấu trừ và điều kiện thay phụ tùng cần ghi trên hợp đồng.',
+    question: 'XC90 Mild hybrid và XC90 plug-in hybrid có dùng chung một báo giá không?',
+    answer: 'Hãy gửi riêng thông tin hệ truyền động và giá trị của xe. Nếu là bản sạc ngoài, hỏi thêm điều khoản dành cho bộ pin trước khi chốt.',
+    banner: ['TÍNH THỬ PHÍ VOLVO XC90', 'KIỂM GIÁ TRỊ TÙY CHỌN VÀ ĐIỀU KIỆN SỬA CHỮA'],
+  },
+  {
+    brand: 'Mercedes-Benz', model: 'E class', logo: 'mercedesbenz', slug: 'mercedes-benz-e-class',
+    aliases: ['E 200', 'E 300'], displayModel: 'E-Class',
+    variants: [['E 200 Avantgarde', 2189, 85], ['E 200 Exclusive', 2689, 85], ['E 300 AMG', 3259, 85]],
+    source: 'Mercedes-Benz Việt Nam · Bảng giá bán lẻ đề xuất tháng 10/2026',
+    context: 'Hai bản E 200 cũng có giá khác nhau. Nếu chỉ gửi tên E 200 khi báo phí, bạn có thể nhận một ví dụ tính trên giá trị của phiên bản khác.',
+    heading: 'E-Class sửa ở đại lý Mercedes-Benz cần đối chiếu khoản nào?',
+    advice: 'Hỏi rõ quyền lựa chọn xưởng và việc tính khấu hao khi thay phụ tùng. Nếu xe có gói AMG, mâm hoặc trang bị thêm, ghi đúng cấu hình và gửi hồ sơ để kiểm giá trị được ghi trên đơn.',
+    question: 'Phí chênh bao nhiêu giữa hai bản E 200 nếu cùng dùng 0,85%?',
+    answer: 'Theo hai mốc giá tham khảo trong bảng, chênh 500 triệu đồng số tiền bảo hiểm thì phí dự tính chênh 4.250.000 đồng/năm.',
+    banner: ['SO PHÍ E 200 VÀ E 300', 'KIỂM ĐIỀU KIỆN CHỌN XƯỞNG VÀ PHỤ TÙNG'],
+  },
+  {
+    brand: 'Subaru', model: 'Crosstrek', logo: 'subaru', slug: 'subaru-crosstrek',
+    variants: [['2.0 i-S EyeSight MY24', 1098, 85], ['2.0 i-S EyeSight e-Boxer Hybrid MY24', 1268, 85]],
+    source: 'Subaru Việt Nam · Giá niêm yết MY24 trong bảng Crosstrek tháng 09/2026',
+    context: 'Ví dụ dùng giá niêm yết của hai bản MY24 được hãng công bố trong tháng 09/2026. Nếu mua lại hoặc nhận báo giá có ưu đãi khác, hãy thay bằng số tiền bảo hiểm được đề xuất cho xe của mình.',
+    heading: 'Crosstrek e-Boxer cần kê khai gì khi nhận báo giá?',
+    advice: 'Ghi rõ bản xăng hay e-Boxer và nhờ tư vấn viên xác nhận phạm vi bộ pin hybrid. Nếu thường đi đường ngập, kiểm tra điều khoản hư hỏng động cơ do nước và mức khấu trừ tương ứng.',
+    question: 'Có nên lấy giá ưu đãi của đại lý làm số tiền bảo hiểm Crosstrek?',
+    answer: 'Bạn có thể gửi báo giá hoặc hóa đơn của đại lý cho PVI cùng năm sản xuất và phiên bản. Phép tính dùng số tiền bảo hiểm được chấp thuận trên chào phí.',
+    banner: ['SO PHÍ CROSSTREK XĂNG VÀ E-BOXER', 'HỎI PHẠM VI BẢO HIỂM PIN HYBRID'],
+  },
+  {
+    brand: 'VinFast', model: 'VF 6', logo: 'vinfast', slug: 'vinfast-vf-6',
+    variants: [['VF 6 mới Comfort', 646, 128], ['VF 6 mới Premium', 715, 119]],
+    source: 'VinFast · Giá bán đề xuất kèm pin cho VF 6 mới từ 12/11/2026',
+    context: 'Comfort ở mốc 646 triệu và Premium ở 715 triệu nên đi qua ngưỡng 700 triệu. Thử từng phiên bản để thấy vì sao tỷ lệ thấp hơn vẫn có thể cho tổng phí cao hơn.',
+    heading: 'VF 6 cần hỏi gì về pin và động cơ điện?',
+    advice: carElectricTerms,
+    question: 'VF 6 Premium có tỷ lệ thấp hơn Comfort thì phí có thấp hơn không?',
+    answer: 'Ở hai giá hãng trong ví dụ, Comfort tính 8.268.800 đồng còn Premium tính 8.508.500 đồng mỗi năm, vì Premium có số tiền bảo hiểm cao hơn.',
+    banner: ['SO PHÍ VF 6 COMFORT VÀ PREMIUM', 'KIỂM KÊ KHAI PIN VÀ ĐỘNG CƠ ĐIỆN'],
+  },
 ];
 
 const feeText = (rate, value) => `${rate === carFeeBands.at(-1).rate ? 'Chỉ từ ' : ''}${money(carFeeAtRate(value * 1_000_000, rate))} đồng/năm`;
 
 export const modelFeeArticles = models.map((data) => {
   const { brand, model, logo, aliases = [], variants, slug, source, context, heading, advice, question, answer } = data;
-  const name = brand + ' ' + model;
+  const name = brand + ' ' + (data.displayModel || model);
   const id = 'bao-hiem-vat-chat-' + slug;
   const title = `Phí bảo hiểm vật chất ${name} bao nhiêu?`;
   const lead = `Xem phí dự tính cho ${name} theo giá trị bảo hiểm và phiên bản. Với mốc ${money(variants[0][1])} triệu đồng, phí tham khảo là ${feeText(variants[0][2], variants[0][1]).toLowerCase()} nếu hồ sơ đủ điều kiện.`;
-  const cover = 'phi-bao-hiem-' + slug;
-  const alt = `Minh họa tra phí bảo hiểm vật chất ${name} với logo ${brand}`;
+  const cover = 'phi-bao-hiem-' + slug + '-minh-hoa';
+  const alt = `Ảnh minh họa ${name} tại khu tiếp nhận dịch vụ`;
   const post = {
     slug: id, path: '/kien-thuc/bao-hiem-o-to/' + id + '/', date: '2026-11-27', dateText: '27/11/2026',
     cat: 'Kiến thức · Bảo hiểm vật chất xe', title, lead, image: '/assets/' + cover + '.webp',
@@ -67,7 +112,7 @@ export const modelFeeArticles = models.map((data) => {
   return {
     data, brand, model, aliases, post, cover, internalLinksOnly: true,
     crumb: 'Bảo hiểm vật chất xe',
-    hero: { name: cover, w: 1200, h: 630, besideTitle: true, download: true, caption: `Giá tham khảo và cách tính phí cho ${name}.` },
+    hero: { name: cover, w: 1200, h: 630, besideTitle: true, download: true, caption: `Ảnh minh họa ${name}.` },
     seo: { title, description: `Tra phí bảo hiểm ${name} theo giá trị xe, xem các điều khoản và cách xác nhận xưởng ${brand} trong chương trình liên kết PVI.` },
     stylesheet: '/santa-fe-fee.css',
     script: '/santa-fe-fee.js',
