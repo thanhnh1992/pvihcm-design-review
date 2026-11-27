@@ -28,7 +28,7 @@ const published = {
 };
 const quoteOnly = new Set();
 const newPriceExamples = [];
-const curatedBrands = new Set(['Volvo', 'Mercedes-Benz', 'Subaru', 'VinFast']);
+const curatedBrands = new Set(['Volvo', 'Mercedes-Benz', 'Subaru', 'VinFast', 'Kia', 'Mazda', 'Peugeot', 'Honda']);
 
 for (const { brand, model, aliases, post, data } of modelFeeArticles) {
   if (data.archiveFromListing) continue;
@@ -39,7 +39,7 @@ for (const { brand, model, aliases, post, data } of modelFeeArticles) {
   const review = data.profile?.startsWith('used') || data.profile === 'service';
   for (const name of [model, ...aliases]) {
     const key = brand + ' ' + name;
-    if (review) quoteOnly.add(key);
+    if (review || data.quoteOnlyAliases?.includes(name)) quoteOnly.add(key);
     else quoteOnly.delete(key);
   }
   if (!data.checks) newPriceExamples.push([brand, model, {
@@ -97,7 +97,7 @@ export function renderCarFeeDirectory() {
         <div class="car-fee-directory-head">
           <h1>${CAR_FEE_TITLE}</h1>
           <p>Tra phí vật chất cho ${count.toLocaleString('vi-VN')} dòng xe thuộc ${groups.length} hãng. Chọn mẫu xe để tính phí. Mẫu đã có bài riêng sẽ hiện thêm liên kết đọc bài.</p>
-          <p>Hướng dẫn theo mẫu của Volvo, Mercedes-Benz, Subaru và VinFast tập trung vào các dòng phổ biến có xe sản xuất từ năm 2020.</p>
+          <p>Loạt hướng dẫn Volvo, Mercedes-Benz, Subaru, VinFast, Kia, Mazda, Peugeot và Honda tập trung vào xe phổ biến có đời sản xuất từ năm 2020.</p>
         </div>
         ${feeCalculator}
         <div class="car-fee-filter" hidden>

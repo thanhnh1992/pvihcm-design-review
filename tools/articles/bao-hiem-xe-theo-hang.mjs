@@ -3,6 +3,7 @@ import { moreModelFeeData } from '../data/car-fee-models-batch3.mjs';
 import { additionalModelFeeData } from '../data/car-fee-models-batch4.mjs';
 import { remainingModelFeeData } from '../data/car-fee-models-batch5.mjs';
 import { individualModelFeeData } from '../data/car-fee-models-batch6.mjs';
+import { mainstreamModelFeeData, mainstreamWorkshopEvidence } from '../data/car-fee-models-batch7.mjs';
 import { carFeeAtRate, carFeeBands, carFeeRows, carFeeText, formatCarMoney as money, carElectricTerms } from '../car-fee-rates.mjs';
 
 const models = [
@@ -100,6 +101,7 @@ const models = [
   ...additionalModelFeeData,
   ...remainingModelFeeData,
   ...individualModelFeeData,
+  ...mainstreamModelFeeData,
 ];
 
 const feeText = (rate, value) => `${rate === carFeeBands.at(-1).rate ? 'Chỉ từ ' : ''}${money(carFeeAtRate(value * 1_000_000, rate))} đồng/năm`;
@@ -107,7 +109,8 @@ export const carFeeModelAnchor = (label) => label.normalize('NFD').replace(/\p{M
 
 export const modelFeeArticles = models.map((data) => {
   const { brand, model, logo, aliases = [], variants, slug, source, context, heading, advice, question, answer } = data;
-  const name = brand + ' ' + (data.displayModel || model);
+  const name = data.fullName || brand + ' ' + (data.displayModel || model);
+  const workshop = data.market2020 ? mainstreamWorkshopEvidence[brand] : null;
   const id = 'bao-hiem-vat-chat-' + slug;
   const title = `Phí bảo hiểm vật chất ${name} bao nhiêu?`;
   const [, firstValue, firstRate] = variants[0] || [];
@@ -140,7 +143,11 @@ export const modelFeeArticles = models.map((data) => {
       { question: `Cần gửi thông tin nào để nhận báo phí bảo hiểm ${name}?`, answer: `Gửi đăng ký, năm sản xuất, phiên bản, mục đích sử dụng và ảnh hiện trạng. ${electric ? 'Với xe điện, gửi giấy tờ ghi nhận bộ pin cùng hồ sơ xe. ' : ''}Nếu đã có hợp đồng trước đó, bổ sung lịch sử bồi thường và tên xưởng muốn chọn để PVI kiểm tra.` },
       { question: `Khi nào cần xác nhận xưởng cho ${name}?`, answer: `Hỏi trước khi mua nếu bạn có xưởng muốn chọn. Gửi tên cơ sở, địa chỉ và phiên bản xe để đối chiếu việc tiếp nhận, khả năng sửa chữa và các điều kiện bảo lãnh trên báo giá.` },
     ] : [])],
-    sources: [[source, '', 'Đối chiếu 27/11/2026'], ['Tỷ lệ phí tham khảo và chương trình liên kết', '', 'Thông tin do PVI Thành Đô cung cấp']],
+    sources: [
+      [source, '', 'Đối chiếu 27/11/2026'],
+      [workshop ? 'Tỷ lệ phí tham khảo' : 'Tỷ lệ phí tham khảo và chương trình liên kết', '', 'Thông tin do PVI Thành Đô cung cấp'],
+      ...(workshop ? [[workshop[1], '', 'Đối chiếu 27/11/2026']] : []),
+    ],
     related: [{ href: '/kien-thuc/tinhphinhanhtheotenxe/', img: cover, w: 1200, h: 630, k: 'Tra cứu theo mẫu xe', title: 'Tra cứu phí theo dòng xe', text: 'Chọn hãng và tìm mẫu xe khác để tính thử.' }],
     disclaimer: 'Phép tính dùng để dự trù phí 12 tháng. Thuế, phí bổ sung, quyền lợi và điều kiện bảo lãnh theo báo giá và hợp đồng được PVI chấp thuận.',
     body() {
@@ -153,6 +160,7 @@ ${variants.length ? `<div class="kb-table"><table aria-label="Ví dụ phí theo
 <tbody>${variants.map(([label, value, rate]) => `<tr><th scope="row">${esc(label)}</th><td>${money(value)} triệu</td><td>${rate ? `${carFeeText(rate)} · ${feeText(rate, value)}` : 'Hỏi báo phí theo hồ sơ'}${rate === 153 ? ' · 3 điều khoản' : ''}</td></tr>`).join('')}</tbody>
 </table></div>` : '<p>Nhập số tiền muốn tham gia bảo hiểm nếu đã có giá trị tham chiếu. PVI sẽ xem giá trị, ảnh hiện trạng và giấy tờ xe trước khi gửi báo phí.</p>'}
 ${data.checks ? `<div class="kb-table"><table aria-label="Thông tin cần chuẩn bị theo mẫu xe"><thead><tr><th scope="col">Mẫu xe</th><th scope="col">Kiểm trước khi hỏi phí</th></tr></thead><tbody>${Object.entries(data.checks).map(([label, note]) => `<tr id="xe-${carFeeModelAnchor(label)}"><th scope="row">${esc(label)}</th><td>${esc(note)}</td></tr>`).join('')}</tbody></table></div>` : ''}
+${data.market2020 ? `<p>Nguồn giá tham khảo: ${esc(source)}.</p>` : ''}
 <p>Giá xe là mốc để tính thử. Khi có số tiền bảo hiểm được chấp thuận, dùng số đó nhân tỷ lệ. Bảng áp dụng tham khảo cho xe mới hoặc sử dụng đến 3 năm, hồ sơ đủ điều kiện.</p>
 <div class="santa-fe-fee" data-car-fee-calculator>
   <label for="model-fee-profile">Hồ sơ xe</label>
@@ -167,7 +175,8 @@ ${data.checks ? `<div class="kb-table"><table aria-label="Thông tin cần chu�
 ${electric ? `<p>${esc(carElectricTerms)}</p>` : ''}
 ${data.editorial ? `<figure><img src="/assets/${cover}-800.webp" width="800" height="420" alt="${esc(alt)}" loading="lazy" decoding="async"><figcaption>Hình ảnh minh họa: ${esc(name)} tại khu tiếp nhận dịch vụ.</figcaption></figure>` : ''}
 <h2 id="xuong-lien-ket">Kiểm tra xưởng ${esc(brand)} liên kết với PVI</h2>
-<p>PVI đã ký hợp tác với ${esc(brand)} theo thông tin từ PVI Thành Đô. Nếu muốn sửa tại một cơ sở cụ thể, gửi tên và địa chỉ xưởng để chuyên viên kiểm tra cơ sở tiếp nhận, điều kiện bảo lãnh và quyền lợi sửa chữa trên báo giá.</p>
+<p>${workshop ? esc(workshop[0]) : `PVI đã ký hợp tác với ${esc(brand)} theo thông tin từ PVI Thành Đô. Nếu muốn sửa tại một cơ sở cụ thể, gửi tên và địa chỉ xưởng để chuyên viên kiểm tra cơ sở tiếp nhận, điều kiện bảo lãnh và quyền lợi sửa chữa trên báo giá.`}</p>
+${workshop ? '<p><a class="kb-link" href="/tin-tuc/gara-lien-ket-bao-hiem-pvi/">Tra cứu danh sách gara liên kết PVI</a>.</p>' : ''}
 <p>Để nhận báo phí, chuẩn bị phiên bản, năm sản xuất, mục đích sử dụng, hồ sơ bồi thường kỳ trước nếu có và tên xưởng muốn chọn. Xem <a class="kb-link" href="/san-pham/bao-hiem-vat-chat-xe/">quyền lợi bảo hiểm vật chất xe PVI</a>.</p>`;
     },
   };
