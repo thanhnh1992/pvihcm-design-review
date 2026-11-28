@@ -155,6 +155,16 @@ const cert = `<figure class="vcx-cert"><div class="vcx-certPaper"><span class="v
 </dl></div>
 <figcaption>Giấy chứng nhận mẫu minh họa: số liệu phí theo giấy thật, thông tin chủ xe và xe là thông tin tượng trưng, không có giá trị sử dụng.</figcaption></figure>`;
 
+// Video YouTube đầu trang (chủ site gửi 28/11/2026). Ảnh bìa tự lưu trên site, bấm mới tải YouTube (dist/vcx/yt.js).
+const YT = {
+  id: 'bz7Xp1clJG0',
+  title: 'Bảo hiểm thân xe PVI – Sửa xe ở đâu, trả bao nhiêu?',
+  poster: '/assets/vat-chat-xe/video-than-xe-pvi',
+  uploadDate: '2026-11-27T20:37:57-08:00',
+  duration: 'PT1M57S',
+  description: 'Bảo hiểm thân xe PVI: một đầu mối tiếp nhận bồi thường 24/7, gara liên kết và xưởng chính hãng toàn quốc, giám định viên khắp các tỉnh thành. Ví dụ: sửa 10 triệu đồng, miễn thường 500.000 đồng mỗi vụ, PVI thanh toán 9,5 triệu đồng trực tiếp cho gara.',
+};
+
 const main = `<div class="vcx-page">
 <section class="vcx-hero" aria-labelledby="vcx-title"><div class="shell">
 <nav class="vcx-breadcrumb" aria-label="Đường dẫn"><a href="/">Trang chủ</a><span aria-hidden="true">›</span><a href="/san-pham/">Sản phẩm</a><span aria-hidden="true">›</span><a href="${OTO}">Bảo hiểm ô tô</a><span aria-hidden="true">›</span><b>Vật chất xe</b></nav>
@@ -167,8 +177,8 @@ const main = `<div class="vcx-page">
 <div class="vcx-heroActions"><a class="vcx-primary" href="#bao-phi">Nhận báo phí</a><a class="vcx-secondary" href="#quyen-loi">Xem quyền lợi</a></div>
 <dl class="vcx-facts"><div><dt>Khấu trừ chung</dt><dd>500.000 đ/vụ</dd></div><div><dt>Bảo lãnh sửa chữa</dt><dd><a href="${GARA_URL}" target="_blank" rel="nofollow" aria-label="Mở danh sách gara liên kết PVI trong tab mới">Gara liên kết PVI <span aria-hidden="true">↗</span></a></dd></div><div><dt>Quy tắc bảo hiểm</dt><dd><a href="${currentRulesPdf}" target="_blank" rel="nofollow" aria-label="Mở PDF quy tắc bảo hiểm tự nguyện xe ô tô, hiệu lực 01/07/2025, trong tab mới">Hiệu lực 01/07/2025 <span aria-hidden="true">↗</span></a></dd></div></dl>
 </div>
-<figure class="vcx-video"><video controls muted playsinline preload="none" poster="/assets/vat-chat-xe/showroom-kiem-tra-xe-poster.webp" width="1280" height="720"><source src="/assets/vat-chat-xe/showroom-kiem-tra-xe.mp4" type="video/mp4"><track kind="captions" src="/assets/vat-chat-xe/showroom-kiem-tra-xe.vi.vtt" srclang="vi" label="Tiếng Việt" default></video>
-<figcaption>Hình ảnh mô phỏng chủ xe và giám định viên kiểm tra xe tại showroom · 12 giây</figcaption></figure>
+<figure class="vcx-video yt-facade"><button type="button" class="yt-play" data-yt="${YT.id}" data-title="${esc(YT.title)}" aria-label="Phát video: ${esc(YT.title)} (1 phút 57 giây)"><img src="${YT.poster}.webp" srcset="${YT.poster}-480.webp 480w, ${YT.poster}-800.webp 800w, ${YT.poster}.webp 1280w" sizes="(max-width: 900px) 100vw, 640px" width="1280" height="720" alt="Ảnh bìa video bảo hiểm thân xe PVI: sửa 10 triệu, chủ xe trả 500.000đ miễn thường"><span class="yt-icon" aria-hidden="true"></span></button>
+<figcaption>Video: Bảo hiểm thân xe PVI, sửa xe ở đâu, trả bao nhiêu? · 1 phút 57 giây</figcaption></figure>
 </div></div></section>
 
 <section class="vcx-claim" id="boi-thuong" aria-labelledby="vcx-claim"><div class="shell"><div class="vcx-claimCard">
@@ -215,13 +225,16 @@ const graph = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'ListItem', position: 4, name: 'Vật chất xe', item: URL }] },
   { '@type': 'Service', '@id': URL + '#service', name: 'Bảo hiểm vật chất xe ô tô PVI', serviceType: 'Bảo hiểm tự nguyện vật chất xe ô tô', description, url: URL,
     provider: { '@type': 'InsuranceAgency', name: 'Bảo hiểm PVI Thành Đô', url: SITE + '/' }, areaServed: { '@type': 'Country', name: 'Việt Nam' } },
+  { '@type': 'VideoObject', '@id': URL + '#video', name: YT.title, description: YT.description, inLanguage: 'vi-VN',
+    thumbnailUrl: [SITE + YT.poster + '.webp'], uploadDate: YT.uploadDate, duration: YT.duration,
+    embedUrl: 'https://www.youtube.com/embed/' + YT.id, publisher: { '@type': 'InsuranceAgency', name: 'Bảo hiểm PVI Thành Đô', url: SITE + '/' } },
 ] };
 
 const html = page({
   path: PATH, title, description, image: '/assets/vat-chat-xe/showroom-kiem-tra-xe-poster.webp', bodyClass: 'fire vcx',
-  extraCss: '<link rel="stylesheet" href="/vcx.css">' + carFeeStyles,
+  extraCss: '<link rel="stylesheet" href="/vcx.css"><link rel="stylesheet" href="/vcx/yt.css">' + carFeeStyles,
   head: ld(graph) + faqJsonLd(faqs),
-  scripts: '<script type="module" src="/vcx/builder.js"></script>',
+  scripts: '<script type="module" src="/vcx/builder.js"></script><script src="/vcx/yt.js" defer></script>',
   main,
 });
 fs.mkdirSync(path.join(DIST, 'san-pham/bao-hiem-vat-chat-xe'), { recursive: true });

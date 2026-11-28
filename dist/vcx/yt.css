@@ -1,0 +1,11 @@
+/* Video YouTube đầu trang vật chất xe (ảnh bìa + nút phát, bấm mới tải YouTube) */
+.yt-facade .yt-play, .yt-facade .yt-frame { aspect-ratio: 16 / 9; border: 0; border-radius: 22px; box-shadow: 0 18px 50px rgba(17, 38, 66, .16); display: block; overflow: hidden; width: 100%; }
+.yt-facade .yt-play { background: #dfeaf6; cursor: pointer; padding: 0; position: relative; }
+.yt-facade .yt-frame { height: auto; }
+.yt-facade .yt-play img { display: block; height: 100%; object-fit: cover; transition: transform .35s ease; width: 100%; }
+.yt-facade .yt-icon { background: #CB2530; border-radius: 18px; box-shadow: 0 8px 24px rgba(0, 0, 0, .28); height: 62px; left: 80%; position: absolute; top: 60%; transform: translate(-50%, -50%); transition: transform .2s ease, background .2s ease; width: 88px; }
+.yt-facade .yt-icon::after { border-bottom: 13px solid transparent; border-left: 22px solid #fff; border-top: 13px solid transparent; content: ""; left: 36px; position: absolute; top: 18px; }
+.yt-facade .yt-play:hover img { transform: scale(1.02); }
+.yt-facade .yt-play:hover .yt-icon, .yt-facade .yt-play:focus-visible .yt-icon { background: #a81d26; transform: translate(-50%, -50%) scale(1.06); }
+.yt-facade .yt-play:focus-visible { outline: 3px solid #1F4A8C; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .yt-facade .yt-play img, .yt-facade .yt-icon { transition: none; } }
