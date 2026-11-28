@@ -14,13 +14,19 @@ if (carFeeCalculator) {
   const percentage = new Intl.NumberFormat('vi-VN', { style: 'percent', minimumFractionDigits: 2 });
 
   const update = () => {
-    if (profile.value !== 'standard') {
+    const businessRate = profile.value === 'vinfast-business' && Number(profile.selectedOptions[0]?.dataset.rate);
+    if (profile.value !== 'standard' && !businessRate) {
       output.value = 'Liên hệ chuyên viên để được báo phí';
       return;
     }
     const value = Math.round(input.valueAsNumber * 1_000_000);
     if (!input.validity.valid || !Number.isSafeInteger(value)) {
       output.value = input.value ? 'Nhập giá trị xe hợp lệ' : 'Nhập giá trị bảo hiểm để tính phí';
+      return;
+    }
+    if (businessRate) {
+      const percent = currency.format(businessRate / 100);
+      output.value = `${currency.format(Math.round(value * businessRate / 10_000))} đồng/năm (${percent}% · có bảo hiểm pin)`;
       return;
     }
     const band = bands.find(({ min, max, inclusiveMax }) => {

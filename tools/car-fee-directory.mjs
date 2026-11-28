@@ -3,7 +3,8 @@ import { existsSync } from 'node:fs';
 import { normalizeCarName } from '../dist/car-fee-normalize.js';
 import carCatalogue from './data/car-fee-catalogue.json' with { type: 'json' };
 import { post as santaFe } from './articles/bao-hiem-than-vo-hyundai-santa-fe.mjs';
-import { carElectricTerms, carFeeRows } from './car-fee-rates.mjs';
+import { carElectricTerms, carFeeRows, isVinfastBusinessDefault, isVinfastElectric,
+  vinfastBusinessLabel, vinfastBusinessPath, vinfastBusinessProfile, vinfastBusinessRate, vinfastBusinessTerms } from './car-fee-rates.mjs';
 import { carFeePriceExamples } from './data/car-fee-price-examples.mjs';
 import { carFeeModelAnchor, modelFeeArticles } from './articles/bao-hiem-xe-theo-hang.mjs';
 
@@ -31,11 +32,11 @@ const newPriceExamples = [];
 const curatedBrands = new Set(['Volvo', 'Mercedes-Benz', 'Subaru', 'VinFast', 'Kia', 'Mazda', 'Peugeot', 'Honda']);
 
 for (const { brand, model, aliases, post, data } of modelFeeArticles) {
-  if (data.archiveFromListing) continue;
+  if (data.archiveFromListing || data.overview) continue;
   const links = published[brand] ??= {};
   links[model] = post.path;
   for (const name of aliases) links[name] = post.path + (data.checks ? '#xe-' + carFeeModelAnchor(name) : '');
-  if (!data.editorial) continue;
+  if (!data.editorial && !isVinfastElectric(brand, model)) continue;
   const review = data.profile?.startsWith('used') || data.profile === 'service';
   for (const name of [model, ...aliases]) {
     const key = brand + ' ' + name;
@@ -44,8 +45,8 @@ for (const { brand, model, aliases, post, data } of modelFeeArticles) {
   }
   if (!data.checks) newPriceExamples.push([brand, model, {
     source: data.source, values: data.variants,
-    electric: data.profile?.includes('electric') || (brand === 'VinFast' && data.profile === 'service'),
-    note: review ? 'Hồ sơ cần báo phí riêng.' : '',
+    electric: data.profile?.includes('electric') || isVinfastElectric(brand, model),
+    note: isVinfastBusinessDefault(brand, model) ? vinfastBusinessTerms : review ? 'Hồ sơ cần báo phí riêng.' : '',
   }]);
 }
 
@@ -66,7 +67,7 @@ const feeCalculator = `<section class="car-fee-calculate" id="tinh-phi" data-car
   <div data-price-example-target hidden></div>
   ${priceCards}
   <div class="car-fee-inputs">
-    <label>Hồ sơ xe<select><option value="standard">Xe mới hoặc sử dụng đến 3 năm</option><option value="review">Xe trên 3 năm hoặc tỷ lệ bồi thường cao</option><option value="review-commercial">Xe kinh doanh hoặc cần thẩm định riêng</option></select></label>
+    <label>Hồ sơ xe<select><option value="standard">Xe mới hoặc sử dụng đến 3 năm</option><option value="review">Xe trên 3 năm hoặc tỷ lệ bồi thường cao</option><option value="review-commercial">Xe kinh doanh hoặc cần thẩm định riêng</option><option value="${vinfastBusinessProfile}" data-rate="${vinfastBusinessRate}" hidden disabled>${vinfastBusinessLabel}</option></select></label>
     <label>Số tiền bảo hiểm (triệu đồng)<input type="number" min="1" step="any" required inputmode="decimal" placeholder="Ví dụ 650"></label>
   </div>
   <label class="car-fee-electric-choice"><input type="checkbox" data-electric-choice aria-controls="car-fee-electric-terms"> Xe điện · xem quyền lợi pin và động cơ</label>
@@ -77,7 +78,8 @@ const feeCalculator = `<section class="car-fee-calculate" id="tinh-phi" data-car
     <table><thead><tr><th scope="col">Số tiền bảo hiểm</th><th scope="col">Tỷ lệ tham khảo</th></tr></thead>
     <tbody>${carFeeRows()}</tbody></table>
   </details>
-  <p>Xe dưới 300 triệu đồng, xe trên 3 năm, xe kinh doanh hoặc hồ sơ có tỷ lệ bồi thường cao cần xác nhận riêng. Xem <a href="/san-pham/bao-hiem-vat-chat-xe/">quyền lợi và điều khoản bảo hiểm vật chất xe</a>.</p>
+  <p hidden data-vinfast-business-terms>${vinfastBusinessTerms}</p>
+  <p>Với xe cá nhân, trường hợp dưới 300 triệu đồng, trên 3 năm hoặc có tỷ lệ bồi thường cao cần xác nhận riêng. Chọn đúng dòng xe để xem phương án phí kinh doanh. Xem <a href="/san-pham/bao-hiem-vat-chat-xe/">quyền lợi bảo hiểm vật chất xe</a>.</p>
 </section>`;
 
 export function renderCarFeeDirectory() {
@@ -98,6 +100,7 @@ export function renderCarFeeDirectory() {
           <h1>${CAR_FEE_TITLE}</h1>
           <p>Tra phí vật chất cho ${count.toLocaleString('vi-VN')} dòng xe thuộc ${groups.length} hãng. Chọn mẫu xe để tính phí. Mẫu đã có bài riêng sẽ hiện thêm liên kết đọc bài.</p>
           <p>Loạt hướng dẫn Volvo, Mercedes-Benz, Subaru, VinFast, Kia, Mazda, Peugeot và Honda tập trung vào xe phổ biến có đời sản xuất từ năm 2020.</p>
+          <p><a href="${vinfastBusinessPath}">So phí VinFast điện kinh doanh 1,4% có bảo hiểm pin</a></p>
         </div>
         ${feeCalculator}
         <div class="car-fee-filter" hidden>
@@ -118,7 +121,7 @@ export function renderCarFeeDirectory() {
             ${logo ? `<img class="car-fee-brand-mark" src="${logo}" alt="" width="170" height="105" loading="lazy" decoding="async">` : ''}
             <ul aria-label="Dòng xe ${esc(brand)}" tabindex="0">${models.map((model) => {
               const url = published[brand]?.[model];
-              return `<li data-model="${esc(model)}"${quoteOnly.has(brand + ' ' + model) ? ' data-quote-only' : ''}><a class="car-fee-model" href="#tinh-phi">${esc(model)}</a>${url ? `<a class="car-fee-guide" href="${url}" aria-label="Đọc bài về ${esc(brand + ' ' + model)}">Đọc bài <span aria-hidden="true">&rarr;</span></a>` : ''}</li>`;
+              return `<li data-model="${esc(model)}"${quoteOnly.has(brand + ' ' + model) ? ' data-quote-only' : ''}${isVinfastElectric(brand, model) ? ' data-vinfast-business' : ''}${isVinfastBusinessDefault(brand, model) ? ' data-vinfast-business-default' : ''}><a class="car-fee-model" href="#tinh-phi">${esc(model)}</a>${url ? `<a class="car-fee-guide" href="${url}" aria-label="Đọc bài về ${esc(brand + ' ' + model)}">Đọc bài <span aria-hidden="true">&rarr;</span></a>` : ''}</li>`;
             }).join('')}</ul>
             </div>
           </details>`;

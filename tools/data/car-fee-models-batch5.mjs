@@ -235,7 +235,7 @@ export const remainingModelFeeData = [
       ]
     ],
     "source": "VinFast, chính sách giá xe và trang bị tùy chọn ngày 12/11/2026",
-    "context": "Giá tham khảo hãng là 699 triệu đồng. Dòng Green hướng đến khách kinh doanh, cần báo mục đích và hồ sơ vận hành để PVI xác định phí.",
+    "context": "Giá tham khảo hãng là 699 triệu đồng. Nếu số tiền bảo hiểm bằng mốc này, phép tính 1,4% cho ra 9.786.000 đồng/năm có bảo hiểm pin.",
     "heading": "Limo Green chở khách theo hợp đồng cần khai gì?",
     "advice": "Gửi số xe, mục đích chở khách và cách quản lý đội xe. Cho biết ai giữ giấy tờ pin và cơ sở sửa chữa thường dùng để thống nhất đầu mối nếu xe cần giám định.",
     "question": "Đội Limo Green có cần gửi từng số khung?",
@@ -267,7 +267,7 @@ export const remainingModelFeeData = [
     "heading": "Herio Green chạy dịch vụ và chạy cá nhân khác gì khi hỏi phí?",
     "advice": "Khai nhu cầu như xe cá nhân, chạy nền tảng hoặc xe thuê. Nêu thêm thông tin về quyền sở hữu pin và xưởng gần điểm xe vận hành.",
     "question": "Có thể lấy luôn tỷ lệ 1,53% cho Herio Green chạy dịch vụ không?",
-    "answer": "Xe dùng dịch vụ cần báo phí theo mục đích và hồ sơ. Hãy gửi báo giá mua xe và thông tin vận hành để chuyên viên xem.",
+    "answer": "Herio Green chạy dịch vụ dùng mức 1,4% có bảo hiểm pin. Hai mốc 450 và 469 triệu tương ứng 6.300.000 và 6.566.000 đồng/năm nếu số tiền bảo hiểm bằng giá tham chiếu.",
     "banner": [
       "HỎI PHÍ HERIO GREEN THEO HỒ SƠ",
       "KHAI ĐÚNG NHU CẦU CHẠY DỊCH VỤ"
@@ -287,7 +287,7 @@ export const remainingModelFeeData = [
       ]
     ],
     "source": "VinFast, chính sách giá xe và trang bị tùy chọn ngày 12/11/2026",
-    "context": "Mốc công bố là 628 triệu đồng. Xe chạy dịch vụ cần khoản phí do PVI xác định theo hồ sơ sử dụng.",
+    "context": "Mốc công bố là 628 triệu đồng. Nếu số tiền bảo hiểm bằng mốc 628 triệu đồng, phí 1,4% dự tính là 8.792.000 đồng/năm có bảo hiểm pin.",
     "heading": "Nerio Green vận hành nhiều ca cần chuẩn bị thông tin nào?",
     "advice": "Gửi giấy đăng ký, thông tin chủ xe, số ca vận hành và xưởng đội xe sử dụng. Kê khai pin, thiết bị theo xe và lịch sử yêu cầu bồi thường nếu đã có hợp đồng.",
     "question": "Mua lại Nerio Green từng chạy dịch vụ cần kiểm gì?",

@@ -51,8 +51,16 @@ if (calculator) {
   const priceTarget = calculator.querySelector('[data-price-example-target]');
   const examples = new Map([...calculator.querySelectorAll('template[data-price-example]')]
     .map((template) => [template.dataset.priceExample, template]));
-  const updateTerms = () => { terms.hidden = !electric.checked; };
+  const businessOption = profile.querySelector('option[value="vinfast-business"]');
+  const businessTerms = calculator.querySelector('[data-vinfast-business-terms]');
+  const standardOption = profile.querySelector('option[value="standard"]');
+  const updateTerms = () => {
+    const business = profile.value === 'vinfast-business';
+    terms.hidden = !electric.checked || business;
+    if (businessTerms) businessTerms.hidden = !business;
+  };
   electric.addEventListener('change', updateTerms);
+  profile.addEventListener('change', updateTerms);
   updateTerms();
 
   let selected;
@@ -72,10 +80,18 @@ if (calculator) {
     priceTarget.replaceChildren();
     if (example) priceTarget.append(example.content.cloneNode(true));
     priceTarget.hidden = !example;
-    electric.checked = Boolean(example?.hasAttribute('data-electric'));
-    updateTerms();
+    const eligible = Boolean(businessOption && item.hasAttribute('data-vinfast-business'));
+    const businessDefault = eligible && item.hasAttribute('data-vinfast-business-default');
+    if (businessOption) {
+      businessOption.disabled = !eligible;
+      businessOption.hidden = !eligible;
+    }
+    standardOption.disabled = businessDefault;
+    standardOption.hidden = businessDefault;
+    electric.checked = eligible || Boolean(example?.hasAttribute('data-electric'));
     value.value = '';
-    profile.value = item.hasAttribute('data-quote-only') ? 'review-commercial' : 'standard';
+    profile.value = businessDefault ? 'vinfast-business' : item.hasAttribute('data-quote-only') ? 'review-commercial' : 'standard';
+    updateTerms();
     value.dispatchEvent(new Event('input'));
     heading.focus({ preventScroll: true });
     calculator.scrollIntoView({ block: 'start' });
